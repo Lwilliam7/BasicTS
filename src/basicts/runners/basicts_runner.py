@@ -1074,11 +1074,11 @@ class BasicTSRunner:
 
         total_samples = len(self.test_data_loader.dataset)
 
-        save_dir = os.path.join(self.ckpt_save_dir, "test_results")
+        save_dir = os.path.normpath(os.path.join(self.ckpt_save_dir, "test_results"))
         os.makedirs(save_dir, exist_ok=True)
-        inputs_path = os.path.join(save_dir, "inputs.npy")
-        pred_path = os.path.join(save_dir, "prediction.npy")
-        targets_path = os.path.join(save_dir, "targets.npy")
+        inputs_path = os.path.normpath(os.path.join(save_dir, "inputs.npy"))
+        pred_path = os.path.normpath(os.path.join(save_dir, "prediction.npy"))
+        targets_path = os.path.normpath(os.path.join(save_dir, "targets.npy"))
 
         # create memmap files
         if batch_idx == 0:
