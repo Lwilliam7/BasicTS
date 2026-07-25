@@ -125,7 +125,7 @@ New-Item -ItemType Directory -Force -Path $StateRoot | Out-Null
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 
 Write-Host "Watching GitHub prompt inbox:"
-Write-Host "  $Remote/$Branch"":"$PromptPath"
+Write-Host "  ${Remote}/${Branch}:$PromptPath"
 Write-Host "Polling every $PollSeconds seconds."
 Write-Host "A detected prompt starts a completion-driven loop lasting up to $LoopHours hours."
 Write-Host "Press Ctrl+C to stop."
