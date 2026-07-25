@@ -64,6 +64,9 @@ class SubsetUtilityTrainingConfig:
     subset_state_sampling_mode: str = "exhaustive"
     max_subset_size: Optional[int] = None
     cost_coefficient: float = 1.0
+    cost_mode: str = "equal"
+    cost_file: Optional[str] = None
+    selection_metric: str = "cost_aware_objective"
     use_expert_embeddings: bool = True
     history_encoder_type: str = "current"
     action_head_type: str = "unified"
@@ -94,7 +97,127 @@ def _jsonable(value: Any) -> Any:
         return {str(key): _jsonable(item) for key, item in value.items()}
     if isinstance(value, (tuple, list)):
         return [_jsonable(item) for item in value]
+    if isinstance(value, float) and (math.isnan(value) or math.isinf(value)):
+        return str(value)
     return value
+
+
+def _read_cost_file(path: Union[str, Path]) -> dict[str, float]:
+    path = Path(path)
+    if not path.exists():
+        raise FileNotFoundError(f"cost file does not exist: {path}")
+    if path.suffix.lower() == ".json":
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(data, Mapping):
+            raise ValueError("JSON cost file must be an object mapping expert names to costs")
+        return {str(key): float(value) for key, value in data.items()}
+    costs: dict[str, float] = {}
+    with path.open("r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            name = row.get("expert") or row.get("model") or row.get("name")
+            value = row.get("cost") or row.get("latency") or row.get("latency_ms") or row.get("ms")
+            if name is None or value is None:
+                raise ValueError("CSV cost file needs expert/model/name and cost/latency columns")
+            costs[str(name)] = float(value)
+    return costs
+
+
+def load_and_normalize_expert_costs(
+    expert_names: Sequence[str],
+    *,
+    cost_mode: str = "equal",
+    cost_file: Optional[Union[str, Path]] = None,
+    configured_cost_schedule: Optional[Mapping[str, float]] = None,
+) -> tuple[torch.Tensor, torch.Tensor, dict[str, Any]]:
+    if cost_mode not in {"equal", "configured", "latency"}:
+        raise ValueError("cost_mode must be one of: equal, configured, latency")
+    if cost_mode == "equal":
+        raw_costs = torch.ones(len(expert_names), dtype=torch.float32)
+        source = "equal unit costs"
+    elif cost_mode == "configured":
+        schedule = dict(configured_cost_schedule or {})
+        raw_costs = torch.tensor(
+            [float(schedule.get(name, 1.0)) for name in expert_names],
+            dtype=torch.float32,
+        )
+        source = "router_experiment_config.costarts_subset_cost_schedule"
+    else:
+        if cost_file is None:
+            raise ValueError("cost_mode='latency' requires --cost-file")
+        schedule = _read_cost_file(cost_file)
+        provided = [float(value) for value in schedule.values() if float(value) > 0]
+        fallback = sum(provided) / len(provided) if provided else 1.0
+        raw_costs = torch.tensor(
+            [float(schedule.get(name, fallback)) for name in expert_names],
+            dtype=torch.float32,
+        )
+        source = str(cost_file)
+    if torch.any(~torch.isfinite(raw_costs)):
+        raise ValueError("expert costs must be finite")
+    if torch.any(raw_costs < 0):
+        raise ValueError("expert costs must be non-negative")
+    if torch.all(raw_costs == 0):
+        normalized_costs = torch.zeros_like(raw_costs)
+        mean_cost = 0.0
+    else:
+        mean_cost = float(raw_costs[raw_costs > 0].mean())
+        normalized_costs = raw_costs / max(mean_cost, 1e-12)
+    metadata = {
+        "cost_mode": cost_mode,
+        "cost_source": source,
+        "raw_expert_costs": {
+            str(name): float(raw_costs[index]) for index, name in enumerate(expert_names)
+        },
+        "normalized_expert_costs": {
+            str(name): float(normalized_costs[index]) for index, name in enumerate(expert_names)
+        },
+        "mean_positive_raw_cost": mean_cost,
+    }
+    return raw_costs, normalized_costs, metadata
+
+
+def build_cost_aware_targets(
+    batch: Mapping[str, torch.Tensor],
+    *,
+    cost_coefficient: float,
+    normalized_expert_costs: torch.Tensor,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    if cost_coefficient < 0:
+        raise ValueError("cost_coefficient must be non-negative")
+    queried_mask = batch["queried_mask"].to(torch.bool)
+    remaining_mask = batch["remaining_mask"].to(torch.bool)
+    valid_action_mask = batch["valid_action_mask"].to(torch.bool)
+    expert_errors = batch["true_expert_error_vector"].to(torch.float32)
+    marginal_gain = batch["marginal_gain_best_queried_oracle"].to(torch.float32)
+    batch_size, num_experts = expert_errors.shape
+    assert tuple(queried_mask.shape) == (batch_size, num_experts)
+    assert tuple(remaining_mask.shape) == (batch_size, num_experts)
+    assert tuple(valid_action_mask.shape) == (batch_size, num_experts + 1)
+    assert tuple(marginal_gain.shape) == (batch_size, num_experts)
+    costs = normalized_expert_costs.to(expert_errors.device, expert_errors.dtype).view(1, -1)
+    assert tuple(costs.shape) == (1, num_experts)
+
+    has_queried = queried_mask.any(dim=1)
+    empty_state_utility = -expert_errors - float(cost_coefficient) * costs
+    non_empty_utility = marginal_gain - float(cost_coefficient) * costs
+    utility = torch.where(has_queried.view(-1, 1), non_empty_utility, empty_state_utility)
+
+    valid_expert_mask = remaining_mask & valid_action_mask[:, :num_experts]
+    utility = utility.masked_fill(~valid_expert_mask, float("-inf"))
+    best_utility, best_expert_action = utility.max(dim=1)
+    stop_index = num_experts
+    stop_valid = valid_action_mask[:, stop_index]
+    no_remaining = ~valid_expert_mask.any(dim=1)
+    stop_is_best = stop_valid & (no_remaining | (best_utility <= 0.0))
+    optimal_next_action = torch.where(
+        stop_is_best,
+        torch.full_like(best_expert_action, stop_index),
+        best_expert_action,
+    )
+    if torch.any(~valid_action_mask.gather(1, optimal_next_action.view(-1, 1)).squeeze(1)):
+        raise AssertionError("dynamic target construction produced an invalid action")
+    return utility, optimal_next_action.to(torch.long)
 
 
 class CostartsSubsetStateDataset(Dataset):
@@ -117,6 +240,9 @@ class CostartsSubsetStateDataset(Dataset):
             "true_targets": self.cache["true_targets"][index],
             "target_mask": self.cache["target_mask"][index],
             "true_expert_error_vector": self.cache["true_expert_error_vector"][index],
+            "remaining_mask": self.cache["remaining_mask"][index],
+            "marginal_gain_best_queried_oracle": self.cache["marginal_gain_best_queried_oracle"][index],
+            "marginal_gain_equal_queried_average": self.cache["marginal_gain_equal_queried_average"][index],
             "cost_adjusted_utility": self.cache["cost_adjusted_utility"][index],
             "optimal_next_action": self.cache["optimal_next_action"][index],
             "valid_action_mask": self.cache["valid_action_mask"][index],
@@ -359,12 +485,25 @@ def subset_utility_losses(
     outputs: Mapping[str, torch.Tensor],
     batch: Mapping[str, torch.Tensor],
     loss_weights: Mapping[str, float],
+    *,
+    cost_coefficient: Optional[float] = None,
+    normalized_expert_costs: Optional[torch.Tensor] = None,
 ) -> tuple[torch.Tensor, dict[str, float]]:
+    if normalized_expert_costs is None or cost_coefficient is None:
+        target_utility = batch["cost_adjusted_utility"].to(outputs["utility_prediction"].dtype)
+        target_action = batch["optimal_next_action"].to(torch.long)
+    else:
+        target_utility, target_action = build_cost_aware_targets(
+            batch,
+            cost_coefficient=float(cost_coefficient),
+            normalized_expert_costs=normalized_expert_costs,
+        )
+        target_utility = target_utility.to(outputs["utility_prediction"].dtype)
     masked_logits = _masked_action_logits(outputs["action_logits"], batch["valid_action_mask"])
-    action_loss = F.cross_entropy(masked_logits, batch["optimal_next_action"].to(torch.long))
+    action_loss = F.cross_entropy(masked_logits, target_action)
     utility_loss = _utility_loss(
         outputs["utility_prediction"],
-        batch["cost_adjusted_utility"].to(outputs["utility_prediction"].dtype),
+        target_utility,
         batch["valid_action_mask"],
     )
     pairwise_loss = _pairwise_loss(
@@ -387,8 +526,9 @@ def subset_utility_losses(
         "utility_loss": float(utility_loss.detach().cpu()),
         "pairwise_loss": float(pairwise_loss.detach().cpu()),
         "mix_loss": float(mix_loss.detach().cpu()),
-        "action_accuracy": float((predicted_action == batch["optimal_next_action"]).to(torch.float32).mean().detach().cpu()),
+        "action_accuracy": float((predicted_action == target_action).to(torch.float32).mean().detach().cpu()),
         "stop_frequency": float((predicted_action == stop_index).to(torch.float32).mean().detach().cpu()),
+        "target_stop_frequency": float((target_action == stop_index).to(torch.float32).mean().detach().cpu()),
         "average_predicted_utility": float(outputs["utility_prediction"].detach().mean().cpu()),
     }
 
@@ -419,6 +559,9 @@ def _state_batch(cache: Mapping[str, Any], state_indices: Sequence[int], device:
         "true_targets",
         "target_mask",
         "true_expert_error_vector",
+        "remaining_mask",
+        "marginal_gain_best_queried_oracle",
+        "marginal_gain_equal_queried_average",
         "valid_action_mask",
         "subset_size",
     )
@@ -432,6 +575,9 @@ def evaluate_deployable_inference(
     *,
     batch_size: int,
     device: Union[str, torch.device],
+    cost_coefficient: float = 0.0,
+    normalized_expert_costs: Optional[torch.Tensor] = None,
+    raw_expert_costs: Optional[torch.Tensor] = None,
     debug: bool = False,
 ) -> dict[str, Any]:
     device = torch.device(device)
@@ -450,6 +596,19 @@ def evaluate_deployable_inference(
     query_history: list[list[int]] = [[] for _ in range(num_windows)]
     predicted_utility_by_step: list[list[float]] = []
     stop_counts = torch.zeros(max_subset_size + 1, dtype=torch.long)
+    false_stop = 0
+    false_continue = 0
+    predicted_stop_count = 0
+    oracle_stop_count = 0
+    stop_decision_count = 0
+    if normalized_expert_costs is None:
+        normalized_costs_cpu = torch.zeros(num_experts, dtype=torch.float32)
+    else:
+        normalized_costs_cpu = normalized_expert_costs.detach().cpu().to(torch.float32)
+    if raw_expert_costs is None:
+        raw_costs_cpu = normalized_costs_cpu.clone()
+    else:
+        raw_costs_cpu = raw_expert_costs.detach().cpu().to(torch.float32)
 
     for step in range(max_subset_size):
         active = [index for index in range(num_windows) if not done[index]]
@@ -468,6 +627,21 @@ def evaluate_deployable_inference(
             )
             masked_logits = _masked_action_logits(outputs["action_logits"], batch["valid_action_mask"])
             actions = torch.argmax(masked_logits, dim=-1).detach().cpu()
+            if normalized_expert_costs is not None:
+                _, target_actions = build_cost_aware_targets(
+                    batch,
+                    cost_coefficient=cost_coefficient,
+                    normalized_expert_costs=normalized_expert_costs.to(device),
+                )
+                target_actions = target_actions.detach().cpu()
+                stop_valid = batch["valid_action_mask"][:, stop_index].detach().cpu().to(torch.bool)
+                predicted_stop = actions == stop_index
+                oracle_stop = target_actions == stop_index
+                false_stop += int((predicted_stop & ~oracle_stop & stop_valid).sum())
+                false_continue += int((~predicted_stop & oracle_stop & stop_valid).sum())
+                predicted_stop_count += int((predicted_stop & stop_valid).sum())
+                oracle_stop_count += int((oracle_stop & stop_valid).sum())
+                stop_decision_count += int(stop_valid.sum())
             utility_prediction = outputs["utility_prediction"].detach().cpu()
             for local_index, sample_index in enumerate(rows):
                 action = int(actions[local_index])
@@ -521,9 +695,40 @@ def evaluate_deployable_inference(
     for row in range(num_windows):
         source_errors[row] = cache["true_expert_error_vector"][lookup[row][0]]
     selected_mae = source_errors.gather(1, selected.view(-1, 1)).squeeze(1)
+    selected_mse = torch.empty(num_windows, dtype=torch.float32)
+    for row in range(num_windows):
+        state_index = final_state_indices[row]
+        queried_ids = cache["queried_expert_ids"][state_index]
+        matching_slots = torch.nonzero(queried_ids == selected[row], as_tuple=False).flatten()
+        if matching_slots.numel() == 0:
+            raise AssertionError("selected expert is not in the queried subset")
+        prediction = cache["queried_expert_forecasts"][state_index, int(matching_slots[0])]
+        target = cache["true_targets"][state_index]
+        mask = cache["target_mask"][state_index].to(torch.float32)
+        selected_mse[row] = (((prediction - target) ** 2) * mask).sum() / mask.sum().clamp_min(1.0)
     oracle_best = torch.argmin(source_errors, dim=1)
     oracle_mae = source_errors.min(dim=1).values
     avg_queries = sum(len(history) for history in query_history) / max(num_windows, 1)
+    first_query = torch.tensor([history[0] for history in query_history], dtype=torch.long)
+    first_query_oracle_match = (first_query == oracle_best).to(torch.float32).mean()
+    top_two_oracle_coverage = torch.tensor(
+        [
+            float(int(oracle_best[index]) in history[:2])
+            for index, history in enumerate(query_history)
+        ],
+        dtype=torch.float32,
+    ).mean()
+    normalized_query_costs = [
+        float(normalized_costs_cpu[torch.tensor(history, dtype=torch.long)].sum()) if history else 0.0
+        for history in query_history
+    ]
+    raw_query_costs = [
+        float(raw_costs_cpu[torch.tensor(history, dtype=torch.long)].sum()) if history else 0.0
+        for history in query_history
+    ]
+    avg_normalized_cost = sum(normalized_query_costs) / max(num_windows, 1)
+    avg_raw_cost = sum(raw_query_costs) / max(num_windows, 1)
+    validation_objective = float(selected_mae.mean()) + float(cost_coefficient) * avg_normalized_cost
     selection_counts = torch.bincount(selected, minlength=num_experts)
 
     better_top_two_values = []
@@ -554,10 +759,20 @@ def evaluate_deployable_inference(
 
     return {
         "validation_mae": float(selected_mae.mean()),
+        "validation_mse": float(selected_mse.mean()),
         "validation_oracle_mae": float(oracle_mae.mean()),
         "validation_regret_to_oracle": float(selected_mae.mean() - oracle_mae.mean()),
+        "validation_objective": float(validation_objective),
         "action_accuracy": float((selected == oracle_best).to(torch.float32).mean()),
+        "first_query_oracle_match": float(first_query_oracle_match),
+        "top_two_oracle_coverage": float(top_two_oracle_coverage),
         "average_experts_selected": float(avg_queries),
+        "average_normalized_query_cost": float(avg_normalized_cost),
+        "average_raw_query_cost": float(avg_raw_cost),
+        "false_stop_rate": float(false_stop / max(stop_decision_count, 1)),
+        "false_continue_rate": float(false_continue / max(stop_decision_count, 1)),
+        "stop_precision": float((predicted_stop_count - false_stop) / max(predicted_stop_count, 1)),
+        "stop_recall": float((oracle_stop_count - false_continue) / max(oracle_stop_count, 1)),
         "stop_frequency": float(sum(1 for history in query_history if len(history) < max_subset_size) / max(num_windows, 1)),
         "stop_step_distribution": {
             str(index): int(value)
@@ -584,6 +799,8 @@ def evaluate_subset_state_losses(
     batch_size: int,
     device: Union[str, torch.device],
     loss_weights: Mapping[str, float],
+    cost_coefficient: Optional[float] = None,
+    normalized_expert_costs: Optional[torch.Tensor] = None,
 ) -> dict[str, float]:
     device = torch.device(device)
     router.eval()
@@ -597,6 +814,7 @@ def evaluate_subset_state_losses(
         "mix_loss": 0.0,
         "action_accuracy": 0.0,
         "stop_frequency": 0.0,
+        "target_stop_frequency": 0.0,
         "average_predicted_utility": 0.0,
     }
     count = 0
@@ -608,7 +826,13 @@ def evaluate_subset_state_losses(
             batch["queried_expert_ids"],
             batch["queried_expert_forecasts"],
         )
-        _, parts = subset_utility_losses(outputs, batch, loss_weights)
+        _, parts = subset_utility_losses(
+            outputs,
+            batch,
+            loss_weights,
+            cost_coefficient=cost_coefficient,
+            normalized_expert_costs=normalized_expert_costs,
+        )
         batch_size_actual = batch["history"].shape[0]
         for key in totals:
             totals[key] += parts[key] * batch_size_actual
@@ -634,6 +858,9 @@ def _save_checkpoint(
     metrics: Mapping[str, Any],
     training_config: SubsetUtilityTrainingConfig,
     expert_names: Sequence[str],
+    raw_expert_costs: torch.Tensor,
+    normalized_expert_costs: torch.Tensor,
+    cost_metadata: Mapping[str, Any],
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(
@@ -646,10 +873,13 @@ def _save_checkpoint(
             "metrics": dict(metrics),
             "training_config": asdict(training_config),
             "expert_names": list(expert_names),
+            "raw_expert_costs": raw_expert_costs.detach().cpu(),
+            "normalized_expert_costs": normalized_expert_costs.detach().cpu(),
+            "cost_metadata": dict(cost_metadata),
             "router_type": "subset_utility_costarts",
             "experts_loaded": False,
             "experts_updated": False,
-            "model_selection": "validation_mae under deployable sequential inference on router_val",
+            "model_selection": training_config.selection_metric,
             "test_set_used": False,
         },
         path,
@@ -684,8 +914,25 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
         )
     if training_config.max_subset_size is not None and int(training_config.max_subset_size) != int(train_cache["max_subset_size"]):
         raise ValueError("training_config max_subset_size does not match train cache")
+    if training_config.selection_metric not in {"mae", "cost_aware_objective"}:
+        raise ValueError("selection_metric must be 'mae' or 'cost_aware_objective'")
 
     expert_names = tuple(train_cache["expert_names"])
+    raw_expert_costs, normalized_expert_costs, cost_metadata = load_and_normalize_expert_costs(
+        expert_names,
+        cost_mode=training_config.cost_mode,
+        cost_file=training_config.cost_file,
+        configured_cost_schedule=experiment_config.costarts_subset_cost_schedule,
+    )
+    if "base_expert_costs" in train_cache and "base_expert_costs" in val_cache:
+        if tuple(train_cache["base_expert_costs"].shape) != tuple(val_cache["base_expert_costs"].shape):
+            raise ValueError("Train/val base expert cost vectors have different shapes")
+    normalized_expert_costs_device = normalized_expert_costs.to(device)
+    print("COSTARTS subset utility cost configuration:")
+    print(f"  cost_mode: {training_config.cost_mode}")
+    print(f"  cost_coefficient: {training_config.cost_coefficient}")
+    print(f"  selection_metric: {training_config.selection_metric}")
+    print(f"  normalized_expert_costs: {cost_metadata['normalized_expert_costs']}")
     router = SubsetUtilityCOSTARTSRouter(
         num_experts=int(train_cache["num_experts"]),
         max_subset_size=int(train_cache["max_subset_size"]),
@@ -733,7 +980,8 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
     curves_path = results_dir / "training_curves.csv"
     summary_path = results_dir / "training_summary.json"
 
-    best_val_mae = math.inf
+    best_selection_value = math.inf
+    best_metrics: dict[str, Any] = {}
     best_epoch = 0
     bad_epochs = 0
     curves = []
@@ -748,6 +996,7 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             "mix_loss": 0.0,
             "action_accuracy": 0.0,
             "stop_frequency": 0.0,
+            "target_stop_frequency": 0.0,
             "average_predicted_utility": 0.0,
         }
         seen = 0
@@ -760,7 +1009,13 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
                 batch["queried_expert_ids"],
                 batch["queried_expert_forecasts"],
             )
-            total_loss, parts = subset_utility_losses(outputs, batch, loss_weights)
+            total_loss, parts = subset_utility_losses(
+                outputs,
+                batch,
+                loss_weights,
+                cost_coefficient=training_config.cost_coefficient,
+                normalized_expert_costs=normalized_expert_costs_device,
+            )
             total_loss.backward()
             if training_config.grad_clip_norm > 0:
                 torch.nn.utils.clip_grad_norm_(router.parameters(), training_config.grad_clip_norm)
@@ -782,6 +1037,9 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             val_cache,
             batch_size=training_config.batch_size,
             device=device,
+            cost_coefficient=training_config.cost_coefficient,
+            normalized_expert_costs=normalized_expert_costs_device,
+            raw_expert_costs=raw_expert_costs,
             debug=training_config.debug and epoch == 1,
         )
         val_state = evaluate_subset_state_losses(
@@ -790,8 +1048,16 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             batch_size=training_config.batch_size,
             device=device,
             loss_weights=loss_weights,
+            cost_coefficient=training_config.cost_coefficient,
+            normalized_expert_costs=normalized_expert_costs_device,
         )
-        scheduler.step(val_deployable["validation_mae"])
+        selection_key = (
+            "validation_mae"
+            if training_config.selection_metric == "mae"
+            else "validation_objective"
+        )
+        selection_value = float(val_deployable[selection_key])
+        scheduler.step(selection_value)
 
         row = {
             "epoch": epoch,
@@ -806,9 +1072,10 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             },
         }
         curves.append(row)
-        improved = val_deployable["validation_mae"] < best_val_mae
+        improved = selection_value < best_selection_value
         if improved:
-            best_val_mae = val_deployable["validation_mae"]
+            best_selection_value = selection_value
+            best_metrics = dict(val_deployable)
             best_epoch = epoch
             bad_epochs = 0
             _save_checkpoint(
@@ -820,6 +1087,9 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
                 val_deployable,
                 training_config,
                 expert_names,
+                raw_expert_costs,
+                normalized_expert_costs,
+                cost_metadata,
             )
         else:
             bad_epochs += 1
@@ -833,6 +1103,9 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             val_deployable,
             training_config,
             expert_names,
+            raw_expert_costs,
+            normalized_expert_costs,
+            cost_metadata,
         )
         print(
             f"SubsetUtility epoch {epoch:03d} | "
@@ -844,8 +1117,10 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             f"acc={train_metrics['action_accuracy']:.3f} "
             f"stop={train_metrics['stop_frequency']:.3f} | "
             f"val_mae={val_deployable['validation_mae']:.6f} "
+            f"obj={val_deployable['validation_objective']:.6f} "
             f"regret={val_deployable['validation_regret_to_oracle']:.6f} "
             f"avg_used={val_deployable['average_experts_selected']:.3f} "
+            f"avg_cost={val_deployable['average_normalized_query_cost']:.3f} "
             f"top2={val_deployable['better_of_top_two_accuracy']:.3f} "
             f"saved={improved}"
         )
@@ -856,18 +1131,25 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
     _write_curves(curves_path, curves)
     summary = {
         "best_epoch": best_epoch,
-        "best_validation_mae": best_val_mae,
+        "best_selection_metric": training_config.selection_metric,
+        "best_selection_metric_value": best_selection_value,
+        "best_validation_mae": best_metrics.get("validation_mae"),
+        "best_validation_objective": best_metrics.get("validation_objective"),
+        "best_validation_metrics": best_metrics,
         "best_checkpoint": str(best_path),
         "last_checkpoint": str(last_path),
         "training_curves_csv": str(curves_path),
         "training_config": asdict(training_config),
         "router_config": router.config_dict(),
         "expert_names": list(expert_names),
+        "cost_metadata": cost_metadata,
+        "raw_expert_costs": _jsonable(raw_expert_costs),
+        "normalized_expert_costs": _jsonable(normalized_expert_costs),
         "train_cache_path": training_config.train_cache_path,
         "val_cache_path": training_config.val_cache_path,
         "created_checkpoints_separate_from_original_costarts": True,
         "original_costarts_checkpoint_dir": "checkpoints/costarts",
-        "model_selection": "validation_mae under deployable sequential inference on router_val",
+        "model_selection": training_config.selection_metric,
         "test_set_used": False,
         "experts_loaded": False,
         "experts_updated": False,
@@ -901,6 +1183,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--subset-state-sampling-mode", default=repo_config.costarts_subset_sampling_mode)
     parser.add_argument("--max-subset-size", type=int, default=repo_config.costarts_subset_max_size)
     parser.add_argument("--cost-coefficient", type=float, default=repo_config.costarts_subset_utility_cost_coefficient)
+    parser.add_argument("--cost-mode", choices=("equal", "configured", "latency"), default="equal")
+    parser.add_argument("--cost-file", default=None)
+    parser.add_argument(
+        "--selection-metric",
+        choices=("mae", "cost_aware_objective"),
+        default="cost_aware_objective",
+    )
     parser.add_argument("--no-expert-embeddings", action="store_true")
     parser.add_argument("--history-encoder-type", choices=("current", "simple"), default="current")
     parser.add_argument("--action-head-type", choices=("unified", "separate_stop_query"), default="unified")
@@ -931,6 +1220,9 @@ def main() -> None:
             subset_state_sampling_mode=args.subset_state_sampling_mode,
             max_subset_size=args.max_subset_size,
             cost_coefficient=args.cost_coefficient,
+            cost_mode=args.cost_mode,
+            cost_file=args.cost_file,
+            selection_metric=args.selection_metric,
             use_expert_embeddings=not args.no_expert_embeddings,
             history_encoder_type=args.history_encoder_type,
             action_head_type=args.action_head_type,

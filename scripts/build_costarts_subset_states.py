@@ -203,6 +203,8 @@ def validate_costarts_subset_states(cache: Mapping[str, Any]) -> None:
         num_states,
         num_experts,
     )
+    if "base_expert_costs" in cache:
+        assert tuple(cache["base_expert_costs"].shape) == (num_experts,)
     assert tuple(cache["cost_adjusted_utility"].shape) == (num_states, num_experts)
     assert tuple(cache["optimal_next_action"].shape) == (num_states,)
     assert tuple(cache["valid_action_mask"].shape) == (num_states, num_experts + 1)
@@ -420,6 +422,7 @@ def build_subset_state_cache_from_costarts_cache(
         "utility_finalizer": "best_queried_expert_oracle",
         "utility_cost_coefficient": float(utility_cost_coefficient),
         "cost_schedule_by_expert": dict(cost_schedule_by_expert),
+        "base_expert_costs": expert_costs.to(torch.float32),
         "empty_state_utility_definition": "-L({e}) - lambda*c_e because L(empty) is undefined",
         "source_sample_indices_contiguous": bool(
             torch.equal(sample_indices, torch.arange(num_windows, dtype=sample_indices.dtype))
