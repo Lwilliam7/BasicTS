@@ -1,0 +1,81 @@
+{
+  "num_windows": 613,
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "map_prediction_shape": [
+    613,
+    5
+  ],
+  "query_logits_shape": [
+    613,
+    5
+  ],
+  "ranking_logits_shape": [
+    613,
+    5
+  ],
+  "query_order_shape": [
+    613,
+    5
+  ],
+  "query_top1_oracle_match": 0.2349102795124054,
+  "query_top2_oracle_coverage": 0.49429038166999817,
+  "map_argmin_oracle_match": 0.19086460769176483,
+  "ranking_logits_top1_oracle_match": 0.24959217011928558,
+  "query_logits_top1_oracle_match": 0.2349102795124054,
+  "average_spearman_rank_correlation_predicted_vs_true_error": 0.01827080361545086,
+  "median_spearman_rank_correlation_predicted_vs_true_error": 0.10000000149011612,
+  "pairwise_ranking_accuracy": 0.5088091492652893,
+  "pairwise_ranking_accuracy_by_pair": {
+    "DLinear_vs_PatchTST": 0.5138662457466125,
+    "DLinear_vs_iTransformer": 0.6655791401863098,
+    "DLinear_vs_TimesNet": 0.5383360385894775,
+    "DLinear_vs_ModernTCN": 0.4371941387653351,
+    "PatchTST_vs_iTransformer": 0.3654159903526306,
+    "PatchTST_vs_TimesNet": 0.4502446949481964,
+    "PatchTST_vs_ModernTCN": 0.6117455363273621,
+    "iTransformer_vs_TimesNet": 0.4845024347305298,
+    "iTransformer_vs_ModernTCN": 0.46166396141052246,
+    "TimesNet_vs_ModernTCN": 0.559543251991272
+  },
+  "map_prediction_mean_by_expert": {
+    "DLinear": 0.5260815024375916,
+    "PatchTST": 0.6207061409950256,
+    "iTransformer": 0.5714951753616333,
+    "TimesNet": 0.5814310312271118,
+    "ModernTCN": 0.5719811320304871
+  },
+  "map_prediction_std_by_expert": {
+    "DLinear": 0.0041551413014531136,
+    "PatchTST": 0.012468145228922367,
+    "iTransformer": 0.0062727415934205055,
+    "TimesNet": 0.008131220936775208,
+    "ModernTCN": 0.007173970341682434
+  },
+  "true_error_mean_by_expert": {
+    "DLinear": 0.3700985312461853,
+    "PatchTST": 0.3702656924724579,
+    "iTransformer": 0.3905010521411896,
+    "TimesNet": 0.37406185269355774,
+    "ModernTCN": 0.35864511132240295
+  },
+  "true_error_std_by_expert": {
+    "DLinear": 0.17182840406894684,
+    "PatchTST": 0.16133002936840057,
+    "iTransformer": 0.16986998915672302,
+    "TimesNet": 0.1660541594028473,
+    "ModernTCN": 0.16866642236709595
+  },
+  "map_prediction_bias_mean_minus_true_by_expert": {
+    "DLinear": 0.15598303079605103,
+    "PatchTST": 0.25044047832489014,
+    "iTransformer": 0.18099410831928253,
+    "TimesNet": 0.20736923813819885,
+    "ModernTCN": 0.21333596110343933
+  }
+}

@@ -1,0 +1,14 @@
+\begin{table}
+\caption{Queried-subset reranking diagnostics.}
+\label{tab:costarts-reranking}
+\begin{tabular}{lllrrr}
+\toprule
+selector & mae & mse & oracle\_match\_within\_subset & better\_of\_top\_two\_accuracy & pairwise\_queried\_subset\_ranking\_accuracy \\
+\midrule
+current\_absolute\_predicted\_error & 0.3720 & 0.3427 & 0.479661 & 0.508809 & 0.508809 \\
+pairwise\_reranker & 0.3687 & 0.3368 & 0.509814 & 0.548940 & 0.548838 \\
+queried\_subset\_winner\_classifier & 0.3686 & 0.3367 & 0.508130 & 0.547961 & 0.546880 \\
+equal\_average & 0.3582 & 0.3201 & NaN & NaN & NaN \\
+\bottomrule
+\end{tabular}
+\end{table}

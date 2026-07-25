@@ -1,0 +1,28 @@
+\begin{table}
+\caption{Final validation comparison on identical chronological windows.}
+\label{tab:costarts-final-comparison}
+\begin{tabular}{lllllll}
+\toprule
+method & mae & mse & regret\_to\_oracle & average\_experts\_queried & top2\_oracle\_coverage & first\_query\_oracle\_match \\
+\midrule
+full\_oracle & 0.3181 & 0.2539 & 0.0000 & 5.0000 & 1.0000 & 1.0000 \\
+oracle\_second\_query\_after\_router\_first & 0.3181 & 0.2539 & 0.0000 & 2.0000 & 1.0000 & 0.1599 \\
+oracle\_within\_predicted\_top2 & 0.3366 & 0.2879 & 0.0185 & 2.0000 & 0.5073 & 0.1599 \\
+validation\_weighted\_average & 0.3499 & 0.3098 & 0.0317 & 5.0000 &  &  \\
+linear\_stacker & 0.3499 & 0.3165 & 0.0317 & 5.0000 &  &  \\
+equal\_average\_all\_experts & 0.3501 & 0.3097 & 0.0319 & 5.0000 &  &  \\
+predicted\_top2\_equal\_average & 0.3507 & 0.3136 & 0.0326 & 2.0000 & 0.5073 & 0.1599 \\
+fixed\_top2\_equal\_average & 0.3527 & 0.3248 & 0.0346 & 2.0000 & 0.4861 & 0.1909 \\
+routerdc\_hard\_with\_contrastive & 0.3545 & 0.3195 & 0.0363 & 1.0000 & 0.5008 & 0.3051 \\
+best\_fixed\_expert & 0.3586 & 0.3323 & 0.0405 & 1.0000 &  & 0.2953 \\
+individual\_expert:ModernTCN & 0.3586 & 0.3323 & 0.0405 & 1.0000 &  & 0.2953 \\
+routerdc\_hard\_without\_contrastive & 0.3597 & 0.3331 & 0.0416 & 1.0000 & 0.5400 & 0.2904 \\
+improved\_subset\_utility\_costarts & 0.3636 & 0.3367 & 0.0455 & 1.5041 & 0.3344 & 0.1599 \\
+old\_costarts & 0.3654 & 0.3352 & 0.0472 & 1.0000 & 0.4943 & 0.2349 \\
+individual\_expert:DLinear & 0.3701 & 0.3459 & 0.0520 & 1.0000 &  & 0.1909 \\
+individual\_expert:PatchTST & 0.3703 & 0.3275 & 0.0521 & 1.0000 &  & 0.1419 \\
+individual\_expert:TimesNet & 0.3741 & 0.3384 & 0.0559 & 1.0000 &  & 0.2268 \\
+individual\_expert:iTransformer & 0.3905 & 0.3542 & 0.0724 & 1.0000 &  & 0.1452 \\
+\bottomrule
+\end{tabular}
+\end{table}

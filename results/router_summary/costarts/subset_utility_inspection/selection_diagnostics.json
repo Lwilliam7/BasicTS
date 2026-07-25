@@ -1,0 +1,41 @@
+{
+  "num_windows": 613,
+  "selected_mae": 0.3653925955295563,
+  "selected_mse": 0.3352326452732086,
+  "oracle_mae": 0.31814324855804443,
+  "regret_to_oracle": 0.04724934697151184,
+  "summary_best_validation_mae": 0.365392613372056,
+  "selected_mae_minus_summary_best_validation_mae": -2.9802322387695312e-08,
+  "selection_counts_by_expert": {
+    "DLinear": 297,
+    "PatchTST": 0,
+    "iTransformer": 0,
+    "TimesNet": 0,
+    "ModernTCN": 316
+  },
+  "selection_fraction_by_expert": {
+    "DLinear": 0.4845024347305298,
+    "PatchTST": 0.0,
+    "iTransformer": 0.0,
+    "TimesNet": 0.0,
+    "ModernTCN": 0.5154975652694702
+  },
+  "oracle_winner_counts_by_expert": {
+    "DLinear": 117,
+    "PatchTST": 87,
+    "iTransformer": 89,
+    "TimesNet": 139,
+    "ModernTCN": 181
+  },
+  "oracle_winner_fraction_by_expert": {
+    "DLinear": 0.19086460769176483,
+    "PatchTST": 0.14192496240139008,
+    "iTransformer": 0.1451876014471054,
+    "TimesNet": 0.22675366699695587,
+    "ModernTCN": 0.2952691614627838
+  },
+  "average_experts_selected": 1.0,
+  "stop_step_distribution_one_based": {
+    "1": 613
+  }
+}

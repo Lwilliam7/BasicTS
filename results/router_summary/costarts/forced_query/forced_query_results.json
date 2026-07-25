@@ -1,0 +1,2165 @@
+{
+  "metadata": {
+    "train_cache_path": "cache\\costarts_router_train_cache.pt",
+    "val_cache_path": "cache\\costarts_router_val_cache.pt",
+    "checkpoint_path": "checkpoints\\costarts\\best_costarts_router.pt",
+    "checkpoint_epoch": 4,
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "num_windows": 613,
+    "num_experts": 5,
+    "full_oracle_mae": 0.31814324855804443,
+    "test_data_used": false,
+    "experts_updated": false,
+    "shape_assertions": {
+      "histories": "[B,96,7]",
+      "prediction_stack": "[B,12,7,M]",
+      "query_logits": "[B,M]",
+      "stop_logits": "[B,K]",
+      "query_order": "[B,K]"
+    }
+  },
+  "results": [
+    {
+      "status": "ok",
+      "mode": "current_costarts",
+      "query_selector": "learned_policy_with_stop",
+      "final_selector": "model",
+      "force_k": null,
+      "stop_disabled": false,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "full_oracle_best_expert_per_window",
+      "query_selector": "oracle_all_experts",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "fixed_single_expert",
+      "query_selector": "fixed",
+      "final_selector": "DLinear",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "fixed_single_expert",
+      "query_selector": "fixed",
+      "final_selector": "PatchTST",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3702657222747803,
+      "mse": 0.3274518847465515,
+      "oracle_match_rate": 0.14192496240139008,
+      "regret_to_full_oracle": 0.05212247371673584,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 0,
+        "PatchTST": 613,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "fixed_single_expert",
+      "query_selector": "fixed",
+      "final_selector": "iTransformer",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.39050111174583435,
+      "mse": 0.3541646897792816,
+      "oracle_match_rate": 0.1451876014471054,
+      "regret_to_full_oracle": 0.07235786318778992,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 0,
+        "PatchTST": 0,
+        "iTransformer": 613,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "fixed_single_expert",
+      "query_selector": "fixed",
+      "final_selector": "TimesNet",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.37406185269355774,
+      "mse": 0.3383898138999939,
+      "oracle_match_rate": 0.22675366699695587,
+      "regret_to_full_oracle": 0.055918604135513306,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 0,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 613,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "best_fixed_expert",
+      "query_selector": "fixed",
+      "final_selector": "ModernTCN",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.35864511132240295,
+      "mse": 0.33227208256721497,
+      "oracle_match_rate": 0.2952691614627838,
+      "regret_to_full_oracle": 0.04050186276435852,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 0,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": "actual best fixed expert on the validation cache"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "model",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "oracle",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "equal_average",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "model",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.37061432003974915,
+      "mse": 0.34372907876968384,
+      "oracle_match_rate": 0.17618270218372345,
+      "regret_to_full_oracle": 0.05247107148170471,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 369,
+        "PatchTST": 0,
+        "iTransformer": 3,
+        "TimesNet": 0,
+        "ModernTCN": 241
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "oracle",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.3392123878002167,
+      "mse": 0.2960813641548157,
+      "oracle_match_rate": 0.49429038166999817,
+      "regret_to_full_oracle": 0.02106913924217224,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 135,
+        "PatchTST": 0,
+        "iTransformer": 3,
+        "TimesNet": 111,
+        "ModernTCN": 364
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "equal_average",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.3530707359313965,
+      "mse": 0.3210422098636627,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03492748737335205,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 369,
+        "PatchTST": 0,
+        "iTransformer": 3,
+        "TimesNet": 241,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "model",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.3692055940628052,
+      "mse": 0.34475791454315186,
+      "oracle_match_rate": 0.19412724673748016,
+      "regret_to_full_oracle": 0.05106234550476074,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 598,
+        "PatchTST": 0,
+        "iTransformer": 15,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "oracle",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.3283400237560272,
+      "mse": 0.2788589894771576,
+      "oracle_match_rate": 0.7161501049995422,
+      "regret_to_full_oracle": 0.010196775197982788,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 194,
+        "PatchTST": 0,
+        "iTransformer": 2,
+        "TimesNet": 197,
+        "ModernTCN": 220
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "equal_average",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.34937262535095215,
+      "mse": 0.3159520626068115,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.031229376792907715,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 598,
+        "PatchTST": 0,
+        "iTransformer": 15,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "model",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "oracle",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.3201832175254822,
+      "mse": 0.25975149869918823,
+      "oracle_match_rate": 0.8580750226974487,
+      "regret_to_full_oracle": 0.002039968967437744,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 163,
+        "PatchTST": 0,
+        "iTransformer": 95,
+        "TimesNet": 155,
+        "ModernTCN": 200
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "equal_average",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.35010042786598206,
+      "mse": 0.31092873215675354,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03195717930793762,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.35006529092788696,
+      "mse": 0.30973756313323975,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03192204236984253,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 613,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "query_logits",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "model",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "oracle",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "equal_average",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "model",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "oracle",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.34038734436035156,
+      "mse": 0.28776469826698303,
+      "oracle_match_rate": 0.4453507363796234,
+      "regret_to_full_oracle": 0.02224409580230713,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 325,
+        "PatchTST": 0,
+        "iTransformer": 106,
+        "TimesNet": 0,
+        "ModernTCN": 182
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "equal_average",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.35986068844795227,
+      "mse": 0.3229352533817291,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.04171743988990784,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 259,
+        "TimesNet": 0,
+        "ModernTCN": 354
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "model",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "oracle",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.3262849450111389,
+      "mse": 0.26748719811439514,
+      "oracle_match_rate": 0.6541598439216614,
+      "regret_to_full_oracle": 0.008141696453094482,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 200,
+        "PatchTST": 0,
+        "iTransformer": 131,
+        "TimesNet": 15,
+        "ModernTCN": 267
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "equal_average",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.35372719168663025,
+      "mse": 0.31590524315834045,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.035583943128585815,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 597,
+        "TimesNet": 38,
+        "ModernTCN": 591
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "model",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "oracle",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.3201832175254822,
+      "mse": 0.25975149869918823,
+      "oracle_match_rate": 0.8580750226974487,
+      "regret_to_full_oracle": 0.002039968967437744,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 163,
+        "PatchTST": 0,
+        "iTransformer": 95,
+        "TimesNet": 155,
+        "ModernTCN": 200
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "equal_average",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.35010042786598206,
+      "mse": 0.31092873215675354,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03195717930793762,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.35006529092788696,
+      "mse": 0.30973756313323975,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03192204236984253,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 613,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "predicted_error",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "model",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "oracle",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": 0.2349102795124054,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "equal_average",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.04724934697151184,
+      "average_experts_used": 1.0,
+      "selection_counts": {
+        "DLinear": 297,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 316
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "model",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.36354079842567444,
+      "mse": 0.3335804343223572,
+      "oracle_match_rate": 0.28874388337135315,
+      "regret_to_full_oracle": 0.045397549867630005,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 403,
+        "PatchTST": 0,
+        "iTransformer": 9,
+        "TimesNet": 0,
+        "ModernTCN": 201
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "oracle",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "equal_average",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": 0.3322700262069702,
+      "mse": 0.2821846008300781,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.014126777648925781,
+      "average_experts_used": 2.0,
+      "selection_counts": {
+        "DLinear": 403,
+        "PatchTST": 135,
+        "iTransformer": 107,
+        "TimesNet": 169,
+        "ModernTCN": 412
+      },
+      "stop_step_distribution": {
+        "2": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "model",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.36492952704429626,
+      "mse": 0.33509787917137146,
+      "oracle_match_rate": 0.2300163060426712,
+      "regret_to_full_oracle": 0.04678627848625183,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 496,
+        "PatchTST": 0,
+        "iTransformer": 27,
+        "TimesNet": 0,
+        "ModernTCN": 90
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "oracle",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "equal_average",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": 0.3316851258277893,
+      "mse": 0.28208470344543457,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.013541877269744873,
+      "average_experts_used": 3.0,
+      "selection_counts": {
+        "DLinear": 496,
+        "PatchTST": 330,
+        "iTransformer": 222,
+        "TimesNet": 296,
+        "ModernTCN": 495
+      },
+      "stop_step_distribution": {
+        "3": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "model",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.3679823875427246,
+      "mse": 0.3423621952533722,
+      "oracle_match_rate": 0.20065252482891083,
+      "regret_to_full_oracle": 0.049839138984680176,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 569,
+        "PatchTST": 0,
+        "iTransformer": 16,
+        "TimesNet": 0,
+        "ModernTCN": 28
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "oracle",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "equal_average",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": 0.33871394395828247,
+      "mse": 0.2937124967575073,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.020570695400238037,
+      "average_experts_used": 4.0,
+      "selection_counts": {
+        "DLinear": 569,
+        "PatchTST": 519,
+        "iTransformer": 358,
+        "TimesNet": 422,
+        "ModernTCN": 584
+      },
+      "stop_step_distribution": {
+        "4": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973756313323975,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.031922101974487305,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 613,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "oracle_improvement",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "model",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "oracle",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "equal_average",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 1,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "model",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "oracle",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "equal_average",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 2,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "model",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "oracle",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "equal_average",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 3,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "model",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "oracle",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "equal_average",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 4,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "forced_exact_k",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "query_logits",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "query_logits",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "query_logits",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.35006529092788696,
+      "mse": 0.30973756313323975,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03192204236984253,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 613,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "query_logits",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "predicted_error",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "predicted_error",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "predicted_error",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.35006529092788696,
+      "mse": 0.30973756313323975,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.03192204236984253,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 613,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "predicted_error",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "oracle_improvement",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "oracle_match_rate": 0.19086460769176483,
+      "regret_to_full_oracle": 0.05195525288581848,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "oracle_improvement",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "oracle_match_rate": 1.0,
+      "regret_to_full_oracle": 0.0,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 117,
+        "PatchTST": 87,
+        "iTransformer": 89,
+        "TimesNet": 139,
+        "ModernTCN": 181
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": ""
+    },
+    {
+      "status": "ok",
+      "mode": "no_stop",
+      "query_selector": "oracle_improvement",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973756313323975,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": 0.031922101974487305,
+      "average_experts_used": 5.0,
+      "selection_counts": {
+        "DLinear": 613,
+        "PatchTST": 613,
+        "iTransformer": 613,
+        "TimesNet": 613,
+        "ModernTCN": 613
+      },
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "note": "selection_counts are utilization counts because forecasts are averaged"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "oracle_improvement",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "learned sparse queried-subset mixer is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "model",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "oracle",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "equal_average",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    },
+    {
+      "status": "skipped",
+      "mode": "no_stop",
+      "query_selector": "pairwise_reranker",
+      "final_selector": "learned_sparse_mixer",
+      "force_k": 5,
+      "stop_disabled": true,
+      "mae": null,
+      "mse": null,
+      "oracle_match_rate": null,
+      "regret_to_full_oracle": null,
+      "average_experts_used": null,
+      "selection_counts": {},
+      "stop_step_distribution": {},
+      "note": "pairwise reranker is not available in the current COSTARTS checkpoint"
+    }
+  ]
+}

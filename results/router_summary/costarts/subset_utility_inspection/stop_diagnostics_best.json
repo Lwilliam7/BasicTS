@@ -1,0 +1,36 @@
+{
+  "checkpoint": "best",
+  "checkpoint_epoch": 4,
+  "stop_logits_shape": [
+    613,
+    5
+  ],
+  "stop_prediction_distribution_one_based": {
+    "1": 613
+  },
+  "stop_target_distribution_zero_based": {
+    "0": 613
+  },
+  "stop_target_distribution_one_based": {
+    "1": 613
+  },
+  "average_stop_logits_by_step": {
+    "step_1": 0.4408074617385864,
+    "step_2": -0.22240851819515228,
+    "step_3": -0.26808828115463257,
+    "step_4": -0.1543753743171692,
+    "step_5": -0.07871966063976288
+  },
+  "average_stop_probabilities_by_step": {
+    "step_1": 0.3171154856681824,
+    "step_2": 0.16335394978523254,
+    "step_3": 0.15605281293392181,
+    "step_4": 0.17485231161117554,
+    "step_5": 0.18862544000148773
+  },
+  "stop_accuracy_zero_based": 1.0,
+  "average_stop_step": 1.0,
+  "average_experts_selected": 1.0,
+  "selected_mae": 0.3653925955295563,
+  "regret_to_oracle": 0.04724934697151184
+}

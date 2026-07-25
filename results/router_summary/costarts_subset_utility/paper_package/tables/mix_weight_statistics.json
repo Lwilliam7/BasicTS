@@ -1,0 +1,258 @@
+{
+  "config": {
+    "train_cache_path": "cache/costarts_subset_states_train.pt",
+    "val_cache_path": "cache/costarts_subset_states_val.pt",
+    "checkpoint_dir": "checkpoints/costarts_subset_utility/sparse_mixers",
+    "results_dir": "results/router_summary/costarts_subset_utility",
+    "mixer_types": [
+      "scalar",
+      "horizon",
+      "variable",
+      "horizon_variable"
+    ],
+    "batch_size": 1024,
+    "max_epochs": 5,
+    "patience": 2,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "entropy_weight": 0.0,
+    "seed": 7,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "device": "cpu",
+    "debug": false
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "num_val_non_empty_states": 19003,
+  "baselines": {
+    "best_queried_expert_oracle": {
+      "mae": 0.3408523131206335,
+      "mse": 0.2891602858259927
+    },
+    "equal_average_queried_experts": {
+      "mae": 0.3582072193077127,
+      "mse": 0.32008400179128593
+    }
+  },
+  "mixers": {
+    "scalar": {
+      "metrics": {
+        "mae": 0.36000330530126196,
+        "mse": 0.32698443699581115,
+        "entropy": 0.5910585671447084,
+        "average_max_weight": 0.7429518074801159,
+        "max_invalid_weight": 0.0,
+        "single_query_exact": true
+      },
+      "statistics": {
+        "per_expert_average_weight_when_queried": [
+          0.47177615570697135,
+          0.2317344505993344,
+          0.17869655996343412,
+          0.48405666799646485,
+          0.5712361816314184
+        ],
+        "per_expert_queried_count": [
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0
+        ],
+        "by_subset_size": {
+          "1": {
+            "count": 3065.0,
+            "average_max_weight": 1.0,
+            "average_entropy": 1.1052407600242731e-10
+          },
+          "2": {
+            "count": 6130.0,
+            "average_max_weight": 0.7731496927594282,
+            "average_entropy": 0.4739331502552474
+          },
+          "3": {
+            "count": 6130.0,
+            "average_max_weight": 0.674640312630434,
+            "average_entropy": 0.757862779984272
+          },
+          "4": {
+            "count": 3065.0,
+            "average_max_weight": 0.6030202661019554,
+            "average_entropy": 0.9711643822819335
+          },
+          "5": {
+            "count": 613.0,
+            "average_max_weight": 0.5385050621691964,
+            "average_entropy": 1.1490343993873036
+          }
+        }
+      }
+    },
+    "horizon": {
+      "metrics": {
+        "mae": 0.35609592472319535,
+        "mse": 0.31719474438696865,
+        "entropy": 0.714920384594663,
+        "average_max_weight": 0.6593770149739828,
+        "max_invalid_weight": 0.0,
+        "single_query_exact": true
+      },
+      "statistics": {
+        "per_expert_average_weight_when_queried": [
+          0.37661380949923934,
+          0.2971260430096447,
+          0.3197856676804857,
+          0.536229277316019,
+          0.40774521843354
+        ],
+        "per_expert_queried_count": [
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0
+        ],
+        "by_subset_size": {
+          "1": {
+            "count": 3065.0,
+            "average_max_weight": 1.0,
+            "average_entropy": 1.1052407600242731e-10
+          },
+          "2": {
+            "count": 6130.0,
+            "average_max_weight": 0.6516254674065949,
+            "average_entropy": 0.5769058747681961
+          },
+          "3": {
+            "count": 6130.0,
+            "average_max_weight": 0.5175329132774331,
+            "average_entropy": 0.9199630679255792
+          },
+          "4": {
+            "count": 3065.0,
+            "average_max_weight": 0.4415342117794964,
+            "average_entropy": 1.1667433249425343
+          },
+          "5": {
+            "count": 613.0,
+            "average_max_weight": 0.3923025090387167,
+            "average_entropy": 1.360125582622665
+          }
+        }
+      }
+    },
+    "variable": {
+      "metrics": {
+        "mae": 0.35642219315739304,
+        "mse": 0.3230619529837512,
+        "entropy": 0.6690235964661282,
+        "average_max_weight": 0.6898122597301366,
+        "max_invalid_weight": 0.0,
+        "single_query_exact": true
+      },
+      "statistics": {
+        "per_expert_average_weight_when_queried": [
+          0.5415979844440523,
+          0.3122179204845713,
+          0.2181373424926806,
+          0.3836674306550797,
+          0.48187933718788684
+        ],
+        "per_expert_queried_count": [
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0
+        ],
+        "by_subset_size": {
+          "1": {
+            "count": 3065.0,
+            "average_max_weight": 1.0,
+            "average_entropy": 1.1052407600242731e-10
+          },
+          "2": {
+            "count": 6130.0,
+            "average_max_weight": 0.6661553190349561,
+            "average_entropy": 0.535181419422537
+          },
+          "3": {
+            "count": 6130.0,
+            "average_max_weight": 0.5180375567997455,
+            "average_entropy": 0.8610128733306686
+          },
+          "4": {
+            "count": 3065.0,
+            "average_max_weight": 0.4343304132170623,
+            "average_entropy": 1.0983803953471036
+          },
+          "5": {
+            "count": 613.0,
+            "average_max_weight": 0.38126657443762213,
+            "average_entropy": 1.2858866523179495
+          }
+        }
+      }
+    },
+    "horizon_variable": {
+      "metrics": {
+        "mae": 0.3556955220582731,
+        "mse": 0.3200900361293596,
+        "entropy": 0.7058489051619042,
+        "average_max_weight": 0.6687456945042198,
+        "max_invalid_weight": 0.0,
+        "single_query_exact": true
+      },
+      "statistics": {
+        "per_expert_average_weight_when_queried": [
+          0.5388179965952311,
+          0.3150271819999402,
+          0.2537802567653856,
+          0.4164299494837567,
+          0.4134446304780697
+        ],
+        "per_expert_queried_count": [
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0,
+          9808.0
+        ],
+        "by_subset_size": {
+          "1": {
+            "count": 3065.0,
+            "average_max_weight": 1.0,
+            "average_entropy": 1.1052407600242731e-10
+          },
+          "2": {
+            "count": 6130.0,
+            "average_max_weight": 0.6374771320314236,
+            "average_entropy": 0.5697628631604438
+          },
+          "3": {
+            "count": 6130.0,
+            "average_max_weight": 0.49344350562885186,
+            "average_entropy": 0.9081626650851469
+          },
+          "4": {
+            "count": 3065.0,
+            "average_max_weight": 0.4144395591287006,
+            "average_entropy": 1.1518769679606253
+          },
+          "5": {
+            "count": 613.0,
+            "average_max_weight": 0.3650047169180912,
+            "average_entropy": 1.342675883851666
+          }
+        }
+      }
+    }
+  }
+}
