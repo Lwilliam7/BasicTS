@@ -23,12 +23,25 @@ function Require-Command {
 function Invoke-Git {
     param([Parameter(ValueFromRemainingArguments = $true)][string[]]$Arguments)
 
-    $output = & git -C $Repo @Arguments 2>&1
-    if ($LASTEXITCODE -ne 0) {
+    # Git writes routine fetch information to stderr. Windows PowerShell can
+    # treat that as an error when ErrorActionPreference is Stop, even when Git
+    # exits successfully. Temporarily allow native stderr, then trust Git's
+    # actual exit code.
+    $previousPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "Continue"
+        $output = & git -C $Repo @Arguments 2>&1
+        $exitCode = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $previousPreference
+    }
+
+    if ($exitCode -ne 0) {
         throw "git $($Arguments -join ' ') failed:`n$($output -join [Environment]::NewLine)"
     }
 
-    return $output
+    return @($output | ForEach-Object { $_.ToString() })
 }
 
 Require-Command "git"
