@@ -1,5 +1,5 @@
 param(
-    [int]$PollSeconds = 120,
+    [int]$PollSeconds = 10,
     [double]$LoopHours = 2,
     [int]$MaxIterations = 20
 )
