@@ -284,6 +284,10 @@ function Test-FailureRetry {
         $failed = Invoke-Watcher $fixture -Mode "fail"
         Assert-True ($failed.ExitCode -ne 0) "Fake Codex failure should fail the watcher cycle."
         Assert-True ((Get-StateValue $fixture) -eq "") "Failed prompt should not be marked processed."
+        $repairWriteCount = @($failed.Output | Where-Object { $_ -like "*Repair prompt written to:*" }).Count
+        Assert-True ($repairWriteCount -eq 1) "Failed iteration should write repair information once, not $repairWriteCount times."
+        $failedLaunchCount = @((Get-Content -Path $fixture.FakeLog) | Where-Object { $_ -like "start *" }).Count
+        Assert-True ($failedLaunchCount -eq 1) "Watcher should stop after one failed Codex launch, not immediately retry $failedLaunchCount launches."
 
         $repairPath = Join-Path $fixture.State "repair_watcher_prompt.txt"
         $repair = Get-Content -Path $repairPath -Raw

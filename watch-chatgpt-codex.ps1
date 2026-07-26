@@ -262,6 +262,111 @@ function Fail-Iteration {
     return $false
 }
 
+function Quote-ProcessArgument {
+    param([AllowNull()][string]$Argument)
+
+    if ($null -eq $Argument) {
+        return '""'
+    }
+    if ($Argument.Length -eq 0) {
+        return '""'
+    }
+    if ($Argument -notmatch '[\s"]') {
+        return $Argument
+    }
+
+    $builder = New-Object System.Text.StringBuilder
+    [void]$builder.Append('"')
+    $backslashCount = 0
+    foreach ($character in $Argument.ToCharArray()) {
+        if ($character -eq '\') {
+            $backslashCount++
+            continue
+        }
+        if ($character -eq '"') {
+            [void]$builder.Append('\' * ($backslashCount * 2 + 1))
+            [void]$builder.Append('"')
+            $backslashCount = 0
+            continue
+        }
+        if ($backslashCount -gt 0) {
+            [void]$builder.Append('\' * $backslashCount)
+            $backslashCount = 0
+        }
+        [void]$builder.Append($character)
+    }
+    if ($backslashCount -gt 0) {
+        [void]$builder.Append('\' * ($backslashCount * 2))
+    }
+    [void]$builder.Append('"')
+    return $builder.ToString()
+}
+
+function Invoke-CodexProcess {
+    param(
+        [string]$TaskText,
+        [string]$LauncherPrompt,
+        [string]$LogFile
+    )
+
+    $commandInfo = Get-Command $CodexCommand -ErrorAction Stop | Select-Object -First 1
+    $commandPath = $commandInfo.Source
+    if ([string]::IsNullOrWhiteSpace($commandPath)) {
+        $commandPath = $commandInfo.Path
+    }
+    if ([string]::IsNullOrWhiteSpace($commandPath)) {
+        $commandPath = $CodexCommand
+    }
+
+    $codexArguments = @("exec", "-s", "workspace-write", "-C", $RunnerRoot, $LauncherPrompt)
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = $commandPath
+    $psi.Arguments = ($codexArguments | ForEach-Object { Quote-ProcessArgument $_ }) -join " "
+    $psi.WorkingDirectory = $RunnerRoot
+    $psi.UseShellExecute = $false
+    $psi.RedirectStandardInput = $true
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+    $psi.CreateNoWindow = $true
+
+    $process = New-Object System.Diagnostics.Process
+    $process.StartInfo = $psi
+
+    try {
+        [void]$process.Start()
+        $stdoutTask = $process.StandardOutput.ReadToEndAsync()
+        $stderrTask = $process.StandardError.ReadToEndAsync()
+        $process.StandardInput.Write($TaskText)
+        $process.StandardInput.Close()
+        $process.WaitForExit()
+        $nativeExitCode = $process.ExitCode
+
+        $combinedOutput = @()
+        $stdout = $stdoutTask.Result
+        $stderr = $stderrTask.Result
+        if (-not [string]::IsNullOrEmpty($stdout)) {
+            $combinedOutput += $stdout.TrimEnd("`r", "`n")
+        }
+        if (-not [string]::IsNullOrEmpty($stderr)) {
+            $combinedOutput += $stderr.TrimEnd("`r", "`n")
+        }
+
+        Set-Content -Path $LogFile -Value $combinedOutput -Encoding utf8
+        foreach ($line in $combinedOutput) {
+            if (-not [string]::IsNullOrEmpty($line)) {
+                Write-Host $line
+            }
+        }
+
+        return $nativeExitCode
+    }
+    finally {
+        if ($null -ne $process) {
+            $process.Dispose()
+        }
+    }
+}
+
 function Invoke-CodexTask {
     param(
         [string]$TaskText,
@@ -298,19 +403,7 @@ Requirements:
     Write-Host "Launching Codex iteration $Iteration in isolated runner."
     Write-Host "Runner: $RunnerRoot"
     Write-Host "Log: $logFile"
-    $previousPreference = $ErrorActionPreference
-    try {
-        # Windows PowerShell 5.1 turns native stderr into error records. Codex writes
-        # normal status messages to stderr, so judge failure by its exit code instead.
-        $ErrorActionPreference = "Continue"
-        $TaskText |
-            & $CodexCommand exec -s workspace-write -C $RunnerRoot $launcherPrompt 2>&1 |
-            Tee-Object -FilePath $logFile
-        $exitCode = $LASTEXITCODE
-    }
-    finally {
-        $ErrorActionPreference = $previousPreference
-    }
+    $exitCode = Invoke-CodexProcess -TaskText $TaskText -LauncherPrompt $launcherPrompt -LogFile $logFile
     if ($exitCode -ne 0) {
         return Fail-Iteration "Codex iteration $Iteration exited with code $exitCode." $logFile
     }
@@ -469,6 +562,13 @@ finally {
     if ($null -ne $lockStream) {
         $lockStream.Dispose()
     }
+}
+
+if ($RunOnce) {
+    if ($hadFailure) {
+        exit 1
+    }
+    exit 0
 }
 
 if ($hadFailure) {
