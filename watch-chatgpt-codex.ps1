@@ -262,6 +262,39 @@ function Fail-Iteration {
     return $false
 }
 
+function Test-IntentionalNoCommitCompletion {
+    param([string]$LogFile)
+
+    if (-not (Test-Path $LogFile)) {
+        return $false
+    }
+
+    $logText = Get-Content -Path $LogFile -Raw
+    $reportedNoCommit = $logText -match "Commit hash:\s*none created" -or
+        $logText -match "Changed files:\s*none" -or
+        $logText -match "no commit"
+    $reportedStopReason = $logText -match "Blocker" -or
+        $logText -match "Stopped before editing" -or
+        $logText -match "no safe useful improvement" -or
+        $logText -match "stop without making a commit"
+
+    return ($reportedNoCommit -and $reportedStopReason)
+}
+
+function New-IterationResult {
+    param(
+        [bool]$Succeeded,
+        [bool]$PushedCommit = $false,
+        [bool]$StopLoop = $true
+    )
+
+    return @{
+        Succeeded = $Succeeded
+        PushedCommit = $PushedCommit
+        StopLoop = $StopLoop
+    }
+}
+
 function Quote-ProcessArgument {
     param([AllowNull()][string]$Argument)
 
@@ -436,27 +469,37 @@ Requirements:
     Write-Host "Log: $logFile"
     $exitCode = Invoke-CodexProcess -TaskText $TaskText -LauncherPrompt $launcherPrompt -LogFile $logFile
     if ($exitCode -ne 0) {
-        return Fail-Iteration "Codex iteration $Iteration exited with code $exitCode." $logFile
+        [void](Fail-Iteration "Codex iteration $Iteration exited with code $exitCode." $logFile)
+        return New-IterationResult -Succeeded $false
     }
 
     $afterHead = (Invoke-RunnerGit rev-parse HEAD | Select-Object -First 1).Trim()
     if ($afterHead -eq $beforeHead) {
-        return Fail-Iteration "Codex iteration $Iteration created no commit." $logFile
+        if (Test-IntentionalNoCommitCompletion $logFile) {
+            Write-Host "Codex iteration $Iteration completed without a new commit and reported an intentional no-change stop."
+            Write-Host "Ending the prompt loop without fabricating a commit. Log: $logFile"
+            return New-IterationResult -Succeeded $true -PushedCommit $false -StopLoop $true
+        }
+
+        [void](Fail-Iteration "Codex iteration $Iteration created no commit." $logFile)
+        return New-IterationResult -Succeeded $false
     }
 
     Invoke-RunnerGit fetch $Remote $Branch | Out-Null
     $remoteHead = (Invoke-RunnerGit rev-parse "$Remote/$Branch" | Select-Object -First 1).Trim()
     if ($remoteHead -ne $afterHead) {
-        return Fail-Iteration "Iteration $Iteration was not pushed to $Remote/$Branch. Local: $afterHead Remote: $remoteHead." $logFile
+        [void](Fail-Iteration "Iteration $Iteration was not pushed to $Remote/$Branch. Local: $afterHead Remote: $remoteHead." $logFile)
+        return New-IterationResult -Succeeded $false
     }
 
     $remainingChanges = Get-RunnerStatus
     if ($remainingChanges.Count -gt 0) {
-        return Fail-Iteration "Iteration $Iteration left uncommitted runner changes:`n$($remainingChanges -join [Environment]::NewLine)" $logFile
+        [void](Fail-Iteration "Iteration $Iteration left uncommitted runner changes:`n$($remainingChanges -join [Environment]::NewLine)" $logFile)
+        return New-IterationResult -Succeeded $false
     }
 
     Write-Host "Codex iteration $Iteration completed and pushed commit $afterHead."
-    return $true
+    return New-IterationResult -Succeeded $true -PushedCommit $true -StopLoop $false
 }
 
 function Invoke-PromptLoop {
@@ -469,13 +512,18 @@ function Invoke-PromptLoop {
 
     Write-Host "Loop deadline: $($deadline.ToString('yyyy-MM-dd HH:mm:ss zzz'))"
     while ((Get-Date) -lt $deadline -and $iteration -le $MaxIterations) {
-        $completed = Invoke-CodexTask -TaskText $taskText -Iteration $iteration -Deadline $deadline
-        if (-not $completed) {
+        $result = Invoke-CodexTask -TaskText $taskText -Iteration $iteration -Deadline $deadline
+        if (-not $result.Succeeded) {
             Write-Warning "Prompt $($Prompt.Sha) was not marked processed and will be retried."
             return $false
         }
 
-        $completedIterations++
+        if ($result.PushedCommit) {
+            $completedIterations++
+        }
+        if ($result.StopLoop) {
+            break
+        }
         if ((Get-Date) -ge $deadline) {
             break
         }

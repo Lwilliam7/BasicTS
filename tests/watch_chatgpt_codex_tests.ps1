@@ -102,6 +102,14 @@ if ($env:FAKE_CODEX_MODE -eq "fail") {
     Write-Host "fake codex failure requested"
     exit 42
 }
+if ($env:FAKE_CODEX_MODE -eq "no_commit") {
+    Write-Host "Stopped before editing. No safe useful improvement can be completed."
+    Write-Host ""
+    Write-Host "Changed files: none"
+    Write-Host "Commit hash: none created"
+    Write-Host "Blocker: fake no-commit completion requested"
+    exit 0
+}
 
 if (-not [string]::IsNullOrWhiteSpace($env:FAKE_CODEX_SLEEP_MS)) {
     Start-Sleep -Milliseconds ([int]$env:FAKE_CODEX_SLEEP_MS)
@@ -319,6 +327,24 @@ function Test-FailureRetry {
     }
 }
 
+function Test-NoCommitCompletion {
+    $fixture = New-Fixture
+    try {
+        $result = Invoke-Watcher $fixture -Mode "no_commit"
+        Assert-True ($result.ExitCode -eq 0) "Intentional no-commit completion should end cleanly: $($result.Output -join [Environment]::NewLine)"
+        Assert-True ((Get-FakeIterationCount $fixture) -eq 0) "No-commit completion should not create a fake iteration commit."
+        Assert-True ((Get-StateValue $fixture) -ne "") "No-commit completion should mark the prompt processed to avoid retrying a terminal blocker."
+
+        $repairPath = Join-Path $fixture.State "repair_watcher_prompt.txt"
+        Assert-True (-not (Test-Path $repairPath)) "Intentional no-commit completion should not create a watcher repair prompt."
+        $outputText = $result.Output -join [Environment]::NewLine
+        Assert-True ($outputText.Contains("completed without a new commit")) "Watcher did not report the intentional no-commit completion."
+    }
+    finally {
+        Remove-Fixture $fixture
+    }
+}
+
 function Test-PowerShellCodexLauncher {
     $successFixture = New-Fixture -LauncherKind "ps1"
     try {
@@ -360,6 +386,7 @@ Test-Parse
 Test-BranchSync
 Test-DirtyCheckout
 Test-FailureRetry
+Test-NoCommitCompletion
 Test-PowerShellCodexLauncher
 Test-Deadline
 
