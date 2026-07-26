@@ -86,7 +86,23 @@ function Test-GitAncestor {
     throw "git -C `"$WorkingDirectory`" merge-base --is-ancestor $Ancestor $Descendant failed with exit code $exitCode."
 }
 
+function Update-RunnerIndex {
+    if (-not (Test-Path (Join-Path $RunnerRoot ".git"))) {
+        return
+    }
+
+    $previousPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "Continue"
+        & git -C $RunnerRoot update-index -q --refresh 2>&1 | Out-Null
+    }
+    finally {
+        $ErrorActionPreference = $previousPreference
+    }
+}
+
 function Get-RunnerStatus {
+    Update-RunnerIndex
     return @(Invoke-RunnerGit status --porcelain)
 }
 

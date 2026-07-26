@@ -342,6 +342,24 @@ function Test-CodexSandboxArgument {
     }
 }
 
+function Test-RunnerIndexRefresh {
+    $fixture = New-Fixture
+    try {
+        $first = Invoke-Watcher $fixture
+        Assert-True ($first.ExitCode -eq 0) "Initial index-refresh setup run failed: $($first.Output -join [Environment]::NewLine)"
+
+        $trackedPrompt = Join-Path $fixture.Runner $PromptPath
+        (Get-Item -Path $trackedPrompt).LastWriteTime = (Get-Date).AddMinutes(-10)
+
+        $second = Invoke-Watcher $fixture
+        Assert-True ($second.ExitCode -eq 0) "Stat-only runner change should not block the watcher: $($second.Output -join [Environment]::NewLine)"
+        Assert-True (-not (Test-Path (Join-Path $fixture.State "repair_watcher_prompt.txt"))) "Stat-only runner change should not create a repair prompt."
+    }
+    finally {
+        Remove-Fixture $fixture
+    }
+}
+
 function Test-NoCommitCompletion {
     $fixture = New-Fixture
     try {
@@ -402,6 +420,7 @@ Test-BranchSync
 Test-DirtyCheckout
 Test-FailureRetry
 Test-CodexSandboxArgument
+Test-RunnerIndexRefresh
 Test-NoCommitCompletion
 Test-PowerShellCodexLauncher
 Test-Deadline
