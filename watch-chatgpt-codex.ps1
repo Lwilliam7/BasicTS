@@ -1,7 +1,7 @@
 param(
-    [int]$PollSeconds = 120,
-    [double]$LoopHours = 2,
-    [int]$MaxIterations = 20
+    [int]$PollSeconds = 10,
+    [double]$LoopHours = 6,
+    [int]$MaxIterations = 40
 )
 
 $ErrorActionPreference = "Stop"
@@ -12,6 +12,8 @@ $Branch = "master"
 $PromptPath = "docs/codex_tasks/chatgpt_to_codex.md"
 $StateRoot = Join-Path $env:LOCALAPPDATA "BasicTSCodexWatcher"
 $StateFile = Join-Path $StateRoot "last_processed_blob.txt"
+$LockFile = Join-Path $StateRoot "watcher.lock"
+$RepairPromptFile = Join-Path $StateRoot "repair_watcher_prompt.txt"
 $LogDir = Join-Path $StateRoot "logs"
 
 function Require-Command {
@@ -40,12 +42,103 @@ function Invoke-Git {
     return @($output | ForEach-Object { $_.ToString() })
 }
 
+function Test-GitAncestor {
+    param(
+        [string]$Ancestor,
+        [string]$Descendant
+    )
+
+    $previousPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "Continue"
+        & git -C $Repo merge-base --is-ancestor $Ancestor $Descendant 2>&1 | Out-Null
+        $exitCode = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $previousPreference
+    }
+
+    if ($exitCode -eq 0) {
+        return $true
+    }
+    if ($exitCode -eq 1) {
+        return $false
+    }
+    throw "git merge-base --is-ancestor failed with exit code $exitCode."
+}
+
+function Sync-LocalBranch {
+    $currentBranch = (Invoke-Git branch --show-current | Select-Object -First 1).Trim()
+    if ($currentBranch -ne $Branch) {
+        throw "Expected local branch '$Branch', but found '$currentBranch'."
+    }
+
+    $status = @(Invoke-Git status --porcelain)
+    if ($status.Count -gt 0) {
+        throw "The working tree is not clean. Preserve or commit these changes before running the watcher:`n$($status -join [Environment]::NewLine)"
+    }
+
+    Invoke-Git fetch $Remote $Branch | Out-Null
+    $localHead = (Invoke-Git rev-parse HEAD | Select-Object -First 1).Trim()
+    $remoteHead = (Invoke-Git rev-parse "$Remote/$Branch" | Select-Object -First 1).Trim()
+
+    if ($localHead -eq $remoteHead) {
+        return
+    }
+    if (-not (Test-GitAncestor -Ancestor $localHead -Descendant $remoteHead)) {
+        throw "Local $Branch is ahead of or diverged from $Remote/$Branch. Refusing to merge or overwrite commits."
+    }
+
+    Invoke-Git merge --ff-only "$Remote/$Branch" | Out-Null
+    $syncedHead = (Invoke-Git rev-parse HEAD | Select-Object -First 1).Trim()
+    if ($syncedHead -ne $remoteHead) {
+        throw "Fast-forward verification failed: local HEAD $syncedHead does not equal remote HEAD $remoteHead."
+    }
+}
+
 function Get-RemotePrompt {
     Invoke-Git fetch $Remote $Branch | Out-Null
     $remotePromptRef = "$Remote/$Branch" + ":" + $PromptPath
     $sha = (Invoke-Git rev-parse $remotePromptRef | Select-Object -First 1).Trim()
     $text = (Invoke-Git show $remotePromptRef) -join [Environment]::NewLine
+    if ([string]::IsNullOrWhiteSpace($text)) {
+        throw "The remote prompt file is empty."
+    }
     return @{ Sha = $sha; Text = $text }
+}
+
+function Write-RepairPrompt {
+    param(
+        [string]$Reason,
+        [string]$LogFile = "No Codex log was created."
+    )
+
+    $repairLines = @(
+        "Repair the BasicTS completion-driven COSTAR-TS watcher failure.",
+        "",
+        "Observed failure:",
+        $Reason,
+        "",
+        "Relevant Codex log:",
+        $LogFile,
+        "",
+        "Repository: $Repo",
+        "Watcher: watch-chatgpt-codex.ps1",
+        "Target branch: $Branch",
+        "",
+        "Inspect the watcher, repository status, current branch, origin/$Branch, the prompt inbox, and the relevant log.",
+        "Find the exact root cause. Make the smallest safe fix. Preserve unrelated changes.",
+        "Parse-check the complete PowerShell file and test the failing control-flow path without launching a long research run.",
+        "Do not bypass authentication, force-push, discard changes, or claim success without evidence.",
+        "If the stop was intentional because no useful research change was possible, explain that and do not fabricate a commit.",
+        "If a valid fix is made, run focused tests, stage only repair files, commit with a specific message, and push to origin $Branch.",
+        "Report the root cause, changed files, tests, commit hash, pushed branch, and remaining blocker."
+    )
+
+    Set-Content -Path $RepairPromptFile -Value $repairLines -Encoding utf8
+    Write-Warning "Repair prompt written to: $RepairPromptFile"
+    Write-Host "Run it with:"
+    Write-Host "  Get-Content `"$RepairPromptFile`" -Raw | codex exec -s workspace-write -C `"$Repo`""
 }
 
 function Invoke-CodexTask {
@@ -55,6 +148,7 @@ function Invoke-CodexTask {
         [datetime]$Deadline
     )
 
+    Sync-LocalBranch
     $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
     $logFile = Join-Path $LogDir "codex_$($timestamp)_iteration_$Iteration.log"
     $beforeHead = (Invoke-Git rev-parse HEAD | Select-Object -First 1).Trim()
@@ -87,20 +181,34 @@ Requirements:
 
     $exitCode = $LASTEXITCODE
     if ($exitCode -ne 0) {
-        Write-Warning "Codex iteration $Iteration exited with code $exitCode."
+        $reason = "Codex iteration $Iteration exited with code $exitCode."
+        Write-Warning "$reason Log: $logFile"
+        Write-RepairPrompt -Reason $reason -LogFile $logFile
         return $false
     }
 
     $afterHead = (Invoke-Git rev-parse HEAD | Select-Object -First 1).Trim()
     if ($afterHead -eq $beforeHead) {
-        Write-Warning "Codex iteration $Iteration created no commit. Stopping the loop."
+        $reason = "Codex iteration $Iteration created no commit."
+        Write-Warning "$reason Stopping the loop. Log: $logFile"
+        Write-RepairPrompt -Reason $reason -LogFile $logFile
         return $false
     }
 
     Invoke-Git fetch $Remote $Branch | Out-Null
     $remoteHead = (Invoke-Git rev-parse "$Remote/$Branch" | Select-Object -First 1).Trim()
     if ($remoteHead -ne $afterHead) {
-        Write-Warning "Iteration $Iteration was not pushed to $Remote/$Branch. Stopping the loop."
+        $reason = "Iteration $Iteration was not pushed to $Remote/$Branch. Local: $afterHead Remote: $remoteHead."
+        Write-Warning "$reason Log: $logFile"
+        Write-RepairPrompt -Reason $reason -LogFile $logFile
+        return $false
+    }
+
+    $remainingChanges = @(Invoke-Git status --porcelain)
+    if ($remainingChanges.Count -gt 0) {
+        $reason = "Iteration $Iteration left uncommitted changes:`n$($remainingChanges -join [Environment]::NewLine)"
+        Write-Warning "$reason`nStopping to preserve them."
+        Write-RepairPrompt -Reason $reason -LogFile $logFile
         return $false
     }
 
@@ -114,6 +222,9 @@ Require-Command "codex"
 if (-not (Test-Path (Join-Path $Repo ".git"))) {
     throw "This script must be run from the BasicTS Git repository."
 }
+if ($PollSeconds -le 0) {
+    throw "PollSeconds must be greater than zero."
+}
 if ($LoopHours -le 0) {
     throw "LoopHours must be greater than zero."
 }
@@ -124,40 +235,57 @@ if ($MaxIterations -le 0) {
 New-Item -ItemType Directory -Force -Path $StateRoot | Out-Null
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 
-Write-Host "Watching GitHub prompt inbox:"
-Write-Host "  ${Remote}/${Branch}:$PromptPath"
-Write-Host "Polling every $PollSeconds seconds."
-Write-Host "A detected prompt starts a completion-driven loop lasting up to $LoopHours hours."
-Write-Host "Press Ctrl+C to stop."
-Write-Host ""
+try {
+    $lockStream = [System.IO.File]::Open(
+        $LockFile,
+        [System.IO.FileMode]::OpenOrCreate,
+        [System.IO.FileAccess]::ReadWrite,
+        [System.IO.FileShare]::None
+    )
+}
+catch {
+    throw "Another BasicTS Codex watcher is already running. Stop it before starting a new watcher."
+}
 
-while ($true) {
-    try {
-        $prompt = Get-RemotePrompt
-        $lastProcessed = ""
-        if (Test-Path $StateFile) {
-            $lastProcessed = (Get-Content $StateFile -Raw).Trim()
-        }
+try {
+    Write-Host "Watching GitHub prompt inbox:"
+    Write-Host "  ${Remote}/${Branch}:$PromptPath"
+    Write-Host "Polling every $PollSeconds seconds."
+    Write-Host "A detected prompt starts a completion-driven loop lasting up to $LoopHours hours."
+    Write-Host "Only one watcher and one Codex iteration may run at a time."
+    Write-Host "Press Ctrl+C to stop."
+    Write-Host ""
 
-        if ($prompt.Sha -ne $lastProcessed) {
-            Write-Host "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] New prompt detected: $($prompt.Sha)"
-            Set-Content -Path $StateFile -Value $prompt.Sha -Encoding utf8
+    while ($true) {
+        try {
+            $prompt = Get-RemotePrompt
+            $lastProcessed = ""
+            if (Test-Path $StateFile) {
+                $lastProcessed = (Get-Content $StateFile -Raw).Trim()
+            }
 
-            $deadline = (Get-Date).AddHours($LoopHours)
-            $iteration = 1
-            $taskText = $prompt.Text
+            if ($prompt.Sha -ne $lastProcessed) {
+                Write-Host "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] New prompt detected: $($prompt.Sha)"
 
-            while ((Get-Date) -lt $deadline -and $iteration -le $MaxIterations) {
-                $completed = Invoke-CodexTask -TaskText $taskText -Iteration $iteration -Deadline $deadline
-                if (-not $completed) {
-                    break
-                }
-                if ((Get-Date) -ge $deadline) {
-                    break
-                }
+                Sync-LocalBranch
+                Set-Content -Path $StateFile -Value $prompt.Sha -Encoding utf8
 
-                $iteration++
-                $taskText = @"
+                $deadline = (Get-Date).AddHours($LoopHours)
+                $iteration = 1
+                $taskText = $prompt.Text
+
+                Write-Host "Loop deadline: $($deadline.ToString('yyyy-MM-dd HH:mm:ss zzz'))"
+                while ((Get-Date) -lt $deadline -and $iteration -le $MaxIterations) {
+                    $completed = Invoke-CodexTask -TaskText $taskText -Iteration $iteration -Deadline $deadline
+                    if (-not $completed) {
+                        break
+                    }
+                    if ((Get-Date) -ge $deadline) {
+                        break
+                    }
+
+                    $iteration++
+                    $taskText = @"
 Inspect the latest pushed COSTAR-TS changes and their real test or experiment evidence.
 Identify the single biggest remaining problem that can be safely addressed in one bounded iteration.
 Implement and test that improvement now.
@@ -169,15 +297,24 @@ evidence. Choose the largest evidence-backed weakness. Do not use the final test
 selection or tuning. If the next useful step requires major compute, unavailable data, or a
 research choice from the user, make no commit and report the blocker.
 "@
+                }
+
+                $finishedAt = Get-Date
+                Write-Host "Research loop ended after $iteration iteration(s) at $($finishedAt.ToString('yyyy-MM-dd HH:mm:ss zzz'))."
+                Write-Host "Deadline was $($deadline.ToString('yyyy-MM-dd HH:mm:ss zzz'))."
+                Write-Host "It stops between tasks at the deadline; it does not terminate a Codex process mid-task."
             }
-
-            Write-Host "Research loop ended after $iteration iteration(s)."
-            Write-Host "It stops between tasks at the deadline; it does not terminate a Codex process mid-task."
         }
-    }
-    catch {
-        Write-Warning $_
-    }
+        catch {
+            Write-Warning $_
+            Write-RepairPrompt -Reason $_.Exception.Message
+        }
 
-    Start-Sleep -Seconds $PollSeconds
+        Start-Sleep -Seconds $PollSeconds
+    }
+}
+finally {
+    if ($null -ne $lockStream) {
+        $lockStream.Dispose()
+    }
 }
