@@ -84,6 +84,53 @@ def test_threshold_selection_uses_supplied_validation_losses_only():
     assert selected["threshold"] in [row["threshold"] for row in selected["threshold_rows"]]
 
 
+def test_threshold_selection_respects_switch_rate_constraints():
+    cache = _gate_cache()
+    pair_index = build_pair_index(3)
+    selected = select_confidence_threshold(
+        cache=cache,
+        pair_index=pair_index,
+        predicted_pair_class=torch.tensor([2, 2, 1]),
+        fixed_pair_class=0,
+        score=torch.tensor([0.1, 0.2, 0.9]),
+        score_name="unit_score",
+        pair_mae=torch.tensor(
+            [
+                [5.0, 4.0, 1.0],
+                [5.0, 4.0, 1.0],
+                [5.0, 1.0, 4.0],
+            ]
+        ),
+        steps=5,
+        min_switch_rate=0.2,
+        max_switch_rate=0.7,
+    )
+
+    assert selected["constraint_eligible"] is True
+    assert 0.2 <= selected["switch_rate"] <= 0.7
+    assert selected["constraints"]["fallback_to_unconstrained"] is False
+
+
+def test_threshold_selection_reports_when_constraints_have_no_candidate():
+    cache = _gate_cache()
+    pair_index = build_pair_index(3)
+    selected = select_confidence_threshold(
+        cache=cache,
+        pair_index=pair_index,
+        predicted_pair_class=torch.tensor([2, 2, 1]),
+        fixed_pair_class=0,
+        score=torch.tensor([0.1, 0.2, 0.9]),
+        score_name="unit_score",
+        pair_mae=torch.ones(3, 3),
+        steps=5,
+        min_switch_rate=0.4,
+        max_switch_rate=0.6,
+    )
+
+    assert selected["constraints"]["eligible_threshold_count"] == 0
+    assert selected["constraints"]["fallback_to_unconstrained"] is True
+
+
 def test_fixed_pair_fallback_when_threshold_is_infinite():
     cache = _gate_cache()
     pair_index = build_pair_index(3)

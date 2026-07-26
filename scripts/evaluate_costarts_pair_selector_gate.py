@@ -57,6 +57,10 @@ class GatedPairSelectorConfig:
     device: str = "cpu"
     fixed_pair_selection: str = "router_val"
     threshold_steps: int = 201
+    min_switch_rate: float = 0.05
+    max_switch_rate: float = 0.50
+    min_switched_win_rate: float = 0.50
+    min_switched_mean_improvement: float = 0.0
 
 
 def _jsonable(value: Any) -> Any:
@@ -160,8 +164,14 @@ def select_confidence_threshold(
     score_name: str,
     pair_mae: torch.Tensor,
     steps: int,
+    min_switch_rate: float = 0.0,
+    max_switch_rate: float = 1.0,
+    min_switched_win_rate: float | None = None,
+    min_switched_mean_improvement: float | None = None,
 ) -> dict[str, Any]:
-    """Choose confidence threshold by router-validation MAE."""
+    """Choose confidence threshold by router-validation MAE under stability constraints."""
+    if not 0.0 <= min_switch_rate <= max_switch_rate <= 1.0:
+        raise ValueError("switch-rate constraints must satisfy 0 <= min <= max <= 1")
     labels = confidence_targets_from_pair_losses(predicted_pair_class, fixed_pair_class, pair_mae)
     rows: list[dict[str, Any]] = []
     for threshold in threshold_candidates(score, steps):
@@ -180,6 +190,17 @@ def select_confidence_threshold(
         else:
             switched_win_rate = float("nan")
             switched_mean_improvement = float("nan")
+        constraint_eligible = (
+            float(min_switch_rate) <= float(gated["switch_rate"]) <= float(max_switch_rate)
+        )
+        if min_switched_win_rate is not None:
+            constraint_eligible = constraint_eligible and bool(switched.any()) and (
+                switched_win_rate >= float(min_switched_win_rate)
+            )
+        if min_switched_mean_improvement is not None:
+            constraint_eligible = constraint_eligible and bool(switched.any()) and (
+                switched_mean_improvement >= float(min_switched_mean_improvement)
+            )
         rows.append(
             {
                 "score_name": score_name,
@@ -190,6 +211,7 @@ def select_confidence_threshold(
                 "switched_predicted_pair_win_rate": switched_win_rate,
                 "switched_mean_mae_improvement": switched_mean_improvement,
                 "average_experts_queried": 2.0,
+                "constraint_eligible": constraint_eligible,
                 "policy": (
                     "always_predicted_pair"
                     if math.isinf(float(threshold)) and float(threshold) < 0
@@ -199,8 +221,34 @@ def select_confidence_threshold(
                 ),
             }
         )
-    rows = sorted(rows, key=lambda row: (float(row["mae"]), str(row["score_name"]), float(row["threshold"])))
-    return rows[0] | {"threshold_rows": rows}
+    eligible_rows = [row for row in rows if row["constraint_eligible"]]
+    candidate_rows = eligible_rows if eligible_rows else rows
+    candidate_rows = sorted(
+        candidate_rows,
+        key=lambda row: (
+            float(row["mae"]),
+            abs(float(row["switch_rate"]) - ((float(min_switch_rate) + float(max_switch_rate)) * 0.5)),
+            str(row["score_name"]),
+            float(row["threshold"]),
+        ),
+    )
+    return candidate_rows[0] | {
+        "threshold_rows": rows,
+        "constraints": {
+            "min_switch_rate": float(min_switch_rate),
+            "max_switch_rate": float(max_switch_rate),
+            "min_switched_win_rate": (
+                None if min_switched_win_rate is None else float(min_switched_win_rate)
+            ),
+            "min_switched_mean_improvement": (
+                None
+                if min_switched_mean_improvement is None
+                else float(min_switched_mean_improvement)
+            ),
+            "eligible_threshold_count": len(eligible_rows),
+            "fallback_to_unconstrained": len(eligible_rows) == 0,
+        },
+    }
 
 
 @torch.no_grad()
@@ -303,6 +351,10 @@ def run_seed(config: GatedPairSelectorConfig, seed: int) -> dict[str, Any]:
                 score_name=score_name,
                 pair_mae=val_pair_mae,
                 steps=config.threshold_steps,
+                min_switch_rate=config.min_switch_rate,
+                max_switch_rate=config.max_switch_rate,
+                min_switched_win_rate=config.min_switched_win_rate,
+                min_switched_mean_improvement=config.min_switched_mean_improvement,
             )
         )
     best_gate = sorted(
@@ -325,6 +377,12 @@ def run_seed(config: GatedPairSelectorConfig, seed: int) -> dict[str, Any]:
         "direct_pair_selector": direct_result["val"],
         "validation_selected_fixed_pair": validation_selected_fixed,
         "confidence_target_positive_rate": float(labels["will_beat_fixed"].to(torch.float32).mean()),
+        "stability_constraints": {
+            "min_switch_rate": config.min_switch_rate,
+            "max_switch_rate": config.max_switch_rate,
+            "min_switched_win_rate": config.min_switched_win_rate,
+            "min_switched_mean_improvement": config.min_switched_mean_improvement,
+        },
         "selected_gate": _metric_without_large_tensors(best_gate),
         "all_score_best_thresholds": [_metric_without_large_tensors(row) for row in threshold_results],
         "selected_score_threshold_rows": selected_threshold_rows,
@@ -381,7 +439,8 @@ def run_experiment(config: GatedPairSelectorConfig) -> dict[str, Any]:
         },
         "model_selection": (
             "Pair-selector checkpoints are selected by router-validation MAE. "
-            "Confidence score and threshold are selected on router-validation only; no test labels are used."
+            "Confidence score and threshold are selected on router-validation only under "
+            "predeclared switch-rate and switched-window quality constraints; no test labels are used."
         ),
     }
     summary_path = results_dir / "confidence_gate_summary.json"
@@ -397,6 +456,8 @@ def run_experiment(config: GatedPairSelectorConfig) -> dict[str, Any]:
         "fixed_pair_names",
         "score_name",
         "threshold",
+        "constraint_eligible",
+        "fallback_to_unconstrained",
     ]
     with csv_path.open("w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fields)
@@ -414,6 +475,8 @@ def run_experiment(config: GatedPairSelectorConfig) -> dict[str, Any]:
                     "fixed_pair_names": " + ".join(run["fixed_pair_names"]),
                     "score_name": gate["score_name"],
                     "threshold": gate["threshold"],
+                    "constraint_eligible": gate.get("constraint_eligible", ""),
+                    "fallback_to_unconstrained": gate.get("constraints", {}).get("fallback_to_unconstrained", ""),
                 }
             )
     print(f"Saved confidence gate summary: {summary_path}")
@@ -450,6 +513,10 @@ def parse_args() -> argparse.Namespace:
         default="router_val",
     )
     parser.add_argument("--threshold-steps", type=int, default=201)
+    parser.add_argument("--min-switch-rate", type=float, default=0.05)
+    parser.add_argument("--max-switch-rate", type=float, default=0.50)
+    parser.add_argument("--min-switched-win-rate", type=float, default=0.50)
+    parser.add_argument("--min-switched-mean-improvement", type=float, default=0.0)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
 
@@ -477,6 +544,10 @@ def main() -> None:
         history_encoder_type=args.history_encoder_type,
         fixed_pair_selection=args.fixed_pair_selection,
         threshold_steps=args.threshold_steps,
+        min_switch_rate=args.min_switch_rate,
+        max_switch_rate=args.max_switch_rate,
+        min_switched_win_rate=args.min_switched_win_rate,
+        min_switched_mean_improvement=args.min_switched_mean_improvement,
         device=args.device,
     )
     run_experiment(config)
