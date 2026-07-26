@@ -431,7 +431,7 @@ python scripts\\train_costarts_subset_utility_router.py --device cpu --max-epoch
 ## Sequential rollout evaluation
 
 ```powershell
-python scripts\\evaluate_costarts_subset_utility_rollouts.py --device cpu --mode all --finalizer both --temperature 1.0 --detailed-limit 25
+python scripts\\evaluate_costarts_subset_utility_rollouts.py --device cpu --mode all --finalizer all --temperature 1.0 --detailed-limit 25
 ```
 
 ## Cost sweep

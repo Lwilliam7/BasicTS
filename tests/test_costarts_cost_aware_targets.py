@@ -456,3 +456,15 @@ def test_tracked_final_comparison_artifacts_do_not_report_validation_fit_baselin
         assert rows["best_fixed_expert"]["selection_split"] == "router_train"
         for row in payload["rows"]:
             assert row["selection_split"] != "router_val_reference"
+
+
+def test_reproduction_rollout_command_uses_supported_finalizer_selector():
+    root = Path(__file__).resolve().parents[1]
+    checked_in_commands = root / "results/router_summary/costarts_subset_utility/paper_package/docs/commands.md"
+    generated_source = (root / "scripts/build_costarts_paper_package.py").read_text(encoding="utf-8")
+    command_doc = checked_in_commands.read_text(encoding="utf-8")
+
+    assert "--finalizer both" not in command_doc
+    assert "--finalizer both" not in generated_source
+    assert "--finalizer all" in command_doc
+    assert "--finalizer all" in generated_source
