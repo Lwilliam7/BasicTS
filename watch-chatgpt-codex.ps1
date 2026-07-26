@@ -9,6 +9,7 @@ param(
     [string]$RunnerRoot = "",
     [string]$RemoteUrl = "",
     [string]$CodexCommand = "codex",
+    [string]$CodexSandbox = "danger-full-access",
     [switch]$RunOnce
 )
 
@@ -248,7 +249,7 @@ function Write-RepairPrompt {
     Set-Content -Path $RepairPromptFile -Value $repairLines -Encoding utf8
     Write-Warning "Repair prompt written to: $RepairPromptFile"
     Write-Host "Retry with:"
-    Write-Host "  Get-Content `"$RepairPromptFile`" -Raw | codex exec -s workspace-write -C `"$RunnerRoot`""
+    Write-Host "  Get-Content `"$RepairPromptFile`" -Raw | codex exec -s $CodexSandbox -C `"$RunnerRoot`""
 }
 
 function Fail-Iteration {
@@ -370,7 +371,7 @@ function Invoke-CodexProcess {
         $commandPath = $CodexCommand
     }
 
-    $codexArguments = @("exec", "-s", "workspace-write", "-C", $RunnerRoot, $LauncherPrompt)
+    $codexArguments = @("exec", "-s", $CodexSandbox, "-C", $RunnerRoot, $LauncherPrompt)
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     if ([System.IO.Path]::GetExtension($commandPath) -ieq ".ps1") {
         $psi.FileName = Get-PowerShellExecutable

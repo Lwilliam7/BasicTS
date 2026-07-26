@@ -84,6 +84,8 @@ function New-Fixture {
     $fakeCodexBody = @'
 $ErrorActionPreference = "Continue"
 
+Add-Content -Path $env:FAKE_CODEX_LOG -Value "args $($args -join '|')"
+
 $repoIndex = [Array]::IndexOf($args, "-C")
 if ($repoIndex -ge 0 -and $repoIndex + 1 -lt $args.Count) {
     $repo = $args[$repoIndex + 1]
@@ -327,6 +329,19 @@ function Test-FailureRetry {
     }
 }
 
+function Test-CodexSandboxArgument {
+    $fixture = New-Fixture -LauncherKind "ps1"
+    try {
+        $result = Invoke-Watcher $fixture
+        Assert-True ($result.ExitCode -eq 0) "Sandbox argument probe failed: $($result.Output -join [Environment]::NewLine)"
+        $fakeLog = Get-Content -Path $fixture.FakeLog -Raw
+        Assert-True ($fakeLog.Contains("exec|-s|danger-full-access|-C|")) "Watcher did not launch nested Codex with danger-full-access sandbox."
+    }
+    finally {
+        Remove-Fixture $fixture
+    }
+}
+
 function Test-NoCommitCompletion {
     $fixture = New-Fixture
     try {
@@ -386,6 +401,7 @@ Test-Parse
 Test-BranchSync
 Test-DirtyCheckout
 Test-FailureRetry
+Test-CodexSandboxArgument
 Test-NoCommitCompletion
 Test-PowerShellCodexLauncher
 Test-Deadline
