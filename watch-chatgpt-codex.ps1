@@ -447,6 +447,7 @@ try {
             $cycleSucceeded = Invoke-WatcherCycle
             if (-not $cycleSucceeded) {
                 $hadFailure = $true
+                break
             }
         }
         catch {
@@ -454,6 +455,7 @@ try {
             $reason = $_.Exception.Message
             Write-Warning $reason
             Write-RepairPrompt -Reason $reason
+            break
         }
 
         if ($RunOnce) {
@@ -469,6 +471,6 @@ finally {
     }
 }
 
-if ($RunOnce -and $hadFailure) {
+if ($hadFailure) {
     exit 1
 }
