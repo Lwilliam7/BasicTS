@@ -4,7 +4,7 @@ Status: active
 
 ## Active task: begin bounded COSTAR-TS paper-evidence loop
 
-Work on COSTAR-TS for the two-hour completion-driven loop controlled by `watch-chatgpt-codex.ps1`.
+Work on COSTAR-TS for the one-hour completion-driven loop controlled by `watch-chatgpt-codex.ps1`.
 
 For this first iteration, inspect the current repository, recent COSTAR-TS commits, existing tests, saved result summaries, and git status. Then identify and implement the single highest-priority weakness that can be completed safely in one iteration.
 
