@@ -188,9 +188,9 @@
       "parameter_count": 51925,
       "top2_oracle_coverage": 0.3344208896160126,
       "first_query_oracle_match": 0.1598694920539856,
-      "oracle_match_rate": 0.2300163060426712,
+      "oracle_match_rate": "",
       "selection_split": "router_val_checkpoint_selected",
-      "note": "Subset-utility COSTARTS checkpoint epoch 2."
+      "note": "Subset-utility COSTARTS checkpoint epoch 2; finalizer is equal average of queried forecasts."
     },
     {
       "method": "old_costarts",

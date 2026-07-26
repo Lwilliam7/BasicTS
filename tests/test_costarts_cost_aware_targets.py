@@ -454,6 +454,9 @@ def test_tracked_final_comparison_artifacts_do_not_report_validation_fit_baselin
         rows = {row["method"]: row for row in payload["rows"]}
         assert "validation_weighted_average" not in rows
         assert rows["best_fixed_expert"]["selection_split"] == "router_train"
+        subset_row = rows["improved_subset_utility_costarts"]
+        assert subset_row["oracle_match_rate"] == ""
+        assert "finalizer is equal average of queried forecasts" in subset_row["note"]
         for row in payload["rows"]:
             assert row["selection_split"] != "router_val_reference"
 
