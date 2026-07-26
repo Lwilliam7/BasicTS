@@ -3,6 +3,7 @@ import inspect
 import torch
 
 from scripts import train_costarts_subset_utility_router as costarts_train
+from scripts.evaluate_costarts_cost_sweep import _finalize_predictions
 from scripts.train_costarts_subset_utility_router import (
     build_cost_aware_targets,
     load_and_normalize_expert_costs,
@@ -181,3 +182,46 @@ def test_training_module_does_not_load_test_data_or_frozen_experts():
     assert "load_selected_experts" not in source
     assert "experts_loaded" in source
     assert "False" in source
+
+
+def test_cost_sweep_equal_average_finalizer_uses_queried_forecast_mean():
+    class _Router:
+        def __call__(self, history, queried_mask, queried_expert_ids, queried_expert_forecasts):
+            batch_size, num_experts = queried_mask.shape
+            return {
+                "expert_score": torch.zeros(batch_size, num_experts),
+                "mix_logits": torch.zeros(batch_size, num_experts),
+            }
+
+    cache = {
+        "num_experts": 3,
+        "history": torch.zeros(2, 96, 7),
+        "queried_mask": torch.tensor([[True, False, True], [False, True, False]]),
+        "queried_expert_ids": torch.tensor([[0, 2, -1], [1, -1, -1]]),
+        "queried_expert_forecasts": torch.tensor(
+            [
+                [[[2.0]], [[6.0]], [[0.0]]],
+                [[[10.0]], [[0.0]], [[0.0]]],
+            ]
+        ),
+        "true_targets": torch.zeros(2, 1, 1),
+        "target_mask": torch.ones(2, 1, 1, dtype=torch.bool),
+        "true_expert_error_vector": torch.tensor([[2.0, 5.0, 6.0], [3.0, 10.0, 1.0]]),
+        "remaining_mask": torch.tensor([[False, True, False], [True, False, True]]),
+        "marginal_gain_best_queried_oracle": torch.zeros(2, 3),
+        "marginal_gain_equal_queried_average": torch.zeros(2, 3),
+        "valid_action_mask": torch.ones(2, 4, dtype=torch.bool),
+        "subset_size": torch.tensor([2, 1]),
+    }
+    prediction, targets, masks, selected = _finalize_predictions(
+        router=_Router(),
+        cache=cache,
+        final_state_indices=[0, 1],
+        batch_size=2,
+        device=torch.device("cpu"),
+        finalizer="equal_average",
+    )
+    assert torch.equal(prediction, torch.tensor([[[4.0]], [[10.0]]]))
+    assert torch.equal(targets, torch.zeros(2, 1, 1))
+    assert torch.equal(masks, torch.ones(2, 1, 1, dtype=torch.bool))
+    assert torch.equal(selected, torch.tensor([0, 1]))

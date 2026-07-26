@@ -130,8 +130,8 @@ def _finalize_predictions(
 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
     num_windows = len(final_state_indices)
     num_experts = int(cache["num_experts"])
-    if finalizer not in {"reranker", "sparse_mixture", "oracle_best_queried"}:
-        raise ValueError("finalizer must be reranker, sparse_mixture, or oracle_best_queried")
+    if finalizer not in {"equal_average", "reranker", "sparse_mixture", "oracle_best_queried"}:
+        raise ValueError("finalizer must be equal_average, reranker, sparse_mixture, or oracle_best_queried")
 
     selected_experts = torch.empty(num_windows, dtype=torch.long)
     predictions = []
@@ -152,7 +152,13 @@ def _finalize_predictions(
         targets.append(batch["true_targets"].detach().cpu())
         masks.append(batch["target_mask"].detach().cpu())
 
-        if finalizer == "oracle_best_queried":
+        if finalizer == "equal_average":
+            valid_slots = queried_ids >= 0
+            slot_weights = valid_slots.to(queried_forecasts.dtype)
+            slot_weights = slot_weights / slot_weights.sum(dim=1, keepdim=True).clamp_min(1.0)
+            prediction = (queried_forecasts * slot_weights[:, :, None, None]).sum(dim=1)
+            selected = queried_ids[:, 0].to(torch.long)
+        elif finalizer == "oracle_best_queried":
             errors = batch["true_expert_error_vector"].detach().cpu().masked_fill(~queried_mask, float("inf"))
             selected = torch.argmin(errors, dim=-1)
             positions = (queried_ids == selected[:, None]).to(torch.float32).argmax(dim=1)
@@ -427,7 +433,11 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help='Optional JSON object, e.g. {"DLinear":1.0,"PatchTST":1.5}. Defaults to uniform cost 1.',
     )
-    parser.add_argument("--finalizer", choices=("reranker", "sparse_mixture", "oracle_best_queried"), default="reranker")
+    parser.add_argument(
+        "--finalizer",
+        choices=("equal_average", "reranker", "sparse_mixture", "oracle_best_queried"),
+        default="equal_average",
+    )
     parser.add_argument("--max-queries", type=int, default=None)
     parser.add_argument("--batch-size", type=int, default=512)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -495,6 +505,11 @@ def main() -> None:
             "finalizer": args.finalizer,
             "expert_names": expert_names,
             "expert_costs": dict(zip(expert_names, costs.tolist())),
+            "selected_expert_diagnostic": (
+                "first_queried_expert_when_finalizer_is_equal_average"
+                if args.finalizer == "equal_average"
+                else "model_selected_expert"
+            ),
             "zero_cost_queries_more_than_one_window": rows[0]["windows_with_more_than_one_expert"] > 0,
             "average_queries_nonincreasing": smooth_nonincreasing,
             "test_data_used": False,

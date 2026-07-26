@@ -11,6 +11,7 @@ import argparse
 import csv
 import json
 import math
+import sys
 import time
 from pathlib import Path
 from typing import Any, Mapping, Optional, Sequence
@@ -19,9 +20,13 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+OLD_COSTARTS_IMPORT_ERROR = ""
 try:
     from scripts.build_costarts_subset_states import validate_costarts_subset_states
-    from scripts.train_costarts_router import COSTARTSRouter, _select_expert_from_outputs
     from scripts.train_costarts_subset_utility_router import (
         SubsetUtilityCOSTARTSRouter,
         _build_state_lookup,
@@ -31,7 +36,6 @@ try:
     )
 except ImportError:
     from build_costarts_subset_states import validate_costarts_subset_states
-    from train_costarts_router import COSTARTSRouter, _select_expert_from_outputs
     from train_costarts_subset_utility_router import (
         SubsetUtilityCOSTARTSRouter,
         _build_state_lookup,
@@ -39,6 +43,13 @@ except ImportError:
         _state_batch,
         set_reproducible_seed,
     )
+
+try:
+    from scripts.train_costarts_router import COSTARTSRouter, _select_expert_from_outputs
+except ImportError as exc:
+    COSTARTSRouter = None
+    _select_expert_from_outputs = None
+    OLD_COSTARTS_IMPORT_ERROR = str(exc)
 
 
 DEFAULT_TRAIN_CACHE = "cache/costarts_router_train_cache.pt"
@@ -271,6 +282,16 @@ def _weighted_average_prediction(cache: Mapping[str, Any], weights: torch.Tensor
     return (cache["prediction_stack"] * weights.view(1, 1, 1, -1)).sum(dim=-1)
 
 
+def _equal_average_queried_forecasts(
+    queried_ids: torch.Tensor,
+    queried_forecasts: torch.Tensor,
+) -> torch.Tensor:
+    valid_slots = queried_ids >= 0
+    weights = valid_slots.to(queried_forecasts.dtype)
+    weights = weights / weights.sum(dim=1, keepdim=True).clamp_min(1.0)
+    return (queried_forecasts * weights[:, :, None, None]).sum(dim=1)
+
+
 @torch.no_grad()
 def _routerdc_row(
     *,
@@ -371,7 +392,10 @@ def _subset_rollout(
     device: torch.device,
     force_k: Optional[int] = None,
     oracle_second_query: bool = False,
-) -> tuple[torch.Tensor, torch.Tensor, list[list[int]], float]:
+    finalizer: str = "equal_average",
+) -> tuple[torch.Tensor, Optional[torch.Tensor], list[list[int]], float]:
+    if finalizer not in {"equal_average", "reranker"}:
+        raise ValueError("finalizer must be equal_average or reranker")
     lookup = _build_state_lookup(subset_cache)
     num_windows = int(subset_cache["num_source_windows"])
     num_experts = int(subset_cache["num_experts"])
@@ -443,7 +467,8 @@ def _subset_rollout(
             masks[sample_index] |= 1 << action
 
     final_state_indices = [lookup[row][masks[row]] for row in range(num_windows)]
-    selected = torch.empty(num_windows, dtype=torch.long)
+    selected: Optional[torch.Tensor]
+    selected = None if finalizer == "equal_average" else torch.empty(num_windows, dtype=torch.long)
     top2 = torch.full((num_windows, 2), -1, dtype=torch.long)
     for row, sequence in enumerate(sequences):
         for col, expert in enumerate(sequence[:2]):
@@ -458,14 +483,19 @@ def _subset_rollout(
             batch["queried_expert_ids"],
             batch["queried_expert_forecasts"],
         )
-        queried_mask = batch["queried_mask"].detach().cpu()
         queried_ids = batch["queried_expert_ids"].detach().cpu()
         queried_forecasts = batch["queried_expert_forecasts"].detach().cpu()
-        scores = outputs["expert_score"].detach().cpu().masked_fill(~queried_mask, -1e9)
-        selected_batch = torch.argmax(scores, dim=-1)
-        selected[offset : offset + len(rows)] = selected_batch
-        positions = (queried_ids == selected_batch[:, None]).to(torch.float32).argmax(dim=1)
-        predictions.append(queried_forecasts[torch.arange(len(rows)), positions])
+        if finalizer == "equal_average":
+            del outputs
+            predictions.append(_equal_average_queried_forecasts(queried_ids, queried_forecasts))
+        else:
+            assert selected is not None
+            queried_mask = batch["queried_mask"].detach().cpu()
+            scores = outputs["expert_score"].detach().cpu().masked_fill(~queried_mask, -1e9)
+            selected_batch = torch.argmax(scores, dim=-1)
+            selected[offset : offset + len(rows)] = selected_batch
+            positions = (queried_ids == selected_batch[:, None]).to(torch.float32).argmax(dim=1)
+            predictions.append(queried_forecasts[torch.arange(len(rows)), positions])
     latency = time.perf_counter() - start
     return torch.cat(predictions, dim=0), selected, sequences, latency
 
@@ -635,7 +665,18 @@ def evaluate_final_comparison(
         )
     )
 
-    if old_costarts_checkpoint.exists():
+    if OLD_COSTARTS_IMPORT_ERROR:
+        rows.append(
+            _metric_row(
+                method="old_costarts",
+                status="skipped",
+                cache=val_cache,
+                oracle_mae=oracle_mae,
+                note=f"Old COSTARTS router import unavailable: {OLD_COSTARTS_IMPORT_ERROR}",
+            )
+        )
+        old_order = None
+    elif old_costarts_checkpoint.exists():
         old_router, old_selected, old_stop, old_order, old_epoch, old_latency = _old_costarts_predictions(
             checkpoint_path=old_costarts_checkpoint,
             cache=val_cache,
@@ -697,7 +738,7 @@ def evaluate_final_comparison(
                 top2_indices=top2_subset,
                 first_query=first_subset,
                 selection_split="router_val_checkpoint_selected",
-                note=f"Subset-utility COSTARTS checkpoint epoch {checkpoint.get('epoch', -1)}.",
+                note=f"Subset-utility COSTARTS checkpoint epoch {checkpoint.get('epoch', -1)}; finalizer is equal average of queried forecasts.",
             )
         )
 
@@ -707,6 +748,7 @@ def evaluate_final_comparison(
             batch_size=batch_size,
             device=device,
             force_k=2,
+            finalizer="equal_average",
         )
         top2_tensor = _sequence_tensor(top2_sequences, 2)
         top2_equal_prediction = torch.stack(

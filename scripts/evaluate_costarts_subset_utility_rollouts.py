@@ -118,8 +118,8 @@ def evaluate_rollouts(
         raise ValueError("Sequential rollout evaluation must use router_val subset-state cache")
     if cache["subset_sampling_mode"] != "exhaustive":
         raise ValueError("Sequential rollouts require exhaustive subset-state cache")
-    if finalizer not in {"reranker", "sparse_mixture"}:
-        raise ValueError("finalizer must be reranker or sparse_mixture")
+    if finalizer not in {"equal_average", "reranker", "sparse_mixture"}:
+        raise ValueError("finalizer must be equal_average, reranker, or sparse_mixture")
     if mode not in {"greedy", "sampled", "forced"}:
         raise ValueError("mode must be greedy, sampled, or forced")
 
@@ -272,7 +272,19 @@ def evaluate_rollouts(
         target_rows.append(true_targets)
         mask_rows.append(target_mask)
 
-        if finalizer == "reranker":
+        if finalizer == "equal_average":
+            valid_slots = queried_ids >= 0
+            slot_weights = valid_slots.to(queried_forecasts.dtype)
+            slot_weights = slot_weights / slot_weights.sum(dim=1, keepdim=True).clamp_min(1.0)
+            pred = (queried_forecasts * slot_weights[:, :, None, None]).sum(dim=1)
+            predictions.append(pred)
+            for local_index in range(len(rows)):
+                valid_experts = queried_ids[local_index][valid_slots[local_index]]
+                selected_experts[offset + local_index] = valid_experts[0].to(torch.long)
+                weight = 1.0 / max(int(valid_experts.numel()), 1)
+                for expert_index in valid_experts.tolist():
+                    mix_weights_full[offset + local_index, int(expert_index)] = weight
+        elif finalizer == "reranker":
             scores = outputs["expert_score"].detach().cpu().masked_fill(~queried_mask, -1e9)
             selected = torch.argmax(scores, dim=-1)
             selected_experts[offset : offset + len(rows)] = selected
@@ -383,6 +395,11 @@ def evaluate_rollouts(
             "all_queries_unique": duplicate_query_count == 0,
             "state_changed_for_every_query": state_changed_count == query_event_count,
             "stop_step_one_fraction": float(stop_step_counts[1] / max(num_windows, 1)) if len(stop_step_counts) > 1 else 0.0,
+            "selected_expert_diagnostic": (
+                "first_queried_expert_when_finalizer_is_equal_average"
+                if finalizer == "equal_average"
+                else "model_selected_expert"
+            ),
         },
         "rollouts": detailed,
     }
@@ -425,6 +442,7 @@ def _write_outputs(payloads: list[dict[str, Any]], output_dir: Path) -> None:
         "all_queries_unique",
         "state_changed_for_every_query",
         "stop_step_one_fraction",
+        "selected_expert_diagnostic",
     ]
     with csv_path.open("w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fields)
@@ -453,7 +471,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--checkpoint", default=DEFAULT_CHECKPOINT)
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--mode", choices=("greedy", "sampled", "forced", "all"), default="all")
-    parser.add_argument("--finalizer", choices=("reranker", "sparse_mixture", "both"), default="both")
+    parser.add_argument(
+        "--finalizer",
+        choices=("equal_average", "reranker", "sparse_mixture", "all"),
+        default="equal_average",
+    )
     parser.add_argument("--force-k", type=int, default=None)
     parser.add_argument("--temperature", type=float, default=1.0)
     parser.add_argument("--max-queries", type=int, default=None)
@@ -470,7 +492,7 @@ def main() -> None:
     cache = _load_torch(Path(args.cache))
     router, checkpoint = _load_router(Path(args.checkpoint), device)
     modes = ("greedy", "sampled", "forced") if args.mode == "all" else (args.mode,)
-    finalizers = ("reranker", "sparse_mixture") if args.finalizer == "both" else (args.finalizer,)
+    finalizers = ("equal_average", "reranker", "sparse_mixture") if args.finalizer == "all" else (args.finalizer,)
     payloads = []
     for mode in modes:
         if mode == "forced":
