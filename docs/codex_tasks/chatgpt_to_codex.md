@@ -1,17 +1,17 @@
 # ChatGPT to Codex Prompt Inbox
 
 Status: active
-Queue ID: COSTAR-TS-one-hour-2026-07-26-run-2
+Queue ID: COSTAR-TS-two-hour-2026-07-26-run-3
 
-## Active task: verified one-hour COSTAR-TS improvement loop
+## Active task: verified two-hour COSTAR-TS improvement loop
 
-Run a completion-driven COSTAR-TS research loop for one hour, controlled by `watch-chatgpt-codex.ps1 -LoopHours 1`.
+Run a completion-driven COSTAR-TS research loop for two hours, controlled by `watch-chatgpt-codex.ps1 -LoopHours 2`.
 
 Before changing research code, verify that the loop can work safely:
 
 1. Confirm the repository is on the intended branch and inspect `git status`.
 2. Confirm the watcher can launch one Codex iteration, wait for it to finish, and launch the next iteration only after successful completion.
-3. Confirm the one-hour deadline prevents new iterations after the deadline.
+3. Confirm the two-hour deadline prevents new iterations after the deadline.
 4. Preserve unrelated user changes and never run two research iterations concurrently.
 5. If the watcher logic is broken, fix and test the watcher first. Do not pretend research work ran.
 
@@ -24,7 +24,7 @@ For every research iteration:
 5. Select changes using training and validation data only. Do not tune on the final test split.
 6. Keep the change only if it improves correctness, reproducibility, evidence quality, validation performance, or the cost-accuracy tradeoff.
 7. If evidence does not support the change, revert only that iteration's changes and record the negative result.
-8. Commit and push only a valid, tested improvement, then repeat until the one-hour deadline.
+8. Commit and push only a valid, tested improvement, then repeat until the two-hour deadline.
 
 Research priorities, in order:
 
@@ -47,4 +47,4 @@ At the end of each completed iteration:
 4. Report changed files, commands and tests run, real results, commit hash, branch, and blockers.
 5. If authentication, conflicts, branch protection, failing tests, missing data, or compute blocks completion, stop and report the exact blocker.
 
-At the end of the hour, produce a final summary separating verified improvements, negative results, unfinished work, and the next highest-priority experiment.
+At the end of two hours, produce a final summary separating verified improvements, negative results, unfinished work, and the next highest-priority experiment.
