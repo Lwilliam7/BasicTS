@@ -69,16 +69,29 @@ function Test-GitAncestor {
 
 function Sync-LocalBranch {
     $currentBranch = (Invoke-Git branch --show-current | Select-Object -First 1).Trim()
-    if ($currentBranch -ne $Branch) {
-        throw "Expected local branch '$Branch', but found '$currentBranch'."
-    }
-
     $status = @(Invoke-Git status --porcelain)
     if ($status.Count -gt 0) {
         throw "The working tree is not clean. Preserve or commit these changes before running the watcher:`n$($status -join [Environment]::NewLine)"
     }
 
     Invoke-Git fetch $Remote $Branch | Out-Null
+
+    if ($currentBranch -ne $Branch) {
+        Write-Host "Switching from clean branch '$currentBranch' to '$Branch'."
+        $localTargetBranch = @(Invoke-Git branch --list $Branch)
+        if ($localTargetBranch.Count -gt 0) {
+            Invoke-Git switch $Branch | Out-Null
+        }
+        else {
+            Invoke-Git switch --track -c $Branch "$Remote/$Branch" | Out-Null
+        }
+
+        $switchedBranch = (Invoke-Git branch --show-current | Select-Object -First 1).Trim()
+        if ($switchedBranch -ne $Branch) {
+            throw "Branch switch verification failed: expected '$Branch', found '$switchedBranch'."
+        }
+    }
+
     $localHead = (Invoke-Git rev-parse HEAD | Select-Object -First 1).Trim()
     $remoteHead = (Invoke-Git rev-parse "$Remote/$Branch" | Select-Object -First 1).Trim()
 
