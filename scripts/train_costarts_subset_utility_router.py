@@ -189,7 +189,7 @@ def build_cost_aware_targets(
     remaining_mask = batch["remaining_mask"].to(torch.bool)
     valid_action_mask = batch["valid_action_mask"].to(torch.bool)
     expert_errors = batch["true_expert_error_vector"].to(torch.float32)
-    marginal_gain = batch["marginal_gain_best_queried_oracle"].to(torch.float32)
+    marginal_gain = batch["marginal_gain_equal_queried_average"].to(torch.float32)
     batch_size, num_experts = expert_errors.shape
     assert tuple(queried_mask.shape) == (batch_size, num_experts)
     assert tuple(remaining_mask.shape) == (batch_size, num_experts)
@@ -568,6 +568,17 @@ def _state_batch(cache: Mapping[str, Any], state_indices: Sequence[int], device:
     return {key: cache[key][index].to(device) for key in keys}
 
 
+def _equal_average_queried_forecasts(
+    queried_ids: torch.Tensor,
+    queried_forecasts: torch.Tensor,
+) -> torch.Tensor:
+    valid_slots = queried_ids >= 0
+    counts = valid_slots.sum(dim=1).clamp_min(1).to(queried_forecasts.dtype)
+    return (
+        queried_forecasts * valid_slots[:, :, None, None].to(queried_forecasts.dtype)
+    ).sum(dim=1) / counts[:, None, None]
+
+
 @torch.no_grad()
 def evaluate_deployable_inference(
     router: SubsetUtilityCOSTARTSRouter,
@@ -676,6 +687,9 @@ def evaluate_deployable_inference(
             stop_counts[len(query_history[sample_index])] += 1
 
     final_state_indices = [lookup[row][masks[row]] for row in range(num_windows)]
+    predictions = []
+    final_targets = []
+    final_masks = []
     selected = torch.empty(num_windows, dtype=torch.long)
     for offset in range(0, num_windows, batch_size):
         rows = list(range(offset, min(offset + batch_size, num_windows)))
@@ -690,22 +704,24 @@ def evaluate_deployable_inference(
         queried_mask = batch["queried_mask"].detach().cpu()
         selected_scores = expert_scores.masked_fill(~queried_mask, -1e9)
         selected[offset : offset + len(rows)] = torch.argmax(selected_scores, dim=-1)
+        predictions.append(
+            _equal_average_queried_forecasts(
+                batch["queried_expert_ids"].detach().cpu(),
+                batch["queried_expert_forecasts"].detach().cpu(),
+            )
+        )
+        final_targets.append(batch["true_targets"].detach().cpu())
+        final_masks.append(batch["target_mask"].detach().cpu())
 
     source_errors = torch.empty(num_windows, num_experts, dtype=torch.float32)
     for row in range(num_windows):
         source_errors[row] = cache["true_expert_error_vector"][lookup[row][0]]
-    selected_mae = source_errors.gather(1, selected.view(-1, 1)).squeeze(1)
-    selected_mse = torch.empty(num_windows, dtype=torch.float32)
-    for row in range(num_windows):
-        state_index = final_state_indices[row]
-        queried_ids = cache["queried_expert_ids"][state_index]
-        matching_slots = torch.nonzero(queried_ids == selected[row], as_tuple=False).flatten()
-        if matching_slots.numel() == 0:
-            raise AssertionError("selected expert is not in the queried subset")
-        prediction = cache["queried_expert_forecasts"][state_index, int(matching_slots[0])]
-        target = cache["true_targets"][state_index]
-        mask = cache["target_mask"][state_index].to(torch.float32)
-        selected_mse[row] = (((prediction - target) ** 2) * mask).sum() / mask.sum().clamp_min(1.0)
+    final_prediction = torch.cat(predictions, dim=0)
+    final_target = torch.cat(final_targets, dim=0)
+    final_mask = torch.cat(final_masks, dim=0).to(torch.float32)
+    denominator = final_mask.sum(dim=(1, 2)).clamp_min(1.0)
+    selected_mae = (torch.abs(final_prediction - final_target) * final_mask).sum(dim=(1, 2)) / denominator
+    selected_mse = ((final_prediction - final_target).pow(2) * final_mask).sum(dim=(1, 2)) / denominator
     oracle_best = torch.argmin(source_errors, dim=1)
     oracle_mae = source_errors.min(dim=1).values
     avg_queries = sum(len(history) for history in query_history) / max(num_windows, 1)

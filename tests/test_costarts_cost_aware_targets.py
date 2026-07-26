@@ -122,9 +122,41 @@ def test_lambda_zero_reproduces_zero_cost_targets():
         normalized_expert_costs=torch.tensor([9.0, 2.0, 5.0]),
     )
     assert torch.isclose(utility[0, 1], -batch["true_expert_error_vector"][0, 1])
-    assert torch.isclose(utility[1, 1], batch["marginal_gain_best_queried_oracle"][1, 1])
+    assert torch.isclose(utility[1, 1], batch["marginal_gain_equal_queried_average"][1, 1])
     assert int(actions[0]) == 1
     assert int(actions[1]) == 1
+
+
+def test_cost_aware_targets_use_equal_average_marginal_gain():
+    batch = _batch()
+    batch["marginal_gain_best_queried_oracle"] = torch.tensor(
+        [
+            [float("nan"), float("nan"), float("nan")],
+            [float("-inf"), 1.00, 0.01],
+            [float("-inf"), 0.01, -0.01],
+            [float("-inf"), float("-inf"), 0.01],
+        ],
+        dtype=torch.float32,
+    )
+    batch["marginal_gain_equal_queried_average"] = torch.tensor(
+        [
+            [float("nan"), float("nan"), float("nan")],
+            [float("-inf"), -0.01, 0.20],
+            [float("-inf"), 0.01, -0.01],
+            [float("-inf"), float("-inf"), 0.01],
+        ],
+        dtype=torch.float32,
+    )
+
+    utility, actions = build_cost_aware_targets(
+        batch,
+        cost_coefficient=0.0,
+        normalized_expert_costs=torch.ones(3),
+    )
+
+    assert torch.isclose(utility[1, 1], torch.tensor(-0.01))
+    assert torch.isclose(utility[1, 2], torch.tensor(0.20))
+    assert int(actions[1]) == 2
 
 
 def test_two_lambdas_can_produce_different_labels():
@@ -228,6 +260,97 @@ def test_cost_sweep_equal_average_finalizer_uses_queried_forecast_mean():
     assert torch.equal(targets, torch.zeros(2, 1, 1))
     assert torch.equal(masks, torch.ones(2, 1, 1, dtype=torch.bool))
     assert torch.equal(selected, torch.tensor([0, 1]))
+
+
+def test_deployable_validation_mae_uses_equal_average_finalizer():
+    class _Router:
+        def eval(self):
+            return self
+
+        def __call__(self, history, queried_mask, queried_expert_ids, queried_expert_forecasts):
+            batch_size, num_experts = queried_mask.shape
+            action_logits = torch.full((batch_size, num_experts + 1), -10.0)
+            for index in range(batch_size):
+                if not bool(queried_mask[index, 0]):
+                    action_logits[index, 0] = 10.0
+                elif not bool(queried_mask[index, 1]):
+                    action_logits[index, 1] = 10.0
+                else:
+                    action_logits[index, 2] = 10.0
+            return {
+                "action_logits": action_logits,
+                "utility_prediction": torch.zeros(batch_size, num_experts),
+                "expert_score": torch.tensor([[10.0, -10.0]]).expand(batch_size, -1),
+                "mix_logits": torch.zeros(batch_size, num_experts),
+            }
+
+    queried_mask = torch.tensor(
+        [
+            [False, False],
+            [True, False],
+            [False, True],
+            [True, True],
+        ]
+    )
+    queried_ids = torch.tensor([[-1, -1], [0, -1], [1, -1], [0, 1]])
+    queried_forecasts = torch.zeros(4, 2, 1, 1)
+    queried_forecasts[1, 0, 0, 0] = 0.0
+    queried_forecasts[2, 0, 0, 0] = 4.0
+    queried_forecasts[3, 0, 0, 0] = 0.0
+    queried_forecasts[3, 1, 0, 0] = 4.0
+    valid_action_mask = torch.tensor(
+        [
+            [True, True, False],
+            [False, True, True],
+            [True, False, True],
+            [False, False, True],
+        ]
+    )
+    cache = {
+        "split_role": "router_val",
+        "source_split_role": "router_val",
+        "num_source_windows": 1,
+        "num_states": 4,
+        "num_experts": 2,
+        "max_subset_size": 2,
+        "forecast_horizon": 1,
+        "num_features": 1,
+        "subset_sampling_mode": "exhaustive",
+        "stop_action_index": 2,
+        "source_sample_indices_contiguous": True,
+        "state_id": torch.arange(4),
+        "sample_index": torch.zeros(4, dtype=torch.long),
+        "source_row": torch.zeros(4, dtype=torch.long),
+        "subset_size": queried_mask.sum(dim=1),
+        "queried_mask": queried_mask,
+        "remaining_mask": ~queried_mask,
+        "queried_expert_ids": queried_ids,
+        "queried_expert_forecasts": queried_forecasts,
+        "history": torch.zeros(4, 96, 1),
+        "true_targets": torch.full((4, 1, 1), 2.0),
+        "target_mask": torch.ones(4, 1, 1, dtype=torch.bool),
+        "true_expert_error_vector": torch.full((4, 2), 2.0),
+        "current_loss_best_queried_oracle": torch.full((4,), float("nan")),
+        "current_loss_equal_queried_average": torch.full((4,), float("nan")),
+        "current_loss_deployable_reranker": torch.full((4,), float("nan")),
+        "marginal_gain_best_queried_oracle": torch.zeros(4, 2),
+        "marginal_gain_equal_queried_average": torch.zeros(4, 2),
+        "cost_adjusted_utility": torch.zeros(4, 2),
+        "optimal_next_action": torch.tensor([0, 1, 0, 2]),
+        "valid_action_mask": valid_action_mask,
+        "pairwise_labels_queried": torch.zeros(4, 2, 2, dtype=torch.int8),
+        "pairwise_labels_remaining": torch.zeros(4, 2, 2, dtype=torch.int8),
+    }
+
+    metrics = costarts_train.evaluate_deployable_inference(
+        _Router(),
+        cache,
+        batch_size=1,
+        device=torch.device("cpu"),
+    )
+
+    assert metrics["validation_mae"] == 0.0
+    assert metrics["validation_mse"] == 0.0
 
 
 def test_final_comparison_fixed_and_weighted_baselines_use_train_split(tmp_path, monkeypatch):

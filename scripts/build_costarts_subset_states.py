@@ -358,7 +358,7 @@ def build_subset_state_cache_from_costarts_cache(
     if torch.any(expert_costs < 0):
         raise ValueError("expert costs must be non-negative")
     empty_state_utility = -state_errors - utility_cost_coefficient * expert_costs.view(1, -1)
-    non_empty_utility = marginal_best - utility_cost_coefficient * expert_costs.view(1, -1)
+    non_empty_utility = marginal_equal - utility_cost_coefficient * expert_costs.view(1, -1)
     utility = torch.where(has_queried.view(-1, 1), non_empty_utility, empty_state_utility)
     utility = utility.masked_fill(~capped_remaining_mask, float("-inf"))
 
@@ -419,7 +419,7 @@ def build_subset_state_cache_from_costarts_cache(
         "forecast_horizon": int(source_cache["forecast_horizon"]),
         "num_features": int(source_cache["num_features"]),
         "stop_action_index": stop_action_index,
-        "utility_finalizer": "best_queried_expert_oracle",
+        "utility_finalizer": "equal_queried_average",
         "utility_cost_coefficient": float(utility_cost_coefficient),
         "cost_schedule_by_expert": dict(cost_schedule_by_expert),
         "base_expert_costs": expert_costs.to(torch.float32),

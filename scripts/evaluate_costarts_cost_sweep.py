@@ -257,10 +257,15 @@ def evaluate_cost_lambda(
             best_predicted_utility, best_actions = predicted_utility.max(dim=1)
             predicted_stop = has_queried & ((best_predicted_utility <= 0.0) | ~remaining_mask.any(dim=1))
 
-            true_marginal = batch["marginal_gain_best_queried_oracle"] if "marginal_gain_best_queried_oracle" in batch else None
+            marginal_key = (
+                "marginal_gain_equal_queried_average"
+                if finalizer == "equal_average"
+                else "marginal_gain_best_queried_oracle"
+            )
+            true_marginal = batch[marginal_key] if marginal_key in batch else None
             if true_marginal is None:
                 state_index_tensor = torch.tensor(state_indices, dtype=torch.long)
-                true_marginal = cache["marginal_gain_best_queried_oracle"][state_index_tensor].to(device)
+                true_marginal = cache[marginal_key][state_index_tensor].to(device)
             true_utility = true_marginal - float(query_lambda) * costs_device.view(1, -1)
             true_utility = true_utility.masked_fill(~remaining_mask, -1e9)
             best_true_utility = true_utility.max(dim=1).values
