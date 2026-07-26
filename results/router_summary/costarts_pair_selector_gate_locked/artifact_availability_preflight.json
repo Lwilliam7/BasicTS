@@ -1,0 +1,109 @@
+{
+  "status": "blocked_before_locked_test_metrics",
+  "first_invocation": {
+    "command": "C:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe scripts\\costarts_locked_test_evaluation.py evaluate --manifest docs\\costarts_pair_selector_gate_test_lock.json --repo-root . --test-cache cache\\costarts_pair_selector_locked_test_cache.pt --output results\\router_summary\\costarts_pair_selector_gate_locked\\test_evaluation.json --device cpu",
+    "result": "failed_during_manifest_artifact_preflight",
+    "error": "FileNotFoundError: checkpoints\\candidates\\best_dlinear.pt",
+    "test_cache_loaded": false,
+    "test_metrics_accessed": false
+  },
+  "restored_artifacts": [
+    {
+      "path": "checkpoints/candidates/best_dlinear.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_dlinear.pt",
+      "expected_sha256": "a3641046730bcdb78967708c63e091b8f240d98ccc1b84666536292b4aa6f0c1",
+      "observed_sha256": "a3641046730bcdb78967708c63e091b8f240d98ccc1b84666536292b4aa6f0c1",
+      "match": true
+    },
+    {
+      "path": "checkpoints/candidates/best_patchtst.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_patchtst.pt",
+      "expected_sha256": "eca0baf88a71e9f35a8527f8db00ce34e8ca45769716c6c3ca42d7451b8d6de5",
+      "observed_sha256": "eca0baf88a71e9f35a8527f8db00ce34e8ca45769716c6c3ca42d7451b8d6de5",
+      "match": true
+    },
+    {
+      "path": "checkpoints/candidates/best_itransformer.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_itransformer.pt",
+      "expected_sha256": "218ce0ebb9b3cb2d8eb8678c231b0bf005dc7b83b72695de815490d3a28df684",
+      "observed_sha256": "218ce0ebb9b3cb2d8eb8678c231b0bf005dc7b83b72695de815490d3a28df684",
+      "match": true
+    },
+    {
+      "path": "checkpoints/candidates/best_timesnet.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_timesnet.pt",
+      "expected_sha256": "4cadc8df32373c919e35bb2e6fbe24aa6b1618e0137995be1cffe2b43d9f0c2f",
+      "observed_sha256": "4cadc8df32373c919e35bb2e6fbe24aa6b1618e0137995be1cffe2b43d9f0c2f",
+      "match": true
+    },
+    {
+      "path": "checkpoints/candidates/best_moderntcn.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_moderntcn.pt",
+      "expected_sha256": "f2f907ade7bbfa33c4c0bc75779e86ef36758e845959d5763249f385acd8129e",
+      "observed_sha256": "f2f907ade7bbfa33c4c0bc75779e86ef36758e845959d5763249f385acd8129e",
+      "match": true
+    },
+    {
+      "path": "cache/costarts_router_train_cache.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_router_train_cache.pt",
+      "expected_sha256": "631ca1142cbf563b257cc636e1562a1dc66141f7ad6fd51c48e9a9f1aa11e1e0",
+      "observed_sha256": "631ca1142cbf563b257cc636e1562a1dc66141f7ad6fd51c48e9a9f1aa11e1e0",
+      "match": true
+    },
+    {
+      "path": "cache/costarts_router_val_cache.pt",
+      "source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_router_val_cache.pt",
+      "expected_sha256": "0d802634a7f1cead668382f5a85e31292157a4a15c1316049ef02268a8b56d3b",
+      "observed_sha256": "0d802634a7f1cead668382f5a85e31292157a4a15c1316049ef02268a8b56d3b",
+      "match": true
+    }
+  ],
+  "already_available_locked_artifacts": [
+    {
+      "path": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed7.pt",
+      "expected_sha256": "ea771ce48a9aa993c8ce0449dd25d55f31d07c046b2e42f361acc07c6f42675b",
+      "observed_sha256": "ea771ce48a9aa993c8ce0449dd25d55f31d07c046b2e42f361acc07c6f42675b",
+      "match": true
+    },
+    {
+      "path": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed11.pt",
+      "expected_sha256": "b5bafa6354ba53cf06f7c2853e77227ae1e79267088ea5aac676b192b276c003",
+      "observed_sha256": "b5bafa6354ba53cf06f7c2853e77227ae1e79267088ea5aac676b192b276c003",
+      "match": true
+    },
+    {
+      "path": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed13.pt",
+      "expected_sha256": "e77011209699d2422490218ffc6c1624254255981a73a56fc2bccca84db3f728",
+      "observed_sha256": "e77011209699d2422490218ffc6c1624254255981a73a56fc2bccca84db3f728",
+      "match": true
+    }
+  ],
+  "remaining_missing_required_artifacts": [
+    {
+      "path": "cache/costarts_pair_selector_locked_test_cache.pt",
+      "runner_exists": false,
+      "original_checkout_exists": false,
+      "profile_search_found_existing_copy": false,
+      "reason_evaluation_not_rerun": "The exact locked evaluator requires this cache. No existing byte-identical cache was found, so evaluation was stopped before test metrics."
+    }
+  ],
+  "focused_tests": {
+    "command": "C:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe -m pytest -q tests\\test_costarts_pair_selector.py tests\\test_costarts_pair_selector_gate.py tests\\test_costarts_locked_test_evaluation.py --basetemp=.pytest_tmp",
+    "result": "16 passed in 4.32s"
+  },
+  "preflight_validation": {
+    "manifest_artifact_hashes_passed": true,
+    "locked_test_cache_available": false,
+    "all_preflight_validation_passed": false
+  },
+  "locked_test_results": null,
+  "confidence_intervals": null,
+  "predefined_success_conditions": {
+    "all_locked_artifacts_available": false,
+    "all_hashes_match": true,
+    "focused_tests_pass": true,
+    "exact_locked_evaluation_executed_successfully_once": false,
+    "method_unchanged_after_results": true,
+    "overall_pass": false
+  }
+}
