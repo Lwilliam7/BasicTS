@@ -236,7 +236,12 @@ function Test-BranchSync {
     try {
         $first = Invoke-Watcher $fixture
         Assert-True ($first.ExitCode -eq 0) "First branch-sync run failed: $($first.Output -join [Environment]::NewLine)"
-        Assert-True (($first.Output -join [Environment]::NewLine).Contains("Reading additional input from stdin...")) "Native stderr was not captured in the watcher log."
+        $firstLog = Get-ChildItem -Path (Join-Path $fixture.State "logs") -Filter "codex_*_iteration_1.log" |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+        Assert-True ($null -ne $firstLog) "Watcher did not create an iteration log."
+        $firstLogText = Get-Content -Path $firstLog.FullName -Raw
+        Assert-True ($firstLogText.Contains("Reading additional input from stdin...")) "Native stderr was not captured in the watcher log."
         Assert-True ((Get-FakeIterationCount $fixture) -eq 1) "Expected first fake iteration."
 
         $newPromptSha = Update-RemotePrompt $fixture "second queued prompt"
