@@ -13,6 +13,7 @@ import csv
 import json
 import math
 import random
+from copy import deepcopy
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Mapping, Optional, Sequence, Union
@@ -20,7 +21,7 @@ from typing import Any, Mapping, Optional, Sequence, Union
 import torch
 from torch import nn
 import torch.nn.functional as F
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler
 
 try:
     from scripts.build_costarts_subset_states import validate_costarts_subset_states
@@ -42,6 +43,13 @@ DEFAULT_OUTPUT_DIR = "checkpoints/costarts_subset_utility"
 DEFAULT_RESULTS_DIR = "results/router_summary/costarts_subset_utility"
 DEFAULT_TRAIN_CACHE = "cache/costarts_subset_states_train.pt"
 DEFAULT_VAL_CACHE = "cache/costarts_subset_states_val.pt"
+UTILITY_FINALIZERS = {"best_single", "equal_average"}
+DEPLOYMENT_FINALIZERS = {"best_reranked", "equal_average"}
+STATE_SAMPLING_MODES = {"uniform", "action_balanced"}
+FIRST_QUERY_TARGETS = {"hard", "soft"}
+FIRST_QUERY_HEADS = {"shared", "separate"}
+FIRST_QUERY_INITIALIZATIONS = {"random", "routerdc_frozen", "routerdc_finetune"}
+DEFAULT_ROUTERDC_FIRST_QUERY_CHECKPOINT = "checkpoints/best_routerdc_hard_contrastive.pt"
 
 
 @dataclass
@@ -67,6 +75,19 @@ class SubsetUtilityTrainingConfig:
     cost_mode: str = "equal"
     cost_file: Optional[str] = None
     selection_metric: str = "cost_aware_objective"
+    utility_finalizer: str = "equal_average"
+    deployment_finalizer: str = "equal_average"
+    allow_finalizer_mismatch: bool = False
+    state_sampling: str = "uniform"
+    first_query_target: str = "soft"
+    first_query_temperature: float = 0.02
+    first_query_loss_weight: float = 2.0
+    first_query_sampling_ratio: float = 0.0
+    first_query_head: str = "separate"
+    first_query_regret_loss_weight: float = 1.0
+    first_query_initialization: str = "random"
+    routerdc_checkpoint_path: str = DEFAULT_ROUTERDC_FIRST_QUERY_CHECKPOINT
+    routerdc_consistency_weight: float = 0.0
     use_expert_embeddings: bool = True
     history_encoder_type: str = "current"
     action_head_type: str = "unified"
@@ -182,14 +203,22 @@ def build_cost_aware_targets(
     *,
     cost_coefficient: float,
     normalized_expert_costs: torch.Tensor,
+    utility_finalizer: str = "best_single",
 ) -> tuple[torch.Tensor, torch.Tensor]:
     if cost_coefficient < 0:
         raise ValueError("cost_coefficient must be non-negative")
+    if utility_finalizer not in UTILITY_FINALIZERS:
+        raise ValueError(f"utility_finalizer must be one of {sorted(UTILITY_FINALIZERS)}")
     queried_mask = batch["queried_mask"].to(torch.bool)
     remaining_mask = batch["remaining_mask"].to(torch.bool)
     valid_action_mask = batch["valid_action_mask"].to(torch.bool)
     expert_errors = batch["true_expert_error_vector"].to(torch.float32)
-    marginal_gain = batch["marginal_gain_best_queried_oracle"].to(torch.float32)
+    marginal_key = (
+        "marginal_gain_equal_queried_average"
+        if utility_finalizer == "equal_average"
+        else "marginal_gain_best_queried_oracle"
+    )
+    marginal_gain = batch[marginal_key].to(torch.float32)
     batch_size, num_experts = expert_errors.shape
     assert tuple(queried_mask.shape) == (batch_size, num_experts)
     assert tuple(remaining_mask.shape) == (batch_size, num_experts)
@@ -254,6 +283,162 @@ class CostartsSubsetStateDataset(Dataset):
         }
 
 
+class RouterDCFirstQueryModule(nn.Module):
+    """RouterDC-compatible history-only selector used only for COSTARTS first query."""
+
+    def __init__(
+        self,
+        input_len: int = 96,
+        num_features: int = 7,
+        num_experts: int = 5,
+        embedding_dim: int = 64,
+        hidden_dim: int = 64,
+        dropout: float = 0.1,
+        router_temperature: float = 1.0,
+        router_type: str = "routerdc_hard",
+    ) -> None:
+        super().__init__()
+        del router_type
+        self.input_len = int(input_len)
+        self.num_features = int(num_features)
+        self.num_experts = int(num_experts)
+        self.embedding_dim = int(embedding_dim)
+        self.hidden_dim = int(hidden_dim)
+        self.dropout = float(dropout)
+        self.router_temperature = float(router_temperature)
+        self.input_projection = nn.Sequential(
+            nn.Linear(num_features, hidden_dim),
+            nn.GELU(),
+            nn.LayerNorm(hidden_dim),
+        )
+        self.temporal_encoder = nn.Sequential(
+            nn.Conv1d(hidden_dim, hidden_dim, kernel_size=5, padding=2),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Conv1d(hidden_dim, hidden_dim, kernel_size=3, padding=1),
+            nn.GELU(),
+        )
+        self.window_projection = nn.Sequential(
+            nn.LayerNorm(hidden_dim),
+            nn.Linear(hidden_dim, embedding_dim),
+        )
+        self.expert_embeddings = nn.Parameter(torch.randn(num_experts, embedding_dim))
+        nn.init.normal_(self.expert_embeddings, mean=0.0, std=0.02)
+
+    def encode(self, history: torch.Tensor) -> torch.Tensor:
+        batch_size = history.shape[0]
+        assert tuple(history.shape[1:]) == (self.input_len, self.num_features)
+        projected = self.input_projection(history)
+        encoded = self.temporal_encoder(projected.transpose(1, 2)).transpose(1, 2)
+        window_embedding = self.window_projection(encoded.mean(dim=1))
+        assert tuple(window_embedding.shape) == (batch_size, self.embedding_dim)
+        return window_embedding
+
+    def forward(self, history: torch.Tensor) -> torch.Tensor:
+        query_embedding = F.normalize(self.encode(history), p=2, dim=-1)
+        expert_vectors = F.normalize(self.expert_embeddings, p=2, dim=-1)
+        similarities = query_embedding @ expert_vectors.T
+        logits = similarities / max(self.router_temperature, 1e-12)
+        assert tuple(logits.shape) == (history.shape[0], self.num_experts)
+        return logits
+
+    def config_dict(self) -> dict[str, Any]:
+        return {
+            "router_type": "routerdc_hard",
+            "input_len": self.input_len,
+            "num_features": self.num_features,
+            "num_experts": self.num_experts,
+            "embedding_dim": self.embedding_dim,
+            "hidden_dim": self.hidden_dim,
+            "dropout": self.dropout,
+            "router_temperature": self.router_temperature,
+        }
+
+
+def inspect_routerdc_first_query_checkpoint(
+    checkpoint_path: Union[str, Path],
+    *,
+    expert_names: Sequence[str],
+    input_len: int,
+    num_features: int,
+    num_experts: int,
+    embedding_dim: int,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    checkpoint_path = Path(checkpoint_path)
+    if not checkpoint_path.exists():
+        raise FileNotFoundError(f"RouterDC first-query checkpoint does not exist: {checkpoint_path}")
+    checkpoint = _load_torch(checkpoint_path)
+    checkpoint_experts = tuple(checkpoint.get("selected_expert_names") or checkpoint.get("expert_names") or ())
+    expected_experts = tuple(str(name) for name in expert_names)
+    if checkpoint_experts != expected_experts:
+        raise ValueError(
+            "RouterDC checkpoint expert order mismatch. "
+            f"checkpoint={checkpoint_experts}, costarts={expected_experts}"
+        )
+    router_config = dict(checkpoint.get("router_config") or {})
+    required = {
+        "input_len": int(input_len),
+        "num_features": int(num_features),
+        "num_experts": int(num_experts),
+        "embedding_dim": int(embedding_dim),
+    }
+    for key, expected in required.items():
+        observed = int(router_config.get(key, -1))
+        if observed != expected:
+            raise ValueError(
+                f"RouterDC checkpoint {key} mismatch: checkpoint={observed}, costarts={expected}"
+            )
+    state_dict = checkpoint.get("router_state_dict")
+    if not isinstance(state_dict, Mapping):
+        raise ValueError("RouterDC checkpoint is missing router_state_dict")
+    expected_embedding_shape = (int(num_experts), int(embedding_dim))
+    actual_embedding_shape = tuple(state_dict.get("expert_embeddings", torch.empty(0)).shape)
+    if actual_embedding_shape != expected_embedding_shape:
+        raise ValueError(
+            "RouterDC expert embedding shape mismatch: "
+            f"checkpoint={actual_embedding_shape}, expected={expected_embedding_shape}"
+        )
+    module_config = {
+        "input_len": int(router_config["input_len"]),
+        "num_features": int(router_config["num_features"]),
+        "num_experts": int(router_config["num_experts"]),
+        "embedding_dim": int(router_config["embedding_dim"]),
+        "hidden_dim": int(router_config.get("hidden_dim", embedding_dim)),
+        "dropout": float(router_config.get("dropout", 0.1)),
+        "router_temperature": float(router_config.get("router_temperature", 1.0)),
+        "router_type": str(router_config.get("router_type", "routerdc_hard")),
+    }
+    report = {
+        "checkpoint_path": str(checkpoint_path),
+        "checkpoint_epoch": checkpoint.get("epoch"),
+        "selected_expert_names": list(checkpoint_experts),
+        "router_config": module_config,
+        "state_dict_shapes": {key: list(value.shape) for key, value in state_dict.items()},
+        "expert_embeddings_shape": list(actual_embedding_shape),
+        "normalization": "L2-normalized history query and expert embeddings with cosine similarity",
+        "compatible_with_costarts_expert_order": True,
+    }
+    return module_config, report
+
+
+def load_routerdc_first_query_weights(
+    router: "SubsetUtilityCOSTARTSRouter",
+    checkpoint_path: Union[str, Path],
+) -> None:
+    if router.routerdc_first_query is None:
+        raise ValueError("router has no RouterDC first-query module to load")
+    checkpoint = _load_torch(checkpoint_path)
+    state_dict = checkpoint["router_state_dict"]
+    router.routerdc_first_query.load_state_dict(state_dict)
+    if router.routerdc_reference_first_query is not None:
+        router.routerdc_reference_first_query.load_state_dict(state_dict)
+        router.routerdc_reference_first_query.requires_grad_(False)
+        router.routerdc_reference_first_query.eval()
+    if router.first_query_initialization == "routerdc_frozen":
+        router.routerdc_first_query.requires_grad_(False)
+        router.routerdc_first_query.eval()
+
+
 class SubsetUtilityCOSTARTSRouter(nn.Module):
     """Sequential subset-state router trained from offline frozen-expert states."""
 
@@ -269,6 +454,10 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
         use_expert_embeddings: bool = True,
         history_encoder_type: str = "current",
         action_head_type: str = "unified",
+        first_query_head_type: str = "shared",
+        first_query_initialization: str = "random",
+        routerdc_config: Optional[Mapping[str, Any]] = None,
+        routerdc_consistency_weight: float = 0.0,
     ) -> None:
         super().__init__()
         if num_experts <= 0:
@@ -286,9 +475,19 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
             raise ValueError("history_encoder_type must be 'current' or 'simple'")
         if action_head_type not in {"unified", "separate_stop_query"}:
             raise ValueError("action_head_type must be 'unified' or 'separate_stop_query'")
+        if first_query_head_type not in FIRST_QUERY_HEADS:
+            raise ValueError(f"first_query_head_type must be one of {sorted(FIRST_QUERY_HEADS)}")
+        if first_query_initialization not in FIRST_QUERY_INITIALIZATIONS:
+            raise ValueError(f"first_query_initialization must be one of {sorted(FIRST_QUERY_INITIALIZATIONS)}")
+        if routerdc_consistency_weight < 0:
+            raise ValueError("routerdc_consistency_weight must be non-negative")
         self.use_expert_embeddings = bool(use_expert_embeddings)
         self.history_encoder_type = str(history_encoder_type)
         self.action_head_type = str(action_head_type)
+        self.first_query_head_type = str(first_query_head_type)
+        self.first_query_initialization = str(first_query_initialization)
+        self.routerdc_config = dict(routerdc_config or {}) if routerdc_config is not None else None
+        self.routerdc_consistency_weight = float(routerdc_consistency_weight)
         self.stop_action_index = self.num_experts
 
         if self.history_encoder_type == "simple":
@@ -346,6 +545,39 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
         self.utility_head = nn.Linear(embedding_dim, num_experts)
         self.expert_score_head = nn.Linear(embedding_dim, num_experts)
         self.mix_head = nn.Linear(embedding_dim, num_experts)
+        self.first_query_head = (
+            nn.Linear(embedding_dim, num_experts)
+            if self.first_query_head_type == "separate"
+            else None
+        )
+        self.routerdc_first_query: Optional[RouterDCFirstQueryModule]
+        self.routerdc_reference_first_query: Optional[RouterDCFirstQueryModule]
+        if self.first_query_initialization == "random":
+            self.routerdc_first_query = None
+            self.routerdc_reference_first_query = None
+        else:
+            if self.routerdc_config is None:
+                raise ValueError("RouterDC first-query initialization requires routerdc_config")
+            self.routerdc_first_query = RouterDCFirstQueryModule(**self.routerdc_config)
+            self.routerdc_reference_first_query = (
+                deepcopy(self.routerdc_first_query)
+                if self.routerdc_consistency_weight > 0
+                else None
+            )
+            if self.routerdc_reference_first_query is not None:
+                self.routerdc_reference_first_query.requires_grad_(False)
+                self.routerdc_reference_first_query.eval()
+            if self.first_query_initialization == "routerdc_frozen":
+                self.routerdc_first_query.requires_grad_(False)
+                self.routerdc_first_query.eval()
+
+    def train(self, mode: bool = True) -> "SubsetUtilityCOSTARTSRouter":
+        super().train(mode)
+        if self.routerdc_first_query is not None and self.first_query_initialization == "routerdc_frozen":
+            self.routerdc_first_query.eval()
+        if self.routerdc_reference_first_query is not None:
+            self.routerdc_reference_first_query.eval()
+        return self
 
     def encode(
         self,
@@ -412,20 +644,37 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
         utility_prediction = self.utility_head(representation)
         expert_score = self.expert_score_head(representation)
         mix_logits = self.mix_head(representation)
+        routerdc_reference_logits = None
+        if self.routerdc_first_query is not None:
+            first_query_logits = self.routerdc_first_query(history)
+            if self.routerdc_reference_first_query is not None:
+                with torch.no_grad():
+                    routerdc_reference_logits = self.routerdc_reference_first_query(history)
+        else:
+            first_query_logits = (
+                self.first_query_head(representation)
+                if self.first_query_head is not None
+                else action_logits[:, : self.num_experts]
+            )
         batch_size = history.shape[0]
         assert tuple(action_logits.shape) == (batch_size, self.num_experts + 1)
+        assert tuple(first_query_logits.shape) == (batch_size, self.num_experts)
         assert tuple(utility_prediction.shape) == (batch_size, self.num_experts)
         assert tuple(expert_score.shape) == (batch_size, self.num_experts)
         assert tuple(mix_logits.shape) == (batch_size, self.num_experts)
-        return {
+        outputs = {
             "representation": representation,
             "action_logits": action_logits,
+            "first_query_logits": first_query_logits,
             "utility_prediction": utility_prediction,
             "expert_score": expert_score,
             "mix_logits": mix_logits,
         }
+        if routerdc_reference_logits is not None:
+            outputs["routerdc_reference_logits"] = routerdc_reference_logits
+        return outputs
 
-    def config_dict(self) -> dict[str, int]:
+    def config_dict(self) -> dict[str, Any]:
         return {
             "num_experts": self.num_experts,
             "max_subset_size": self.max_subset_size,
@@ -437,6 +686,10 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
             "use_expert_embeddings": self.use_expert_embeddings,
             "history_encoder_type": self.history_encoder_type,
             "action_head_type": self.action_head_type,
+            "first_query_head_type": self.first_query_head_type,
+            "first_query_initialization": self.first_query_initialization,
+            "routerdc_config": self.routerdc_config,
+            "routerdc_consistency_weight": self.routerdc_consistency_weight,
         }
 
 
@@ -456,6 +709,28 @@ def _utility_loss(prediction: torch.Tensor, target: torch.Tensor, valid_action_m
     return F.smooth_l1_loss(prediction[finite], target[finite])
 
 
+def first_query_soft_targets(expert_errors: torch.Tensor, temperature: float) -> torch.Tensor:
+    if temperature <= 0:
+        raise ValueError("first_query_temperature must be positive")
+    targets = torch.softmax(-expert_errors.to(torch.float32) / float(temperature), dim=-1)
+    if not torch.allclose(targets.sum(dim=-1), torch.ones(targets.shape[0], device=targets.device), atol=1e-5):
+        raise AssertionError("first-query soft targets must sum to one")
+    return targets
+
+
+def first_query_regret_loss(logits: torch.Tensor, expert_errors: torch.Tensor) -> torch.Tensor:
+    probabilities = torch.softmax(logits, dim=-1)
+    expected_error = (probabilities * expert_errors.to(logits.dtype)).sum(dim=-1)
+    oracle_error = expert_errors.min(dim=-1).values.to(logits.dtype)
+    return (expected_error - oracle_error).mean()
+
+
+def _entropy_from_logits(logits: torch.Tensor) -> torch.Tensor:
+    log_probabilities = torch.log_softmax(logits, dim=-1)
+    probabilities = log_probabilities.exp()
+    return -(probabilities * log_probabilities).sum(dim=-1)
+
+
 def _pairwise_loss(scores: torch.Tensor, queried_labels: torch.Tensor, remaining_labels: torch.Tensor) -> torch.Tensor:
     labels = torch.cat((queried_labels, remaining_labels), dim=0).to(torch.float32)
     repeated_scores = scores.repeat(2, 1)
@@ -464,6 +739,22 @@ def _pairwise_loss(scores: torch.Tensor, queried_labels: torch.Tensor, remaining
     if not torch.any(valid):
         return scores.sum() * 0.0
     return F.softplus(-labels[valid] * score_diff[valid]).mean()
+
+
+def _active_marginal_gain(batch: Mapping[str, torch.Tensor], utility_finalizer: str) -> torch.Tensor:
+    if utility_finalizer == "equal_average":
+        return batch["marginal_gain_equal_queried_average"].to(torch.float32)
+    if utility_finalizer == "best_single":
+        return batch["marginal_gain_best_queried_oracle"].to(torch.float32)
+    raise ValueError(f"utility_finalizer must be one of {sorted(UTILITY_FINALIZERS)}")
+
+
+def _pairwise_labels_from_values(values: torch.Tensor, valid_mask: torch.Tensor) -> torch.Tensor:
+    valid = valid_mask.to(torch.bool) & torch.isfinite(values)
+    diff = values.unsqueeze(2) - values.unsqueeze(1)
+    labels = torch.sign(diff).to(torch.int8)
+    labels = labels.masked_fill(~(valid[:, :, None] & valid[:, None, :]), 0)
+    return labels
 
 
 def _mix_loss(outputs: Mapping[str, torch.Tensor], batch: Mapping[str, torch.Tensor]) -> torch.Tensor:
@@ -488,7 +779,17 @@ def subset_utility_losses(
     *,
     cost_coefficient: Optional[float] = None,
     normalized_expert_costs: Optional[torch.Tensor] = None,
+    utility_finalizer: str = "best_single",
+    first_query_target: str = "hard",
+    first_query_temperature: float = 0.02,
+    first_query_loss_weight: float = 1.0,
+    first_query_regret_loss_weight: float = 0.0,
+    routerdc_consistency_weight: float = 0.0,
 ) -> tuple[torch.Tensor, dict[str, float]]:
+    if first_query_target not in FIRST_QUERY_TARGETS:
+        raise ValueError(f"first_query_target must be one of {sorted(FIRST_QUERY_TARGETS)}")
+    if routerdc_consistency_weight < 0:
+        raise ValueError("routerdc_consistency_weight must be non-negative")
     if normalized_expert_costs is None or cost_coefficient is None:
         target_utility = batch["cost_adjusted_utility"].to(outputs["utility_prediction"].dtype)
         target_action = batch["optimal_next_action"].to(torch.long)
@@ -497,39 +798,92 @@ def subset_utility_losses(
             batch,
             cost_coefficient=float(cost_coefficient),
             normalized_expert_costs=normalized_expert_costs,
+            utility_finalizer=utility_finalizer,
         )
         target_utility = target_utility.to(outputs["utility_prediction"].dtype)
     masked_logits = _masked_action_logits(outputs["action_logits"], batch["valid_action_mask"])
-    action_loss = F.cross_entropy(masked_logits, target_action)
+    empty_mask = batch["subset_size"].to(torch.long) == 0
+    non_empty_mask = ~empty_mask
+    if torch.any(non_empty_mask):
+        action_loss = F.cross_entropy(masked_logits[non_empty_mask], target_action[non_empty_mask])
+    else:
+        action_loss = masked_logits.sum() * 0.0
+    first_query_logits = outputs.get("first_query_logits", outputs["action_logits"][:, : outputs["utility_prediction"].shape[1]])
+    if torch.any(empty_mask):
+        empty_errors = batch["true_expert_error_vector"][empty_mask].to(first_query_logits.dtype)
+        empty_logits = first_query_logits[empty_mask]
+        hard_first_targets = target_action[empty_mask]
+        soft_targets = first_query_soft_targets(empty_errors, first_query_temperature).to(empty_logits.dtype)
+        soft_ce = -(soft_targets * torch.log_softmax(empty_logits, dim=-1)).sum(dim=-1).mean()
+        hard_ce = F.cross_entropy(empty_logits, hard_first_targets)
+        base_first_query_loss = soft_ce if first_query_target == "soft" else hard_ce
+        regret_loss = first_query_regret_loss(empty_logits, empty_errors)
+        first_query_loss = (
+            float(first_query_loss_weight) * base_first_query_loss
+            + float(first_query_regret_loss_weight) * regret_loss
+        )
+        first_prediction = torch.argmax(empty_logits, dim=-1)
+        first_hard_accuracy = (first_prediction == hard_first_targets).to(torch.float32).mean()
+        first_entropy = _entropy_from_logits(empty_logits).mean()
+    else:
+        soft_ce = first_query_logits.sum() * 0.0
+        hard_ce = first_query_logits.sum() * 0.0
+        regret_loss = first_query_logits.sum() * 0.0
+        first_query_loss = first_query_logits.sum() * 0.0
+        first_hard_accuracy = first_query_logits.sum() * 0.0
+        first_entropy = first_query_logits.sum() * 0.0
+    if routerdc_consistency_weight > 0 and torch.any(empty_mask) and "routerdc_reference_logits" in outputs:
+        reference_logits = outputs["routerdc_reference_logits"][empty_mask].detach()
+        reference_probabilities = torch.softmax(reference_logits, dim=-1)
+        routerdc_consistency_loss = (
+            reference_probabilities
+            * (torch.log_softmax(reference_logits, dim=-1) - torch.log_softmax(first_query_logits[empty_mask], dim=-1))
+        ).sum(dim=-1).mean()
+    else:
+        routerdc_consistency_loss = first_query_logits.sum() * 0.0
     utility_loss = _utility_loss(
         outputs["utility_prediction"],
         target_utility,
         batch["valid_action_mask"],
     )
-    pairwise_loss = _pairwise_loss(
-        outputs["expert_score"],
-        batch["pairwise_labels_queried"],
-        batch["pairwise_labels_remaining"],
+    marginal_values = _active_marginal_gain(batch, utility_finalizer).to(outputs["expert_score"].device)
+    remaining_labels = _pairwise_labels_from_values(
+        marginal_values,
+        batch["valid_action_mask"][:, : outputs["expert_score"].shape[1]],
     )
+    queried_labels = torch.zeros_like(remaining_labels)
+    pairwise_loss = _pairwise_loss(outputs["expert_score"], queried_labels, remaining_labels)
     mix_loss = _mix_loss(outputs, batch)
     total = (
         float(loss_weights.get("action", 1.0)) * action_loss
+        + first_query_loss
         + float(loss_weights.get("utility", 1.0)) * utility_loss
         + float(loss_weights.get("pairwise", 0.2)) * pairwise_loss
         + float(loss_weights.get("mix", 0.0)) * mix_loss
+        + float(routerdc_consistency_weight) * routerdc_consistency_loss
     )
     predicted_action = torch.argmax(masked_logits, dim=-1)
     stop_index = outputs["action_logits"].shape[-1] - 1
     return total, {
         "total_loss": float(total.detach().cpu()),
         "action_loss": float(action_loss.detach().cpu()),
+        "later_action_loss": float(action_loss.detach().cpu()),
+        "first_query_loss": float(first_query_loss.detach().cpu()),
+        "first_query_soft_target_cross_entropy": float(soft_ce.detach().cpu()),
+        "first_query_hard_cross_entropy": float(hard_ce.detach().cpu()),
+        "first_query_regret_loss": float(regret_loss.detach().cpu()),
+        "routerdc_consistency_loss": float(routerdc_consistency_loss.detach().cpu()),
         "utility_loss": float(utility_loss.detach().cpu()),
         "pairwise_loss": float(pairwise_loss.detach().cpu()),
         "mix_loss": float(mix_loss.detach().cpu()),
         "action_accuracy": float((predicted_action == target_action).to(torch.float32).mean().detach().cpu()),
+        "first_query_hard_accuracy": float(first_hard_accuracy.detach().cpu()),
+        "mean_predicted_first_query_entropy": float(first_entropy.detach().cpu()),
         "stop_frequency": float((predicted_action == stop_index).to(torch.float32).mean().detach().cpu()),
         "target_stop_frequency": float((target_action == stop_index).to(torch.float32).mean().detach().cpu()),
         "average_predicted_utility": float(outputs["utility_prediction"].detach().mean().cpu()),
+        "empty_states_sampled": int(empty_mask.detach().cpu().sum()),
+        "non_empty_states_sampled": int(non_empty_mask.detach().cpu().sum()),
     }
 
 
@@ -568,6 +922,88 @@ def _state_batch(cache: Mapping[str, Any], state_indices: Sequence[int], device:
     return {key: cache[key][index].to(device) for key in keys}
 
 
+def _equal_average_queried_forecasts(batch: Mapping[str, torch.Tensor]) -> torch.Tensor:
+    queried_ids = batch["queried_expert_ids"]
+    valid_slots = queried_ids >= 0
+    forecasts = batch["queried_expert_forecasts"]
+    if torch.any(valid_slots.sum(dim=1) == 0):
+        raise AssertionError("equal-average deployment requires at least one queried expert")
+    weights = valid_slots.to(forecasts.dtype)
+    return (forecasts * weights[:, :, None, None]).sum(dim=1) / weights.sum(dim=1).clamp_min(1.0)[:, None, None]
+
+
+def _masked_mae_mse(prediction: torch.Tensor, target: torch.Tensor, target_mask: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+    mask = target_mask.to(prediction.dtype)
+    denominator = mask.sum(dim=(1, 2)).clamp_min(1.0)
+    mae = (torch.abs(prediction - target) * mask).sum(dim=(1, 2)) / denominator
+    mse = (((prediction - target) ** 2) * mask).sum(dim=(1, 2)) / denominator
+    return mae, mse
+
+
+@torch.no_grad()
+def evaluate_first_query_policy(
+    router: SubsetUtilityCOSTARTSRouter,
+    cache: Mapping[str, Any],
+    *,
+    batch_size: int,
+    device: Union[str, torch.device],
+) -> dict[str, Any]:
+    device = torch.device(device)
+    router.eval()
+    validate_costarts_subset_states(cache)
+    empty_indices = torch.nonzero(cache["subset_size"] == 0, as_tuple=False).flatten()
+    num_experts = int(cache["num_experts"])
+    selected_rows = []
+    top2_rows = []
+    entropy_rows = []
+    expected_error_rows = []
+    error_rows = []
+    for offset in range(0, int(empty_indices.numel()), batch_size):
+        state_indices = empty_indices[offset : offset + batch_size].tolist()
+        batch = _state_batch(cache, state_indices, device)
+        outputs = router(
+            batch["history"],
+            batch["queried_mask"],
+            batch["queried_expert_ids"],
+            batch["queried_expert_forecasts"],
+        )
+        logits = outputs["first_query_logits"]
+        probabilities = torch.softmax(logits, dim=-1)
+        selected_rows.append(torch.argmax(probabilities, dim=-1).detach().cpu())
+        top2_rows.append(torch.topk(probabilities, k=min(2, num_experts), dim=-1).indices.detach().cpu())
+        entropy_rows.append(_entropy_from_logits(logits).detach().cpu())
+        errors = batch["true_expert_error_vector"].to(probabilities.dtype)
+        expected_error_rows.append((probabilities * errors).sum(dim=-1).detach().cpu())
+        error_rows.append(errors.detach().cpu())
+    selected = torch.cat(selected_rows, dim=0)
+    top2 = torch.cat(top2_rows, dim=0)
+    entropy = torch.cat(entropy_rows, dim=0)
+    expected_error = torch.cat(expected_error_rows, dim=0)
+    errors = torch.cat(error_rows, dim=0)
+    oracle = torch.argmin(errors, dim=1)
+    oracle_error = errors.min(dim=1).values
+    selected_error = errors.gather(1, selected.view(-1, 1)).squeeze(1)
+    top2_coverage = torch.tensor(
+        [float(int(oracle[index]) in top2[index].tolist()) for index in range(top2.shape[0])],
+        dtype=torch.float32,
+    )
+    best_fixed = int(torch.argmin(errors.mean(dim=0)))
+    return {
+        "first_query_oracle_match": float((selected == oracle).to(torch.float32).mean()),
+        "first_query_top_two_ranking_coverage": float(top2_coverage.mean()),
+        "first_query_selected_mae": float(selected_error.mean()),
+        "first_query_regret_to_oracle": float((selected_error - oracle_error).mean()),
+        "first_query_regret_to_best_fixed": float(selected_error.mean() - errors[:, best_fixed].mean()),
+        "first_query_expected_error": float(expected_error.mean()),
+        "first_query_expected_regret": float((expected_error - oracle_error).mean()),
+        "first_query_entropy": float(entropy.mean()),
+        "first_query_selection_counts": {
+            str(index): int(value)
+            for index, value in enumerate(torch.bincount(selected, minlength=num_experts).tolist())
+        },
+    }
+
+
 @torch.no_grad()
 def evaluate_deployable_inference(
     router: SubsetUtilityCOSTARTSRouter,
@@ -578,11 +1014,15 @@ def evaluate_deployable_inference(
     cost_coefficient: float = 0.0,
     normalized_expert_costs: Optional[torch.Tensor] = None,
     raw_expert_costs: Optional[torch.Tensor] = None,
+    utility_finalizer: str = "best_single",
+    deployment_finalizer: str = "best_reranked",
     debug: bool = False,
 ) -> dict[str, Any]:
     device = torch.device(device)
     router.eval()
     validate_costarts_subset_states(cache)
+    if deployment_finalizer not in DEPLOYMENT_FINALIZERS:
+        raise ValueError(f"deployment_finalizer must be one of {sorted(DEPLOYMENT_FINALIZERS)}")
     if cache["subset_sampling_mode"] != "exhaustive":
         raise ValueError("Deployable validation requires exhaustive subset-state cache")
 
@@ -626,12 +1066,22 @@ def evaluate_deployable_inference(
                 batch["queried_expert_forecasts"],
             )
             masked_logits = _masked_action_logits(outputs["action_logits"], batch["valid_action_mask"])
-            actions = torch.argmax(masked_logits, dim=-1).detach().cpu()
+            subset_size = batch["subset_size"].to(torch.long)
+            empty_mask = subset_size == 0
+            actions_device = torch.argmax(masked_logits, dim=-1)
+            if torch.any(empty_mask):
+                first_logits = outputs["first_query_logits"].masked_fill(
+                    ~batch["valid_action_mask"][:, :num_experts].to(torch.bool),
+                    -1e9,
+                )
+                actions_device[empty_mask] = torch.argmax(first_logits[empty_mask], dim=-1)
+            actions = actions_device.detach().cpu()
             if normalized_expert_costs is not None:
                 _, target_actions = build_cost_aware_targets(
                     batch,
                     cost_coefficient=cost_coefficient,
                     normalized_expert_costs=normalized_expert_costs.to(device),
+                    utility_finalizer=utility_finalizer,
                 )
                 target_actions = target_actions.detach().cpu()
                 stop_valid = batch["valid_action_mask"][:, stop_index].detach().cpu().to(torch.bool)
@@ -669,7 +1119,7 @@ def evaluate_deployable_inference(
                 batch["queried_expert_ids"],
                 batch["queried_expert_forecasts"],
             )
-            action = int(torch.argmax(outputs["action_logits"][0, :num_experts]).detach().cpu())
+            action = int(torch.argmax(outputs["first_query_logits"][0, :num_experts]).detach().cpu())
             query_history[sample_index].append(action)
             masks[sample_index] |= 1 << action
         if not done[sample_index]:
@@ -677,6 +1127,9 @@ def evaluate_deployable_inference(
 
     final_state_indices = [lookup[row][masks[row]] for row in range(num_windows)]
     selected = torch.empty(num_windows, dtype=torch.long)
+    prediction_chunks = []
+    mae_chunks = []
+    mse_chunks = []
     for offset in range(0, num_windows, batch_size):
         rows = list(range(offset, min(offset + batch_size, num_windows)))
         batch = _state_batch(cache, final_state_indices[offset : offset + len(rows)], device)
@@ -689,23 +1142,24 @@ def evaluate_deployable_inference(
         expert_scores = outputs["expert_score"].detach().cpu()
         queried_mask = batch["queried_mask"].detach().cpu()
         selected_scores = expert_scores.masked_fill(~queried_mask, -1e9)
-        selected[offset : offset + len(rows)] = torch.argmax(selected_scores, dim=-1)
+        selected_batch = torch.argmax(selected_scores, dim=-1)
+        selected[offset : offset + len(rows)] = selected_batch
+        if deployment_finalizer == "equal_average":
+            prediction = _equal_average_queried_forecasts(batch)
+        else:
+            queried_ids = batch["queried_expert_ids"]
+            positions = (queried_ids == selected_batch.to(device)[:, None]).to(torch.float32).argmax(dim=1)
+            prediction = batch["queried_expert_forecasts"][torch.arange(len(rows), device=device), positions]
+        mae_chunk, mse_chunk = _masked_mae_mse(prediction, batch["true_targets"], batch["target_mask"])
+        prediction_chunks.append(prediction.detach().cpu())
+        mae_chunks.append(mae_chunk.detach().cpu())
+        mse_chunks.append(mse_chunk.detach().cpu())
 
     source_errors = torch.empty(num_windows, num_experts, dtype=torch.float32)
     for row in range(num_windows):
         source_errors[row] = cache["true_expert_error_vector"][lookup[row][0]]
-    selected_mae = source_errors.gather(1, selected.view(-1, 1)).squeeze(1)
-    selected_mse = torch.empty(num_windows, dtype=torch.float32)
-    for row in range(num_windows):
-        state_index = final_state_indices[row]
-        queried_ids = cache["queried_expert_ids"][state_index]
-        matching_slots = torch.nonzero(queried_ids == selected[row], as_tuple=False).flatten()
-        if matching_slots.numel() == 0:
-            raise AssertionError("selected expert is not in the queried subset")
-        prediction = cache["queried_expert_forecasts"][state_index, int(matching_slots[0])]
-        target = cache["true_targets"][state_index]
-        mask = cache["target_mask"][state_index].to(torch.float32)
-        selected_mse[row] = (((prediction - target) ** 2) * mask).sum() / mask.sum().clamp_min(1.0)
+    selected_mae = torch.cat(mae_chunks, dim=0)
+    selected_mse = torch.cat(mse_chunks, dim=0)
     oracle_best = torch.argmin(source_errors, dim=1)
     oracle_mae = source_errors.min(dim=1).values
     avg_queries = sum(len(history) for history in query_history) / max(num_windows, 1)
@@ -757,6 +1211,13 @@ def evaluate_deployable_inference(
     if debug:
         print("SubsetUtility validation example query history:", query_history[:3])
 
+    first_query_metrics = evaluate_first_query_policy(
+        router,
+        cache,
+        batch_size=batch_size,
+        device=device,
+    )
+
     return {
         "validation_mae": float(selected_mae.mean()),
         "validation_mse": float(selected_mse.mean()),
@@ -788,6 +1249,7 @@ def evaluate_deployable_inference(
             for values in predicted_utility_by_step
         ],
         "better_of_top_two_accuracy": float(better_top_two_accuracy),
+        **first_query_metrics,
     }
 
 
@@ -801,6 +1263,12 @@ def evaluate_subset_state_losses(
     loss_weights: Mapping[str, float],
     cost_coefficient: Optional[float] = None,
     normalized_expert_costs: Optional[torch.Tensor] = None,
+    utility_finalizer: str = "best_single",
+    first_query_target: str = "hard",
+    first_query_temperature: float = 0.02,
+    first_query_loss_weight: float = 1.0,
+    first_query_regret_loss_weight: float = 0.0,
+    routerdc_consistency_weight: float = 0.0,
 ) -> dict[str, float]:
     device = torch.device(device)
     router.eval()
@@ -812,10 +1280,20 @@ def evaluate_subset_state_losses(
         "utility_loss": 0.0,
         "pairwise_loss": 0.0,
         "mix_loss": 0.0,
+        "later_action_loss": 0.0,
+        "first_query_loss": 0.0,
+        "first_query_soft_target_cross_entropy": 0.0,
+        "first_query_hard_cross_entropy": 0.0,
+        "first_query_regret_loss": 0.0,
+        "routerdc_consistency_loss": 0.0,
+        "first_query_hard_accuracy": 0.0,
+        "mean_predicted_first_query_entropy": 0.0,
         "action_accuracy": 0.0,
         "stop_frequency": 0.0,
         "target_stop_frequency": 0.0,
         "average_predicted_utility": 0.0,
+        "empty_states_sampled": 0.0,
+        "non_empty_states_sampled": 0.0,
     }
     count = 0
     for batch in loader:
@@ -832,12 +1310,26 @@ def evaluate_subset_state_losses(
             loss_weights,
             cost_coefficient=cost_coefficient,
             normalized_expert_costs=normalized_expert_costs,
+            utility_finalizer=utility_finalizer,
+            first_query_target=first_query_target,
+            first_query_temperature=first_query_temperature,
+            first_query_loss_weight=first_query_loss_weight,
+            first_query_regret_loss_weight=first_query_regret_loss_weight,
+            routerdc_consistency_weight=routerdc_consistency_weight,
         )
         batch_size_actual = batch["history"].shape[0]
         for key in totals:
-            totals[key] += parts[key] * batch_size_actual
+            if key in {"empty_states_sampled", "non_empty_states_sampled"}:
+                totals[key] += parts[key]
+            else:
+                totals[key] += parts[key] * batch_size_actual
         count += batch_size_actual
-    return {f"validation_state_{key}": value / max(count, 1) for key, value in totals.items()}
+    return {
+        f"validation_state_{key}": (
+            value if key in {"empty_states_sampled", "non_empty_states_sampled"} else value / max(count, 1)
+        )
+        for key, value in totals.items()
+    }
 
 
 def _write_curves(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
@@ -847,6 +1339,80 @@ def _write_curves(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def _cache_training_batch(cache: Mapping[str, Any], device: torch.device) -> dict[str, torch.Tensor]:
+    keys = (
+        "queried_mask",
+        "remaining_mask",
+        "true_expert_error_vector",
+        "marginal_gain_best_queried_oracle",
+        "marginal_gain_equal_queried_average",
+        "valid_action_mask",
+    )
+    return {key: cache[key].to(device) for key in keys}
+
+
+def _build_action_balanced_sampler(
+    cache: Mapping[str, Any],
+    *,
+    cost_coefficient: float,
+    normalized_expert_costs: torch.Tensor,
+    utility_finalizer: str,
+) -> WeightedRandomSampler:
+    batch = _cache_training_batch(cache, torch.device("cpu"))
+    _, actions = build_cost_aware_targets(
+        batch,
+        cost_coefficient=cost_coefficient,
+        normalized_expert_costs=normalized_expert_costs.cpu(),
+        utility_finalizer=utility_finalizer,
+    )
+    stop_index = int(cache["stop_action_index"])
+    categories = (actions == stop_index).to(torch.long)
+    counts = torch.bincount(categories, minlength=2).to(torch.float32).clamp_min(1.0)
+    weights = (1.0 / counts)[categories]
+    print(
+        "Action-balanced sampling target counts: "
+        f"CONTINUE={int(counts[0])}, STOP={int(counts[1])}"
+    )
+    return WeightedRandomSampler(weights, num_samples=len(weights), replacement=True)
+
+
+def _build_first_query_ratio_sampler(
+    cache: Mapping[str, Any],
+    *,
+    first_query_sampling_ratio: float,
+    cost_coefficient: float,
+    normalized_expert_costs: torch.Tensor,
+    utility_finalizer: str,
+) -> WeightedRandomSampler:
+    if not (0.0 < first_query_sampling_ratio < 1.0):
+        raise ValueError("first_query_sampling_ratio must be between 0 and 1 when enabled")
+    batch = _cache_training_batch(cache, torch.device("cpu"))
+    _, actions = build_cost_aware_targets(
+        batch,
+        cost_coefficient=cost_coefficient,
+        normalized_expert_costs=normalized_expert_costs.cpu(),
+        utility_finalizer=utility_finalizer,
+    )
+    subset_size = cache["subset_size"].to(torch.long)
+    stop_index = int(cache["stop_action_index"])
+    empty = subset_size == 0
+    non_empty_continue = (subset_size > 0) & (actions != stop_index)
+    non_empty_stop = (subset_size > 0) & (actions == stop_index)
+    weights = torch.zeros(int(cache["num_states"]), dtype=torch.float32)
+    weights[empty] = float(first_query_sampling_ratio) / max(int(empty.sum()), 1)
+    remaining_ratio = 1.0 - float(first_query_sampling_ratio)
+    weights[non_empty_continue] = 0.5 * remaining_ratio / max(int(non_empty_continue.sum()), 1)
+    weights[non_empty_stop] = 0.5 * remaining_ratio / max(int(non_empty_stop.sum()), 1)
+    print(
+        "First-query ratio sampling target counts: "
+        f"EMPTY={int(empty.sum())}, "
+        f"NONEMPTY_CONTINUE={int(non_empty_continue.sum())}, "
+        f"NONEMPTY_STOP={int(non_empty_stop.sum())}, "
+        f"target_empty_ratio={first_query_sampling_ratio:.3f}"
+    )
+    return WeightedRandomSampler(weights, num_samples=len(weights), replacement=True)
 
 
 def _save_checkpoint(
@@ -861,6 +1427,7 @@ def _save_checkpoint(
     raw_expert_costs: torch.Tensor,
     normalized_expert_costs: torch.Tensor,
     cost_metadata: Mapping[str, Any],
+    routerdc_report: Optional[Mapping[str, Any]] = None,
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(
@@ -876,6 +1443,7 @@ def _save_checkpoint(
             "raw_expert_costs": raw_expert_costs.detach().cpu(),
             "normalized_expert_costs": normalized_expert_costs.detach().cpu(),
             "cost_metadata": dict(cost_metadata),
+            "routerdc_first_query_report": dict(routerdc_report or {}),
             "router_type": "subset_utility_costarts",
             "experts_loaded": False,
             "experts_updated": False,
@@ -916,8 +1484,46 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
         raise ValueError("training_config max_subset_size does not match train cache")
     if training_config.selection_metric not in {"mae", "cost_aware_objective"}:
         raise ValueError("selection_metric must be 'mae' or 'cost_aware_objective'")
+    if training_config.utility_finalizer not in UTILITY_FINALIZERS:
+        raise ValueError(f"utility_finalizer must be one of {sorted(UTILITY_FINALIZERS)}")
+    if training_config.deployment_finalizer not in DEPLOYMENT_FINALIZERS:
+        raise ValueError(f"deployment_finalizer must be one of {sorted(DEPLOYMENT_FINALIZERS)}")
+    if training_config.state_sampling not in STATE_SAMPLING_MODES:
+        raise ValueError(f"state_sampling must be one of {sorted(STATE_SAMPLING_MODES)}")
+    if training_config.first_query_target not in FIRST_QUERY_TARGETS:
+        raise ValueError(f"first_query_target must be one of {sorted(FIRST_QUERY_TARGETS)}")
+    if training_config.first_query_head not in FIRST_QUERY_HEADS:
+        raise ValueError(f"first_query_head must be one of {sorted(FIRST_QUERY_HEADS)}")
+    if training_config.first_query_initialization not in FIRST_QUERY_INITIALIZATIONS:
+        raise ValueError(f"first_query_initialization must be one of {sorted(FIRST_QUERY_INITIALIZATIONS)}")
+    if training_config.first_query_temperature <= 0:
+        raise ValueError("first_query_temperature must be positive")
+    if training_config.routerdc_consistency_weight < 0:
+        raise ValueError("routerdc_consistency_weight must be non-negative")
+    if not (0.0 <= training_config.first_query_sampling_ratio < 1.0):
+        raise ValueError("first_query_sampling_ratio must be in [0, 1)")
+    if (
+        training_config.utility_finalizer == "equal_average"
+        and training_config.deployment_finalizer != "equal_average"
+        and not training_config.allow_finalizer_mismatch
+    ):
+        raise ValueError(
+            "utility_finalizer=equal_average requires deployment_finalizer=equal_average "
+            "unless --allow-finalizer-mismatch is set for an ablation"
+        )
 
     expert_names = tuple(train_cache["expert_names"])
+    routerdc_config = None
+    routerdc_report: Optional[dict[str, Any]] = None
+    if training_config.first_query_initialization != "random":
+        routerdc_config, routerdc_report = inspect_routerdc_first_query_checkpoint(
+            training_config.routerdc_checkpoint_path,
+            expert_names=expert_names,
+            input_len=96,
+            num_features=int(train_cache["num_features"]),
+            num_experts=int(train_cache["num_experts"]),
+            embedding_dim=experiment_config.embedding_dim,
+        )
     raw_expert_costs, normalized_expert_costs, cost_metadata = load_and_normalize_expert_costs(
         expert_names,
         cost_mode=training_config.cost_mode,
@@ -932,6 +1538,17 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
     print(f"  cost_mode: {training_config.cost_mode}")
     print(f"  cost_coefficient: {training_config.cost_coefficient}")
     print(f"  selection_metric: {training_config.selection_metric}")
+    print(f"  utility_finalizer: {training_config.utility_finalizer}")
+    print(f"  deployment_finalizer: {training_config.deployment_finalizer}")
+    print(f"  state_sampling: {training_config.state_sampling}")
+    print(f"  first_query_target: {training_config.first_query_target}")
+    print(f"  first_query_head: {training_config.first_query_head}")
+    print(f"  first_query_sampling_ratio: {training_config.first_query_sampling_ratio}")
+    print(f"  first_query_initialization: {training_config.first_query_initialization}")
+    print(f"  routerdc_consistency_weight: {training_config.routerdc_consistency_weight}")
+    if routerdc_report is not None:
+        print(f"  routerdc_checkpoint: {routerdc_report['checkpoint_path']}")
+        print(f"  routerdc_epoch: {routerdc_report['checkpoint_epoch']}")
     print(f"  normalized_expert_costs: {cost_metadata['normalized_expert_costs']}")
     router = SubsetUtilityCOSTARTSRouter(
         num_experts=int(train_cache["num_experts"]),
@@ -944,10 +1561,19 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
         use_expert_embeddings=training_config.use_expert_embeddings,
         history_encoder_type=training_config.history_encoder_type,
         action_head_type=training_config.action_head_type,
+        first_query_head_type=training_config.first_query_head,
+        first_query_initialization=training_config.first_query_initialization,
+        routerdc_config=routerdc_config,
+        routerdc_consistency_weight=training_config.routerdc_consistency_weight,
     ).to(device)
+    if training_config.first_query_initialization != "random":
+        load_routerdc_first_query_weights(router, training_config.routerdc_checkpoint_path)
 
+    trainable_parameters = [parameter for parameter in router.parameters() if parameter.requires_grad]
+    if not trainable_parameters:
+        raise ValueError("No trainable router parameters are available")
     optimizer = torch.optim.AdamW(
-        router.parameters(),
+        trainable_parameters,
         lr=training_config.learning_rate,
         weight_decay=training_config.weight_decay,
     )
@@ -960,11 +1586,31 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
     train_dataset = CostartsSubsetStateDataset(train_cache)
     generator = torch.Generator()
     generator.manual_seed(training_config.seed)
+    sampler = None
+    shuffle = True
+    if training_config.first_query_sampling_ratio > 0:
+        sampler = _build_first_query_ratio_sampler(
+            train_cache,
+            first_query_sampling_ratio=training_config.first_query_sampling_ratio,
+            cost_coefficient=training_config.cost_coefficient,
+            normalized_expert_costs=normalized_expert_costs,
+            utility_finalizer=training_config.utility_finalizer,
+        )
+        shuffle = False
+    elif training_config.state_sampling == "action_balanced":
+        sampler = _build_action_balanced_sampler(
+            train_cache,
+            cost_coefficient=training_config.cost_coefficient,
+            normalized_expert_costs=normalized_expert_costs,
+            utility_finalizer=training_config.utility_finalizer,
+        )
+        shuffle = False
     train_loader = DataLoader(
         train_dataset,
         batch_size=training_config.batch_size,
-        shuffle=True,
-        generator=generator,
+        shuffle=shuffle,
+        sampler=sampler,
+        generator=generator if sampler is None else None,
     )
     loss_weights = {
         "action": training_config.action_loss_weight,
@@ -991,13 +1637,23 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
         totals = {
             "total_loss": 0.0,
             "action_loss": 0.0,
+            "later_action_loss": 0.0,
+            "first_query_loss": 0.0,
+            "first_query_soft_target_cross_entropy": 0.0,
+            "first_query_hard_cross_entropy": 0.0,
+            "first_query_regret_loss": 0.0,
+            "routerdc_consistency_loss": 0.0,
             "utility_loss": 0.0,
             "pairwise_loss": 0.0,
             "mix_loss": 0.0,
             "action_accuracy": 0.0,
+            "first_query_hard_accuracy": 0.0,
+            "mean_predicted_first_query_entropy": 0.0,
             "stop_frequency": 0.0,
             "target_stop_frequency": 0.0,
             "average_predicted_utility": 0.0,
+            "empty_states_sampled": 0.0,
+            "non_empty_states_sampled": 0.0,
         }
         seen = 0
         for batch_index, batch in enumerate(train_loader):
@@ -1015,14 +1671,24 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
                 loss_weights,
                 cost_coefficient=training_config.cost_coefficient,
                 normalized_expert_costs=normalized_expert_costs_device,
+                utility_finalizer=training_config.utility_finalizer,
+                first_query_target=training_config.first_query_target,
+                first_query_temperature=training_config.first_query_temperature,
+                first_query_loss_weight=training_config.first_query_loss_weight,
+                first_query_regret_loss_weight=training_config.first_query_regret_loss_weight,
+                routerdc_consistency_weight=training_config.routerdc_consistency_weight,
             )
             total_loss.backward()
+            trainable_parameters = [parameter for parameter in router.parameters() if parameter.requires_grad]
             if training_config.grad_clip_norm > 0:
-                torch.nn.utils.clip_grad_norm_(router.parameters(), training_config.grad_clip_norm)
+                torch.nn.utils.clip_grad_norm_(trainable_parameters, training_config.grad_clip_norm)
             optimizer.step()
             batch_size_actual = batch["history"].shape[0]
             for key in totals:
-                totals[key] += parts[key] * batch_size_actual
+                if key in {"empty_states_sampled", "non_empty_states_sampled"}:
+                    totals[key] += parts[key]
+                else:
+                    totals[key] += parts[key] * batch_size_actual
             seen += batch_size_actual
             if training_config.debug and epoch == 1 and batch_index == 0:
                 print("SubsetUtility first training batch")
@@ -1031,7 +1697,12 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
                 print("  queried_expert_forecasts:", tuple(batch["queried_expert_forecasts"].shape))
                 print("  action_logits:", tuple(outputs["action_logits"].shape))
 
-        train_metrics = {key: value / max(seen, 1) for key, value in totals.items()}
+        train_metrics = {
+            key: (
+                value if key in {"empty_states_sampled", "non_empty_states_sampled"} else value / max(seen, 1)
+            )
+            for key, value in totals.items()
+        }
         val_deployable = evaluate_deployable_inference(
             router,
             val_cache,
@@ -1040,6 +1711,8 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             cost_coefficient=training_config.cost_coefficient,
             normalized_expert_costs=normalized_expert_costs_device,
             raw_expert_costs=raw_expert_costs,
+            utility_finalizer=training_config.utility_finalizer,
+            deployment_finalizer=training_config.deployment_finalizer,
             debug=training_config.debug and epoch == 1,
         )
         val_state = evaluate_subset_state_losses(
@@ -1050,6 +1723,12 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             loss_weights=loss_weights,
             cost_coefficient=training_config.cost_coefficient,
             normalized_expert_costs=normalized_expert_costs_device,
+            utility_finalizer=training_config.utility_finalizer,
+            first_query_target=training_config.first_query_target,
+            first_query_temperature=training_config.first_query_temperature,
+            first_query_loss_weight=training_config.first_query_loss_weight,
+            first_query_regret_loss_weight=training_config.first_query_regret_loss_weight,
+            routerdc_consistency_weight=training_config.routerdc_consistency_weight,
         )
         selection_key = (
             "validation_mae"
@@ -1090,6 +1769,7 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
                 raw_expert_costs,
                 normalized_expert_costs,
                 cost_metadata,
+                routerdc_report,
             )
         else:
             bad_epochs += 1
@@ -1106,6 +1786,7 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             raw_expert_costs,
             normalized_expert_costs,
             cost_metadata,
+            routerdc_report,
         )
         print(
             f"SubsetUtility epoch {epoch:03d} | "
@@ -1114,8 +1795,12 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
             f"utility={train_metrics['utility_loss']:.6f} "
             f"pairwise={train_metrics['pairwise_loss']:.6f} "
             f"mix={train_metrics['mix_loss']:.6f} "
+            f"fq={train_metrics['first_query_loss']:.6f} "
+            f"fq_acc={train_metrics['first_query_hard_accuracy']:.3f} "
+            f"fq_empty={int(train_metrics['empty_states_sampled'])} "
             f"acc={train_metrics['action_accuracy']:.3f} "
             f"stop={train_metrics['stop_frequency']:.3f} | "
+            f"target_stop={train_metrics['target_stop_frequency']:.3f} | "
             f"val_mae={val_deployable['validation_mae']:.6f} "
             f"obj={val_deployable['validation_objective']:.6f} "
             f"regret={val_deployable['validation_regret_to_oracle']:.6f} "
@@ -1143,6 +1828,7 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
         "router_config": router.config_dict(),
         "expert_names": list(expert_names),
         "cost_metadata": cost_metadata,
+        "routerdc_first_query_report": routerdc_report or {},
         "raw_expert_costs": _jsonable(raw_expert_costs),
         "normalized_expert_costs": _jsonable(normalized_expert_costs),
         "train_cache_path": training_config.train_cache_path,
@@ -1190,6 +1876,23 @@ def parse_args() -> argparse.Namespace:
         choices=("mae", "cost_aware_objective"),
         default="cost_aware_objective",
     )
+    parser.add_argument("--utility-finalizer", choices=tuple(sorted(UTILITY_FINALIZERS)), default="equal_average")
+    parser.add_argument("--deployment-finalizer", choices=tuple(sorted(DEPLOYMENT_FINALIZERS)), default="equal_average")
+    parser.add_argument("--allow-finalizer-mismatch", action="store_true")
+    parser.add_argument("--state-sampling", choices=tuple(sorted(STATE_SAMPLING_MODES)), default="uniform")
+    parser.add_argument("--first-query-target", choices=tuple(sorted(FIRST_QUERY_TARGETS)), default="soft")
+    parser.add_argument("--first-query-temperature", type=float, default=0.02)
+    parser.add_argument("--first-query-loss-weight", type=float, default=2.0)
+    parser.add_argument("--first-query-sampling-ratio", type=float, default=0.0)
+    parser.add_argument("--first-query-head", choices=tuple(sorted(FIRST_QUERY_HEADS)), default="separate")
+    parser.add_argument("--first-query-regret-loss-weight", type=float, default=1.0)
+    parser.add_argument(
+        "--first-query-initialization",
+        choices=tuple(sorted(FIRST_QUERY_INITIALIZATIONS)),
+        default="random",
+    )
+    parser.add_argument("--routerdc-checkpoint-path", default=DEFAULT_ROUTERDC_FIRST_QUERY_CHECKPOINT)
+    parser.add_argument("--routerdc-consistency-weight", type=float, default=0.0)
     parser.add_argument("--no-expert-embeddings", action="store_true")
     parser.add_argument("--history-encoder-type", choices=("current", "simple"), default="current")
     parser.add_argument("--action-head-type", choices=("unified", "separate_stop_query"), default="unified")
@@ -1223,6 +1926,19 @@ def main() -> None:
             cost_mode=args.cost_mode,
             cost_file=args.cost_file,
             selection_metric=args.selection_metric,
+            utility_finalizer=args.utility_finalizer,
+            deployment_finalizer=args.deployment_finalizer,
+            allow_finalizer_mismatch=args.allow_finalizer_mismatch,
+            state_sampling=args.state_sampling,
+            first_query_target=args.first_query_target,
+            first_query_temperature=args.first_query_temperature,
+            first_query_loss_weight=args.first_query_loss_weight,
+            first_query_sampling_ratio=args.first_query_sampling_ratio,
+            first_query_head=args.first_query_head,
+            first_query_regret_loss_weight=args.first_query_regret_loss_weight,
+            first_query_initialization=args.first_query_initialization,
+            routerdc_checkpoint_path=args.routerdc_checkpoint_path,
+            routerdc_consistency_weight=args.routerdc_consistency_weight,
             use_expert_embeddings=not args.no_expert_embeddings,
             history_encoder_type=args.history_encoder_type,
             action_head_type=args.action_head_type,

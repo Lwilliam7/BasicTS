@@ -167,6 +167,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cost-mode", choices=("equal", "configured", "latency"), default="equal")
     parser.add_argument("--cost-file", default=None)
     parser.add_argument("--selection-metric", choices=("mae", "cost_aware_objective"), default="cost_aware_objective")
+    parser.add_argument("--utility-finalizer", choices=("best_single", "equal_average"), default="equal_average")
+    parser.add_argument("--deployment-finalizer", choices=("best_reranked", "equal_average"), default="equal_average")
+    parser.add_argument("--allow-finalizer-mismatch", action="store_true")
+    parser.add_argument("--state-sampling", choices=("uniform", "action_balanced"), default="uniform")
+    parser.add_argument("--first-query-target", choices=("hard", "soft"), default="soft")
+    parser.add_argument("--first-query-temperature", type=float, default=0.02)
+    parser.add_argument("--first-query-loss-weight", type=float, default=2.0)
+    parser.add_argument("--first-query-sampling-ratio", type=float, default=0.0)
+    parser.add_argument("--first-query-head", choices=("shared", "separate"), default="separate")
+    parser.add_argument("--first-query-regret-loss-weight", type=float, default=1.0)
+    parser.add_argument(
+        "--first-query-initialization",
+        choices=("random", "routerdc_frozen", "routerdc_finetune"),
+        default="random",
+    )
+    parser.add_argument("--routerdc-checkpoint-path", default="checkpoints/best_routerdc_hard_contrastive.pt")
+    parser.add_argument("--routerdc-consistency-weight", type=float, default=0.0)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--baseline-comparison-csv", default=f"{DEFAULT_RESULTS_DIR}/final_comparison.csv")
@@ -205,6 +222,19 @@ def main() -> None:
                     cost_mode=args.cost_mode,
                     cost_file=args.cost_file,
                     selection_metric=args.selection_metric,
+                    utility_finalizer=args.utility_finalizer,
+                    deployment_finalizer=args.deployment_finalizer,
+                    allow_finalizer_mismatch=args.allow_finalizer_mismatch,
+                    state_sampling=args.state_sampling,
+                    first_query_target=args.first_query_target,
+                    first_query_temperature=args.first_query_temperature,
+                    first_query_loss_weight=args.first_query_loss_weight,
+                    first_query_sampling_ratio=args.first_query_sampling_ratio,
+                    first_query_head=args.first_query_head,
+                    first_query_regret_loss_weight=args.first_query_regret_loss_weight,
+                    first_query_initialization=args.first_query_initialization,
+                    routerdc_checkpoint_path=args.routerdc_checkpoint_path,
+                    routerdc_consistency_weight=args.routerdc_consistency_weight,
                     device=args.device,
                     debug=args.debug,
                 )
