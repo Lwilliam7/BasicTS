@@ -298,11 +298,19 @@ Requirements:
     Write-Host "Launching Codex iteration $Iteration in isolated runner."
     Write-Host "Runner: $RunnerRoot"
     Write-Host "Log: $logFile"
-    $TaskText |
-        & $CodexCommand exec -s workspace-write -C $RunnerRoot $launcherPrompt 2>&1 |
-        Tee-Object -FilePath $logFile
-
-    $exitCode = $LASTEXITCODE
+    $previousPreference = $ErrorActionPreference
+    try {
+        # Windows PowerShell 5.1 turns native stderr into error records. Codex writes
+        # normal status messages to stderr, so judge failure by its exit code instead.
+        $ErrorActionPreference = "Continue"
+        $TaskText |
+            & $CodexCommand exec -s workspace-write -C $RunnerRoot $launcherPrompt 2>&1 |
+            Tee-Object -FilePath $logFile
+        $exitCode = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $previousPreference
+    }
     if ($exitCode -ne 0) {
         return Fail-Iteration "Codex iteration $Iteration exited with code $exitCode." $logFile
     }
