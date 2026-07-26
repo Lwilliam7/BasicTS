@@ -77,11 +77,11 @@ class AblationSpec:
     action_loss_weight: float = 1.0
     utility_loss_weight: float = 1.0
     pairwise_loss_weight: float = 0.2
-    mix_loss_weight: float = 1.0
+    mix_loss_weight: float = 0.0
     use_expert_embeddings: bool = True
     history_encoder_type: str = "current"
     action_head_type: str = "unified"
-    finalizer: str = "sparse_mixture"
+    finalizer: str = "equal_average"
     cost_lambda: float = 0.0
     dagger_fine_tune: bool = False
     status_override: Optional[str] = None
@@ -180,7 +180,7 @@ def _evaluate_subset_checkpoint(
             expert_costs=expert_costs,
             batch_size=batch_size,
             device=device,
-            finalizer="reranker",
+            finalizer="equal_average",
             max_queries=None,
         )
         return {
@@ -197,7 +197,7 @@ def _evaluate_subset_checkpoint(
             "parameter_count": _parameter_count(router),
             "checkpoint": str(checkpoint_path),
             "best_epoch": checkpoint.get("epoch", ""),
-            "finalizer": "cost_aware_reranker",
+            "finalizer": spec.finalizer,
             "cost_lambda": spec.cost_lambda,
             "dagger_fine_tune": spec.dagger_fine_tune,
             "description": spec.description,
@@ -244,6 +244,7 @@ def _evaluate_subset_checkpoint(
         subset_cache=subset_val_cache,
         batch_size=batch_size,
         device=device,
+        finalizer=spec.finalizer,
     )
     top2 = _sequence_tensor(sequences, 2)
     first_query = top2[:, 0]
@@ -346,7 +347,7 @@ def _ablation_specs(oracle_train_cache: str, subset_train_cache: str, cost_lambd
         AblationSpec(
             name="full_improved_zero_cost",
             changed_factor="none",
-            description="Baseline improved subset-utility router with exhaustive subset states, utility, pairwise, mix loss, expert embeddings, current encoder, unified M+1 action.",
+            description="Baseline improved subset-utility router with exhaustive subset states, utility and pairwise losses, expert embeddings, current encoder, unified M+1 action, and deployable equal-average finalizer.",
             train_cache_path=subset_train_cache,
         ),
         AblationSpec(
@@ -372,10 +373,9 @@ def _ablation_specs(oracle_train_cache: str, subset_train_cache: str, cost_lambd
         AblationSpec(
             name="no_sparse_mixing",
             changed_factor="mix_loss_weight_and_finalizer",
-            description="Mix loss disabled; final selection uses the reranker path.",
-            train_cache_path=subset_train_cache,
-            mix_loss_weight=0.0,
-            finalizer="reranker",
+            description="Skipped: sparse mixing is not used by the deployable equal-average finalizer, so disabling it is not an active ablation.",
+            train=False,
+            status_override="skipped_not_applicable",
         ),
         AblationSpec(
             name="separate_stop_query_heads",
@@ -387,10 +387,10 @@ def _ablation_specs(oracle_train_cache: str, subset_train_cache: str, cost_lambd
         AblationSpec(
             name="cost_aware_stopping",
             changed_factor="stopping_cost",
-            description=f"Evaluate the full improved router with cost-aware stopping at lambda={cost_lambda}.",
+            description=f"Evaluate the full improved router with equal-average finalization and cost-aware stopping at lambda={cost_lambda}.",
             train=False,
             cost_lambda=cost_lambda,
-            finalizer="cost_aware_reranker",
+            finalizer="cost_aware_equal_average",
         ),
         AblationSpec(
             name="no_expert_embeddings",

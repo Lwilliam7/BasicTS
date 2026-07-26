@@ -408,7 +408,7 @@ inference:
     score QUERY actions and STOP
     query selected expert only
     update S and reveal its forecast
-  finalize with queried-subset reranker or sparse mixture
+  finalize with equal average of queried expert forecasts
 ```
 """,
         encoding="utf-8",

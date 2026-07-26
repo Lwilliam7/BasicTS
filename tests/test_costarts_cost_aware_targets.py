@@ -6,6 +6,7 @@ import torch
 
 from scripts import train_costarts_subset_utility_router as costarts_train
 from scripts import evaluate_costarts_final_comparison as final_comparison
+from scripts import run_costarts_subset_utility_ablations as ablations
 from scripts.evaluate_costarts_cost_sweep import _finalize_predictions
 from scripts.train_costarts_subset_utility_router import (
     build_cost_aware_targets,
@@ -464,10 +465,151 @@ def test_tracked_final_comparison_artifacts_do_not_report_validation_fit_baselin
 def test_reproduction_rollout_command_uses_supported_finalizer_selector():
     root = Path(__file__).resolve().parents[1]
     checked_in_commands = root / "results/router_summary/costarts_subset_utility/paper_package/docs/commands.md"
+    checked_in_architecture = (
+        root / "results/router_summary/costarts_subset_utility/paper_package/docs/architecture_pseudocode.md"
+    )
     generated_source = (root / "scripts/build_costarts_paper_package.py").read_text(encoding="utf-8")
     command_doc = checked_in_commands.read_text(encoding="utf-8")
+    architecture_doc = checked_in_architecture.read_text(encoding="utf-8")
 
     assert "--finalizer both" not in command_doc
     assert "--finalizer both" not in generated_source
     assert "--finalizer all" in command_doc
     assert "--finalizer all" in generated_source
+    assert "finalize with queried-subset reranker or sparse mixture" not in architecture_doc
+    assert "finalize with queried-subset reranker or sparse mixture" not in generated_source
+    assert "finalize with equal average of queried expert forecasts" in architecture_doc
+    assert "finalize with equal average of queried expert forecasts" in generated_source
+
+
+def test_ablation_specs_default_to_deployable_equal_average_finalizer():
+    specs = {
+        spec.name: spec
+        for spec in ablations._ablation_specs(
+            "oracle_train.pt",
+            "subset_train.pt",
+            cost_lambda=0.2,
+        )
+    }
+
+    full = specs["full_improved_zero_cost"]
+    assert full.finalizer == "equal_average"
+    assert full.mix_loss_weight == 0.0
+    assert "equal-average" in full.description
+
+    cost_aware = specs["cost_aware_stopping"]
+    assert cost_aware.finalizer == "cost_aware_equal_average"
+
+    skipped_sparse = specs["no_sparse_mixing"]
+    assert skipped_sparse.status_override == "skipped_not_applicable"
+    assert skipped_sparse.train is False
+
+    live_finalizers = {
+        spec.finalizer
+        for spec in specs.values()
+        if spec.status_override is None and spec.finalizer
+    }
+    assert "sparse_mixture" not in live_finalizers
+    assert "reranker" not in live_finalizers
+
+
+def test_ablation_evaluator_passes_declared_rollout_finalizer(monkeypatch):
+    calls = {}
+
+    class _Router:
+        pass
+
+    def fake_subset_rollout(**kwargs):
+        calls["finalizer"] = kwargs["finalizer"]
+        return (
+            torch.zeros(2, 1, 1),
+            torch.tensor([1, 1]),
+            [[1], [1]],
+            0.0,
+        )
+
+    monkeypatch.setattr(ablations, "_load_subset_router", lambda checkpoint_path, device: (_Router(), {"epoch": 3}))
+    monkeypatch.setattr(ablations, "_parameter_count", lambda router: 0)
+    monkeypatch.setattr(ablations, "_subset_rollout", fake_subset_rollout)
+    monkeypatch.setattr(
+        ablations,
+        "_metric_row",
+        lambda **kwargs: {
+            "mae": 0.0,
+            "mse": 0.0,
+            "regret_to_oracle": 0.0,
+            "average_experts_queried": kwargs["average_experts_queried"],
+            "top2_oracle_coverage": "",
+            "first_query_oracle_match": "",
+            "oracle_match_rate": "",
+            "latency_seconds": kwargs["latency_seconds"],
+            "parameter_count": kwargs["parameter_count"],
+        },
+    )
+
+    row = ablations._evaluate_subset_checkpoint(
+        spec=ablations.AblationSpec(
+            name="reranker_diagnostic",
+            changed_factor="finalizer",
+            description="diagnostic",
+            finalizer="reranker",
+        ),
+        checkpoint_path=Path("unused.pt"),
+        val_cache={
+            "error_matrix": torch.tensor([[1.0, 2.0], [3.0, 1.0]]),
+            "num_windows": 2,
+            "best_expert": torch.tensor([0, 1]),
+            "targets": torch.zeros(2, 1, 1),
+            "target_masks": torch.ones(2, 1, 1, dtype=torch.bool),
+        },
+        subset_val_cache={"num_experts": 2},
+        batch_size=2,
+        device=torch.device("cpu"),
+    )
+
+    assert calls["finalizer"] == "reranker"
+    assert row["finalizer"] == "reranker"
+
+
+def test_cost_aware_ablation_uses_equal_average_cost_sweep(monkeypatch):
+    calls = {}
+
+    class _Router:
+        pass
+
+    def fake_evaluate_cost_lambda(**kwargs):
+        calls["finalizer"] = kwargs["finalizer"]
+        return {
+            "mae": 1.0,
+            "mse": 2.0,
+            "regret_to_oracle": 0.5,
+            "average_experts_queried": 1.25,
+            "oracle_match_rate": 0.0,
+        }
+
+    monkeypatch.setattr(ablations, "_load_subset_router", lambda checkpoint_path, device: (_Router(), {"epoch": 4}))
+    monkeypatch.setattr(ablations, "_parameter_count", lambda router: 0)
+    monkeypatch.setattr(ablations, "evaluate_cost_lambda", fake_evaluate_cost_lambda)
+
+    row = ablations._evaluate_subset_checkpoint(
+        spec=ablations.AblationSpec(
+            name="cost_aware_stopping",
+            changed_factor="stopping_cost",
+            description="diagnostic",
+            train=False,
+            finalizer="cost_aware_equal_average",
+            cost_lambda=0.2,
+        ),
+        checkpoint_path=Path("unused.pt"),
+        val_cache={
+            "error_matrix": torch.tensor([[1.0, 2.0]]),
+            "num_windows": 1,
+            "best_expert": torch.tensor([0]),
+        },
+        subset_val_cache={"num_experts": 2},
+        batch_size=1,
+        device=torch.device("cpu"),
+    )
+
+    assert calls["finalizer"] == "equal_average"
+    assert row["finalizer"] == "cost_aware_equal_average"
