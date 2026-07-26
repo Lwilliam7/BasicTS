@@ -568,9 +568,8 @@ def evaluate_final_comparison(
         )
 
     train_mean = train_cache["error_matrix"].mean(dim=0)
-    val_mean = val_cache["error_matrix"].mean(dim=0)
-    val_best = int(torch.argmin(val_mean))
-    selected_best = torch.full((int(val_cache["num_windows"]),), val_best, dtype=torch.long)
+    train_best = int(torch.argmin(train_mean))
+    selected_best = torch.full((int(val_cache["num_windows"]),), train_best, dtype=torch.long)
     rows.append(
         _metric_row(
             method="best_fixed_expert",
@@ -581,8 +580,8 @@ def evaluate_final_comparison(
             average_experts_queried=1.0,
             parameter_count=0,
             first_query=selected_best,
-            selection_split="router_val_reference",
-            note=f"Best fixed expert on these validation windows: {expert_names[val_best]}. Use validation-derived choices only for later untouched test.",
+            selection_split="router_train",
+            note=f"Best fixed expert selected on router_train: {expert_names[train_best]}.",
         )
     )
 
@@ -605,14 +604,14 @@ def evaluate_final_comparison(
         )
     )
 
-    inv_weights = 1.0 / val_mean.clamp_min(1e-12)
+    inv_weights = 1.0 / train_mean.clamp_min(1e-12)
     inv_weights = inv_weights / inv_weights.sum()
     start = time.perf_counter()
     weighted_prediction = _weighted_average_prediction(val_cache, inv_weights)
     weighted_latency = time.perf_counter() - start
     rows.append(
         _metric_row(
-            method="validation_weighted_average",
+            method="train_weighted_average",
             status="ok",
             cache=val_cache,
             oracle_mae=oracle_mae,
@@ -620,8 +619,8 @@ def evaluate_final_comparison(
             average_experts_queried=float(num_experts),
             latency_seconds=weighted_latency,
             parameter_count=num_experts,
-            selection_split="router_val_reference",
-            note="Inverse-MAE weights fit on router_val; this is the validation-weighted baseline for later untouched test use.",
+            selection_split="router_train",
+            note="Inverse-MAE weights fit on router_train.",
         )
     )
 

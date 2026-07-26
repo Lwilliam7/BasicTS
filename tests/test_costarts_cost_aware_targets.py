@@ -3,6 +3,7 @@ import inspect
 import torch
 
 from scripts import train_costarts_subset_utility_router as costarts_train
+from scripts import evaluate_costarts_final_comparison as final_comparison
 from scripts.evaluate_costarts_cost_sweep import _finalize_predictions
 from scripts.train_costarts_subset_utility_router import (
     build_cost_aware_targets,
@@ -225,3 +226,93 @@ def test_cost_sweep_equal_average_finalizer_uses_queried_forecast_mean():
     assert torch.equal(targets, torch.zeros(2, 1, 1))
     assert torch.equal(masks, torch.ones(2, 1, 1, dtype=torch.bool))
     assert torch.equal(selected, torch.tensor([0, 1]))
+
+
+def test_final_comparison_fixed_and_weighted_baselines_use_train_split(tmp_path, monkeypatch):
+    expert_names = ("A", "B", "C")
+    num_windows = 2
+    train_errors = torch.tensor([[5.0, 1.0, 2.0], [5.0, 1.0, 2.0]])
+    val_errors = torch.tensor([[1.0, 9.0, 9.0], [1.0, 9.0, 9.0]])
+
+    def make_base_cache(split_role, errors):
+        predictions = errors.view(num_windows, 1, 1, len(expert_names)).expand(
+            num_windows,
+            12,
+            7,
+            len(expert_names),
+        )
+        return {
+            "split_role": split_role,
+            "histories": torch.zeros(num_windows, 96, 7),
+            "targets": torch.zeros(num_windows, 12, 7),
+            "target_masks": torch.ones(num_windows, 12, 7, dtype=torch.bool),
+            "prediction_stack": predictions,
+            "error_matrix": errors,
+            "mse_matrix": errors.pow(2),
+            "best_expert": torch.argmin(errors, dim=1),
+            "sample_indices": torch.arange(num_windows),
+            "num_windows": num_windows,
+            "expert_names": expert_names,
+            "input_len": 96,
+            "forecast_horizon": 12,
+            "num_features": 7,
+        }
+
+    train_cache = make_base_cache("router_train", train_errors)
+    val_cache = make_base_cache("router_val", val_errors)
+    subset_cache = {
+        "expert_names": expert_names,
+        "subset_size": torch.zeros(num_windows, dtype=torch.long),
+        "sample_index": torch.arange(num_windows),
+    }
+
+    def fake_load(path):
+        name = path.name
+        if name == "train.pt":
+            return train_cache
+        if name == "val.pt":
+            return val_cache
+        if name == "subset_val.pt":
+            return subset_cache
+        raise AssertionError(f"Unexpected load path: {name}")
+
+    monkeypatch.setattr(final_comparison, "_load_torch", fake_load)
+    monkeypatch.setattr(final_comparison, "validate_costarts_subset_states", lambda cache: None)
+
+    payload = final_comparison.evaluate_final_comparison(
+        train_cache_path=tmp_path / "train.pt",
+        val_cache_path=tmp_path / "val.pt",
+        subset_val_cache_path=tmp_path / "subset_val.pt",
+        old_costarts_checkpoint=tmp_path / "missing_old.pt",
+        subset_checkpoint=tmp_path / "missing_subset.pt",
+        routerdc_no_contrastive_checkpoint=tmp_path / "missing_no_contrastive.pt",
+        routerdc_contrastive_checkpoint=tmp_path / "missing_contrastive.pt",
+        output_dir=tmp_path,
+        batch_size=2,
+        device=torch.device("cpu"),
+        seed=7,
+        ridge=1e-4,
+    )
+
+    rows = {row["method"]: row for row in payload["rows"]}
+    assert "validation_weighted_average" not in rows
+    assert rows["best_fixed_expert"]["selection_split"] == "router_train"
+    assert rows["best_fixed_expert"]["first_query_oracle_match"] == 0.0
+    assert rows["best_fixed_expert"]["note"] == "Best fixed expert selected on router_train: B."
+    assert rows["train_weighted_average"]["selection_split"] == "router_train"
+
+    train_mean = train_errors.mean(dim=0)
+    train_weights = (1.0 / train_mean) / (1.0 / train_mean).sum()
+    expected_train_mae = float((val_errors[0] * train_weights).sum())
+    assert torch.isclose(
+        torch.tensor(rows["train_weighted_average"]["mae"]),
+        torch.tensor(expected_train_mae),
+    )
+
+    val_mean = val_errors.mean(dim=0)
+    val_weights = (1.0 / val_mean) / (1.0 / val_mean).sum()
+    leaked_val_mae = float((val_errors[0] * val_weights).sum())
+    assert not torch.isclose(
+        torch.tensor(rows["train_weighted_average"]["mae"]),
+        torch.tensor(leaked_val_mae),
+    )
