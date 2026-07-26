@@ -1,0 +1,262 @@
+{
+  "lock_name": "costarts_pair_selector_gate_test_lock",
+  "lock_version": 1,
+  "created_for_commit": "e3edd8cc66004a3e5ae1acc6674a67d479e21bea",
+  "status": "locked_before_test_evaluation",
+  "test_metrics_accessed": false,
+  "notes": [
+    "This manifest freezes all routing choices before final test metrics are computed.",
+    "Thresholds and confidence score types were selected on router_val only.",
+    "The final evaluator must not select checkpoints, thresholds, fixed pairs, or confidence score types from test data."
+  ],
+  "dataset": {
+    "name": "ETTh1",
+    "data_dir": "datasets/ETTh1",
+    "full_num_time_steps": 14400,
+    "num_features": 7,
+    "files": {
+      "meta.json": {
+        "sha256": "4d4754821c0f90ca701d7bac72a0f8e7fef82fa75e6a6ecbec80921bddee3ef7"
+      },
+      "train_data.npy": {
+        "shape": [8640, 7],
+        "sha256": "356a62047b36a382518f4c132a1954a91ca52452039e4b872ab04a123f745ce4"
+      },
+      "val_data.npy": {
+        "shape": [2880, 7],
+        "sha256": "823372996d6aca29c6cc50b9edf9f7bf18fcc1ed868762da15b97432249ad7fa"
+      },
+      "test_data.npy": {
+        "shape": [2880, 7],
+        "sha256": "75cc0eeecc033274dc49360524f9b185f2832fc25fd7d3dc7d1c3557d52f3aea"
+      },
+      "train_timestamps.npy": {
+        "sha256": "90cc0510809a668e637a07a8e712e9b1ec61512e1ab3ea986678f03caa6e3041"
+      },
+      "val_timestamps.npy": {
+        "sha256": "928d75a4ad6c23158e1dfe9e330d3c91c0a26735bbd98f57fd3aa161f3880f7a"
+      },
+      "test_timestamps.npy": {
+        "sha256": "5d62d530b1ec8017a7b56be4afcba59bc6cfe527371a3fa0b03face175f58257"
+      }
+    }
+  },
+  "splits": {
+    "expert_train": {
+      "fraction": [0.0, 0.5],
+      "start": 0,
+      "end": 7200,
+      "timestamps": 7200,
+      "windows": 7093
+    },
+    "expert_val": {
+      "fraction": [0.5, 0.6],
+      "start": 7200,
+      "end": 8640,
+      "timestamps": 1440,
+      "windows": 1333
+    },
+    "router_train": {
+      "fraction": [0.6, 0.75],
+      "start": 8640,
+      "end": 10800,
+      "timestamps": 2160,
+      "windows": 2053
+    },
+    "router_val": {
+      "fraction": [0.75, 0.8],
+      "start": 10800,
+      "end": 11520,
+      "timestamps": 720,
+      "windows": 613
+    },
+    "test": {
+      "fraction": [0.8, 1.0],
+      "start": 11520,
+      "end": 14400,
+      "timestamps": 2880,
+      "windows": 2773
+    }
+  },
+  "preprocessing": {
+    "scaler": {
+      "class": "ZScoreScaler",
+      "norm_each_channel": true,
+      "rescale": false,
+      "fit_split": "expert_train",
+      "fit_start": 0,
+      "fit_end": 7200,
+      "mean": [
+        8.870277404785156,
+        2.0162179470062256,
+        5.986812114715576,
+        0.6665250658988953,
+        2.8105201721191406,
+        0.8289734125137329,
+        17.03023910522461
+      ],
+      "std": [
+        5.087769031524658,
+        2.225315570831299,
+        4.6977972984313965,
+        2.0416018962860107,
+        1.0804158449172974,
+        0.5971031785011292,
+        9.943209648132324
+      ],
+      "leakage_audit": "The scaler stats match absolute rows [0,7200), ending before expert_val, router_train, router_val, and test."
+    }
+  },
+  "metric_definition": {
+    "input_len": 96,
+    "forecast_horizon": 12,
+    "num_features": 7,
+    "batch_size": 512,
+    "mae": "sum(abs(prediction - target) * target_mask) / sum(target_mask)",
+    "mse": "sum((prediction - target)^2 * target_mask) / sum(target_mask)",
+    "pair_finalizer": "equal_average_of_two_selected_expert_forecasts"
+  },
+  "artifacts": {
+    "expert_checkpoints": [
+      {
+        "expert_name": "DLinear",
+        "path": "checkpoints/candidates/best_dlinear.pt",
+        "sha256": "a3641046730bcdb78967708c63e091b8f240d98ccc1b84666536292b4aa6f0c1",
+        "best_epoch": 34,
+        "validation_mae": 0.35933198997991683
+      },
+      {
+        "expert_name": "PatchTST",
+        "path": "checkpoints/candidates/best_patchtst.pt",
+        "sha256": "eca0baf88a71e9f35a8527f8db00ce34e8ca45769716c6c3ca42d7451b8d6de5",
+        "best_epoch": 21,
+        "validation_mae": 0.36266829507321025
+      },
+      {
+        "expert_name": "iTransformer",
+        "path": "checkpoints/candidates/best_itransformer.pt",
+        "sha256": "218ce0ebb9b3cb2d8eb8678c231b0bf005dc7b83b72695de815490d3a28df684",
+        "best_epoch": 32,
+        "validation_mae": 0.37247031484433607
+      },
+      {
+        "expert_name": "TimesNet",
+        "path": "checkpoints/candidates/best_timesnet.pt",
+        "sha256": "4cadc8df32373c919e35bb2e6fbe24aa6b1618e0137995be1cffe2b43d9f0c2f",
+        "best_epoch": 16,
+        "validation_mae": 0.3528885761479432
+      },
+      {
+        "expert_name": "ModernTCN",
+        "path": "checkpoints/candidates/best_moderntcn.pt",
+        "sha256": "f2f907ade7bbfa33c4c0bc75779e86ef36758e845959d5763249f385acd8129e",
+        "best_epoch": 30,
+        "validation_mae": 0.34313180345867716
+      }
+    ],
+    "pair_selector_checkpoints": [
+      {
+        "seed": 7,
+        "path": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed7.pt",
+        "sha256": "ea771ce48a9aa993c8ce0449dd25d55f31d07c046b2e42f361acc07c6f42675b"
+      },
+      {
+        "seed": 11,
+        "path": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed11.pt",
+        "sha256": "b5bafa6354ba53cf06f7c2853e77227ae1e79267088ea5aac676b192b276c003"
+      },
+      {
+        "seed": 13,
+        "path": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed13.pt",
+        "sha256": "e77011209699d2422490218ffc6c1624254255981a73a56fc2bccca84db3f728"
+      }
+    ],
+    "router_caches": [
+      {
+        "split_role": "router_train",
+        "path": "cache/costarts_router_train_cache.pt",
+        "sha256": "631ca1142cbf563b257cc636e1562a1dc66141f7ad6fd51c48e9a9f1aa11e1e0"
+      },
+      {
+        "split_role": "router_val",
+        "path": "cache/costarts_router_val_cache.pt",
+        "sha256": "0d802634a7f1cead668382f5a85e31292157a4a15c1316049ef02268a8b56d3b"
+      }
+    ]
+  },
+  "locked_routing": {
+    "expert_names": ["DLinear", "PatchTST", "iTransformer", "TimesNet", "ModernTCN"],
+    "pair_index_order": [
+      [0, 1],
+      [0, 2],
+      [0, 3],
+      [0, 4],
+      [1, 2],
+      [1, 3],
+      [1, 4],
+      [2, 3],
+      [2, 4],
+      [3, 4]
+    ],
+    "fixed_pair_selection_split": "router_val",
+    "fixed_pair_class": 6,
+    "fixed_pair_indices": [1, 4],
+    "fixed_pair_names": ["PatchTST", "ModernTCN"],
+    "seeds": [
+      {
+        "seed": 7,
+        "pair_selector_checkpoint": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed7.pt",
+        "pair_selector_checkpoint_sha256": "ea771ce48a9aa993c8ce0449dd25d55f31d07c046b2e42f361acc07c6f42675b",
+        "checkpoint_selection_split": "router_val",
+        "checkpoint_selection_metric": "router_val_mae",
+        "fixed_pair_class": 6,
+        "fixed_pair_names": ["PatchTST", "ModernTCN"],
+        "confidence_score": "probability_margin",
+        "confidence_score_selection_split": "router_val",
+        "threshold": 0.03373502567410469,
+        "threshold_selection_split": "router_val",
+        "validation_mae": 0.34705209732055664,
+        "validation_mse": 0.31255093216896057,
+        "validation_switch_rate": 0.24796085059642792
+      },
+      {
+        "seed": 11,
+        "pair_selector_checkpoint": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed11.pt",
+        "pair_selector_checkpoint_sha256": "b5bafa6354ba53cf06f7c2853e77227ae1e79267088ea5aac676b192b276c003",
+        "checkpoint_selection_split": "router_val",
+        "checkpoint_selection_metric": "router_val_mae",
+        "fixed_pair_class": 6,
+        "fixed_pair_names": ["PatchTST", "ModernTCN"],
+        "confidence_score": "logit_margin",
+        "confidence_score_selection_split": "router_val",
+        "threshold": 0.7762885689735413,
+        "threshold_selection_split": "router_val",
+        "validation_mae": 0.34862247109413147,
+        "validation_mse": 0.3121437132358551,
+        "validation_switch_rate": 0.5008156895637512
+      },
+      {
+        "seed": 13,
+        "pair_selector_checkpoint": "checkpoints/costarts_pair_selector_gate_locked/best_costarts_pair_selector_seed13.pt",
+        "pair_selector_checkpoint_sha256": "e77011209699d2422490218ffc6c1624254255981a73a56fc2bccca84db3f728",
+        "checkpoint_selection_split": "router_val",
+        "checkpoint_selection_metric": "router_val_mae",
+        "fixed_pair_class": 6,
+        "fixed_pair_names": ["PatchTST", "ModernTCN"],
+        "confidence_score": "predicted_minus_fixed_probability",
+        "confidence_score_selection_split": "router_val",
+        "threshold": 0.14389732480049133,
+        "threshold_selection_split": "router_val",
+        "validation_mae": 0.3489604890346527,
+        "validation_mse": 0.30928704142570496,
+        "validation_switch_rate": 0.774877667427063
+      }
+    ]
+  },
+  "baselines": {
+    "equal_average_all_experts_val_mae": 0.35006529092788696,
+    "existing_predicted_top2_equal_average_val_mae": 0.3507484793663025,
+    "direct_pair_selector_val_mae_mean": 0.3515688180923462,
+    "confidence_gated_val_mae_mean": 0.3482116758823395
+  }
+}
