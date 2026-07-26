@@ -58,11 +58,13 @@ function Invoke-GitRaw {
 }
 
 function New-Fixture {
+    param([string]$LauncherKind = "cmd")
+
     $root = Join-Path ([System.IO.Path]::GetTempPath()) "basicts-watcher-tests-$([guid]::NewGuid().ToString('N'))"
     $origin = Join-Path $root "origin.git"
     $seed = Join-Path $root "seed"
-    $state = Join-Path $root "state"
-    $fakeCodex = Join-Path $root "fake-codex.cmd"
+    $state = Join-Path $root "state-$LauncherKind"
+    $fakeCodexCommand = Join-Path $root "fake-codex.cmd"
     $fakeCodexScript = Join-Path $root "fake-codex.ps1"
     $fakeLog = Join-Path $root "fake-codex.log"
 
@@ -82,12 +84,18 @@ function New-Fixture {
     $fakeCodexBody = @'
 $ErrorActionPreference = "Continue"
 
-if ($args.Count -lt 1 -or [string]::IsNullOrWhiteSpace($args[0])) {
+$repoIndex = [Array]::IndexOf($args, "-C")
+if ($repoIndex -ge 0 -and $repoIndex + 1 -lt $args.Count) {
+    $repo = $args[$repoIndex + 1]
+}
+elseif ($args.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($args[0])) {
+    $repo = $args[0]
+}
+else {
     Write-Host "fake codex did not receive a runner path"
     exit 64
 }
 
-$repo = $args[0]
 Add-Content -Path $env:FAKE_CODEX_LOG -Value "start $repo $(Get-Date -Format o)"
 
 if ($env:FAKE_CODEX_MODE -eq "fail") {
@@ -129,7 +137,14 @@ echo Reading additional input from stdin... 1>&2
 "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File "%~dp0fake-codex.ps1" "%~5"
 exit /b %ERRORLEVEL%
 '@
-    Set-Content -Path $fakeCodex -Value $fakeCodexLauncher -Encoding ascii
+    Set-Content -Path $fakeCodexCommand -Value $fakeCodexLauncher -Encoding ascii
+
+    if ($LauncherKind -eq "ps1") {
+        $fakeCodex = $fakeCodexScript
+    }
+    else {
+        $fakeCodex = $fakeCodexCommand
+    }
 
     return @{
         Root = $root
@@ -304,6 +319,31 @@ function Test-FailureRetry {
     }
 }
 
+function Test-PowerShellCodexLauncher {
+    $successFixture = New-Fixture -LauncherKind "ps1"
+    try {
+        $success = Invoke-Watcher $successFixture
+        Assert-True ($success.ExitCode -eq 0) "PowerShell Codex launcher success run failed: $($success.Output -join [Environment]::NewLine)"
+        Assert-True ((Get-FakeIterationCount $successFixture) -eq 1) "PowerShell Codex launcher did not create the expected successful iteration."
+    }
+    finally {
+        Remove-Fixture $successFixture
+    }
+
+    $failureFixture = New-Fixture -LauncherKind "ps1"
+    try {
+        $failed = Invoke-Watcher $failureFixture -Mode "fail"
+        Assert-True ($failed.ExitCode -ne 0) "PowerShell Codex launcher failure should fail the watcher cycle."
+        $repair = Get-Content -Path (Join-Path $failureFixture.State "repair_watcher_prompt.txt") -Raw
+        Assert-True ($repair.Contains("Codex iteration 1 exited with code 42.")) "PowerShell Codex launcher failure did not preserve exit code 42."
+        $failedLaunchCount = @((Get-Content -Path $failureFixture.FakeLog) | Where-Object { $_ -like "start *" }).Count
+        Assert-True ($failedLaunchCount -eq 1) "PowerShell Codex launcher failure should stop after one launch, not $failedLaunchCount launches."
+    }
+    finally {
+        Remove-Fixture $failureFixture
+    }
+}
+
 function Test-Deadline {
     $fixture = New-Fixture
     try {
@@ -320,6 +360,7 @@ Test-Parse
 Test-BranchSync
 Test-DirtyCheckout
 Test-FailureRetry
+Test-PowerShellCodexLauncher
 Test-Deadline
 
 Write-Host "watch_chatgpt_codex_tests.ps1 passed"

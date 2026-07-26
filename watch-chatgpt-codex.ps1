@@ -302,6 +302,25 @@ function Quote-ProcessArgument {
     return $builder.ToString()
 }
 
+function Get-PowerShellExecutable {
+    $currentProcessPath = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
+    if (-not [string]::IsNullOrWhiteSpace($currentProcessPath) -and (Test-Path $currentProcessPath)) {
+        return $currentProcessPath
+    }
+
+    $windowsPowerShell = Join-Path $PSHOME "powershell.exe"
+    if (Test-Path $windowsPowerShell) {
+        return $windowsPowerShell
+    }
+
+    $command = Get-Command "powershell.exe" -ErrorAction SilentlyContinue
+    if ($null -ne $command) {
+        return $command.Source
+    }
+
+    throw "Could not find a PowerShell executable to launch '$CodexCommand'."
+}
+
 function Invoke-CodexProcess {
     param(
         [string]$TaskText,
@@ -320,8 +339,20 @@ function Invoke-CodexProcess {
 
     $codexArguments = @("exec", "-s", "workspace-write", "-C", $RunnerRoot, $LauncherPrompt)
     $psi = New-Object System.Diagnostics.ProcessStartInfo
-    $psi.FileName = $commandPath
-    $psi.Arguments = ($codexArguments | ForEach-Object { Quote-ProcessArgument $_ }) -join " "
+    if ([System.IO.Path]::GetExtension($commandPath) -ieq ".ps1") {
+        $psi.FileName = Get-PowerShellExecutable
+        $psi.Arguments = (@(
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            $commandPath
+        ) + $codexArguments | ForEach-Object { Quote-ProcessArgument $_ }) -join " "
+    }
+    else {
+        $psi.FileName = $commandPath
+        $psi.Arguments = ($codexArguments | ForEach-Object { Quote-ProcessArgument $_ }) -join " "
+    }
     $psi.WorkingDirectory = $RunnerRoot
     $psi.UseShellExecute = $false
     $psi.RedirectStandardInput = $true
