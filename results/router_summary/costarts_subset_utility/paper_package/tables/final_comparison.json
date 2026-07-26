@@ -65,22 +65,6 @@
       "note": "Upper bound: oracle chooses the better expert inside the improved router predicted top-2."
     },
     {
-      "method": "validation_weighted_average",
-      "status": "ok",
-      "mae": 0.3498559594154358,
-      "mse": 0.3097637891769409,
-      "regret_to_oracle": 0.03171271085739136,
-      "average_experts_queried": 5.0,
-      "latency_seconds": 0.0010307999909855425,
-      "latency_ms_per_sample": 0.0016815660538100205,
-      "parameter_count": 5,
-      "top2_oracle_coverage": "",
-      "first_query_oracle_match": "",
-      "oracle_match_rate": "",
-      "selection_split": "router_val_reference",
-      "note": "Inverse-MAE weights fit on router_val; this is the validation-weighted baseline for later untouched test use."
-    },
-    {
       "method": "linear_stacker",
       "status": "ok",
       "mae": 0.34986552596092224,
@@ -161,22 +145,6 @@
       "note": "Loaded checkpoints\\best_routerdc_hard_contrastive.pt; no test data used."
     },
     {
-      "method": "best_fixed_expert",
-      "status": "ok",
-      "mae": 0.35864511132240295,
-      "mse": 0.33227208256721497,
-      "regret_to_oracle": 0.04050186276435852,
-      "average_experts_queried": 1.0,
-      "latency_seconds": 0.0,
-      "latency_ms_per_sample": 0.0,
-      "parameter_count": 0,
-      "top2_oracle_coverage": "",
-      "first_query_oracle_match": 0.2952691614627838,
-      "oracle_match_rate": 0.2952691614627838,
-      "selection_split": "router_val_reference",
-      "note": "Best fixed expert on these validation windows: ModernTCN. Use validation-derived choices only for later untouched test."
-    },
-    {
       "method": "individual_expert:ModernTCN",
       "status": "ok",
       "mae": 0.35864511132240295,
@@ -239,6 +207,22 @@
       "oracle_match_rate": 0.2349102795124054,
       "selection_split": "router_val_checkpoint_selected",
       "note": "Old COSTARTS checkpoint epoch 4."
+    },
+    {
+      "method": "best_fixed_expert",
+      "status": "ok",
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "regret_to_oracle": 0.05195525288581848,
+      "average_experts_queried": 1.0,
+      "latency_seconds": 0.0,
+      "latency_ms_per_sample": 0.0,
+      "parameter_count": 0,
+      "top2_oracle_coverage": "",
+      "first_query_oracle_match": 0.19086460769176483,
+      "oracle_match_rate": 0.19086460769176483,
+      "selection_split": "router_train",
+      "note": "Best fixed expert selected on router_train: DLinear."
     },
     {
       "method": "individual_expert:DLinear",

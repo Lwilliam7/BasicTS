@@ -1,4 +1,6 @@
 import inspect
+import json
+from pathlib import Path
 
 import torch
 
@@ -316,3 +318,18 @@ def test_final_comparison_fixed_and_weighted_baselines_use_train_split(tmp_path,
         torch.tensor(rows["train_weighted_average"]["mae"]),
         torch.tensor(leaked_val_mae),
     )
+
+
+def test_tracked_final_comparison_artifacts_do_not_report_validation_fit_baselines():
+    root = Path(__file__).resolve().parents[1]
+    artifact_paths = (
+        root / "results/router_summary/costarts_subset_utility/final_comparison.json",
+        root / "results/router_summary/costarts_subset_utility/paper_package/tables/final_comparison.json",
+    )
+    for artifact_path in artifact_paths:
+        payload = json.loads(artifact_path.read_text(encoding="utf-8"))
+        rows = {row["method"]: row for row in payload["rows"]}
+        assert "validation_weighted_average" not in rows
+        assert rows["best_fixed_expert"]["selection_split"] == "router_train"
+        for row in payload["rows"]:
+            assert row["selection_split"] != "router_val_reference"
