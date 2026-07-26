@@ -62,7 +62,8 @@ function New-Fixture {
     $origin = Join-Path $root "origin.git"
     $seed = Join-Path $root "seed"
     $state = Join-Path $root "state"
-    $fakeCodex = Join-Path $root "fake-codex.ps1"
+    $fakeCodex = Join-Path $root "fake-codex.cmd"
+    $fakeCodexScript = Join-Path $root "fake-codex.ps1"
     $fakeLog = Join-Path $root "fake-codex.log"
 
     New-Item -ItemType Directory -Force -Path $root | Out-Null
@@ -81,13 +82,12 @@ function New-Fixture {
     $fakeCodexBody = @'
 $ErrorActionPreference = "Continue"
 
-$repoIndex = [Array]::IndexOf($args, "-C")
-if ($repoIndex -lt 0 -or $repoIndex + 1 -ge $args.Count) {
-    Write-Host "fake codex did not receive -C"
+if ($args.Count -lt 1 -or [string]::IsNullOrWhiteSpace($args[0])) {
+    Write-Host "fake codex did not receive a runner path"
     exit 64
 }
 
-$repo = $args[$repoIndex + 1]
+$repo = $args[0]
 Add-Content -Path $env:FAKE_CODEX_LOG -Value "start $repo $(Get-Date -Format o)"
 
 if ($env:FAKE_CODEX_MODE -eq "fail") {
@@ -121,7 +121,15 @@ if ($LASTEXITCODE -ne 0) {
 Add-Content -Path $env:FAKE_CODEX_LOG -Value "finish $iteration $(Get-Date -Format o)"
 exit 0
 '@
-    Set-Content -Path $fakeCodex -Value $fakeCodexBody -Encoding utf8
+    Set-Content -Path $fakeCodexScript -Value $fakeCodexBody -Encoding utf8
+
+    $fakeCodexLauncher = @'
+@echo off
+echo Reading additional input from stdin... 1>&2
+"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File "%~dp0fake-codex.ps1" "%~5"
+exit /b %ERRORLEVEL%
+'@
+    Set-Content -Path $fakeCodex -Value $fakeCodexLauncher -Encoding ascii
 
     return @{
         Root = $root
@@ -228,6 +236,7 @@ function Test-BranchSync {
     try {
         $first = Invoke-Watcher $fixture
         Assert-True ($first.ExitCode -eq 0) "First branch-sync run failed: $($first.Output -join [Environment]::NewLine)"
+        Assert-True (($first.Output -join [Environment]::NewLine).Contains("Reading additional input from stdin...")) "Native stderr was not captured in the watcher log."
         Assert-True ((Get-FakeIterationCount $fixture) -eq 1) "Expected first fake iteration."
 
         $newPromptSha = Update-RemotePrompt $fixture "second queued prompt"
