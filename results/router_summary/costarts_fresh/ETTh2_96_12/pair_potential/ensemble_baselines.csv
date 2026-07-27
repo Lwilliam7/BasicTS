@@ -1,0 +1,39 @@
+split,method,mae,mse,average_experts_used,selection_source,weights
+router_train,inverse_training_mae_average,0.2909910976886749,0.1880648285150528,5.0,router-train fitted,"{""DLinear"": 0.2273523062467575, ""PatchTST"": 0.19998754560947418, ""iTransformer"": 0.14509379863739014, ""TimesNet"": 0.21033881604671478, ""ModernTCN"": 0.217227503657341}"
+router_val,inverse_training_mae_average,0.29138705134391785,0.18713442981243134,5.0,router-train fitted,"{""DLinear"": 0.2273523062467575, ""PatchTST"": 0.19998754560947418, ""iTransformer"": 0.14509379863739014, ""TimesNet"": 0.21033881604671478, ""ModernTCN"": 0.217227503657341}"
+router_train,nonnegative_simplex_linear_average,0.2782619297504425,0.17229709029197693,5.0,router-train fitted,"{""DLinear"": 0.47060954570770264, ""PatchTST"": 0.13924337923526764, ""iTransformer"": 0.0, ""TimesNet"": 0.1643986850976944, ""ModernTCN"": 0.22574837505817413}"
+router_val,nonnegative_simplex_linear_average,0.27475523948669434,0.16547942161560059,5.0,router-train fitted,"{""DLinear"": 0.47060954570770264, ""PatchTST"": 0.13924337923526764, ""iTransformer"": 0.0, ""TimesNet"": 0.1643986850976944, ""ModernTCN"": 0.22574837505817413}"
+router_train,ridge_linear_stacker,0.2770654857158661,0.1701933741569519,5.0,router-train fitted,"{""DLinear"": 0.5178712606430054, ""PatchTST"": 0.2733554542064667, ""iTransformer"": -0.05290773883461952, ""TimesNet"": 0.1123543381690979, ""ModernTCN"": 0.1667473316192627}"
+router_val,ridge_linear_stacker,0.2767016887664795,0.1653389185667038,5.0,router-train fitted,"{""DLinear"": 0.5178712606430054, ""PatchTST"": 0.2733554542064667, ""iTransformer"": -0.05290773883461952, ""TimesNet"": 0.1123543381690979, ""ModernTCN"": 0.1667473316192627}"
+router_train,DLinear+TimesNet+ModernTCN,0.28098684549331665,0.17691384255886078,3.0,fixed,
+router_train,DLinear+PatchTST+ModernTCN,0.2825974225997925,0.17576490342617035,3.0,fixed,
+router_train,DLinear+PatchTST+TimesNet,0.2836291193962097,0.17677155137062073,3.0,fixed,
+router_train,PatchTST+TimesNet+ModernTCN,0.28759831190109253,0.1811532974243164,3.0,fixed,
+router_train,DLinear+iTransformer+ModernTCN,0.3079454004764557,0.21394452452659607,3.0,fixed,
+router_train,DLinear+iTransformer+TimesNet,0.30832016468048096,0.21440738439559937,3.0,fixed,
+router_train,iTransformer+TimesNet+ModernTCN,0.31181609630584717,0.2176945060491562,3.0,fixed,
+router_train,PatchTST+iTransformer+ModernTCN,0.3248292803764343,0.24173641204833984,3.0,fixed,
+router_train,DLinear+PatchTST+iTransformer,0.3252374827861786,0.24462172389030457,3.0,fixed,
+router_train,PatchTST+iTransformer+TimesNet,0.32572105526924133,0.2426752746105194,3.0,fixed,
+router_val,DLinear+TimesNet+ModernTCN,0.27664366364479065,0.16693221032619476,3.0,fixed,
+router_val,DLinear+PatchTST+ModernTCN,0.2808784246444702,0.17193280160427094,3.0,fixed,
+router_val,DLinear+PatchTST+TimesNet,0.28182318806648254,0.17209619283676147,3.0,fixed,
+router_val,PatchTST+TimesNet+ModernTCN,0.2833086848258972,0.17327751219272614,3.0,fixed,
+router_val,DLinear+iTransformer+TimesNet,0.3154957592487335,0.22426819801330566,3.0,fixed,
+router_val,DLinear+iTransformer+ModernTCN,0.31570035219192505,0.22592099010944366,3.0,fixed,
+router_val,iTransformer+TimesNet+ModernTCN,0.3157004415988922,0.22396957874298096,3.0,fixed,
+router_val,PatchTST+iTransformer+TimesNet,0.34190189838409424,0.2661374807357788,3.0,fixed,
+router_val,PatchTST+iTransformer+ModernTCN,0.34201833605766296,0.2687334716320038,3.0,fixed,
+router_val,DLinear+PatchTST+iTransformer,0.3458854854106903,0.2751407325267792,3.0,fixed,
+router_train,DLinear+PatchTST+TimesNet+ModernTCN,0.2816878855228424,0.17523078620433807,4.0,fixed,
+router_train,DLinear+iTransformer+TimesNet+ModernTCN,0.29694753885269165,0.19689112901687622,4.0,fixed,
+router_train,DLinear+PatchTST+iTransformer+ModernTCN,0.30634602904319763,0.21128323674201965,4.0,fixed,
+router_train,DLinear+PatchTST+iTransformer+TimesNet,0.30662965774536133,0.21167945861816406,4.0,fixed,
+router_train,PatchTST+iTransformer+TimesNet+ModernTCN,0.30823010206222534,0.2124936282634735,4.0,fixed,
+router_val,DLinear+PatchTST+TimesNet+ModernTCN,0.2776811122894287,0.16823096573352814,4.0,fixed,
+router_val,DLinear+iTransformer+TimesNet+ModernTCN,0.2979537546634674,0.19758206605911255,4.0,fixed,
+router_val,PatchTST+iTransformer+TimesNet+ModernTCN,0.31464913487434387,0.22113017737865448,4.0,fixed,
+router_val,DLinear+PatchTST+iTransformer+TimesNet,0.3156318962574005,0.22289307415485382,4.0,fixed,
+router_val,DLinear+PatchTST+iTransformer+ModernTCN,0.31578072905540466,0.2243451178073883,4.0,fixed,
+router_train,DLinear+PatchTST+iTransformer+TimesNet+ModernTCN,0.2974320650100708,0.1972840279340744,5.0,fixed,
+router_val,DLinear+PatchTST+iTransformer+TimesNet+ModernTCN,0.30077221989631653,0.2008334994316101,5.0,fixed,
