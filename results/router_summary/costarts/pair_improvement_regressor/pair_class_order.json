@@ -1,0 +1,122 @@
+[
+  {
+    "class_index": 0,
+    "expert_indices": [
+      0,
+      1
+    ],
+    "expert_names": [
+      "DLinear",
+      "PatchTST"
+    ],
+    "pair": "DLinear+PatchTST"
+  },
+  {
+    "class_index": 1,
+    "expert_indices": [
+      0,
+      2
+    ],
+    "expert_names": [
+      "DLinear",
+      "iTransformer"
+    ],
+    "pair": "DLinear+iTransformer"
+  },
+  {
+    "class_index": 2,
+    "expert_indices": [
+      0,
+      3
+    ],
+    "expert_names": [
+      "DLinear",
+      "TimesNet"
+    ],
+    "pair": "DLinear+TimesNet"
+  },
+  {
+    "class_index": 3,
+    "expert_indices": [
+      0,
+      4
+    ],
+    "expert_names": [
+      "DLinear",
+      "ModernTCN"
+    ],
+    "pair": "DLinear+ModernTCN"
+  },
+  {
+    "class_index": 4,
+    "expert_indices": [
+      1,
+      2
+    ],
+    "expert_names": [
+      "PatchTST",
+      "iTransformer"
+    ],
+    "pair": "PatchTST+iTransformer"
+  },
+  {
+    "class_index": 5,
+    "expert_indices": [
+      1,
+      3
+    ],
+    "expert_names": [
+      "PatchTST",
+      "TimesNet"
+    ],
+    "pair": "PatchTST+TimesNet"
+  },
+  {
+    "class_index": 6,
+    "expert_indices": [
+      1,
+      4
+    ],
+    "expert_names": [
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "pair": "PatchTST+ModernTCN"
+  },
+  {
+    "class_index": 7,
+    "expert_indices": [
+      2,
+      3
+    ],
+    "expert_names": [
+      "iTransformer",
+      "TimesNet"
+    ],
+    "pair": "iTransformer+TimesNet"
+  },
+  {
+    "class_index": 8,
+    "expert_indices": [
+      2,
+      4
+    ],
+    "expert_names": [
+      "iTransformer",
+      "ModernTCN"
+    ],
+    "pair": "iTransformer+ModernTCN"
+  },
+  {
+    "class_index": 9,
+    "expert_indices": [
+      3,
+      4
+    ],
+    "expert_names": [
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "pair": "TimesNet+ModernTCN"
+  }
+]
