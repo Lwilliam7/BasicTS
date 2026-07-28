@@ -1,50 +1,92 @@
 # ChatGPT to Codex Prompt Inbox
 
 Status: active
-Queue ID: COSTAR-TS-six-hour-2026-07-26-run-1
+Queue ID: COSTAR-TS-loss-aware-pair-selector-2026-07-28
 
-## Active task: verified six-hour COSTAR-TS improvement loop
+## Active task: redesign the history-only pair selector using all pair errors
 
-Run a completion-driven COSTAR-TS research loop under the six-hour deadline enforced by `watch-chatgpt-codex.ps1 -LoopHours 6`.
+Run one bounded COSTAR-TS research iteration. Replace the current hard oracle-best-pair classification objective with a loss-aware objective that uses the individual validation-safe training error of every candidate pair.
 
-First verify the run is safe:
+### Safety and scope
 
-1. Inspect the current branch, latest `origin/master`, and `git status`.
-2. Preserve unrelated user changes. Never run overlapping Codex iterations.
-3. Confirm the watcher deadline prevents starting another iteration after six hours.
-4. If watcher behavior is broken, fix and test it first. If it cannot be fixed safely, stop and create the repair prompt with the exact error and log path.
+1. Inspect the current branch, latest `origin/master`, `git status`, current pair-selector implementation, focused tests, cached frozen-expert predictions, and the newest pair-selector reports.
+2. Preserve unrelated user changes. Do not overwrite or delete existing results.
+3. Use only the existing chronological expert-train, expert-validation, router-train, and router-validation splits.
+4. Do not inspect, regenerate, tune on, or report final test-set values.
+5. Keep every forecasting expert frozen. Train only the history encoder and selector heads.
+6. Do not launch a broad architecture or hyperparameter search. Make one focused redesign and compare it fairly with the existing exact-pair classifier and fixed-pair baseline.
 
-For each completed research iteration:
+### Required redesign
 
-1. Inspect the newest COSTAR-TS code, tests, result files, and previous negative findings.
-2. Find the single largest evidence-backed weakness.
-3. Make one bounded, independently testable change.
-4. Run focused correctness tests and the smallest meaningful experiment.
-5. Use training and validation data for development. Never tune against the final test split.
-6. Keep the change only if it improves correctness, reproducibility, evidence quality, validation performance, or the measured cost–accuracy tradeoff.
-7. If the idea fails, revert only that iteration's edits, record the negative result, and do not commit useless complexity.
-8. After a valid pushed commit, begin the next review iteration if the six-hour deadline has not been reached.
+The deployment objective is not to identify the exact oracle pair. It is to decide whether any candidate pair is expected to improve on the strong fixed pair.
 
-Priorities:
+For each router-training window and each candidate pair `j`, use the already available frozen forecasts to compute:
 
-1. Leakage, chronological splits, target construction, rollout behavior, stopping logic, equal-average finalization, and cost accounting.
-2. Strong simple baselines: best fixed expert, fixed top-2 equal average, all-expert equal average, RouterDC hard, and oracle bounds.
-3. Multi-seed validation and uncertainty without test-set tuning.
-4. Validation MAE, inference cost, regret, average queried experts, query-count distribution, and Pareto results.
-5. Ablations for the cost penalty and sequential forecast evidence.
-6. Multiple datasets only after the core pipeline is demonstrably correct.
+`pair_error[j] = MAE(pair_forecast[j], true_future)`
 
-Do not add a large encoder, reinforcement learning, DAgger, an LLM agent, or a broad hyperparameter sweep unless existing results directly justify it. Do not invent results or declare the work paper-ready from one dataset or seed.
+`improvement_target[j] = fixed_pair_error - pair_error[j]`
 
-Core hypothesis: COSTAR-TS sequentially queries frozen forecasting experts, returns the equal average of all queried forecasts, and stops when expected ensemble improvement no longer justifies the incremental expert cost.
+Use the individual target for every pair, not only the identity of the minimum-error oracle pair.
 
-At the end of every valid iteration:
+Implement a history-only selector that:
 
-1. Review the exact diff and `git status`.
-2. Stage only files belonging to the iteration.
-3. Commit with a specific message and push to `origin master`. Never force-push.
-4. Verify that `origin/master` contains the new commit.
-5. Report files changed, tests and experiments run, actual results, commit hash, and blockers.
-6. On authentication failure, conflict, branch protection, failed tests, missing data, or compute failure, stop and write the ready-to-run repair prompt with the exact failure and log location.
+1. Receives exactly the same causal history input as the current selector.
+2. Outputs one predicted improvement value for every candidate pair.
+3. Trains with a stable regression loss across all pair targets, preferably SmoothL1 unless the existing implementation gives a strong reason for another simple loss.
+4. Includes the fixed pair as the default action.
+5. At inference, chooses the pair with the largest predicted improvement only when that prediction exceeds a threshold selected exclusively on router-validation data; otherwise it keeps the fixed pair.
+6. Never uses true future values, realized pair errors, or oracle labels at inference.
 
-When the watcher reaches its six-hour deadline, do not start another iteration. Allow an already-running iteration to finish safely, then provide a final summary separating verified improvements, negative results, unfinished work, and the next highest-priority experiment.
+Keep the current exact-pair classifier intact as a comparison baseline rather than silently replacing its historical results.
+
+### Validation protocol
+
+Run the same supported seed set used by the current report, preferably `7, 11, 13, 17, 19`, unless repository evidence shows a different locked set. Reuse the same pair pool, fixed pair, caches, preprocessing, and split boundaries so the comparison is apples-to-apples.
+
+Select the switching threshold using router-validation only. Do not choose a threshold by looking at test results. Include a no-switch option and avoid arbitrary switch-rate constraints unless reported only as an explicit secondary diagnostic.
+
+Report at minimum:
+
+1. Fixed-pair validation MAE.
+2. Existing exact-pair classifier validation MAE.
+3. New loss-aware selector validation MAE, mean and standard deviation across seeds.
+4. Per-seed MAE differences relative to the fixed pair.
+5. Switch rate and its variation across seeds.
+6. Mean regret to the oracle pair.
+7. Realized MAE on switched windows versus the fixed pair on those same windows.
+8. Fraction of switches that actually improve over the fixed pair.
+9. AUC or another clearly defined separator metric for predicted improvement versus whether switching truly helps.
+10. Regression diagnostics for predicted versus realized improvement, such as MAE and Spearman correlation.
+11. Results on the previously defined high-margin subset, including oracle pair margin above `0.025`.
+
+Exact-pair accuracy may be reported as a secondary diagnostic, but it is not the optimization target and must not be used as the main success criterion.
+
+### Success criteria
+
+Call the redesign successful only if all of the following hold:
+
+1. It improves mean router-validation MAE over the fixed pair.
+2. The improvement is not driven by only one seed.
+3. Switching behavior is not degenerate across seeds.
+4. Predicted improvement meaningfully separates helpful from harmful switches.
+5. The result is obtained without test-set tuning or leakage.
+
+If it does not meet these criteria, state clearly that history-only loss-aware routing failed. Do not add a confidence gate, larger encoder, reinforcement learning, or another complicated repair in this iteration. Recommend the next controlled experiment as a forecast-aware router using frozen expert forecasts or disagreement summaries.
+
+### Tests and evidence
+
+Add or update focused tests that verify:
+
+1. Every pair contributes an individual improvement target.
+2. Improvement signs are correct: positive means the candidate beats the fixed pair.
+3. Targets are constructed only from the permitted training split.
+4. The inference path never consumes future targets or realized errors.
+5. The default fixed pair is selected below threshold.
+6. The highest predicted-improvement pair is selected above threshold.
+7. Metrics and threshold selection use router-validation only.
+
+Run the smallest meaningful experiment that completes the multi-seed comparison. Save a concise report beside the existing pair-selector results without overwriting prior reports.
+
+### Finish
+
+Review the exact diff and `git status`. Stage only files belonging to this experiment. If the implementation is correct and the evidence is reproducible, commit with a specific message and push to `origin master`; never force-push. Report the files changed, tests run, experiment command, per-seed and aggregate results, selected threshold behavior, commit hash, and any blocker. If the method fails scientifically, preserve only useful tests and a clearly labeled negative-result report; do not claim success or retain unjustified complexity.
