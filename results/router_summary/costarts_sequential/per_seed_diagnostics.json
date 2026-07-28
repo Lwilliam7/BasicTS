@@ -1,0 +1,307 @@
+{
+  "7": {
+    "query_count_distribution": {
+      "1": 4,
+      "2": 125,
+      "3": 125,
+      "4": 242,
+      "5": 117
+    },
+    "stop_counts": {
+      "1": 4,
+      "2": 125,
+      "3": 125,
+      "4": 242,
+      "5": 117
+    },
+    "expert_query_frequency": {
+      "DLinear": 22.67536704730832,
+      "PatchTST": 76.3458401305057,
+      "iTransformer": 92.82218597063621,
+      "TimesNet": 64.11092985318108,
+      "ModernTCN": 100.0
+    },
+    "high_margin_windows": {
+      "<=0.005": {
+        "count": 287,
+        "useful_query_precision": 54.00696864111498
+      },
+      "0.005_to_0.01": {
+        "count": 258,
+        "useful_query_precision": 56.97674418604651
+      },
+      "0.01_to_0.025": {
+        "count": 517,
+        "useful_query_precision": 55.512572533849124
+      },
+      ">0.025": {
+        "count": 507,
+        "useful_query_precision": 58.777120315581854
+      }
+    },
+    "query_count_performance": {
+      "1": {
+        "count": 4,
+        "mae": 0.3209751546382904,
+        "mse": 0.17019103467464447
+      },
+      "2": {
+        "count": 125,
+        "mae": 0.2569738030433655,
+        "mse": 0.13372808694839478
+      },
+      "3": {
+        "count": 125,
+        "mae": 0.27894267439842224,
+        "mse": 0.17540062963962555
+      },
+      "4": {
+        "count": 242,
+        "mae": 0.3925163447856903,
+        "mse": 0.37704145908355713
+      },
+      "5": {
+        "count": 117,
+        "mae": 0.42753708362579346,
+        "mse": 0.479085773229599
+      }
+    }
+  },
+  "11": {
+    "query_count_distribution": {
+      "1": 12,
+      "2": 171,
+      "3": 203,
+      "4": 195,
+      "5": 32
+    },
+    "stop_counts": {
+      "1": 12,
+      "2": 171,
+      "3": 203,
+      "4": 195,
+      "5": 32
+    },
+    "expert_query_frequency": {
+      "DLinear": 74.87765089722676,
+      "PatchTST": 52.03915171288744,
+      "iTransformer": 9.624796084828711,
+      "TimesNet": 73.89885807504078,
+      "ModernTCN": 100.0
+    },
+    "high_margin_windows": {
+      "<=0.005": {
+        "count": 250,
+        "useful_query_precision": 51.2
+      },
+      "0.005_to_0.01": {
+        "count": 242,
+        "useful_query_precision": 54.958677685950406
+      },
+      "0.01_to_0.025": {
+        "count": 448,
+        "useful_query_precision": 61.60714285714286
+      },
+      ">0.025": {
+        "count": 350,
+        "useful_query_precision": 66.57142857142857
+      }
+    },
+    "query_count_performance": {
+      "1": {
+        "count": 12,
+        "mae": 0.2481170892715454,
+        "mse": 0.14707329869270325
+      },
+      "2": {
+        "count": 171,
+        "mae": 0.3033561408519745,
+        "mse": 0.2300620675086975
+      },
+      "3": {
+        "count": 203,
+        "mae": 0.33795326948165894,
+        "mse": 0.2881481647491455
+      },
+      "4": {
+        "count": 195,
+        "mae": 0.3914332389831543,
+        "mse": 0.40047013759613037
+      },
+      "5": {
+        "count": 32,
+        "mae": 0.3881116211414337,
+        "mse": 0.37835291028022766
+      }
+    }
+  },
+  "13": {
+    "query_count_distribution": {
+      "3": 5,
+      "4": 229,
+      "5": 379
+    },
+    "stop_counts": {
+      "3": 5,
+      "4": 229,
+      "5": 379
+    },
+    "expert_query_frequency": {
+      "DLinear": 100.0,
+      "PatchTST": 100.0,
+      "iTransformer": 62.96900489396411,
+      "TimesNet": 98.04241435562805,
+      "ModernTCN": 100.0
+    },
+    "high_margin_windows": {
+      "<=0.005": {
+        "count": 523,
+        "useful_query_precision": 50.66921606118547
+      },
+      "0.005_to_0.01": {
+        "count": 470,
+        "useful_query_precision": 54.680851063829785
+      },
+      "0.01_to_0.025": {
+        "count": 749,
+        "useful_query_precision": 57.67690253671562
+      },
+      ">0.025": {
+        "count": 471,
+        "useful_query_precision": 60.29723991507431
+      }
+    },
+    "query_count_performance": {
+      "3": {
+        "count": 5,
+        "mae": 0.2517668306827545,
+        "mse": 0.10969624668359756
+      },
+      "4": {
+        "count": 229,
+        "mae": 0.2984272539615631,
+        "mse": 0.20240068435668945
+      },
+      "5": {
+        "count": 379,
+        "mae": 0.37943339347839355,
+        "mse": 0.3713347911834717
+      }
+    }
+  },
+  "17": {
+    "query_count_distribution": {
+      "3": 16,
+      "4": 250,
+      "5": 347
+    },
+    "stop_counts": {
+      "3": 16,
+      "4": 250,
+      "5": 347
+    },
+    "expert_query_frequency": {
+      "DLinear": 100.0,
+      "PatchTST": 99.836867862969,
+      "iTransformer": 57.42251223491028,
+      "TimesNet": 96.7373572593801,
+      "ModernTCN": 100.0
+    },
+    "high_margin_windows": {
+      "<=0.005": {
+        "count": 507,
+        "useful_query_precision": 43.39250493096647
+      },
+      "0.005_to_0.01": {
+        "count": 436,
+        "useful_query_precision": 46.10091743119266
+      },
+      "0.01_to_0.025": {
+        "count": 770,
+        "useful_query_precision": 54.41558441558442
+      },
+      ">0.025": {
+        "count": 457,
+        "useful_query_precision": 63.45733041575492
+      }
+    },
+    "query_count_performance": {
+      "3": {
+        "count": 16,
+        "mae": 0.24342645704746246,
+        "mse": 0.11503639817237854
+      },
+      "4": {
+        "count": 250,
+        "mae": 0.3352534770965576,
+        "mse": 0.26712241768836975
+      },
+      "5": {
+        "count": 347,
+        "mae": 0.364158570766449,
+        "mse": 0.3485308289527893
+      }
+    }
+  },
+  "19": {
+    "query_count_distribution": {
+      "2": 7,
+      "3": 75,
+      "4": 186,
+      "5": 345
+    },
+    "stop_counts": {
+      "2": 7,
+      "3": 75,
+      "4": 186,
+      "5": 345
+    },
+    "expert_query_frequency": {
+      "DLinear": 99.02120717781403,
+      "PatchTST": 86.2969004893964,
+      "iTransformer": 57.74877650897227,
+      "TimesNet": 98.69494290375204,
+      "ModernTCN": 100.0
+    },
+    "high_margin_windows": {
+      "<=0.005": {
+        "count": 476,
+        "useful_query_precision": 50.63025210084034
+      },
+      "0.005_to_0.01": {
+        "count": 405,
+        "useful_query_precision": 49.135802469135804
+      },
+      "0.01_to_0.025": {
+        "count": 705,
+        "useful_query_precision": 58.58156028368794
+      },
+      ">0.025": {
+        "count": 509,
+        "useful_query_precision": 61.493123772102166
+      }
+    },
+    "query_count_performance": {
+      "2": {
+        "count": 7,
+        "mae": 0.26768994331359863,
+        "mse": 0.11448072642087936
+      },
+      "3": {
+        "count": 75,
+        "mae": 0.26635199785232544,
+        "mse": 0.14525246620178223
+      },
+      "4": {
+        "count": 186,
+        "mae": 0.32857197523117065,
+        "mse": 0.27166903018951416
+      },
+      "5": {
+        "count": 345,
+        "mae": 0.3783581852912903,
+        "mse": 0.3655439019203186
+      }
+    }
+  }
+}

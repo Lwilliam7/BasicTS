@@ -1,0 +1,51 @@
+{
+  "current_commit_sha": "1724822749dd75a27ded8af9999d90b04f918c2b",
+  "branch": "master",
+  "branch_status_line": "## master...origin/master [behind 13]",
+  "local_master_may_be_behind_origin_master": true,
+  "modified_files": [
+    "notebooks/ForFunTesting.ipynb",
+    "notebooks/Modeltesting.ipynb",
+    "notebooks/dlinear_etth1.ipynb",
+    "notebooks/mixed.ipynb",
+    "results/model_benchmark_results.json",
+    "scripts/evaluate_costarts_cost_sweep.py",
+    "scripts/evaluate_costarts_final_comparison.py",
+    "scripts/evaluate_costarts_subset_utility_rollouts.py",
+    "scripts/run_costarts_subset_utility_ablations.py"
+  ],
+  "untracked_files_relevant_to_etth2": [
+    "cache/costarts_fresh/ETTh2_96_12/cache_validation_report.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/cache_build_summary.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/expert_training_summary.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/scaler_manifest.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/split_manifest.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/training_integrity_report.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_git_diff.patch",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_python_processes.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_workspace_snapshot.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/prelock_run_audit.json",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/prelock_run_audit.md",
+    "scripts/costars/build_clean_etth2_router_caches.py",
+    "scripts/costars/build_costarts_paper_package.py",
+    "scripts/costars/build_costarts_subset_state_cache.py",
+    "scripts/costars/build_costarts_subset_states.py",
+    "scripts/costars/train_candidate_experts.py",
+    "scripts/costars/train_clean_etth2_experts.py",
+    "scripts/costars/train_costarts_queried_subset_reranker.py",
+    "scripts/costars/train_costarts_router.py",
+    "scripts/costars/train_costarts_sparse_mixer.py",
+    "scripts/costars/train_costarts_subset_utility_router.py",
+    "tests/test_clean_etth2_expert_training.py",
+    "tests/test_clean_etth2_router_cache_building.py"
+  ],
+  "clean_expert_checkpoint_hashes": {
+    "DLinear": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+    "PatchTST": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+    "iTransformer": "664841c6c982da5c5a81a99eb759494101583a4a9e9feef7b806f74ce2175c5f",
+    "TimesNet": "2b2f1e54962034ca78bad6d9b7b14ab30fee4cebfcdc8537a464c2b19926f4b3",
+    "ModernTCN": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c"
+  },
+  "pre_cache_git_status_file": "results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_git_status.txt",
+  "pre_cache_git_diff_file": "results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_git_diff.patch"
+}

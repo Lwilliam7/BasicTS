@@ -1,0 +1,134 @@
+{
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "num_windows": 613,
+  "comparison": [
+    {
+      "method": "best fixed expert (DLinear)",
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "rmse": 0.5881159911241016,
+      "regret_to_oracle": 0.05195524916052818,
+      "oracle_match_rate": 0.19086460769176483,
+      "avg_queries": NaN,
+      "selection_percentage": null
+    },
+    {
+      "method": "RouterDC hard no contrastive",
+      "mae": 0.35971829295158386,
+      "mse": 0.3330901265144348,
+      "rmse": 0.5771396074733001,
+      "regret_to_oracle": 0.04157506674528122,
+      "oracle_match_rate": 0.2903752028942108,
+      "avg_queries": 1.0,
+      "selection_percentage": {
+        "DLinear": 0.0,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 2.610114097595215,
+        "ModernTCN": 97.389892578125
+      }
+    },
+    {
+      "method": "RouterDC hard contrastive",
+      "mae": 0.35448312759399414,
+      "mse": 0.3194665014743805,
+      "rmse": 0.5652136777134649,
+      "regret_to_oracle": 0.03633987903594971,
+      "oracle_match_rate": 0.3050571084022522,
+      "avg_queries": 1.0,
+      "selection_percentage": {
+        "DLinear": 17.781404495239258,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 82.21859741210938
+      }
+    },
+    {
+      "method": "COSTARTS first-query expert",
+      "mae": 0.3653925955295563,
+      "mse": 0.3352326452732086,
+      "rmse": 0.5789927851650732,
+      "regret_to_oracle": 0.047249358147382736,
+      "oracle_match_rate": 0.2349102795124054,
+      "avg_queries": 1.0,
+      "selection_percentage": {
+        "DLinear": 48.45024490356445,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 51.54975509643555
+      }
+    },
+    {
+      "method": "COSTARTS top-2 predicted experts (choose lower predicted error)",
+      "mae": 0.37061432003974915,
+      "mse": 0.34372907876968384,
+      "rmse": 0.5862841280212896,
+      "regret_to_oracle": 0.0524710938334465,
+      "oracle_match_rate": 0.17618270218372345,
+      "avg_queries": 2.0,
+      "selection_percentage": {
+        "DLinear": 60.19575500488281,
+        "PatchTST": 0.0,
+        "iTransformer": 0.48939642310142517,
+        "TimesNet": 0.0,
+        "ModernTCN": 39.31484603881836
+      }
+    },
+    {
+      "method": "Oracle best within COSTARTS top-2 predicted experts",
+      "mae": 0.3392123878002167,
+      "mse": 0.2960813641548157,
+      "rmse": 0.5441335903570149,
+      "regret_to_oracle": 0.021069129928946495,
+      "oracle_match_rate": 0.49429038166999817,
+      "avg_queries": 2.0,
+      "selection_percentage": {
+        "DLinear": 22.022838592529297,
+        "PatchTST": 0.0,
+        "iTransformer": 0.48939642310142517,
+        "TimesNet": 18.107667922973633,
+        "ModernTCN": 59.380096435546875
+      }
+    },
+    {
+      "method": "Oracle second query after COSTARTS first query",
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "rmse": 0.5039131696359018,
+      "regret_to_oracle": 0.0,
+      "oracle_match_rate": 1.0,
+      "avg_queries": 2.0,
+      "selection_percentage": {
+        "DLinear": 19.08646011352539,
+        "PatchTST": 14.192496299743652,
+        "iTransformer": 14.518759727478027,
+        "TimesNet": 22.67536735534668,
+        "ModernTCN": 29.52691650390625
+      }
+    },
+    {
+      "method": "Full oracle best expert per window",
+      "mae": 0.31814324855804443,
+      "mse": 0.2539284825325012,
+      "rmse": 0.5039131696359018,
+      "regret_to_oracle": 0.0,
+      "oracle_match_rate": 1.0,
+      "avg_queries": 5.0,
+      "selection_percentage": {
+        "DLinear": 19.08646011352539,
+        "PatchTST": 14.192496299743652,
+        "iTransformer": 14.518759727478027,
+        "TimesNet": 22.67536735534668,
+        "ModernTCN": 29.52691650390625
+      }
+    }
+  ]
+}

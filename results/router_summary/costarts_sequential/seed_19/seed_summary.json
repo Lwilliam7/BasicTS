@@ -1,0 +1,81 @@
+{
+  "seed": 19,
+  "best_epoch": 11,
+  "best_validation_mae": 0.34828418493270874,
+  "best_validation_mse": 0.30724042654037476,
+  "selected_threshold": -0.025,
+  "fixed_first_expert": "ModernTCN",
+  "fixed_first_expert_index": 4,
+  "average_experts_queried": 4.417618274688721,
+  "relative_expert_cost": 0.8835236549377441,
+  "query_count_distribution": {
+    "2": 7,
+    "3": 75,
+    "4": 186,
+    "5": 345
+  },
+  "stop_counts": {
+    "2": 7,
+    "3": 75,
+    "4": 186,
+    "5": 345
+  },
+  "expert_query_frequency": {
+    "DLinear": 99.02120717781403,
+    "PatchTST": 86.2969004893964,
+    "iTransformer": 57.74877650897227,
+    "TimesNet": 98.69494290375204,
+    "ModernTCN": 100.0
+  },
+  "predicted_actual_utility_correlation": 0.04988510894469917,
+  "useful_query_auc": 0.5048494572632923,
+  "useful_query_precision": 55.656324582338904,
+  "harmful_query_rate": 44.343675417661096,
+  "high_margin_windows": {
+    "<=0.005": {
+      "count": 476,
+      "useful_query_precision": 50.63025210084034
+    },
+    "0.005_to_0.01": {
+      "count": 405,
+      "useful_query_precision": 49.135802469135804
+    },
+    "0.01_to_0.025": {
+      "count": 705,
+      "useful_query_precision": 58.58156028368794
+    },
+    ">0.025": {
+      "count": 509,
+      "useful_query_precision": 61.493123772102166
+    }
+  },
+  "query_count_performance": {
+    "2": {
+      "count": 7,
+      "mae": 0.26768994331359863,
+      "mse": 0.11448072642087936
+    },
+    "3": {
+      "count": 75,
+      "mae": 0.26635199785232544,
+      "mse": 0.14525246620178223
+    },
+    "4": {
+      "count": 186,
+      "mae": 0.32857197523117065,
+      "mse": 0.27166903018951416
+    },
+    "5": {
+      "count": 345,
+      "mae": 0.3783581852912903,
+      "mse": 0.3655439019203186
+    }
+  },
+  "regret_to_full_oracle": 0.03014092892408371,
+  "no_threshold_validation_mae": 0.3531779646873474,
+  "no_threshold_validation_mse": 0.31997767090797424,
+  "no_threshold_average_experts_queried": 2.8531811237335205,
+  "no_threshold_useful_query_precision": 54.22535211267606,
+  "no_threshold_harmful_query_rate": 45.77464788732394,
+  "best_checkpoint": "checkpoints\\costarts_sequential\\seed_19\\best_sequential_costarts_router.pt"
+}

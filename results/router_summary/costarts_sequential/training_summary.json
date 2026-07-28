@@ -1,0 +1,63 @@
+{
+  "model_name": "Sequential COSTARTS",
+  "router_type": "sequential_costarts",
+  "best_epoch": 2,
+  "best_validation_mae": 0.36362501978874207,
+  "best_checkpoint": "checkpoints\\costarts_sequential\\best_sequential_costarts_router.pt",
+  "last_checkpoint": "checkpoints\\costarts_sequential\\last_sequential_costarts_router.pt",
+  "training_curves_csv": "results\\router_summary\\costarts_sequential\\training_curves.csv",
+  "training_config": {
+    "train_cache_path": "cache/costarts_subset_states_train.pt",
+    "val_cache_path": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints/costarts_sequential",
+    "results_dir": "results/router_summary/costarts_sequential",
+    "batch_size": 1024,
+    "max_epochs": 2,
+    "patience": 2,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "seed": 7,
+    "action_loss_weight": 1.0,
+    "utility_loss_weight": 1.0,
+    "pairwise_loss_weight": 0.2,
+    "mix_loss_weight": 1.0,
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "action_head_type": "unified",
+    "device": "cpu",
+    "debug": false
+  },
+  "router_config": {
+    "num_experts": 5,
+    "max_subset_size": 5,
+    "input_len": 96,
+    "forecast_horizon": 12,
+    "num_features": 7,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "action_head_type": "unified",
+    "router_type": "sequential_costarts",
+    "state_inputs": [
+      "history",
+      "queried_mask",
+      "queried_expert_ids",
+      "queried_expert_forecasts"
+    ]
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "train_cache_path": "cache/costarts_subset_states_train.pt",
+  "val_cache_path": "cache/costarts_subset_states_val.pt",
+  "model_selection": "validation_mae under deployable sequential inference on router_val",
+  "test_set_used": false,
+  "experts_loaded": false,
+  "experts_updated": false
+}

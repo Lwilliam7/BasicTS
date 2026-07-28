@@ -1,0 +1,1755 @@
+{
+  "audit_created_at": "2026-07-26T22:03:44.561268-04:00",
+  "scope": {
+    "current_checkout": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS",
+    "isolated_runner_with_previous_etth2_artifacts": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner",
+    "dataset": "ETTh2",
+    "input_len": 96,
+    "output_len": 12,
+    "no_training_or_cache_build_performed_by_audit": true
+  },
+  "active_python_processes": [
+    {
+      "ProcessId": 15636,
+      "StartTime": "2026-07-26T21:59:30.9694713-04:00",
+      "CPU": 1.140625,
+      "Path": "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe",
+      "CommandLine": "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe -m ipykernel_launcher --f=c:\\Users\\luwil\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3eb779fd44dc95711a3d5fc3276bad7636dcf7429.json",
+      "classification": "unrelated_python",
+      "apparent_state": "likely active or idle Jupyter kernel; do not terminate"
+    }
+  ],
+  "artifacts": {
+    "current_checkout": [
+      {
+        "base": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_fresh\\ETTh2_96_12",
+        "exists": false,
+        "artifacts": []
+      },
+      {
+        "base": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_fresh\\ETTh2_96_12",
+        "exists": true,
+        "artifacts": []
+      },
+      {
+        "base": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12",
+        "exists": false,
+        "artifacts": []
+      }
+    ],
+    "isolated_runner": [
+      {
+        "base": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12",
+        "exists": true,
+        "artifacts": [
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates",
+            "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates",
+            "type": "directory",
+            "size_bytes": null,
+            "modified_time": "2026-07-26T18:04:29.234042-04:00",
+            "sha256": null
+          },
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_dlinear.pt",
+            "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_dlinear.pt",
+            "type": "file",
+            "size_bytes": 34510,
+            "modified_time": "2026-07-26T17:41:47.606647-04:00",
+            "sha256": "0edcb26868fbd9a1a4e12b03471e68756d5385779d60693c8910ff15f424b98b"
+          },
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_itransformer.pt",
+            "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_itransformer.pt",
+            "type": "file",
+            "size_bytes": 515700,
+            "modified_time": "2026-07-26T17:43:02.838308-04:00",
+            "sha256": "1fcad894e61ff857e27f564beced6d5de0bcdcd2eb1a81b21352cdc40b322174"
+          },
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_moderntcn.pt",
+            "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_moderntcn.pt",
+            "type": "file",
+            "size_bytes": 162533,
+            "modified_time": "2026-07-26T18:04:47.864689-04:00",
+            "sha256": "cb48881fae4487ea10547ce1bf44df236de9a5a53187587e462798843d92d720"
+          },
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_patchtst.pt",
+            "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_patchtst.pt",
+            "type": "file",
+            "size_bytes": 1835705,
+            "modified_time": "2026-07-26T17:42:17.769489-04:00",
+            "sha256": "2c187e779f22af7f26bcd9af3ed4276c176febce695808b04c05f841fc9cf01f"
+          },
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_timesnet.pt",
+            "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_timesnet.pt",
+            "type": "file",
+            "size_bytes": 1885656,
+            "modified_time": "2026-07-26T17:57:56.375731-04:00",
+            "sha256": "3986436451d4669713b346de5d62005e8bada23959a6f213dad490d4dff46756"
+          }
+        ]
+      },
+      {
+        "base": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\results\\router_summary\\costarts_fresh\\ETTh2_96_12",
+        "exists": true,
+        "artifacts": [
+          {
+            "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\results\\router_summary\\costarts_fresh\\ETTh2_96_12\\expert_training_resume_summary.json",
+            "relative_path": "results/router_summary/costarts_fresh/ETTh2_96_12/expert_training_resume_summary.json",
+            "type": "file",
+            "size_bytes": 9987,
+            "modified_time": "2026-07-26T18:05:06.295474-04:00",
+            "sha256": "c72366fe448866b0d0e1f8d5e0d6b9171efe0dba9386c13a5d9c59c5225c171c"
+          }
+        ]
+      },
+      {
+        "base": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\cache\\costarts_fresh\\ETTh2_96_12",
+        "exists": false,
+        "artifacts": []
+      }
+    ]
+  },
+  "dataset_file_metadata_no_values_loaded_by_audit": {
+    "current_checkout": [
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\meta.json",
+        "size_bytes": 697,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\test_data.npy",
+        "size_bytes": 80768,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\test_timestamps.npy",
+        "size_bytes": 46208,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\train_data.npy",
+        "size_bytes": 242048,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\train_timestamps.npy",
+        "size_bytes": 138368,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\val_data.npy",
+        "size_bytes": 80768,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh2\\val_timestamps.npy",
+        "size_bytes": 46208,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      }
+    ],
+    "isolated_runner": [
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\meta.json",
+        "size_bytes": 697,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\test_data.npy",
+        "size_bytes": 80768,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\test_timestamps.npy",
+        "size_bytes": 46208,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\train_data.npy",
+        "size_bytes": 242048,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\train_timestamps.npy",
+        "size_bytes": 138368,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\val_data.npy",
+        "size_bytes": 80768,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      },
+      {
+        "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\datasets\\ETTh2\\val_timestamps.npy",
+        "size_bytes": 46208,
+        "modified_time": "2025-10-30T14:45:40-04:00"
+      }
+    ]
+  },
+  "etth2_expert_checkpoints": [
+    {
+      "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_dlinear.pt",
+      "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_dlinear.pt",
+      "file_size_bytes": 34510,
+      "modified_time": "2026-07-26T17:41:47.606647-04:00",
+      "sha256": "0edcb26868fbd9a1a4e12b03471e68756d5385779d60693c8910ff15f424b98b",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_metrics",
+        "dataset_config",
+        "epoch",
+        "model_config",
+        "model_state_dict",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "dlinear",
+      "best_epoch": 28,
+      "expert_validation_mae": 0.37146313992002467,
+      "expert_validation_mse": 0.3426404260802924,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "moving_avg": 25,
+        "stride": 1,
+        "individual": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              44.17153549194336,
+              13.228893280029297,
+              42.312068939208984,
+              10.735310554504395,
+              2.9894955158233643,
+              -0.7992079854011536,
+              25.51677131652832
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.90810489654541,
+              4.223984718322754,
+              10.486006736755371,
+              3.1190717220306396,
+              2.05224347114563,
+              6.509424686431885,
+              11.952988624572754
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_itransformer.pt",
+      "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_itransformer.pt",
+      "file_size_bytes": 515700,
+      "modified_time": "2026-07-26T17:43:02.838308-04:00",
+      "sha256": "1fcad894e61ff857e27f564beced6d5de0bcdcd2eb1a81b21352cdc40b322174",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_metrics",
+        "dataset_config",
+        "epoch",
+        "model_config",
+        "model_state_dict",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "itransformer",
+      "best_epoch": 15,
+      "expert_validation_mae": 0.8559427803379416,
+      "expert_validation_mse": 1.7919062285102525,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "hidden_size": 64,
+        "n_heads": 4,
+        "intermediate_size": 128,
+        "hidden_act": "gelu",
+        "num_layers": 1,
+        "dropout": 0.1,
+        "use_revin": false,
+        "output_attentions": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              44.17153549194336,
+              13.228893280029297,
+              42.312068939208984,
+              10.735310554504395,
+              2.9894955158233643,
+              -0.7992079854011536,
+              25.51677131652832
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.90810489654541,
+              4.223984718322754,
+              10.486006736755371,
+              3.1190717220306396,
+              2.05224347114563,
+              6.509424686431885,
+              11.952988624572754
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_moderntcn.pt",
+      "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_moderntcn.pt",
+      "file_size_bytes": 162533,
+      "modified_time": "2026-07-26T18:04:47.864689-04:00",
+      "sha256": "cb48881fae4487ea10547ce1bf44df236de9a5a53187587e462798843d92d720",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_metrics",
+        "dataset_config",
+        "epoch",
+        "model_config",
+        "model_state_dict",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "moderntcn",
+      "best_epoch": 6,
+      "expert_validation_mae": 1.1558120068521596,
+      "expert_validation_mse": 1.929773493875701,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "hidden_size": 32,
+        "num_layers": 2,
+        "kernel_size": 7,
+        "expansion": 2,
+        "dropout": 0.1,
+        "use_revin": false,
+        "affine": false,
+        "subtract_last": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              44.17153549194336,
+              13.228893280029297,
+              42.312068939208984,
+              10.735310554504395,
+              2.9894955158233643,
+              -0.7992079854011536,
+              25.51677131652832
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.90810489654541,
+              4.223984718322754,
+              10.486006736755371,
+              3.1190717220306396,
+              2.05224347114563,
+              6.509424686431885,
+              11.952988624572754
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_patchtst.pt",
+      "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_patchtst.pt",
+      "file_size_bytes": 1835705,
+      "modified_time": "2026-07-26T17:42:17.769489-04:00",
+      "sha256": "2c187e779f22af7f26bcd9af3ed4276c176febce695808b04c05f841fc9cf01f",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_metrics",
+        "dataset_config",
+        "epoch",
+        "model_config",
+        "model_state_dict",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "patchtst",
+      "best_epoch": 10,
+      "expert_validation_mae": 0.37401145417492765,
+      "expert_validation_mse": 0.3485877224049316,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "patch_len": 16,
+        "patch_stride": 8,
+        "padding": true,
+        "hidden_size": 64,
+        "n_heads": 4,
+        "intermediate_size": 128,
+        "hidden_act": "gelu",
+        "num_layers": 1,
+        "attn_dropout": 0.1,
+        "fc_dropout": 0.1,
+        "head_dropout": 0.0,
+        "norm_type": "batch_norm",
+        "individual_head": false,
+        "use_revin": false,
+        "affine": false,
+        "subtract_last": false,
+        "decomp": false,
+        "moving_avg": 25,
+        "output_attentions": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              44.17153549194336,
+              13.228893280029297,
+              42.312068939208984,
+              10.735310554504395,
+              2.9894955158233643,
+              -0.7992079854011536,
+              25.51677131652832
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.90810489654541,
+              4.223984718322754,
+              10.486006736755371,
+              3.1190717220306396,
+              2.05224347114563,
+              6.509424686431885,
+              11.952988624572754
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\AppData\\Local\\BasicTSCodexWatcher\\runner\\checkpoints\\costarts_fresh\\ETTh2_96_12\\candidates\\best_timesnet.pt",
+      "relative_path": "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_timesnet.pt",
+      "file_size_bytes": 1885656,
+      "modified_time": "2026-07-26T17:57:56.375731-04:00",
+      "sha256": "3986436451d4669713b346de5d62005e8bada23959a6f213dad490d4dff46756",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_metrics",
+        "dataset_config",
+        "epoch",
+        "model_config",
+        "model_state_dict",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "timesnet",
+      "best_epoch": 11,
+      "expert_validation_mae": 0.41811901252377826,
+      "expert_validation_mse": 0.5082132523923392,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "hidden_size": 32,
+        "intermediate_size": 64,
+        "num_kernels": 3,
+        "num_layers": 1,
+        "dropout": 0.1,
+        "top_k": 3,
+        "use_timestamps": false,
+        "timestamp_sizes": null
+      },
+      "dataset_config": {
+        "expert_train": {
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              44.17153549194336,
+              13.228893280029297,
+              42.312068939208984,
+              10.735310554504395,
+              2.9894955158233643,
+              -0.7992079854011536,
+              25.51677131652832
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.90810489654541,
+              4.223984718322754,
+              10.486006736755371,
+              3.1190717220306396,
+              2.05224347114563,
+              6.509424686431885,
+              11.952988624572754
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    }
+  ],
+  "etth1_reference_checkpoints": [
+    {
+      "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_dlinear.pt",
+      "relative_path": "checkpoints/candidates/best_dlinear.pt",
+      "file_size_bytes": 34958,
+      "modified_time": "2026-07-21T17:18:28.500898-04:00",
+      "sha256": "a3641046730bcdb78967708c63e091b8f240d98ccc1b84666536292b4aa6f0c1",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_epoch",
+        "best_metrics",
+        "best_validation_mae",
+        "config_class_name",
+        "dataset_config",
+        "epoch",
+        "expert_name",
+        "forecast_len",
+        "input_len",
+        "model_class_name",
+        "model_config",
+        "model_key",
+        "model_state_dict",
+        "module_name",
+        "num_features",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "output_len",
+        "requires_timestamps",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "dlinear",
+      "best_epoch": 34,
+      "expert_validation_mae": 0.35933198997991683,
+      "expert_validation_mse": 0.31497054910351474,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "moving_avg": 25,
+        "stride": 1,
+        "individual": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.870277404785156,
+              2.016218423843384,
+              5.986811637878418,
+              0.6665247678756714,
+              2.8105201721191406,
+              0.8289729952812195,
+              17.03023910522461
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              5.0877685546875,
+              2.225316047668457,
+              4.6977972984313965,
+              2.04160213470459,
+              1.0804163217544556,
+              0.5971032977104187,
+              9.943209648132324
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_itransformer.pt",
+      "relative_path": "checkpoints/candidates/best_itransformer.pt",
+      "file_size_bytes": 517236,
+      "modified_time": "2026-07-21T17:18:43.470785-04:00",
+      "sha256": "218ce0ebb9b3cb2d8eb8678c231b0bf005dc7b83b72695de815490d3a28df684",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_epoch",
+        "best_metrics",
+        "best_validation_mae",
+        "config_class_name",
+        "dataset_config",
+        "epoch",
+        "expert_name",
+        "forecast_len",
+        "input_len",
+        "model_class_name",
+        "model_config",
+        "model_key",
+        "model_state_dict",
+        "module_name",
+        "num_features",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "output_len",
+        "requires_timestamps",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "itransformer",
+      "best_epoch": 32,
+      "expert_validation_mae": 0.37247031484433607,
+      "expert_validation_mse": 0.3251599425037621,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "hidden_size": 64,
+        "n_heads": 4,
+        "intermediate_size": 128,
+        "hidden_act": "gelu",
+        "num_layers": 1,
+        "dropout": 0.1,
+        "use_revin": false,
+        "output_attentions": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.870277404785156,
+              2.016218423843384,
+              5.986811637878418,
+              0.6665247678756714,
+              2.8105201721191406,
+              0.8289729952812195,
+              17.03023910522461
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              5.0877685546875,
+              2.225316047668457,
+              4.6977972984313965,
+              2.04160213470459,
+              1.0804163217544556,
+              0.5971032977104187,
+              9.943209648132324
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_moderntcn.pt",
+      "relative_path": "checkpoints/candidates/best_moderntcn.pt",
+      "file_size_bytes": 694484,
+      "modified_time": "2026-07-21T17:19:48.482627-04:00",
+      "sha256": "f2f907ade7bbfa33c4c0bc75779e86ef36758e845959d5763249f385acd8129e",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_epoch",
+        "best_metrics",
+        "best_validation_mae",
+        "config_class_name",
+        "dataset_config",
+        "epoch",
+        "expert_name",
+        "forecast_len",
+        "input_len",
+        "model_class_name",
+        "model_config",
+        "model_key",
+        "model_state_dict",
+        "module_name",
+        "num_features",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "output_len",
+        "requires_timestamps",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "moderntcn",
+      "best_epoch": 30,
+      "expert_validation_mae": 0.34313180345867716,
+      "expert_validation_mse": 0.29916725571599373,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "hidden_size": 64,
+        "num_layers": 3,
+        "kernel_size": 7,
+        "expansion": 2,
+        "dropout": 0.1,
+        "use_revin": true,
+        "affine": false,
+        "subtract_last": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.870277404785156,
+              2.016218423843384,
+              5.986811637878418,
+              0.6665247678756714,
+              2.8105201721191406,
+              0.8289729952812195,
+              17.03023910522461
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              5.0877685546875,
+              2.225316047668457,
+              4.6977972984313965,
+              2.04160213470459,
+              1.0804163217544556,
+              0.5971032977104187,
+              9.943209648132324
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_patchtst.pt",
+      "relative_path": "checkpoints/candidates/best_patchtst.pt",
+      "file_size_bytes": 1833767,
+      "modified_time": "2026-07-21T17:18:36.091886-04:00",
+      "sha256": "eca0baf88a71e9f35a8527f8db00ce34e8ca45769716c6c3ca42d7451b8d6de5",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_epoch",
+        "best_metrics",
+        "best_validation_mae",
+        "config_class_name",
+        "dataset_config",
+        "epoch",
+        "expert_name",
+        "forecast_len",
+        "input_len",
+        "model_class_name",
+        "model_config",
+        "model_key",
+        "model_state_dict",
+        "module_name",
+        "num_features",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "output_len",
+        "requires_timestamps",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "patchtst",
+      "best_epoch": 21,
+      "expert_validation_mae": 0.36266829507321025,
+      "expert_validation_mse": 0.30844718538730664,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "patch_len": 16,
+        "patch_stride": 8,
+        "padding": true,
+        "hidden_size": 64,
+        "n_heads": 4,
+        "intermediate_size": 128,
+        "hidden_act": "gelu",
+        "num_layers": 1,
+        "attn_dropout": 0.1,
+        "fc_dropout": 0.1,
+        "head_dropout": 0.0,
+        "norm_type": "layer_norm",
+        "individual_head": false,
+        "use_revin": false,
+        "affine": true,
+        "subtract_last": false,
+        "decomp": false,
+        "moving_avg": 25,
+        "output_attentions": false
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.870277404785156,
+              2.016218423843384,
+              5.986811637878418,
+              0.6665247678756714,
+              2.8105201721191406,
+              0.8289729952812195,
+              17.03023910522461
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              5.0877685546875,
+              2.225316047668457,
+              4.6977972984313965,
+              2.04160213470459,
+              1.0804163217544556,
+              0.5971032977104187,
+              9.943209648132324
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    },
+    {
+      "path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\candidates\\best_timesnet.pt",
+      "relative_path": "checkpoints/candidates/best_timesnet.pt",
+      "file_size_bytes": 7062936,
+      "modified_time": "2026-07-21T17:19:23.873127-04:00",
+      "sha256": "4cadc8df32373c919e35bb2e6fbe24aa6b1618e0137995be1cffe2b43d9f0c2f",
+      "loads_as_torch_checkpoint": true,
+      "checkpoint_keys": [
+        "best_epoch",
+        "best_metrics",
+        "best_validation_mae",
+        "config_class_name",
+        "dataset_config",
+        "epoch",
+        "expert_name",
+        "forecast_len",
+        "input_len",
+        "model_class_name",
+        "model_config",
+        "model_key",
+        "model_state_dict",
+        "module_name",
+        "num_features",
+        "optim_state_dict",
+        "optimizer_state_dict",
+        "output_len",
+        "requires_timestamps",
+        "scaler_stats",
+        "val_mae",
+        "val_mse",
+        "validation_mae",
+        "validation_mse"
+      ],
+      "expert_name": "timesnet",
+      "best_epoch": 16,
+      "expert_validation_mae": 0.3528885761479432,
+      "expert_validation_mse": 0.32115811807304506,
+      "model_config": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "hidden_size": 64,
+        "intermediate_size": 128,
+        "num_kernels": 3,
+        "num_layers": 1,
+        "dropout": 0.1,
+        "top_k": 3,
+        "use_timestamps": false,
+        "timestamp_sizes": null
+      },
+      "dataset_config": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "timestamps": 7200,
+          "windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "timestamps": 1440,
+          "windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "timestamps": 2160,
+          "windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "timestamps": 720,
+          "windows": 613
+        },
+        "test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "timestamps": 2880,
+          "windows": 2773
+        }
+      },
+      "scaler_metadata": {
+        "mean": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              8.870277404785156,
+              2.016218423843384,
+              5.986811637878418,
+              0.6665247678756714,
+              2.8105201721191406,
+              0.8289729952812195,
+              17.03023910522461
+            ]
+          ]
+        },
+        "std": {
+          "type": "Tensor",
+          "shape": [
+            1,
+            7
+          ],
+          "values": [
+            [
+              5.0877685546875,
+              2.225316047668457,
+              4.6977972984313965,
+              2.04160213470459,
+              1.0804163217544556,
+              0.5971032977104187,
+              9.943209648132324
+            ]
+          ]
+        }
+      },
+      "random_seed": null,
+      "has_model_state_dict": true,
+      "has_optimizer_state_dict": true
+    }
+  ],
+  "expert_completeness": {
+    "DLinear": {
+      "checkpoint_file": "best_dlinear.pt",
+      "exists": true,
+      "complete_checkpoint_record": true,
+      "valid_for_strict_fresh_confirmation": false,
+      "reason": "pre-lock ETTh2 test arrays were loaded by the training code path; see test_data_access_audit"
+    },
+    "PatchTST": {
+      "checkpoint_file": "best_patchtst.pt",
+      "exists": true,
+      "complete_checkpoint_record": true,
+      "valid_for_strict_fresh_confirmation": false,
+      "reason": "pre-lock ETTh2 test arrays were loaded by the training code path; see test_data_access_audit"
+    },
+    "iTransformer": {
+      "checkpoint_file": "best_itransformer.pt",
+      "exists": true,
+      "complete_checkpoint_record": true,
+      "valid_for_strict_fresh_confirmation": false,
+      "reason": "pre-lock ETTh2 test arrays were loaded by the training code path; see test_data_access_audit"
+    },
+    "TimesNet": {
+      "checkpoint_file": "best_timesnet.pt",
+      "exists": true,
+      "complete_checkpoint_record": true,
+      "valid_for_strict_fresh_confirmation": false,
+      "reason": "pre-lock ETTh2 test arrays were loaded by the training code path; see test_data_access_audit"
+    },
+    "ModernTCN": {
+      "checkpoint_file": "best_moderntcn.pt",
+      "exists": true,
+      "complete_checkpoint_record": true,
+      "valid_for_strict_fresh_confirmation": false,
+      "reason": "pre-lock ETTh2 test arrays were loaded by the training code path; see test_data_access_audit"
+    }
+  },
+  "model_config_comparison_to_etth1_reference": {
+    "DLinear": [],
+    "PatchTST": [
+      {
+        "field": "affine",
+        "etth2": false,
+        "etth1_reference": true
+      },
+      {
+        "field": "norm_type",
+        "etth2": "batch_norm",
+        "etth1_reference": "layer_norm"
+      }
+    ],
+    "iTransformer": [],
+    "TimesNet": [
+      {
+        "field": "hidden_size",
+        "etth2": 32,
+        "etth1_reference": 64
+      },
+      {
+        "field": "intermediate_size",
+        "etth2": 64,
+        "etth1_reference": 128
+      }
+    ],
+    "ModernTCN": [
+      {
+        "field": "hidden_size",
+        "etth2": 32,
+        "etth1_reference": 64
+      },
+      {
+        "field": "num_layers",
+        "etth2": 2,
+        "etth1_reference": 3
+      },
+      {
+        "field": "use_revin",
+        "etth2": false,
+        "etth1_reference": true
+      }
+    ]
+  },
+  "training_hyperparameters": {
+    "observed_or_reconstructed_for_etth2": {
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "max_epochs": 40,
+      "patience": 6,
+      "batch_size": 512,
+      "loss": "masked_mse",
+      "seed": 7,
+      "device": "cpu",
+      "note": "DLinear, PatchTST, and iTransformer came from the first inline run; TimesNet and ModernTCN came from a resume inline run. The first run did not leave a complete summary file."
+    },
+    "etth1_reference": {
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "max_epochs": "not fully encoded in checkpoints; prior ETTh1 candidates selected epochs shown in checkpoint metadata",
+      "patience": "not fully encoded in checkpoints",
+      "batch_size": "not encoded in checkpoints"
+    }
+  },
+  "test_data_access_audit": {
+    "test_file_existence_checked": true,
+    "test_file_size_checked": true,
+    "raw_test_files_copied_to_runner_before_lock": true,
+    "test_values_loaded_before_lock": true,
+    "test_predictions_generated": false,
+    "test_metrics_generated": false,
+    "evidence": [
+      "The ETTh2 dataset files test_data.npy and test_timestamps.npy are present in both the current checkout and the isolated runner.",
+      "The ETTh2 training inline commands called scripts.chronological_expert_training.load_full_chronological_data(data_dir).",
+      "That helper loads train_data.npy, val_data.npy, and test_data.npy with np.load and concatenates them before split dataloaders are constructed.",
+      "No cache/costarts_fresh/ETTh2_96_12 artifacts were found and no ETTh2 locked-test evaluation output was found, so there is no evidence of test forecasts or test metrics."
+    ],
+    "could_have_affected": {
+      "expert_training": "No evidence of direct use in optimization; split datasets used expert_train windows only, but test values were still loaded into memory pre-lock.",
+      "scaler_fitting": "No evidence; scaler metadata matches fitting on expert_train only.",
+      "early_stopping": "No evidence; checkpoints record expert_val metrics for selection.",
+      "checkpoint_selection": "No evidence; validation_mae/validation_mse are expert_val metrics.",
+      "architecture_decisions": "Potential protocol contamination because test values were loaded before lock; observed architecture changes were caused by constructor/interface issues, not measured test results.",
+      "router_or_gate_selection": "No router/gate training caches or ETTh2 gate artifacts found."
+    }
+  },
+  "split_safety": {
+    "intended_boundaries": {
+      "expert_train": {
+        "start": 0,
+        "end": 7200,
+        "timestamps": 7200,
+        "windows": 7093
+      },
+      "expert_val": {
+        "start": 7200,
+        "end": 8640,
+        "timestamps": 1440,
+        "windows": 1333
+      },
+      "router_train": {
+        "start": 8640,
+        "end": 10800,
+        "timestamps": 2160,
+        "windows": 2053
+      },
+      "router_val": {
+        "start": 10800,
+        "end": 11520,
+        "timestamps": 720,
+        "windows": 613
+      },
+      "locked_test": {
+        "start": 11520,
+        "end": 14400,
+        "timestamps": 2880,
+        "windows": 2773
+      }
+    },
+    "current_run_followed_boundaries": true,
+    "scaler_fit_only_on_expert_train": true,
+    "expert_checkpoints_selected_only_using_expert_val": true,
+    "router_data_affected_expert_selection": false,
+    "locked_test_excluded_from_development": false,
+    "notes": [
+      "Checkpoint dataset_config fields match the intended half-open boundaries.",
+      "The scaler stats are identical across ETTh2 checkpoints and were produced by fit_scaler_on_expert_train.",
+      "Strict locked-test exclusion failed because load_full_chronological_data loaded test_data.npy before lock."
+    ]
+  },
+  "debug_only_artifacts": [
+    "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_dlinear.pt",
+    "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_itransformer.pt",
+    "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_moderntcn.pt",
+    "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_patchtst.pt",
+    "checkpoints/costarts_fresh/ETTh2_96_12/candidates/best_timesnet.pt",
+    "results/router_summary/costarts_fresh/ETTh2_96_12/expert_training_resume_summary.json"
+  ],
+  "summary": {
+    "training_still_running": false,
+    "complete_experts": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "valid_checkpoints_for_reload": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "experts_still_need_training": [
+      "PatchTST and ModernTCN need clean re-training if exact ETTh1-compatible architecture is required; all five need a new strict fresh-confirmation run because test values were loaded pre-lock."
+    ],
+    "configurations_consistent_with_etth1_reference": false,
+    "test_values_accessed": true,
+    "eligible_for_strict_fresh_confirmation": false,
+    "process_should_be_stopped": false,
+    "smallest_safe_next_action": "Archive or label the current ETTh2 fresh-run artifacts as prelock_debug_only, then start a new ETTh2 preparation that does not load test arrays at all until after a lock manifest is committed."
+  }
+}

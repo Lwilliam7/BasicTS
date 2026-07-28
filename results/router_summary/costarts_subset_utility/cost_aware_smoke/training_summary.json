@@ -1,0 +1,131 @@
+{
+  "best_epoch": 1,
+  "best_selection_metric": "cost_aware_objective",
+  "best_selection_metric_value": 0.46865234375,
+  "best_validation_mae": 0.36865234375,
+  "best_validation_objective": 0.46865234375,
+  "best_validation_metrics": {
+    "validation_mae": 0.36865234375,
+    "validation_mse": 0.337468683719635,
+    "validation_oracle_mae": 0.31814324855804443,
+    "validation_regret_to_oracle": 0.050509095191955566,
+    "validation_objective": 0.46865234375,
+    "action_accuracy": 0.21044045686721802,
+    "first_query_oracle_match": 0.21044045686721802,
+    "top_two_oracle_coverage": 0.21044045686721802,
+    "average_experts_selected": 1.0,
+    "average_normalized_query_cost": 1.0,
+    "average_raw_query_cost": 1.0,
+    "false_stop_rate": 0.15823817292006526,
+    "false_continue_rate": 0.0,
+    "stop_precision": 0.8417618270799347,
+    "stop_recall": 1.0,
+    "stop_frequency": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "selection_counts": {
+      "0": 47,
+      "1": 0,
+      "2": 0,
+      "3": 315,
+      "4": 251
+    },
+    "average_predicted_utility_by_step": [
+      -0.16329233755538358,
+      0.0
+    ],
+    "better_of_top_two_accuracy": "nan"
+  },
+  "best_checkpoint": "checkpoints\\costarts_subset_utility\\cost_aware_smoke\\best_subset_utility_costarts_router.pt",
+  "last_checkpoint": "checkpoints\\costarts_subset_utility\\cost_aware_smoke\\last_subset_utility_costarts_router.pt",
+  "training_curves_csv": "results\\router_summary\\costarts_subset_utility\\cost_aware_smoke\\training_curves.csv",
+  "training_config": {
+    "train_cache_path": "cache/costarts_subset_states_train.pt",
+    "val_cache_path": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_subset_utility\\cost_aware_smoke",
+    "results_dir": "results\\router_summary\\costarts_subset_utility\\cost_aware_smoke",
+    "batch_size": 4096,
+    "max_epochs": 1,
+    "patience": 1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "seed": 7,
+    "action_loss_weight": 1.0,
+    "utility_loss_weight": 1.0,
+    "pairwise_loss_weight": 0.2,
+    "mix_loss_weight": 0.0,
+    "subset_state_sampling_mode": "exhaustive",
+    "max_subset_size": null,
+    "cost_coefficient": 0.1,
+    "cost_mode": "equal",
+    "cost_file": null,
+    "selection_metric": "cost_aware_objective",
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "action_head_type": "unified",
+    "device": "cpu",
+    "debug": false
+  },
+  "router_config": {
+    "num_experts": 5,
+    "max_subset_size": 5,
+    "input_len": 96,
+    "forecast_horizon": 12,
+    "num_features": 7,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "action_head_type": "unified"
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "cost_metadata": {
+    "cost_mode": "equal",
+    "cost_source": "equal unit costs",
+    "raw_expert_costs": {
+      "DLinear": 1.0,
+      "PatchTST": 1.0,
+      "iTransformer": 1.0,
+      "TimesNet": 1.0,
+      "ModernTCN": 1.0
+    },
+    "normalized_expert_costs": {
+      "DLinear": 1.0,
+      "PatchTST": 1.0,
+      "iTransformer": 1.0,
+      "TimesNet": 1.0,
+      "ModernTCN": 1.0
+    },
+    "mean_positive_raw_cost": 1.0
+  },
+  "raw_expert_costs": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "normalized_expert_costs": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "train_cache_path": "cache/costarts_subset_states_train.pt",
+  "val_cache_path": "cache/costarts_subset_states_val.pt",
+  "created_checkpoints_separate_from_original_costarts": true,
+  "original_costarts_checkpoint_dir": "checkpoints/costarts",
+  "model_selection": "cost_aware_objective",
+  "test_set_used": false,
+  "experts_loaded": false,
+  "experts_updated": false
+}

@@ -1,0 +1,24 @@
+{
+  "selected_expert_names": [
+    "DLinear"
+  ],
+  "comparison": [
+    {
+      "Method": "DLinear",
+      "Test MAE": 0.3479506332923879,
+      "Test MSE": 0.3314193283541441,
+      "Test RMSE": 0.5756903059407411
+    }
+  ],
+  "single_expert_baseline": {
+    "expert_name": "DLinear",
+    "validation_mae": 0.37009847820717295,
+    "validation_mse": 0.34588042707938854,
+    "validation_rmse": 0.5881159979794705,
+    "test_mae": 0.3479506332923879,
+    "test_mse": 0.3314193283541441,
+    "test_rmse": 0.5756903059407411
+  },
+  "router_trained": false,
+  "reason_router_not_trained": "A one-expert softmax is always 1, so there is no router choice to learn."
+}

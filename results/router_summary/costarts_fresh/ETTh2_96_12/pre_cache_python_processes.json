@@ -1,0 +1,44 @@
+﻿[
+    {
+        "Id":  9184,
+        "ProcessName":  "python",
+        "CPU":  1.4375,
+        "StartTime":  "\/Date(1785178163889)\/",
+        "Path":  "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe"
+    },
+    {
+        "Id":  12700,
+        "ProcessName":  "python",
+        "CPU":  0.140625,
+        "StartTime":  "\/Date(1785178163453)\/",
+        "Path":  "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe"
+    },
+    {
+        "Id":  18604,
+        "ProcessName":  "python",
+        "CPU":  0.9375,
+        "StartTime":  "\/Date(1785178174481)\/",
+        "Path":  "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe"
+    },
+    {
+        "Id":  19596,
+        "ProcessName":  "python",
+        "CPU":  1.71875,
+        "StartTime":  "\/Date(1785178163915)\/",
+        "Path":  "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe"
+    },
+    {
+        "Id":  20696,
+        "ProcessName":  "python",
+        "CPU":  1.3125,
+        "StartTime":  "\/Date(1785178169104)\/",
+        "Path":  "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe"
+    },
+    {
+        "Id":  25412,
+        "ProcessName":  "python",
+        "CPU":  0.953125,
+        "StartTime":  "\/Date(1785178176799)\/",
+        "Path":  "c:\\Users\\luwil\\miniconda3\\envs\\BasicTS\\python.exe"
+    }
+]

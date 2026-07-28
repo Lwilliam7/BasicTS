@@ -1,0 +1,65 @@
+{
+  "detail_csv": "results\\router_robustness_smoke\\router_robustness_results.csv",
+  "aggregate_csv": "results\\router_robustness_smoke\\router_robustness_aggregate.csv",
+  "latency_csv": "results\\router_robustness_smoke\\router_robustness_latency.csv",
+  "uses_final_test_split": false,
+  "selection_split": "router_train",
+  "evaluation_split": "router_val",
+  "chronological_order_preserved": true,
+  "args": {
+    "data_dir": "datasets/ETTh1",
+    "checkpoint_dir": "checkpoints",
+    "output_dir": "results/router_robustness_smoke",
+    "batch_size": 8,
+    "device": "cpu",
+    "seeds": [
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "train_fractions": [
+      1.0,
+      0.5,
+      0.25
+    ],
+    "noise_stds": [
+      0.0,
+      0.02,
+      0.05
+    ],
+    "missing_variable_fractions": [
+      0.0,
+      0.25
+    ],
+    "masked_timestamp_fractions": [
+      0.0,
+      0.1
+    ],
+    "temporal_shift_steps": [
+      0,
+      4
+    ],
+    "max_k_values": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "routing_temperatures": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "latency_devices": [
+      "cpu"
+    ],
+    "full_factorial": false,
+    "max_expert_groups": 1,
+    "max_train_windows": 8,
+    "max_val_windows": 8,
+    "dry_run": false
+  }
+}

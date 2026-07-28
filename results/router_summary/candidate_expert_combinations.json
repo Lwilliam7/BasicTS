@@ -1,0 +1,262 @@
+[
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_iTransformer + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":5,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3559492187,
+    "absolute_improvement":0.0466730617,
+    "percentage_improvement":11.5922699584,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_iTransformer + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":4,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3590403383,
+    "absolute_improvement":0.0435819421,
+    "percentage_improvement":10.8245231759,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_iTransformer + Candidate_ModernTCN",
+    "number_of_experts":4,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3615006232,
+    "absolute_improvement":0.0411216572,
+    "percentage_improvement":10.2134579147,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_iTransformer + Candidate_TimesNet",
+    "number_of_experts":4,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3619393662,
+    "absolute_improvement":0.0406829142,
+    "percentage_improvement":10.1044865475,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":4,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3624550802,
+    "absolute_improvement":0.0401672002,
+    "percentage_improvement":9.9763977708,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_iTransformer + Candidate_ModernTCN",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3652077104,
+    "absolute_improvement":0.03741457,
+    "percentage_improvement":9.2927221905,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_iTransformer + Candidate_TimesNet",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3657979171,
+    "absolute_improvement":0.0368243633,
+    "percentage_improvement":9.146131525,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3686094334,
+    "absolute_improvement":0.034012847,
+    "percentage_improvement":8.4478302936,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_TimesNet",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3697856845,
+    "absolute_improvement":0.0328365959,
+    "percentage_improvement":8.1556827624,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_ModernTCN",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3703565552,
+    "absolute_improvement":0.0322657252,
+    "percentage_improvement":8.0138946028,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_iTransformer + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":4,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3717680576,
+    "absolute_improvement":0.0419508354,
+    "percentage_improvement":10.1399370671,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST + Candidate_iTransformer",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3729259746,
+    "absolute_improvement":0.0296963058,
+    "percentage_improvement":7.3757234041,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_TimesNet",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3777905457,
+    "absolute_improvement":0.0248317347,
+    "percentage_improvement":6.1675013899,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_ModernTCN",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3786510118,
+    "absolute_improvement":0.0239712686,
+    "percentage_improvement":5.9537859193,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_iTransformer",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3789817535,
+    "absolute_improvement":0.0236405269,
+    "percentage_improvement":5.8716390115,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_iTransformer + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3794086205,
+    "absolute_improvement":0.0343102725,
+    "percentage_improvement":8.2931365038,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3797238776,
+    "absolute_improvement":0.0339950154,
+    "percentage_improvement":8.2169356959,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_iTransformer + Candidate_ModernTCN",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3800773791,
+    "absolute_improvement":0.0336415139,
+    "percentage_improvement":8.131490844,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_DLinear + Candidate_PatchTST",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_DLinear",
+    "best_single_mae":0.4026222804,
+    "oracle_mae":0.3865870738,
+    "absolute_improvement":0.0160352066,
+    "percentage_improvement":3.982692315,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_iTransformer + Candidate_TimesNet",
+    "number_of_experts":3,
+    "best_single_expert":"Candidate_TimesNet",
+    "best_single_mae":0.4328972985,
+    "oracle_mae":0.3874244562,
+    "absolute_improvement":0.0454728424,
+    "percentage_improvement":10.5043026417,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_iTransformer + Candidate_ModernTCN",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3898760761,
+    "absolute_improvement":0.0238428169,
+    "percentage_improvement":5.7630476309,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_ModernTCN",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3907284543,
+    "absolute_improvement":0.0229904387,
+    "percentage_improvement":5.5570192996,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_TimesNet + Candidate_ModernTCN",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_ModernTCN",
+    "best_single_mae":0.413718893,
+    "oracle_mae":0.3959094077,
+    "absolute_improvement":0.0178094853,
+    "percentage_improvement":4.3047309608,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_TimesNet",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_TimesNet",
+    "best_single_mae":0.4328972985,
+    "oracle_mae":0.3978625496,
+    "absolute_improvement":0.0350347489,
+    "percentage_improvement":8.0930856032,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_iTransformer + Candidate_TimesNet",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_TimesNet",
+    "best_single_mae":0.4328972985,
+    "oracle_mae":0.4027254654,
+    "absolute_improvement":0.0301718331,
+    "percentage_improvement":6.9697439118,
+    "routing_potential":"meaningful routing potential exists"
+  },
+  {
+    "combination":"Candidate_PatchTST + Candidate_iTransformer",
+    "number_of_experts":2,
+    "best_single_expert":"Candidate_PatchTST",
+    "best_single_mae":0.4411167141,
+    "oracle_mae":0.4220398825,
+    "absolute_improvement":0.0190768316,
+    "percentage_improvement":4.3246676065,
+    "routing_potential":"meaningful routing potential exists"
+  }
+]

@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720">
+<rect width="100%" height="100%" fill="white"/>
+<text x="500" y="32" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700">Checkpoint Results: MAE vs MSE</text>
+<rect x="90" y="70" width="700" height="570" fill="#FAFAFA" stroke="#CCC"/>
+<line x1="90.00" x2="90.00" y1="70" y2="640" stroke="#E5E5E5"/>
+<line x1="90" x2="790" y1="70.00" y2="70.00" stroke="#E5E5E5"/>
+<text x="90.00" y="662" text-anchor="middle" font-family="Arial" font-size="11">0.027</text>
+<text x="80" y="74.00" text-anchor="end" font-family="Arial" font-size="11">0.835</text>
+<line x1="230.00" x2="230.00" y1="70" y2="640" stroke="#E5E5E5"/>
+<line x1="90" x2="790" y1="184.00" y2="184.00" stroke="#E5E5E5"/>
+<text x="230.00" y="662" text-anchor="middle" font-family="Arial" font-size="11">0.152</text>
+<text x="80" y="188.00" text-anchor="end" font-family="Arial" font-size="11">0.661</text>
+<line x1="370.00" x2="370.00" y1="70" y2="640" stroke="#E5E5E5"/>
+<line x1="90" x2="790" y1="298.00" y2="298.00" stroke="#E5E5E5"/>
+<text x="370.00" y="662" text-anchor="middle" font-family="Arial" font-size="11">0.277</text>
+<text x="80" y="302.00" text-anchor="end" font-family="Arial" font-size="11">0.488</text>
+<line x1="510.00" x2="510.00" y1="70" y2="640" stroke="#E5E5E5"/>
+<line x1="90" x2="790" y1="412.00" y2="412.00" stroke="#E5E5E5"/>
+<text x="510.00" y="662" text-anchor="middle" font-family="Arial" font-size="11">0.402</text>
+<text x="80" y="416.00" text-anchor="end" font-family="Arial" font-size="11">0.314</text>
+<line x1="650.00" x2="650.00" y1="70" y2="640" stroke="#E5E5E5"/>
+<line x1="90" x2="790" y1="526.00" y2="526.00" stroke="#E5E5E5"/>
+<text x="650.00" y="662" text-anchor="middle" font-family="Arial" font-size="11">0.526</text>
+<text x="80" y="530.00" text-anchor="end" font-family="Arial" font-size="11">0.141</text>
+<line x1="790.00" x2="790.00" y1="70" y2="640" stroke="#E5E5E5"/>
+<line x1="90" x2="790" y1="640.00" y2="640.00" stroke="#E5E5E5"/>
+<text x="790.00" y="662" text-anchor="middle" font-family="Arial" font-size="11">0.651</text>
+<text x="80" y="644.00" text-anchor="end" font-family="Arial" font-size="11">-0.033</text>
+<circle cx="121.82" cy="614.09" r="5" fill="#D89216" opacity="0.78"><title>benchmark | Informer | MAE=0.055297 MSE=0.006637</title></circle>
+<circle cx="388.19" cy="468.77" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTST split steps 1-6 | MAE=0.292892 MSE=0.227852</title></circle>
+<circle cx="391.48" cy="467.29" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTSTForForecasting | MAE=0.295825 MSE=0.230108</title></circle>
+<circle cx="391.48" cy="467.29" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTSTForForecasting | MAE=0.295825 MSE=0.230108</title></circle>
+<circle cx="397.14" cy="465.39" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | DLinear steps 1-6 | MAE=0.300875 MSE=0.232997</title></circle>
+<circle cx="400.36" cy="463.88" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | DLinear | MAE=0.303752 MSE=0.235292</title></circle>
+<circle cx="400.36" cy="463.88" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear | MAE=0.303752 MSE=0.235292</title></circle>
+<circle cx="400.36" cy="463.88" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear | MAE=0.303752 MSE=0.235292</title></circle>
+<circle cx="400.36" cy="463.88" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear | MAE=0.303752 MSE=0.235292</title></circle>
+<circle cx="400.36" cy="463.88" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | DLinear | MAE=0.303752 MSE=0.235292</title></circle>
+<circle cx="421.91" cy="440.27" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Smoothed soft hybrid 1-12 | MAE=0.322969 MSE=0.271230</title></circle>
+<circle cx="421.91" cy="440.27" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Temperature softmax hybrid 1-12 | MAE=0.322974 MSE=0.271231</title></circle>
+<circle cx="421.92" cy="440.28" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Soft weighted hybrid 1-12 | MAE=0.322976 MSE=0.271221</title></circle>
+<circle cx="421.92" cy="440.28" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Soft weighted hybrid 1-12 | MAE=0.322976 MSE=0.271221</title></circle>
+<circle cx="423.80" cy="435.92" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTST full steps 1-12 | MAE=0.324659 MSE=0.277862</title></circle>
+<circle cx="423.80" cy="435.92" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTST full steps 1-12 | MAE=0.324659 MSE=0.277862</title></circle>
+<circle cx="423.80" cy="435.92" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTSTForForecasting | MAE=0.324659 MSE=0.277862</title></circle>
+<circle cx="423.80" cy="435.92" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | PatchTSTForForecasting | MAE=0.324659 MSE=0.277862</title></circle>
+<circle cx="423.80" cy="435.92" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | Full 12-step PatchTST | MAE=0.324659 MSE=0.277862</title></circle>
+<circle cx="423.80" cy="435.92" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | PatchTSTForForecasting | MAE=0.324659 MSE=0.277862</title></circle>
+<circle cx="424.85" cy="437.43" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Fixed split hybrid 1-12 | MAE=0.325589 MSE=0.275558</title></circle>
+<circle cx="425.16" cy="441.67" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Tiny meta selector hybrid 1-12 | MAE=0.325871 MSE=0.269102</title></circle>
+<circle cx="425.76" cy="439.68" r="5" fill="#D89216" opacity="0.78"><title>benchmark | iTransformer | MAE=0.326405 MSE=0.272133</title></circle>
+<circle cx="425.91" cy="439.08" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Soft weighted hybrid 1-12 | MAE=0.326538 MSE=0.273048</title></circle>
+<circle cx="425.91" cy="439.08" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Soft weighted hybrid 1-12 | MAE=0.326538 MSE=0.273048</title></circle>
+<circle cx="425.92" cy="439.05" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Smoothed soft hybrid 1-12 | MAE=0.326544 MSE=0.273096</title></circle>
+<circle cx="425.92" cy="439.05" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Temperature softmax hybrid 1-12 | MAE=0.326546 MSE=0.273100</title></circle>
+<circle cx="427.81" cy="437.68" r="5" fill="#D89216" opacity="0.78"><title>benchmark | LightTS | MAE=0.328233 MSE=0.275181</title></circle>
+<circle cx="428.01" cy="434.21" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | DLinear full steps 1-12 | MAE=0.328410 MSE=0.280469</title></circle>
+<circle cx="428.52" cy="433.89" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | Hybrid DLinear + PatchTST steps 1-12 | MAE=0.328864 MSE=0.280944</title></circle>
+<circle cx="429.15" cy="437.80" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | Transformer full steps 1-12 | MAE=0.329430 MSE=0.274991</title></circle>
+<circle cx="429.32" cy="435.74" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | Fixed split hybrid 1-12 | MAE=0.329581 MSE=0.278131</title></circle>
+<circle cx="429.32" cy="435.74" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Fixed split hybrid 1-12 | MAE=0.329581 MSE=0.278131</title></circle>
+<circle cx="429.89" cy="434.50" r="5" fill="#D89216" opacity="0.78"><title>benchmark | PatchTST | MAE=0.330091 MSE=0.280017</title></circle>
+<circle cx="429.96" cy="436.64" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Hard selector hybrid 1-12 | MAE=0.330153 MSE=0.276769</title></circle>
+<circle cx="429.96" cy="436.64" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | Hard selector hybrid 1-12 | MAE=0.330153 MSE=0.276769</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#D89216" opacity="0.78"><title>benchmark | DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | Full 12-step DLinear | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear full steps 1-12 | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.26" cy="432.73" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | DLinear full steps 1-12 | MAE=0.331306 MSE=0.282716</title></circle>
+<circle cx="431.56" cy="436.24" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Hard selector hybrid 1-12 | MAE=0.331580 MSE=0.277364</title></circle>
+<circle cx="431.56" cy="436.24" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Hard selector hybrid 1-12 | MAE=0.331580 MSE=0.277364</title></circle>
+<circle cx="432.15" cy="438.21" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Tiny meta selector hybrid 1-12 | MAE=0.332107 MSE=0.274372</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#5F8D3E" opacity="0.78"><title>iTransformerForForecasting | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#5F8D3E" opacity="0.78"><title>iTransformerForForecasting | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Transformer full steps 1-12 | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Transformer full steps 1-12 | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformer full steps 1-12 | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="432.40" cy="436.39" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformer full steps 1-12 | MAE=0.332324 MSE=0.277150</title></circle>
+<circle cx="433.01" cy="436.05" r="5" fill="#D89216" opacity="0.78"><title>benchmark | Leddam | MAE=0.332873 MSE=0.277659</title></circle>
+<circle cx="433.99" cy="430.75" r="5" fill="#D89216" opacity="0.78"><title>benchmark | FITS | MAE=0.333743 MSE=0.285734</title></circle>
+<circle cx="434.69" cy="429.03" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | Soft weighted hybrid 1-12 | MAE=0.334368 MSE=0.288351</title></circle>
+<circle cx="436.39" cy="428.56" r="5" fill="#D89216" opacity="0.78"><title>benchmark | NLinear | MAE=0.335885 MSE=0.289058</title></circle>
+<circle cx="440.31" cy="426.14" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | Hard selector hybrid 1-12 | MAE=0.339380 MSE=0.292752</title></circle>
+<circle cx="441.02" cy="427.83" r="5" fill="#D89216" opacity="0.78"><title>benchmark | FreTS | MAE=0.340012 MSE=0.290173</title></circle>
+<circle cx="441.61" cy="424.46" r="5" fill="#D89216" opacity="0.78"><title>benchmark | FiLM | MAE=0.340540 MSE=0.295307</title></circle>
+<circle cx="444.05" cy="425.00" r="5" fill="#D89216" opacity="0.78"><title>benchmark | SegRNN | MAE=0.342719 MSE=0.294475</title></circle>
+<circle cx="459.89" cy="402.39" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | PatchTST steps 7-12 | MAE=0.356852 MSE=0.328892</title></circle>
+<circle cx="461.50" cy="406.09" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | Transformer split steps 7-12 | MAE=0.358287 MSE=0.323265</title></circle>
+<circle cx="461.50" cy="406.09" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | Transformer split steps 7-12 | MAE=0.358287 MSE=0.323265</title></circle>
+<circle cx="461.50" cy="406.09" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformer split steps 7-12 | MAE=0.358287 MSE=0.323265</title></circle>
+<circle cx="462.95" cy="401.26" r="5" fill="#2F6F73" opacity="0.78"><title>mixed_dlinear_patchtst | PatchTSTForForecasting | MAE=0.359573 MSE=0.330620</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#5F8D3E" opacity="0.78"><title>iTransformerForForecasting | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#7E57A3" opacity="0.78"><title>mixed_4 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#A85F2A" opacity="0.78"><title>mixed_4_testing | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#444444" opacity="0.78"><title>mixed_5 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="464.64" cy="404.86" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | iTransformerForForecasting | MAE=0.361088 MSE=0.325134</title></circle>
+<circle cx="470.78" cy="404.43" r="5" fill="#D89216" opacity="0.78"><title>benchmark | MTSMixer | MAE=0.366557 MSE=0.325800</title></circle>
+<circle cx="555.54" cy="319.11" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.442167 MSE=0.455674</title></circle>
+<circle cx="557.68" cy="318.14" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.444074 MSE=0.457148</title></circle>
+<circle cx="557.68" cy="318.14" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.444074 MSE=0.457148</title></circle>
+<circle cx="557.68" cy="318.14" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.444074 MSE=0.457148</title></circle>
+<circle cx="560.11" cy="316.78" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.446241 MSE=0.459220</title></circle>
+<circle cx="565.04" cy="319.77" r="5" fill="#4867AA" opacity="0.78"><title>iTransformer | iTransformer | MAE=0.450642 MSE=0.454662</title></circle>
+<circle cx="565.28" cy="377.33" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | SimpleMLPForecaster | MAE=0.450855 MSE=0.367050</title></circle>
+<circle cx="565.28" cy="377.33" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | SimpleMLPForecaster | MAE=0.450855 MSE=0.367050</title></circle>
+<circle cx="565.28" cy="377.33" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | SimpleMLPForecaster | MAE=0.450855 MSE=0.367050</title></circle>
+<circle cx="565.28" cy="377.33" r="5" fill="#B24C63" opacity="0.78"><title>SimpleMLPForecaster | SimpleMLPForecaster | MAE=0.450855 MSE=0.367050</title></circle>
+<circle cx="589.77" cy="339.92" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | SimpleMLPForecaster | MAE=0.472694 MSE=0.423989</title></circle>
+<circle cx="589.77" cy="339.92" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | SimpleMLPForecaster | MAE=0.472694 MSE=0.423989</title></circle>
+<circle cx="589.77" cy="339.92" r="5" fill="#B24C63" opacity="0.78"><title>mixed_v2 | SimpleMLPForecaster | MAE=0.472694 MSE=0.423989</title></circle>
+<circle cx="589.77" cy="339.92" r="5" fill="#B24C63" opacity="0.78"><title>SimpleMLPForecaster | SimpleMLPForecaster | MAE=0.472694 MSE=0.423989</title></circle>
+<circle cx="594.82" cy="286.25" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.477206 MSE=0.505696</title></circle>
+<circle cx="597.80" cy="291.55" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.479858 MSE=0.497624</title></circle>
+<circle cx="597.80" cy="291.55" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.479858 MSE=0.497624</title></circle>
+<circle cx="758.18" cy="95.91" r="5" fill="#2F6F73" opacity="0.78"><title>DLinear | DLinear | MAE=0.622916 MSE=0.795440</title></circle>
+<text x="128.82" y="607.09" font-family="Arial" font-size="10" fill="#222">Informer</text>
+<text x="395.19" y="461.77" font-family="Arial" font-size="10" fill="#222">PatchTST split steps 1-6</text>
+<text x="398.48" y="460.29" font-family="Arial" font-size="10" fill="#222">PatchTSTForForecasting</text>
+<text x="398.48" y="460.29" font-family="Arial" font-size="10" fill="#222">PatchTSTForForecasting</text>
+<text x="404.14" y="458.39" font-family="Arial" font-size="10" fill="#222">DLinear steps 1-6</text>
+<text x="407.36" y="456.88" font-family="Arial" font-size="10" fill="#222">DLinear</text>
+<text x="407.36" y="456.88" font-family="Arial" font-size="10" fill="#222">DLinear</text>
+<text x="407.36" y="456.88" font-family="Arial" font-size="10" fill="#222">DLinear</text>
+<text x="440" y="692" text-anchor="middle" font-family="Arial" font-size="14">MAE</text>
+<text x="28" y="355" transform="rotate(-90 28 355)" text-anchor="middle" font-family="Arial" font-size="14">MSE</text>
+<rect x="814" y="70" width="12" height="12" fill="#2F6F73"/>
+<text x="832" y="80" font-family="Arial" font-size="12">DLinear</text>
+<rect x="814" y="92" width="12" height="12" fill="#B24C63"/>
+<text x="832" y="102" font-family="Arial" font-size="12">SimpleMLPForecaster</text>
+<rect x="814" y="114" width="12" height="12" fill="#D89216"/>
+<text x="832" y="124" font-family="Arial" font-size="12">benchmark</text>
+<rect x="814" y="136" width="12" height="12" fill="#4867AA"/>
+<text x="832" y="146" font-family="Arial" font-size="12">iTransformer</text>
+<rect x="814" y="158" width="12" height="12" fill="#5F8D3E"/>
+<text x="832" y="168" font-family="Arial" font-size="12">iTransformerForForecasti</text>
+<rect x="814" y="180" width="12" height="12" fill="#7E57A3"/>
+<text x="832" y="190" font-family="Arial" font-size="12">mixed_4</text>
+<rect x="814" y="202" width="12" height="12" fill="#A85F2A"/>
+<text x="832" y="212" font-family="Arial" font-size="12">mixed_4_testing</text>
+<rect x="814" y="224" width="12" height="12" fill="#444444"/>
+<text x="832" y="234" font-family="Arial" font-size="12">mixed_5</text>
+<rect x="814" y="246" width="12" height="12" fill="#2F6F73"/>
+<text x="832" y="256" font-family="Arial" font-size="12">mixed_dlinear_patchtst</text>
+<rect x="814" y="268" width="12" height="12" fill="#B24C63"/>
+<text x="832" y="278" font-family="Arial" font-size="12">mixed_v2</text>
+</svg>

@@ -1,0 +1,63 @@
+{
+  "expert_train": {
+    "fraction": [
+      0.0,
+      0.5
+    ],
+    "start": 0,
+    "end": 7200,
+    "num_timestamps": 7200,
+    "first_valid_window_start": 0,
+    "last_valid_window_start": 7092,
+    "num_windows": 7093
+  },
+  "expert_val": {
+    "fraction": [
+      0.5,
+      0.6
+    ],
+    "start": 7200,
+    "end": 8640,
+    "num_timestamps": 1440,
+    "first_valid_window_start": 7200,
+    "last_valid_window_start": 8532,
+    "num_windows": 1333
+  },
+  "router_train": {
+    "fraction": [
+      0.6,
+      0.75
+    ],
+    "start": 8640,
+    "end": 10800,
+    "num_timestamps": 2160,
+    "first_valid_window_start": 8640,
+    "last_valid_window_start": 10692,
+    "num_windows": 2053
+  },
+  "router_val": {
+    "fraction": [
+      0.75,
+      0.8
+    ],
+    "start": 10800,
+    "end": 11520,
+    "num_timestamps": 720,
+    "first_valid_window_start": 10800,
+    "last_valid_window_start": 11412,
+    "num_windows": 613
+  },
+  "locked_test": {
+    "fraction": [
+      0.8,
+      1.0
+    ],
+    "start": 11520,
+    "end": 14400,
+    "num_timestamps": 2880,
+    "first_valid_window_start": 11520,
+    "last_valid_window_start": 14292,
+    "num_windows": 2773
+  },
+  "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+}

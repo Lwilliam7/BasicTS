@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="946" viewBox="0 0 1200 946">
+<rect width="100%" height="100%" fill="white"/>
+<text x="600" y="30" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700">Mixed Checkpoint Results by MAE</text>
+<text x="390" y="52" font-family="Arial" font-size="12" fill="#555">Lower MAE is better</text>
+<text x="378" y="81" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTST split steps 1-6</text>
+<rect x="390" y="64" width="595.42" height="18" rx="2" fill="#2F6F73"/>
+<text x="991.4165540876579" y="78" font-family="Arial" font-size="12" fill="#222">0.292892</text>
+<text x="378" y="109" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTSTForForecasting</text>
+<rect x="390" y="92" width="601.38" height="18" rx="2" fill="#2F6F73"/>
+<text x="997.3776282498848" y="106" font-family="Arial" font-size="12" fill="#222">0.295825</text>
+<text x="378" y="137" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTSTForForecasting</text>
+<rect x="390" y="120" width="601.38" height="18" rx="2" fill="#2F6F73"/>
+<text x="997.3776282498848" y="134" font-family="Arial" font-size="12" fill="#222">0.295825</text>
+<text x="378" y="165" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | DLinear steps 1-6</text>
+<rect x="390" y="148" width="611.64" height="18" rx="2" fill="#2F6F73"/>
+<text x="1007.6446472976517" y="162" font-family="Arial" font-size="12" fill="#222">0.300875</text>
+<text x="378" y="193" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4 | DLinear</text>
+<rect x="390" y="176" width="617.49" height="18" rx="2" fill="#2F6F73"/>
+<text x="1013.4930639276992" y="190" font-family="Arial" font-size="12" fill="#222">0.303752</text>
+<text x="378" y="221" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | DLinear</text>
+<rect x="390" y="204" width="617.49" height="18" rx="2" fill="#2F6F73"/>
+<text x="1013.4930639276992" y="218" font-family="Arial" font-size="12" fill="#222">0.303752</text>
+<text x="378" y="249" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | DLinear</text>
+<rect x="390" y="232" width="617.49" height="18" rx="2" fill="#2F6F73"/>
+<text x="1013.4930639276992" y="246" font-family="Arial" font-size="12" fill="#222">0.303752</text>
+<text x="378" y="277" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | DLinear</text>
+<rect x="390" y="260" width="617.49" height="18" rx="2" fill="#2F6F73"/>
+<text x="1013.4930639276992" y="274" font-family="Arial" font-size="12" fill="#222">0.303752</text>
+<text x="378" y="305" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | DLinear</text>
+<rect x="390" y="288" width="617.49" height="18" rx="2" fill="#2F6F73"/>
+<text x="1013.4930639276992" y="302" font-family="Arial" font-size="12" fill="#222">0.303752</text>
+<text x="378" y="333" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Smoothed soft hybrid 1-12</text>
+<rect x="390" y="316" width="656.56" height="18" rx="2" fill="#2F6F73"/>
+<text x="1052.5595887266657" y="330" font-family="Arial" font-size="12" fill="#222">0.322969</text>
+<text x="378" y="361" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Temperature softmax hybrid 1-12</text>
+<rect x="390" y="344" width="656.57" height="18" rx="2" fill="#2F6F73"/>
+<text x="1052.5682734995644" y="358" font-family="Arial" font-size="12" fill="#222">0.322974</text>
+<text x="378" y="389" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Soft weighted hybrid 1-12</text>
+<rect x="390" y="372" width="656.57" height="18" rx="2" fill="#2F6F73"/>
+<text x="1052.572234767019" y="386" font-family="Arial" font-size="12" fill="#222">0.322976</text>
+<text x="378" y="417" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Soft weighted hybrid 1-12</text>
+<rect x="390" y="400" width="656.57" height="18" rx="2" fill="#2F6F73"/>
+<text x="1052.572234767019" y="414" font-family="Arial" font-size="12" fill="#222">0.322976</text>
+<text x="378" y="445" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTST full steps 1-12</text>
+<rect x="390" y="428" width="659.99" height="18" rx="2" fill="#2F6F73"/>
+<text x="1055.993651267305" y="442" font-family="Arial" font-size="12" fill="#222">0.324659</text>
+<text x="378" y="473" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTST full steps 1-12</text>
+<rect x="390" y="456" width="659.99" height="18" rx="2" fill="#2F6F73"/>
+<text x="1055.993651267305" y="470" font-family="Arial" font-size="12" fill="#222">0.324659</text>
+<text x="378" y="501" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTSTForForecasting</text>
+<rect x="390" y="484" width="659.99" height="18" rx="2" fill="#2F6F73"/>
+<text x="1055.9937059639387" y="498" font-family="Arial" font-size="12" fill="#222">0.324659</text>
+<text x="378" y="529" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTSTForForecasting</text>
+<rect x="390" y="512" width="659.99" height="18" rx="2" fill="#2F6F73"/>
+<text x="1055.9937059639387" y="526" font-family="Arial" font-size="12" fill="#222">0.324659</text>
+<text x="378" y="557" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | Full 12-step PatchTST</text>
+<rect x="390" y="540" width="659.99" height="18" rx="2" fill="#2F6F73"/>
+<text x="1055.9937059639387" y="554" font-family="Arial" font-size="12" fill="#222">0.324659</text>
+<text x="378" y="585" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | PatchTSTForForecasting</text>
+<rect x="390" y="568" width="659.99" height="18" rx="2" fill="#2F6F73"/>
+<text x="1055.9937059639387" y="582" font-family="Arial" font-size="12" fill="#222">0.324659</text>
+<text x="378" y="613" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Fixed split hybrid 1-12</text>
+<rect x="390" y="596" width="661.89" height="18" rx="2" fill="#2F6F73"/>
+<text x="1057.8858928103157" y="610" font-family="Arial" font-size="12" fill="#222">0.325589</text>
+<text x="378" y="641" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Tiny meta selector hybrid 1-12</text>
+<rect x="390" y="624" width="662.46" height="18" rx="2" fill="#2F6F73"/>
+<text x="1058.4573883141013" y="638" font-family="Arial" font-size="12" fill="#222">0.325871</text>
+<text x="378" y="669" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Soft weighted hybrid 1-12</text>
+<rect x="390" y="652" width="663.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="1059.8145302851394" y="666" font-family="Arial" font-size="12" fill="#222">0.326538</text>
+<text x="378" y="697" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Soft weighted hybrid 1-12</text>
+<rect x="390" y="680" width="663.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="1059.8145457504816" y="694" font-family="Arial" font-size="12" fill="#222">0.326538</text>
+<text x="378" y="725" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Smoothed soft hybrid 1-12</text>
+<rect x="390" y="708" width="663.83" height="18" rx="2" fill="#2F6F73"/>
+<text x="1059.825612547147" y="722" font-family="Arial" font-size="12" fill="#222">0.326544</text>
+<text x="378" y="753" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Temperature softmax hybrid 1-12</text>
+<rect x="390" y="736" width="663.83" height="18" rx="2" fill="#2F6F73"/>
+<text x="1059.8312337505545" y="750" font-family="Arial" font-size="12" fill="#222">0.326546</text>
+<text x="378" y="781" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4 | DLinear full steps 1-12</text>
+<rect x="390" y="764" width="667.62" height="18" rx="2" fill="#2F6F73"/>
+<text x="1063.61902178336" y="778" font-family="Arial" font-size="12" fill="#222">0.328410</text>
+<text x="378" y="809" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | Hybrid DLinear + PatchTST ste</text>
+<rect x="390" y="792" width="668.54" height="18" rx="2" fill="#2F6F73"/>
+<text x="1064.5417265731674" y="806" font-family="Arial" font-size="12" fill="#222">0.328864</text>
+<text x="378" y="837" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4 | Transformer full steps 1-12</text>
+<rect x="390" y="820" width="669.69" height="18" rx="2" fill="#2F6F73"/>
+<text x="1065.6922297877727" y="834" font-family="Arial" font-size="12" fill="#222">0.329430</text>
+<text x="378" y="865" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Fixed split hybrid 1-12</text>
+<rect x="390" y="848" width="670.00" height="18" rx="2" fill="#2F6F73"/>
+<text x="1066.0" y="862" font-family="Arial" font-size="12" fill="#222">0.329581</text>
+<text x="378" y="893" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4 | Fixed split hybrid 1-12</text>
+<rect x="390" y="876" width="670.00" height="18" rx="2" fill="#2F6F73"/>
+<text x="1066.0" y="890" font-family="Arial" font-size="12" fill="#222">0.329581</text>
+</svg>

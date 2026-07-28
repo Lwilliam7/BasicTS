@@ -1,0 +1,167 @@
+{
+  "model_name": "Sequential COSTARTS",
+  "router_type": "sequential_costarts",
+  "seeds": [
+    7
+  ],
+  "baselines": {
+    "best_fixed_single_expert": {
+      "expert": "ModernTCN",
+      "mae": 0.35864511132240295,
+      "mse": 0.3322720527648926,
+      "average_experts_queried": 1.0
+    },
+    "best_fixed_pair": {
+      "pair": "PatchTST+ModernTCN",
+      "mae": 0.35176655650138855,
+      "mse": 0.3155495226383209,
+      "average_experts_queried": 2.0
+    },
+    "all_expert_equal_average": {
+      "mae": 0.35006532073020935,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0
+    },
+    "full_oracle_single_expert": {
+      "mae": 0.31814324855804443,
+      "average_experts_queried": 5.0,
+      "diagnostic_only": true
+    },
+    "existing_one_shot_pair_selector": {
+      "mae_mean": 0.35117185711860655,
+      "mae_std": 0.0014353750865013152,
+      "average_experts_queried": 2.0
+    },
+    "fixed_first_expert": {
+      "expert": "ModernTCN",
+      "index": 4,
+      "selection_split": "router_train_plus_router_val"
+    },
+    "greedy_oracle_sequential": {
+      "mae": 0.321288204625808,
+      "mse": 0.27078041516329493,
+      "average_experts_queried": 2.4502446982055464,
+      "diagnostic_only": true
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 7,
+      "validation_mae": 0.34793514013290405,
+      "validation_mse": 0.3044354319572449,
+      "improvement_over_best_fixed_pair": 0.003831416368484497,
+      "regret_to_full_oracle": 0.02979191206395626,
+      "average_experts_queried": 3.5595431327819824,
+      "relative_expert_cost": 0.7119086265563965,
+      "predicted_actual_utility_correlation": 0.05112348981524176,
+      "useful_query_auc": 0.5057593059738749,
+      "useful_query_precision": 56.53282345442957,
+      "harmful_query_rate": 43.46717654557043,
+      "selected_threshold": -0.025,
+      "fixed_first_expert": "ModernTCN",
+      "no_threshold_validation_mae": 0.3487159311771393,
+      "no_threshold_average_experts_queried": 2.76672101020813
+    }
+  ],
+  "aggregate": [
+    {
+      "metric": "validation_mae",
+      "mean": 0.34793514013290405,
+      "std": 0.0,
+      "min": 0.34793514013290405,
+      "max": 0.34793514013290405
+    },
+    {
+      "metric": "validation_mse",
+      "mean": 0.3044354319572449,
+      "std": 0.0,
+      "min": 0.3044354319572449,
+      "max": 0.3044354319572449
+    },
+    {
+      "metric": "improvement_over_best_fixed_pair",
+      "mean": 0.003831416368484497,
+      "std": 0.0,
+      "min": 0.003831416368484497,
+      "max": 0.003831416368484497
+    },
+    {
+      "metric": "regret_to_full_oracle",
+      "mean": 0.02979191206395626,
+      "std": 0.0,
+      "min": 0.02979191206395626,
+      "max": 0.02979191206395626
+    },
+    {
+      "metric": "average_experts_queried",
+      "mean": 3.5595431327819824,
+      "std": 0.0,
+      "min": 3.5595431327819824,
+      "max": 3.5595431327819824
+    },
+    {
+      "metric": "relative_expert_cost",
+      "mean": 0.7119086265563965,
+      "std": 0.0,
+      "min": 0.7119086265563965,
+      "max": 0.7119086265563965
+    },
+    {
+      "metric": "predicted_actual_utility_correlation",
+      "mean": 0.05112348981524176,
+      "std": 0.0,
+      "min": 0.05112348981524176,
+      "max": 0.05112348981524176
+    },
+    {
+      "metric": "useful_query_auc",
+      "mean": 0.5057593059738749,
+      "std": 0.0,
+      "min": 0.5057593059738749,
+      "max": 0.5057593059738749
+    },
+    {
+      "metric": "useful_query_precision",
+      "mean": 56.53282345442957,
+      "std": 0.0,
+      "min": 56.53282345442957,
+      "max": 56.53282345442957
+    },
+    {
+      "metric": "harmful_query_rate",
+      "mean": 43.46717654557043,
+      "std": 0.0,
+      "min": 43.46717654557043,
+      "max": 43.46717654557043
+    },
+    {
+      "metric": "no_threshold_validation_mae",
+      "mean": 0.3487159311771393,
+      "std": 0.0,
+      "min": 0.3487159311771393,
+      "max": 0.3487159311771393
+    },
+    {
+      "metric": "no_threshold_average_experts_queried",
+      "mean": 2.76672101020813,
+      "std": 0.0,
+      "min": 2.76672101020813,
+      "max": 2.76672101020813
+    }
+  ],
+  "success_checks": {
+    "beats_best_fixed_pair_mean_validation_mae": true,
+    "clear_cost_accuracy_tradeoff": false,
+    "avoids_always_stop_or_query_all": true,
+    "utility_prediction_better_than_random_directional": true,
+    "no_data_leakage_known": true
+  },
+  "leakage_assertions": {
+    "train_split": "router_train",
+    "validation_split": "router_val",
+    "test_set_used": false,
+    "forecasting_experts_retrained": false,
+    "unqueried_forecasts_in_router_input": false,
+    "threshold_selection": "router_val only"
+  }
+}

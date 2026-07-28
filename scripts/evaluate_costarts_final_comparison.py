@@ -27,6 +27,7 @@ try:
         _build_state_lookup,
         _masked_action_logits,
         _state_batch,
+        _equal_average_queried_forecasts,
         set_reproducible_seed,
     )
 except ImportError:
@@ -37,6 +38,7 @@ except ImportError:
         _build_state_lookup,
         _masked_action_logits,
         _state_batch,
+        _equal_average_queried_forecasts,
         set_reproducible_seed,
     )
 
@@ -371,7 +373,10 @@ def _subset_rollout(
     device: torch.device,
     force_k: Optional[int] = None,
     oracle_second_query: bool = False,
+    deployment_finalizer: str = "best_reranked",
 ) -> tuple[torch.Tensor, torch.Tensor, list[list[int]], float]:
+    if deployment_finalizer not in {"best_reranked", "equal_average"}:
+        raise ValueError("deployment_finalizer must be 'best_reranked' or 'equal_average'")
     lookup = _build_state_lookup(subset_cache)
     num_windows = int(subset_cache["num_source_windows"])
     num_experts = int(subset_cache["num_experts"])
@@ -400,9 +405,17 @@ def _subset_rollout(
                 batch["queried_expert_forecasts"],
             )
             valid_mask = batch["valid_action_mask"].to(torch.bool)
+            empty_mask = batch["subset_size"].to(torch.long) == 0
             if force_k is None:
                 action_logits = _masked_action_logits(outputs["action_logits"], valid_mask)
-                actions = torch.argmax(action_logits, dim=-1).detach().cpu()
+                actions_device = torch.argmax(action_logits, dim=-1)
+                if torch.any(empty_mask):
+                    first_logits = outputs["first_query_logits"].masked_fill(
+                        ~valid_mask[:, :num_experts],
+                        -1e9,
+                    )
+                    actions_device[empty_mask] = torch.argmax(first_logits[empty_mask], dim=-1)
+                actions = actions_device.detach().cpu()
             elif oracle_second_query and step == 1:
                 actions = []
                 for local_index, sample_index in enumerate(rows):
@@ -415,10 +428,11 @@ def _subset_rollout(
                 actions = torch.tensor(actions, dtype=torch.long)
             else:
                 expert_valid = valid_mask[:, :num_experts]
-                actions = torch.argmax(
-                    outputs["action_logits"][:, :num_experts].masked_fill(~expert_valid, -1e9),
-                    dim=-1,
-                ).detach().cpu()
+                if torch.any(empty_mask):
+                    query_logits = outputs["first_query_logits"]
+                else:
+                    query_logits = outputs["action_logits"][:, :num_experts]
+                actions = torch.argmax(query_logits.masked_fill(~expert_valid, -1e9), dim=-1).detach().cpu()
 
             for local_index, sample_index in enumerate(rows):
                 action = int(actions[local_index])
@@ -464,8 +478,11 @@ def _subset_rollout(
         scores = outputs["expert_score"].detach().cpu().masked_fill(~queried_mask, -1e9)
         selected_batch = torch.argmax(scores, dim=-1)
         selected[offset : offset + len(rows)] = selected_batch
-        positions = (queried_ids == selected_batch[:, None]).to(torch.float32).argmax(dim=1)
-        predictions.append(queried_forecasts[torch.arange(len(rows)), positions])
+        if deployment_finalizer == "equal_average":
+            predictions.append(_equal_average_queried_forecasts(batch).detach().cpu())
+        else:
+            positions = (queried_ids == selected_batch[:, None]).to(torch.float32).argmax(dim=1)
+            predictions.append(queried_forecasts[torch.arange(len(rows)), positions])
     latency = time.perf_counter() - start
     return torch.cat(predictions, dim=0), selected, sequences, latency
 
@@ -501,6 +518,7 @@ def evaluate_final_comparison(
     device: torch.device,
     seed: int,
     ridge: float,
+    deployment_finalizer: str,
 ) -> dict[str, Any]:
     set_reproducible_seed(seed)
     train_cache = _load_torch(train_cache_path)
@@ -680,6 +698,7 @@ def evaluate_final_comparison(
             subset_cache=subset_cache,
             batch_size=batch_size,
             device=device,
+            deployment_finalizer=deployment_finalizer,
         )
         top2_subset = _sequence_tensor(subset_sequences, 2)
         first_subset = top2_subset[:, 0]
@@ -707,6 +726,7 @@ def evaluate_final_comparison(
             batch_size=batch_size,
             device=device,
             force_k=2,
+            deployment_finalizer=deployment_finalizer,
         )
         top2_tensor = _sequence_tensor(top2_sequences, 2)
         top2_equal_prediction = torch.stack(
@@ -758,6 +778,7 @@ def evaluate_final_comparison(
             batch_size=batch_size,
             device=device,
             oracle_second_query=True,
+            deployment_finalizer=deployment_finalizer,
         )
         oracle_second_prediction, oracle_second_selected = _oracle_within_sequences(
             val_cache,
@@ -865,6 +886,7 @@ def evaluate_final_comparison(
             "train_cache": str(train_cache_path),
             "validation_cache": str(val_cache_path),
             "subset_validation_cache": str(subset_val_cache_path),
+            "deployment_finalizer": deployment_finalizer,
             "expert_names": expert_names,
             "num_validation_windows": int(val_cache["num_windows"]),
             "same_chronological_windows": True,
@@ -894,6 +916,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--batch-size", type=int, default=512)
     parser.add_argument("--ridge", type=float, default=1e-4)
+    parser.add_argument("--deployment-finalizer", choices=("best_reranked", "equal_average"), default="equal_average")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--seed", type=int, default=7)
     return parser.parse_args()
@@ -914,6 +937,7 @@ def main() -> None:
         device=torch.device(args.device),
         seed=args.seed,
         ridge=args.ridge,
+        deployment_finalizer=args.deployment_finalizer,
     )
     ok_rows = [row for row in payload["rows"] if row["status"] == "ok"]
     print("\nTop comparison rows:")

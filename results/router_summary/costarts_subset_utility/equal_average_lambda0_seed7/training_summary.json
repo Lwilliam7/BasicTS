@@ -1,0 +1,142 @@
+{
+  "best_epoch": 18,
+  "best_selection_metric": "mae",
+  "best_selection_metric_value": 0.3575957119464874,
+  "best_validation_mae": 0.3575957119464874,
+  "best_validation_objective": 0.3575957119464874,
+  "best_validation_metrics": {
+    "validation_mae": 0.3575957119464874,
+    "validation_mse": 0.31634679436683655,
+    "validation_oracle_mae": 0.31814324855804443,
+    "validation_regret_to_oracle": 0.03945246338844299,
+    "validation_objective": 0.3575957119464874,
+    "action_accuracy": 0.16639478504657745,
+    "first_query_oracle_match": 0.19902120530605316,
+    "top_two_oracle_coverage": 0.37846654653549194,
+    "average_experts_selected": 2.5432300163132138,
+    "average_normalized_query_cost": 2.5432300163132138,
+    "average_raw_query_cost": 2.5432300163132138,
+    "false_stop_rate": 0.33526383526383524,
+    "false_continue_rate": 0.04826254826254826,
+    "stop_precision": 0.14309210526315788,
+    "stop_recall": 0.5370370370370371,
+    "stop_frequency": 0.9918433931484503,
+    "stop_step_distribution": {
+      "1": 41,
+      "2": 259,
+      "3": 257,
+      "4": 51,
+      "5": 5
+    },
+    "selection_counts": {
+      "0": 267,
+      "1": 179,
+      "2": 36,
+      "3": 128,
+      "4": 3
+    },
+    "average_predicted_utility_by_step": [
+      -0.3772464898243231,
+      0.021517751790084808,
+      0.00840038281761214,
+      0.002248894387540726,
+      0.003306087206250855
+    ],
+    "better_of_top_two_accuracy": 0.4527972027972028
+  },
+  "best_checkpoint": "checkpoints\\costarts_subset_utility\\equal_average_lambda0_seed7\\best_subset_utility_costarts_router.pt",
+  "last_checkpoint": "checkpoints\\costarts_subset_utility\\equal_average_lambda0_seed7\\last_subset_utility_costarts_router.pt",
+  "training_curves_csv": "results\\router_summary\\costarts_subset_utility\\equal_average_lambda0_seed7\\training_curves.csv",
+  "training_config": {
+    "train_cache_path": "cache/costarts_subset_states_train.pt",
+    "val_cache_path": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_subset_utility\\equal_average_lambda0_seed7",
+    "results_dir": "results\\router_summary\\costarts_subset_utility\\equal_average_lambda0_seed7",
+    "batch_size": 1024,
+    "max_epochs": 50,
+    "patience": 10,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "seed": 7,
+    "action_loss_weight": 1.0,
+    "utility_loss_weight": 1.0,
+    "pairwise_loss_weight": 0.2,
+    "mix_loss_weight": 0.0,
+    "subset_state_sampling_mode": "exhaustive",
+    "max_subset_size": null,
+    "cost_coefficient": 0.0,
+    "cost_mode": "equal",
+    "cost_file": null,
+    "selection_metric": "mae",
+    "utility_finalizer": "equal_average",
+    "deployment_finalizer": "equal_average",
+    "allow_finalizer_mismatch": false,
+    "state_sampling": "action_balanced",
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "action_head_type": "unified",
+    "device": "cpu",
+    "debug": false
+  },
+  "router_config": {
+    "num_experts": 5,
+    "max_subset_size": 5,
+    "input_len": 96,
+    "forecast_horizon": 12,
+    "num_features": 7,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "action_head_type": "unified"
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "cost_metadata": {
+    "cost_mode": "equal",
+    "cost_source": "equal unit costs",
+    "raw_expert_costs": {
+      "DLinear": 1.0,
+      "PatchTST": 1.0,
+      "iTransformer": 1.0,
+      "TimesNet": 1.0,
+      "ModernTCN": 1.0
+    },
+    "normalized_expert_costs": {
+      "DLinear": 1.0,
+      "PatchTST": 1.0,
+      "iTransformer": 1.0,
+      "TimesNet": 1.0,
+      "ModernTCN": 1.0
+    },
+    "mean_positive_raw_cost": 1.0
+  },
+  "raw_expert_costs": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "normalized_expert_costs": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "train_cache_path": "cache/costarts_subset_states_train.pt",
+  "val_cache_path": "cache/costarts_subset_states_val.pt",
+  "created_checkpoints_separate_from_original_costarts": true,
+  "original_costarts_checkpoint_dir": "checkpoints/costarts",
+  "model_selection": "mae",
+  "test_set_used": false,
+  "experts_loaded": false,
+  "experts_updated": false
+}

@@ -1,0 +1,123 @@
+{
+  "train": {
+    "split": "router_train",
+    "split_role": "router_train",
+    "num_states": 65696,
+    "num_empty_states": 2053,
+    "empty_state_pct": 3.125,
+    "empty_states_per_uniform_batch": {
+      "8192": 256.0,
+      "1024": 32.0,
+      "512": 16.0
+    },
+    "empty_states_per_action_balanced_batch_estimate": {
+      "8192": 256.0,
+      "1024": 32.0,
+      "512": 16.0
+    },
+    "optimizer_updates_per_epoch": {
+      "8192": 9,
+      "1024": 65,
+      "512": 129
+    },
+    "first_query_class_counts": {
+      "0": 730,
+      "1": 229,
+      "2": 286,
+      "3": 374,
+      "4": 434
+    },
+    "first_query_class_distribution": {
+      "0": 0.3555772006511688,
+      "1": 0.11154408007860184,
+      "2": 0.13930833339691162,
+      "3": 0.18217243254184723,
+      "4": 0.2113979607820511
+    },
+    "majority_expert_index": 0,
+    "majority_expert_name": "DLinear",
+    "majority_first_query_mae": 0.4026223123073578,
+    "majority_first_query_regret": 0.04667191207408905,
+    "empirical_random_from_train_distribution": {
+      "regret_mean": 0.07114659748226404,
+      "mae_mean": 0.4270969625413418,
+      "oracle_match_mean": 0.2359547002464533
+    }
+  },
+  "val": {
+    "split": "router_val",
+    "split_role": "router_val",
+    "num_states": 19616,
+    "num_empty_states": 613,
+    "empty_state_pct": 3.125,
+    "empty_states_per_uniform_batch": {
+      "8192": 256.0,
+      "1024": 32.0,
+      "512": 16.0
+    },
+    "empty_states_per_action_balanced_batch_estimate": {
+      "8192": 256.0,
+      "1024": 32.0,
+      "512": 16.0
+    },
+    "optimizer_updates_per_epoch": {
+      "8192": 3,
+      "1024": 20,
+      "512": 39
+    },
+    "first_query_class_counts": {
+      "0": 117,
+      "1": 87,
+      "2": 89,
+      "3": 139,
+      "4": 181
+    },
+    "first_query_class_distribution": {
+      "0": 0.19086460769176483,
+      "1": 0.14192496240139008,
+      "2": 0.1451876014471054,
+      "3": 0.22675366699695587,
+      "4": 0.2952691614627838
+    },
+    "majority_expert_index": 4,
+    "majority_expert_name": "ModernTCN",
+    "majority_first_query_mae": 0.35864511132240295,
+    "majority_first_query_regret": 0.04050188139081001,
+    "empirical_random_from_train_distribution": {
+      "regret_mean": 0.0530990088135004,
+      "mae_mean": 0.3712422551214695,
+      "oracle_match_mean": 0.20712887416779996
+    },
+    "current_costarts_first_query": {
+      "checkpoint": "checkpoints\\costarts_subset_utility\\equal_average_lambda0_seed7\\best_subset_utility_costarts_router.pt",
+      "oracle_match": 0.19902120530605316,
+      "mae": 0.371459037065506,
+      "regret": 0.05331578850746155,
+      "selection_counts": {
+        "0": 70,
+        "1": 42,
+        "2": 0,
+        "3": 389,
+        "4": 112
+      }
+    },
+    "routerdc_hard_contrastive_first_query": {
+      "checkpoint": "checkpoints\\best_routerdc_hard_contrastive.pt",
+      "oracle_match": 0.3050571084022522,
+      "mae": 0.35448312759399414,
+      "regret": 0.03633987903594971,
+      "selection_counts": {
+        "0": 109,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 504
+      }
+    }
+  },
+  "audit_findings": {
+    "empty_state_loss_current": "same hard cross-entropy action loss as all states; target is argmin standalone expert MAE via initial_utility=-error-lambda*cost",
+    "empty_states_use_hard_one_hot_labels": true,
+    "first_query_gradients_likely_overwhelmed": "yes: exhaustive empty states are only about 3.12% of train states under uniform sampling and about 3.12% under current STOP/CONTINUE action-balanced sampling"
+  }
+}

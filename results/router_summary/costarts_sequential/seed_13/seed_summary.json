@@ -1,0 +1,74 @@
+{
+  "seed": 13,
+  "best_epoch": 25,
+  "best_validation_mae": 0.34813037514686584,
+  "best_validation_mse": 0.3060915470123291,
+  "selected_threshold": -0.05,
+  "fixed_first_expert": "ModernTCN",
+  "fixed_first_expert_index": 4,
+  "average_experts_queried": 4.610114097595215,
+  "relative_expert_cost": 0.922022819519043,
+  "query_count_distribution": {
+    "3": 5,
+    "4": 229,
+    "5": 379
+  },
+  "stop_counts": {
+    "3": 5,
+    "4": 229,
+    "5": 379
+  },
+  "expert_query_frequency": {
+    "DLinear": 100.0,
+    "PatchTST": 100.0,
+    "iTransformer": 62.96900489396411,
+    "TimesNet": 98.04241435562805,
+    "ModernTCN": 100.0
+  },
+  "predicted_actual_utility_correlation": -0.007381336588800777,
+  "useful_query_auc": 0.5104709829750217,
+  "useful_query_precision": 55.94215996384998,
+  "harmful_query_rate": 44.05784003615002,
+  "high_margin_windows": {
+    "<=0.005": {
+      "count": 523,
+      "useful_query_precision": 50.66921606118547
+    },
+    "0.005_to_0.01": {
+      "count": 470,
+      "useful_query_precision": 54.680851063829785
+    },
+    "0.01_to_0.025": {
+      "count": 749,
+      "useful_query_precision": 57.67690253671562
+    },
+    ">0.025": {
+      "count": 471,
+      "useful_query_precision": 60.29723991507431
+    }
+  },
+  "query_count_performance": {
+    "3": {
+      "count": 5,
+      "mae": 0.2517668306827545,
+      "mse": 0.10969624668359756
+    },
+    "4": {
+      "count": 229,
+      "mae": 0.2984272539615631,
+      "mse": 0.20240068435668945
+    },
+    "5": {
+      "count": 379,
+      "mae": 0.37943339347839355,
+      "mse": 0.3713347911834717
+    }
+  },
+  "regret_to_full_oracle": 0.02998715452849865,
+  "no_threshold_validation_mae": 0.3529219925403595,
+  "no_threshold_validation_mse": 0.3199734389781952,
+  "no_threshold_average_experts_queried": 3.096247911453247,
+  "no_threshold_useful_query_precision": 56.03112840466926,
+  "no_threshold_harmful_query_rate": 43.96887159533074,
+  "best_checkpoint": "checkpoints\\costarts_sequential\\seed_13\\best_sequential_costarts_router.pt"
+}

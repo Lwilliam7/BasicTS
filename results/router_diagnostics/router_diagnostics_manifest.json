@@ -1,0 +1,112 @@
+{
+  "output_dir": "results\\router_diagnostics",
+  "generated": [
+    {
+      "filename": "expert_utilization_histogram_soft_router_weights.png",
+      "path": "results\\router_diagnostics\\expert_utilization_histogram_soft_router_weights.png"
+    },
+    {
+      "filename": "expert_selection_by_horizon.png",
+      "path": "results\\router_diagnostics\\expert_selection_by_horizon.png"
+    },
+    {
+      "filename": "expert_selection_by_variable.png",
+      "path": "results\\router_diagnostics\\expert_selection_by_variable.png"
+    },
+    {
+      "filename": "predicted_loss_map_summary_by_horizon_and_variable.png",
+      "path": "results\\router_diagnostics\\predicted_loss_map_summary_by_horizon_and_variable.png"
+    },
+    {
+      "filename": "expert_utilization_histogram_routerdc_hard_without_contrastive.png",
+      "path": "results\\router_diagnostics\\expert_utilization_histogram_routerdc_hard_without_contrastive.png"
+    },
+    {
+      "filename": "average_router_probabilities_routerdc_hard_without_contrastive.png",
+      "path": "results\\router_diagnostics\\average_router_probabilities_routerdc_hard_without_contrastive.png"
+    },
+    {
+      "filename": "learned_expert_representation_similarity_routerdc_hard_without_contrastive.png",
+      "path": "results\\router_diagnostics\\learned_expert_representation_similarity_routerdc_hard_without_contrastive.png"
+    },
+    {
+      "filename": "routing_entropy_scalar_routerdc_hard_without_contrastive.png",
+      "path": "results\\router_diagnostics\\routing_entropy_scalar_routerdc_hard_without_contrastive.png"
+    },
+    {
+      "filename": "expert_utilization_histogram_routerdc_hard_with_contrastive.png",
+      "path": "results\\router_diagnostics\\expert_utilization_histogram_routerdc_hard_with_contrastive.png"
+    },
+    {
+      "filename": "average_router_probabilities_routerdc_hard_with_contrastive.png",
+      "path": "results\\router_diagnostics\\average_router_probabilities_routerdc_hard_with_contrastive.png"
+    },
+    {
+      "filename": "learned_expert_representation_similarity_routerdc_hard_with_contrastive.png",
+      "path": "results\\router_diagnostics\\learned_expert_representation_similarity_routerdc_hard_with_contrastive.png"
+    },
+    {
+      "filename": "routing_entropy_scalar_routerdc_hard_with_contrastive.png",
+      "path": "results\\router_diagnostics\\routing_entropy_scalar_routerdc_hard_with_contrastive.png"
+    },
+    {
+      "filename": "latency_vs_mae_pareto.png",
+      "path": "results\\router_diagnostics\\latency_vs_mae_pareto.png"
+    },
+    {
+      "filename": "latency_vs_mae_pareto_data.csv",
+      "path": "results\\router_diagnostics\\latency_vs_mae_pareto_data.csv"
+    }
+  ],
+  "skipped": [
+    {
+      "diagnostic": "multi-seed aggregation",
+      "reason": "No matching training summaries with seed and validation MAE found"
+    },
+    {
+      "diagnostic": "expert error correlation matrix",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "oracle expert distribution",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "confusion matrix",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "routing entropy distribution",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "stop-step distribution",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "regret histogram",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "predicted vs true scalar expert error scatterplots",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "calibration plots",
+      "reason": "No compatible offline expert cache was provided/found"
+    },
+    {
+      "diagnostic": "regime/prototype visualizations",
+      "reason": "No compatible offline expert cache was provided/found"
+    }
+  ],
+  "inputs": {
+    "router_summary": "results/router_summary/best_5_experts/router_test_metrics.json",
+    "routerdc_summary": "results/router2_summary/routerdc_hard_test_metrics.json",
+    "cache_path": "",
+    "checkpoint_path": "",
+    "summary_glob": [
+      "results/router_summary/costarts*/costarts_training_summary.json"
+    ]
+  }
+}

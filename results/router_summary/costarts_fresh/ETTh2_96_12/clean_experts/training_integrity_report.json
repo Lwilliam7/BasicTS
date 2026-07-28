@@ -1,0 +1,620 @@
+{
+  "dataset": "ETTh2",
+  "input_len": 96,
+  "output_len": 12,
+  "num_features": 7,
+  "test_values_accessed": false,
+  "router_or_gate_training_performed": false,
+  "audit_followed": true,
+  "split_manifest_sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899",
+  "scaler_manifest_sha256": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+  "git": {
+    "head_commit": "1724822749dd75a27ded8af9999d90b04f918c2b",
+    "has_uncommitted_changes": true,
+    "status_short": [
+      " D notebooks/ForFunTesting.ipynb",
+      " D notebooks/Modeltesting.ipynb",
+      " D notebooks/dlinear_etth1.ipynb",
+      " D notebooks/mixed.ipynb",
+      " D results/model_benchmark_results.json",
+      " M scripts/evaluate_costarts_cost_sweep.py",
+      " M scripts/evaluate_costarts_final_comparison.py",
+      " M scripts/evaluate_costarts_subset_utility_rollouts.py",
+      " M scripts/run_costarts_subset_utility_ablations.py",
+      "?? .pytest_tmp_clean_etth2_base/",
+      "?? =",
+      "?? cache/",
+      "?? \"notebooks/Past Models/\"",
+      "?? notebooks/modeltest.ipynb",
+      "?? notebooks/router.ipynb",
+      "?? \"notebooks/router2(RouterDC inspired).ipynb\"",
+      "?? notebooks/router2_executed.ipynb",
+      "?? notebooks/router_model_results.ipynb",
+      "?? notebooks/tour.ipynb",
+      "?? r'",
+      "?? results/router2_summary/",
+      "?? results/router_diagnostics/",
+      "?? results/router_robustness/",
+      "?? results/router_robustness_smoke/",
+      "?? results/router_summary/best_1_expert/",
+      "?? results/router_summary/best_2_experts/",
+      "?? results/router_summary/best_3_experts/",
+      "?? results/router_summary/best_4_experts/",
+      "?? results/router_summary/best_5_experts/",
+      "?? results/router_summary/candidate_expert_combinations.json",
+      "?? results/router_summary/costarts/costarts_repository_inspection_report.md",
+      "?? results/router_summary/costarts/costarts_routerdc_same_val_comparison.json",
+      "?? results/router_summary/costarts/costarts_training_summary.json",
+      "?? results/router_summary/costarts/inspection/",
+      "?? results/router_summary/costarts_fresh/",
+      "?? results/router_summary/costarts_subset_utility/best_single_lambda0_seed7_ablation/",
+      "?? results/router_summary/costarts_subset_utility/cost_aware_smoke/",
+      "?? results/router_summary/costarts_subset_utility/cost_aware_sweep_smoke/",
+      "?? results/router_summary/costarts_subset_utility/cost_lambda_0p01_eval_now/",
+      "?? results/router_summary/costarts_subset_utility/equal_average_lambda0_seed7/",
+      "?? results/router_summary/costarts_subset_utility/evaluation_now/",
+      "?? results/router_summary/costarts_subset_utility/first_query_audit.json",
+      "?? results/router_summary/costarts_subset_utility/first_query_exp_a_soft_shared/",
+      "?? results/router_summary/costarts_subset_utility/first_query_exp_b_soft_separate/",
+      "?? results/router_summary/costarts_subset_utility/first_query_exp_c_soft_separate_regret/",
+      "?? results/router_summary/costarts_subset_utility/first_query_experiment_summary/",
+      "?? results/router_summary/costarts_subset_utility/routerdc_finetune_seed7/",
+      "?? results/router_summary/costarts_subset_utility/routerdc_first_query_initialization_summary/",
+      "?? results/router_summary/costarts_subset_utility/routerdc_frozen_seed7/",
+      "?? results/router_summary/costarts_subset_utility/routerdc_init_random_seed7/",
+      "?? results/router_summary/past/",
+      "?? results/router_summary/results_explained.ipynb",
+      "?? results/router_summary/results_explained_best_mae_by_count.png",
+      "?? results/router_summary/results_explained_oracle_mae_by_count.png",
+      "?? results/router_summary/results_explained_router_vs_baselines.png",
+      "?? results/router_summary/router_significance_tests.json",
+      "?? scripts/chronological_expert_training.py",
+      "?? scripts/costars/",
+      "?? scripts/router_diagnostics.py",
+      "?? scripts/router_robustness.py",
+      "?? scripts/router_significance_tests.py",
+      "?? scripts/select_best_models.py",
+      "?? scripts/selectors.py",
+      "?? src/basicts/models/ModernTCN/",
+      "?? tests/test_chronological_expert_training.py",
+      "?? tests/test_clean_etth2_expert_training.py",
+      "?? tests/test_selectors.py"
+    ]
+  },
+  "hashes": {
+    "metric_mae_file": "6f485c46ca22079a00fb62c549e6a552c2e56f7bc145f591d18c0fed547accb6",
+    "metric_mse_file": "26757eaff51b46579ee6db41a4d633404cc87824244f9d6700d4ac84fff9719a",
+    "expert_inference_helper_file": "1a20070764595a6c3e1538b54be8ac5482055ab76d03d7e3c930515cce81b399"
+  },
+  "experts": {
+    "DLinear": {
+      "expert_name": "DLinear",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_dlinear.pt",
+      "checkpoint_hash": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "parameter_count": 2328,
+      "configuration": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "moving_avg": 25,
+        "stride": 1,
+        "individual": false
+      },
+      "training_epochs": 47,
+      "best_epoch": 42,
+      "expert_validation_mae": 0.3391200496134078,
+      "expert_validation_mse": 0.323135471367842,
+      "scaler_hash": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+      "split_ranges": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "num_timestamps": 7200,
+          "first_valid_window_start": 0,
+          "last_valid_window_start": 7092,
+          "num_windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "num_timestamps": 1440,
+          "first_valid_window_start": 7200,
+          "last_valid_window_start": 8532,
+          "num_windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "num_timestamps": 2160,
+          "first_valid_window_start": 8640,
+          "last_valid_window_start": 10692,
+          "num_windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "num_timestamps": 720,
+          "first_valid_window_start": 10800,
+          "last_valid_window_start": 11412,
+          "num_windows": 613
+        },
+        "locked_test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "num_timestamps": 2880,
+          "first_valid_window_start": 11520,
+          "last_valid_window_start": 14292,
+          "num_windows": 2773
+        },
+        "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+      },
+      "seed": 7,
+      "reload_verification_status": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "eval_mode": true,
+        "all_parameters_frozen": true,
+        "output_shape": [
+          512,
+          12,
+          7
+        ],
+        "finite_output": true,
+        "deterministic_inference": true,
+        "frozen_gradient_verification": true
+      },
+      "frozen_gradient_verification_status": true,
+      "model_config_sha256": "1435f816ecf845ab141d09f1a649df87d813b7fc6d35f7af480b88b0d718aa65"
+    },
+    "PatchTST": {
+      "expert_name": "PatchTST",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_patchtst.pt",
+      "checkpoint_hash": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+      "parameter_count": 43788,
+      "configuration": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "patch_len": 16,
+        "patch_stride": 8,
+        "padding": true,
+        "hidden_size": 64,
+        "n_heads": 4,
+        "intermediate_size": 128,
+        "hidden_act": "gelu",
+        "num_layers": 1,
+        "attn_dropout": 0.1,
+        "fc_dropout": 0.1,
+        "head_dropout": 0.0,
+        "norm_type": "layer_norm",
+        "individual_head": false,
+        "use_revin": false,
+        "affine": true,
+        "subtract_last": false,
+        "decomp": false,
+        "moving_avg": 25,
+        "output_attentions": false
+      },
+      "training_epochs": 20,
+      "best_epoch": 15,
+      "expert_validation_mae": 0.4063460148658816,
+      "expert_validation_mse": 0.4401741827756046,
+      "scaler_hash": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+      "split_ranges": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "num_timestamps": 7200,
+          "first_valid_window_start": 0,
+          "last_valid_window_start": 7092,
+          "num_windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "num_timestamps": 1440,
+          "first_valid_window_start": 7200,
+          "last_valid_window_start": 8532,
+          "num_windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "num_timestamps": 2160,
+          "first_valid_window_start": 8640,
+          "last_valid_window_start": 10692,
+          "num_windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "num_timestamps": 720,
+          "first_valid_window_start": 10800,
+          "last_valid_window_start": 11412,
+          "num_windows": 613
+        },
+        "locked_test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "num_timestamps": 2880,
+          "first_valid_window_start": 11520,
+          "last_valid_window_start": 14292,
+          "num_windows": 2773
+        },
+        "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+      },
+      "seed": 7,
+      "reload_verification_status": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "eval_mode": true,
+        "all_parameters_frozen": true,
+        "output_shape": [
+          512,
+          12,
+          7
+        ],
+        "finite_output": true,
+        "deterministic_inference": true,
+        "frozen_gradient_verification": true
+      },
+      "frozen_gradient_verification_status": true,
+      "model_config_sha256": "f08e733e1834bc550c5471a728102fc7b3923a623aadfa3f73317b122b209b31"
+    },
+    "iTransformer": {
+      "expert_name": "iTransformer",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_itransformer.pt",
+      "checkpoint_hash": "664841c6c982da5c5a81a99eb759494101583a4a9e9feef7b806f74ce2175c5f",
+      "parameter_count": 40588,
+      "configuration": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "hidden_size": 64,
+        "n_heads": 4,
+        "intermediate_size": 128,
+        "hidden_act": "gelu",
+        "num_layers": 1,
+        "dropout": 0.1,
+        "use_revin": false,
+        "output_attentions": false
+      },
+      "training_epochs": 38,
+      "best_epoch": 33,
+      "expert_validation_mae": 0.6577087125436493,
+      "expert_validation_mse": 1.0647850299628479,
+      "scaler_hash": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+      "split_ranges": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "num_timestamps": 7200,
+          "first_valid_window_start": 0,
+          "last_valid_window_start": 7092,
+          "num_windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "num_timestamps": 1440,
+          "first_valid_window_start": 7200,
+          "last_valid_window_start": 8532,
+          "num_windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "num_timestamps": 2160,
+          "first_valid_window_start": 8640,
+          "last_valid_window_start": 10692,
+          "num_windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "num_timestamps": 720,
+          "first_valid_window_start": 10800,
+          "last_valid_window_start": 11412,
+          "num_windows": 613
+        },
+        "locked_test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "num_timestamps": 2880,
+          "first_valid_window_start": 11520,
+          "last_valid_window_start": 14292,
+          "num_windows": 2773
+        },
+        "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+      },
+      "seed": 7,
+      "reload_verification_status": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "eval_mode": true,
+        "all_parameters_frozen": true,
+        "output_shape": [
+          512,
+          12,
+          7
+        ],
+        "finite_output": true,
+        "deterministic_inference": true,
+        "frozen_gradient_verification": true
+      },
+      "frozen_gradient_verification_status": true,
+      "model_config_sha256": "84c12960444f1ee565031c512393b14c02506f8259503b435fbb0a0f473c4766"
+    },
+    "TimesNet": {
+      "expert_name": "TimesNet",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_timesnet.pt",
+      "checkpoint_hash": "2b2f1e54962034ca78bad6d9b7b14ab30fee4cebfcdc8537a464c2b19926f4b3",
+      "parameter_count": 586419,
+      "configuration": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "num_classes": null,
+        "hidden_size": 64,
+        "intermediate_size": 128,
+        "num_kernels": 3,
+        "num_layers": 1,
+        "dropout": 0.1,
+        "top_k": 3,
+        "use_timestamps": false,
+        "timestamp_sizes": null
+      },
+      "training_epochs": 16,
+      "best_epoch": 11,
+      "expert_validation_mae": 0.3729869583746383,
+      "expert_validation_mse": 0.3897967028029329,
+      "scaler_hash": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+      "split_ranges": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "num_timestamps": 7200,
+          "first_valid_window_start": 0,
+          "last_valid_window_start": 7092,
+          "num_windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "num_timestamps": 1440,
+          "first_valid_window_start": 7200,
+          "last_valid_window_start": 8532,
+          "num_windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "num_timestamps": 2160,
+          "first_valid_window_start": 8640,
+          "last_valid_window_start": 10692,
+          "num_windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "num_timestamps": 720,
+          "first_valid_window_start": 10800,
+          "last_valid_window_start": 11412,
+          "num_windows": 613
+        },
+        "locked_test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "num_timestamps": 2880,
+          "first_valid_window_start": 11520,
+          "last_valid_window_start": 14292,
+          "num_windows": 2773
+        },
+        "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+      },
+      "seed": 7,
+      "reload_verification_status": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "eval_mode": true,
+        "all_parameters_frozen": true,
+        "output_shape": [
+          512,
+          12,
+          7
+        ],
+        "finite_output": true,
+        "deterministic_inference": true,
+        "frozen_gradient_verification": true
+      },
+      "frozen_gradient_verification_status": true,
+      "model_config_sha256": "fc97f14d5534bafc62de38115d0f06748f624df5064a782e39c851db2c668cc6"
+    },
+    "ModernTCN": {
+      "expert_name": "ModernTCN",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_moderntcn.pt",
+      "checkpoint_hash": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "parameter_count": 53907,
+      "configuration": {
+        "input_len": 96,
+        "output_len": 12,
+        "num_features": 7,
+        "hidden_size": 64,
+        "num_layers": 3,
+        "kernel_size": 7,
+        "expansion": 2,
+        "dropout": 0.1,
+        "use_revin": true,
+        "affine": false,
+        "subtract_last": false
+      },
+      "training_epochs": 26,
+      "best_epoch": 21,
+      "expert_validation_mae": 0.3551466479901225,
+      "expert_validation_mse": 0.36425730665367234,
+      "scaler_hash": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+      "split_ranges": {
+        "expert_train": {
+          "fraction": [
+            0.0,
+            0.5
+          ],
+          "start": 0,
+          "end": 7200,
+          "num_timestamps": 7200,
+          "first_valid_window_start": 0,
+          "last_valid_window_start": 7092,
+          "num_windows": 7093
+        },
+        "expert_val": {
+          "fraction": [
+            0.5,
+            0.6
+          ],
+          "start": 7200,
+          "end": 8640,
+          "num_timestamps": 1440,
+          "first_valid_window_start": 7200,
+          "last_valid_window_start": 8532,
+          "num_windows": 1333
+        },
+        "router_train": {
+          "fraction": [
+            0.6,
+            0.75
+          ],
+          "start": 8640,
+          "end": 10800,
+          "num_timestamps": 2160,
+          "first_valid_window_start": 8640,
+          "last_valid_window_start": 10692,
+          "num_windows": 2053
+        },
+        "router_val": {
+          "fraction": [
+            0.75,
+            0.8
+          ],
+          "start": 10800,
+          "end": 11520,
+          "num_timestamps": 720,
+          "first_valid_window_start": 10800,
+          "last_valid_window_start": 11412,
+          "num_windows": 613
+        },
+        "locked_test": {
+          "fraction": [
+            0.8,
+            1.0
+          ],
+          "start": 11520,
+          "end": 14400,
+          "num_timestamps": 2880,
+          "first_valid_window_start": 11520,
+          "last_valid_window_start": 14292,
+          "num_windows": 2773
+        },
+        "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+      },
+      "seed": 7,
+      "reload_verification_status": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "eval_mode": true,
+        "all_parameters_frozen": true,
+        "output_shape": [
+          512,
+          12,
+          7
+        ],
+        "finite_output": true,
+        "deterministic_inference": true,
+        "frozen_gradient_verification": true
+      },
+      "frozen_gradient_verification_status": true,
+      "model_config_sha256": "4c19d2646b557ff850ca2f1fa7b23c6014287cd2d58032660e5f3d406cfabf10"
+    }
+  }
+}

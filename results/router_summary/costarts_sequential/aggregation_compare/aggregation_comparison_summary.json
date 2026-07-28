@@ -1,0 +1,1050 @@
+{
+  "per_seed": [
+    {
+      "seed": 7,
+      "aggregation": "equal_average",
+      "selected_temperature": "",
+      "validation_mae": 0.34793514013290405,
+      "validation_mse": 0.3044354319572449,
+      "average_experts_queried": 3.5595431327819824,
+      "query_count_distribution": {
+        "1": 4,
+        "2": 125,
+        "3": 125,
+        "4": 242,
+        "5": 117
+      }
+    },
+    {
+      "seed": 7,
+      "aggregation": "learned_global_convex_train",
+      "selected_temperature": "",
+      "validation_mae": 0.34971943497657776,
+      "validation_mse": 0.3138747215270996,
+      "average_experts_queried": 3.5595431327819824,
+      "query_count_distribution": {
+        "1": 4,
+        "2": 125,
+        "3": 125,
+        "4": 242,
+        "5": 117
+      }
+    },
+    {
+      "seed": 7,
+      "aggregation": "validation_selected_train_error_softmax",
+      "selected_temperature": 0.1,
+      "validation_mae": 0.34619438648223877,
+      "validation_mse": 0.3053450584411621,
+      "average_experts_queried": 3.5595431327819824,
+      "query_count_distribution": {
+        "1": 4,
+        "2": 125,
+        "3": 125,
+        "4": 242,
+        "5": 117
+      }
+    },
+    {
+      "seed": 11,
+      "aggregation": "equal_average",
+      "selected_temperature": "",
+      "validation_mae": 0.3461743891239166,
+      "validation_mse": 0.3096224367618561,
+      "average_experts_queried": 3.1044044494628906,
+      "query_count_distribution": {
+        "1": 12,
+        "2": 171,
+        "3": 203,
+        "4": 195,
+        "5": 32
+      }
+    },
+    {
+      "seed": 11,
+      "aggregation": "learned_global_convex_train",
+      "selected_temperature": "",
+      "validation_mae": 0.34889867901802063,
+      "validation_mse": 0.3165760934352875,
+      "average_experts_queried": 3.1044044494628906,
+      "query_count_distribution": {
+        "1": 12,
+        "2": 171,
+        "3": 203,
+        "4": 195,
+        "5": 32
+      }
+    },
+    {
+      "seed": 11,
+      "aggregation": "validation_selected_train_error_softmax",
+      "selected_temperature": 1.0,
+      "validation_mae": 0.34618422389030457,
+      "validation_mse": 0.3097527325153351,
+      "average_experts_queried": 3.1044044494628906,
+      "query_count_distribution": {
+        "1": 12,
+        "2": 171,
+        "3": 203,
+        "4": 195,
+        "5": 32
+      }
+    },
+    {
+      "seed": 13,
+      "aggregation": "equal_average",
+      "selected_temperature": "",
+      "validation_mae": 0.34813037514686584,
+      "validation_mse": 0.3060915470123291,
+      "average_experts_queried": 4.610114097595215,
+      "query_count_distribution": {
+        "3": 5,
+        "4": 229,
+        "5": 379
+      }
+    },
+    {
+      "seed": 13,
+      "aggregation": "learned_global_convex_train",
+      "selected_temperature": "",
+      "validation_mae": 0.35159239172935486,
+      "validation_mse": 0.31978335976600647,
+      "average_experts_queried": 4.610114097595215,
+      "query_count_distribution": {
+        "3": 5,
+        "4": 229,
+        "5": 379
+      }
+    },
+    {
+      "seed": 13,
+      "aggregation": "validation_selected_train_error_softmax",
+      "selected_temperature": 0.25,
+      "validation_mae": 0.3480391800403595,
+      "validation_mse": 0.3074544072151184,
+      "average_experts_queried": 4.610114097595215,
+      "query_count_distribution": {
+        "3": 5,
+        "4": 229,
+        "5": 379
+      }
+    },
+    {
+      "seed": 17,
+      "aggregation": "equal_average",
+      "selected_temperature": "",
+      "validation_mae": 0.3492189049720764,
+      "validation_mse": 0.309235543012619,
+      "average_experts_queried": 4.5399675369262695,
+      "query_count_distribution": {
+        "3": 16,
+        "4": 250,
+        "5": 347
+      }
+    },
+    {
+      "seed": 17,
+      "aggregation": "learned_global_convex_train",
+      "selected_temperature": "",
+      "validation_mae": 0.35158613324165344,
+      "validation_mse": 0.31982532143592834,
+      "average_experts_queried": 4.5399675369262695,
+      "query_count_distribution": {
+        "3": 16,
+        "4": 250,
+        "5": 347
+      }
+    },
+    {
+      "seed": 17,
+      "aggregation": "validation_selected_train_error_softmax",
+      "selected_temperature": 0.1,
+      "validation_mae": 0.3489094078540802,
+      "validation_mse": 0.31147322058677673,
+      "average_experts_queried": 4.5399675369262695,
+      "query_count_distribution": {
+        "3": 16,
+        "4": 250,
+        "5": 347
+      }
+    },
+    {
+      "seed": 19,
+      "aggregation": "equal_average",
+      "selected_temperature": "",
+      "validation_mae": 0.34828418493270874,
+      "validation_mse": 0.30724042654037476,
+      "average_experts_queried": 4.417618274688721,
+      "query_count_distribution": {
+        "2": 7,
+        "3": 75,
+        "4": 186,
+        "5": 345
+      }
+    },
+    {
+      "seed": 19,
+      "aggregation": "learned_global_convex_train",
+      "selected_temperature": "",
+      "validation_mae": 0.3511262536048889,
+      "validation_mse": 0.3196417987346649,
+      "average_experts_queried": 4.417618274688721,
+      "query_count_distribution": {
+        "2": 7,
+        "3": 75,
+        "4": 186,
+        "5": 345
+      }
+    },
+    {
+      "seed": 19,
+      "aggregation": "validation_selected_train_error_softmax",
+      "selected_temperature": 0.25,
+      "validation_mae": 0.3481139540672302,
+      "validation_mse": 0.3083987832069397,
+      "average_experts_queried": 4.417618274688721,
+      "query_count_distribution": {
+        "2": 7,
+        "3": 75,
+        "4": 186,
+        "5": 345
+      }
+    }
+  ],
+  "aggregate": [
+    {
+      "aggregation": "equal_average",
+      "metric": "validation_mae",
+      "mean": 0.3479485988616943,
+      "std": 0.0009906906251690875,
+      "min": 0.3461743891239166,
+      "max": 0.3492189049720764
+    },
+    {
+      "aggregation": "equal_average",
+      "metric": "validation_mse",
+      "mean": 0.3073250770568848,
+      "std": 0.0019394098414046077,
+      "min": 0.3044354319572449,
+      "max": 0.3096224367618561
+    },
+    {
+      "aggregation": "equal_average",
+      "metric": "average_experts_queried",
+      "mean": 4.046329498291016,
+      "std": 0.6039156739702194,
+      "min": 3.1044044494628906,
+      "max": 4.610114097595215
+    },
+    {
+      "aggregation": "learned_global_convex_train",
+      "metric": "validation_mae",
+      "mean": 0.35058457851409913,
+      "std": 0.0010865488212229892,
+      "min": 0.34889867901802063,
+      "max": 0.35159239172935486
+    },
+    {
+      "aggregation": "learned_global_convex_train",
+      "metric": "validation_mse",
+      "mean": 0.3179402589797974,
+      "std": 0.0023763527061928342,
+      "min": 0.3138747215270996,
+      "max": 0.31982532143592834
+    },
+    {
+      "aggregation": "learned_global_convex_train",
+      "metric": "average_experts_queried",
+      "mean": 4.046329498291016,
+      "std": 0.6039156739702194,
+      "min": 3.1044044494628906,
+      "max": 4.610114097595215
+    },
+    {
+      "aggregation": "validation_selected_train_error_softmax",
+      "metric": "validation_mae",
+      "mean": 0.34748823046684263,
+      "std": 0.0011035656782254473,
+      "min": 0.34618422389030457,
+      "max": 0.3489094078540802
+    },
+    {
+      "aggregation": "validation_selected_train_error_softmax",
+      "metric": "validation_mse",
+      "mean": 0.3084848403930664,
+      "std": 0.002071974695544092,
+      "min": 0.3053450584411621,
+      "max": 0.31147322058677673
+    },
+    {
+      "aggregation": "validation_selected_train_error_softmax",
+      "metric": "average_experts_queried",
+      "mean": 4.046329498291016,
+      "std": 0.6039156739702194,
+      "min": 3.1044044494628906,
+      "max": 4.610114097595215
+    }
+  ],
+  "details": {
+    "learned_global_convex_train_weights": [
+      0.5161271095275879,
+      0.0007245073793455958,
+      0.002209962112829089,
+      0.20158739387989044,
+      0.2793510854244232
+    ],
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "seeds": [
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "test_set_used": false,
+    "note": "Router decisions are fixed; only final aggregation changes.",
+    "per_seed": [
+      {
+        "seed": 7,
+        "checkpoint": "checkpoints\\costarts_sequential\\seed_7\\best_sequential_costarts_router.pt",
+        "threshold": -0.025,
+        "fixed_first_expert": "ModernTCN",
+        "query_stats": {
+          "average_experts_queried": 3.5595431327819824,
+          "query_count_distribution": {
+            "1": 4,
+            "2": 125,
+            "3": 125,
+            "4": 242,
+            "5": 117
+          }
+        },
+        "temperature_search": [
+          {
+            "seed": 7,
+            "temperature": 0.0,
+            "validation_mae": 0.6457724571228027,
+            "validation_mse": 0.9325028657913208,
+            "weights": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.0025,
+            "validation_mae": 0.3578287363052368,
+            "validation_mse": 0.32647705078125,
+            "weights": [
+              0.9883208870887756,
+              2.0310774573317758e-07,
+              5.576238120341345e-16,
+              5.4329398153640795e-06,
+              0.011673452332615852
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.005,
+            "validation_mae": 0.35639944672584534,
+            "validation_mse": 0.32466480135917664,
+            "weights": [
+              0.8997027277946472,
+              0.0004078620404470712,
+              2.137079668784736e-08,
+              0.002109441440552473,
+              0.09777992963790894
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.01,
+            "validation_mae": 0.35225194692611694,
+            "validation_mse": 0.31879815459251404,
+            "weights": [
+              0.7145237922668457,
+              0.0152133135125041,
+              0.00011012286995537579,
+              0.03459799662232399,
+              0.23555485904216766
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.025,
+            "validation_mae": 0.34762781858444214,
+            "validation_mse": 0.31095072627067566,
+            "weights": [
+              0.45793774724006653,
+              0.09819483011960983,
+              0.013675732538104057,
+              0.13640181720256805,
+              0.2937898337841034
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.05,
+            "validation_mae": 0.34620267152786255,
+            "validation_mse": 0.30722150206565857,
+            "weights": [
+              0.33527684211730957,
+              0.15525466203689575,
+              0.057939622551202774,
+              0.18298286199569702,
+              0.2685460150241852
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.1,
+            "validation_mae": 0.34619438648223877,
+            "validation_mse": 0.3053450584411621,
+            "weights": [
+              0.26810213923454285,
+              0.18244031071662903,
+              0.11145160347223282,
+              0.19806316494941711,
+              0.23994287848472595
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.25,
+            "validation_mae": 0.3469465672969818,
+            "validation_mse": 0.30460208654403687,
+            "weights": [
+              0.22708101570606232,
+              0.1946745067834854,
+              0.15984360873699188,
+              0.20117878913879395,
+              0.21722202003002167
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 0.5,
+            "validation_mae": 0.3473881483078003,
+            "validation_mse": 0.30447840690612793,
+            "weights": [
+              0.21348442137241364,
+              0.1976652443408966,
+              0.17911148071289062,
+              0.20094022154808044,
+              0.20879864692687988
+            ]
+          },
+          {
+            "seed": 7,
+            "temperature": 1.0,
+            "validation_mae": 0.34765011072158813,
+            "validation_mse": 0.30444613099098206,
+            "weights": [
+              0.2067251056432724,
+              0.19891855120658875,
+              0.1893528401851654,
+              0.20055964589118958,
+              0.2044438123703003
+            ]
+          }
+        ]
+      },
+      {
+        "seed": 11,
+        "checkpoint": "checkpoints\\costarts_sequential\\seed_11\\best_sequential_costarts_router.pt",
+        "threshold": 0.001,
+        "fixed_first_expert": "ModernTCN",
+        "query_stats": {
+          "average_experts_queried": 3.1044044494628906,
+          "query_count_distribution": {
+            "1": 12,
+            "2": 171,
+            "3": 203,
+            "4": 195,
+            "5": 32
+          }
+        },
+        "temperature_search": [
+          {
+            "seed": 11,
+            "temperature": 0.0,
+            "validation_mae": 0.43854427337646484,
+            "validation_mse": 0.4589044153690338,
+            "weights": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.0025,
+            "validation_mae": 0.3621061146259308,
+            "validation_mse": 0.3351540267467499,
+            "weights": [
+              0.9883208870887756,
+              2.0310774573317758e-07,
+              5.576238120341345e-16,
+              5.4329398153640795e-06,
+              0.011673452332615852
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.005,
+            "validation_mae": 0.3589484393596649,
+            "validation_mse": 0.3310738205909729,
+            "weights": [
+              0.8997027277946472,
+              0.0004078620404470712,
+              2.137079668784736e-08,
+              0.002109441440552473,
+              0.09777992963790894
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.01,
+            "validation_mae": 0.3534456491470337,
+            "validation_mse": 0.3236447274684906,
+            "weights": [
+              0.7145237922668457,
+              0.0152133135125041,
+              0.00011012286995537579,
+              0.03459799662232399,
+              0.23555485904216766
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.025,
+            "validation_mae": 0.34834665060043335,
+            "validation_mse": 0.31565266847610474,
+            "weights": [
+              0.45793774724006653,
+              0.09819483011960983,
+              0.013675732538104057,
+              0.13640181720256805,
+              0.2937898337841034
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.05,
+            "validation_mae": 0.3469395935535431,
+            "validation_mse": 0.31257709860801697,
+            "weights": [
+              0.33527684211730957,
+              0.15525466203689575,
+              0.057939622551202774,
+              0.18298286199569702,
+              0.2685460150241852
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.1,
+            "validation_mae": 0.34643417596817017,
+            "validation_mse": 0.3110392987728119,
+            "weights": [
+              0.26810213923454285,
+              0.18244031071662903,
+              0.11145160347223282,
+              0.19806316494941711,
+              0.23994287848472595
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.25,
+            "validation_mae": 0.34623560309410095,
+            "validation_mse": 0.3101620674133301,
+            "weights": [
+              0.22708101570606232,
+              0.1946745067834854,
+              0.15984360873699188,
+              0.20117878913879395,
+              0.21722202003002167
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 0.5,
+            "validation_mae": 0.34619787335395813,
+            "validation_mse": 0.30988630652427673,
+            "weights": [
+              0.21348442137241364,
+              0.1976652443408966,
+              0.17911148071289062,
+              0.20094022154808044,
+              0.20879864692687988
+            ]
+          },
+          {
+            "seed": 11,
+            "temperature": 1.0,
+            "validation_mae": 0.34618422389030457,
+            "validation_mse": 0.3097527325153351,
+            "weights": [
+              0.2067251056432724,
+              0.19891855120658875,
+              0.1893528401851654,
+              0.20055964589118958,
+              0.2044438123703003
+            ]
+          }
+        ]
+      },
+      {
+        "seed": 13,
+        "checkpoint": "checkpoints\\costarts_sequential\\seed_13\\best_sequential_costarts_router.pt",
+        "threshold": -0.05,
+        "fixed_first_expert": "ModernTCN",
+        "query_stats": {
+          "average_experts_queried": 4.610114097595215,
+          "query_count_distribution": {
+            "3": 5,
+            "4": 229,
+            "5": 379
+          }
+        },
+        "temperature_search": [
+          {
+            "seed": 13,
+            "temperature": 0.0,
+            "validation_mae": 0.3700985014438629,
+            "validation_mse": 0.3458804190158844,
+            "weights": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.0025,
+            "validation_mae": 0.36946672201156616,
+            "validation_mse": 0.34506091475486755,
+            "weights": [
+              0.9883208870887756,
+              2.0310774573317758e-07,
+              5.576238120341345e-16,
+              5.4329398153640795e-06,
+              0.011673452332615852
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.005,
+            "validation_mae": 0.36503419280052185,
+            "validation_mse": 0.33930766582489014,
+            "weights": [
+              0.8997027277946472,
+              0.0004078620404470712,
+              2.137079668784736e-08,
+              0.002109441440552473,
+              0.09777992963790894
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.01,
+            "validation_mae": 0.35774463415145874,
+            "validation_mse": 0.3293420076370239,
+            "weights": [
+              0.7145237922668457,
+              0.0152133135125041,
+              0.00011012286995537579,
+              0.03459799662232399,
+              0.23555485904216766
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.025,
+            "validation_mae": 0.3510763645172119,
+            "validation_mse": 0.3182309567928314,
+            "weights": [
+              0.45793774724006653,
+              0.09819483011960983,
+              0.013675732538104057,
+              0.13640181720256805,
+              0.2937898337841034
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.05,
+            "validation_mae": 0.3490279018878937,
+            "validation_mse": 0.3129027187824249,
+            "weights": [
+              0.33527684211730957,
+              0.15525466203689575,
+              0.057939622551202774,
+              0.18298286199569702,
+              0.2685460150241852
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.1,
+            "validation_mae": 0.34824639558792114,
+            "validation_mse": 0.3095782399177551,
+            "weights": [
+              0.26810213923454285,
+              0.18244031071662903,
+              0.11145160347223282,
+              0.19806316494941711,
+              0.23994287848472595
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.25,
+            "validation_mae": 0.3480391800403595,
+            "validation_mse": 0.3074544072151184,
+            "weights": [
+              0.22708101570606232,
+              0.1946745067834854,
+              0.15984360873699188,
+              0.20117878913879395,
+              0.21722202003002167
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 0.5,
+            "validation_mae": 0.34805548191070557,
+            "validation_mse": 0.3067609965801239,
+            "weights": [
+              0.21348442137241364,
+              0.1976652443408966,
+              0.17911148071289062,
+              0.20094022154808044,
+              0.20879864692687988
+            ]
+          },
+          {
+            "seed": 13,
+            "temperature": 1.0,
+            "validation_mae": 0.34808558225631714,
+            "validation_mse": 0.30642250180244446,
+            "weights": [
+              0.2067251056432724,
+              0.19891855120658875,
+              0.1893528401851654,
+              0.20055964589118958,
+              0.2044438123703003
+            ]
+          }
+        ]
+      },
+      {
+        "seed": 17,
+        "checkpoint": "checkpoints\\costarts_sequential\\seed_17\\best_sequential_costarts_router.pt",
+        "threshold": -0.05,
+        "fixed_first_expert": "ModernTCN",
+        "query_stats": {
+          "average_experts_queried": 4.5399675369262695,
+          "query_count_distribution": {
+            "3": 16,
+            "4": 250,
+            "5": 347
+          }
+        },
+        "temperature_search": [
+          {
+            "seed": 17,
+            "temperature": 0.0,
+            "validation_mae": 0.3700985014438629,
+            "validation_mse": 0.3458804190158844,
+            "weights": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.0025,
+            "validation_mae": 0.36946672201156616,
+            "validation_mse": 0.34506091475486755,
+            "weights": [
+              0.9883208870887756,
+              2.0310774573317758e-07,
+              5.576238120341345e-16,
+              5.4329398153640795e-06,
+              0.011673452332615852
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.005,
+            "validation_mae": 0.36503440141677856,
+            "validation_mse": 0.3393078148365021,
+            "weights": [
+              0.8997027277946472,
+              0.0004078620404470712,
+              2.137079668784736e-08,
+              0.002109441440552473,
+              0.09777992963790894
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.01,
+            "validation_mae": 0.35774660110473633,
+            "validation_mse": 0.3293469548225403,
+            "weights": [
+              0.7145237922668457,
+              0.0152133135125041,
+              0.00011012286995537579,
+              0.03459799662232399,
+              0.23555485904216766
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.025,
+            "validation_mae": 0.351167231798172,
+            "validation_mse": 0.31850236654281616,
+            "weights": [
+              0.45793774724006653,
+              0.09819483011960983,
+              0.013675732538104057,
+              0.13640181720256805,
+              0.2937898337841034
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.05,
+            "validation_mae": 0.34938886761665344,
+            "validation_mse": 0.31394824385643005,
+            "weights": [
+              0.33527684211730957,
+              0.15525466203689575,
+              0.057939622551202774,
+              0.18298286199569702,
+              0.2685460150241852
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.1,
+            "validation_mae": 0.3489094078540802,
+            "validation_mse": 0.31147322058677673,
+            "weights": [
+              0.26810213923454285,
+              0.18244031071662903,
+              0.11145160347223282,
+              0.19806316494941711,
+              0.23994287848472595
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.25,
+            "validation_mae": 0.34894636273384094,
+            "validation_mse": 0.3100544512271881,
+            "weights": [
+              0.22708101570606232,
+              0.1946745067834854,
+              0.15984360873699188,
+              0.20117878913879395,
+              0.21722202003002167
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 0.5,
+            "validation_mae": 0.34905239939689636,
+            "validation_mse": 0.3096264898777008,
+            "weights": [
+              0.21348442137241364,
+              0.1976652443408966,
+              0.17911148071289062,
+              0.20094022154808044,
+              0.20879864692687988
+            ]
+          },
+          {
+            "seed": 17,
+            "temperature": 1.0,
+            "validation_mae": 0.349127858877182,
+            "validation_mse": 0.30942580103874207,
+            "weights": [
+              0.2067251056432724,
+              0.19891855120658875,
+              0.1893528401851654,
+              0.20055964589118958,
+              0.2044438123703003
+            ]
+          }
+        ]
+      },
+      {
+        "seed": 19,
+        "checkpoint": "checkpoints\\costarts_sequential\\seed_19\\best_sequential_costarts_router.pt",
+        "threshold": -0.025,
+        "fixed_first_expert": "ModernTCN",
+        "query_stats": {
+          "average_experts_queried": 4.417618274688721,
+          "query_count_distribution": {
+            "2": 7,
+            "3": 75,
+            "4": 186,
+            "5": 345
+          }
+        },
+        "temperature_search": [
+          {
+            "seed": 19,
+            "temperature": 0.0,
+            "validation_mae": 0.37135180830955505,
+            "validation_mse": 0.3488632142543793,
+            "weights": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.0025,
+            "validation_mae": 0.3679521679878235,
+            "validation_mse": 0.3435060381889343,
+            "weights": [
+              0.9883208870887756,
+              2.0310774573317758e-07,
+              5.576238120341345e-16,
+              5.4329398153640795e-06,
+              0.011673452332615852
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.005,
+            "validation_mae": 0.36370399594306946,
+            "validation_mse": 0.3380134403705597,
+            "weights": [
+              0.8997027277946472,
+              0.0004078620404470712,
+              2.137079668784736e-08,
+              0.002109441440552473,
+              0.09777992963790894
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.01,
+            "validation_mae": 0.35680630803108215,
+            "validation_mse": 0.3285730183124542,
+            "weights": [
+              0.7145237922668457,
+              0.0152133135125041,
+              0.00011012286995537579,
+              0.03459799662232399,
+              0.23555485904216766
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.025,
+            "validation_mae": 0.35061872005462646,
+            "validation_mse": 0.3181559443473816,
+            "weights": [
+              0.45793774724006653,
+              0.09819483011960983,
+              0.013675732538104057,
+              0.13640181720256805,
+              0.2937898337841034
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.05,
+            "validation_mae": 0.34880930185317993,
+            "validation_mse": 0.31324341893196106,
+            "weights": [
+              0.33527684211730957,
+              0.15525466203689575,
+              0.057939622551202774,
+              0.18298286199569702,
+              0.2685460150241852
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.1,
+            "validation_mae": 0.34820064902305603,
+            "validation_mse": 0.3102567195892334,
+            "weights": [
+              0.26810213923454285,
+              0.18244031071662903,
+              0.11145160347223282,
+              0.19806316494941711,
+              0.23994287848472595
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.25,
+            "validation_mae": 0.3481139540672302,
+            "validation_mse": 0.3083987832069397,
+            "weights": [
+              0.22708101570606232,
+              0.1946745067834854,
+              0.15984360873699188,
+              0.20117878913879395,
+              0.21722202003002167
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 0.5,
+            "validation_mae": 0.34817028045654297,
+            "validation_mse": 0.30780500173568726,
+            "weights": [
+              0.21348442137241364,
+              0.1976652443408966,
+              0.17911148071289062,
+              0.20094022154808044,
+              0.20879864692687988
+            ]
+          },
+          {
+            "seed": 19,
+            "temperature": 1.0,
+            "validation_mae": 0.34821975231170654,
+            "validation_mse": 0.3075183629989624,
+            "weights": [
+              0.2067251056432724,
+              0.19891855120658875,
+              0.1893528401851654,
+              0.20055964589118958,
+              0.2044438123703003
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "seed": 17,
+  "best_epoch": 22,
+  "best_validation_mae": 0.3492189347743988,
+  "best_validation_mse": 0.309235543012619,
+  "selected_threshold": -0.05,
+  "fixed_first_expert": "ModernTCN",
+  "fixed_first_expert_index": 4,
+  "average_experts_queried": 4.5399675369262695,
+  "relative_expert_cost": 0.9079935073852539,
+  "query_count_distribution": {
+    "3": 16,
+    "4": 250,
+    "5": 347
+  },
+  "stop_counts": {
+    "3": 16,
+    "4": 250,
+    "5": 347
+  },
+  "expert_query_frequency": {
+    "DLinear": 100.0,
+    "PatchTST": 99.836867862969,
+    "iTransformer": 57.42251223491028,
+    "TimesNet": 96.7373572593801,
+    "ModernTCN": 100.0
+  },
+  "predicted_actual_utility_correlation": 0.012942488067856646,
+  "useful_query_auc": 0.5158083730428863,
+  "useful_query_precision": 52.07373271889401,
+  "harmful_query_rate": 47.92626728110599,
+  "high_margin_windows": {
+    "<=0.005": {
+      "count": 507,
+      "useful_query_precision": 43.39250493096647
+    },
+    "0.005_to_0.01": {
+      "count": 436,
+      "useful_query_precision": 46.10091743119266
+    },
+    "0.01_to_0.025": {
+      "count": 770,
+      "useful_query_precision": 54.41558441558442
+    },
+    ">0.025": {
+      "count": 457,
+      "useful_query_precision": 63.45733041575492
+    }
+  },
+  "query_count_performance": {
+    "3": {
+      "count": 16,
+      "mae": 0.24342645704746246,
+      "mse": 0.11503639817237854
+    },
+    "4": {
+      "count": 250,
+      "mae": 0.3352534770965576,
+      "mse": 0.26712241768836975
+    },
+    "5": {
+      "count": 347,
+      "mae": 0.364158570766449,
+      "mse": 0.3485308289527893
+    }
+  },
+  "regret_to_full_oracle": 0.031075699254870415,
+  "no_threshold_validation_mae": 0.35310283303260803,
+  "no_threshold_validation_mse": 0.32316532731056213,
+  "no_threshold_average_experts_queried": 2.4192495346069336,
+  "no_threshold_useful_query_precision": 54.252873563218394,
+  "no_threshold_harmful_query_rate": 45.747126436781606,
+  "best_checkpoint": "checkpoints\\costarts_sequential\\seed_17\\best_sequential_costarts_router.pt"
+}

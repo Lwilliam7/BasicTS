@@ -1,0 +1,96 @@
+{
+  "router_type": "multiscale_tcn_expert_embeddings",
+  "selected_expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "comparison": [
+    {
+      "Method": "Fixed validation-based soft weights",
+      "Test MAE": 0.33929878014627124,
+      "Test MSE": 0.3107523022746445,
+      "Test RMSE": 0.5574516142901055
+    },
+    {
+      "Method": "Fixed equal average",
+      "Test MAE": 0.33967889753635183,
+      "Test MSE": 0.3110997833125655,
+      "Test RMSE": 0.5577631964486053
+    },
+    {
+      "Method": "Multiscale TCN expert-embedding router",
+      "Test MAE": 0.34058020923220084,
+      "Test MSE": 0.3123102442115617,
+      "Test RMSE": 0.5588472458655959
+    },
+    {
+      "Method": "DLinear",
+      "Test MAE": 0.3479464324285092,
+      "Test MSE": 0.331419919493672,
+      "Test RMSE": 0.5756908193585095
+    },
+    {
+      "Method": "ModernTCN",
+      "Test MAE": 0.3511901952943885,
+      "Test MSE": 0.32212225479834244,
+      "Test RMSE": 0.567558151028018
+    },
+    {
+      "Method": "Validation-selected best expert",
+      "Test MAE": 0.3511901952943885,
+      "Test MSE": 0.32212225479834244,
+      "Test RMSE": 0.567558151028018
+    },
+    {
+      "Method": "PatchTST",
+      "Test MAE": 0.36393194369091625,
+      "Test MSE": 0.33609630900528376,
+      "Test RMSE": 0.5797381383049451
+    },
+    {
+      "Method": "TimesNet",
+      "Test MAE": 0.3665196590702973,
+      "Test MSE": 0.3523456424849849,
+      "Test RMSE": 0.5935870976402577
+    },
+    {
+      "Method": "iTransformer",
+      "Test MAE": 0.4008571053596114,
+      "Test MSE": 0.37544750520001546,
+      "Test RMSE": 0.6127377132183194
+    }
+  ],
+  "router2": {
+    "Method": "Multiscale TCN expert-embedding router",
+    "Test MAE": 0.34058020923220084,
+    "Test MSE": 0.3123102442115617,
+    "Test RMSE": 0.5588472458655959
+  },
+  "strongest_baseline": {
+    "Method": "Fixed validation-based soft weights",
+    "Test MAE": 0.33929878014627124,
+    "Test MSE": 0.3107523022746445,
+    "Test RMSE": 0.5574516142901055
+  },
+  "absolute_mae_improvement": -0.0012814290859295974,
+  "router_validation_baseline_selection": {
+    "expert_validation_mae": {
+      "DLinear": 0.3701035419488707,
+      "PatchTST": 0.37026520237670413,
+      "iTransformer": 0.3904996486863251,
+      "TimesNet": 0.3740607897070176,
+      "ModernTCN": 0.35864411431630155
+    },
+    "fixed_soft_weights": {
+      "DLinear": 0.20125965997119097,
+      "PatchTST": 0.20117178880572212,
+      "iTransformer": 0.19074773503450917,
+      "TimesNet": 0.19913050815686045,
+      "ModernTCN": 0.20769030803171717
+    },
+    "globally_best_expert": "ModernTCN"
+  }
+}

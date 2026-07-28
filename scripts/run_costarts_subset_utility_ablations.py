@@ -18,7 +18,7 @@ from typing import Any, Mapping, Optional
 import torch
 
 try:
-    from scripts.build_costarts_subset_states import validate_costarts_subset_states
+    from scripts.costars.build_costarts_subset_states import validate_costarts_subset_states
     from scripts.evaluate_costarts_cost_sweep import evaluate_cost_lambda
     from scripts.evaluate_costarts_final_comparison import (
         _load_torch,
@@ -37,7 +37,7 @@ try:
         train_subset_utility_costarts_router,
     )
 except ImportError:
-    from build_costarts_subset_states import validate_costarts_subset_states
+    from scripts.costars.build_costarts_subset_states import validate_costarts_subset_states
     from evaluate_costarts_cost_sweep import evaluate_cost_lambda
     from evaluate_costarts_final_comparison import (
         _load_torch,

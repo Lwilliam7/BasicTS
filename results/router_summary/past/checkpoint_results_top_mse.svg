@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="946" viewBox="0 0 1200 946">
+<rect width="100%" height="100%" fill="white"/>
+<text x="600" y="30" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700">Top Checkpoint Results by MSE</text>
+<text x="390" y="52" font-family="Arial" font-size="12" fill="#555">Lower MSE is better</text>
+<text x="378" y="81" text-anchor="end" font-family="Arial" font-size="12" fill="#222">benchmark | Informer</text>
+<rect x="390" y="64" width="16.04" height="18" rx="2" fill="#2F6F73"/>
+<text x="412.0449640923496" y="78" font-family="Arial" font-size="12" fill="#222">0.006637</text>
+<text x="378" y="109" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTST split steps 1-6</text>
+<rect x="390" y="92" width="550.82" height="18" rx="2" fill="#2F6F73"/>
+<text x="946.8230516308693" y="106" font-family="Arial" font-size="12" fill="#222">0.227852</text>
+<text x="378" y="137" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTSTForForecasting</text>
+<rect x="390" y="120" width="556.28" height="18" rx="2" fill="#2F6F73"/>
+<text x="952.2786151825344" y="134" font-family="Arial" font-size="12" fill="#222">0.230108</text>
+<text x="378" y="165" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | PatchTSTForForecasting</text>
+<rect x="390" y="148" width="556.28" height="18" rx="2" fill="#2F6F73"/>
+<text x="952.2786151825344" y="162" font-family="Arial" font-size="12" fill="#222">0.230108</text>
+<text x="378" y="193" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | DLinear steps 1-6</text>
+<rect x="390" y="176" width="563.26" height="18" rx="2" fill="#2F6F73"/>
+<text x="959.2609691953782" y="190" font-family="Arial" font-size="12" fill="#222">0.232997</text>
+<text x="378" y="221" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | DLinear</text>
+<rect x="390" y="204" width="568.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="964.8097251985503" y="218" font-family="Arial" font-size="12" fill="#222">0.235292</text>
+<text x="378" y="249" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | DLinear</text>
+<rect x="390" y="232" width="568.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="964.8097251985503" y="246" font-family="Arial" font-size="12" fill="#222">0.235292</text>
+<text x="378" y="277" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_dlinear_patchtst | DLinear</text>
+<rect x="390" y="260" width="568.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="964.8097251985503" y="274" font-family="Arial" font-size="12" fill="#222">0.235292</text>
+<text x="378" y="305" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4 | DLinear</text>
+<rect x="390" y="288" width="568.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="964.8097251985503" y="302" font-family="Arial" font-size="12" fill="#222">0.235292</text>
+<text x="378" y="333" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | DLinear</text>
+<rect x="390" y="316" width="568.81" height="18" rx="2" fill="#2F6F73"/>
+<text x="964.8097251985503" y="330" font-family="Arial" font-size="12" fill="#222">0.235292</text>
+<text x="378" y="361" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Tiny meta selector hybrid 1-12</text>
+<rect x="390" y="344" width="650.54" height="18" rx="2" fill="#2F6F73"/>
+<text x="1046.5441097760554" y="358" font-family="Arial" font-size="12" fill="#222">0.269102</text>
+<text x="378" y="389" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Soft weighted hybrid 1-12</text>
+<rect x="390" y="372" width="655.67" height="18" rx="2" fill="#2F6F73"/>
+<text x="1051.6657577569915" y="386" font-family="Arial" font-size="12" fill="#222">0.271221</text>
+<text x="378" y="417" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Soft weighted hybrid 1-12</text>
+<rect x="390" y="400" width="655.67" height="18" rx="2" fill="#2F6F73"/>
+<text x="1051.6657577569915" y="414" font-family="Arial" font-size="12" fill="#222">0.271221</text>
+<text x="378" y="445" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Smoothed soft hybrid 1-12</text>
+<rect x="390" y="428" width="655.69" height="18" rx="2" fill="#2F6F73"/>
+<text x="1051.6879090802834" y="442" font-family="Arial" font-size="12" fill="#222">0.271230</text>
+<text x="378" y="473" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Temperature softmax hybrid 1-12</text>
+<rect x="390" y="456" width="655.69" height="18" rx="2" fill="#2F6F73"/>
+<text x="1051.6921073063768" y="470" font-family="Arial" font-size="12" fill="#222">0.271231</text>
+<text x="378" y="501" text-anchor="end" font-family="Arial" font-size="12" fill="#222">benchmark | iTransformer</text>
+<rect x="390" y="484" width="657.87" height="18" rx="2" fill="#2F6F73"/>
+<text x="1053.871400894824" y="498" font-family="Arial" font-size="12" fill="#222">0.272133</text>
+<text x="378" y="529" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Soft weighted hybrid 1-12</text>
+<rect x="390" y="512" width="660.08" height="18" rx="2" fill="#2F6F73"/>
+<text x="1056.0830374666957" y="526" font-family="Arial" font-size="12" fill="#222">0.273048</text>
+<text x="378" y="557" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Soft weighted hybrid 1-12</text>
+<rect x="390" y="540" width="660.08" height="18" rx="2" fill="#2F6F73"/>
+<text x="1056.0830808944588" y="554" font-family="Arial" font-size="12" fill="#222">0.273048</text>
+<text x="378" y="585" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Smoothed soft hybrid 1-12</text>
+<rect x="390" y="568" width="660.20" height="18" rx="2" fill="#2F6F73"/>
+<text x="1056.1984291633848" y="582" font-family="Arial" font-size="12" fill="#222">0.273096</text>
+<text x="378" y="613" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Temperature softmax hybrid 1-12</text>
+<rect x="390" y="596" width="660.21" height="18" rx="2" fill="#2F6F73"/>
+<text x="1056.2098479187994" y="610" font-family="Arial" font-size="12" fill="#222">0.273100</text>
+<text x="378" y="641" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Tiny meta selector hybrid 1-12</text>
+<rect x="390" y="624" width="663.29" height="18" rx="2" fill="#2F6F73"/>
+<text x="1059.285280924179" y="638" font-family="Arial" font-size="12" fill="#222">0.274372</text>
+<text x="378" y="669" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4 | Transformer full steps 1-12</text>
+<rect x="390" y="652" width="664.78" height="18" rx="2" fill="#2F6F73"/>
+<text x="1060.779977356042" y="666" font-family="Arial" font-size="12" fill="#222">0.274991</text>
+<text x="378" y="697" text-anchor="end" font-family="Arial" font-size="12" fill="#222">benchmark | LightTS</text>
+<rect x="390" y="680" width="665.24" height="18" rx="2" fill="#2F6F73"/>
+<text x="1061.2397254588655" y="694" font-family="Arial" font-size="12" fill="#222">0.275181</text>
+<text x="378" y="725" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Fixed split hybrid 1-12</text>
+<rect x="390" y="708" width="666.15" height="18" rx="2" fill="#2F6F73"/>
+<text x="1062.1520938886583" y="722" font-family="Arial" font-size="12" fill="#222">0.275558</text>
+<text x="378" y="753" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Hard selector hybrid 1-12</text>
+<rect x="390" y="736" width="669.08" height="18" rx="2" fill="#2F6F73"/>
+<text x="1065.079083208941" y="750" font-family="Arial" font-size="12" fill="#222">0.276769</text>
+<text x="378" y="781" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | Hard selector hybrid 1-12</text>
+<rect x="390" y="764" width="669.08" height="18" rx="2" fill="#2F6F73"/>
+<text x="1065.079083208941" y="778" font-family="Arial" font-size="12" fill="#222">0.276769</text>
+<text x="378" y="809" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Transformer full steps 1-12</text>
+<rect x="390" y="792" width="670.00" height="18" rx="2" fill="#2F6F73"/>
+<text x="1066.0" y="806" font-family="Arial" font-size="12" fill="#222">0.277150</text>
+<text x="378" y="837" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_4_testing | Transformer full steps 1-12</text>
+<rect x="390" y="820" width="670.00" height="18" rx="2" fill="#2F6F73"/>
+<text x="1066.0" y="834" font-family="Arial" font-size="12" fill="#222">0.277150</text>
+<text x="378" y="865" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | iTransformer full steps 1-12</text>
+<rect x="390" y="848" width="670.00" height="18" rx="2" fill="#2F6F73"/>
+<text x="1066.0" y="862" font-family="Arial" font-size="12" fill="#222">0.277150</text>
+<text x="378" y="893" text-anchor="end" font-family="Arial" font-size="12" fill="#222">mixed_5 | iTransformer full steps 1-12</text>
+<rect x="390" y="876" width="670.00" height="18" rx="2" fill="#2F6F73"/>
+<text x="1066.0" y="890" font-family="Arial" font-size="12" fill="#222">0.277150</text>
+</svg>
