@@ -20,7 +20,7 @@ from torch import nn
 import torch.nn.functional as F
 
 try:
-    from scripts.build_costarts_subset_states import validate_costarts_subset_states
+    from scripts.costars.build_costarts_subset_states import validate_costarts_subset_states
     from scripts.train_costarts_router import COSTARTSRouter, _select_expert_from_outputs
     from scripts.train_costarts_subset_utility_router import (
         SubsetUtilityCOSTARTSRouter,
@@ -30,7 +30,7 @@ try:
         set_reproducible_seed,
     )
 except ImportError:
-    from build_costarts_subset_states import validate_costarts_subset_states
+    from scripts.costars.build_costarts_subset_states import validate_costarts_subset_states
     from train_costarts_router import COSTARTSRouter, _select_expert_from_outputs
     from train_costarts_subset_utility_router import (
         SubsetUtilityCOSTARTSRouter,
