@@ -1,5 +1,0 @@
-selector,num_states,mae,mse,oracle_match_within_subset,better_of_top_two_accuracy,pairwise_queried_subset_ranking_accuracy,within_subset_misselection_regret,selection_counts
-current_absolute_predicted_error,19003,0.3719701776503011,0.3427437285100235,0.4796611061411356,0.5088091353996738,0.50880913353399,0.031117867678207817,"{""DLinear"": 9808, ""ModernTCN"": 3264, ""PatchTST"": 613, ""TimesNet"": 1302, ""iTransformer"": 4016}"
-pairwise_reranker,19003,0.36866011567124063,0.33678679538263695,0.5098142398568647,0.5489396411092985,0.5488376818773554,0.02780779960161384,"{""DLinear"": 9046, ""ModernTCN"": 2806, ""PatchTST"": 4911, ""TimesNet"": 885, ""iTransformer"": 1355}"
-queried_subset_winner_classifier,19003,0.36864849030955843,0.33668434638095796,0.5081302952165447,0.5479608482871126,0.5468801009877422,0.02779617160519493,"{""DLinear"": 8556, ""ModernTCN"": 2918, ""PatchTST"": 5327, ""TimesNet"": 909, ""iTransformer"": 1293}"
-equal_average,19003,0.3582072140310699,0.32008399194537646,nan,nan,nan,0.01735490197628001,"{""DLinear"": 0, ""ModernTCN"": 0, ""PatchTST"": 0, ""TimesNet"": 0, ""iTransformer"": 0}"

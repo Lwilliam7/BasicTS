@@ -69,6 +69,7 @@ class SubsetUtilityTrainingConfig:
     selection_metric: str = "cost_aware_objective"
     use_expert_embeddings: bool = True
     history_encoder_type: str = "current"
+    queried_encoder_type: str = "mean"
     action_head_type: str = "unified"
     device: str = "cpu"
     debug: bool = False
@@ -268,6 +269,7 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
         hidden_dim: int = 64,
         use_expert_embeddings: bool = True,
         history_encoder_type: str = "current",
+        queried_encoder_type: str = "mean",
         action_head_type: str = "unified",
     ) -> None:
         super().__init__()
@@ -284,10 +286,13 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
         self.hidden_dim = int(hidden_dim)
         if history_encoder_type not in {"current", "simple"}:
             raise ValueError("history_encoder_type must be 'current' or 'simple'")
+        if queried_encoder_type not in {"mean", "set_attention"}:
+            raise ValueError("queried_encoder_type must be 'mean' or 'set_attention'")
         if action_head_type not in {"unified", "separate_stop_query"}:
             raise ValueError("action_head_type must be 'unified' or 'separate_stop_query'")
         self.use_expert_embeddings = bool(use_expert_embeddings)
         self.history_encoder_type = str(history_encoder_type)
+        self.queried_encoder_type = str(queried_encoder_type)
         self.action_head_type = str(action_head_type)
         self.stop_action_index = self.num_experts
 
@@ -346,6 +351,13 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
         self.utility_head = nn.Linear(embedding_dim, num_experts)
         self.expert_score_head = nn.Linear(embedding_dim, num_experts)
         self.mix_head = nn.Linear(embedding_dim, num_experts)
+        if self.queried_encoder_type == "set_attention":
+            self.queried_attention = nn.MultiheadAttention(
+                embed_dim=embedding_dim,
+                num_heads=4,
+                batch_first=True,
+            )
+            self.queried_attention_norm = nn.LayerNorm(embedding_dim)
 
     def encode(
         self,
@@ -381,6 +393,23 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
             forecast_representation = forecast_representation + self.expert_embeddings(safe_ids)
         forecast_representation = forecast_representation * valid_slots.unsqueeze(-1).to(history.dtype)
         denominator = valid_slots.sum(dim=1, keepdim=True).clamp_min(1).to(history.dtype)
+        if self.queried_encoder_type == "set_attention":
+            empty = valid_slots.sum(dim=1) == 0
+            key_padding_mask = ~valid_slots
+            if torch.any(empty):
+                key_padding_mask = key_padding_mask.clone()
+                key_padding_mask[empty, 0] = False
+            attended, _ = self.queried_attention(
+                forecast_representation,
+                forecast_representation,
+                forecast_representation,
+                key_padding_mask=key_padding_mask,
+                need_weights=False,
+            )
+            forecast_representation = self.queried_attention_norm(
+                forecast_representation + attended
+            )
+            forecast_representation = forecast_representation * valid_slots.unsqueeze(-1).to(history.dtype)
         queried_representation = forecast_representation.sum(dim=1) / denominator
 
         fused = torch.cat(
@@ -436,6 +465,7 @@ class SubsetUtilityCOSTARTSRouter(nn.Module):
             "hidden_dim": self.hidden_dim,
             "use_expert_embeddings": self.use_expert_embeddings,
             "history_encoder_type": self.history_encoder_type,
+            "queried_encoder_type": self.queried_encoder_type,
             "action_head_type": self.action_head_type,
         }
 
@@ -943,6 +973,7 @@ def train_subset_utility_costarts_router(training_config: SubsetUtilityTrainingC
         hidden_dim=experiment_config.hidden_dim,
         use_expert_embeddings=training_config.use_expert_embeddings,
         history_encoder_type=training_config.history_encoder_type,
+        queried_encoder_type=training_config.queried_encoder_type,
         action_head_type=training_config.action_head_type,
     ).to(device)
 
@@ -1192,6 +1223,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--no-expert-embeddings", action="store_true")
     parser.add_argument("--history-encoder-type", choices=("current", "simple"), default="current")
+    parser.add_argument("--queried-encoder-type", choices=("mean", "set_attention"), default="mean")
     parser.add_argument("--action-head-type", choices=("unified", "separate_stop_query"), default="unified")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--debug", action="store_true")
@@ -1225,6 +1257,7 @@ def main() -> None:
             selection_metric=args.selection_metric,
             use_expert_embeddings=not args.no_expert_embeddings,
             history_encoder_type=args.history_encoder_type,
+            queried_encoder_type=args.queried_encoder_type,
             action_head_type=args.action_head_type,
             device=args.device,
             debug=args.debug,

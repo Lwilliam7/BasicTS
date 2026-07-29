@@ -1,0 +1,133 @@
+{
+  "best_epoch": 2,
+  "best_selection_metric": "mae",
+  "best_selection_metric_value": 0.3700985014438629,
+  "best_validation_mae": 0.3700985014438629,
+  "best_validation_objective": 1.370098501443863,
+  "best_validation_metrics": {
+    "validation_mae": 0.3700985014438629,
+    "validation_mse": 0.3458804190158844,
+    "validation_oracle_mae": 0.31814324855804443,
+    "validation_regret_to_oracle": 0.05195525288581848,
+    "validation_objective": 1.370098501443863,
+    "action_accuracy": 0.19086460769176483,
+    "first_query_oracle_match": 0.19086460769176483,
+    "top_two_oracle_coverage": 0.19086460769176483,
+    "average_experts_selected": 1.0,
+    "average_normalized_query_cost": 1.0,
+    "average_raw_query_cost": 1.0,
+    "false_stop_rate": 0.0,
+    "false_continue_rate": 0.0,
+    "stop_precision": 1.0,
+    "stop_recall": 1.0,
+    "stop_frequency": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "selection_counts": {
+      "0": 613,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "average_predicted_utility_by_step": [
+      -1.3305205028947764,
+      0.0
+    ],
+    "better_of_top_two_accuracy": "nan"
+  },
+  "best_checkpoint": "checkpoints\\costarts_subset_utility\\attention_compare_fair_mean_seed_19\\best_subset_utility_costarts_router.pt",
+  "last_checkpoint": "checkpoints\\costarts_subset_utility\\attention_compare_fair_mean_seed_19\\last_subset_utility_costarts_router.pt",
+  "training_curves_csv": "results\\router_summary\\costarts_subset_utility\\attention_compare_fair\\mean_seed_19\\training_curves.csv",
+  "training_config": {
+    "train_cache_path": "cache/costarts_subset_states_train.pt",
+    "val_cache_path": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_subset_utility\\attention_compare_fair_mean_seed_19",
+    "results_dir": "results\\router_summary\\costarts_subset_utility\\attention_compare_fair\\mean_seed_19",
+    "batch_size": 1024,
+    "max_epochs": 8,
+    "patience": 3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "seed": 19,
+    "action_loss_weight": 1.0,
+    "utility_loss_weight": 1.0,
+    "pairwise_loss_weight": 0.2,
+    "mix_loss_weight": 0.0,
+    "subset_state_sampling_mode": "exhaustive",
+    "max_subset_size": null,
+    "cost_coefficient": 1.0,
+    "cost_mode": "equal",
+    "cost_file": null,
+    "selection_metric": "mae",
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "queried_encoder_type": "mean",
+    "action_head_type": "unified",
+    "device": "cpu",
+    "debug": false
+  },
+  "router_config": {
+    "num_experts": 5,
+    "max_subset_size": 5,
+    "input_len": 96,
+    "forecast_horizon": 12,
+    "num_features": 7,
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "use_expert_embeddings": true,
+    "history_encoder_type": "current",
+    "queried_encoder_type": "mean",
+    "action_head_type": "unified"
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "cost_metadata": {
+    "cost_mode": "equal",
+    "cost_source": "equal unit costs",
+    "raw_expert_costs": {
+      "DLinear": 1.0,
+      "PatchTST": 1.0,
+      "iTransformer": 1.0,
+      "TimesNet": 1.0,
+      "ModernTCN": 1.0
+    },
+    "normalized_expert_costs": {
+      "DLinear": 1.0,
+      "PatchTST": 1.0,
+      "iTransformer": 1.0,
+      "TimesNet": 1.0,
+      "ModernTCN": 1.0
+    },
+    "mean_positive_raw_cost": 1.0
+  },
+  "raw_expert_costs": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "normalized_expert_costs": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "train_cache_path": "cache/costarts_subset_states_train.pt",
+  "val_cache_path": "cache/costarts_subset_states_val.pt",
+  "created_checkpoints_separate_from_original_costarts": true,
+  "original_costarts_checkpoint_dir": "checkpoints/costarts",
+  "model_selection": "mae",
+  "test_set_used": false,
+  "experts_loaded": false,
+  "experts_updated": false
+}

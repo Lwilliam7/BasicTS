@@ -90,6 +90,40 @@ def _masked_argmax_expert(logits: torch.Tensor, valid_mask: torch.Tensor, num_ex
     return torch.argmax(logits[:, :num_experts].masked_fill(~expert_valid, -1e9), dim=-1)
 
 
+def _utility_threshold_action_logits(
+    utility_prediction: torch.Tensor,
+    valid_action_mask: torch.Tensor,
+    *,
+    threshold: float,
+) -> torch.Tensor:
+    stop_logit = torch.full(
+        (utility_prediction.shape[0], 1),
+        float(threshold),
+        dtype=utility_prediction.dtype,
+        device=utility_prediction.device,
+    )
+    logits = torch.cat((utility_prediction, stop_logit), dim=1)
+    return logits.masked_fill(~valid_action_mask.to(torch.bool), -1e9)
+
+
+def _decision_logits(
+    outputs: Mapping[str, torch.Tensor],
+    valid_action_mask: torch.Tensor,
+    *,
+    decision_policy: str,
+    utility_threshold: float,
+) -> torch.Tensor:
+    if decision_policy == "action_logits":
+        return _masked_action_logits(outputs["action_logits"], valid_action_mask)
+    if decision_policy == "utility_threshold":
+        return _utility_threshold_action_logits(
+            outputs["utility_prediction"],
+            valid_action_mask,
+            threshold=utility_threshold,
+        )
+    raise ValueError("decision_policy must be action_logits or utility_threshold")
+
+
 def _mae_mse(prediction: torch.Tensor, target: torch.Tensor, target_mask: torch.Tensor) -> tuple[float, float]:
     mask = target_mask.to(torch.float32)
     denominator = mask.sum().clamp_min(1.0)
@@ -112,6 +146,8 @@ def evaluate_rollouts(
     device: torch.device,
     seed: int,
     detailed_limit: int,
+    decision_policy: str = "action_logits",
+    utility_threshold: float = 0.0,
 ) -> dict[str, Any]:
     validate_costarts_subset_states(cache)
     if cache["split_role"] != "router_val":
@@ -122,6 +158,8 @@ def evaluate_rollouts(
         raise ValueError("finalizer must be reranker or sparse_mixture")
     if mode not in {"greedy", "sampled", "forced"}:
         raise ValueError("mode must be greedy, sampled, or forced")
+    if decision_policy not in {"action_logits", "utility_threshold"}:
+        raise ValueError("decision_policy must be action_logits or utility_threshold")
 
     set_reproducible_seed(seed)
     generator = torch.Generator(device=device)
@@ -166,7 +204,12 @@ def evaluate_rollouts(
                 batch["queried_expert_forecasts"],
             )
             valid_action_mask = batch["valid_action_mask"].to(torch.bool)
-            masked_logits = _masked_action_logits(outputs["action_logits"], valid_action_mask)
+            masked_logits = _decision_logits(
+                outputs,
+                valid_action_mask,
+                decision_policy=decision_policy,
+                utility_threshold=utility_threshold,
+            )
             action_probabilities = torch.softmax(masked_logits, dim=-1).detach().cpu()
 
             if mode == "greedy":
@@ -179,7 +222,7 @@ def evaluate_rollouts(
                 actions = torch.multinomial(probabilities, num_samples=1, generator=torch.Generator().manual_seed(seed + step + offset)).squeeze(-1)
             else:
                 actions = _masked_argmax_expert(
-                    outputs["action_logits"],
+                    outputs["utility_prediction"] if decision_policy == "utility_threshold" else outputs["action_logits"],
                     valid_action_mask,
                     num_experts,
                 ).detach().cpu()
@@ -239,7 +282,12 @@ def evaluate_rollouts(
                 batch["queried_expert_forecasts"],
             )
             valid_action_mask = batch["valid_action_mask"].to(torch.bool)
-            fallback = int(_masked_argmax_expert(outputs["action_logits"], valid_action_mask, num_experts)[0].cpu())
+            fallback_logits = (
+                outputs["utility_prediction"]
+                if decision_policy == "utility_threshold"
+                else outputs["action_logits"]
+            )
+            fallback = int(_masked_argmax_expert(fallback_logits, valid_action_mask, num_experts)[0].cpu())
             masks[sample_index] |= 1 << fallback
             query_sequences[sample_index].append(fallback)
             action_sequences[sample_index].append(f"QUERY_FALLBACK:{fallback}")
@@ -341,6 +389,8 @@ def evaluate_rollouts(
         "metadata": {
             "mode": mode,
             "finalizer": finalizer,
+            "decision_policy": decision_policy,
+            "utility_threshold": utility_threshold,
             "force_k": force_k,
             "temperature": temperature,
             "max_queries": max_queries,
@@ -407,6 +457,8 @@ def _write_outputs(payloads: list[dict[str, Any]], output_dir: Path) -> None:
     fields = [
         "mode",
         "finalizer",
+        "decision_policy",
+        "utility_threshold",
         "force_k",
         "temperature",
         "max_queries",
@@ -433,6 +485,8 @@ def _write_outputs(payloads: list[dict[str, Any]], output_dir: Path) -> None:
             row = {
                 "mode": payload["metadata"]["mode"],
                 "finalizer": payload["metadata"]["finalizer"],
+                "decision_policy": payload["metadata"].get("decision_policy", "action_logits"),
+                "utility_threshold": payload["metadata"].get("utility_threshold", 0.0),
                 "force_k": payload["metadata"]["force_k"],
                 "temperature": payload["metadata"]["temperature"],
                 "max_queries": payload["metadata"]["max_queries"],
@@ -454,6 +508,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--mode", choices=("greedy", "sampled", "forced", "all"), default="all")
     parser.add_argument("--finalizer", choices=("reranker", "sparse_mixture", "both"), default="both")
+    parser.add_argument("--decision-policy", choices=("action_logits", "utility_threshold"), default="action_logits")
+    parser.add_argument("--utility-threshold", type=float, default=0.0)
     parser.add_argument("--force-k", type=int, default=None)
     parser.add_argument("--temperature", type=float, default=1.0)
     parser.add_argument("--max-queries", type=int, default=None)
@@ -495,6 +551,8 @@ def main() -> None:
                     device=device,
                     seed=args.seed,
                     detailed_limit=args.detailed_limit,
+                    decision_policy=args.decision_policy,
+                    utility_threshold=args.utility_threshold,
                 )
                 payload["metadata"]["checkpoint"] = str(args.checkpoint)
                 payload["metadata"]["checkpoint_epoch"] = int(checkpoint.get("epoch", -1))

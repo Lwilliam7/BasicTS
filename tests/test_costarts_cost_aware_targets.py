@@ -4,6 +4,7 @@ import torch
 
 from scripts import train_costarts_subset_utility_router as costarts_train
 from scripts.train_costarts_subset_utility_router import (
+    SubsetUtilityCOSTARTSRouter,
     build_cost_aware_targets,
     load_and_normalize_expert_costs,
     subset_utility_losses,
@@ -163,6 +164,107 @@ def test_changing_lambda_changes_training_loss_on_same_batch():
         normalized_expert_costs=torch.ones(3),
     )
     assert not torch.isclose(loss_zero, loss_high)
+
+
+def test_set_attention_queried_encoder_shapes_and_gradients():
+    batch = _batch()
+    batch["queried_expert_forecasts"] = torch.randn_like(batch["queried_expert_forecasts"])
+    router = SubsetUtilityCOSTARTSRouter(
+        num_experts=3,
+        max_subset_size=3,
+        queried_encoder_type="set_attention",
+    )
+    outputs = router(
+        batch["history"],
+        batch["queried_mask"],
+        batch["queried_expert_ids"],
+        batch["queried_expert_forecasts"],
+    )
+    assert tuple(outputs["action_logits"].shape) == (4, 4)
+    assert tuple(outputs["utility_prediction"].shape) == (4, 3)
+    assert torch.isfinite(outputs["representation"]).all()
+    loss, _ = subset_utility_losses(
+        outputs,
+        batch,
+        {"action": 1.0, "utility": 1.0, "pairwise": 0.2, "mix": 0.0},
+        cost_coefficient=0.0,
+        normalized_expert_costs=torch.ones(3),
+    )
+    loss.backward()
+    assert router.queried_attention.in_proj_weight.grad is not None
+    assert torch.isfinite(router.queried_attention.in_proj_weight.grad).all()
+
+
+def test_set_attention_queried_encoder_masks_unused_slots():
+    batch = _batch()
+    batch["queried_expert_forecasts"] = torch.randn_like(batch["queried_expert_forecasts"])
+    altered = dict(batch)
+    altered["queried_expert_forecasts"] = batch["queried_expert_forecasts"].clone()
+    altered["queried_expert_forecasts"][batch["queried_expert_ids"] < 0] = 1000.0
+    router = SubsetUtilityCOSTARTSRouter(
+        num_experts=3,
+        max_subset_size=3,
+        queried_encoder_type="set_attention",
+    )
+    router.eval()
+    with torch.no_grad():
+        original = router(
+            batch["history"],
+            batch["queried_mask"],
+            batch["queried_expert_ids"],
+            batch["queried_expert_forecasts"],
+        )["representation"]
+        masked = router(
+            altered["history"],
+            altered["queried_mask"],
+            altered["queried_expert_ids"],
+            altered["queried_expert_forecasts"],
+        )["representation"]
+    assert torch.allclose(original, masked, atol=1e-6)
+
+
+def test_set_attention_queried_encoder_invariant_to_empty_slot_ordering():
+    batch = _batch()
+    batch["queried_expert_forecasts"] = torch.randn_like(batch["queried_expert_forecasts"])
+    permuted = dict(batch)
+    permuted["queried_expert_ids"] = batch["queried_expert_ids"].clone()
+    permuted["queried_expert_forecasts"] = batch["queried_expert_forecasts"].clone()
+    permuted["queried_expert_ids"][1] = torch.tensor([-1, 0, -1])
+    permuted["queried_expert_forecasts"][1] = 0.0
+    permuted["queried_expert_forecasts"][1, 1] = batch["queried_expert_forecasts"][1, 0]
+    router = SubsetUtilityCOSTARTSRouter(
+        num_experts=3,
+        max_subset_size=3,
+        queried_encoder_type="set_attention",
+    )
+    router.eval()
+    with torch.no_grad():
+        original = router(
+            batch["history"][1:2],
+            batch["queried_mask"][1:2],
+            batch["queried_expert_ids"][1:2],
+            batch["queried_expert_forecasts"][1:2],
+        )["representation"]
+        reordered = router(
+            permuted["history"][1:2],
+            permuted["queried_mask"][1:2],
+            permuted["queried_expert_ids"][1:2],
+            permuted["queried_expert_forecasts"][1:2],
+        )["representation"]
+    assert torch.allclose(original, reordered, atol=1e-6)
+
+
+def test_set_attention_queried_encoder_rejects_unknown_type():
+    try:
+        SubsetUtilityCOSTARTSRouter(
+            num_experts=3,
+            max_subset_size=3,
+            queried_encoder_type="bogus",
+        )
+    except ValueError as error:
+        assert "queried_encoder_type" in str(error)
+    else:
+        raise AssertionError("unknown queried encoder type should fail")
 
 
 def test_cost_normalization_is_identical_for_train_and_val_ordering():
