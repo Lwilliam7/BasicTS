@@ -1,0 +1,6 @@
+{
+  "DLinear_window_win_rate_vs_baseline": 0.2847096920013428,
+  "ModernTCN_window_win_rate_vs_baseline": 0.13036422431468964,
+  "DLinear_mean_mae_minus_baseline": 0.029462695121765137,
+  "ModernTCN_mean_mae_minus_baseline": 0.20880776643753052
+}

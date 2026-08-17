@@ -1,0 +1,152 @@
+{
+  "model": "COSTARTSRouter no-cosine seed 7",
+  "checkpoint": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_no_cosine\\best_costarts_router_no_cosine_seed7.pt",
+  "train_cache": "cache/costarts_router_train_cache.pt",
+  "val_cache": "cache/costarts_router_val_cache.pt",
+  "test_set_used": false,
+  "best_validation": {
+    "validation_mae": 0.37009852473148513,
+    "validation_mse": 0.34588042441238975,
+    "regret_to_oracle": 0.05195528686921708,
+    "average_stop_step": 1.0,
+    "selected_counts": [
+      613,
+      0,
+      0,
+      0,
+      0
+    ],
+    "stop_counts": {
+      "1": 613
+    },
+    "epoch": 6
+  },
+  "rows": [
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 1.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "1": 613
+      },
+      "ablation": "baseline"
+    },
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 1.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "1": 613
+      },
+      "ablation": "no_map_prediction_first_queried"
+    },
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 1.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "1": 613
+      },
+      "ablation": "no_query_logits_fixed_order"
+    },
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 5.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "5": 613
+      },
+      "ablation": "no_stop_logits_query_all"
+    },
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 1.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "1": 613
+      },
+      "ablation": "no_stop_logits_stop_after_1"
+    },
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 1.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "1": 613
+      },
+      "ablation": "no_ranking_logits"
+    },
+    {
+      "validation_mae": 0.37009852473148513,
+      "validation_mse": 0.34588042441238975,
+      "regret_to_oracle": 0.05195528686921708,
+      "average_stop_step": 1.0,
+      "selected_counts": [
+        613,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stop_counts": {
+        "1": 613
+      },
+      "ablation": "no_mix_weights"
+    }
+  ],
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ]
+}

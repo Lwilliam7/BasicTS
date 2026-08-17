@@ -1,0 +1,102 @@
+{
+  "status": "validation_only_stability_repair",
+  "test_data_used": false,
+  "locked_etth1_test_cache_loaded": false,
+  "method_change": {
+    "description": "Confidence thresholds are selected on router-validation MAE only after applying predeclared switch-rate and switched-window quality constraints.",
+    "min_switch_rate": 0.05,
+    "max_switch_rate": 0.5,
+    "min_switched_win_rate": 0.5,
+    "min_switched_mean_improvement": 0.0
+  },
+  "validation_baselines": {
+    "existing_predicted_top2_equal_average_mae": 0.3507484793663025,
+    "equal_average_all_experts_mae": 0.35006529092788696,
+    "direct_pair_selector_mean_mae_reference": 0.3515688180923462,
+    "validation_selected_fixed_pair_mae": 0.35176655650138855
+  },
+  "seeds": [
+    {
+      "seed": 7,
+      "val_mae": 0.34705209732055664,
+      "val_mse": 0.31255093216896057,
+      "switch_rate": 0.24796085059642792,
+      "switched_predicted_pair_win_rate": 0.7236841917037964,
+      "score_name": "probability_margin",
+      "threshold": 0.03373502567410469,
+      "constraint_eligible": true
+    },
+    {
+      "seed": 11,
+      "val_mae": 0.34869584441185,
+      "val_mse": 0.31221461296081543,
+      "switch_rate": 0.49102774262428284,
+      "switched_predicted_pair_win_rate": 0.5282391905784607,
+      "score_name": "logit_margin",
+      "threshold": 0.789755642414093,
+      "constraint_eligible": true
+    },
+    {
+      "seed": 13,
+      "val_mae": 0.34943875670433044,
+      "val_mse": 0.31304165720939636,
+      "switch_rate": 0.26916801929473877,
+      "switched_predicted_pair_win_rate": 0.6424242258071899,
+      "score_name": "max_probability",
+      "threshold": 0.24533873796463013,
+      "constraint_eligible": true
+    },
+    {
+      "seed": 17,
+      "val_mae": 0.3475423753261566,
+      "val_mse": 0.3113834261894226,
+      "switch_rate": 0.4975530207157135,
+      "switched_predicted_pair_win_rate": 0.5639344453811646,
+      "score_name": "logit_margin",
+      "threshold": 0.6974444389343262,
+      "constraint_eligible": true
+    },
+    {
+      "seed": 19,
+      "val_mae": 0.34908512234687805,
+      "val_mse": 0.3135172724723816,
+      "switch_rate": 0.12071777880191803,
+      "switched_predicted_pair_win_rate": 0.837837815284729,
+      "score_name": "logit_margin",
+      "threshold": 0.6853961944580078,
+      "constraint_eligible": true
+    }
+  ],
+  "mean_std": {
+    "mae": {
+      "mean": 0.34836283326148987,
+      "std_population": 0.000914292351808399
+    },
+    "mse": {
+      "mean": 0.31254157423973083,
+      "std_population": 0.0007276799874380231
+    },
+    "switch_rate": {
+      "mean": 0.3252854645252228,
+      "std_population": 0.14705324172973633
+    },
+    "switched_predicted_pair_win_rate": {
+      "mean": 0.6592239737510681,
+      "std_population": 0.11187348514795303
+    },
+    "average_experts_queried": {
+      "mean": 2.0,
+      "std_population": 0.0
+    }
+  },
+  "verification": {
+    "parse_check": "parse ok",
+    "focused_tests": "18 passed in 2.96s"
+  },
+  "interpretation": {
+    "beats_existing_predicted_top2_on_validation": true,
+    "queries_exactly_two_experts": true,
+    "switch_rates_no_longer_near_zero_or_near_one": true,
+    "requires_new_locked_test_setting_for_confirmation": true
+  }
+}

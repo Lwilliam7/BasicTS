@@ -1,0 +1,50 @@
+{
+  "created_at_utc": "2026-08-12T07:04:14.042936+00:00",
+  "selected_model": {
+    "family": "prototype_residual",
+    "name": "final_phase2_protores_lam0.01_k16_scale0.3_rw0.001",
+    "seed": 7,
+    "epochs": 10,
+    "lr": 0.001,
+    "batch_size": 512,
+    "teacher_lambda": 0.01,
+    "teacher_weight": 1.0,
+    "forecast_weight": 1.0,
+    "residual_weight": 0.001,
+    "residual_scale": 0.3,
+    "k": 16,
+    "temperature": 0.05,
+    "num_prototypes": 16,
+    "rank": 1,
+    "forgetting": 0.99,
+    "eta": 0.2,
+    "feature_mix": "full"
+  },
+  "model_choice_reason": "Best five-seed neural trainable fixed-three router; static component used by later chronological/HV hybrids. Ridge residual current best is not a long-trained neural router.",
+  "fixed_three_experts": [
+    "PatchTST",
+    "iTransformer",
+    "TimesNet"
+  ],
+  "router_train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "train_start_range": [
+    2880,
+    7423
+  ],
+  "chronological_eval_start_range": [
+    7424,
+    8532
+  ],
+  "validation_used": false,
+  "test_used": false,
+  "early_region_end": 10,
+  "delayed_region_start": 50,
+  "meaningful_margin": 0.0005,
+  "sustained_checkpoints": 5,
+  "weight_decays": [
+    0.001,
+    0.01,
+    0.1
+  ],
+  "device": "cuda"
+}

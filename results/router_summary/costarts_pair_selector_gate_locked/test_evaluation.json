@@ -1,0 +1,64 @@
+{
+  "lock_manifest": "docs\\costarts_pair_selector_gate_test_lock.json",
+  "test_cache": "cache\\costarts_pair_selector_locked_test_cache.pt",
+  "test_cache_sha256": "eaf8ee8befa84be3cd422f9976f9ac32ff30905922ef92dc726a42c7e30205dc",
+  "runs": [
+    {
+      "seed": 7,
+      "mae": 1.1673882007598877,
+      "mse": 5.50607967376709,
+      "switch_rate": 0.9448251128196716,
+      "average_experts_queried": 2.0,
+      "fixed_pair_class": 6,
+      "fixed_pair_names": [
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "confidence_score": "probability_margin",
+      "threshold": 0.03373502567410469
+    },
+    {
+      "seed": 11,
+      "mae": 1.1845686435699463,
+      "mse": 5.498034477233887,
+      "switch_rate": 0.010818608105182648,
+      "average_experts_queried": 2.0,
+      "fixed_pair_class": 6,
+      "fixed_pair_names": [
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "confidence_score": "logit_margin",
+      "threshold": 0.7762885689735413
+    },
+    {
+      "seed": 13,
+      "mae": 1.2809290885925293,
+      "mse": 5.955108165740967,
+      "switch_rate": 0.9985575079917908,
+      "average_experts_queried": 2.0,
+      "fixed_pair_class": 6,
+      "fixed_pair_names": [
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "confidence_score": "predicted_minus_fixed_probability",
+      "threshold": 0.14389732480049133
+    }
+  ],
+  "mean_std": {
+    "mae": {
+      "mean": 1.210961937904358,
+      "std": 0.04996892064809799
+    },
+    "mse": {
+      "mean": 5.653074264526367,
+      "std": 0.21359558403491974
+    },
+    "average_experts_queried": {
+      "mean": 2.0,
+      "std": 0.0
+    }
+  },
+  "locked_before_test": true
+}

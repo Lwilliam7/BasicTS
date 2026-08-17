@@ -1,0 +1,1575 @@
+[
+  {
+    "variant": "mask_only",
+    "seed": 7,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 7,
+    "budget": 2,
+    "mae": 0.3511161208152771,
+    "mse": 0.3171442151069641,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 364,
+      "DLinear->ModernTCN": 249
+    },
+    "regret_to_oracle": 0.032972872257232666,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 7,
+    "budget": 3,
+    "mae": 0.34941259026527405,
+    "mse": 0.31389111280441284,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 348,
+      "DLinear->ModernTCN->TimesNet": 249,
+      "DLinear->TimesNet->PatchTST": 16
+    },
+    "regret_to_oracle": 0.031269341707229614,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 7,
+    "budget": 4,
+    "mae": 0.3495364785194397,
+    "mse": 0.31291136145591736,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 348,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 249,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 16
+    },
+    "regret_to_oracle": 0.031393229961395264,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 7,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 348,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 249,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 16
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 11,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 11,
+    "budget": 2,
+    "mae": 0.3588298261165619,
+    "mse": 0.32162022590637207,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 520,
+      "DLinear->PatchTST": 93
+    },
+    "regret_to_oracle": 0.040686577558517456,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 11,
+    "budget": 3,
+    "mae": 0.34953126311302185,
+    "mse": 0.31188079714775085,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 508,
+      "DLinear->PatchTST->TimesNet": 59,
+      "DLinear->PatchTST->iTransformer": 34,
+      "DLinear->TimesNet->PatchTST": 12
+    },
+    "regret_to_oracle": 0.03138801455497742,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 11,
+    "budget": 4,
+    "mae": 0.3492879867553711,
+    "mse": 0.3100445866584778,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 508,
+      "DLinear->PatchTST->TimesNet->iTransformer": 40,
+      "DLinear->PatchTST->iTransformer->TimesNet": 34,
+      "DLinear->PatchTST->TimesNet->ModernTCN": 19,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 12
+    },
+    "regret_to_oracle": 0.03114473819732666,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 11,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 508,
+      "DLinear->PatchTST->TimesNet->iTransformer->ModernTCN": 40,
+      "DLinear->PatchTST->iTransformer->TimesNet->ModernTCN": 34,
+      "DLinear->PatchTST->TimesNet->ModernTCN->iTransformer": 19,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 12
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 13,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 13,
+    "budget": 2,
+    "mae": 0.35718584060668945,
+    "mse": 0.3183318078517914,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 484,
+      "DLinear->PatchTST": 83,
+      "DLinear->ModernTCN": 46
+    },
+    "regret_to_oracle": 0.03904259204864502,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 13,
+    "budget": 3,
+    "mae": 0.35046908259391785,
+    "mse": 0.3145564794540405,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 456,
+      "DLinear->PatchTST->ModernTCN": 83,
+      "DLinear->TimesNet->PatchTST": 28,
+      "DLinear->ModernTCN->PatchTST": 26,
+      "DLinear->ModernTCN->TimesNet": 20
+    },
+    "regret_to_oracle": 0.03232583403587341,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 13,
+    "budget": 4,
+    "mae": 0.3496430516242981,
+    "mse": 0.31037193536758423,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 454,
+      "DLinear->PatchTST->ModernTCN->iTransformer": 60,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 28,
+      "DLinear->PatchTST->ModernTCN->TimesNet": 23,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 20,
+      "DLinear->ModernTCN->PatchTST->iTransformer": 16,
+      "DLinear->ModernTCN->PatchTST->TimesNet": 10,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 2
+    },
+    "regret_to_oracle": 0.03149980306625366,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 13,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 454,
+      "DLinear->PatchTST->ModernTCN->iTransformer->TimesNet": 60,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 28,
+      "DLinear->PatchTST->ModernTCN->TimesNet->iTransformer": 23,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 20,
+      "DLinear->ModernTCN->PatchTST->iTransformer->TimesNet": 16,
+      "DLinear->ModernTCN->PatchTST->TimesNet->iTransformer": 10,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 2
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 17,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 17,
+    "budget": 2,
+    "mae": 0.35712048411369324,
+    "mse": 0.3206442892551422,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 602,
+      "DLinear->ModernTCN": 11
+    },
+    "regret_to_oracle": 0.038977235555648804,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 17,
+    "budget": 3,
+    "mae": 0.34975752234458923,
+    "mse": 0.316359281539917,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 602,
+      "DLinear->ModernTCN->TimesNet": 11
+    },
+    "regret_to_oracle": 0.0316142737865448,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 17,
+    "budget": 4,
+    "mae": 0.3495364785194397,
+    "mse": 0.31291136145591736,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 602,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 11
+    },
+    "regret_to_oracle": 0.031393229961395264,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 17,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 602,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 11
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 19,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 19,
+    "budget": 2,
+    "mae": 0.35691553354263306,
+    "mse": 0.32125040888786316,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 613
+    },
+    "regret_to_oracle": 0.03877228498458862,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 19,
+    "budget": 3,
+    "mae": 0.34975752234458923,
+    "mse": 0.316359281539917,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 613
+    },
+    "regret_to_oracle": 0.0316142737865448,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 19,
+    "budget": 4,
+    "mae": 0.3492186367511749,
+    "mse": 0.3124940097332001,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 603,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 10
+    },
+    "regret_to_oracle": 0.031075388193130493,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "mask_only",
+    "seed": 19,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 603,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 10
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 7,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 7,
+    "budget": 2,
+    "mae": 0.3565256893634796,
+    "mse": 0.32081928849220276,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 598,
+      "DLinear->ModernTCN": 15
+    },
+    "regret_to_oracle": 0.03838244080543518,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 7,
+    "budget": 3,
+    "mae": 0.34965211153030396,
+    "mse": 0.3130202293395996,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 371,
+      "DLinear->TimesNet->PatchTST": 227,
+      "DLinear->ModernTCN->TimesNet": 15
+    },
+    "regret_to_oracle": 0.03150886297225952,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 7,
+    "budget": 4,
+    "mae": 0.34905919432640076,
+    "mse": 0.3113141357898712,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 371,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 204,
+      "DLinear->TimesNet->PatchTST->iTransformer": 23,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 15
+    },
+    "regret_to_oracle": 0.030915945768356323,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 7,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 371,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 204,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 23,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 15
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 11,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 11,
+    "budget": 2,
+    "mae": 0.35601332783699036,
+    "mse": 0.32056641578674316,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 551,
+      "DLinear->iTransformer": 37,
+      "DLinear->ModernTCN": 25
+    },
+    "regret_to_oracle": 0.03787007927894592,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 11,
+    "budget": 3,
+    "mae": 0.3506728708744049,
+    "mse": 0.31034162640571594,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST": 256,
+      "DLinear->TimesNet->ModernTCN": 166,
+      "DLinear->TimesNet->iTransformer": 129,
+      "DLinear->iTransformer->TimesNet": 37,
+      "DLinear->ModernTCN->TimesNet": 25
+    },
+    "regret_to_oracle": 0.032529622316360474,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 11,
+    "budget": 4,
+    "mae": 0.35079091787338257,
+    "mse": 0.3072105050086975,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST->iTransformer": 209,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 107,
+      "DLinear->TimesNet->iTransformer->PatchTST": 87,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 59,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 47,
+      "DLinear->TimesNet->iTransformer->ModernTCN": 42,
+      "DLinear->iTransformer->TimesNet->PatchTST": 33,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 23,
+      "DLinear->iTransformer->TimesNet->ModernTCN": 4,
+      "DLinear->ModernTCN->TimesNet->iTransformer": 2
+    },
+    "regret_to_oracle": 0.032647669315338135,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 11,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 209,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 107,
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 87,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 59,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 47,
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 42,
+      "DLinear->iTransformer->TimesNet->PatchTST->ModernTCN": 33,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 23,
+      "DLinear->iTransformer->TimesNet->ModernTCN->PatchTST": 4,
+      "DLinear->ModernTCN->TimesNet->iTransformer->PatchTST": 2
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 13,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 13,
+    "budget": 2,
+    "mae": 0.3614438772201538,
+    "mse": 0.32113581895828247,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 328,
+      "DLinear->iTransformer": 212,
+      "DLinear->PatchTST": 49,
+      "DLinear->ModernTCN": 24
+    },
+    "regret_to_oracle": 0.043300628662109375,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 13,
+    "budget": 3,
+    "mae": 0.3552703261375427,
+    "mse": 0.3118288218975067,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN": 128,
+      "DLinear->iTransformer->PatchTST": 115,
+      "DLinear->TimesNet->iTransformer": 108,
+      "DLinear->TimesNet->PatchTST": 92,
+      "DLinear->iTransformer->TimesNet": 90,
+      "DLinear->PatchTST->iTransformer": 29,
+      "DLinear->PatchTST->TimesNet": 20,
+      "DLinear->ModernTCN->TimesNet": 15,
+      "DLinear->ModernTCN->iTransformer": 9,
+      "DLinear->iTransformer->ModernTCN": 7
+    },
+    "regret_to_oracle": 0.03712707757949829,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 13,
+    "budget": 4,
+    "mae": 0.3505970537662506,
+    "mse": 0.30561715364456177,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 101,
+      "DLinear->iTransformer->PatchTST->TimesNet": 94,
+      "DLinear->iTransformer->TimesNet->PatchTST": 86,
+      "DLinear->TimesNet->PatchTST->iTransformer": 72,
+      "DLinear->TimesNet->iTransformer->PatchTST": 66,
+      "DLinear->TimesNet->iTransformer->ModernTCN": 42,
+      "DLinear->PatchTST->iTransformer->TimesNet": 27,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 27,
+      "DLinear->iTransformer->PatchTST->ModernTCN": 21,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 20,
+      "DLinear->PatchTST->TimesNet->iTransformer": 20,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 10,
+      "DLinear->ModernTCN->TimesNet->iTransformer": 5,
+      "DLinear->ModernTCN->iTransformer->TimesNet": 5,
+      "DLinear->iTransformer->ModernTCN->PatchTST": 5,
+      "DLinear->iTransformer->TimesNet->ModernTCN": 4,
+      "DLinear->ModernTCN->iTransformer->PatchTST": 4,
+      "DLinear->PatchTST->iTransformer->ModernTCN": 2,
+      "DLinear->iTransformer->ModernTCN->TimesNet": 2
+    },
+    "regret_to_oracle": 0.03245380520820618,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 13,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 101,
+      "DLinear->iTransformer->PatchTST->TimesNet->ModernTCN": 94,
+      "DLinear->iTransformer->TimesNet->PatchTST->ModernTCN": 86,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 72,
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 66,
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 42,
+      "DLinear->PatchTST->iTransformer->TimesNet->ModernTCN": 27,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 27,
+      "DLinear->iTransformer->PatchTST->ModernTCN->TimesNet": 21,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 20,
+      "DLinear->PatchTST->TimesNet->iTransformer->ModernTCN": 20,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 10,
+      "DLinear->ModernTCN->TimesNet->iTransformer->PatchTST": 5,
+      "DLinear->ModernTCN->iTransformer->TimesNet->PatchTST": 5,
+      "DLinear->iTransformer->ModernTCN->PatchTST->TimesNet": 5,
+      "DLinear->iTransformer->TimesNet->ModernTCN->PatchTST": 4,
+      "DLinear->ModernTCN->iTransformer->PatchTST->TimesNet": 4,
+      "DLinear->PatchTST->iTransformer->ModernTCN->TimesNet": 2,
+      "DLinear->iTransformer->ModernTCN->TimesNet->PatchTST": 2
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 17,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 17,
+    "budget": 2,
+    "mae": 0.35662925243377686,
+    "mse": 0.32144397497177124,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 406,
+      "DLinear->PatchTST": 141,
+      "DLinear->ModernTCN": 56,
+      "DLinear->iTransformer": 10
+    },
+    "regret_to_oracle": 0.03848600387573242,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 17,
+    "budget": 3,
+    "mae": 0.3526771068572998,
+    "mse": 0.31330910325050354,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer": 166,
+      "DLinear->TimesNet->ModernTCN": 136,
+      "DLinear->TimesNet->PatchTST": 104,
+      "DLinear->PatchTST->iTransformer": 97,
+      "DLinear->ModernTCN->TimesNet": 53,
+      "DLinear->PatchTST->TimesNet": 42,
+      "DLinear->iTransformer->TimesNet": 8,
+      "DLinear->iTransformer->PatchTST": 2,
+      "DLinear->ModernTCN->PatchTST": 2,
+      "DLinear->PatchTST->ModernTCN": 2,
+      "DLinear->ModernTCN->iTransformer": 1
+    },
+    "regret_to_oracle": 0.03453385829925537,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 17,
+    "budget": 4,
+    "mae": 0.3511456549167633,
+    "mse": 0.3094996511936188,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->PatchTST->iTransformer->TimesNet": 97,
+      "DLinear->TimesNet->iTransformer->PatchTST": 96,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 72,
+      "DLinear->TimesNet->PatchTST->iTransformer": 70,
+      "DLinear->TimesNet->iTransformer->ModernTCN": 70,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 64,
+      "DLinear->PatchTST->TimesNet->iTransformer": 39,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 34,
+      "DLinear->ModernTCN->TimesNet->iTransformer": 29,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 24,
+      "DLinear->iTransformer->TimesNet->PatchTST": 7,
+      "DLinear->PatchTST->TimesNet->ModernTCN": 3,
+      "DLinear->iTransformer->PatchTST->TimesNet": 2,
+      "DLinear->ModernTCN->PatchTST->TimesNet": 2,
+      "DLinear->PatchTST->ModernTCN->TimesNet": 2,
+      "DLinear->ModernTCN->iTransformer->PatchTST": 1,
+      "DLinear->iTransformer->TimesNet->ModernTCN": 1
+    },
+    "regret_to_oracle": 0.03300240635871887,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 17,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->PatchTST->iTransformer->TimesNet->ModernTCN": 97,
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 96,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 72,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 70,
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 70,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 64,
+      "DLinear->PatchTST->TimesNet->iTransformer->ModernTCN": 39,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 34,
+      "DLinear->ModernTCN->TimesNet->iTransformer->PatchTST": 29,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 24,
+      "DLinear->iTransformer->TimesNet->PatchTST->ModernTCN": 7,
+      "DLinear->PatchTST->TimesNet->ModernTCN->iTransformer": 3,
+      "DLinear->iTransformer->PatchTST->TimesNet->ModernTCN": 2,
+      "DLinear->ModernTCN->PatchTST->TimesNet->iTransformer": 2,
+      "DLinear->PatchTST->ModernTCN->TimesNet->iTransformer": 2,
+      "DLinear->ModernTCN->iTransformer->PatchTST->TimesNet": 1,
+      "DLinear->iTransformer->TimesNet->ModernTCN->PatchTST": 1
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 19,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 19,
+    "budget": 2,
+    "mae": 0.3569333255290985,
+    "mse": 0.3212696313858032,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 612,
+      "DLinear->iTransformer": 1
+    },
+    "regret_to_oracle": 0.03879007697105408,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 19,
+    "budget": 3,
+    "mae": 0.3509902358055115,
+    "mse": 0.3067365884780884,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer": 300,
+      "DLinear->TimesNet->ModernTCN": 258,
+      "DLinear->TimesNet->PatchTST": 54,
+      "DLinear->iTransformer->TimesNet": 1
+    },
+    "regret_to_oracle": 0.03284698724746704,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 19,
+    "budget": 4,
+    "mae": 0.350159227848053,
+    "mse": 0.3067967891693115,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer->PatchTST": 202,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 145,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 113,
+      "DLinear->TimesNet->iTransformer->ModernTCN": 98,
+      "DLinear->TimesNet->PatchTST->iTransformer": 40,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 14,
+      "DLinear->iTransformer->TimesNet->PatchTST": 1
+    },
+    "regret_to_oracle": 0.032015979290008545,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast",
+    "seed": 19,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 202,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 145,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 113,
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 98,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 40,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 14,
+      "DLinear->iTransformer->TimesNet->PatchTST->ModernTCN": 1
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 7,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 7,
+    "budget": 2,
+    "mae": 0.3565469980239868,
+    "mse": 0.32099294662475586,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 605,
+      "DLinear->ModernTCN": 8
+    },
+    "regret_to_oracle": 0.03840374946594238,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 7,
+    "budget": 3,
+    "mae": 0.3505457043647766,
+    "mse": 0.31317511200904846,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST": 303,
+      "DLinear->TimesNet->ModernTCN": 302,
+      "DLinear->ModernTCN->TimesNet": 8
+    },
+    "regret_to_oracle": 0.03240245580673218,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 7,
+    "budget": 4,
+    "mae": 0.3488323390483856,
+    "mse": 0.30957797169685364,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST": 299,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 225,
+      "DLinear->TimesNet->PatchTST->iTransformer": 78,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 8,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 3
+    },
+    "regret_to_oracle": 0.030689090490341187,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 7,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 299,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 225,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 78,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 8,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 3
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 11,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 11,
+    "budget": 2,
+    "mae": 0.3555743992328644,
+    "mse": 0.3202160894870758,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 575,
+      "DLinear->ModernTCN": 24,
+      "DLinear->iTransformer": 14
+    },
+    "regret_to_oracle": 0.037431150674819946,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 11,
+    "budget": 3,
+    "mae": 0.35061734914779663,
+    "mse": 0.3102438747882843,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST": 298,
+      "DLinear->TimesNet->ModernTCN": 170,
+      "DLinear->TimesNet->iTransformer": 107,
+      "DLinear->ModernTCN->TimesNet": 24,
+      "DLinear->iTransformer->TimesNet": 14
+    },
+    "regret_to_oracle": 0.0324741005897522,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 11,
+    "budget": 4,
+    "mae": 0.3513123095035553,
+    "mse": 0.30830806493759155,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST->iTransformer": 241,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 112,
+      "DLinear->TimesNet->iTransformer->PatchTST": 73,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 58,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 57,
+      "DLinear->TimesNet->iTransformer->ModernTCN": 34,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 23,
+      "DLinear->iTransformer->TimesNet->PatchTST": 14,
+      "DLinear->ModernTCN->TimesNet->iTransformer": 1
+    },
+    "regret_to_oracle": 0.033169060945510864,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 11,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 241,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 112,
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 73,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 58,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 57,
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 34,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 23,
+      "DLinear->iTransformer->TimesNet->PatchTST->ModernTCN": 14,
+      "DLinear->ModernTCN->TimesNet->iTransformer->PatchTST": 1
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 13,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 13,
+    "budget": 2,
+    "mae": 0.3635641634464264,
+    "mse": 0.3298514783382416,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 419,
+      "DLinear->PatchTST": 193,
+      "DLinear->ModernTCN": 1
+    },
+    "regret_to_oracle": 0.04542091488838196,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 13,
+    "budget": 3,
+    "mae": 0.3528950810432434,
+    "mse": 0.31360378861427307,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST": 310,
+      "DLinear->PatchTST->TimesNet": 188,
+      "DLinear->TimesNet->ModernTCN": 109,
+      "DLinear->PatchTST->ModernTCN": 3,
+      "DLinear->PatchTST->iTransformer": 2,
+      "DLinear->ModernTCN->TimesNet": 1
+    },
+    "regret_to_oracle": 0.034751832485198975,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 13,
+    "budget": 4,
+    "mae": 0.34991446137428284,
+    "mse": 0.3112946152687073,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST->ModernTCN": 297,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 109,
+      "DLinear->PatchTST->TimesNet->ModernTCN": 107,
+      "DLinear->PatchTST->TimesNet->iTransformer": 81,
+      "DLinear->TimesNet->PatchTST->iTransformer": 13,
+      "DLinear->PatchTST->ModernTCN->TimesNet": 3,
+      "DLinear->PatchTST->iTransformer->ModernTCN": 2,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 1
+    },
+    "regret_to_oracle": 0.0317712128162384,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 13,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 297,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 109,
+      "DLinear->PatchTST->TimesNet->ModernTCN->iTransformer": 107,
+      "DLinear->PatchTST->TimesNet->iTransformer->ModernTCN": 81,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 13,
+      "DLinear->PatchTST->ModernTCN->TimesNet->iTransformer": 3,
+      "DLinear->PatchTST->iTransformer->ModernTCN->TimesNet": 2,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 1
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 17,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 17,
+    "budget": 2,
+    "mae": 0.3548264801502228,
+    "mse": 0.31782588362693787,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 386,
+      "DLinear->PatchTST": 119,
+      "DLinear->ModernTCN": 82,
+      "DLinear->iTransformer": 26
+    },
+    "regret_to_oracle": 0.036683231592178345,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 17,
+    "budget": 3,
+    "mae": 0.35155028104782104,
+    "mse": 0.3115095794200897,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer": 176,
+      "DLinear->TimesNet->ModernTCN": 131,
+      "DLinear->TimesNet->PatchTST": 79,
+      "DLinear->ModernTCN->TimesNet": 74,
+      "DLinear->PatchTST->iTransformer": 73,
+      "DLinear->PatchTST->TimesNet": 46,
+      "DLinear->iTransformer->PatchTST": 19,
+      "DLinear->ModernTCN->PatchTST": 8,
+      "DLinear->iTransformer->TimesNet": 7
+    },
+    "regret_to_oracle": 0.03340703248977661,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 17,
+    "budget": 4,
+    "mae": 0.35041338205337524,
+    "mse": 0.30887001752853394,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer->ModernTCN": 98,
+      "DLinear->TimesNet->iTransformer->PatchTST": 78,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 74,
+      "DLinear->PatchTST->iTransformer->TimesNet": 73,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 57,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 56,
+      "DLinear->TimesNet->PatchTST->iTransformer": 49,
+      "DLinear->PatchTST->TimesNet->iTransformer": 46,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 30,
+      "DLinear->ModernTCN->TimesNet->iTransformer": 18,
+      "DLinear->iTransformer->PatchTST->TimesNet": 12,
+      "DLinear->iTransformer->PatchTST->ModernTCN": 7,
+      "DLinear->ModernTCN->PatchTST->TimesNet": 6,
+      "DLinear->iTransformer->TimesNet->ModernTCN": 6,
+      "DLinear->ModernTCN->PatchTST->iTransformer": 2,
+      "DLinear->iTransformer->TimesNet->PatchTST": 1
+    },
+    "regret_to_oracle": 0.03227013349533081,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 17,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 98,
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 78,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 74,
+      "DLinear->PatchTST->iTransformer->TimesNet->ModernTCN": 73,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 57,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 56,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 49,
+      "DLinear->PatchTST->TimesNet->iTransformer->ModernTCN": 46,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 30,
+      "DLinear->ModernTCN->TimesNet->iTransformer->PatchTST": 18,
+      "DLinear->iTransformer->PatchTST->TimesNet->ModernTCN": 12,
+      "DLinear->iTransformer->PatchTST->ModernTCN->TimesNet": 7,
+      "DLinear->ModernTCN->PatchTST->TimesNet->iTransformer": 6,
+      "DLinear->iTransformer->TimesNet->ModernTCN->PatchTST": 6,
+      "DLinear->ModernTCN->PatchTST->iTransformer->TimesNet": 2,
+      "DLinear->iTransformer->TimesNet->PatchTST->ModernTCN": 1
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 19,
+    "budget": 1,
+    "mae": 0.3700985014438629,
+    "mse": 0.3458804190158844,
+    "average_experts_queried": 1.0,
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "DLinear": 613
+    },
+    "regret_to_oracle": 0.05195525288581848,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 19,
+    "budget": 2,
+    "mae": 0.3565634787082672,
+    "mse": 0.3208579123020172,
+    "average_experts_queried": 2.0,
+    "stop_step_distribution": {
+      "2": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet": 610,
+      "DLinear->ModernTCN": 3
+    },
+    "regret_to_oracle": 0.03842023015022278,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 19,
+    "budget": 3,
+    "mae": 0.3512439727783203,
+    "mse": 0.30731362104415894,
+    "average_experts_queried": 3.0,
+    "stop_step_distribution": {
+      "3": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer": 273,
+      "DLinear->TimesNet->ModernTCN": 225,
+      "DLinear->TimesNet->PatchTST": 112,
+      "DLinear->ModernTCN->TimesNet": 3
+    },
+    "regret_to_oracle": 0.03310072422027588,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 19,
+    "budget": 4,
+    "mae": 0.3505869209766388,
+    "mse": 0.3066435754299164,
+    "average_experts_queried": 4.0,
+    "stop_step_distribution": {
+      "4": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer->PatchTST": 168,
+      "DLinear->TimesNet->ModernTCN->PatchTST": 119,
+      "DLinear->TimesNet->ModernTCN->iTransformer": 106,
+      "DLinear->TimesNet->iTransformer->ModernTCN": 105,
+      "DLinear->TimesNet->PatchTST->iTransformer": 65,
+      "DLinear->TimesNet->PatchTST->ModernTCN": 47,
+      "DLinear->ModernTCN->TimesNet->PatchTST": 3
+    },
+    "regret_to_oracle": 0.03244367241859436,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  {
+    "variant": "forecast_disagreement",
+    "seed": 19,
+    "budget": 5,
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 168,
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 119,
+      "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 106,
+      "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 105,
+      "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 65,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 47,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 3
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  }
+]

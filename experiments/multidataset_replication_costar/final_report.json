@@ -1,0 +1,242 @@
+{
+  "baseline_context": {
+    "etth1_primary": "expanded_both over fixed-three horizon-variable baseline",
+    "etth1_locked_specialist_config": "both_variable_decay0.95_cap0.1_marginbp200_warm96",
+    "etth1_core_baseline": "hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75"
+  },
+  "datasets": [
+    {
+      "dataset": "ETTh2",
+      "status": "completed_limited_available_cache_replication",
+      "limitation": "Full ETTh1 current-best HV baseline needs ETTh1-specific static neural winner artifacts; ETTh2 run uses equal fixed-three available-cache baseline.",
+      "locked_config": {
+        "name": "both_variable_decay0.95_cap0.1_marginbp200_warm96",
+        "scenario": "both",
+        "structure": "variable",
+        "decay": 0.95,
+        "extra_weight_cap": 0.1,
+        "activation_margin": 0.02,
+        "warmup": 96
+      },
+      "selected_config": {
+        "best": {
+          "name": "both_global_decay0.99_cap0.1_marginbp0_warm24",
+          "scenario": "both",
+          "structure": "global",
+          "decay": 0.99,
+          "extra_weight_cap": 0.1,
+          "activation_margin": 0.0,
+          "warmup": 24,
+          "fold_mae_mean": 0.08765013515949249,
+          "fold_baseline_mae_mean": 0.09007390588521957,
+          "fold_delta_mean": -0.0024237707257270813,
+          "fold_delta_std": 0.0015048605855554342,
+          "fold_mae_se": 0.0008688316447660327,
+          "fold_wins": 4,
+          "avg_weight_DLinear": 0.0482924934476614,
+          "avg_weight_ModernTCN": 0.03697051480412483,
+          "activation_rate_DLinear": 1.0,
+          "activation_rate_ModernTCN": 0.8223844319581985
+        },
+        "selected": {
+          "name": "both_global_decay0.99_cap0.1_marginbp200_warm96",
+          "scenario": "both",
+          "structure": "global",
+          "decay": 0.99,
+          "extra_weight_cap": 0.1,
+          "activation_margin": 0.02,
+          "warmup": 96,
+          "fold_mae_mean": 0.0876850038766861,
+          "fold_baseline_mae_mean": 0.09007390588521957,
+          "fold_delta_mean": -0.002388902008533478,
+          "fold_delta_std": 0.0015444308519363403,
+          "fold_mae_se": 0.0008916775695979595,
+          "fold_wins": 4,
+          "avg_weight_DLinear": 0.04670168738812208,
+          "avg_weight_ModernTCN": 0.03269985364750028,
+          "activation_rate_DLinear": 0.9707317054271698,
+          "activation_rate_ModernTCN": 0.7822028324007988
+        },
+        "one_se_threshold": 0.08851896680425853
+      },
+      "validation_results": [
+        {
+          "dataset": "ETTh2",
+          "method": "equal_fixed3_available_baseline",
+          "mae": 0.09833905845880508,
+          "mse": 0.038581494241952896
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "single_DLinear",
+          "mae": 0.06913085281848907,
+          "mse": 0.015874043107032776,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": 0.02920820564031601,
+          "percent_improvement_mae": 29.701530702118255,
+          "mean_diff_candidate_minus_baseline": -0.029208213090896606,
+          "ci95_low": -0.030730633065104485,
+          "ci95_high": -0.027655893936753273,
+          "ci_excludes_zero": true
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "single_PatchTST",
+          "mae": 0.09027214348316193,
+          "mse": 0.029436226934194565,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": 0.008066914975643158,
+          "percent_improvement_mae": 8.203164746612298,
+          "mean_diff_candidate_minus_baseline": -0.008066925220191479,
+          "ci95_low": -0.008897943422198296,
+          "ci95_high": -0.007268702611327171,
+          "ci_excludes_zero": true
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "single_iTransformer",
+          "mae": 0.17121100425720215,
+          "mse": 0.13971638679504395,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": -0.07287194579839706,
+          "percent_improvement_mae": -74.10274914206508,
+          "mean_diff_candidate_minus_baseline": 0.07287194579839706,
+          "ci95_low": 0.07135739177465439,
+          "ci95_high": 0.07447120547294617,
+          "ci_excludes_zero": true
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "single_TimesNet",
+          "mae": 0.07186809182167053,
+          "mse": 0.01638922467827797,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": 0.026470966637134552,
+          "percent_improvement_mae": 26.918059875693668,
+          "mean_diff_candidate_minus_baseline": -0.026470964774489403,
+          "ci95_low": -0.027987591922283173,
+          "ci95_high": -0.024903172627091408,
+          "ci_excludes_zero": true
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "single_ModernTCN",
+          "mae": 0.06983783841133118,
+          "mse": 0.015480220317840576,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": 0.028501220047473907,
+          "percent_improvement_mae": 28.982604159682154,
+          "mean_diff_candidate_minus_baseline": -0.02850121259689331,
+          "ci95_low": -0.02998564951121807,
+          "ci95_high": -0.026950225234031677,
+          "ci_excludes_zero": true
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "locked_etth1_expanded_both_limited",
+          "mae": 0.09336903691291809,
+          "mse": 0.03417007252573967,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": 0.004970021545886993,
+          "percent_improvement_mae": 5.053964949205783,
+          "mean_diff_candidate_minus_baseline": -0.0049700126983225346,
+          "ci95_low": -0.00512140616774559,
+          "ci95_high": -0.004820279777050018,
+          "ci_excludes_zero": true,
+          "num_updates": 601,
+          "avg_weight_DLinear": 0.023887859657406807,
+          "max_window_weight_DLinear": 0.04285714775323868,
+          "avg_weight_ModernTCN": 0.019495729357004166,
+          "max_window_weight_ModernTCN": 0.04285714775323868,
+          "activation_rate_DLinear": 1.0,
+          "activation_rate_ModernTCN": 1.0,
+          "mean_adv_DLinear_when_active": 0.21476247313555458,
+          "mean_adv_ModernTCN_when_active": 0.25215461129416844,
+          "scenario": "both",
+          "structure": "variable",
+          "decay": 0.95,
+          "extra_weight_cap": 0.1,
+          "activation_margin": 0.02,
+          "warmup": 96,
+          "config_name": "both_variable_decay0.95_cap0.1_marginbp200_warm96"
+        },
+        {
+          "dataset": "ETTh2",
+          "method": "selected_predefined_limited",
+          "mae": 0.09323900192975998,
+          "mse": 0.03415650501847267,
+          "baseline_mae": 0.09833905845880508,
+          "baseline_mse": 0.038581494241952896,
+          "absolute_improvement_mae": 0.005100056529045105,
+          "percent_improvement_mae": 5.186196216411361,
+          "mean_diff_candidate_minus_baseline": -0.00510005559772253,
+          "ci95_low": -0.005252609495073557,
+          "ci95_high": -0.004949454218149185,
+          "ci_excludes_zero": true,
+          "num_updates": 601,
+          "avg_weight_DLinear": 0.04999999701976776,
+          "max_window_weight_DLinear": 0.04999999701976776,
+          "avg_weight_ModernTCN": 0.04999999701976776,
+          "max_window_weight_ModernTCN": 0.04999999701976776,
+          "activation_rate_DLinear": 1.0,
+          "activation_rate_ModernTCN": 1.0,
+          "mean_adv_DLinear_when_active": 0.2738667213605629,
+          "mean_adv_ModernTCN_when_active": 0.26153310503792415,
+          "scenario": "both",
+          "structure": "global",
+          "decay": 0.99,
+          "extra_weight_cap": 0.1,
+          "activation_margin": 0.02,
+          "warmup": 96,
+          "config_name": "both_global_decay0.99_cap0.1_marginbp200_warm96"
+        }
+      ],
+      "worst_horizon_variable_regression": [
+        {
+          "method": "locked_etth1_expanded_both_limited",
+          "horizon": 10,
+          "variable": 1,
+          "delta_vs_baseline_mean": 1.154094934463501e-05
+        },
+        {
+          "method": "selected_predefined_limited",
+          "horizon": 7,
+          "variable": 1,
+          "delta_vs_baseline_mean": 0.0007289871573448181
+        }
+      ],
+      "test_cache_loaded": false
+    },
+    {
+      "dataset": "ETTm1",
+      "status": "missing_existing_expert_caches",
+      "test_cache_loaded": false
+    },
+    {
+      "dataset": "ETTm2",
+      "status": "missing_existing_expert_caches",
+      "test_cache_loaded": false
+    },
+    {
+      "dataset": "Weather",
+      "status": "missing_existing_expert_caches",
+      "test_cache_loaded": false
+    },
+    {
+      "dataset": "Electricity",
+      "status": "missing_existing_expert_caches",
+      "test_cache_loaded": false
+    }
+  ],
+  "runtime_sec": 15.539937019348145,
+  "safety": {
+    "test_cache_loaded": false
+  },
+  "reproduce_command": "python experiments\\multidataset_replication_costar\\run_locked_replication.py"
+}

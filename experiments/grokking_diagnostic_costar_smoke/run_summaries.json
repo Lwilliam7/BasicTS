@@ -1,0 +1,23 @@
+[
+  {
+    "seed": 7,
+    "weight_decay": 0.001,
+    "epochs": 1,
+    "runtime_sec": 0.9860007762908936,
+    "peak_gpu_memory_mb": 236.8212890625
+  },
+  {
+    "seed": 7,
+    "weight_decay": 0.01,
+    "epochs": 1,
+    "runtime_sec": 0.665809154510498,
+    "peak_gpu_memory_mb": 236.8212890625
+  },
+  {
+    "seed": 7,
+    "weight_decay": 0.1,
+    "epochs": 1,
+    "runtime_sec": 0.7431461811065674,
+    "peak_gpu_memory_mb": 236.8212890625
+  }
+]

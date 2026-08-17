@@ -1,0 +1,90 @@
+{
+  "method": "Full End-to-End Sequential COSTAR-TS",
+  "dataset": "ETTh1",
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "train_split": {
+    "start": 0,
+    "end": 8640
+  },
+  "validation_split": {
+    "start": 8640,
+    "end": 11520
+  },
+  "test_accessed": false,
+  "seeds": [
+    7
+  ],
+  "validation_mae_mean": 0.4217952787876129,
+  "validation_mae_std": 0.0,
+  "validation_mse_mean": 0.38460683822631836,
+  "validation_mse_std": 0.0,
+  "runs": [
+    {
+      "seed": 7,
+      "best_epoch": 3,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_end_to_end\\seed_7\\best_full_end_to_end_costarts.pt",
+      "validation": {
+        "mae": 0.4217952787876129,
+        "mse": 0.38460683822631836,
+        "average_hard_queries": 1.042553186416626,
+        "routing_entropy": 1.5881957298919176,
+        "expert_usage_percent": {
+          "DLinear": 0.21637216011539848,
+          "PatchTST": 47.20519293184277,
+          "iTransformer": 5.553552109628561,
+          "TimesNet": 47.34944103858637,
+          "ModernTCN": 3.9307609087630726
+        },
+        "stop_distribution_percent": {
+          "1": 95.85286693112153,
+          "2": 4.038946988820772,
+          "3": 0.10818608005769924,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "individual_experts": [
+          {
+            "expert": "DLinear",
+            "mae": 0.5291426418234285,
+            "mse": 0.57364115971243
+          },
+          {
+            "expert": "PatchTST",
+            "mae": 0.4153552022687029,
+            "mse": 0.3738487097832686
+          },
+          {
+            "expert": "iTransformer",
+            "mae": 0.42033630547177864,
+            "mse": 0.39096050214303174
+          },
+          {
+            "expert": "TimesNet",
+            "mae": 0.4441118099351588,
+            "mse": 0.43188023421036137
+          },
+          {
+            "expert": "ModernTCN",
+            "mae": 0.48642330396661165,
+            "mse": 0.4904006493035697
+          }
+        ]
+      },
+      "first_batch_gradient_report": {
+        "DLinear": 4.134074464440346,
+        "PatchTST": 20.540265540868635,
+        "iTransformer": 5.625222098915259,
+        "TimesNet": 16.684358295053244,
+        "ModernTCN": 4.542793750965532,
+        "COSTAR_router": 5.834684041386936
+      }
+    }
+  ],
+  "safety": "NO TEST DATA USED"
+}

@@ -1,0 +1,183 @@
+{
+  "method": "Sequential COSTAR-TS utility ranking objective comparison",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "validation_range": [
+    8640,
+    11520
+  ],
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "initial_state_target": "With no queried experts, utility_j = -MAE(expert_j, target), so first-query candidates are ranked by standalone forecast loss.",
+  "listwise_loss": "-sum_j softmax(u_j/tau) * log_softmax(f_j), normalized over unqueried experts only.",
+  "listwise_stop_loss": "For non-initial states, actions are unqueried experts plus STOP. STOP has utility 0 and fixed logit 0. Initial state masks STOP so the first query remains forced.",
+  "pairwise_loss": "softplus(-(f_i-f_j)) for available pairs with u_i > u_j + epsilon.",
+  "stop_behavior": "unchanged inference: first query is forced, later queries continue only when max predicted score > query_threshold; stop calibration anchors ranking scores to marginal utility.",
+  "safety": "NO TEST DATA USED",
+  "summaries": [
+    {
+      "config": "utility_listwise_stop_tau_0p01",
+      "objective": "utility_listwise_stop",
+      "target_temperature": null,
+      "validation_mae_mean": 0.37955790758132935,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3265279233455658,
+      "validation_mse_std": 0.0,
+      "average_queries_mean": 1.0,
+      "average_queries_std": 0.0,
+      "top1_utility_accuracy_mean": 21.204471691309053,
+      "top2_utility_coverage_mean": 39.95672556797692,
+      "mean_regret_mean": 0.19663019326246478,
+      "mean_regret_std": 0.0,
+      "positive_utility_selection_rate_mean": 0.0,
+      "parameter_count": 65029,
+      "per_seed": [
+        {
+          "config": "utility_listwise_stop_tau_0p01",
+          "objective": "utility_listwise_stop",
+          "target_temperature": "",
+          "seed": 7,
+          "best_epoch": 1,
+          "validation_mae": 0.37955790758132935,
+          "validation_mse": 0.3265279233455658,
+          "raw_validation_mae": 1.3002585172653198,
+          "raw_validation_mse": 5.307104110717773,
+          "average_queries": 1.0,
+          "top1_utility_accuracy": 21.204471691309053,
+          "top2_utility_coverage": 39.95672556797692,
+          "mean_regret": 0.19663019326246478,
+          "median_regret": 0.1306501030921936,
+          "regret_p90": 0.4873082160949707,
+          "positive_utility_selection_rate": 0.0,
+          "states_with_positive_available_utility": 0.0,
+          "parameter_count": 65029
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "raw_mae": 1.3002585172653198,
+          "raw_mse": 5.307104110717773,
+          "mae": 0.37955790758132935,
+          "mse": 0.3265279233455658,
+          "average_queries": 1.0,
+          "top1_utility_accuracy": 21.204471691309053,
+          "top2_utility_coverage": 39.95672556797692,
+          "positive_utility_selection_rate": 0.0,
+          "states_with_positive_available_utility": 0.0,
+          "mean_regret": 0.19663019326246478,
+          "median_regret": 0.1306501030921936,
+          "regret_std": 0.21797805011241503,
+          "regret_p90": 0.4873082160949707,
+          "regret_p95": 0.651699435710907,
+          "query_count_percent": {
+            "1": 100.0,
+            "2": 0.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 100.0,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.0,
+            "PatchTST": 0.0,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "hard_stop_percent_by_step": {
+            "1": 0.0,
+            "2": 100.0,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "utility_statistics": {
+            "mean": -0.7502956258427634,
+            "std": 0.8451586379516146,
+            "min": -5.240595817565918,
+            "max": 0.8327879905700684,
+            "median": -0.7425588965415955,
+            "p05": -2.2733356952667236,
+            "p10": -1.8475138902664183,
+            "p25": -1.28291916847229,
+            "p75": 0.002601027488708496,
+            "p90": 0.12792420387268078,
+            "p95": 0.2105973243713378,
+            "fraction_positive": 25.33557719277157,
+            "fraction_near_zero": 0.26846175421725366
+          },
+          "margin_bins": {
+            "lt_0.001": {
+              "states": 29,
+              "top1_utility_accuracy": 24.137931034482758,
+              "mean_regret": 0.07974206168076088,
+              "mean_selected_single_expert_mae": 0.34232913677034704
+            },
+            "0.001_0.005": {
+              "states": 87,
+              "top1_utility_accuracy": 27.586206896551722,
+              "mean_regret": 0.07600831848451461,
+              "mean_selected_single_expert_mae": 0.32224021680738735
+            },
+            "0.005_0.01": {
+              "states": 93,
+              "top1_utility_accuracy": 17.204301075268816,
+              "mean_regret": 0.10214079227498783,
+              "mean_selected_single_expert_mae": 0.3534908211359414
+            },
+            "0.01_0.02": {
+              "states": 194,
+              "top1_utility_accuracy": 24.22680412371134,
+              "mean_regret": 0.09736596800617336,
+              "mean_selected_single_expert_mae": 0.35946226634622847
+            },
+            "gt_0.02": {
+              "states": 2370,
+              "top1_utility_accuracy": 20.843881856540083,
+              "mean_regret": 0.21432159955491498,
+              "mean_selected_single_expert_mae": 0.3847853499940176
+            }
+          }
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "config": "utility_listwise_stop_tau_0p01",
+      "objective": "utility_listwise_stop",
+      "target_temperature": "",
+      "validation_mae_mean": 0.37955790758132935,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3265279233455658,
+      "validation_mse_std": 0.0,
+      "average_queries_mean": 1.0,
+      "top1_utility_accuracy_mean": 21.204471691309053,
+      "top2_utility_coverage_mean": 39.95672556797692,
+      "mean_regret_mean": 0.19663019326246478,
+      "positive_utility_selection_rate_mean": 0.0,
+      "parameter_count": 65029
+    }
+  ],
+  "best_by_validation_mae": {
+    "config": "utility_listwise_stop_tau_0p01",
+    "objective": "utility_listwise_stop",
+    "target_temperature": "",
+    "validation_mae_mean": 0.37955790758132935,
+    "validation_mae_std": 0.0,
+    "validation_mse_mean": 0.3265279233455658,
+    "validation_mse_std": 0.0,
+    "average_queries_mean": 1.0,
+    "top1_utility_accuracy_mean": 21.204471691309053,
+    "top2_utility_coverage_mean": 39.95672556797692,
+    "mean_regret_mean": 0.19663019326246478,
+    "positive_utility_selection_rate_mean": 0.0,
+    "parameter_count": 65029
+  }
+}

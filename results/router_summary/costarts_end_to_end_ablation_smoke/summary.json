@@ -1,0 +1,219 @@
+{
+  "seed": 7,
+  "experiments": [
+    {
+      "experiment": "E_counterfactual_query_stop",
+      "seed": 7,
+      "best_epoch": 1,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_end_to_end_ablation_smoke\\E_counterfactual_query_stop\\seed_7\\best_full_end_to_end_costarts.pt",
+      "normal_hard_validation": {
+        "mae": 0.6165743470191956,
+        "mse": 0.7592070698738098,
+        "average_queries": 5.0,
+        "query_count_percent": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 100.0
+        },
+        "first_query_percent": {
+          "DLinear": 0.0,
+          "PatchTST": 100.0,
+          "iTransformer": 0.0,
+          "TimesNet": 0.0,
+          "ModernTCN": 0.0
+        },
+        "second_query_percent_all_samples": {
+          "DLinear": 0.03606202668589975,
+          "PatchTST": 0.0,
+          "iTransformer": 92.06635412910205,
+          "TimesNet": 0.0,
+          "ModernTCN": 7.897583844212044
+        },
+        "second_query_percent_among_second_queries": {
+          "DLinear": 0.03606202668589975,
+          "PatchTST": 0.0,
+          "iTransformer": 92.06635412910205,
+          "TimesNet": 0.0,
+          "ModernTCN": 7.897583844212044
+        },
+        "expert_usage_percent": {
+          "DLinear": 100.0,
+          "PatchTST": 100.0,
+          "iTransformer": 100.0,
+          "TimesNet": 100.0,
+          "ModernTCN": 100.0
+        },
+        "mean_stop_prob_by_step": {
+          "1": 0.10738633077066383,
+          "2": 0.28891451230687093,
+          "3": 0.3494774659875924,
+          "4": 0.3723437793840366,
+          "5": 0.386190692999283
+        },
+        "individual_experts": [
+          {
+            "expert": "DLinear",
+            "mae": 0.8684103656580334,
+            "mse": 1.4575317801012273
+          },
+          {
+            "expert": "PatchTST",
+            "mae": 0.6011601725597912,
+            "mse": 0.7356648931768109
+          },
+          {
+            "expert": "iTransformer",
+            "mae": 0.6168695856335789,
+            "mse": 0.7627079052655137
+          },
+          {
+            "expert": "TimesNet",
+            "mae": 0.672377318455517,
+            "mse": 0.9062043061722412
+          },
+          {
+            "expert": "ModernTCN",
+            "mae": 0.6742997057722486,
+            "mse": 0.914657276372294
+          }
+        ]
+      },
+      "forced_min2_hard_validation": {
+        "mae": 0.6165743470191956,
+        "mse": 0.7592070698738098,
+        "average_queries": 5.0,
+        "query_count_percent": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 100.0
+        },
+        "first_query_percent": {
+          "DLinear": 0.0,
+          "PatchTST": 100.0,
+          "iTransformer": 0.0,
+          "TimesNet": 0.0,
+          "ModernTCN": 0.0
+        },
+        "second_query_percent_all_samples": {
+          "DLinear": 0.03606202668589975,
+          "PatchTST": 0.0,
+          "iTransformer": 92.06635412910205,
+          "TimesNet": 0.0,
+          "ModernTCN": 7.897583844212044
+        },
+        "second_query_percent_among_second_queries": {
+          "DLinear": 0.03606202668589975,
+          "PatchTST": 0.0,
+          "iTransformer": 92.06635412910205,
+          "TimesNet": 0.0,
+          "ModernTCN": 7.897583844212044
+        },
+        "expert_usage_percent": {
+          "DLinear": 100.0,
+          "PatchTST": 100.0,
+          "iTransformer": 100.0,
+          "TimesNet": 100.0,
+          "ModernTCN": 100.0
+        },
+        "mean_stop_prob_by_step": {
+          "1": 0.10738633077066383,
+          "2": 0.28891451230687093,
+          "3": 0.3494774659875924,
+          "4": 0.3723437793840366,
+          "5": 0.386190692999283
+        },
+        "individual_experts": [
+          {
+            "expert": "DLinear",
+            "mae": 0.8684103656580334,
+            "mse": 1.4575317801012273
+          },
+          {
+            "expert": "PatchTST",
+            "mae": 0.6011601725597912,
+            "mse": 0.7356648931768109
+          },
+          {
+            "expert": "iTransformer",
+            "mae": 0.6168695856335789,
+            "mse": 0.7627079052655137
+          },
+          {
+            "expert": "TimesNet",
+            "mae": 0.672377318455517,
+            "mse": 0.9062043061722412
+          },
+          {
+            "expert": "ModernTCN",
+            "mae": 0.6742997057722486,
+            "mse": 0.914657276372294
+          }
+        ]
+      },
+      "spec": {
+        "name": "E_counterfactual_query_stop",
+        "max_epochs": 1,
+        "patience": 1,
+        "min_query_warmup_epochs": 1,
+        "min_queries_during_warmup": 2,
+        "alpha_schedule": [
+          [
+            1,
+            1.0
+          ],
+          [
+            6,
+            0.5
+          ],
+          [
+            11,
+            0.1
+          ]
+        ],
+        "lambda_counterfactual_query": 0.1,
+        "lambda_counterfactual_stop": 0.1
+      },
+      "optimizer": {
+        "expert_lr": 0.0001,
+        "router_lr": 0.0003,
+        "stop_lr": 0.0001
+      },
+      "train_split": {
+        "start": 0,
+        "end": 8640
+      },
+      "validation_split": {
+        "start": 8640,
+        "end": 11520
+      },
+      "test_accessed": false,
+      "safety": "NO TEST DATA USED; test_data.npy not loaded"
+    }
+  ],
+  "summary_rows": [
+    {
+      "experiment": "E_counterfactual_query_stop",
+      "best_epoch": 1,
+      "validation_mae": 0.6165743470191956,
+      "validation_mse": 0.7592070698738098,
+      "average_queries": 5.0,
+      "forced2_mae": 0.6165743470191956,
+      "forced2_mse": 0.7592070698738098,
+      "forced2_average_queries": 5.0
+    }
+  ],
+  "train_split": {
+    "start": 0,
+    "end": 8640
+  },
+  "validation_split": {
+    "start": 8640,
+    "end": 11520
+  },
+  "test_accessed": false,
+  "safety": "NO TEST DATA USED; test_data.npy not loaded"
+}

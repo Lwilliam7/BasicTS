@@ -1,0 +1,140 @@
+{
+  "created_from": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\frozen_model_test_results\\run_etth2_matched_table.py",
+  "etth2_train_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+  "etth2_val_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt",
+  "etth2_test_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\caches\\ETTh2\\locked_test_cache_v2.pt",
+  "rows": [
+    {
+      "method": "MLP residual corrector",
+      "etth1_test_mae": 0.32604682445526123,
+      "etth1_test_mse": 0.2673218250274658,
+      "etth1_validation_mae": 0.3633176386356354,
+      "etth2_test_mae": "",
+      "etth2_test_mse": "",
+      "etth2_validation_mae": "",
+      "etth2_expert_set": "",
+      "etth2_status": "not_generated_no_frozen_etth2_artifact",
+      "etth2_note": "No frozen ETTh2 MLP residual-corrector artifact exists in the repo."
+    },
+    {
+      "method": "Full adaptive model",
+      "etth1_test_mae": 0.3263952910900116,
+      "etth1_test_mse": 0.2675091326236725,
+      "etth1_validation_mae": 0.3631121516227722,
+      "etth2_test_mae": 0.29780814051628113,
+      "etth2_test_mse": 0.21861225366592407,
+      "etth2_validation_mae": 0.27683213353157043,
+      "etth2_expert_set": "DLinear+PatchTST+ModernTCN",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "ETTh2 frozen full adaptive model; DLinear/ModernTCN duplicate specialists disabled."
+    },
+    {
+      "method": "Expanded DLinear only",
+      "etth1_test_mae": 0.32643741369247437,
+      "etth1_test_mse": 0.26759278774261475,
+      "etth1_validation_mae": 0.3635100722312927,
+      "etth2_test_mae": 0.29780814051628113,
+      "etth2_test_mse": 0.21861225366592407,
+      "etth2_validation_mae": 0.27683213353157043,
+      "etth2_expert_set": "DLinear+PatchTST+ModernTCN",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "Not a distinct ETTh2 model: DLinear is already in the selected core, so the duplicate specialist is disabled."
+    },
+    {
+      "method": "Ridge residual corrector",
+      "etth1_test_mae": 0.32644808292388916,
+      "etth1_test_mse": 0.2674521803855896,
+      "etth1_validation_mae": 0.36330097913742065,
+      "etth2_test_mae": "",
+      "etth2_test_mse": "",
+      "etth2_validation_mae": "",
+      "etth2_expert_set": "",
+      "etth2_status": "not_generated_no_frozen_etth2_artifact",
+      "etth2_note": "No frozen ETTh2 ridge residual-corrector artifact exists in the repo."
+    },
+    {
+      "method": "Expanded ModernTCN only",
+      "etth1_test_mae": 0.32646796107292175,
+      "etth1_test_mse": 0.26759111881256104,
+      "etth1_validation_mae": 0.36343517899513245,
+      "etth2_test_mae": 0.29780814051628113,
+      "etth2_test_mse": 0.21861225366592407,
+      "etth2_validation_mae": 0.27683213353157043,
+      "etth2_expert_set": "DLinear+PatchTST+ModernTCN",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "Not a distinct ETTh2 model: ModernTCN is already in the selected core, so the duplicate specialist is disabled."
+    },
+    {
+      "method": "Horizon-variable hybrid",
+      "etth1_test_mae": 0.3264932632446289,
+      "etth1_test_mse": 0.26763829588890076,
+      "etth1_validation_mae": 0.36364156007766724,
+      "etth2_test_mae": 0.29780814051628113,
+      "etth2_test_mse": 0.21861225366592407,
+      "etth2_validation_mae": 0.27683213353157043,
+      "etth2_expert_set": "DLinear+PatchTST+ModernTCN",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "ETTh2 horizon-variable hybrid analogue; same prediction as full model because duplicate specialists are disabled."
+    },
+    {
+      "method": "Chronological EMA hybrid",
+      "etth1_test_mae": 0.3265482187271118,
+      "etth1_test_mse": 0.26664260029792786,
+      "etth1_validation_mae": 0.36553388833999634,
+      "etth2_test_mae": 0.30168887972831726,
+      "etth2_test_mse": 0.22237081825733185,
+      "etth2_validation_mae": 0.27880561351776123,
+      "etth2_expert_set": "DLinear+PatchTST+ModernTCN",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "ETTh2 chronological EMA analogue over train-selected core."
+    },
+    {
+      "method": "Oracle prototype residual",
+      "etth1_test_mae": 0.3268287479877472,
+      "etth1_test_mse": 0.2673642635345459,
+      "etth1_validation_mae": 0.3660282492637634,
+      "etth2_test_mae": "",
+      "etth2_test_mse": "",
+      "etth2_validation_mae": "",
+      "etth2_expert_set": "",
+      "etth2_status": "not_generated_no_frozen_etth2_artifact",
+      "etth2_note": "No frozen ETTh2 oracle-prototype residual artifact exists in the repo."
+    },
+    {
+      "method": "Fixed-three core",
+      "etth1_test_mae": 0.3271281123161316,
+      "etth1_test_mse": 0.26658302545547485,
+      "etth1_validation_mae": 0.36726489663124084,
+      "etth2_test_mae": 0.30464205145835876,
+      "etth2_test_mse": 0.22518514096736908,
+      "etth2_validation_mae": 0.2808783948421478,
+      "etth2_expert_set": "DLinear+PatchTST+ModernTCN",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "ETTh2 router-train selected fixed-three equal core."
+    },
+    {
+      "method": "Dynamic fixed-three, seed 7",
+      "etth1_test_mae": 0.32924923300743103,
+      "etth1_test_mse": 0.27206283807754517,
+      "etth1_validation_mae": 0.36598527431488037,
+      "etth2_test_mae": "",
+      "etth2_test_mse": "",
+      "etth2_validation_mae": "",
+      "etth2_expert_set": "",
+      "etth2_status": "not_generated_no_frozen_etth2_artifact",
+      "etth2_note": "No ETTh2 dynamic fixed-three checkpoint matching the ETTh1 method exists; ETTh2 has sequential/pair-selector artifacts instead."
+    },
+    {
+      "method": "Best single",
+      "etth1_test_mae": 0.3390795886516571,
+      "etth1_test_mse": 0.2785514295101166,
+      "etth1_validation_mae": 0.37654954195022583,
+      "etth2_test_mae": 0.30170753598213196,
+      "etth2_test_mse": 0.22269397974014282,
+      "etth2_validation_mae": 0.28095653653144836,
+      "etth2_expert_set": "DLinear",
+      "etth2_status": "pre_test_frozen",
+      "etth2_note": "ETTh2 best single expert."
+    }
+  ]
+}

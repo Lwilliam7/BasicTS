@@ -1,0 +1,279 @@
+{
+  "datasets": {
+    "ETTh1": {
+      "adaptive_weighting_parameters": {
+        "architecture": "hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75",
+        "chrono_hv_blend": {
+          "chrono_weight": 0.25,
+          "hv_weight": 0.75
+        },
+        "chronological_component": {
+          "decay": 0.97,
+          "family": "EMA",
+          "online_blend_alpha": 0.5,
+          "temperature": 0.1
+        },
+        "horizon_variable_component": {
+          "alpha": 0.75,
+          "decay": 0.95,
+          "mode": "hv_lowrank",
+          "rank": 1,
+          "temperature": 0.1
+        },
+        "specialist_configuration": {
+          "cap": 0.1,
+          "decay": 0.95,
+          "margin": 0.02,
+          "margin_basis_points": 200,
+          "name": "both_variable_decay0.95_cap0.1_marginbp200_warm96",
+          "specialists": [
+            "DLinear",
+            "ModernTCN"
+          ],
+          "structure": "variable",
+          "warmup": 96
+        }
+      },
+      "cache_hashes_from_prior_reports": {
+        "hash_note": "Hashes reused from completed non-test reports; no cache tensor was loaded during this freeze.",
+        "normalizer_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+        "router_train_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+        "router_validation_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6"
+      },
+      "cache_paths": {
+        "normalizer_checkpoint": "checkpoints/costarts_walkforward/final_60/DLinear/best_expert.pt",
+        "router_train": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+        "router_validation": "cache/costarts_walkforward/router_val_60_80_cache.pt"
+      },
+      "code_scripts_used": {
+        "core_selection_and_clean_validation": "experiments/train_selected_core_etth1/run_train_selected_core_eval.py",
+        "freeze_script": "experiments/final_test_freeze/create_final_model_freeze.py",
+        "specialist_source_experiment": "experiments/expanded_expert_pool_costar/run_expanded_expert_pool.py"
+      },
+      "core_expert_indices": [
+        1,
+        2,
+        3
+      ],
+      "dataset": "ETTh1",
+      "effective_specialist_handling": {
+        "DLinear": "enabled_as_optional_specialist",
+        "ModernTCN": "enabled_as_optional_specialist",
+        "duplicate_specialists_disabled_if_in_core": true
+      },
+      "expert_index_map": {
+        "DLinear": 0,
+        "ModernTCN": 4,
+        "PatchTST": 1,
+        "TimesNet": 3,
+        "iTransformer": 2
+      },
+      "frozen_development_result": true,
+      "git_commit_hash": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+      "how_core_was_selected": "router_train-only chronological OOF selection over all 10 fixed-three subsets",
+      "model_frozen": true,
+      "random_seeds": [
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "relevant_checkpoint_paths": {
+        "DLinear": "checkpoints/costarts_walkforward/final_60/DLinear/best_expert.pt",
+        "ModernTCN": "checkpoints/costarts_walkforward/final_60/ModernTCN/best_expert.pt",
+        "PatchTST": "checkpoints/costarts_walkforward/final_60/PatchTST/best_expert.pt",
+        "TimesNet": "checkpoints/costarts_walkforward/final_60/TimesNet/best_expert.pt",
+        "iTransformer": "checkpoints/costarts_walkforward/final_60/iTransformer/best_expert.pt"
+      },
+      "selected_core_experts": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "source_reports": [
+        "experiments/train_selected_core_etth1/final_report.json",
+        "experiments/expanded_expert_pool_costar/final_report.json"
+      ],
+      "test_loaded": false,
+      "test_metrics_seen": false,
+      "timestamp_utc": "2026-08-12T23:57:07.884378+00:00",
+      "validation": {
+        "mae": 0.3631121516227722,
+        "mae_std": 1.3362897334445734e-05,
+        "marked_final_frozen_development_mae": 0.363112,
+        "marked_final_frozen_development_mse": 0.306057,
+        "mse": 0.30605703592300415,
+        "mse_std": 1.6202571714529768e-05
+      },
+      "validation_tuning_complete": true
+    },
+    "ETTh2": {
+      "adaptive_weighting_parameters": {
+        "architecture": "hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75",
+        "chrono_hv_blend": {
+          "chrono_weight": 0.25,
+          "hv_weight": 0.75
+        },
+        "chronological_component": {
+          "decay": 0.97,
+          "family": "EMA",
+          "online_blend_alpha": 0.5,
+          "static_prior": "equal_weights_no_etth2_static_neural_artifact",
+          "temperature": 0.1
+        },
+        "horizon_variable_component": {
+          "alpha": 0.75,
+          "decay": 0.95,
+          "mode": "hv_lowrank",
+          "rank": 1,
+          "temperature": 0.1
+        },
+        "specialist_configuration": {
+          "cap": 0.1,
+          "decay": 0.95,
+          "margin": 0.02,
+          "margin_basis_points": 200,
+          "name": "both_variable_decay0.95_cap0.1_marginbp200_warm96",
+          "specialists": [
+            "DLinear",
+            "ModernTCN"
+          ],
+          "structure": "variable",
+          "warmup": 96
+        }
+      },
+      "cache_hashes_from_prior_reports": {
+        "hash_note": "Hashes reused from completed non-test reports; no cache tensor was loaded during this freeze.",
+        "router_train_sha256": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+        "router_validation_sha256": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088"
+      },
+      "cache_paths": {
+        "router_train": "cache/costarts_fresh/ETTh2_96_12/router_train_cache.pt",
+        "router_validation": "cache/costarts_fresh/ETTh2_96_12/router_val_cache.pt"
+      },
+      "code_scripts_used": {
+        "canonical_reference_baselines": "experiments/etth2_canonical_protocol/run_canonical_etth2_baselines.py",
+        "core_selection_and_clean_validation": "experiments/etth2_train_selected_core/run_etth2_train_selected_core_eval.py",
+        "freeze_script": "experiments/final_test_freeze/create_final_model_freeze.py"
+      },
+      "core_expert_indices": [
+        0,
+        1,
+        4
+      ],
+      "dataset": "ETTh2",
+      "effective_specialist_handling": {
+        "DLinear": "disabled_as_duplicate_because_in_core",
+        "ModernTCN": "disabled_as_duplicate_because_in_core",
+        "duplicate_specialists_disabled_if_in_core": true
+      },
+      "expert_index_map": {
+        "DLinear": 0,
+        "ModernTCN": 4,
+        "PatchTST": 1,
+        "TimesNet": 3,
+        "iTransformer": 2
+      },
+      "git_commit_hash": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+      "how_core_was_selected": "router_train-only chronological OOF selection over all 10 fixed-three subsets",
+      "model_frozen": true,
+      "random_seed_note": "ETTh2 frozen adaptive evaluation is deterministic in the clean script.",
+      "random_seeds": [],
+      "relevant_checkpoint_paths": {
+        "DLinear": "checkpoints/costarts_fresh/ETTh2_96_12/clean_candidates/best_dlinear.pt",
+        "ModernTCN": "checkpoints/costarts_fresh/ETTh2_96_12/clean_candidates/best_moderntcn.pt",
+        "PatchTST": "checkpoints/costarts_fresh/ETTh2_96_12/clean_candidates/best_patchtst.pt"
+      },
+      "selected_core_experts": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "source_reports": [
+        "experiments/etth2_train_selected_core/final_report.json",
+        "experiments/etth2_canonical_protocol/final_report.json"
+      ],
+      "test_loaded": false,
+      "test_metrics_seen": false,
+      "timestamp_utc": "2026-08-12T23:57:07.884378+00:00",
+      "validation": {
+        "core_mae": 0.2808783948421478,
+        "core_mse": 0.17193281650543213,
+        "full_model_mae": 0.27683213353157043,
+        "full_model_mse": 0.16727977991104126
+      },
+      "validation_selected_reference_baselines_not_primary_model": {
+        "DLinear+ModernTCN": {
+          "mae": 0.2752290368080139,
+          "mse": 0.1653451770544052,
+          "selection_status": "validation-selected reference only, not frozen primary model"
+        },
+        "DLinear+TimesNet+ModernTCN": {
+          "mae": 0.27664363384246826,
+          "mse": 0.16693221032619476,
+          "selection_status": "validation-selected fixed-3 reference only, not frozen primary model"
+        }
+      },
+      "validation_tuning_complete": true
+    }
+  },
+  "freeze_name": "FINAL_COSTAR_TS_ETTh1_ETTh2_PRETEST_FREEZE",
+  "git_commit_hash": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "hard_rules": {
+    "do_not_change_alpha": true,
+    "do_not_change_blend_ratios": true,
+    "do_not_change_decay": true,
+    "do_not_change_expert_identities": true,
+    "do_not_change_features": true,
+    "do_not_change_margin": true,
+    "do_not_change_specialist_cap": true,
+    "do_not_change_subset_size": true,
+    "do_not_change_temperature": true,
+    "do_not_change_warmup": true,
+    "do_not_evaluate_test": true,
+    "do_not_load_test_cache": true,
+    "do_not_run_another_validation_search": true
+  },
+  "model_frozen": true,
+  "no_further_validation_tuning_allowed": true,
+  "path_guard": {
+    "assertion": "Any loaded/read source path containing 'test' raises RuntimeError.",
+    "loaded_paths_checked": [
+      {
+        "path": "experiments/train_selected_core_etth1/final_report.json",
+        "purpose": "source_report"
+      },
+      {
+        "path": "experiments/etth2_train_selected_core/final_report.json",
+        "purpose": "source_report"
+      },
+      {
+        "path": "experiments/etth2_canonical_protocol/final_report.json",
+        "purpose": "source_report"
+      },
+      {
+        "path": "experiments/expanded_expert_pool_costar/final_report.json",
+        "purpose": "source_report"
+      },
+      {
+        "path": "cache/costarts_fresh/ETTh2_96_12/router_train_cache.pt",
+        "purpose": "frozen_cache_path:router_train"
+      },
+      {
+        "path": "cache/costarts_fresh/ETTh2_96_12/router_val_cache.pt",
+        "purpose": "frozen_cache_path:router_validation"
+      },
+      {
+        "path": "checkpoints/costarts_walkforward/final_60/DLinear/best_expert.pt",
+        "purpose": "frozen_cache_path:normalizer_checkpoint"
+      }
+    ],
+    "test_cache_loaded": false
+  },
+  "test_loaded": false,
+  "test_metrics_seen": false,
+  "timestamp_utc": "2026-08-12T23:57:07.884378+00:00",
+  "unresolved_reproduction_issues": [],
+  "validation_tuning_complete": true
+}

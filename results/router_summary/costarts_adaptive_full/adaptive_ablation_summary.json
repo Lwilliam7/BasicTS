@@ -1,0 +1,148 @@
+{
+  "rows": [
+    {
+      "variant": "mask_only",
+      "seed": 7,
+      "mae": 0.3495183289051056,
+      "mse": 0.3150465786457062,
+      "average_experts_queried": 2.99347471451876,
+      "regret_to_oracle": 0.03137508034706116
+    },
+    {
+      "variant": "mask_only",
+      "seed": 11,
+      "mae": 0.3517927825450897,
+      "mse": 0.31642159819602966,
+      "average_experts_queried": 2.701468189233279,
+      "regret_to_oracle": 0.03364953398704529
+    },
+    {
+      "variant": "mask_only",
+      "seed": 13,
+      "mae": 0.35873496532440186,
+      "mse": 0.32544124126434326,
+      "average_experts_queried": 2.305057096247961,
+      "regret_to_oracle": 0.04059171676635742
+    },
+    {
+      "variant": "mask_only",
+      "seed": 17,
+      "mae": 0.3499271273612976,
+      "mse": 0.3169107139110565,
+      "average_experts_queried": 2.973898858075041,
+      "regret_to_oracle": 0.031783878803253174
+    },
+    {
+      "variant": "mask_only",
+      "seed": 19,
+      "mae": 0.35283252596855164,
+      "mse": 0.31729841232299805,
+      "average_experts_queried": 2.597063621533442,
+      "regret_to_oracle": 0.0346892774105072
+    },
+    {
+      "variant": "forecast",
+      "seed": 7,
+      "mae": 0.3510241210460663,
+      "mse": 0.31470245122909546,
+      "average_experts_queried": 2.768352365415987,
+      "regret_to_oracle": 0.03288087248802185
+    },
+    {
+      "variant": "forecast",
+      "seed": 11,
+      "mae": 0.3559128940105438,
+      "mse": 0.31660401821136475,
+      "average_experts_queried": 2.8792822185970635,
+      "regret_to_oracle": 0.03776964545249939
+    },
+    {
+      "variant": "forecast",
+      "seed": 13,
+      "mae": 0.36185896396636963,
+      "mse": 0.33362817764282227,
+      "average_experts_queried": 1.833605220228385,
+      "regret_to_oracle": 0.043715715408325195
+    },
+    {
+      "variant": "forecast",
+      "seed": 17,
+      "mae": 0.3518950045108795,
+      "mse": 0.31473949551582336,
+      "average_experts_queried": 3.4812398042414356,
+      "regret_to_oracle": 0.03375175595283508
+    },
+    {
+      "variant": "forecast",
+      "seed": 19,
+      "mae": 0.35368213057518005,
+      "mse": 0.3110939562320709,
+      "average_experts_queried": 2.99184339314845,
+      "regret_to_oracle": 0.03553888201713562
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 7,
+      "mae": 0.35160571336746216,
+      "mse": 0.31380802392959595,
+      "average_experts_queried": 2.99510603588907,
+      "regret_to_oracle": 0.033462464809417725
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 11,
+      "mae": 0.354169636964798,
+      "mse": 0.31384506821632385,
+      "average_experts_queried": 2.8450244698205545,
+      "regret_to_oracle": 0.03602638840675354
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 13,
+      "mae": 0.3608192503452301,
+      "mse": 0.3330332934856415,
+      "average_experts_queried": 2.109298531810767,
+      "regret_to_oracle": 0.04267600178718567
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 17,
+      "mae": 0.35058334469795227,
+      "mse": 0.31281018257141113,
+      "average_experts_queried": 3.523654159869494,
+      "regret_to_oracle": 0.03244009613990784
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 19,
+      "mae": 0.35148975253105164,
+      "mse": 0.3092304468154907,
+      "average_experts_queried": 3.2430668841761827,
+      "regret_to_oracle": 0.0333465039730072
+    }
+  ],
+  "summary": [
+    {
+      "variant": "forecast",
+      "mae_mean": 0.3548746109008789,
+      "mae_std": 0.0038726103957742453,
+      "avg_experts_mean": 2.7908644676208496,
+      "avg_experts_std": 0.5369693636894226
+    },
+    {
+      "variant": "forecast_disagreement",
+      "mae_mean": 0.35373350977897644,
+      "mae_std": 0.0037385406903922558,
+      "avg_experts_mean": 2.943229913711548,
+      "avg_experts_std": 0.47635525465011597
+    },
+    {
+      "variant": "mask_only",
+      "mae_mean": 0.3525611460208893,
+      "mae_std": 0.003315927227959037,
+      "avg_experts_mean": 2.7141923904418945,
+      "avg_experts_std": 0.25562429428100586
+    }
+  ],
+  "test_set_used": false
+}

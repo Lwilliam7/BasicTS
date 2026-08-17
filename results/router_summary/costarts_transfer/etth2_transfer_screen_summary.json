@@ -1,0 +1,75 @@
+{
+  "fixed_references": {
+    "equal_fixed3_mae": 0.36726489663124084,
+    "dynamic_fixed3_5seed_mae_mean": 0.3663418054580688,
+    "global_weighted_fixed3_val_oracle_mae": 0.3661971092224121,
+    "sequential_scratch_5seed_mae_mean": 0.36807
+  },
+  "runs": {
+    "dynamic_residual_scratch_seed7": {
+      "mae": 0.3660980761051178,
+      "mse": 0.30883675813674927,
+      "transfer_mode": "none",
+      "pretraining_data": "none",
+      "mean_weights": {
+        "PatchTST": 0.433789998292923,
+        "iTransformer": 0.3510771691799164,
+        "TimesNet": 0.21513287723064423
+      },
+      "global_weights": {
+        "PatchTST": 0.49000000953674316,
+        "iTransformer": 0.3100000023841858,
+        "TimesNet": 0.20000000298023224
+      }
+    },
+    "dynamic_residual_etth2_encoder_seed7": {
+      "mae": 0.3665257394313812,
+      "mse": 0.3094601333141327,
+      "transfer_mode": "encoder",
+      "pretraining_data": "ETTh2",
+      "mean_weights": {
+        "PatchTST": 0.4703964293003082,
+        "iTransformer": 0.29918360710144043,
+        "TimesNet": 0.23041997849941254
+      },
+      "global_weights": {
+        "PatchTST": 0.49000000953674316,
+        "iTransformer": 0.3100000023841858,
+        "TimesNet": 0.20000000298023224
+      }
+    },
+    "dynamic_residual_etth2_full_seed7": {
+      "mae": 0.3668195307254791,
+      "mse": 0.30987468361854553,
+      "transfer_mode": "full",
+      "pretraining_data": "ETTh2",
+      "mean_weights": {
+        "PatchTST": 0.4458182156085968,
+        "iTransformer": 0.2836269736289978,
+        "TimesNet": 0.2705548405647278
+      },
+      "global_weights": {
+        "PatchTST": 0.49000000953674316,
+        "iTransformer": 0.3100000023841858,
+        "TimesNet": 0.20000000298023224
+      }
+    },
+    "sequential_etth2_encoder_seed7": {
+      "mae": 0.36954715847969055,
+      "mse": 0.31101205945014954,
+      "avg_queries": 4.355210781097412,
+      "mean_regret": 0.10204511170179192,
+      "transfer_mode": "encoder",
+      "pretraining_data": "ETTh2"
+    },
+    "sequential_etth2_full_seed7": {
+      "mae": 0.3694199323654175,
+      "mse": 0.3125273883342743,
+      "avg_queries": 3.5344393253326416,
+      "mean_regret": 0.10847862825784352,
+      "transfer_mode": "full",
+      "pretraining_data": "ETTh2"
+    }
+  },
+  "conclusion": "ETTh2 pretraining did not improve dynamic residual fixed-3 or sequential COSTAR seed-7 screens; no 5-seed transfer sweep launched."
+}

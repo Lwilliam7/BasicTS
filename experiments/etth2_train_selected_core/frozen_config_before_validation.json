@@ -1,0 +1,80 @@
+{
+  "phase": "A_frozen_before_validation",
+  "dataset": "ETTh2",
+  "router_val_loaded": false,
+  "selected_three_experts": [
+    "DLinear",
+    "PatchTST",
+    "ModernTCN"
+  ],
+  "selected_expert_indices": [
+    0,
+    1,
+    4
+  ],
+  "router_train_oof_mae": 0.2846583127975464,
+  "router_train_oof_mse": 0.18171773850917816,
+  "router_train_worst_fold_mae": 0.3063142001628876,
+  "selection_metric": "pooled chronological OOF MAE on ETTh2 router_train only",
+  "tie_breakers": [
+    "OOF MSE",
+    "worst-fold MAE",
+    "deterministic expert-name ordering"
+  ],
+  "canonical_metric": {
+    "scale": "raw_original",
+    "std": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "inverse_transform": "none",
+    "mae_mse_implementation": "sample_mae/sample_mse"
+  },
+  "model_hyperparameters": {
+    "chrono_ema_decay": 0.97,
+    "chrono_temperature": 0.1,
+    "chrono_static_prior": "equal_weights_no_etth2_static_neural_artifact",
+    "chrono_online_blend": 0.5,
+    "hv_mode": "hv_lowrank",
+    "hv_rank": 1,
+    "hv_decay": 0.95,
+    "hv_temperature": 0.1,
+    "hybrid_chrono_weight": 0.25,
+    "hybrid_hv_weight": 0.75,
+    "specialist_config": {
+      "name": "both_variable_decay0.95_cap0.1_marginbp200_warm96",
+      "scenario": "both",
+      "structure": "variable",
+      "decay": 0.95,
+      "extra_weight_cap": 0.1,
+      "activation_margin": 0.02,
+      "warmup": 96
+    },
+    "duplicate_specialists_disabled_if_in_core": true
+  },
+  "cache_paths": {
+    "router_train": "cache/costarts_fresh/ETTh2_96_12/router_train_cache.pt"
+  },
+  "cache_hashes": {
+    "router_train_sha256": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b"
+  },
+  "expert_names_in_cache": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "train_windows": 2053,
+  "train_start_min": 8640,
+  "train_start_max": 10692,
+  "forecast_horizon": 12,
+  "num_variables": 7,
+  "selected_matches_canonical_best_fixed3": false,
+  "test_cache_loaded": false
+}

@@ -1,0 +1,310 @@
+{
+  "mode": "embedding_fingerprint",
+  "model": "Embedding + Fingerprint",
+  "validation_mae_mean": 0.3770561754703522,
+  "validation_mae_std": 0.002351479354020431,
+  "validation_mse_mean": 0.3240023136138916,
+  "validation_mse_std": 0.0033571789039159505,
+  "average_queries_mean": 1.1168409824371337,
+  "average_queries_std": 0.14906173930744546,
+  "parameter_count": 81669,
+  "per_seed": [
+    {
+      "mode": "embedding_fingerprint",
+      "model": "Embedding + Fingerprint",
+      "seed": 7,
+      "best_epoch": 4,
+      "validation_mae": 0.37521666288375854,
+      "validation_mse": 0.32251763343811035,
+      "raw_validation_mae": 1.2780144214630127,
+      "raw_validation_mse": 5.203719615936279,
+      "average_queries": 1.005769968032837,
+      "top1_expert_accuracy": 24.45005476474762,
+      "top2_oracle_coverage": 24.52217814641183,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_7\\best_fingerprint_router.pt",
+      "parameter_count": 81669
+    },
+    {
+      "mode": "embedding_fingerprint",
+      "model": "Embedding + Fingerprint",
+      "seed": 11,
+      "best_epoch": 1,
+      "validation_mae": 0.37584006786346436,
+      "validation_mse": 0.3209950923919678,
+      "raw_validation_mae": 1.282692551612854,
+      "raw_validation_mse": 5.178388595581055,
+      "average_queries": 1.0176703929901123,
+      "top1_expert_accuracy": 24.91886019706726,
+      "top2_oracle_coverage": 25.640100973674723,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_11\\best_fingerprint_router.pt",
+      "parameter_count": 81669
+    },
+    {
+      "mode": "embedding_fingerprint",
+      "model": "Embedding + Fingerprint",
+      "seed": 13,
+      "best_epoch": 5,
+      "validation_mae": 0.3754856288433075,
+      "validation_mse": 0.3225458264350891,
+      "raw_validation_mae": 1.2841119766235352,
+      "raw_validation_mse": 5.240218639373779,
+      "average_queries": 1.3862242698669434,
+      "top1_expert_accuracy": 24.738550186157227,
+      "top2_oracle_coverage": 31.51821132347638,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_13\\best_fingerprint_router.pt",
+      "parameter_count": 81669
+    },
+    {
+      "mode": "embedding_fingerprint",
+      "model": "Embedding + Fingerprint",
+      "seed": 17,
+      "best_epoch": 2,
+      "validation_mae": 0.38156211376190186,
+      "validation_mse": 0.33053267002105713,
+      "raw_validation_mae": 1.3114235401153564,
+      "raw_validation_mse": 5.456186771392822,
+      "average_queries": 1.0018031597137451,
+      "top1_expert_accuracy": 21.060223877429962,
+      "top2_oracle_coverage": 21.060223584565453,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_17\\best_fingerprint_router.pt",
+      "parameter_count": 81669
+    },
+    {
+      "mode": "embedding_fingerprint",
+      "model": "Embedding + Fingerprint",
+      "seed": 19,
+      "best_epoch": 1,
+      "validation_mae": 0.3771764039993286,
+      "validation_mse": 0.32342034578323364,
+      "raw_validation_mae": 1.2893686294555664,
+      "raw_validation_mse": 5.227509021759033,
+      "average_queries": 1.1727371215820312,
+      "top1_expert_accuracy": 23.764875531196594,
+      "top2_oracle_coverage": 26.685899747565813,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_19\\best_fingerprint_router.pt",
+      "parameter_count": 81669
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "raw_mae": 1.2780144214630127,
+      "raw_mse": 5.203719615936279,
+      "mae": 0.37521666288375854,
+      "mse": 0.32251763343811035,
+      "average_queries": 1.005769968032837,
+      "top1_expert_accuracy": 24.45005476474762,
+      "top2_oracle_coverage": 24.52217814641183,
+      "query_count_percent": {
+        "1": 99.4590695997115,
+        "2": 0.5048683736025965,
+        "3": 0.03606202668589975,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 58.276235124413994,
+        "iTransformer": 40.38946988820772,
+        "TimesNet": 0.0,
+        "ModernTCN": 1.3342949873782906
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.0,
+        "PatchTST": 0.10818608005769924,
+        "iTransformer": 0.43274432023079695,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 0.0,
+        "PatchTST": 20.0,
+        "iTransformer": 80.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 0.03606202668589975,
+        "PatchTST": 58.38442120447169,
+        "iTransformer": 40.82221420843852,
+        "TimesNet": 0.0,
+        "ModernTCN": 1.3342949873782906
+      }
+    },
+    "11": {
+      "raw_mae": 1.282692551612854,
+      "raw_mse": 5.178388595581055,
+      "mae": 0.37584006786346436,
+      "mse": 0.3209950923919678,
+      "average_queries": 1.0176703929901123,
+      "top1_expert_accuracy": 24.91886019706726,
+      "top2_oracle_coverage": 25.640100973674723,
+      "query_count_percent": {
+        "1": 98.23296069239092,
+        "2": 1.7670393076090876,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 2.560403894698882,
+        "PatchTST": 0.0,
+        "iTransformer": 97.43959610530112,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 1.694915254237288,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0721240533717995,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 95.91836734693878,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 4.081632653061225,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 4.25531914893617,
+        "PatchTST": 0.0,
+        "iTransformer": 97.43959610530112,
+        "TimesNet": 0.0721240533717995,
+        "ModernTCN": 0.0
+      }
+    },
+    "13": {
+      "raw_mae": 1.2841119766235352,
+      "raw_mse": 5.240218639373779,
+      "mae": 0.3754856288433075,
+      "mse": 0.3225458264350891,
+      "average_queries": 1.3862242698669434,
+      "top1_expert_accuracy": 24.738550186157227,
+      "top2_oracle_coverage": 31.51821132347638,
+      "query_count_percent": {
+        "1": 67.29174179588892,
+        "2": 27.371078254597908,
+        "3": 4.760187522538767,
+        "4": 0.576992426974396,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 18.067075369635774,
+        "PatchTST": 17.490082942661378,
+        "iTransformer": 62.85611251352326,
+        "TimesNet": 0.0,
+        "ModernTCN": 1.5867291741795888
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 1.9473494410385863,
+        "PatchTST": 27.01045798773891,
+        "iTransformer": 3.7504507753335736,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 5.953693495038589,
+        "PatchTST": 82.57993384785006,
+        "iTransformer": 11.466372657111355,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 20.735665344392356,
+        "PatchTST": 45.58240173097728,
+        "iTransformer": 69.09484313018392,
+        "TimesNet": 0.03606202668589975,
+        "ModernTCN": 3.1734583483591776
+      }
+    },
+    "17": {
+      "raw_mae": 1.3114235401153564,
+      "raw_mse": 5.456186771392822,
+      "mae": 0.38156211376190186,
+      "mse": 0.33053267002105713,
+      "average_queries": 1.0018031597137451,
+      "top1_expert_accuracy": 21.060223877429962,
+      "top2_oracle_coverage": 21.060223584565453,
+      "query_count_percent": {
+        "1": 99.8557518932564,
+        "2": 0.10818608005769924,
+        "3": 0.03606202668589975,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 11.684096646231518,
+        "PatchTST": 74.32383699963938,
+        "iTransformer": 13.992066354129102,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.10818608005769924,
+        "PatchTST": 0.03606202668589975,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 75.0,
+        "PatchTST": 25.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 11.792282726289217,
+        "PatchTST": 74.35989902632528,
+        "iTransformer": 14.028128380815001,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      }
+    },
+    "19": {
+      "raw_mae": 1.2893686294555664,
+      "raw_mse": 5.227509021759033,
+      "mae": 0.3771764039993286,
+      "mse": 0.32342034578323364,
+      "average_queries": 1.1727371215820312,
+      "top1_expert_accuracy": 23.764875531196594,
+      "top2_oracle_coverage": 26.685899747565813,
+      "query_count_percent": {
+        "1": 83.37540569780022,
+        "2": 15.975477821853588,
+        "3": 0.6491164803461954,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 2.993148214929679,
+        "iTransformer": 97.00685178507032,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 16.624594302199785,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 100.0,
+        "PatchTST": 0.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 16.624594302199785,
+        "PatchTST": 2.993148214929679,
+        "iTransformer": 97.00685178507032,
+        "TimesNet": 0.6491164803461954,
+        "ModernTCN": 0.0
+      }
+    }
+  }
+}

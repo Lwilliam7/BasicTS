@@ -1,0 +1,348 @@
+{
+  "experiment": "subset_action_head_greedy",
+  "rows": [
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "mean",
+      "seed": 7,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_mean_seed_7/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1,
+      "mae": 0.3668588697910309,
+      "mse": 0.33756881952285767,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.04871562123298645,
+      "first_query_oracle_match": 0.2349102795124054,
+      "first_query_counts": {
+        "DLinear": 40,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 228,
+        "ModernTCN": 345
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "ModernTCN": 345,
+        "TimesNet": 228,
+        "DLinear": 40
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "mean",
+      "seed": 11,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_mean_seed_11/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1,
+      "mae": 0.3690648376941681,
+      "mse": 0.34432676434516907,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.05092158913612366,
+      "first_query_oracle_match": 0.1924959272146225,
+      "first_query_counts": {
+        "DLinear": 586,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 27
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "DLinear": 586,
+        "ModernTCN": 27
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "mean",
+      "seed": 13,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_mean_seed_13/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1,
+      "mae": 0.3648495674133301,
+      "mse": 0.3389131724834442,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.046706318855285645,
+      "first_query_oracle_match": 0.2544861435890198,
+      "first_query_counts": {
+        "DLinear": 208,
+        "PatchTST": 0,
+        "iTransformer": 4,
+        "TimesNet": 0,
+        "ModernTCN": 401
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "ModernTCN": 401,
+        "DLinear": 208,
+        "iTransformer": 4
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "mean",
+      "seed": 17,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_mean_seed_17/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 2,
+      "mae": 0.366469144821167,
+      "mse": 0.3370068371295929,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.04832589626312256,
+      "first_query_oracle_match": 0.2577487826347351,
+      "first_query_counts": {
+        "DLinear": 83,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 228,
+        "ModernTCN": 302
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "ModernTCN": 302,
+        "TimesNet": 228,
+        "DLinear": 83
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "mean",
+      "seed": 19,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_mean_seed_19/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 2,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.05195525288581848,
+      "first_query_oracle_match": 0.19086460769176483,
+      "first_query_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "DLinear": 613
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "set_attention",
+      "seed": 7,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_set_attention_seed_7/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1,
+      "mae": 0.3648836314678192,
+      "mse": 0.3353680968284607,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.04674038290977478,
+      "first_query_oracle_match": 0.2544861435890198,
+      "first_query_counts": {
+        "DLinear": 15,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 207,
+        "ModernTCN": 391
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "ModernTCN": 391,
+        "TimesNet": 207,
+        "DLinear": 15
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "set_attention",
+      "seed": 11,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_set_attention_seed_11/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 2,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.05195525288581848,
+      "first_query_oracle_match": 0.19086460769176483,
+      "first_query_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "DLinear": 613
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "set_attention",
+      "seed": 13,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_set_attention_seed_13/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1,
+      "mae": 0.35679298639297485,
+      "mse": 0.32419174909591675,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.03864973783493042,
+      "first_query_oracle_match": 0.3001631200313568,
+      "first_query_counts": {
+        "DLinear": 37,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 17,
+        "ModernTCN": 559
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "ModernTCN": 559,
+        "DLinear": 37,
+        "TimesNet": 17
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "set_attention",
+      "seed": 17,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_set_attention_seed_17/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 2,
+      "mae": 0.36614394187927246,
+      "mse": 0.3393551707267761,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.04800069332122803,
+      "first_query_oracle_match": 0.28384992480278015,
+      "first_query_counts": {
+        "DLinear": 150,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 113,
+        "ModernTCN": 350
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "ModernTCN": 350,
+        "DLinear": 150,
+        "TimesNet": 113
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    },
+    {
+      "experiment": "subset_action_head_greedy",
+      "router_class": "COSTARSAdaptiveExperimentRouter",
+      "encoder": "set_attention",
+      "seed": 19,
+      "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_set_attention_seed_19/best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 2,
+      "mae": 0.3700985014438629,
+      "mse": 0.3458804190158844,
+      "average_experts_queried": 1.0,
+      "regret_to_oracle": 0.05195525288581848,
+      "first_query_oracle_match": 0.19086460769176483,
+      "first_query_counts": {
+        "DLinear": 613,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 0,
+        "ModernTCN": 0
+      },
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "query_order_distribution": {
+        "DLinear": 613
+      },
+      "all_queries_unique": true,
+      "test_set_used": false
+    }
+  ],
+  "summary": [
+    {
+      "encoder": "set_attention",
+      "mae_mean": 0.365603506565094,
+      "mae_std": 0.004875356797128916,
+      "mse_mean": 0.3381351828575134,
+      "avg_experts_mean": 1.0,
+      "avg_experts_std": 0.0
+    },
+    {
+      "encoder": "mean",
+      "mae_mean": 0.3674681782722473,
+      "mae_std": 0.0018811894115060568,
+      "mse_mean": 0.3407391905784607,
+      "avg_experts_mean": 1.0,
+      "avg_experts_std": 0.0
+    }
+  ],
+  "best_row": {
+    "experiment": "subset_action_head_greedy",
+    "router_class": "COSTARSAdaptiveExperimentRouter",
+    "encoder": "set_attention",
+    "seed": 13,
+    "checkpoint": "checkpoints/costarts_subset_utility/attention_compare_fair_set_attention_seed_13/best_subset_utility_costarts_router.pt",
+    "checkpoint_epoch": 1,
+    "mae": 0.35679298639297485,
+    "mse": 0.32419174909591675,
+    "average_experts_queried": 1.0,
+    "regret_to_oracle": 0.03864973783493042,
+    "first_query_oracle_match": 0.3001631200313568,
+    "first_query_counts": {
+      "DLinear": 37,
+      "PatchTST": 0,
+      "iTransformer": 0,
+      "TimesNet": 17,
+      "ModernTCN": 559
+    },
+    "stop_step_distribution": {
+      "1": 613
+    },
+    "query_order_distribution": {
+      "ModernTCN": 559,
+      "DLinear": 37,
+      "TimesNet": 17
+    },
+    "all_queries_unique": true,
+    "test_set_used": false
+  },
+  "test_set_used": false,
+  "results_csv": "results\\router_summary\\costarts_experiments\\subset_action_head_greedy\\subset_action_head_greedy_rows.csv"
+}

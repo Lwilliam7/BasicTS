@@ -1,0 +1,79 @@
+{
+  "scope": "router_val_60_80 validation only; same frozen forecasts and normalization",
+  "baseline_added": "iTransformer single expert",
+  "rows": [
+    {
+      "method": "iTransformer single expert",
+      "type": "single_expert_baseline",
+      "experts_or_avg_queries": 1.0,
+      "mae": 0.37654954195022583,
+      "mse": 0.32209450006484985,
+      "difference_vs_iTransformer_mae": 0.0,
+      "difference_vs_fixed3_mae": 0.009284645318984985
+    },
+    {
+      "method": "Best fixed 2: PatchTST+iTransformer",
+      "type": "fixed_ensemble_baseline",
+      "experts_or_avg_queries": 2.0,
+      "mae": 0.370154470205307,
+      "mse": 0.31450897455215454,
+      "difference_vs_iTransformer_mae": -0.006395071744918823,
+      "difference_vs_fixed3_mae": 0.002889573574066162
+    },
+    {
+      "method": "Fixed 3: PatchTST+iTransformer+TimesNet",
+      "type": "fixed_ensemble_baseline",
+      "experts_or_avg_queries": 3.0,
+      "mae": 0.36726489663124084,
+      "mse": 0.3105303645133972,
+      "difference_vs_iTransformer_mae": -0.009284645318984985,
+      "difference_vs_fixed3_mae": 0.0
+    },
+    {
+      "method": "Best fixed 4: DLinear+PatchTST+iTransformer+TimesNet",
+      "type": "fixed_ensemble_baseline",
+      "experts_or_avg_queries": 4.0,
+      "mae": 0.3682158589363098,
+      "mse": 0.31093770265579224,
+      "difference_vs_iTransformer_mae": -0.008333683013916016,
+      "difference_vs_fixed3_mae": 0.0009509623050689697
+    },
+    {
+      "method": "All five fixed ensemble",
+      "type": "fixed_ensemble_baseline",
+      "experts_or_avg_queries": 5.0,
+      "mae": 0.37109920382499695,
+      "mse": 0.31158220767974854,
+      "difference_vs_iTransformer_mae": -0.005450338125228882,
+      "difference_vs_fixed3_mae": 0.0038343071937561035
+    },
+    {
+      "method": "Sequential COSTAR utility-listwise max_q=4",
+      "type": "adaptive_router",
+      "experts_or_avg_queries": 3.6096645832061767,
+      "mae": 0.3692974388599396,
+      "mse": 0.31255937814712526,
+      "difference_vs_iTransformer_mae": -0.007252103090286233,
+      "difference_vs_fixed3_mae": 0.0020325422286987527
+    },
+    {
+      "method": "Weighted pairwise COSTAR",
+      "type": "adaptive_router",
+      "experts_or_avg_queries": 3.9443923950195314,
+      "mae": 0.3680742919445038,
+      "mse": 0.31060675382614134,
+      "difference_vs_iTransformer_mae": -0.008475250005722024,
+      "difference_vs_fixed3_mae": 0.0008093953132629617
+    }
+  ],
+  "best_mae_method": {
+    "method": "Fixed 3: PatchTST+iTransformer+TimesNet",
+    "type": "fixed_ensemble_baseline",
+    "experts_or_avg_queries": 3.0,
+    "mae": 0.36726489663124084,
+    "mse": 0.3105303645133972,
+    "difference_vs_iTransformer_mae": -0.009284645318984985,
+    "difference_vs_fixed3_mae": 0.0
+  },
+  "safety": "NO TEST DATA USED"
+}

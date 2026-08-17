@@ -1,0 +1,54 @@
+{
+  "checkpoint": "checkpoints\\costarts_walkforward\\sequential_full\\seed_19\\best_sequential_costarts_full_router.pt",
+  "checkpoint_sha256": "ab5324c8d8937a3bfd6dc86ea2530c4b1c1401485b52a678caec522f52b0de14",
+  "cache": "cache\\costarts_walkforward\\router_val_60_80_cache.pt",
+  "cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "cache_role": "router_val_60_80",
+  "mae": 1.2722166776657104,
+  "mse": 5.062894821166992,
+  "average_queries": 1.118644118309021,
+  "top1_expert_accuracy": 26.072844862937927,
+  "stopping_percent": {
+    "1": 91.27298954201225,
+    "2": 6.346916696718355,
+    "3": 1.6227912008654886,
+    "4": 0.7573025604038947,
+    "5": 0.0
+  },
+  "expert_usage_percent": {
+    "DLinear": 7.14028128380815,
+    "PatchTST": 12.621709340064912,
+    "iTransformer": 80.67075369635774,
+    "TimesNet": 11.39560043274432,
+    "ModernTCN": 0.03606202668589975
+  },
+  "individual_expert_metrics": [
+    {
+      "expert": "DLinear",
+      "mae": 1.3566420078277588,
+      "mse": 5.805386066436768
+    },
+    {
+      "expert": "PatchTST",
+      "mae": 1.3002585172653198,
+      "mse": 5.307104110717773
+    },
+    {
+      "expert": "iTransformer",
+      "mae": 1.286491870880127,
+      "mse": 5.200030326843262
+    },
+    {
+      "expert": "TimesNet",
+      "mae": 1.34023118019104,
+      "mse": 5.603475093841553
+    },
+    {
+      "expert": "ModernTCN",
+      "mae": 1.5430413484573364,
+      "mse": 6.519838333129883
+    }
+  ],
+  "leakage_checks": "passed",
+  "safety": "NO TEST DATA USED"
+}

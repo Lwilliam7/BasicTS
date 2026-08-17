@@ -1,0 +1,23 @@
+{
+  "checkpoint": "checkpoints\\costarts_adaptive_smoke\\best_costarts_adaptive_router_seed7_forecast_disagreement.pt",
+  "val_cache": "cache/costarts_subset_states_val.pt",
+  "metrics": {
+    "mae": 0.35006535053253174,
+    "mse": 0.30973753333091736,
+    "average_experts_queried": 5.0,
+    "stop_step_distribution": {
+      "5": 613
+    },
+    "query_order_distribution": {
+      "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 265,
+      "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 180,
+      "ModernTCN->DLinear->TimesNet->PatchTST->iTransformer": 146,
+      "ModernTCN->TimesNet->DLinear->PatchTST->iTransformer": 21,
+      "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 1
+    },
+    "regret_to_oracle": 0.031922101974487305,
+    "oracle_mae": 0.31814324855804443,
+    "all_queries_unique": true
+  },
+  "test_set_used": false
+}

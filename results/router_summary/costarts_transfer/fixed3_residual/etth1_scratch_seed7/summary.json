@@ -1,0 +1,30 @@
+{
+  "run_name": "etth1_scratch_seed7",
+  "seed": 7,
+  "pretraining_data": "none",
+  "transfer_mode": "none",
+  "init_checkpoint": "",
+  "best_epoch": 1,
+  "global_weights": {
+    "PatchTST": 0.49000000953674316,
+    "iTransformer": 0.3100000023841858,
+    "TimesNet": 0.20000000298023224
+  },
+  "mae": 0.3660980761051178,
+  "mse": 0.30883675813674927,
+  "mean_delta_norm": 0.2953729033470154,
+  "mean_weights": {
+    "PatchTST": 0.433789998292923,
+    "iTransformer": 0.3510771691799164,
+    "TimesNet": 0.21513287723064423
+  },
+  "weight_std": {
+    "PatchTST": 0.06747452914714813,
+    "iTransformer": 0.05317149683833122,
+    "TimesNet": 0.03133914992213249
+  },
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "created_at_utc": "2026-08-10T05:27:48.907409+00:00",
+  "safety": "NO TEST DATA USED"
+}

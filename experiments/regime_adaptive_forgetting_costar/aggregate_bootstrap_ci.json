@@ -1,0 +1,20 @@
+{
+  "baseline_fixed_decay": {
+    "mean_diff_candidate_minus_baseline": 0.0,
+    "ci95_low": 0.0,
+    "ci95_high": 0.0,
+    "ci_excludes_zero": false
+  },
+  "regime_selected": {
+    "mean_diff_candidate_minus_baseline": 0.0007041808567009866,
+    "ci95_low": 0.0006182997603900731,
+    "ci95_high": 0.0007904802914708853,
+    "ci_excludes_zero": true
+  },
+  "oracle_change_diagnostic_ineligible": {
+    "mean_diff_candidate_minus_baseline": 0.0003735204227268696,
+    "ci95_low": 0.00025847312645055354,
+    "ci95_high": 0.0004939984646625817,
+    "ci_excludes_zero": true
+  }
+}

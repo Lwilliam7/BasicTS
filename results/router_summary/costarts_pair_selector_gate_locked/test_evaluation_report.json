@@ -1,0 +1,106 @@
+{
+  "status": "locked_test_evaluation_executed_once",
+  "method_changes_after_test_results": false,
+  "first_invocation": {
+    "status": "failed_during_preflight_before_test_cache_load",
+    "error": "FileNotFoundError: checkpoints\\candidates\\best_dlinear.pt",
+    "test_metrics_accessed": false
+  },
+  "artifact_repair": {
+    "cache_generation_approved_by_user": true,
+    "checkpoint_retraining": false,
+    "checkpoint_regeneration": false,
+    "lock_manifest_changed": false,
+    "routing_logic_changed": false,
+    "thresholds_changed": false,
+    "pairs_changed": false
+  },
+  "locked_cache": {
+    "path": "cache/costarts_pair_selector_locked_test_cache.pt",
+    "sha256": "eaf8ee8befa84be3cd422f9976f9ac32ff30905922ef92dc726a42c7e30205dc",
+    "num_windows": 2773,
+    "prediction_stack_shape": [2773, 12, 7, 5],
+    "targets_shape": [2773, 12, 7],
+    "absolute_start_indices_first_last": [11520, 14292],
+    "expert_names": ["DLinear", "PatchTST", "iTransformer", "TimesNet", "ModernTCN"],
+    "lock_manifest_sha256": "87808d0dd5811f442dae11822195ef8c8bbc27fe31f9b7c4e2c4ac26a8298703"
+  },
+  "expert_prediction_inputs": {
+    "generation": "Frozen checkpoint inference on the locked ETTh1 test split, then inverse-transformed to the raw scale consumed by the committed locked cache builder.",
+    "directory": "cache/costarts_pair_selector_locked_test_predictions",
+    "sha256": {
+      "DLinear": "7d8a542d0e58febfa49bcf7f9ce98a79ddf4eccb775448216b15e3fe478541ba",
+      "PatchTST": "8abcd54ff78496fdcd935fb285a87f69003e4e87dd70235983ba81a38f6517d9",
+      "iTransformer": "ef945202195fff5d3000ceb07190613e3198962f0cf01a24d4320bb6288e923a",
+      "TimesNet": "925d3cd69c48f14f420694307cff21e78b51312fd95122d62d597df5586c4d7f",
+      "ModernTCN": "517eb1c985b84453ef02f4e2634767d6d7263ff1ccf9022350cc6cd2454e5a0f"
+    }
+  },
+  "preflight": {
+    "audit_lock_output": "costarts_locked_test_evaluation audit-lock passed",
+    "audit_lock_exit_code": 0,
+    "focused_tests_output": "................                                                         [100%]\n16 passed in 2.16s",
+    "focused_tests_exit_code": 0,
+    "all_preflight_validation_passed": true
+  },
+  "locked_test_results": {
+    "runs": [
+      {
+        "seed": 7,
+        "mae": 1.1673882007598877,
+        "mse": 5.50607967376709,
+        "switch_rate": 0.9448251128196716,
+        "average_experts_queried": 2.0,
+        "fixed_pair_names": ["PatchTST", "ModernTCN"],
+        "confidence_score": "probability_margin",
+        "threshold": 0.03373502567410469
+      },
+      {
+        "seed": 11,
+        "mae": 1.1845686435699463,
+        "mse": 5.498034477233887,
+        "switch_rate": 0.010818608105182648,
+        "average_experts_queried": 2.0,
+        "fixed_pair_names": ["PatchTST", "ModernTCN"],
+        "confidence_score": "logit_margin",
+        "threshold": 0.7762885689735413
+      },
+      {
+        "seed": 13,
+        "mae": 1.2809290885925293,
+        "mse": 5.955108165740967,
+        "switch_rate": 0.9985575079917908,
+        "average_experts_queried": 2.0,
+        "fixed_pair_names": ["PatchTST", "ModernTCN"],
+        "confidence_score": "predicted_minus_fixed_probability",
+        "threshold": 0.14389732480049133
+      }
+    ],
+    "mean_std": {
+      "mae": {
+        "mean": 1.210961937904358,
+        "std_population": 0.04996892064809799,
+        "std_sample": 0.06119917781300176,
+        "ci95_t_df2": [1.0589347921016787, 1.362989163179897]
+      },
+      "mse": {
+        "mean": 5.653074264526367,
+        "std_population": 0.21359558403491974,
+        "std_sample": 0.26160009827886127,
+        "ci95_t_df2": [5.003223436024096, 6.302924775137199]
+      },
+      "average_experts_queried": {
+        "mean": 2.0,
+        "std": 0.0
+      }
+    }
+  },
+  "predefined_success_conditions": {
+    "focused_tests_passed": true,
+    "preflight_validation_passed": true,
+    "locked_evaluation_exit_code_zero": true,
+    "average_experts_queried_exactly_two": true,
+    "beats_reference_predicted_top2_equal_average_mae_0p3507": false,
+    "overall": false
+  }
+}

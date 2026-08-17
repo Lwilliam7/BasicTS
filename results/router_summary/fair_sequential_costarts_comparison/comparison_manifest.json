@@ -1,0 +1,47 @@
+{
+  "dataset": "ETTh1",
+  "evaluation_split": "router_val",
+  "protocol": {
+    "expert_train": "train frozen forecasting experts",
+    "expert_val": "select/checkpoint frozen forecasting experts",
+    "router_train": "train routing methods and train-derived simple weights",
+    "router_val": "validation-only evaluation in this report",
+    "test": "not used by this report"
+  },
+  "cache_paths": {
+    "router_train": "cache/costarts_router_train_cache.pt",
+    "evaluation": "cache/costarts_router_val_cache.pt"
+  },
+  "cache_hashes": {
+    "router_train": "631ca1142cbf563b257cc636e1562a1dc66141f7ad6fd51c48e9a9f1aa11e1e0",
+    "evaluation": "0d802634a7f1cead668382f5a85e31292157a4a15c1316049ef02268a8b56d3b"
+  },
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "window_counts": {
+    "router_train": 2053,
+    "router_val": 613
+  },
+  "input_len": 96,
+  "forecast_horizon": 12,
+  "routing_seeds": [
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "fame_source": "results/router_summary/fame_vs_sequential_costarts",
+  "sequential_source": "results/router_summary/costarts_sequential",
+  "excluded_main_baselines": {
+    "TimeRouter": "No same-cache reproduction found in this repository.",
+    "RouterDC": "Excluded from main table because it is an adapted generic router, not originally a time-series forecasting router."
+  },
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "safety": "NO TEST DATA USED"
+}

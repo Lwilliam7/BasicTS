@@ -1,0 +1,67 @@
+{
+  "config": {
+    "train_cache": "cache/costarts_subset_states_train.pt",
+    "val_cache": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_adaptive_light\\mask_only",
+    "results_dir": "results\\router_summary\\costarts_adaptive_light\\mask_only",
+    "seed": 11,
+    "batch_size": 128,
+    "max_epochs": 1,
+    "patience": 1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "device": "cpu",
+    "cost": 0.0,
+    "max_queries": 5,
+    "variant": "mask_only",
+    "train_state_mode": "all",
+    "utility_loss_weight": 1.0,
+    "action_loss_weight": 0.5,
+    "stop_loss_weight": 0.5,
+    "max_train_states": 512
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "best": {
+    "epoch": 1,
+    "train_metrics": {
+      "loss": 0.9135401695966721,
+      "utility_loss": 0.01615680567920208,
+      "action_loss": 1.1910206377506256,
+      "stop_loss": 0.6037460267543793,
+      "action_accuracy": 0.330078125,
+      "stop_frequency": 0.181640625
+    },
+    "val_metrics": {
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "query_order_distribution": {
+        "PatchTST->TimesNet->DLinear->ModernTCN->iTransformer": 226,
+        "PatchTST->TimesNet->ModernTCN->DLinear->iTransformer": 210,
+        "DLinear->PatchTST->ModernTCN->TimesNet->iTransformer": 91,
+        "DLinear->PatchTST->TimesNet->ModernTCN->iTransformer": 67,
+        "TimesNet->PatchTST->DLinear->ModernTCN->iTransformer": 17,
+        "PatchTST->DLinear->TimesNet->ModernTCN->iTransformer": 2
+      },
+      "regret_to_oracle": 0.031922101974487305,
+      "oracle_mae": 0.31814324855804443,
+      "all_queries_unique": true
+    }
+  },
+  "baselines": {
+    "best_fixed_expert": "ModernTCN",
+    "best_fixed_expert_mae": 0.35864511132240295,
+    "oracle_best_expert_mae": 0.31814324855804443
+  },
+  "test_set_used": false
+}

@@ -1,0 +1,192 @@
+{
+  "experiment": "D_counterfactual_query",
+  "seed": 7,
+  "best_epoch": 6,
+  "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_end_to_end_ablation_seed7_8epoch\\D_counterfactual_query\\seed_7\\best_full_end_to_end_costarts.pt",
+  "normal_hard_validation": {
+    "mae": 0.4324512183666229,
+    "mse": 0.4031588137149811,
+    "average_queries": 1.0508474111557007,
+    "query_count_percent": {
+      "1": 94.95131626397404,
+      "2": 5.012621709340065,
+      "3": 0.03606202668589975,
+      "4": 0.0,
+      "5": 0.0
+    },
+    "first_query_percent": {
+      "DLinear": 0.0,
+      "PatchTST": 100.0,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0,
+      "ModernTCN": 0.0
+    },
+    "second_query_percent_all_samples": {
+      "DLinear": 0.288496213487198,
+      "PatchTST": 0.0,
+      "iTransformer": 0.9015506671474937,
+      "TimesNet": 3.858636855391273,
+      "ModernTCN": 0.0
+    },
+    "second_query_percent_among_second_queries": {
+      "DLinear": 5.714285714285714,
+      "PatchTST": 0.0,
+      "iTransformer": 17.857142857142858,
+      "TimesNet": 76.42857142857143,
+      "ModernTCN": 0.0
+    },
+    "expert_usage_percent": {
+      "DLinear": 0.288496213487198,
+      "PatchTST": 100.0,
+      "iTransformer": 0.9376126938333934,
+      "TimesNet": 3.858636855391273,
+      "ModernTCN": 0.0
+    },
+    "mean_stop_prob_by_step": {
+      "1": 0.5953610155756964,
+      "2": 0.6450229016100075,
+      "3": 0.6760290373796187,
+      "4": 0.6451913118362427,
+      "5": null
+    },
+    "individual_experts": [
+      {
+        "expert": "DLinear",
+        "mae": 0.670469334269103,
+        "mse": 0.8837878051493686
+      },
+      {
+        "expert": "PatchTST",
+        "mae": 0.42811264769935536,
+        "mse": 0.3971063976377259
+      },
+      {
+        "expert": "iTransformer",
+        "mae": 0.46697591677754097,
+        "mse": 0.4646344588974775
+      },
+      {
+        "expert": "TimesNet",
+        "mae": 0.5050734345593952,
+        "mse": 0.5374570585870588
+      },
+      {
+        "expert": "ModernTCN",
+        "mae": 0.5726849858269896,
+        "mse": 0.6669933815704027
+      }
+    ]
+  },
+  "forced_min2_hard_validation": {
+    "mae": 0.4225592613220215,
+    "mse": 0.39338457584381104,
+    "average_queries": 2.0003607273101807,
+    "query_count_percent": {
+      "1": 0.0,
+      "2": 99.9639379733141,
+      "3": 0.03606202668589975,
+      "4": 0.0,
+      "5": 0.0
+    },
+    "first_query_percent": {
+      "DLinear": 0.0,
+      "PatchTST": 100.0,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0,
+      "ModernTCN": 0.0
+    },
+    "second_query_percent_all_samples": {
+      "DLinear": 10.998918139199423,
+      "PatchTST": 0.0,
+      "iTransformer": 38.36999639379733,
+      "TimesNet": 46.12333213126578,
+      "ModernTCN": 4.507753335737468
+    },
+    "second_query_percent_among_second_queries": {
+      "DLinear": 10.998918139199423,
+      "PatchTST": 0.0,
+      "iTransformer": 38.36999639379733,
+      "TimesNet": 46.12333213126578,
+      "ModernTCN": 4.507753335737468
+    },
+    "expert_usage_percent": {
+      "DLinear": 10.998918139199423,
+      "PatchTST": 100.0,
+      "iTransformer": 38.406058420483234,
+      "TimesNet": 46.12333213126578,
+      "ModernTCN": 4.507753335737468
+    },
+    "mean_stop_prob_by_step": {
+      "1": 0.5953610155756964,
+      "2": 0.6450229016100075,
+      "3": 0.747633506535538,
+      "4": 0.7042097449302673,
+      "5": null
+    },
+    "individual_experts": [
+      {
+        "expert": "DLinear",
+        "mae": 0.670469334269103,
+        "mse": 0.8837878051493686
+      },
+      {
+        "expert": "PatchTST",
+        "mae": 0.42811264769935536,
+        "mse": 0.3971063976377259
+      },
+      {
+        "expert": "iTransformer",
+        "mae": 0.46697591677754097,
+        "mse": 0.4646344588974775
+      },
+      {
+        "expert": "TimesNet",
+        "mae": 0.5050734345593952,
+        "mse": 0.5374570585870588
+      },
+      {
+        "expert": "ModernTCN",
+        "mae": 0.5726849858269896,
+        "mse": 0.6669933815704027
+      }
+    ]
+  },
+  "spec": {
+    "name": "D_counterfactual_query",
+    "max_epochs": 8,
+    "patience": 4,
+    "min_query_warmup_epochs": 5,
+    "min_queries_during_warmup": 2,
+    "alpha_schedule": [
+      [
+        1,
+        1.0
+      ],
+      [
+        6,
+        0.5
+      ],
+      [
+        11,
+        0.1
+      ]
+    ],
+    "lambda_counterfactual_query": 0.1,
+    "lambda_counterfactual_stop": 0.0
+  },
+  "optimizer": {
+    "expert_lr": 0.0001,
+    "router_lr": 0.0003,
+    "stop_lr": 0.0001
+  },
+  "train_split": {
+    "start": 0,
+    "end": 8640
+  },
+  "validation_split": {
+    "start": 8640,
+    "end": 11520
+  },
+  "test_accessed": false,
+  "safety": "NO TEST DATA USED; test_data.npy not loaded"
+}

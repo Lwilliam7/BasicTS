@@ -1,0 +1,74 @@
+{
+  "config": "soft_tau_0p01",
+  "objective": "soft",
+  "temperature": 0.01,
+  "validation_mae_mean": 0.3681199848651886,
+  "validation_mae_std": 0.0,
+  "validation_mse_mean": 0.31205838918685913,
+  "validation_mse_std": 0.0,
+  "subset_selection_accuracy_mean": 31.085467003245583,
+  "oracle_menu_regret_mean": 0.02384552325995614,
+  "average_experts_used_mean": 2.3873061666065634,
+  "parameter_count": 32070,
+  "per_seed": [
+    {
+      "config": "soft_tau_0p01",
+      "objective": "soft",
+      "temperature": 0.01,
+      "seed": 7,
+      "best_epoch": 3,
+      "validation_mae": 0.3681199848651886,
+      "validation_mse": 0.31205838918685913,
+      "raw_validation_mae": 1.252642035484314,
+      "raw_validation_mse": 5.025095462799072,
+      "subset_selection_accuracy": 31.085467003245583,
+      "oracle_menu_regret": 0.02384552325995614,
+      "average_experts_used": 2.3873061666065634,
+      "parameter_count": 32070
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "mae": 0.3681199848651886,
+      "mse": 0.31205838918685913,
+      "raw_mae": 1.252642035484314,
+      "raw_mse": 5.025095462799072,
+      "subset_selection_accuracy": 31.085467003245583,
+      "oracle_menu_regret": 0.02384552325995614,
+      "oracle_menu_regret_median": 0.014380693435668945,
+      "average_experts_used": 2.3873061666065634,
+      "selected_action_percent": {
+        "KEEP fixed3": 0.0,
+        "DROP PatchTST": 0.0,
+        "DROP iTransformer": 0.5409304002884963,
+        "DROP TimesNet": 80.09376126938334,
+        "ADD DLinear": 0.0,
+        "ADD ModernTCN": 19.365308330328165
+      },
+      "selected_subset_percent": {
+        "PatchTST+iTransformer+TimesNet": 0.0,
+        "iTransformer+TimesNet": 0.0,
+        "PatchTST+TimesNet": 0.5409304002884963,
+        "PatchTST+iTransformer": 80.09376126938334,
+        "DLinear+PatchTST+iTransformer+TimesNet": 0.0,
+        "PatchTST+iTransformer+TimesNet+ModernTCN": 19.365308330328165
+      },
+      "oracle_action_percent": {
+        "KEEP fixed3": 2.5964659213847816,
+        "DROP PatchTST": 19.04075009015507,
+        "DROP iTransformer": 14.4608727010458,
+        "DROP TimesNet": 31.770645510277678,
+        "ADD DLinear": 9.340064911648035,
+        "ADD ModernTCN": 22.79120086548864
+      },
+      "oracle_subset_percent": {
+        "PatchTST+iTransformer+TimesNet": 2.5964659213847816,
+        "iTransformer+TimesNet": 19.04075009015507,
+        "PatchTST+TimesNet": 14.4608727010458,
+        "PatchTST+iTransformer": 31.770645510277678,
+        "DLinear+PatchTST+iTransformer+TimesNet": 9.340064911648035,
+        "PatchTST+iTransformer+TimesNet+ModernTCN": 22.79120086548864
+      }
+    }
+  }
+}

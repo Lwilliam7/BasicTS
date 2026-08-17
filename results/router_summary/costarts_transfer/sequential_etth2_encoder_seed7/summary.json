@@ -1,0 +1,187 @@
+{
+  "method": "Sequential COSTAR-TS utility ranking objective comparison",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "validation_range": [
+    8640,
+    11520
+  ],
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "initial_state_target": "With no queried experts, utility_j = -MAE(expert_j, target), so first-query candidates are ranked by standalone forecast loss.",
+  "listwise_loss": "-sum_j softmax(u_j/tau) * log_softmax(f_j), normalized over unqueried experts only.",
+  "listwise_stop_loss": "For non-initial states, actions are unqueried experts plus STOP. STOP has utility 0 and fixed logit 0. Initial state masks STOP so the first query remains forced.",
+  "pairwise_loss": "softplus(-(f_i-f_j)) for available pairs with u_i > u_j + epsilon.",
+  "weighted_pairwise_loss": "pairwise loss weighted by abs utility gap for available pairs with u_i > u_j + epsilon.",
+  "stop_behavior": "unchanged inference: first query is forced, later queries continue only when max predicted score > query_threshold; stop calibration anchors ranking scores to marginal utility.",
+  "safety": "NO TEST DATA USED",
+  "summaries": [
+    {
+      "config": "utility_pairwise_weighted",
+      "objective": "utility_pairwise_weighted",
+      "target_temperature": null,
+      "validation_mae_mean": 0.36954715847969055,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.31101205945014954,
+      "validation_mse_std": 0.0,
+      "average_queries_mean": 4.355210781097412,
+      "average_queries_std": 0.0,
+      "top1_utility_accuracy_mean": 38.651983108387846,
+      "top2_utility_coverage_mean": 67.29320195412768,
+      "mean_regret_mean": 0.10204511170179192,
+      "mean_regret_std": 0.0,
+      "positive_utility_selection_rate_mean": 43.42137948165935,
+      "parameter_count": 65029,
+      "per_seed": [
+        {
+          "config": "utility_pairwise_weighted",
+          "objective": "utility_pairwise_weighted",
+          "target_temperature": "",
+          "seed": 7,
+          "best_epoch": 2,
+          "validation_mae": 0.36954715847969055,
+          "validation_mse": 0.31101205945014954,
+          "raw_validation_mae": 1.2487268447875977,
+          "raw_validation_mse": 4.952723026275635,
+          "average_queries": 4.355210781097412,
+          "top1_utility_accuracy": 38.651983108387846,
+          "top2_utility_coverage": 67.29320195412768,
+          "mean_regret": 0.10204511170179192,
+          "median_regret": 0.03938305377960205,
+          "regret_p90": 0.2956647515296935,
+          "positive_utility_selection_rate": 43.42137948165935,
+          "states_with_positive_available_utility": 62.20915790345285,
+          "parameter_count": 65029,
+          "init_checkpoint": "checkpoints/costarts_fresh/ETTh2_96_12/sequential_utility_ranking/utility_pairwise_weighted/seed_7/best_utility_router.pt",
+          "transfer_mode": "encoder",
+          "transferred_tensors": 37
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "raw_mae": 1.2487268447875977,
+          "raw_mse": 4.952723026275635,
+          "mae": 0.36954715847969055,
+          "mse": 0.31101205945014954,
+          "average_queries": 4.355210781097412,
+          "top1_utility_accuracy": 38.651983108387846,
+          "top2_utility_coverage": 67.29320195412768,
+          "positive_utility_selection_rate": 43.42137948165935,
+          "states_with_positive_available_utility": 62.20915790345285,
+          "mean_regret": 0.10204511170179192,
+          "median_regret": 0.03938305377960205,
+          "regret_std": 0.15092054863910984,
+          "regret_p90": 0.2956647515296935,
+          "regret_p95": 0.40362083911895746,
+          "query_count_percent": {
+            "1": 3.389830508474576,
+            "2": 0.0,
+            "3": 0.0,
+            "4": 50.919581680490445,
+            "5": 45.69058781103498
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 13.054453660295708,
+            "iTransformer": 86.9455463397043,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 72.8092318788316,
+            "PatchTST": 10.710421925712225,
+            "iTransformer": 13.054453660295708,
+            "TimesNet": 0.03606202668589975,
+            "ModernTCN": 0.0
+          },
+          "hard_stop_percent_by_step": {
+            "1": 0.0,
+            "2": 3.389830508474576,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 52.706233669279584
+          },
+          "utility_statistics": {
+            "mean": -0.4423645553006888,
+            "std": 0.7521386586961861,
+            "min": -5.240595817565918,
+            "max": 0.7582247257232666,
+            "median": -0.051913678646087646,
+            "p05": -1.964491081237793,
+            "p10": -1.52075138092041,
+            "p25": -0.9022877216339111,
+            "p75": 0.04507765173912048,
+            "p90": 0.1326044917106629,
+            "p95": 0.19575142860412598,
+            "fraction_positive": 37.024122963068386,
+            "fraction_near_zero": 0.5645295192011196
+          },
+          "margin_bins": {
+            "lt_0.001": {
+              "states": 103,
+              "top1_utility_accuracy": 33.00970873786408,
+              "mean_regret": 0.030223302470827565,
+              "mean_selected_single_expert_mae": 0.3544506283061018
+            },
+            "0.001_0.005": {
+              "states": 376,
+              "top1_utility_accuracy": 32.712765957446805,
+              "mean_regret": 0.04243196824446638,
+              "mean_selected_single_expert_mae": 0.3486088145762048
+            },
+            "0.005_0.01": {
+              "states": 494,
+              "top1_utility_accuracy": 34.81781376518219,
+              "mean_regret": 0.03973640278283401,
+              "mean_selected_single_expert_mae": 0.35152575289189575
+            },
+            "0.01_0.02": {
+              "states": 927,
+              "top1_utility_accuracy": 34.95145631067961,
+              "mean_regret": 0.04636249891376804,
+              "mean_selected_single_expert_mae": 0.3634957224934361
+            },
+            "gt_0.02": {
+              "states": 10177,
+              "top1_utility_accuracy": 39.4517048246045,
+              "mean_regret": 0.11307100072126791,
+              "mean_selected_single_expert_mae": 0.3997768264630284
+            }
+          }
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "config": "utility_pairwise_weighted",
+      "objective": "utility_pairwise_weighted",
+      "target_temperature": "",
+      "validation_mae_mean": 0.36954715847969055,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.31101205945014954,
+      "validation_mse_std": 0.0,
+      "average_queries_mean": 4.355210781097412,
+      "top1_utility_accuracy_mean": 38.651983108387846,
+      "top2_utility_coverage_mean": 67.29320195412768,
+      "mean_regret_mean": 0.10204511170179192,
+      "positive_utility_selection_rate_mean": 43.42137948165935,
+      "parameter_count": 65029
+    }
+  ],
+  "best_by_validation_mae": {
+    "config": "utility_pairwise_weighted",
+    "objective": "utility_pairwise_weighted",
+    "target_temperature": "",
+    "validation_mae_mean": 0.36954715847969055,
+    "validation_mae_std": 0.0,
+    "validation_mse_mean": 0.31101205945014954,
+    "validation_mse_std": 0.0,
+    "average_queries_mean": 4.355210781097412,
+    "top1_utility_accuracy_mean": 38.651983108387846,
+    "top2_utility_coverage_mean": 67.29320195412768,
+    "mean_regret_mean": 0.10204511170179192,
+    "positive_utility_selection_rate_mean": 43.42137948165935,
+    "parameter_count": 65029
+  }
+}

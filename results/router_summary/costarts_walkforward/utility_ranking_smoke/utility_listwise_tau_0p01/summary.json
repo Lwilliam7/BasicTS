@@ -1,0 +1,132 @@
+{
+  "config": "utility_listwise_tau_0p01",
+  "objective": "utility_listwise",
+  "target_temperature": 0.01,
+  "validation_mae_mean": 0.3713109791278839,
+  "validation_mae_std": 0.0,
+  "validation_mse_mean": 0.3147461414337158,
+  "validation_mse_std": 0.0,
+  "average_queries_mean": 3.6556077003479004,
+  "average_queries_std": 0.0,
+  "top1_utility_accuracy_mean": 28.479826378613005,
+  "top2_utility_coverage_mean": 60.17559435730492,
+  "mean_regret_mean": 0.12004667067182033,
+  "mean_regret_std": 0.0,
+  "positive_utility_selection_rate_mean": 40.99832297523922,
+  "parameter_count": 65029,
+  "per_seed": [
+    {
+      "config": "utility_listwise_tau_0p01",
+      "objective": "utility_listwise",
+      "target_temperature": 0.01,
+      "seed": 7,
+      "best_epoch": 1,
+      "validation_mae": 0.3713109791278839,
+      "validation_mse": 0.3147461414337158,
+      "raw_validation_mae": 1.2650030851364136,
+      "raw_validation_mse": 5.077302932739258,
+      "average_queries": 3.6556077003479004,
+      "top1_utility_accuracy": 28.479826378613005,
+      "top2_utility_coverage": 60.17559435730492,
+      "mean_regret": 0.12004667067182033,
+      "median_regret": 0.06831550598144531,
+      "regret_p90": 0.31744389533996575,
+      "positive_utility_selection_rate": 40.99832297523922,
+      "states_with_positive_available_utility": 61.86248396961626,
+      "parameter_count": 65029
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "raw_mae": 1.2650030851364136,
+      "raw_mse": 5.077302932739258,
+      "mae": 0.3713109791278839,
+      "mse": 0.3147461414337158,
+      "average_queries": 3.6556077003479004,
+      "top1_utility_accuracy": 28.479826378613005,
+      "top2_utility_coverage": 60.17559435730492,
+      "positive_utility_selection_rate": 40.99832297523922,
+      "states_with_positive_available_utility": 61.86248396961626,
+      "mean_regret": 0.12004667067182033,
+      "median_regret": 0.06831550598144531,
+      "regret_std": 0.15615474453439762,
+      "regret_p90": 0.31744389533996575,
+      "regret_p95": 0.4205151796340935,
+      "query_count_percent": {
+        "1": 1.5146051208077893,
+        "2": 0.03606202668589975,
+        "3": 29.823296069239092,
+        "4": 68.62603678326722,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 100.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.7933645870897944,
+        "PatchTST": 0.0,
+        "iTransformer": 97.69203029210242,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 1.5146051208077893,
+        "3": 0.03661662394727206,
+        "4": 30.293040293040292,
+        "5": 100.0
+      },
+      "utility_statistics": {
+        "mean": -0.4338230716277692,
+        "std": 0.7516882914462902,
+        "min": -5.240595817565918,
+        "max": 0.8327879905700684,
+        "median": -0.04868459701538086,
+        "p05": -1.955771780014038,
+        "p10": -1.5135851144790649,
+        "p25": -0.8909733295440674,
+        "p75": 0.05003190040588379,
+        "p90": 0.13904728889465337,
+        "p95": 0.20623090267181354,
+        "fraction_positive": 38.170443095812736,
+        "fraction_near_zero": 0.5412751599222064
+      },
+      "margin_bins": {
+        "lt_0.001": {
+          "states": 92,
+          "top1_utility_accuracy": 27.17391304347826,
+          "mean_regret": 0.04492446877386259,
+          "mean_selected_single_expert_mae": 0.3629748523235321
+        },
+        "0.001_0.005": {
+          "states": 366,
+          "top1_utility_accuracy": 33.87978142076503,
+          "mean_regret": 0.03782857172801846,
+          "mean_selected_single_expert_mae": 0.351731919892173
+        },
+        "0.005_0.01": {
+          "states": 448,
+          "top1_utility_accuracy": 33.482142857142854,
+          "mean_regret": 0.0436930986387389,
+          "mean_selected_single_expert_mae": 0.3482171880813049
+        },
+        "0.01_0.02": {
+          "states": 863,
+          "top1_utility_accuracy": 34.183082271147164,
+          "mean_regret": 0.05198859394908918,
+          "mean_selected_single_expert_mae": 0.36089415254280716
+        },
+        "gt_0.02": {
+          "states": 8368,
+          "top1_utility_accuracy": 27.402007648183556,
+          "mean_regret": 0.13557530203780754,
+          "mean_selected_single_expert_mae": 0.3938018339703903
+        }
+      }
+    }
+  }
+}

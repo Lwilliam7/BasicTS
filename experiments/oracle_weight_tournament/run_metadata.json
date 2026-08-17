@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-08-10T07:13:59.400786+00:00",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "train_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "global_weights": [
+    0.36,
+    0.42,
+    0.22
+  ],
+  "safety": "NO TEST DATA USED; TEACHERS/RETRIEVAL USE ROUTER-TRAIN ONLY"
+}

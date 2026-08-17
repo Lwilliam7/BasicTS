@@ -1,0 +1,34 @@
+{
+  "per_expert": [
+    {
+      "expert": "DLinear",
+      "pct_windows_beats_iTransformer": 40.389469265937805,
+      "mean_improvement_when_beats_iTransformer": 0.040669746696949005,
+      "unique_oracle_wins_percent": 16.516408324241638
+    },
+    {
+      "expert": "PatchTST",
+      "pct_windows_beats_iTransformer": 47.385501861572266,
+      "mean_improvement_when_beats_iTransformer": 0.039053212851285934,
+      "unique_oracle_wins_percent": 24.48611557483673
+    },
+    {
+      "expert": "iTransformer",
+      "pct_windows_beats_iTransformer": 0.0,
+      "mean_improvement_when_beats_iTransformer": 0.0,
+      "unique_oracle_wins_percent": 28.020194172859192
+    },
+    {
+      "expert": "TimesNet",
+      "pct_windows_beats_iTransformer": 34.18680131435394,
+      "mean_improvement_when_beats_iTransformer": 0.058090779930353165,
+      "unique_oracle_wins_percent": 21.637216210365295
+    },
+    {
+      "expert": "ModernTCN",
+      "pct_windows_beats_iTransformer": 21.45690619945526,
+      "mean_improvement_when_beats_iTransformer": 0.06728648394346237,
+      "unique_oracle_wins_percent": 9.340064972639084
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "dataset": "ETTh1",
+  "stage": "final_60",
+  "predict_role": "test_80_100",
+  "expert_training_range": {
+    "start": 0,
+    "end": 8640
+  },
+  "prediction_range": {
+    "name": "test",
+    "start_fraction": 0.8,
+    "end_fraction": 1.0,
+    "start": 11520,
+    "end": 14400
+  },
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "rows": [
+    {
+      "expert": "DLinear",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+      "checkpoint_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\predictions\\ETTh1\\test_80_100\\DLinear.npy",
+      "prediction_sha256": "3e27034d13e2a7d6968a1240c4ffc4dbe1786cfc50e0b0d4ba2b24c79dcced62",
+      "num_windows": 2773
+    },
+    {
+      "expert": "PatchTST",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\predictions\\ETTh1\\test_80_100\\PatchTST.npy",
+      "prediction_sha256": "e1b07f5e9388ac4460e6b2972bcf975a5bc64af11287500a04a0dc7a6a7ea81c",
+      "num_windows": 2773
+    },
+    {
+      "expert": "iTransformer",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\predictions\\ETTh1\\test_80_100\\iTransformer.npy",
+      "prediction_sha256": "a1d969b229546016861299e6be818f78e41d79ea7a2886aec100bc2925951f42",
+      "num_windows": 2773
+    },
+    {
+      "expert": "TimesNet",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\predictions\\ETTh1\\test_80_100\\TimesNet.npy",
+      "prediction_sha256": "9a2330f7d8e85e06dacab0639e32faeac4bb25639a0639dadd2e912ee0e2f49d",
+      "num_windows": 2773
+    },
+    {
+      "expert": "ModernTCN",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt",
+      "checkpoint_sha256": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\predictions\\ETTh1\\test_80_100\\ModernTCN.npy",
+      "prediction_sha256": "783188595ba246d67329957df6a0ce7716fc36e320530930b250cd04c286969c",
+      "num_windows": 2773
+    }
+  ],
+  "expert_checkpoint_paths": {
+    "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+    "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+    "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+    "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+    "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt"
+  },
+  "expert_checkpoint_hashes": {
+    "DLinear": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+    "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+    "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+    "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+    "ModernTCN": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44"
+  },
+  "created_at_utc": "2026-08-13T03:31:32.104621+00:00",
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "freeze_source": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_freeze\\ETTh1_frozen_model.json"
+}

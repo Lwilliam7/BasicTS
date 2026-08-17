@@ -1,0 +1,148 @@
+{
+  "rows": [
+    {
+      "variant": "mask_only",
+      "seed": 7,
+      "mae": 0.35118862986564636,
+      "mse": 0.31284576654434204,
+      "average_experts_queried": 4.907014681892333,
+      "regret_to_oracle": 0.03304538130760193
+    },
+    {
+      "variant": "mask_only",
+      "seed": 11,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "mask_only",
+      "seed": 13,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "mask_only",
+      "seed": 17,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "mask_only",
+      "seed": 19,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "forecast",
+      "seed": 7,
+      "mae": 0.35032182931900024,
+      "mse": 0.3109569251537323,
+      "average_experts_queried": 4.848287112561175,
+      "regret_to_oracle": 0.03217858076095581
+    },
+    {
+      "variant": "forecast",
+      "seed": 11,
+      "mae": 0.3500731587409973,
+      "mse": 0.30973494052886963,
+      "average_experts_queried": 4.98694942903752,
+      "regret_to_oracle": 0.03192991018295288
+    },
+    {
+      "variant": "forecast",
+      "seed": 13,
+      "mae": 0.3500692546367645,
+      "mse": 0.3097417652606964,
+      "average_experts_queried": 4.99673735725938,
+      "regret_to_oracle": 0.03192600607872009
+    },
+    {
+      "variant": "forecast",
+      "seed": 17,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "forecast",
+      "seed": 19,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 7,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 11,
+      "mae": 0.350075364112854,
+      "mse": 0.3097400963306427,
+      "average_experts_queried": 4.99510603588907,
+      "regret_to_oracle": 0.03193211555480957
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 13,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 17,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    },
+    {
+      "variant": "forecast_disagreement",
+      "seed": 19,
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "regret_to_oracle": 0.031922101974487305
+    }
+  ],
+  "summary": [
+    {
+      "variant": "forecast",
+      "mae_mean": 0.3501189947128296,
+      "mae_std": 0.00010146160639123991,
+      "avg_experts_mean": 4.966394901275635,
+      "avg_experts_std": 0.05924730747938156
+    },
+    {
+      "variant": "forecast_disagreement",
+      "mae_mean": 0.3500673472881317,
+      "mae_std": 4.0054364944808185e-06,
+      "avg_experts_mean": 4.999021053314209,
+      "avg_experts_std": 0.001957511994987726
+    },
+    {
+      "variant": "mask_only",
+      "mae_mean": 0.3502900004386902,
+      "mae_std": 0.0004493117448873818,
+      "avg_experts_mean": 4.98140287399292,
+      "avg_experts_std": 0.037194062024354935
+    }
+  ],
+  "test_set_used": false
+}

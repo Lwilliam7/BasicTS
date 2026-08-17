@@ -1,0 +1,62 @@
+[
+  {
+    "metadata": {
+      "mode": "greedy",
+      "finalizer": "train_error_softmax",
+      "force_k": null,
+      "temperature": 1.0,
+      "train_error_temperature": 0.1,
+      "decision_policy": "utility_threshold",
+      "utility_threshold": -0.5,
+      "max_queries": 5,
+      "num_windows": 613,
+      "num_experts": 5,
+      "expert_names": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "test_data_used": false,
+      "frozen_expert_calls_simulated_from_cache": 613,
+      "router_state_changes": 613,
+      "duplicate_query_count": 0,
+      "checkpoint": "checkpoints\\costarts_subset_utility\\attention_compare_fair_set_attention_seed_7\\best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1
+    },
+    "metrics": {
+      "mae": 0.3618151545524597,
+      "mse": 0.32325848937034607,
+      "oracle_mae": 0.31814324855804443,
+      "selected_expert_mae_mean": 0.3618151545524597,
+      "regret_to_oracle": 0.04367190599441528,
+      "oracle_match_rate": 0.30831974744796753,
+      "average_experts_queried": 1.0,
+      "latency_seconds": 0.13165859999571694,
+      "latency_ms_per_sample": 0.21477748775810268,
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "selection_counts": {
+        "DLinear": 317,
+        "PatchTST": 0,
+        "iTransformer": 78,
+        "TimesNet": 218,
+        "ModernTCN": 0
+      },
+      "query_utilization_counts": {
+        "DLinear": 317,
+        "PatchTST": 0,
+        "iTransformer": 78,
+        "TimesNet": 218,
+        "ModernTCN": 0
+      },
+      "all_queries_unique": true,
+      "state_changed_for_every_query": true,
+      "stop_step_one_fraction": 1.0,
+      "selected_expert_diagnostic": "highest_train_error_softmax_weight"
+    },
+    "rollouts": []
+  }
+]

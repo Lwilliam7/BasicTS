@@ -1,0 +1,103 @@
+{
+  "dataset": "ETTh2",
+  "input_len": 96,
+  "horizon": 12,
+  "split": "router_val",
+  "validation_windows": 613,
+  "validation_start": 10800,
+  "validation_end": 11424,
+  "model": "Sequential COSTAR-TS Full utility_pairwise_weighted",
+  "seeds": [
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "mae_mean": 0.277681100363638,
+  "mae_std": 3.2344119164084995e-10,
+  "mse_mean": 0.1682309559651242,
+  "mse_std": 7.047927615501099e-10,
+  "avg_queries_mean": 4.0,
+  "avg_queries_std": 0.0,
+  "per_seed": [
+    {
+      "seed": 7,
+      "mae": 0.27768110013513736,
+      "mse": 0.16823095498001886,
+      "avg_queries": 4.0
+    },
+    {
+      "seed": 11,
+      "mae": 0.27768109991636014,
+      "mse": 0.16823095661173249,
+      "avg_queries": 4.0
+    },
+    {
+      "seed": 13,
+      "mae": 0.27768110086439485,
+      "mse": 0.16823095594020787,
+      "avg_queries": 4.0
+    },
+    {
+      "seed": 17,
+      "mae": 0.27768110040253174,
+      "mse": 0.16823095686393402,
+      "avg_queries": 4.0
+    },
+    {
+      "seed": 19,
+      "mae": 0.2776811004997661,
+      "mse": 0.16823095542972766,
+      "avg_queries": 4.0
+    }
+  ],
+  "queried_subset_counts": {
+    "ModernTCN+DLinear+TimesNet+PatchTST": 550,
+    "ModernTCN+DLinear+PatchTST+TimesNet": 63,
+    "DLinear+PatchTST+ModernTCN+TimesNet": 613,
+    "DLinear+PatchTST+TimesNet+ModernTCN": 491,
+    "TimesNet+PatchTST+ModernTCN+DLinear": 55,
+    "TimesNet+ModernTCN+PatchTST+DLinear": 79,
+    "TimesNet+PatchTST+DLinear+ModernTCN": 611,
+    "DLinear+ModernTCN+PatchTST+TimesNet": 314,
+    "DLinear+ModernTCN+TimesNet+PatchTST": 288,
+    "DLinear+TimesNet+PatchTST+ModernTCN": 1
+  },
+  "best_fixed_by_size": {
+    "1": {
+      "subset": "DLinear",
+      "num_experts": 1,
+      "mae": 0.28095653653144836,
+      "mse": 0.17149297893047333
+    },
+    "2": {
+      "subset": "DLinear+ModernTCN",
+      "num_experts": 2,
+      "mae": 0.2752290368080139,
+      "mse": 0.1653451770544052
+    },
+    "3": {
+      "subset": "DLinear+TimesNet+ModernTCN",
+      "num_experts": 3,
+      "mae": 0.27664363384246826,
+      "mse": 0.16693221032619476
+    },
+    "4": {
+      "subset": "DLinear+PatchTST+TimesNet+ModernTCN",
+      "num_experts": 4,
+      "mae": 0.2776811122894287,
+      "mse": 0.16823096573352814
+    },
+    "5": {
+      "subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "num_experts": 5,
+      "mae": 0.30077221989631653,
+      "mse": 0.2008334994316101
+    }
+  },
+  "oracle_all_subsets": {
+    "mae": 0.2571255564689636,
+    "mse": 0.14841667895446886
+  }
+}

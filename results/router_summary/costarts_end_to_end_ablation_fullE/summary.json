@@ -1,0 +1,219 @@
+{
+  "seed": 7,
+  "experiments": [
+    {
+      "experiment": "E_counterfactual_query_stop",
+      "seed": 7,
+      "best_epoch": 7,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_end_to_end_ablation_fullE\\E_counterfactual_query_stop\\seed_7\\best_full_end_to_end_costarts.pt",
+      "normal_hard_validation": {
+        "mae": 0.4214831292629242,
+        "mse": 0.38813772797584534,
+        "average_queries": 2.0400288105010986,
+        "query_count_percent": {
+          "1": 30.544536602957088,
+          "2": 41.39920663541291,
+          "3": 24.37793003966823,
+          "4": 0.8654886404615939,
+          "5": 2.81283808150018
+        },
+        "first_query_percent": {
+          "DLinear": 0.0,
+          "PatchTST": 100.0,
+          "iTransformer": 0.0,
+          "TimesNet": 0.0,
+          "ModernTCN": 0.0
+        },
+        "second_query_percent_all_samples": {
+          "DLinear": 0.288496213487198,
+          "PatchTST": 0.0,
+          "iTransformer": 23.079697078975837,
+          "TimesNet": 45.11359538406058,
+          "ModernTCN": 0.9736747205192932
+        },
+        "second_query_percent_among_second_queries": {
+          "DLinear": 0.4153686396677051,
+          "PatchTST": 0.0,
+          "iTransformer": 33.229491173416406,
+          "TimesNet": 64.95327102803738,
+          "ModernTCN": 1.4018691588785046
+        },
+        "expert_usage_percent": {
+          "DLinear": 4.075009015506671,
+          "PatchTST": 100.0,
+          "iTransformer": 48.03461954561846,
+          "TimesNet": 45.76271186440678,
+          "ModernTCN": 6.130544536602957
+        },
+        "mean_stop_prob_by_step": {
+          "1": 0.050678311639256825,
+          "2": 0.4504108312024221,
+          "3": 0.508905211984144,
+          "4": 0.5126003041148744,
+          "5": 0.4932619432572462
+        },
+        "individual_experts": [
+          {
+            "expert": "DLinear",
+            "mae": 0.6567174015258392,
+            "mse": 0.8495190493517991
+          },
+          {
+            "expert": "PatchTST",
+            "mae": 0.4330687221963183,
+            "mse": 0.4021703511680716
+          },
+          {
+            "expert": "iTransformer",
+            "mae": 0.45722534696934586,
+            "mse": 0.44829047994410737
+          },
+          {
+            "expert": "TimesNet",
+            "mae": 0.49430515084333726,
+            "mse": 0.520064727089872
+          },
+          {
+            "expert": "ModernTCN",
+            "mae": 0.5606934595228402,
+            "mse": 0.6400906672513833
+          }
+        ]
+      },
+      "forced_min2_hard_validation": {
+        "mae": 0.41390261054039,
+        "mse": 0.3786284029483795,
+        "average_queries": 2.3454742431640625,
+        "query_count_percent": {
+          "1": 0.0,
+          "2": 71.94374323836999,
+          "3": 24.37793003966823,
+          "4": 0.8654886404615939,
+          "5": 2.81283808150018
+        },
+        "first_query_percent": {
+          "DLinear": 0.0,
+          "PatchTST": 100.0,
+          "iTransformer": 0.0,
+          "TimesNet": 0.0,
+          "ModernTCN": 0.0
+        },
+        "second_query_percent_all_samples": {
+          "DLinear": 0.288496213487198,
+          "PatchTST": 0.0,
+          "iTransformer": 47.74612333213127,
+          "TimesNet": 50.811395600432746,
+          "ModernTCN": 1.153984853948792
+        },
+        "second_query_percent_among_second_queries": {
+          "DLinear": 0.288496213487198,
+          "PatchTST": 0.0,
+          "iTransformer": 47.74612333213127,
+          "TimesNet": 50.811395600432746,
+          "ModernTCN": 1.153984853948792
+        },
+        "expert_usage_percent": {
+          "DLinear": 4.075009015506671,
+          "PatchTST": 100.0,
+          "iTransformer": 72.70104579877389,
+          "TimesNet": 51.46051208077894,
+          "ModernTCN": 6.310854670032456
+        },
+        "mean_stop_prob_by_step": {
+          "1": 0.050678311639256825,
+          "2": 0.4504108312024221,
+          "3": 0.5560355504583118,
+          "4": 0.5433138363463673,
+          "5": 0.5230375111769392
+        },
+        "individual_experts": [
+          {
+            "expert": "DLinear",
+            "mae": 0.6567174015258392,
+            "mse": 0.8495190493517991
+          },
+          {
+            "expert": "PatchTST",
+            "mae": 0.4330687221963183,
+            "mse": 0.4021703511680716
+          },
+          {
+            "expert": "iTransformer",
+            "mae": 0.45722534696934586,
+            "mse": 0.44829047994410737
+          },
+          {
+            "expert": "TimesNet",
+            "mae": 0.49430515084333726,
+            "mse": 0.520064727089872
+          },
+          {
+            "expert": "ModernTCN",
+            "mae": 0.5606934595228402,
+            "mse": 0.6400906672513833
+          }
+        ]
+      },
+      "spec": {
+        "name": "E_counterfactual_query_stop",
+        "max_epochs": 30,
+        "patience": 7,
+        "min_query_warmup_epochs": 5,
+        "min_queries_during_warmup": 2,
+        "alpha_schedule": [
+          [
+            1,
+            1.0
+          ],
+          [
+            6,
+            0.5
+          ],
+          [
+            11,
+            0.1
+          ]
+        ],
+        "lambda_counterfactual_query": 0.1,
+        "lambda_counterfactual_stop": 0.1
+      },
+      "optimizer": {
+        "expert_lr": 0.0001,
+        "router_lr": 0.0003,
+        "stop_lr": 0.0001
+      },
+      "train_split": {
+        "start": 0,
+        "end": 8640
+      },
+      "validation_split": {
+        "start": 8640,
+        "end": 11520
+      },
+      "test_accessed": false,
+      "safety": "NO TEST DATA USED; test_data.npy not loaded"
+    }
+  ],
+  "summary_rows": [
+    {
+      "experiment": "E_counterfactual_query_stop",
+      "best_epoch": 7,
+      "validation_mae": 0.4214831292629242,
+      "validation_mse": 0.38813772797584534,
+      "average_queries": 2.0400288105010986,
+      "forced2_mae": 0.41390261054039,
+      "forced2_mse": 0.3786284029483795,
+      "forced2_average_queries": 2.3454742431640625
+    }
+  ],
+  "train_split": {
+    "start": 0,
+    "end": 8640
+  },
+  "validation_split": {
+    "start": 8640,
+    "end": 11520
+  },
+  "test_accessed": false,
+  "safety": "NO TEST DATA USED; test_data.npy not loaded"
+}

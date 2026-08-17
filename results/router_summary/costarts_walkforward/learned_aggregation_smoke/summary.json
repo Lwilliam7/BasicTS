@@ -1,0 +1,78 @@
+{
+  "method": "Frozen embedding Sequential COSTAR-TS without equal averaging",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "router_checkpoint_root": "checkpoints/costarts_walkforward/attention/embedding",
+  "validation_range": [
+    8640,
+    11520
+  ],
+  "test_usage": "NO TEST DATA LOADED OR EVALUATED",
+  "per_seed": [
+    {
+      "seed": 7,
+      "best_epoch": 1,
+      "equal_average_mae": 0.37411895394325256,
+      "equal_average_mse": 0.31838473677635193,
+      "learned_aggregation_mae": 0.3741580843925476,
+      "learned_aggregation_mse": 0.3183707892894745,
+      "oracle_best_queried_mae": 0.3737971205284481,
+      "average_queries": 1.0421925783157349,
+      "combiner_parameter_count": 18433
+    }
+  ],
+  "comparison": [
+    {
+      "model": "Embedding router + equal average",
+      "validation_mae_mean": 0.37411895394325256,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.31838473677635193,
+      "validation_mse_std": 0.0
+    },
+    {
+      "model": "Embedding router + learned aggregation",
+      "validation_mae_mean": 0.3741580843925476,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3183707892894745,
+      "validation_mse_std": 0.0,
+      "improvement_vs_equal_average_mae": -3.9130449295043945e-05
+    },
+    {
+      "model": "Oracle best among queried experts",
+      "validation_mae_mean": 0.3737971205284481,
+      "validation_mae_std": 0.0
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "equal_average_mae": 0.37411895394325256,
+      "equal_average_mse": 0.31838473677635193,
+      "learned_aggregation_mae": 0.3741580843925476,
+      "learned_aggregation_mse": 0.3183707892894745,
+      "oracle_best_queried_mae": 0.3737971205284481,
+      "average_queries": 1.0421925783157349,
+      "query_count_percent": {
+        "1": 96.61017060279846,
+        "2": 2.5604039430618286,
+        "3": 0.829426571726799,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 1.7670393076090876,
+        "PatchTST": 22.394518571943742,
+        "iTransformer": 75.83844212044717,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "mean_weight_by_expert_when_queried": {
+        "DLinear": 0.7733211647974302,
+        "PatchTST": 0.9690336442991924,
+        "iTransformer": 0.9690790755911681,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.38994916755220166
+      }
+    }
+  },
+  "safety": "NO TEST DATA USED"
+}

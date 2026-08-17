@@ -1,0 +1,172 @@
+{
+  "metadata": {
+    "created_at_utc": "2026-08-12T07:04:34.520514+00:00",
+    "selected_model": {
+      "family": "prototype_residual",
+      "name": "final_phase2_protores_lam0.01_k16_scale0.3_rw0.001",
+      "seed": 7,
+      "epochs": 10,
+      "lr": 0.001,
+      "batch_size": 512,
+      "teacher_lambda": 0.01,
+      "teacher_weight": 1.0,
+      "forecast_weight": 1.0,
+      "residual_weight": 0.001,
+      "residual_scale": 0.3,
+      "k": 16,
+      "temperature": 0.05,
+      "num_prototypes": 16,
+      "rank": 1,
+      "forgetting": 0.99,
+      "eta": 0.2,
+      "feature_mix": "full"
+    },
+    "model_choice_reason": "Best five-seed neural trainable fixed-three router; static component used by later chronological/HV hybrids. Ridge residual current best is not a long-trained neural router.",
+    "fixed_three_experts": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "router_train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+    "train_start_range": [
+      2880,
+      7423
+    ],
+    "chronological_eval_start_range": [
+      7424,
+      8532
+    ],
+    "validation_used": false,
+    "test_used": false,
+    "early_region_end": 10,
+    "delayed_region_start": 50,
+    "meaningful_margin": 0.0005,
+    "sustained_checkpoints": 5,
+    "weight_decays": [
+      0.001,
+      0.01,
+      0.1
+    ],
+    "device": "cuda"
+  },
+  "assessment": {
+    "by_weight_decay": [
+      {
+        "weight_decay": 0.001,
+        "best_early_epoch": 8,
+        "best_early_fold_mae": 0.3427693843841553,
+        "best_late_epoch": 50,
+        "best_late_fold_mae": 0.3442498743534088,
+        "late_minus_early_mae": 0.00148048996925354,
+        "training_plateau_by_epoch10": false,
+        "sustained_late_gain": false,
+        "meaningful_margin": 0.0005,
+        "possible_grokking": false
+      },
+      {
+        "weight_decay": 0.01,
+        "best_early_epoch": 8,
+        "best_early_fold_mae": 0.34277278184890747,
+        "best_late_epoch": 50,
+        "best_late_fold_mae": 0.3442392945289612,
+        "late_minus_early_mae": 0.001466512680053711,
+        "training_plateau_by_epoch10": false,
+        "sustained_late_gain": false,
+        "meaningful_margin": 0.0005,
+        "possible_grokking": false
+      },
+      {
+        "weight_decay": 0.1,
+        "best_early_epoch": 8,
+        "best_early_fold_mae": 0.34277254343032837,
+        "best_late_epoch": 50,
+        "best_late_fold_mae": 0.3440864384174347,
+        "late_minus_early_mae": 0.0013138949871063232,
+        "training_plateau_by_epoch10": false,
+        "sustained_late_gain": false,
+        "meaningful_margin": 0.0005,
+        "possible_grokking": false
+      }
+    ],
+    "best_weight_decay_assessment": {
+      "weight_decay": 0.1,
+      "best_early_epoch": 8,
+      "best_early_fold_mae": 0.34277254343032837,
+      "best_late_epoch": 50,
+      "best_late_fold_mae": 0.3440864384174347,
+      "late_minus_early_mae": 0.0013138949871063232,
+      "training_plateau_by_epoch10": false,
+      "sustained_late_gain": false,
+      "meaningful_margin": 0.0005,
+      "possible_grokking": false
+    },
+    "any_possible_grokking": false
+  },
+  "repeat_seeds_run": false,
+  "compute": {
+    "runtime_sec": 151.57972168922424,
+    "peak_gpu_memory_mb": 236.8212890625
+  },
+  "decision": "Abandon grokking-style long training for this router unless a new signal/objective is introduced.",
+  "validation_used": false,
+  "test_used": false,
+  "reproduce_command": "python experiments\\grokking_diagnostic_costar\\run_grokking_diagnostic.py --device cuda",
+  "weight_decay_summary": [
+    {
+      "weight_decay": 0.001,
+      "epoch10_fold_mae": 0.344265341758728,
+      "epoch10_train_mae": 0.3347826302051544,
+      "best_epoch": 26,
+      "best_fold_mae": 0.34243127703666687,
+      "best_fold_mse": 0.2579936385154724,
+      "best_train_mae": 0.3304935097694397,
+      "best_improvement_vs_epoch10": 0.0018340647220611572,
+      "best_improvement_vs_fixed": 0.0010662078857421875,
+      "epoch100_fold_mae": 0.34740564227104187,
+      "epoch100_train_mae": 0.32141488790512085,
+      "epoch100_minus_best_fold_mae": 0.004974365234375
+    },
+    {
+      "weight_decay": 0.01,
+      "epoch10_fold_mae": 0.3442520201206207,
+      "epoch10_train_mae": 0.33477991819381714,
+      "best_epoch": 26,
+      "best_fold_mae": 0.34241971373558044,
+      "best_fold_mse": 0.25798100233078003,
+      "best_train_mae": 0.33049094676971436,
+      "best_improvement_vs_epoch10": 0.0018323063850402832,
+      "best_improvement_vs_fixed": 0.0010777711868286133,
+      "epoch100_fold_mae": 0.34743398427963257,
+      "epoch100_train_mae": 0.3214474618434906,
+      "epoch100_minus_best_fold_mae": 0.005014270544052124
+    },
+    {
+      "weight_decay": 0.1,
+      "epoch10_fold_mae": 0.3442325294017792,
+      "epoch10_train_mae": 0.334805428981781,
+      "best_epoch": 26,
+      "best_fold_mae": 0.3420534133911133,
+      "best_fold_mse": 0.257474809885025,
+      "best_train_mae": 0.3305935561656952,
+      "best_improvement_vs_epoch10": 0.0021791160106658936,
+      "best_improvement_vs_fixed": 0.0014440715312957764,
+      "epoch100_fold_mae": 0.34717145562171936,
+      "epoch100_train_mae": 0.32164260745048523,
+      "epoch100_minus_best_fold_mae": 0.005118042230606079
+    }
+  ],
+  "best_overall_checkpoint": {
+    "weight_decay": 0.1,
+    "epoch10_fold_mae": 0.3442325294017792,
+    "epoch10_train_mae": 0.334805428981781,
+    "best_epoch": 26,
+    "best_fold_mae": 0.3420534133911133,
+    "best_fold_mse": 0.257474809885025,
+    "best_train_mae": 0.3305935561656952,
+    "best_improvement_vs_epoch10": 0.0021791160106658936,
+    "best_improvement_vs_fixed": 0.0014440715312957764,
+    "epoch100_fold_mae": 0.34717145562171936,
+    "epoch100_train_mae": 0.32164260745048523,
+    "epoch100_minus_best_fold_mae": 0.005118042230606079
+  }
+}

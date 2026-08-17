@@ -1,0 +1,55 @@
+{
+  "created_at_utc": "2026-08-14T06:22:28.178085+00:00",
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "status": "after_final_test_audit",
+  "label": "etth1_nonnegative_simplex_linear_average_after_final_test_audit",
+  "test_loaded_before_manifest": false,
+  "test_metrics_seen_before_this_method_run": true,
+  "selection_complete_before_test_load": true,
+  "no_tuning": true,
+  "train_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\router_train_20_60_cache.pt",
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "validation_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\router_val_60_80_cache.pt",
+  "validation_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "test_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\caches\\ETTh1\\test_80_100_cache.pt",
+  "normalizer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+  "normalizer_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+  "fit_source": "ETTh1 router_train_20_60 only",
+  "method": "nonnegative_simplex_linear_average",
+  "weights": {
+    "DLinear": 0.11675126105546951,
+    "PatchTST": 0.36408838629722595,
+    "iTransformer": 0.33965399861335754,
+    "TimesNet": 0.1488531231880188,
+    "ModernTCN": 0.030653247609734535
+  },
+  "validation_before_test_load": {
+    "mae": 0.3664834797382355,
+    "mse": 0.30848410725593567
+  },
+  "device": "cpu",
+  "gpu_note": "CPU used because this is a 5-coefficient cached linear ensemble evaluation; GPU transfer would dominate.",
+  "test_evaluation_complete": true,
+  "elapsed_seconds": 2.71040880001965,
+  "results": [
+    {
+      "method": "nonnegative_simplex_linear_average",
+      "dataset": "ETTh1",
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "test_mae": 0.32692551612854004,
+      "test_mse": 0.2677127718925476,
+      "validation_mae": 0.3664834797382355,
+      "validation_mse": 0.30848410725593567,
+      "diff_vs_validation": -0.039557963609695435,
+      "diff_vs_best_single_test": -0.012154072523117065,
+      "diff_vs_fixed_core_test": -0.00020259618759155273,
+      "diff_vs_full_adaptive_test": 0.0005302250385284535,
+      "selection_protocol": "router-train fitted nonnegative simplex all-five linear ensemble; no test-data feedback",
+      "status": "after_final_test_audit",
+      "weights_json": "{\"DLinear\": 0.11675126105546951, \"PatchTST\": 0.36408838629722595, \"iTransformer\": 0.33965399861335754, \"TimesNet\": 0.1488531231880188, \"ModernTCN\": 0.030653247609734535}",
+      "paired_ci95_diff_vs_fixed_core_low": -0.0007666412275284529,
+      "paired_ci95_diff_vs_fixed_core_high": 0.00036798350629396737,
+      "paired_ci_excludes_zero": false
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "method": "forecast_state_partial_subset_stop_router",
+  "ablation": "full",
+  "seeds": [
+    7
+  ],
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "input_len": 96,
+  "forecast_horizon": 12,
+  "num_features": 7,
+  "num_train_windows": 5546,
+  "num_val_windows": 2773,
+  "validation_start": 8640,
+  "validation_end": 11424,
+  "lambda_cost": 0.0,
+  "primary_stop_threshold": 0.5,
+  "trajectory_kinds": "oracle,random",
+  "loss_weights": {
+    "alpha_utility": 1.0,
+    "alpha_rank": 1.0,
+    "alpha_stop": 1.0
+  },
+  "aggregate": {
+    "mae_mean": 0.3708215355873108,
+    "mae_std": 0.0,
+    "mse_mean": 0.31556013226509094,
+    "mse_std": 0.0,
+    "average_queries_mean": 3.1575911045074463,
+    "average_queries_std": 0.0,
+    "stop_after_1_percent_mean": 0.288496213487198,
+    "stop_after_1_percent_std": 0.0,
+    "stop_after_2_percent_mean": 15.470609448250991,
+    "stop_after_2_percent_std": 0.0,
+    "stop_after_3_percent_mean": 58.42048323115759,
+    "stop_after_3_percent_std": 0.0,
+    "all_experts_percent_mean": 5.986296429859358,
+    "all_experts_percent_std": 0.0,
+    "marginal_utility_correlation_mean": 0.39732907460311157,
+    "marginal_utility_correlation_std": 0.0,
+    "top1_next_query_accuracy_mean": 35.87080876529086,
+    "top1_next_query_accuracy_std": 0.0,
+    "stop_accuracy_mean": 76.5730880929332,
+    "stop_accuracy_std": 0.0,
+    "false_stop_rate_mean": 16.192906802780957,
+    "false_stop_rate_std": 0.0,
+    "unnecessary_query_rate_mean": 7.23400510428584,
+    "unnecessary_query_rate_std": 0.0
+  },
+  "query_budget_frontier": [
+    {
+      "stop_threshold": 0.5,
+      "average_queries_mean": 3.1575911045074463,
+      "average_queries_std": 0.0,
+      "mae_mean": 0.3708215355873108,
+      "mae_std": 0.0,
+      "mse_mean": 0.31556013226509094,
+      "mse_std": 0.0
+    }
+  ],
+  "fixed_ensemble_summary": {
+    "best_by_size": {
+      "1": {
+        "subset": "iTransformer",
+        "num_experts": 1,
+        "mae": 0.37654954195022583,
+        "mse": 0.32209450006484985
+      },
+      "2": {
+        "subset": "PatchTST+iTransformer",
+        "num_experts": 2,
+        "mae": 0.370154470205307,
+        "mse": 0.31450897455215454
+      },
+      "3": {
+        "subset": "PatchTST+iTransformer+TimesNet",
+        "num_experts": 3,
+        "mae": 0.36726489663124084,
+        "mse": 0.3105303645133972
+      },
+      "4": {
+        "subset": "DLinear+PatchTST+iTransformer+TimesNet",
+        "num_experts": 4,
+        "mae": 0.3682158589363098,
+        "mse": 0.31093770265579224
+      },
+      "5": {
+        "subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+        "num_experts": 5,
+        "mae": 0.37109920382499695,
+        "mse": 0.31158220767974854
+      }
+    },
+    "oracle_by_budget_mae": {
+      "1": 0.335015207529068,
+      "2": 0.32636138796806335,
+      "3": 0.32535767555236816,
+      "4": 0.3252590298652649,
+      "5": 0.32524821162223816
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 7,
+      "best_epoch": 1,
+      "mae": 0.3708215355873108,
+      "mse": 0.31556013226509094,
+      "average_queries": 3.1575911045074463,
+      "stop_after_1_percent": 0.288496213487198,
+      "stop_after_2_percent": 15.470609448250991,
+      "stop_after_3_percent": 58.42048323115759,
+      "all_experts_percent": 5.986296429859358,
+      "marginal_utility_correlation": 0.39732907460311157,
+      "top1_next_query_accuracy": 35.87080876529086,
+      "stop_accuracy": 76.5730880929332,
+      "false_stop_rate": 16.192906802780957,
+      "unnecessary_query_rate": 7.23400510428584
+    }
+  ],
+  "created_at_utc": "2026-08-10T01:07:54.852898+00:00",
+  "safety": "NO TEST DATA USED"
+}

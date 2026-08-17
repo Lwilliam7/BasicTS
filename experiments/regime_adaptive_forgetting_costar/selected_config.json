@@ -1,0 +1,41 @@
+{
+  "best": {
+    "name": "zscore_slow0.99_fast0.95_thr2.5_delta0_reset0_cool24_boost24",
+    "detector": "zscore",
+    "slow_decay": 0.99,
+    "fast_decay": 0.95,
+    "threshold": 2.5,
+    "delta": 0.0,
+    "reset_strength": 0.0,
+    "cooldown": 24,
+    "boost_duration": 24,
+    "fold_mae_mean": 0.3419906795024872,
+    "fold_baseline_mae_mean": 0.3423331081867218,
+    "fold_delta_mean": -0.00034242868423461914,
+    "fold_delta_std": 0.00044749953667633235,
+    "fold_mae_se": 0.00025836395798251033,
+    "fold_wins": 3,
+    "mean_triggers": 8.0,
+    "fast_update_rate": 0.17499290165428816
+  },
+  "selected": {
+    "name": "zscore_slow0.99_fast0.95_thr2.5_delta0_reset0_cool24_boost24",
+    "detector": "zscore",
+    "slow_decay": 0.99,
+    "fast_decay": 0.95,
+    "threshold": 2.5,
+    "delta": 0.0,
+    "reset_strength": 0.0,
+    "cooldown": 24,
+    "boost_duration": 24,
+    "fold_mae_mean": 0.3419906795024872,
+    "fold_baseline_mae_mean": 0.3423331081867218,
+    "fold_delta_mean": -0.00034242868423461914,
+    "fold_delta_std": 0.00044749953667633235,
+    "fold_mae_se": 0.00025836395798251033,
+    "fold_wins": 3,
+    "mean_triggers": 8.0,
+    "fast_update_rate": 0.17499290165428816
+  },
+  "one_se_threshold": 0.3422490434604697
+}

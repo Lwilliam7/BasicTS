@@ -1,0 +1,75 @@
+{
+  "config": {
+    "train_cache": "cache/costarts_subset_states_train.pt",
+    "val_cache": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_adaptive_light\\forecast_disagreement",
+    "results_dir": "results\\router_summary\\costarts_adaptive_light\\forecast_disagreement",
+    "seed": 11,
+    "batch_size": 128,
+    "max_epochs": 1,
+    "patience": 1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "device": "cpu",
+    "cost": 0.0,
+    "max_queries": 5,
+    "variant": "forecast_disagreement",
+    "train_state_mode": "all",
+    "utility_loss_weight": 1.0,
+    "action_loss_weight": 0.5,
+    "stop_loss_weight": 0.5,
+    "max_train_states": 512
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "best": {
+    "epoch": 1,
+    "train_metrics": {
+      "loss": 0.9222252666950226,
+      "utility_loss": 0.016833132365718484,
+      "action_loss": 1.1913697719573975,
+      "stop_loss": 0.6194145232439041,
+      "action_accuracy": 0.34375,
+      "stop_frequency": 0.173828125
+    },
+    "val_metrics": {
+      "mae": 0.350075364112854,
+      "mse": 0.3097400963306427,
+      "average_experts_queried": 4.99510603588907,
+      "stop_step_distribution": {
+        "4": 3,
+        "5": 610
+      },
+      "query_order_distribution": {
+        "PatchTST->TimesNet->ModernTCN->DLinear->iTransformer": 178,
+        "PatchTST->TimesNet->DLinear->ModernTCN->iTransformer": 145,
+        "PatchTST->DLinear->ModernTCN->TimesNet->iTransformer": 111,
+        "PatchTST->DLinear->TimesNet->ModernTCN->iTransformer": 106,
+        "PatchTST->ModernTCN->DLinear->TimesNet->iTransformer": 25,
+        "DLinear->PatchTST->ModernTCN->TimesNet->iTransformer": 16,
+        "DLinear->ModernTCN->PatchTST->TimesNet->iTransformer": 10,
+        "PatchTST->TimesNet->DLinear->iTransformer->ModernTCN": 7,
+        "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 4,
+        "DLinear->PatchTST->TimesNet->ModernTCN->iTransformer": 3,
+        "PatchTST->ModernTCN->TimesNet->DLinear->iTransformer": 3,
+        "PatchTST->DLinear->ModernTCN->TimesNet": 3,
+        "PatchTST->TimesNet->iTransformer->DLinear->ModernTCN": 2
+      },
+      "regret_to_oracle": 0.03193211555480957,
+      "oracle_mae": 0.31814324855804443,
+      "all_queries_unique": true
+    }
+  },
+  "baselines": {
+    "best_fixed_expert": "ModernTCN",
+    "best_fixed_expert_mae": 0.35864511132240295,
+    "oracle_best_expert_mae": 0.31814324855804443
+  },
+  "test_set_used": false
+}

@@ -1,0 +1,68 @@
+{
+  "dataset": "ETTh1",
+  "data_dir": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\datasets\\ETTh1",
+  "num_timestamps": 14400,
+  "num_features": 7,
+  "input_len": 96,
+  "forecast_horizon": 12,
+  "ranges": [
+    {
+      "name": "block_a",
+      "fraction": "0.0-0.2",
+      "start": 0,
+      "end": 2880,
+      "num_timestamps": 2880,
+      "first_valid_window_start": 0,
+      "last_valid_window_start": 2772,
+      "num_windows": 2773
+    },
+    {
+      "name": "block_b",
+      "fraction": "0.2-0.4",
+      "start": 2880,
+      "end": 5760,
+      "num_timestamps": 2880,
+      "first_valid_window_start": 2880,
+      "last_valid_window_start": 5652,
+      "num_windows": 2773
+    },
+    {
+      "name": "block_c",
+      "fraction": "0.4-0.6",
+      "start": 5760,
+      "end": 8640,
+      "num_timestamps": 2880,
+      "first_valid_window_start": 5760,
+      "last_valid_window_start": 8532,
+      "num_windows": 2773
+    },
+    {
+      "name": "validation",
+      "fraction": "0.6-0.8",
+      "start": 8640,
+      "end": 11520,
+      "num_timestamps": 2880,
+      "first_valid_window_start": 8640,
+      "last_valid_window_start": 11412,
+      "num_windows": 2773
+    },
+    {
+      "name": "test",
+      "fraction": "0.8-1.0",
+      "start": 11520,
+      "end": 14400,
+      "num_timestamps": 2880,
+      "first_valid_window_start": 11520,
+      "last_valid_window_start": 14292,
+      "num_windows": 2773
+    }
+  ],
+  "stage_outputs": {
+    "block_b_oos": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\block_b_oos_cache.pt",
+    "block_c_oos": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\block_c_oos_cache.pt",
+    "router_val_60_80": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\router_val_60_80_cache.pt",
+    "test_80_100": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\test_80_100_cache.pt"
+  },
+  "router_train_output": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\router_train_20_60_cache.pt",
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+}

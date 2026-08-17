@@ -1,0 +1,37 @@
+{
+  "base_mixture": {
+    "chronological": 0.25,
+    "horizon_variable": 0.75
+  },
+  "chrono_branch": {
+    "static_prior": 0.5,
+    "train_initialized_online": 0.5
+  },
+  "hv_trial": {
+    "alpha": 0.5,
+    "constrained": false,
+    "decay": 0.95,
+    "family": "hv_ema",
+    "forgetting": 0.995,
+    "mode": "hv_lowrank",
+    "name": "hvema_lowrank1_decay0.95_temp0.1",
+    "rank": 1,
+    "ridge": 10.0,
+    "seed": 7,
+    "shrink": 0.0,
+    "temperature": 0.1
+  },
+  "method": "frozen_costar",
+  "no_test_cache_loaded": true,
+  "no_validation_target_feedback": true,
+  "online_method_label": "online_costar",
+  "selection_rule": "reuse existing frozen train-selected cores",
+  "specialist_config": {
+    "activation_margin": 0.02,
+    "decay": 0.95,
+    "extra_weight_cap": 0.1,
+    "scenario": "both",
+    "structure": "variable",
+    "warmup": 96
+  }
+}

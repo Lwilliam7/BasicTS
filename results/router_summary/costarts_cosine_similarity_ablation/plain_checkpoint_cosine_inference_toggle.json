@@ -1,0 +1,29 @@
+{
+  "experiment": "plain_costarts_checkpoint_cosine_inference_toggle",
+  "checkpoint": "checkpoints/costarts/best_costarts_router.pt",
+  "rows": [
+    {
+      "use_cosine_at_inference": true,
+      "selected_expert_mae": 0.3653925955295563,
+      "selected_expert_mse": 0.3352326452732086,
+      "equal_average_mae": 0.3653925955295563,
+      "train_error_softmax_mae": 0.3653925955295563,
+      "avg_experts": 1.0,
+      "query_count_distribution": {
+        "1": 613
+      }
+    },
+    {
+      "use_cosine_at_inference": false,
+      "selected_expert_mae": 0.3579866290092468,
+      "selected_expert_mse": 0.3317779004573822,
+      "equal_average_mae": 0.3579866588115692,
+      "train_error_softmax_mae": 0.3579866588115692,
+      "avg_experts": 1.0,
+      "query_count_distribution": {
+        "1": 613
+      }
+    }
+  ],
+  "test_set_used": false
+}

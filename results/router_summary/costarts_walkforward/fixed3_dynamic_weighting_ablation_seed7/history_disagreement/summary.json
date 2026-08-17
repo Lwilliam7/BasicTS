@@ -1,0 +1,41 @@
+{
+  "method": "fixed3_dynamic_weighting",
+  "fixed3_experts": [
+    "PatchTST",
+    "iTransformer",
+    "TimesNet"
+  ],
+  "seeds": [
+    7
+  ],
+  "mae_mean": 0.36608490347862244,
+  "mae_std": 0.0,
+  "mse_mean": 0.30891844630241394,
+  "mse_std": 0.0,
+  "equal_fixed3_mae": 0.36726489663124084,
+  "equal_fixed3_mse": 0.3105303645133972,
+  "improvement_vs_fixed3_mean": 0.0011799931526184082,
+  "per_seed": [
+    {
+      "seed": 7,
+      "best_epoch": 3,
+      "mae": 0.36608490347862244,
+      "mse": 0.30891844630241394,
+      "equal_fixed3_mae": 0.36726489663124084,
+      "equal_fixed3_mse": 0.3105303645133972,
+      "improvement_vs_fixed3": 0.0011799931526184082,
+      "mean_weight_patchtst": 0.44022226333618164,
+      "mean_weight_itransformer": 0.3278229534626007,
+      "mean_weight_timesnet": 0.23195476830005646,
+      "weight_std_patchtst": 0.09300177544355392,
+      "weight_std_itransformer": 0.0600363165140152,
+      "weight_std_timesnet": 0.03483084216713905
+    }
+  ],
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "created_at_utc": "2026-08-10T01:41:37.428571+00:00",
+  "safety": "NO TEST DATA USED"
+}

@@ -1,0 +1,56 @@
+{
+  "config": "soft_tau_0p01",
+  "objective": "soft",
+  "temperature": 0.01,
+  "validation_mae_mean": 0.37091800570487976,
+  "validation_mae_std": 0.0,
+  "validation_mse_mean": 0.31156447529792786,
+  "validation_mse_std": 0.0,
+  "subset_selection_accuracy_mean": 28.020194734944106,
+  "oracle_menu_regret_mean": 0.02387916594421309,
+  "average_experts_used_mean": 4.567616300036062,
+  "parameter_count": 32005,
+  "per_seed": [
+    {
+      "config": "soft_tau_0p01",
+      "objective": "soft",
+      "temperature": 0.01,
+      "seed": 7,
+      "best_epoch": 2,
+      "validation_mae": 0.37091800570487976,
+      "validation_mse": 0.31156447529792786,
+      "raw_validation_mae": 1.245108962059021,
+      "raw_validation_mse": 4.904618740081787,
+      "subset_selection_accuracy": 28.020194734944106,
+      "oracle_menu_regret": 0.02387916594421309,
+      "average_experts_used": 4.567616300036062,
+      "parameter_count": 32005
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "mae": 0.37091800570487976,
+      "mse": 0.31156447529792786,
+      "raw_mae": 1.245108962059021,
+      "raw_mse": 4.904618740081787,
+      "subset_selection_accuracy": 28.020194734944106,
+      "oracle_menu_regret": 0.02387916594421309,
+      "oracle_menu_regret_median": 0.01288539171218872,
+      "average_experts_used": 4.567616300036062,
+      "selected_subset_percent": {
+        "iTransformer": 0.0,
+        "PatchTST+iTransformer": 5.012621709340065,
+        "PatchTST+iTransformer+TimesNet": 14.100252434186801,
+        "DLinear+PatchTST+iTransformer+TimesNet": 0.0,
+        "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN": 80.88712585647313
+      },
+      "oracle_subset_percent": {
+        "iTransformer": 20.699603317706455,
+        "PatchTST+iTransformer": 22.178146411828344,
+        "PatchTST+iTransformer+TimesNet": 18.031013342949873,
+        "DLinear+PatchTST+iTransformer+TimesNet": 10.926794085827623,
+        "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN": 28.164442841687702
+      }
+    }
+  }
+}
