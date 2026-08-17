@@ -147,6 +147,32 @@ Artifacts:
 - `experiments/frozen_costar/frozen_costar_validation_results.json`
 - `project_memory/experiments/2026-08-17_equal_static_costar_cleanup.md`
 
+## Equal-Static COSTAR Test Audit
+
+ADDITIONAL AFTER-FINAL-TEST AUDIT:
+
+After explicit user authorization on 2026-08-17, the active ETTh1 equal-static full adaptive COSTAR path was evaluated on the already-generated ETTh1 final test cache. No tuning, expert-set changes, or hyperparameter changes were made after loading test.
+
+This equal-static path is now the main active ETTh1 full adaptive COSTAR implementation going forward. The older preregistered result remains the historical confirmatory final-test record.
+
+Result:
+
+- Equal-static full adaptive COSTAR test MAE/MSE: `0.326408` / `0.267378`.
+- Validation MAE/MSE: `0.363100` / `0.306026`.
+- Difference vs train-selected fixed core test MAE: `-0.000720`.
+- Difference vs old preregistered full adaptive test MAE: `+0.000013`.
+
+Interpretation:
+
+The equal-static cleanup preserves nearly the same ETTh1 test MAE as the old neural-static-prior path and slightly improves test MSE, but it is an after-final-test audit row and does not replace the preregistered final-test result.
+
+Artifacts:
+
+- `experiments/equal_static_costar_test_audit/MAIN_ETTH1_FULL_ADAPTIVE_MODEL.json`
+- `experiments/equal_static_costar_test_audit/EQUAL_STATIC_ETTH1_TEST_AUDIT.json`
+- `experiments/equal_static_costar_test_audit/EQUAL_STATIC_ETTH1_TEST_AUDIT.md`
+- `project_memory/experiments/2026-08-17_equal_static_costar_test_audit.md`
+
 ## ETTh2 Pair-Potential Test Audit
 
 ADDITIONAL AFTER-FINAL-TEST AUDIT:

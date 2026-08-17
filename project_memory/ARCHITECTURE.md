@@ -222,7 +222,9 @@ Winning setting:
 
 Status:
 
+- Main active ETTh1 full adaptive implementation: equal static weights for every selected triple.
 - Active equal-static validation result: MAE `0.363100`, MSE `0.306026`.
+- Active equal-static after-final-test audit result: MAE `0.326408`, MSE `0.267378`.
 - Historical pre-test development result: MAE `0.363112 +/- 0.000013`, MSE `0.306057 +/- 0.000016`.
 - Aggregate paired bootstrap CI vs fixed-three HV `0.363642`: `[-0.000557, -0.000502]`.
 - Paired CI vs prior ridge residual best `0.363301`: `[-0.000233, -0.000143]`.

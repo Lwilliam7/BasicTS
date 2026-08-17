@@ -163,17 +163,20 @@ Fixed ensembles close much of the gap and expose when routers add complexity wit
 
 ## Static COSTAR Prior Is Equal Across Triples
 
-Status: Implemented as structural cleanup
+Status: Main active ETTh1 full adaptive implementation
 
 Evidence:
 
 - `experiments/train_selected_core_etth1/run_train_selected_core_eval.py` now sets `static_weights = torch.full((num_windows, 3), 1.0 / 3.0)` for every selected triple.
 - `experiments/frozen_costar/run_frozen_costar_validation.py` no longer imports or loads the ETTh1 static neural-router checkpoint.
 - ETTh1 equal-static full adaptive validation MAE/MSE: `0.363100` / `0.306026`, saved in `experiments/train_selected_core_etth1_equal_static/final_report.json`.
+- ETTh1 equal-static full adaptive after-final-test audit MAE/MSE: `0.326408` / `0.267378`, nearly matching the old preregistered neural-static-prior test MAE `0.326395`.
 
 Decision:
 
-Use equal static weights for every selected triple in the active full adaptive COSTAR path. Do not give `PatchTST+iTransformer+TimesNet` a special trained static neural prior unless a future experiment trains compatible static priors for all compared triples.
+Use equal static weights for every selected triple in the active full adaptive COSTAR path. The equal-static ETTh1 full adaptive path is now the main active implementation going forward. Do not give `PatchTST+iTransformer+TimesNet` a special trained static neural prior unless a future experiment trains compatible static priors for all compared triples.
+
+This does not rewrite the historical preregistered final-test artifact: the old final frozen adaptive result remains MAE/MSE `0.326395` / `0.267509`, while the main active equal-static audit result is MAE/MSE `0.326408` / `0.267378`.
 
 Reason:
 

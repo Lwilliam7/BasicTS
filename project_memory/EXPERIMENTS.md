@@ -53,6 +53,8 @@ This ledger records compact, evidence-backed results. It intentionally links to 
 
 | 2026-08-17 | ETTh1 | Equal-static COSTAR cleanup | Remove OLD_FIXED3 neural-static-prior exception; use equal static weights for every selected triple | deterministic after cleanup | val `0.363100` | val `0.306026` | n/a | previous neural-prior path `0.363112` | `-0.000012` MAE | Validation-only structural cleanup after test seen; no new final-test claim | `experiments/train_selected_core_etth1_equal_static/final_report.json`; `project_memory/experiments/2026-08-17_equal_static_costar_cleanup.md` |
 
+| 2026-08-17 | ETTh1 | Equal-static COSTAR test audit | Evaluate active equal-static full adaptive COSTAR on already-generated final test cache | deterministic after cleanup | test `0.326408` | test `0.267378` | n/a | old preregistered full adaptive test `0.326395`; fixed core `0.327128` | `+0.000013` vs old full adaptive; `-0.000720` vs fixed core | After-final-test audit; main active ETTh1 implementation going forward; does not supersede preregistered final result | `experiments/equal_static_costar_test_audit/MAIN_ETTH1_FULL_ADAPTIVE_MODEL.json`; `experiments/equal_static_costar_test_audit/EQUAL_STATIC_ETTH1_TEST_AUDIT.json`; `project_memory/experiments/2026-08-17_equal_static_costar_test_audit.md` |
+
 Unverified or partial:
 
 - Some older end-to-end, FAME, GTR, and ablation folders exist but were not included here because this memory pass did not verify their final metrics.

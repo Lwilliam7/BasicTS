@@ -2,13 +2,15 @@
 
 Created: 2026-08-13
 
-Updated: 2026-08-14
+Updated: 2026-08-17
 
 This file consolidates frozen-model test results from the original confirmatory final frozen test evaluation and additional frozen-model evaluations performed later. Rows marked `clean_preregistered` are the official frozen results from the pre-test freeze artifacts. Rows marked `pre_test_frozen` were trained, selected, configured, and frozen without test-data feedback; they are additional frozen-model evaluations unless also marked `clean_preregistered`.
 
 Machine-readable version: `experiments/all_results_summary/all_costar_results.csv`
 
 Coverage note: this file now includes official final frozen test rows, additional final-test audit rows, and ETTh2 validation-only COSTAR/fixed-subset records from the canonical protocol, train-selected core audits, sequential COSTAR, pair selector, pair-potential diagnostics, and limited normalized replication. Validation-only rows have blank test columns in the CSV.
+
+Active ETTh1 note: the main active ETTh1 full adaptive COSTAR implementation now uses equal static weights for every selected triple. Its after-final-test audit result is MAE/MSE `0.326408` / `0.267378` with validation MAE/MSE `0.363100` / `0.306026`. The older preregistered final-test row remains the historical confirmatory record.
 
 Matched ETTh1/ETTh2 table:
 
@@ -35,15 +37,16 @@ ETTh2 is filled in that matched table where a valid analogue exists. Four former
 |---:|---|---:|---:|---:|---:|---|
 | 1 | MLP residual corrector | `0.326047` | `0.267322` | `0.363318` | `-0.001081` | additional frozen-model result |
 | 2 | Expanded both final frozen | `0.326393` | `0.267506` | `0.363112` | `-0.000735` | official final model replayed |
-| 3 | Expanded DLinear only | `0.326437` | `0.267593` | `0.363510` | `-0.000691` | additional frozen-model result |
-| 4 | Ridge residual corrector | `0.326448` | `0.267452` | `0.363301` | `-0.000680` | additional frozen-model result |
-| 5 | Expanded ModernTCN only | `0.326468` | `0.267591` | `0.363435` | `-0.000660` | additional frozen-model result |
-| 6 | Horizon-variable hybrid | `0.326493` | `0.267638` | `0.363642` | `-0.000635` | additional frozen-model result |
-| 7 | Chronological EMA hybrid | `0.326548` | `0.266643` | `0.365534` | `-0.000580` | additional frozen-model result |
-| 8 | Oracle prototype residual | `0.326829` | `0.267364` | `0.366028` | `-0.000299` | additional frozen-model result |
-| 9 | Nonnegative simplex linear average | `0.326926` | `0.267713` | `0.366483` | `-0.000203` | after-final-test audit |
-| 10 | Fixed core equal | `0.327128` | `0.266583` | `0.367265` | `0.000000` | anchor |
-| 11 | Dynamic fixed3 seed7 | `0.329249` | `0.272063` | `0.365985` | `+0.002121` | additional frozen-model result |
+| 3 | Main active full adaptive COSTAR, equal-static | `0.326408` | `0.267378` | `0.363100` | `-0.000720` | after-final-test audit main active implementation |
+| 4 | Expanded DLinear only | `0.326437` | `0.267593` | `0.363510` | `-0.000691` | additional frozen-model result |
+| 5 | Ridge residual corrector | `0.326448` | `0.267452` | `0.363301` | `-0.000680` | additional frozen-model result |
+| 6 | Expanded ModernTCN only | `0.326468` | `0.267591` | `0.363435` | `-0.000660` | additional frozen-model result |
+| 7 | Horizon-variable hybrid | `0.326493` | `0.267638` | `0.363642` | `-0.000635` | additional frozen-model result |
+| 8 | Chronological EMA hybrid | `0.326548` | `0.266643` | `0.365534` | `-0.000580` | additional frozen-model result |
+| 9 | Oracle prototype residual | `0.326829` | `0.267364` | `0.366028` | `-0.000299` | additional frozen-model result |
+| 10 | Nonnegative simplex linear average | `0.326926` | `0.267713` | `0.366483` | `-0.000203` | after-final-test audit |
+| 11 | Fixed core equal | `0.327128` | `0.266583` | `0.367265` | `0.000000` | anchor |
+| 12 | Dynamic fixed3 seed7 | `0.329249` | `0.272063` | `0.365985` | `+0.002121` | additional frozen-model result |
 
 ## ETTh2 Frozen-Model Top COSTAR Results
 
@@ -140,6 +143,11 @@ Official clean final test winners:
 
 - ETTh1: full frozen adaptive model, test MAE/MSE `0.326395` / `0.267509`.
 - ETTh2: full frozen adaptive model, test MAE/MSE `0.297808` / `0.218612`.
+
+Main active ETTh1 full adaptive implementation:
+
+- Equal-static full adaptive COSTAR, test MAE/MSE `0.326408` / `0.267378`, validation MAE/MSE `0.363100` / `0.306026`.
+- This is the code path to use going forward; it is an after-final-test audit row, so it does not rewrite the preregistered final-test artifact.
 
 Frozen-model test result notes:
 

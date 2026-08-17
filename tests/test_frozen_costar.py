@@ -3,25 +3,31 @@ from __future__ import annotations
 import torch
 
 from experiments.frozen_costar.run_frozen_costar_validation import (
+    frozen_costar_base_prediction,
     frozen_costar_prediction,
     frozen_hv_weights,
     online_prediction,
     tensor_digest,
 )
+from experiments.train_selected_core_etth1 import run_train_selected_core_eval as etth1
 
 
-def _cache(num_windows: int, offset: int = 0) -> dict[str, torch.Tensor | int | list[str]]:
+def _cache(
+    num_windows: int,
+    offset: int = 0,
+    experts: list[str] | None = None,
+) -> dict[str, torch.Tensor | int | list[str]]:
     gen = torch.Generator().manual_seed(1000 + offset)
     horizon = 2
     variables = 2
-    experts = ["DLinear", "PatchTST", "ModernTCN"]
+    expert_names = experts or ["DLinear", "PatchTST", "ModernTCN"]
     return {
         "histories": torch.randn(num_windows, 4, variables, generator=gen),
         "targets": torch.randn(num_windows, horizon, variables, generator=gen),
         "target_masks": torch.ones(num_windows, horizon, variables, dtype=torch.bool),
-        "prediction_stack": torch.randn(num_windows, horizon, variables, len(experts), generator=gen),
+        "prediction_stack": torch.randn(num_windows, horizon, variables, len(expert_names), generator=gen),
         "absolute_window_starts": torch.arange(offset, offset + num_windows),
-        "expert_names": experts,
+        "expert_names": expert_names,
         "num_windows": num_windows,
         "forecast_horizon": horizon,
         "input_len": 4,
@@ -79,6 +85,23 @@ def test_frozen_and_online_begin_with_same_first_window() -> None:
     frozen, _ = frozen_costar_prediction("ETTh2", val_cache, train_cache, std, idx, 7, torch.device("cpu"))
     online, _ = online_prediction("ETTh2", val_cache, train_cache, std, idx, 7, torch.device("cpu"))
     assert torch.equal(frozen[0], online[0])
+
+
+def test_etth1_frozen_and_online_base_use_same_equal_static_prior() -> None:
+    experts = ["DLinear", "PatchTST", "iTransformer", "TimesNet", "ModernTCN"]
+    train_cache = _cache(7, 0, experts)
+    val_cache = _cache(8, 100, experts)
+    std = torch.ones(2)
+    idx = [1, 2, 3]
+    frozen, frozen_extra = frozen_costar_base_prediction(
+        "ETTh1", val_cache, train_cache, std, idx, 7, torch.device("cpu")
+    )
+    online, online_extra = etth1.parameterized_current_base_prediction(
+        val_cache, train_cache, std, idx, 7, torch.device("cpu")
+    )
+    assert frozen_extra["static_weight_source"] == "equal_static_all_triples"
+    assert online_extra["static_weight_source"] == "equal_static_all_triples"
+    assert torch.allclose(frozen[0], online[0], atol=1e-6, rtol=0.0)
 
 
 def test_online_etth2_path_still_uses_eval_targets_after_delay() -> None:

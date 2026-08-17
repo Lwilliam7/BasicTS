@@ -1,0 +1,52 @@
+{
+  "dataset": "ETTh1",
+  "main_active_model": true,
+  "method": "main_etth1_full_adaptive_costar_equal_static",
+  "status": "after_final_test_audit_main_active",
+  "label": "after_final_test_audit",
+  "code_path": "experiments/train_selected_core_etth1/run_train_selected_core_eval.py",
+  "prediction_function": "parameterized_current_base_prediction",
+  "test_audit_path": "experiments/equal_static_costar_test_audit/EQUAL_STATIC_ETTH1_TEST_AUDIT.json",
+  "validation_report_path": "experiments/train_selected_core_etth1_equal_static/final_report.json",
+  "core": [
+    "PatchTST",
+    "iTransformer",
+    "TimesNet"
+  ],
+  "specialists": [
+    "DLinear",
+    "ModernTCN"
+  ],
+  "static_weight_source": "equal_static_all_triples",
+  "adaptive_architecture": "hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75",
+  "mixture": {
+    "chronological_branch": 0.25,
+    "horizon_variable_branch": 0.75
+  },
+  "specialist_config": {
+    "scenario": "both",
+    "structure": "variable",
+    "decay": 0.95,
+    "cap": 0.1,
+    "margin": 0.02,
+    "warmup": 96
+  },
+  "seeds": [
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "validation_mae": 0.3631003201007843,
+  "validation_mse": 0.30602556467056274,
+  "test_mae": 0.32640793919563293,
+  "test_mse": 0.26737847924232483,
+  "comparison_to_old_preregistered_full_adaptive": {
+    "old_test_mae": 0.3263952910900116,
+    "old_test_mse": 0.2675091326236725,
+    "mae_delta_new_minus_old": 0.000012648105621348993,
+    "mse_delta_new_minus_old": -0.00013065338134765625
+  },
+  "interpretation": "This is the main active ETTh1 full adaptive COSTAR implementation going forward. It does not rewrite or supersede the historical preregistered final-test artifact."
+}
