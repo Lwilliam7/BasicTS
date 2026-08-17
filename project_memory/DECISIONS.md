@@ -1,6 +1,6 @@
 # Research Decisions
 
-Last updated: 2026-08-16
+Last updated: 2026-08-17
 
 These are durable conclusions supported by repository outputs. Do not repeatedly rediscover them unless a new hypothesis materially changes the experiment.
 
@@ -161,6 +161,24 @@ Reason:
 
 Fixed ensembles close much of the gap and expose when routers add complexity without value.
 
+## Static COSTAR Prior Is Equal Across Triples
+
+Status: Implemented as structural cleanup
+
+Evidence:
+
+- `experiments/train_selected_core_etth1/run_train_selected_core_eval.py` now sets `static_weights = torch.full((num_windows, 3), 1.0 / 3.0)` for every selected triple.
+- `experiments/frozen_costar/run_frozen_costar_validation.py` no longer imports or loads the ETTh1 static neural-router checkpoint.
+- ETTh1 equal-static full adaptive validation MAE/MSE: `0.363100` / `0.306026`, saved in `experiments/train_selected_core_etth1_equal_static/final_report.json`.
+
+Decision:
+
+Use equal static weights for every selected triple in the active full adaptive COSTAR path. Do not give `PatchTST+iTransformer+TimesNet` a special trained static neural prior unless a future experiment trains compatible static priors for all compared triples.
+
+Reason:
+
+The old `OLD_FIXED3` exception made cross-core comparisons structurally uneven. Equal static weights isolate the causal online/horizon-variable/specialist mechanisms and keep the implementation symmetric across triples.
+
 ## Sequential Query Routing Is Not The Current Best Direction
 
 Status: Tested / not current direction
@@ -274,7 +292,7 @@ There is a modest but statistically supported residual signal beyond horizon-var
 
 ## Expanded Optional Expert Specialists Are Current Best
 
-Status: Confirmed current best
+Status: Confirmed; active implementation now equal-static
 
 Evidence:
 
@@ -283,6 +301,7 @@ Evidence:
 - Improvement over prior ridge residual best `0.363301`: `0.000189` MAE, paired CI `[-0.000233, -0.000143]`.
 - Router-train selection had `3/4` fold wins for the promoted both-specialist config.
 - `expanded_both` improved every horizon and every variable on average; worst horizon-variable regression was small (`+0.000138` MAE).
+- Equal-static cleanup removed the ETTh1 neural static-prior exception and scored validation MAE/MSE `0.363100` / `0.306026`.
 
 Decision:
 
@@ -426,7 +445,7 @@ This is the only currently verified ETTh2 protocol where every baseline is evalu
 
 ## ETTh1 Current Best Survives Train-Only Core Selection
 
-Status: Confirmed
+Status: Confirmed; static-prior asymmetry removed in later cleanup
 
 Evidence:
 
@@ -436,6 +455,7 @@ Evidence:
 - Validation fixed-3 MAE/MSE: `0.367265` / `0.310530`.
 - Current-best architecture with train-selected core: `0.363112 +/- 0.000013`, MSE `0.306057 +/- 0.000016`.
 - Paired CI versus selected fixed-3: `[-0.004460, -0.003856]`.
+- Later equal-static cleanup with the same train-selected core scored validation MAE/MSE `0.363100` / `0.306026`.
 
 Decision:
 
@@ -443,7 +463,7 @@ Keep `expanded_both` over `hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0
 
 Reason:
 
-The clean train-only selection and the prior development selection agree, so the reported `0.363112` does not rely on a different validation-chosen core.
+The clean train-only selection and the prior development selection agree. The later equal-static cleanup also removes the core-specific static neural-prior asymmetry, so the active validation path no longer depends on a special `OLD_FIXED3` checkpoint.
 
 ## ETTh2 Train-Selected Core Does Not Beat Fixed-2
 

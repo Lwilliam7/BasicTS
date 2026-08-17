@@ -31,7 +31,6 @@ if str(ROOT) not in sys.path:
 import experiments.etth2_train_selected_core.run_etth2_train_selected_core_eval as etth2  # noqa: E402
 import experiments.train_selected_core_etth1.run_train_selected_core_eval as etth1  # noqa: E402
 from experiments.chronological_adaptive_costar.run_chronological_adaptive_costar import (  # noqa: E402
-    CURRENT_WINNER,
     SEEDS,
     softmax_neg,
 )
@@ -46,8 +45,6 @@ from experiments.horizon_variable_adaptive_costar.run_hv_adaptive_costar import 
     predict_from_hv_weights,
 )
 from experiments.oracle_weight_tournament.run_tournament import (  # noqa: E402
-    WeightStudent,
-    args_global_weights,
     load_cache,
     load_std,
     sample_mae,
@@ -59,7 +56,7 @@ from experiments.oracle_weight_tournament.run_tournament import (  # noqa: E402
 OUT_DIR = ROOT / "experiments/frozen_costar"
 ETTH1_FROZEN = ROOT / "experiments/train_selected_core_etth1/frozen_config_before_validation.json"
 ETTH2_FROZEN = ROOT / "experiments/etth2_train_selected_core/frozen_config_before_validation.json"
-ETTH1_EXPECTED_ONLINE_MAE = 0.3631121516227722
+ETTH1_EXPECTED_ONLINE_MAE = 0.3631003201007843
 ETTH2_EXPECTED_ONLINE_MAE = 0.27683165669441223
 HV_TRIAL = HvTrial(
     "hv_ema",
@@ -146,44 +143,6 @@ def frozen_hv_weights(num_windows: int, train_err_mean: torch.Tensor) -> tuple[t
     }
 
 
-def load_static_winner_weights_no_targets(
-    seed: int,
-    cache: Mapping[str, Any],
-    expert_idx: Sequence[int],
-    device: torch.device,
-) -> torch.Tensor:
-    ckpt_path = ROOT / "experiments/oracle_weight_tournament/checkpoints" / f"{CURRENT_WINNER}_seed{seed}" / "best.pt"
-    if not ckpt_path.exists():
-        raise FileNotFoundError(ckpt_path)
-    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
-    trial = ckpt["trial"]
-    model = WeightStudent(
-        args_global_weights(),
-        int(cache["input_len"]),
-        int(cache["forecast_horizon"]),
-        int(cache["num_features"]),
-        mode="prototype_residual",
-        num_prototypes=int(trial["num_prototypes"]),
-        residual_scale=float(trial["residual_scale"]),
-        feature_mix=trial.get("feature_mix", "full"),
-    ).to(device)
-    model.load_state_dict(ckpt["state_dict"])
-    model.eval()
-    histories = cache["histories"].to(torch.float32)
-    forecasts = cache["prediction_stack"][..., list(expert_idx)].to(torch.float32)
-    weights: list[torch.Tensor] = []
-    with torch.no_grad():
-        for lo in range(0, int(histories.shape[0]), 1024):
-            hi = min(lo + 1024, int(histories.shape[0]))
-            out = model(
-                histories[lo:hi].to(device),
-                forecasts[lo:hi].to(device),
-                prototypes=ckpt["prototypes"],
-            )
-            weights.append(out["weights"].detach().cpu())
-    return torch.cat(weights, dim=0)
-
-
 def frozen_costar_base_prediction(
     dataset: str,
     cache: Mapping[str, Any],
@@ -199,13 +158,8 @@ def frozen_costar_base_prediction(
     if dataset == "ETTh1":
         train_err = etth1.per_location_abs_error_for_indices(train_cache_for_init, std, expert_idx)
         train_expert_mae = train_err.mean(dim=(0, 1, 2))
-        selected_names = [list(cache["expert_names"])[i] for i in expert_idx]
-        if tuple(selected_names) == etth1.OLD_FIXED3:
-            static_weights = load_static_winner_weights_no_targets(seed, cache, expert_idx, device)
-            static_source = "existing_static_winner_no_target_metrics"
-        else:
-            static_weights = torch.full((n, 3), 1.0 / 3.0)
-            static_source = "equal_fallback_no_static_artifact"
+        static_weights = torch.full((n, 3), 1.0 / 3.0)
+        static_source = "equal_static_all_triples"
     elif dataset == "ETTh2":
         train_err = etth2.per_location_error(train_cache_for_init, expert_idx, std)
         train_expert_mae = train_err.mean(dim=(0, 1, 2))
@@ -511,7 +465,7 @@ def make_report(report: Mapping[str, Any]) -> None:
         "- `chronological_online_weights()` updates EMA state from validation expert MAE after `old_start + horizon <= current_start`.",
         "- `chronological_hv_weights()` updates horizon-variable EMA state from validation per-location expert errors after the same causal delay.",
         "- `run_causal_specialists()` and ETTh2 `run_specialists_no_duplicate()` update specialist states from validation base/DLinear/ModernTCN absolute errors.",
-        "- Static ETTh1 neural weights are produced from current history and forecasts only in the frozen path; target-based MAE/MSE reporting from the legacy loader is not used.",
+        "- Static weights are equal `1/3` for every selected triple; the old ETTh1 neural-router checkpoint path is intentionally not used.",
         "",
         "## Results",
         "",
@@ -540,7 +494,7 @@ def make_report(report: Mapping[str, Any]) -> None:
             f"- ETTh1 core: `{'+'.join(report['datasets']['ETTh1']['core'])}`.",
             f"- ETTh2 core: `{'+'.join(report['datasets']['ETTh2']['core'])}`.",
             "- Base mixture: `0.25` chronological branch, `0.75` horizon-variable branch.",
-            "- Chronological branch: `0.5` static prior, `0.5` router-train EMA initialization.",
+            "- Chronological branch: `0.5` equal static prior, `0.5` router-train EMA initialization.",
             "- Horizon-variable branch: low-rank rank `1`, decay `0.95`, temperature `0.1`, frozen at router-train initialization.",
             "- Specialist config: `both_variable_decay0.95_cap0.1_marginbp200_warm96`, frozen at router-train initialization.",
             "",
@@ -638,7 +592,7 @@ def main() -> None:
             "no_validation_target_feedback": True,
             "no_test_cache_loaded": True,
             "base_mixture": {"chronological": 0.25, "horizon_variable": 0.75},
-            "chrono_branch": {"static_prior": 0.5, "train_initialized_online": 0.5},
+            "chrono_branch": {"equal_static_prior": 0.5, "train_initialized_online": 0.5},
             "hv_trial": asdict(HV_TRIAL),
             "specialist_config": asdict(etth1.SPECIALIST_CONFIG),
         },

@@ -32,7 +32,6 @@ from experiments.chronological_adaptive_costar.run_chronological_adaptive_costar
     Trial as ChronoTrial,
     chronological_online_weights,
     enforce_observable,
-    load_static_winner_per_window,
     paired_bootstrap,
 )
 from experiments.expanded_expert_pool_costar.run_expanded_expert_pool import (  # noqa: E402
@@ -183,13 +182,7 @@ def parameterized_current_base_prediction(
         mode="ema",
     )
     selected_names = [list(cache["expert_names"])[i] for i in expert_idx]
-    if tuple(selected_names) == OLD_FIXED3:
-        static_weights, _, _ = load_static_winner_per_window(seed, cache, std, device)
-    else:
-        # The static neural winner was trained only for the old fixed-three.
-        # If train-only selection ever changes, this fallback keeps the model
-        # frozen and validation-safe rather than silently using incompatible weights.
-        static_weights = torch.full((int(cache["num_windows"]), 3), 1.0 / 3.0)
+    static_weights = torch.full((int(cache["num_windows"]), 3), 1.0 / 3.0)
     chrono_weights = 0.5 * static_weights + 0.5 * online_weights
     chrono_weights = chrono_weights / chrono_weights.sum(dim=1, keepdim=True).clamp_min(1e-8)
     forecasts = selected_forecasts(cache, expert_idx)
@@ -208,7 +201,7 @@ def parameterized_current_base_prediction(
     return pred, {
         "chrono_num_updates": online_extra.get("num_updates"),
         "hv_num_updates": hv_extra.get("num_updates"),
-        "static_weight_source": "existing_static_winner" if tuple(selected_names) == OLD_FIXED3 else "equal_fallback_no_static_artifact",
+        "static_weight_source": "equal_static_all_triples",
         **{f"mean_weight_{selected_names[i]}": float(hv_weights[..., i].mean()) for i in range(3)},
     }
 
@@ -404,6 +397,7 @@ def phase_b(args: argparse.Namespace) -> None:
         {"Method": "Previous current-best model [reference]", "Val MAE": PREVIOUS_BEST_MAE, "Val MSE": 0.30605703592300415, "Detail": "validation-optimized development result"},
     ]
     write_csv(out_dir / "required_final_table.csv", required_table)
+    cmd_base = f"python experiments\\train_selected_core_etth1\\run_train_selected_core_eval.py --device {args.device} --out-dir {args.out_dir}"
     report = {
         "phase_a_frozen_config": frozen,
         "phase_b_loaded_validation_after_freeze": True,
@@ -437,9 +431,9 @@ def phase_b(args: argparse.Namespace) -> None:
             "validation_start_max": int(starts.max()),
         },
         "reproduce_commands": {
-            "phase_a": f"python experiments\\train_selected_core_etth1\\run_train_selected_core_eval.py --phase select --device {args.device}",
-            "phase_b": f"python experiments\\train_selected_core_etth1\\run_train_selected_core_eval.py --phase evaluate --device {args.device}",
-            "all": f"python experiments\\train_selected_core_etth1\\run_train_selected_core_eval.py --phase all --device {args.device}",
+            "phase_a": f"{cmd_base} --phase select",
+            "phase_b": f"{cmd_base} --phase evaluate",
+            "all": f"{cmd_base} --phase all",
         },
         "runtime_sec": time.time() - float(args.start_time),
     }

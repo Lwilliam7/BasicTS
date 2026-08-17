@@ -1,6 +1,6 @@
 # Current State
 
-Last updated: 2026-08-16
+Last updated: 2026-08-17
 
 Read this first. It is a compact project memory for the COSTAR-TS research branch in this BasicTS repository.
 
@@ -119,6 +119,33 @@ Artifacts:
 - `experiments/frozen_costar/frozen_costar_validation_results.json`
 - `experiments/frozen_costar/frozen_costar_report.md`
 - `project_memory/experiments/2026-08-16_frozen_costar_validation.md`
+
+## Equal-Static COSTAR Cleanup
+
+VALIDATION-ONLY STRUCTURAL CLEANUP:
+
+On 2026-08-17, the ETTh1 full adaptive path was changed so every selected triple receives the same equal static prior. The old `OLD_FIXED3` exception that loaded a trained static neural-router checkpoint was removed from the active path.
+
+New ETTh1 equal-static validation result:
+
+- Core: `PatchTST+iTransformer+TimesNet`
+- Full adaptive validation MAE/MSE: `0.363100` / `0.306026`
+- Previous neural-prior path reference: `0.363112` / `0.306057`
+
+Updated frozen-vs-online diagnostic:
+
+| Dataset | Equal fixed-three | Frozen COSTAR | Online COSTAR |
+|---|---:|---:|---:|
+| ETTh1 | `0.367265` / `0.310530` | `0.365825` / `0.308399` | `0.363100` / `0.306026` |
+| ETTh2 | `0.280878` / `0.171933` | `0.277481` / `0.167632` | `0.276832` / `0.167280` |
+
+No test cache was loaded. Because this cleanup occurred after prior final-test results were already seen, do not treat it as a replacement preregistered final-test result without a new explicit freeze/evaluation protocol.
+
+Artifacts:
+
+- `experiments/train_selected_core_etth1_equal_static/final_report.json`
+- `experiments/frozen_costar/frozen_costar_validation_results.json`
+- `project_memory/experiments/2026-08-17_equal_static_costar_cleanup.md`
 
 ## ETTh2 Pair-Potential Test Audit
 
@@ -285,7 +312,15 @@ From `results/router_summary/costarts_walkforward/fixed3_dynamic_weighting_5seed
 
 CONFIRMED RESULT:
 
-Best current validation result is from a capped expanded-pool specialist layer on top of the horizon x variable chronological adaptation:
+Best current validation-only result for the active structurally even implementation is the equal-static capped expanded-pool specialist layer:
+
+| Method | Validation MAE | Validation MSE | Evidence |
+|---|---:|---:|---|
+| equal-static `expanded_both` over `hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75` | `0.363100` | `0.306026` | `experiments/train_selected_core_etth1_equal_static/final_report.json` |
+
+This result removes the old `OLD_FIXED3` static neural-prior exception. It is validation-only and was produced after final test results had already been seen, so it does not supersede the preregistered final-test result.
+
+Historical pre-test development result:
 
 | Method | Validation MAE | Validation MSE | Evidence |
 |---|---:|---:|---|

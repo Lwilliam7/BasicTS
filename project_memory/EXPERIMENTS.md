@@ -1,6 +1,6 @@
 # Experiment Ledger
 
-Last updated: 2026-08-16
+Last updated: 2026-08-17
 
 This ledger records compact, evidence-backed results. It intentionally links to raw outputs instead of duplicating full logs.
 
@@ -50,6 +50,8 @@ This ledger records compact, evidence-backed results. It intentionally links to 
 | 2026-08-14 | ETTh1/ETTh2 | Pooled router-train residual correctors | Select Ridge/MLP residual configs by pooled router-train MAE/MSE with no folds, then freeze and evaluate | MLP 5 each; ridge deterministic | ETTh1 MLP `0.325964`; ETTh1 Ridge `0.328022`; ETTh2 Ridge `0.296787`; ETTh2 MLP `0.297427` | ETTh1 MLP `0.266587`; ETTh1 Ridge `0.267930`; ETTh2 Ridge `0.217713`; ETTh2 MLP `0.218405` | n/a | existing residual correctors; full adaptive ETTh1 `0.326393`; full adaptive ETTh2 `0.297808` | ETTh1 MLP `-0.000083` vs existing MLP and `-0.000429` vs full adaptive; ETTh1 Ridge `+0.001574` vs existing ridge; ETTh2 Ridge unchanged; ETTh2 MLP `+0.000386` vs tuned MLP | `after_final_test_audit`; sensitivity only, not preregistered | `experiments/pooled_router_train_residual_correctors/POOLED_ROUTER_TRAIN_RESIDUAL_RESULTS.json`; `project_memory/experiments/2026-08-14_pooled_router_train_residual_correctors.md` |
 
 | 2026-08-16 | ETTh1/ETTh2 | Frozen COSTAR validation diagnostic | Remove validation-time target feedback while keeping the same core, static/equal prior, hyperparameters, and train-initialized weights | ETTh1 5; ETTh2 deterministic | ETTh1 frozen val `0.365868`; ETTh2 frozen val `0.277481` | ETTh1 frozen val `0.308465`; ETTh2 frozen val `0.167632` | n/a | online COSTAR ETTh1 `0.363111`; ETTh2 `0.276832` | frozen worse by `+0.002757` ETTh1 and `+0.000649` ETTh2 | Validation-only diagnostic; online causal updates help | `experiments/frozen_costar/frozen_costar_validation_results.json`; `project_memory/experiments/2026-08-16_frozen_costar_validation.md` |
+
+| 2026-08-17 | ETTh1 | Equal-static COSTAR cleanup | Remove OLD_FIXED3 neural-static-prior exception; use equal static weights for every selected triple | deterministic after cleanup | val `0.363100` | val `0.306026` | n/a | previous neural-prior path `0.363112` | `-0.000012` MAE | Validation-only structural cleanup after test seen; no new final-test claim | `experiments/train_selected_core_etth1_equal_static/final_report.json`; `project_memory/experiments/2026-08-17_equal_static_costar_cleanup.md` |
 
 Unverified or partial:
 

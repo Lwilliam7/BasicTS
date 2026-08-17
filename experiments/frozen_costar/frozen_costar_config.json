@@ -4,7 +4,7 @@
     "horizon_variable": 0.75
   },
   "chrono_branch": {
-    "static_prior": 0.5,
+    "equal_static_prior": 0.5,
     "train_initialized_online": 0.5
   },
   "hv_trial": {

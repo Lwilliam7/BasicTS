@@ -1,6 +1,6 @@
 # COSTAR-TS Architecture Notes
 
-Last updated: 2026-08-12
+Last updated: 2026-08-17
 
 This file describes the active and historical implementations in this repository. "Current best" means best ETTh1 validation result, not final test performance.
 
@@ -199,6 +199,8 @@ Relevant files:
 
 - `experiments/expanded_expert_pool_costar/run_expanded_expert_pool.py`
 - `experiments/expanded_expert_pool_costar/final_report.json`
+- `experiments/train_selected_core_etth1/run_train_selected_core_eval.py`
+- `experiments/train_selected_core_etth1_equal_static/final_report.json`
 
 Core idea:
 
@@ -220,10 +222,12 @@ Winning setting:
 
 Status:
 
-- Current best validation result: MAE `0.363112 +/- 0.000013`, MSE `0.306057 +/- 0.000016`.
+- Active equal-static validation result: MAE `0.363100`, MSE `0.306026`.
+- Historical pre-test development result: MAE `0.363112 +/- 0.000013`, MSE `0.306057 +/- 0.000016`.
 - Aggregate paired bootstrap CI vs fixed-three HV `0.363642`: `[-0.000557, -0.000502]`.
 - Paired CI vs prior ridge residual best `0.363301`: `[-0.000233, -0.000143]`.
 - DLinear and ModernTCN are backup specialists only, not equal ensemble members.
+- The active implementation now uses equal static weights for every selected triple; the old ETTh1 fixed-three neural static-prior checkpoint is not loaded.
 
 ## Grokking Diagnostic Runner
 
