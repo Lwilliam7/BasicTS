@@ -1,7 +1,7 @@
 {
   "dataset": "ETTh1",
   "main_active_model": true,
-  "method": "main_etth1_full_adaptive_costar_equal_static",
+  "method": "main_full_adaptive_model_equal_static_costar",
   "status": "after_final_test_audit_main_active",
   "label": "after_final_test_audit",
   "code_path": "experiments/train_selected_core_etth1/run_train_selected_core_eval.py",
@@ -48,5 +48,5 @@
     "mae_delta_new_minus_old": 0.000012648105621348993,
     "mse_delta_new_minus_old": -0.00013065338134765625
   },
-  "interpretation": "This is the main active ETTh1 full adaptive COSTAR implementation going forward. It does not rewrite or supersede the historical preregistered final-test artifact."
+  "interpretation": "This is the main full adaptive COSTAR implementation for ETTh1 going forward. It does not rewrite or supersede the historical preregistered final-test artifact."
 }

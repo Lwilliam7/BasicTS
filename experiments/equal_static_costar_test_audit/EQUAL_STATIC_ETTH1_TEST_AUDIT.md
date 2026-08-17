@@ -3,7 +3,7 @@
 This is an after-final-test audit. The original final test set had already been evaluated before the equal-static cleanup.
 No tuning, expert changes, or hyperparameter changes were made after loading the test cache.
 
-This equal-static path is now the main active ETTh1 full adaptive COSTAR implementation going forward. The older preregistered final-test result remains the historical confirmatory record.
+This equal-static path is now the main full adaptive COSTAR implementation for ETTh1 going forward. The older preregistered final-test result remains the historical confirmatory record.
 
 ## Result
 

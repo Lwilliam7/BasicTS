@@ -10,7 +10,14 @@ Machine-readable version: `experiments/all_results_summary/all_costar_results.cs
 
 Coverage note: this file now includes official final frozen test rows, additional final-test audit rows, and ETTh2 validation-only COSTAR/fixed-subset records from the canonical protocol, train-selected core audits, sequential COSTAR, pair selector, pair-potential diagnostics, and limited normalized replication. Validation-only rows have blank test columns in the CSV.
 
-Active ETTh1 note: the main active ETTh1 full adaptive COSTAR implementation now uses equal static weights for every selected triple. Its after-final-test audit result is MAE/MSE `0.326408` / `0.267378` with validation MAE/MSE `0.363100` / `0.306026`. The older preregistered final-test row remains the historical confirmatory record.
+Main full adaptive model note: the main ETTh1 full adaptive COSTAR implementation now uses equal static weights for every selected triple. Its after-final-test audit result is MAE/MSE `0.326408` / `0.267378` with validation MAE/MSE `0.363100` / `0.306026`. The older ETTh1 preregistered final-test row remains the historical confirmatory record. ETTh2 keeps the existing preregistered full adaptive model.
+
+## Main Full Adaptive Model
+
+| Dataset | Main full adaptive model | Expert set | Test MAE | Test MSE | Val MAE | Val MSE | Status |
+|---|---|---|---:|---:|---:|---:|---|
+| ETTh1 | Equal-static full adaptive COSTAR | `PatchTST+iTransformer+TimesNet+DLinear+ModernTCN` | `0.326408` | `0.267378` | `0.363100` | `0.306026` | after-final-test audit main active implementation |
+| ETTh2 | Full frozen adaptive model | `DLinear+PatchTST+ModernTCN` | `0.297808` | `0.218612` | `0.276832` | `0.167280` | preregistered final model |
 
 Matched ETTh1/ETTh2 table:
 
@@ -19,13 +26,13 @@ Matched ETTh1/ETTh2 table:
 
 ETTh2 is filled in that matched table where a valid analogue exists. Four formerly ETTh1-only methods now have ETTh2 locked-config replication rows labeled `locked_etth1_config_etth2_replication`; those rows were generated after the earlier final ETTh2 test evaluation and should not be treated as pre-test preregistered final competitors.
 
-## Official Final Frozen Test Results
+## Historical Official Final Frozen Test Results
 
 | Dataset | Method | Expert set | Test MAE | Test MSE | Val MAE | Val MSE | Status |
 |---|---|---|---:|---:|---:|---:|---|
 | ETTh1 | Best single expert | `iTransformer` | `0.339080` | `0.278551` | `0.376550` | `0.322095` | clean preregistered reference |
 | ETTh1 | Train-selected fixed core | `PatchTST+iTransformer+TimesNet` | `0.327128` | `0.266583` | `0.367265` | `0.310530` | clean preregistered reference |
-| ETTh1 | Full frozen adaptive model | `PatchTST+iTransformer+TimesNet+DLinear+ModernTCN` | `0.326395` | `0.267509` | `0.363112` | `0.306057` | clean final model |
+| ETTh1 | Historical preregistered full adaptive reference | `PatchTST+iTransformer+TimesNet+DLinear+ModernTCN` | `0.326395` | `0.267509` | `0.363112` | `0.306057` | historical clean final model |
 | ETTh2 | Best single expert | `DLinear` | `0.301708` | `0.222694` | `0.280957` | `0.171493` | clean preregistered reference |
 | ETTh2 | Train-selected fixed core | `DLinear+PatchTST+ModernTCN` | `0.304642` | `0.225185` | `0.280878` | `0.171933` | clean preregistered reference |
 | ETTh2 | Full frozen adaptive model | `DLinear+PatchTST+ModernTCN` | `0.297808` | `0.218612` | `0.276832` | `0.167280` | clean final model |
@@ -37,7 +44,7 @@ ETTh2 is filled in that matched table where a valid analogue exists. Four former
 |---:|---|---:|---:|---:|---:|---|
 | 1 | MLP residual corrector | `0.326047` | `0.267322` | `0.363318` | `-0.001081` | additional frozen-model result |
 | 2 | Expanded both final frozen | `0.326393` | `0.267506` | `0.363112` | `-0.000735` | official final model replayed |
-| 3 | Main active full adaptive COSTAR, equal-static | `0.326408` | `0.267378` | `0.363100` | `-0.000720` | after-final-test audit main active implementation |
+| 3 | Main full adaptive model, equal-static COSTAR | `0.326408` | `0.267378` | `0.363100` | `-0.000720` | after-final-test audit main active implementation |
 | 4 | Expanded DLinear only | `0.326437` | `0.267593` | `0.363510` | `-0.000691` | additional frozen-model result |
 | 5 | Ridge residual corrector | `0.326448` | `0.267452` | `0.363301` | `-0.000680` | additional frozen-model result |
 | 6 | Expanded ModernTCN only | `0.326468` | `0.267591` | `0.363435` | `-0.000660` | additional frozen-model result |
@@ -139,15 +146,15 @@ Important scale note: the limited replication rows are marked `normalized_diagno
 
 ## Bottom Line
 
-Official clean final test winners:
+Main full adaptive models:
 
-- ETTh1: full frozen adaptive model, test MAE/MSE `0.326395` / `0.267509`.
+- ETTh1: equal-static full adaptive COSTAR, test MAE/MSE `0.326408` / `0.267378`.
 - ETTh2: full frozen adaptive model, test MAE/MSE `0.297808` / `0.218612`.
 
-Main active ETTh1 full adaptive implementation:
+Historical preregistered reference:
 
-- Equal-static full adaptive COSTAR, test MAE/MSE `0.326408` / `0.267378`, validation MAE/MSE `0.363100` / `0.306026`.
-- This is the code path to use going forward; it is an after-final-test audit row, so it does not rewrite the preregistered final-test artifact.
+- ETTh1 old neural-static-prior full adaptive model, test MAE/MSE `0.326395` / `0.267509`.
+- The equal-static path is the code path to use going forward; it is an after-final-test audit row, so it does not rewrite the preregistered final-test artifact.
 
 Frozen-model test result notes:
 

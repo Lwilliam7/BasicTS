@@ -163,7 +163,7 @@ Fixed ensembles close much of the gap and expose when routers add complexity wit
 
 ## Static COSTAR Prior Is Equal Across Triples
 
-Status: Main active ETTh1 full adaptive implementation
+Status: Main full adaptive model for ETTh1
 
 Evidence:
 
@@ -174,7 +174,7 @@ Evidence:
 
 Decision:
 
-Use equal static weights for every selected triple in the active full adaptive COSTAR path. The equal-static ETTh1 full adaptive path is now the main active implementation going forward. Do not give `PatchTST+iTransformer+TimesNet` a special trained static neural prior unless a future experiment trains compatible static priors for all compared triples.
+Use equal static weights for every selected triple in the active full adaptive COSTAR path. The equal-static ETTh1 full adaptive path is now the main full adaptive model for ETTh1 going forward. Do not give `PatchTST+iTransformer+TimesNet` a special trained static neural prior unless a future experiment trains compatible static priors for all compared triples.
 
 This does not rewrite the historical preregistered final-test artifact: the old final frozen adaptive result remains MAE/MSE `0.326395` / `0.267509`, while the main active equal-static audit result is MAE/MSE `0.326408` / `0.267378`.
 

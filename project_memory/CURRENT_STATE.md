@@ -26,7 +26,7 @@ Final test results:
 |---|---:|---:|---:|---|
 | ETTh1 | Best single `iTransformer` | `0.339080` | `0.278551` | `0.376550` | validation-best single reference |
 | ETTh1 | Train-selected fixed core `PatchTST+iTransformer+TimesNet` | `0.327128` | `0.266583` | `0.367265` | router-train selected core |
-| ETTh1 | Full frozen adaptive | `0.326395` | `0.267509` | `0.363112` | preregistered final model |
+| ETTh1 | Historical preregistered full adaptive reference | `0.326395` | `0.267509` | `0.363112` | historical final model |
 | ETTh2 | Best single `DLinear` | `0.301708` | `0.222694` | `0.280957` | canonical single reference |
 | ETTh2 | Train-selected fixed core `DLinear+PatchTST+ModernTCN` | `0.304642` | `0.225185` | `0.280878` | router-train selected core |
 | ETTh2 | Full frozen adaptive | `0.297808` | `0.218612` | `0.276832` | preregistered final model |
@@ -35,6 +35,11 @@ Final test results:
 Conclusion:
 
 The frozen adaptive model's relative MAE gain survived test on both datasets versus its own train-selected fixed core. ETTh2 also beat the validation-selected `DLinear+ModernTCN` reference on test, although ETTh2 absolute test metrics were worse than validation for every reported method.
+
+Current main full adaptive model:
+
+- ETTh1: equal-static full adaptive COSTAR, validation MAE/MSE `0.363100` / `0.306026`, after-final-test audit MAE/MSE `0.326408` / `0.267378`.
+- ETTh2: preregistered full frozen adaptive model, validation MAE/MSE `0.276832` / `0.167280`, test MAE/MSE `0.297808` / `0.218612`.
 
 ## frozen-model Top COSTAR Test Audit
 
@@ -153,7 +158,7 @@ ADDITIONAL AFTER-FINAL-TEST AUDIT:
 
 After explicit user authorization on 2026-08-17, the active ETTh1 equal-static full adaptive COSTAR path was evaluated on the already-generated ETTh1 final test cache. No tuning, expert-set changes, or hyperparameter changes were made after loading test.
 
-This equal-static path is now the main active ETTh1 full adaptive COSTAR implementation going forward. The older preregistered result remains the historical confirmatory final-test record.
+This equal-static path is now the main full adaptive COSTAR implementation for ETTh1 going forward. The older preregistered result remains the historical confirmatory final-test record.
 
 Result:
 

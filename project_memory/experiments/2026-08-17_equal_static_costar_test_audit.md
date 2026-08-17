@@ -8,7 +8,7 @@ Evaluate the active ETTh1 equal-static full adaptive COSTAR path on the already-
 
 This is an after-final-test audit. The original final test results had already been viewed before the equal-static cleanup, so this row does not replace the preregistered final-test result.
 
-The equal-static path is now the main active ETTh1 full adaptive COSTAR implementation going forward. The older preregistered result remains the historical confirmatory final-test record.
+The equal-static path is now the main full adaptive COSTAR implementation for ETTh1 going forward. The older preregistered result remains the historical confirmatory final-test record.
 
 ## Protocol
 
@@ -45,7 +45,7 @@ Differences:
 
 The equal-static cleanup preserves nearly the same ETTh1 test performance as the old neural-static-prior path. It is slightly worse on test MAE by `0.000013`, while improving test MSE by `0.000131`.
 
-This supports the structural cleanup as the main active implementation, but it should not supersede the original preregistered final-test result because it was evaluated after final test results were already known.
+This supports the structural cleanup as the main full adaptive model for ETTh1, but it should not supersede the original preregistered final-test result because it was evaluated after final test results were already known.
 
 ## Artifacts
 
