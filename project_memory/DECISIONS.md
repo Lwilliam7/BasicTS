@@ -182,6 +182,23 @@ Reason:
 
 The old `OLD_FIXED3` exception made cross-core comparisons structurally uneven. Equal static weights isolate the causal online/horizon-variable/specialist mechanisms and keep the implementation symmetric across triples.
 
+## Published Baselines Are Validation Comparators
+
+Status: Implemented validation-only
+
+Evidence:
+
+- `experiments/published_baseline_comparisons/FINAL_REPORT.json`
+- `project_memory/experiments/2026-08-17_published_baseline_comparisons.md`
+
+Decision:
+
+Use Granger-Ramanathan, Bates-Granger, FAME adaptation, TimeRouter adaptation, and OneNet-style adaptation as validation comparators against COSTAR. Treat FAME, TimeRouter, and OneNet as adaptations rather than exact official reproductions because their original expert pools, metadata/context features, TSFM checkpoints, or online expert updating are not the same as the frozen BasicTS expert cache.
+
+Reason:
+
+The new runner provides fair validation-only comparisons over the same frozen forecasts, with chronological router-train selection and no test loading. Bates-Granger is promising on ETTh2 validation; none of the new baselines beat ETTh1 online COSTAR validation.
+
 ## Sequential Query Routing Is Not The Current Best Direction
 
 Status: Tested / not current direction

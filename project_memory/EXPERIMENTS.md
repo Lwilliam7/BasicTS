@@ -55,6 +55,8 @@ This ledger records compact, evidence-backed results. It intentionally links to 
 
 | 2026-08-17 | ETTh1 | Equal-static COSTAR test audit | Evaluate active equal-static full adaptive COSTAR on already-generated final test cache | deterministic after cleanup | test `0.326408` | test `0.267378` | n/a | old preregistered full adaptive test `0.326395`; fixed core `0.327128` | `+0.000013` vs old full adaptive; `-0.000720` vs fixed core | After-final-test audit; main full adaptive model for ETTh1 going forward; does not supersede preregistered final result | `experiments/equal_static_costar_test_audit/MAIN_ETTH1_FULL_ADAPTIVE_MODEL.json`; `experiments/equal_static_costar_test_audit/EQUAL_STATIC_ETTH1_TEST_AUDIT.json`; `project_memory/experiments/2026-08-17_equal_static_costar_test_audit.md` |
 
+| 2026-08-17 | ETTh1/ETTh2 | Published baseline comparisons | Implement GR, FAME adaptation, TimeRouter adaptation, Bates-Granger, and OneNet-style adaptation over frozen COSTAR expert forecasts | router seeds mostly 7 | ETTh1 best new `0.368234` TimeRouter; ETTh2 best new `0.274915` Bates-Granger | ETTh1 best new `0.309054`; ETTh2 best new `0.165315` | n/a | Online COSTAR ETTh1 `0.363100`; ETTh2 `0.276832` | ETTh2 Bates `-0.001917` vs online COSTAR; no new ETTh1 baseline beats COSTAR | Validation-only; no test cache loaded; FAME/TimeRouter/OneNet are adaptations | `experiments/published_baseline_comparisons/FINAL_REPORT.json`; `project_memory/experiments/2026-08-17_published_baseline_comparisons.md` |
+
 Unverified or partial:
 
 - Some older end-to-end, FAME, GTR, and ablation folders exist but were not included here because this memory pass did not verify their final metrics.

@@ -1,0 +1,272 @@
+{
+  "cache_hashes": {
+    "normalizer_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+    "router_train_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+    "router_val_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6"
+  },
+  "configuration_frozen_before_validation": true,
+  "created_at_utc": "2026-08-17T19:40:24.909168+00:00",
+  "dataset": "ETTh1",
+  "selected_configs": {
+    "Bates-Granger": {
+      "config": {
+        "estimator": "diagonal_inverse_error",
+        "shrinkage": 1.0,
+        "structure": "horizon_variable"
+      },
+      "fold_mae": 0.3451879620552063,
+      "fold_mse": 0.25881126523017883,
+      "fold_rows": [
+        {
+          "eval_hi": 2218,
+          "eval_lo": 1109,
+          "fold": 0,
+          "mae": 0.3056820034980774,
+          "mse": 0.17442002892494202,
+          "train_hi": 1109,
+          "train_lo": 0
+        },
+        {
+          "eval_hi": 3327,
+          "eval_lo": 2218,
+          "fold": 1,
+          "mae": 0.3348488509654999,
+          "mse": 0.23898321390151978,
+          "train_hi": 2218,
+          "train_lo": 0
+        },
+        {
+          "eval_hi": 4436,
+          "eval_lo": 3327,
+          "fold": 2,
+          "mae": 0.39872676134109497,
+          "mse": 0.3640613853931427,
+          "train_hi": 3327,
+          "train_lo": 0
+        },
+        {
+          "eval_hi": 5546,
+          "eval_lo": 4436,
+          "fold": 3,
+          "mae": 0.341497540473938,
+          "mse": 0.25778135657310486,
+          "train_hi": 4436,
+          "train_lo": 0
+        }
+      ],
+      "frozen_before_validation": true,
+      "method": "Bates-Granger"
+    },
+    "FAME adaptation": {
+      "config": {
+        "dropout": 0.1,
+        "epochs": 80,
+        "hidden": 64,
+        "lr": 0.0003,
+        "seed": 7,
+        "tau": 0.1,
+        "top_r": 3,
+        "weight_decay": 0.001
+      },
+      "dataset": "ETTh1",
+      "fold_mae": 0.3556221127510071,
+      "fold_mse": 0.27415239810943604,
+      "fold_rows": [
+        {
+          "eval_hi": 2218,
+          "eval_lo": 1109,
+          "fold": 0,
+          "mae": 0.3305908739566803,
+          "mse": 0.22241339087486267,
+          "train_hi": 1109
+        },
+        {
+          "eval_hi": 3327,
+          "eval_lo": 2218,
+          "fold": 1,
+          "mae": 0.33818235993385315,
+          "mse": 0.2439182549715042,
+          "train_hi": 2218
+        },
+        {
+          "eval_hi": 4436,
+          "eval_lo": 3327,
+          "fold": 2,
+          "mae": 0.40714430809020996,
+          "mse": 0.37124815583229065,
+          "train_hi": 3327
+        },
+        {
+          "eval_hi": 5546,
+          "eval_lo": 4436,
+          "fold": 3,
+          "mae": 0.3465789258480072,
+          "mse": 0.2590436041355133,
+          "train_hi": 4436
+        }
+      ],
+      "frozen_before_validation": true,
+      "method": "fame",
+      "official_reproduction": false
+    },
+    "Granger-Ramanathan": {
+      "config": {
+        "alpha": 1.0,
+        "method": "Granger-Ramanathan",
+        "structure": "horizon_variable",
+        "variant": "ridge_extension"
+      },
+      "fold_mae": 0.34876111149787903,
+      "fold_mse": 0.26204562187194824,
+      "fold_rows": [
+        {
+          "eval_hi": 2218,
+          "eval_lo": 1109,
+          "fold": 0,
+          "mae": 0.31257402896881104,
+          "mse": 0.18915531039237976,
+          "train_hi": 1109,
+          "train_lo": 0
+        },
+        {
+          "eval_hi": 3327,
+          "eval_lo": 2218,
+          "fold": 1,
+          "mae": 0.3399929404258728,
+          "mse": 0.24333368241786957,
+          "train_hi": 2218,
+          "train_lo": 0
+        },
+        {
+          "eval_hi": 4436,
+          "eval_lo": 3327,
+          "fold": 2,
+          "mae": 0.3983549475669861,
+          "mse": 0.35862821340560913,
+          "train_hi": 3327,
+          "train_lo": 0
+        },
+        {
+          "eval_hi": 5546,
+          "eval_lo": 4436,
+          "fold": 3,
+          "mae": 0.3441266715526581,
+          "mse": 0.25706979632377625,
+          "train_hi": 4436,
+          "train_lo": 0
+        }
+      ],
+      "frozen_before_validation": true,
+      "method": "Granger-Ramanathan"
+    },
+    "OneNet-style frozen-expert adaptation": {
+      "config": {
+        "decay": 0.97,
+        "eta": 0.5
+      },
+      "fold_mae": 0.34732702374458313,
+      "fold_mse": 0.2634493112564087,
+      "fold_rows": [
+        {
+          "eval_hi": 2218,
+          "eval_lo": 1109,
+          "fold": 0,
+          "mae": 0.2848984897136688,
+          "mean_weight_PatchTST": 0.5013594031333923,
+          "mean_weight_iTransformer": 0.4986405074596405,
+          "mse": 0.16475248336791992,
+          "num_updates": 1097,
+          "train_hi": 1109
+        },
+        {
+          "eval_hi": 3327,
+          "eval_lo": 2218,
+          "fold": 1,
+          "mae": 0.3418758809566498,
+          "mean_weight_PatchTST": 0.5006794929504395,
+          "mean_weight_iTransformer": 0.49932053685188293,
+          "mse": 0.24837811291217804,
+          "num_updates": 1097,
+          "train_hi": 2218
+        },
+        {
+          "eval_hi": 4436,
+          "eval_lo": 3327,
+          "fold": 2,
+          "mae": 0.4134763777256012,
+          "mean_weight_PatchTST": 0.4996374249458313,
+          "mean_weight_iTransformer": 0.5003626346588135,
+          "mse": 0.37830692529678345,
+          "num_updates": 1097,
+          "train_hi": 3327
+        },
+        {
+          "eval_hi": 5546,
+          "eval_lo": 4436,
+          "fold": 3,
+          "mae": 0.34905576705932617,
+          "mean_weight_PatchTST": 0.5000901818275452,
+          "mean_weight_iTransformer": 0.49990975856781006,
+          "mse": 0.26236066222190857,
+          "num_updates": 1098,
+          "train_hi": 4436
+        }
+      ],
+      "frozen_before_validation": true,
+      "method": "OneNet-style frozen-expert adaptation",
+      "official_reproduction": false
+    },
+    "TimeRouter adaptation": {
+      "config": {
+        "epochs": 80,
+        "hidden": 64,
+        "lr": 0.0003,
+        "seed": 7,
+        "tau_d": 0.5,
+        "tau_m": 0.15,
+        "weight_decay": 0.001
+      },
+      "dataset": "ETTh1",
+      "fold_mae": 0.34720566868782043,
+      "fold_mse": 0.2591845691204071,
+      "fold_rows": [
+        {
+          "eval_hi": 2218,
+          "eval_lo": 1109,
+          "fold": 0,
+          "mae": 0.3089468479156494,
+          "mse": 0.17578741908073425,
+          "train_hi": 1109
+        },
+        {
+          "eval_hi": 3327,
+          "eval_lo": 2218,
+          "fold": 1,
+          "mae": 0.3390112519264221,
+          "mse": 0.24197469651699066,
+          "train_hi": 2218
+        },
+        {
+          "eval_hi": 4436,
+          "eval_lo": 3327,
+          "fold": 2,
+          "mae": 0.39914220571517944,
+          "mse": 0.3624051511287689,
+          "train_hi": 3327
+        },
+        {
+          "eval_hi": 5546,
+          "eval_lo": 4436,
+          "fold": 3,
+          "mae": 0.34172722697257996,
+          "mse": 0.25657349824905396,
+          "train_hi": 4436
+        }
+      ],
+      "frozen_before_validation": true,
+      "method": "timerouter",
+      "official_reproduction": false
+    }
+  },
+  "test_cache_loaded": false
+}

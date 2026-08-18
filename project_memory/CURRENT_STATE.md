@@ -178,6 +178,30 @@ Artifacts:
 - `experiments/equal_static_costar_test_audit/EQUAL_STATIC_ETTH1_TEST_AUDIT.md`
 - `project_memory/experiments/2026-08-17_equal_static_costar_test_audit.md`
 
+## Published Baseline Comparisons
+
+VALIDATION-ONLY COMPARISON:
+
+On 2026-08-17, published comparison baselines were implemented over the same frozen COSTAR expert forecasts. Hyperparameters were selected with chronological router-train folds, selected configs were written before validation, and no test cache was loaded.
+
+Main validation results:
+
+- Granger-Ramanathan: ETTh1 `0.382960` / `0.336499`, ETTh2 `0.276704` / `0.165286`.
+- Bates-Granger: ETTh1 `0.368891` / `0.309925`, ETTh2 `0.274915` / `0.165315`.
+- FAME adaptation: ETTh1 `0.379212` / `0.326919`, ETTh2 `0.277008` / `0.167165`.
+- TimeRouter adaptation: ETTh1 `0.368234` / `0.309054`, ETTh2 `0.283288` / `0.175959`.
+- OneNet-style frozen-expert adaptation: ETTh1 `0.370137` / `0.314488`, ETTh2 `0.402666` / `0.394105`.
+
+Interpretation:
+
+None of the new published baselines beat the main ETTh1 online COSTAR validation result. ETTh2 Bates-Granger is a strong new validation baseline and beats ETTh2 online COSTAR MAE, but this is validation-only and should not be tuned further using seen test metrics.
+
+Artifacts:
+
+- `experiments/published_baseline_comparisons/FINAL_REPORT.json`
+- `experiments/published_baseline_comparisons/PUBLISHED_BASELINE_COMPARISON_REPORT.md`
+- `project_memory/experiments/2026-08-17_published_baseline_comparisons.md`
+
 ## ETTh2 Pair-Potential Test Audit
 
 ADDITIONAL AFTER-FINAL-TEST AUDIT:
