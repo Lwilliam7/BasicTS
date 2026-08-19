@@ -1,0 +1,96 @@
+{
+  "all_checks_passed": true,
+  "general_causal_feedback_rule": "old_forecast_start + forecast_horizon <= current_forecast_start",
+  "invariance_checks": [
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh1 Granger-Ramanathan",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh1 Bates-Granger",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh1 FAME adaptation",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh1 TimeRouter adaptation",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh2 Granger-Ramanathan",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh2 Bates-Granger",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh2 FAME adaptation",
+      "passed": true
+    },
+    {
+      "check": "target_replacement_invariance",
+      "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+      "max_abs_diff": 0.0,
+      "method": "ETTh2 TimeRouter adaptation",
+      "passed": true
+    }
+  ],
+  "label": "after_final_test_audit",
+  "onenet_causality_perturbation_tests": [
+    {
+      "check": "onenet_future_target_perturbation_causality",
+      "cutoff_absolute_start": 12906,
+      "cutoff_idx": 1386,
+      "dataset": "ETTh1",
+      "description": "Add a huge value to test targets from the cutoff window onward and rerun OneNet prediction. All predictions before the first forecast origin at which the perturbed error could legally become observable must be exactly unchanged.",
+      "first_prediction_allowed_to_change": 1398,
+      "first_prediction_index_that_actually_changed": 1398,
+      "forecast_horizon": 12,
+      "max_abs_diff_full_sequence": 0.1769084930419922,
+      "max_unaffected_prefix_abs_diff": 0.0,
+      "num_windows": 2773,
+      "passed": true,
+      "perturbed_from_row": 1386
+    },
+    {
+      "check": "onenet_future_target_perturbation_causality",
+      "cutoff_absolute_start": 12906,
+      "cutoff_idx": 1386,
+      "dataset": "ETTh2",
+      "description": "Add a huge value to test targets from the cutoff window onward and rerun OneNet prediction. All predictions before the first forecast origin at which the perturbed error could legally become observable must be exactly unchanged.",
+      "first_prediction_allowed_to_change": 1398,
+      "first_prediction_index_that_actually_changed": 1398,
+      "forecast_horizon": 12,
+      "max_abs_diff_full_sequence": 0.07242107391357422,
+      "max_unaffected_prefix_abs_diff": 0.0,
+      "num_windows": 2773,
+      "passed": true,
+      "perturbed_from_row": 1386
+    }
+  ],
+  "onenet_initialization": "Combination state (per-branch causal mean-abs-error) is initialized once from all of router_train before test begins; the underlying frozen experts PatchTST and iTransformer never update; only the OneNet combination weights update online during test, strictly after the forecast horizon of the contributing window has elapsed."
+}

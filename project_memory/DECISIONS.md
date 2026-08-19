@@ -1,6 +1,6 @@
 # Research Decisions
 
-Last updated: 2026-08-17
+Last updated: 2026-08-18
 
 These are durable conclusions supported by repository outputs. Do not repeatedly rediscover them unless a new hypothesis materially changes the experiment.
 
@@ -67,6 +67,47 @@ The frozen-model ETTh2 audit did not find a stronger COSTAR method than the prer
 Reason:
 
 The additional frozen-model evaluations were performed after the original confirmatory evaluation, but the listed models were trained, selected, configured, and frozen without test-data feedback. Do not describe every additional row as formally preregistered unless a preregistration artifact explicitly supports that claim.
+
+## Published Baseline Test Audit Is Post-Hoc Comparative Evidence
+
+Status: Additional after-final-test audit
+
+Evidence:
+
+- `experiments/published_baseline_test_audit/PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json`
+- `experiments/published_baseline_test_audit/PUBLISHED_BASELINE_TEST_AUDIT_REPORT.md`
+- `project_memory/experiments/2026-08-18_published_baseline_test_audit.md`
+
+Decision:
+
+Treat the published-baseline test audit as frozen post-hoc comparative evidence only. The strongest audited rows were:
+
+- ETTh1 Frozen COSTAR + MLP residual: MAE/MSE `0.326047` / `0.267322`.
+- ETTh2 Bates-Granger: MAE/MSE `0.296294` / `0.217423`.
+
+Do not use these rows to tune COSTAR, choose a new official final model, or claim a clean untouched final-test comparison.
+
+Reason:
+
+The configurations were selected from router-train/validation artifacts and the audit did not select parameters from test performance, but ETTh1/ETTh2 test metrics had already been viewed before this comparison was requested.
+
+## Six Previously Untested Published Baselines Are Frozen After-Final-Test Audit Rows
+
+Status: Additional after-final-test audit
+
+Evidence:
+
+- `experiments/published_baseline_test_audit/TEST_RESULTS.json`
+- `experiments/published_baseline_test_audit/leakage_and_causality_checks.json`
+- `project_memory/experiments/2026-08-18_after_final_test_audit_six_methods.md`
+
+Decision:
+
+Treat the ETTh1/ETTh2 test evaluation of Equal all-5 ensemble, Granger-Ramanathan, Bates-Granger, FAME adaptation, TimeRouter adaptation, and OneNet-style frozen-expert adaptation as frozen after-final-test audit rows, labeled `after_final_test_audit`. On ETTh1, Online COSTAR beats all six. On ETTh2, Bates-Granger (test MAE `0.296294`), FAME (`0.298372`), and Granger-Ramanathan (`0.298419`) all beat Online COSTAR's test MAE `0.297808`; TimeRouter and Equal all-5 do not; OneNet is far worse than Online COSTAR on ETTh2 test (`0.407526`). Do not use these rows to tune COSTAR, choose a new official final model, or claim a clean untouched final-test comparison.
+
+Reason:
+
+All six configurations were read verbatim from `experiments/published_baseline_comparisons/{ETTh1,ETTh2}/frozen_config_before_validation.json`, written before validation was ever loaded, and no parameter, threshold, or expert-set choice was changed from these test results. Explicit target-replacement invariance checks (GR/Bates-Granger/FAME/TimeRouter) and a future-target perturbation causality test (OneNet) all passed with zero leakage. However, ETTh1/ETTh2 test metrics had already been viewed elsewhere in this project before this audit was requested, so this remains comparative evidence, not a new preregistered final-test claim.
 
 ## ETTh2 Pair-Potential Linear Ensembles Are Audit Rows
 

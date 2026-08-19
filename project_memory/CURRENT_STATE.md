@@ -1,6 +1,6 @@
 # Current State
 
-Last updated: 2026-08-17
+Last updated: 2026-08-18
 
 Read this first. It is a compact project memory for the COSTAR-TS research branch in this BasicTS repository.
 
@@ -80,6 +80,62 @@ Top frozen-model ETTh2 test MAE rows:
 | Single `DLinear` | `0.301708` | `0.222694` | `0.000000` | anchor |
 
 The original ETTh2 frozen-model audit's best row was the preregistered final frozen adaptive model. A later locked ETTh1-config ETTh2 replication found MLP/ridge/dynamic analogues slightly below the frozen adaptive test MAE, but those rows were generated after the earlier final ETTh2 test evaluation and do not supersede the preregistered result.
+
+## Published Baseline Test Audit
+
+POST-HOC COMPARATIVE AUDIT:
+
+On 2026-08-18, the published-baseline comparison suite was evaluated on the already-seen ETTh1/ETTh2 test caches under frozen configurations from `experiments/published_baseline_comparisons/`. No hyperparameters or method choices were changed from test feedback.
+
+Artifacts:
+
+- `experiments/published_baseline_test_audit/PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json`
+- `experiments/published_baseline_test_audit/PUBLISHED_BASELINE_TEST_AUDIT_REPORT.md`
+- `experiments/published_baseline_test_audit/published_baseline_test_results.csv`
+- `project_memory/experiments/2026-08-18_published_baseline_test_audit.md`
+
+Best audited rows:
+
+| Dataset | Best audited method | Test MAE | Test MSE | Online COSTAR test MAE |
+|---|---|---:|---:|---:|
+| ETTh1 | Frozen COSTAR + MLP residual | `0.326047` | `0.267322` | `0.326408` |
+| ETTh2 | Bates-Granger | `0.296294` | `0.217423` | `0.297808` |
+
+Interpretation:
+
+This audit shows that the published-baseline Bates-Granger adaptation is strongest on ETTh2 among the audited rows, and the MLP residual row remains strongest on ETTh1. Because test results were already known before this audit, these results are comparative evidence only and do not supersede the preregistered final-test record.
+
+## After-Final-Test Audit: Six Previously Untested Published-Baseline Methods
+
+ADDITIONAL AFTER-FINAL-TEST AUDIT:
+
+On 2026-08-18, the six published-baseline methods that had validation results but no prior test evaluation (Equal all-5 ensemble, Granger-Ramanathan, Bates-Granger, FAME adaptation, TimeRouter adaptation, OneNet-style frozen-expert adaptation) were evaluated once on the canonical ETTh1/ETTh2 test caches using configs frozen before validation. Frozen/Online COSTAR were included only as reference rows, not re-tuned.
+
+Results:
+
+| Method | ETTh1 Test MAE | ETTh2 Test MAE |
+|---|---:|---:|
+| Equal all-5 ensemble | `0.332001` | `0.322330` |
+| Granger-Ramanathan | `0.340765` | `0.298419` |
+| Bates-Granger | `0.327848` | `0.296294` |
+| FAME adaptation | `0.331314` | `0.298372` |
+| TimeRouter adaptation | `0.328178` | `0.306324` |
+| OneNet-style adaptation | `0.330721` | `0.407526` |
+
+Reference: Online COSTAR test MAE `0.326408` (ETTh1) / `0.297808` (ETTh2); Frozen COSTAR `0.327175` / `0.300574`.
+
+Online COSTAR beats all six on ETTh1 test. On ETTh2 test, Bates-Granger, FAME, and Granger-Ramanathan all beat Online COSTAR; OneNet collapses badly on ETTh2 test (MAE `0.407526`, worst row in the table).
+
+All 10 leakage/causality checks passed: exact target-replacement invariance for GR/Bates-Granger/FAME/TimeRouter, and an exact-boundary future-target perturbation causality test for OneNet (first legally-influenced prediction matched the first prediction that actually changed, with zero leakage into the unaffected prefix).
+
+Artifacts:
+
+- `experiments/published_baseline_test_audit/run_after_final_test_audit.py`
+- `experiments/published_baseline_test_audit/TEST_RESULTS.json`
+- `experiments/published_baseline_test_audit/TEST_REPORT.md`
+- `experiments/published_baseline_test_audit/leakage_and_causality_checks.json`
+- `experiments/published_baseline_test_audit/cache_provenance.json`
+- `project_memory/experiments/2026-08-18_after_final_test_audit_six_methods.md`
 
 ## Sequential COSTAR Test Audit
 

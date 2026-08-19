@@ -1,0 +1,1183 @@
+{
+  "cache_hashes": {
+    "ETTh1": {
+      "normalizer_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+      "router_train_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+      "router_val_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+      "test_sha256": "b7e41bea3a321183f09015d39c82107f7d31f279f929a77b2499ee0895b6b714"
+    },
+    "ETTh2": {
+      "router_train_sha256": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+      "router_val_sha256": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088",
+      "test_sha256": "c9aa614e40058d45b6bfde62fd9a2a4ff27064ae0dec7189ecaf3e2cae6a7ade"
+    }
+  },
+  "completed_at_utc": "2026-08-18T05:16:22.473702+00:00",
+  "created_at_utc": "2026-08-18T05:16:03.122116+00:00",
+  "device_requested": "cuda",
+  "device_used": "cuda",
+  "diagnostics": {
+    "ETTh1": {
+      "OneNet-style frozen-expert adaptation": {
+        "mean_weight_PatchTST": 0.5001980662345886,
+        "mean_weight_iTransformer": 0.49980199337005615,
+        "num_updates": 2761
+      }
+    },
+    "ETTh2": {
+      "OneNet-style frozen-expert adaptation": {
+        "mean_weight_PatchTST": 0.5174534320831299,
+        "mean_weight_iTransformer": 0.48254653811454773,
+        "num_updates": 2761
+      }
+    }
+  },
+  "frozen_config_paths": {
+    "ETTh1": "experiments\\published_baseline_comparisons\\ETTh1\\frozen_config_before_validation.json",
+    "ETTh2": "experiments\\published_baseline_comparisons\\ETTh2\\frozen_config_before_validation.json"
+  },
+  "git_commit": "8e86f0c5d9140ba44afb3c46fe69cf270b6b4317",
+  "label": "after_final_test_audit",
+  "leakage_and_causality_checks": {
+    "all_checks_passed": true,
+    "general_causal_feedback_rule": "old_forecast_start + forecast_horizon <= current_forecast_start",
+    "invariance_checks": [
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh1 Granger-Ramanathan",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh1 Bates-Granger",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh1 FAME adaptation",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh1 TimeRouter adaptation",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh2 Granger-Ramanathan",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh2 Bates-Granger",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh2 FAME adaptation",
+        "passed": true
+      },
+      {
+        "check": "target_replacement_invariance",
+        "description": "Replacing test targets with independent random noise must leave predictions exactly unchanged because this method does not use realized test-target feedback.",
+        "max_abs_diff": 0.0,
+        "method": "ETTh2 TimeRouter adaptation",
+        "passed": true
+      }
+    ],
+    "label": "after_final_test_audit",
+    "onenet_causality_perturbation_tests": [
+      {
+        "check": "onenet_future_target_perturbation_causality",
+        "cutoff_absolute_start": 12906,
+        "cutoff_idx": 1386,
+        "dataset": "ETTh1",
+        "description": "Add a huge value to test targets from the cutoff window onward and rerun OneNet prediction. All predictions before the first forecast origin at which the perturbed error could legally become observable must be exactly unchanged.",
+        "first_prediction_allowed_to_change": 1398,
+        "first_prediction_index_that_actually_changed": 1398,
+        "forecast_horizon": 12,
+        "max_abs_diff_full_sequence": 0.1769084930419922,
+        "max_unaffected_prefix_abs_diff": 0.0,
+        "num_windows": 2773,
+        "passed": true,
+        "perturbed_from_row": 1386
+      },
+      {
+        "check": "onenet_future_target_perturbation_causality",
+        "cutoff_absolute_start": 12906,
+        "cutoff_idx": 1386,
+        "dataset": "ETTh2",
+        "description": "Add a huge value to test targets from the cutoff window onward and rerun OneNet prediction. All predictions before the first forecast origin at which the perturbed error could legally become observable must be exactly unchanged.",
+        "first_prediction_allowed_to_change": 1398,
+        "first_prediction_index_that_actually_changed": 1398,
+        "forecast_horizon": 12,
+        "max_abs_diff_full_sequence": 0.07242107391357422,
+        "max_unaffected_prefix_abs_diff": 0.0,
+        "num_windows": 2773,
+        "passed": true,
+        "perturbed_from_row": 1386
+      }
+    ],
+    "onenet_initialization": "Combination state (per-branch causal mean-abs-error) is initialized once from all of router_train before test begins; the underlying frozen experts PatchTST and iTransformer never update; only the OneNet combination weights update online during test, strictly after the forecast horizon of the contributing window has elapsed."
+  },
+  "methods_evaluated": [
+    "Equal all-5 ensemble",
+    "Granger-Ramanathan",
+    "Bates-Granger",
+    "FAME adaptation",
+    "TimeRouter adaptation",
+    "OneNet-style frozen-expert adaptation"
+  ],
+  "no_parameter_selected_from_these_test_results": true,
+  "purpose": "Evaluate the six published-baseline methods that had validation results but no test evaluation on the canonical ETTh1/ETTh2 test caches, using configurations frozen before validation.",
+  "rankings": {
+    "ETTh1": [
+      {
+        "kind": "reference",
+        "method": "Online COSTAR (reference)",
+        "rank": 1,
+        "test_mae": 0.32640793919563293,
+        "test_mse": 0.26737847924232483
+      },
+      {
+        "kind": "reference",
+        "method": "COSTAR train-selected fixed core (reference)",
+        "rank": 2,
+        "test_mae": 0.3271281123161316,
+        "test_mse": 0.26658302545547485
+      },
+      {
+        "kind": "reference",
+        "method": "Frozen COSTAR (reference)",
+        "rank": 3,
+        "test_mae": 0.32717451453208923,
+        "test_mse": 0.2670938968658447
+      },
+      {
+        "kind": "audited",
+        "method": "Bates-Granger",
+        "rank": 4,
+        "test_mae": 0.3278479278087616,
+        "test_mse": 0.26780879497528076
+      },
+      {
+        "kind": "audited",
+        "method": "TimeRouter adaptation",
+        "rank": 5,
+        "test_mae": 0.3281780183315277,
+        "test_mse": 0.2678958773612976
+      },
+      {
+        "kind": "audited",
+        "method": "OneNet-style frozen-expert adaptation",
+        "rank": 6,
+        "test_mae": 0.330721378326416,
+        "test_mse": 0.27281153202056885
+      },
+      {
+        "kind": "audited",
+        "method": "FAME adaptation",
+        "rank": 7,
+        "test_mae": 0.3313142657279968,
+        "test_mse": 0.27199047803878784
+      },
+      {
+        "kind": "audited",
+        "method": "Equal all-5 ensemble",
+        "rank": 8,
+        "test_mae": 0.33200106024742126,
+        "test_mse": 0.2700502276420593
+      },
+      {
+        "kind": "reference",
+        "method": "Best single expert (reference)",
+        "rank": 9,
+        "test_mae": 0.3390795886516571,
+        "test_mse": 0.2785514295101166
+      },
+      {
+        "kind": "audited",
+        "method": "Granger-Ramanathan",
+        "rank": 10,
+        "test_mae": 0.34076493978500366,
+        "test_mse": 0.2895938456058502
+      }
+    ],
+    "ETTh2": [
+      {
+        "kind": "audited",
+        "method": "Bates-Granger",
+        "rank": 1,
+        "test_mae": 0.2962937355041504,
+        "test_mse": 0.2174234688282013
+      },
+      {
+        "kind": "reference",
+        "method": "Online COSTAR (reference)",
+        "rank": 2,
+        "test_mae": 0.29780814051628113,
+        "test_mse": 0.21861225366592407
+      },
+      {
+        "kind": "audited",
+        "method": "FAME adaptation",
+        "rank": 3,
+        "test_mae": 0.298371821641922,
+        "test_mse": 0.2206735461950302
+      },
+      {
+        "kind": "audited",
+        "method": "Granger-Ramanathan",
+        "rank": 4,
+        "test_mae": 0.2984188199043274,
+        "test_mse": 0.21816016733646393
+      },
+      {
+        "kind": "reference",
+        "method": "Frozen COSTAR (reference)",
+        "rank": 5,
+        "test_mae": 0.30057355761528015,
+        "test_mse": 0.22049908339977264
+      },
+      {
+        "kind": "reference",
+        "method": "Best single expert (reference)",
+        "rank": 6,
+        "test_mae": 0.30170753598213196,
+        "test_mse": 0.22269397974014282
+      },
+      {
+        "kind": "reference",
+        "method": "COSTAR train-selected fixed core (reference)",
+        "rank": 7,
+        "test_mae": 0.30464205145835876,
+        "test_mse": 0.22518514096736908
+      },
+      {
+        "kind": "audited",
+        "method": "TimeRouter adaptation",
+        "rank": 8,
+        "test_mae": 0.3063238859176636,
+        "test_mse": 0.22859221696853638
+      },
+      {
+        "kind": "audited",
+        "method": "Equal all-5 ensemble",
+        "rank": 9,
+        "test_mae": 0.32233041524887085,
+        "test_mse": 0.2495269775390625
+      },
+      {
+        "kind": "audited",
+        "method": "OneNet-style frozen-expert adaptation",
+        "rank": 10,
+        "test_mae": 0.40752631425857544,
+        "test_mse": 0.4137040376663208
+      }
+    ]
+  },
+  "reference_only_methods": [
+    "Frozen COSTAR",
+    "Online COSTAR"
+  ],
+  "reference_rows": {
+    "ETTh1": {
+      "Best single expert (reference)": {
+        "expert_set": "iTransformer",
+        "source": "experiments\\final_test_evaluation\\FINAL_TEST_RESULTS.json",
+        "test_mae": 0.3390795886516571,
+        "test_mse": 0.2785514295101166
+      },
+      "COSTAR train-selected fixed core (reference)": {
+        "expert_set": "PatchTST+iTransformer+TimesNet",
+        "source": "experiments\\final_test_evaluation\\FINAL_TEST_RESULTS.json",
+        "test_mae": 0.3271281123161316,
+        "test_mse": 0.26658302545547485
+      },
+      "Frozen COSTAR (reference)": {
+        "expert_set": "PatchTST+iTransformer+TimesNet",
+        "source": "experiments\\published_baseline_test_audit\\PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json",
+        "test_mae": 0.32717451453208923,
+        "test_mse": 0.2670938968658447
+      },
+      "Online COSTAR (reference)": {
+        "expert_set": "PatchTST+iTransformer+TimesNet",
+        "source": "experiments\\published_baseline_test_audit\\PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json",
+        "test_mae": 0.32640793919563293,
+        "test_mse": 0.26737847924232483
+      }
+    },
+    "ETTh2": {
+      "Best single expert (reference)": {
+        "expert_set": "DLinear",
+        "source": "experiments\\final_test_evaluation\\FINAL_TEST_RESULTS.json",
+        "test_mae": 0.30170753598213196,
+        "test_mse": 0.22269397974014282
+      },
+      "COSTAR train-selected fixed core (reference)": {
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "source": "experiments\\final_test_evaluation\\FINAL_TEST_RESULTS.json",
+        "test_mae": 0.30464205145835876,
+        "test_mse": 0.22518514096736908
+      },
+      "Frozen COSTAR (reference)": {
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "source": "experiments\\published_baseline_test_audit\\PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json",
+        "test_mae": 0.30057355761528015,
+        "test_mse": 0.22049908339977264
+      },
+      "Online COSTAR (reference)": {
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "source": "experiments\\published_baseline_test_audit\\PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json",
+        "test_mae": 0.29780814051628113,
+        "test_mse": 0.21861225366592407
+      }
+    }
+  },
+  "results": [
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh1",
+      "delta_mae_vs_costar_fixed_core": 0.004872947931289673,
+      "delta_mae_vs_equal_all5_ensemble": 0.0,
+      "delta_mae_vs_online_costar": 0.00559312105178833,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "no training; mean of five frozen expert forecasts; no validation- or test-target feedback",
+      "method": "Equal all-5 ensemble",
+      "num_windows": 2773,
+      "official_method_label": "Equal all-5 ensemble",
+      "pct_mae_improvement_vs_costar_fixed_core": -1.4896145417733253,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 0.0,
+      "pct_mae_improvement_vs_online_costar": -1.7135370743651206,
+      "rank_by_test_mae_among_six_methods": 5,
+      "selected_config": "",
+      "test_mae": 0.33200106024742126,
+      "test_minus_validation_mae": -0.039098143577575684,
+      "test_minus_validation_mse": -0.04153198003768921,
+      "test_mse": 0.2700502276420593,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.37109920382499695,
+      "validation_mse": 0.31158220767974854
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh1",
+      "delta_mae_vs_costar_fixed_core": 0.01363682746887207,
+      "delta_mae_vs_equal_all5_ensemble": 0.008763879537582397,
+      "delta_mae_vs_online_costar": 0.014357000589370728,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "closed-form ridge-extension fit on router_train only using frozen validation-selected config; coefficients frozen before test",
+      "method": "Granger-Ramanathan",
+      "num_windows": 2773,
+      "official_method_label": "Granger-Ramanathan",
+      "pct_mae_improvement_vs_costar_fixed_core": -4.168650432492836,
+      "pct_mae_improvement_vs_equal_all5_ensemble": -2.639714322313062,
+      "pct_mae_improvement_vs_online_costar": -4.398483880248343,
+      "rank_by_test_mae_among_six_methods": 6,
+      "selected_config": "{\"alpha\": 1.0, \"method\": \"Granger-Ramanathan\", \"structure\": \"horizon_variable\", \"variant\": \"ridge_extension\"}",
+      "test_mae": 0.34076493978500366,
+      "test_minus_validation_mae": -0.04219493269920349,
+      "test_minus_validation_mse": -0.04690536856651306,
+      "test_mse": 0.2895938456058502,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.38295987248420715,
+      "validation_mse": 0.3364992141723633
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh1",
+      "delta_mae_vs_costar_fixed_core": 0.0007198154926300049,
+      "delta_mae_vs_equal_all5_ensemble": -0.004153132438659668,
+      "delta_mae_vs_online_costar": 0.0014399886131286621,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "closed-form inverse-error/covariance combination fit on router_train only using frozen validation-selected config; weights frozen before test",
+      "method": "Bates-Granger",
+      "num_windows": 2773,
+      "official_method_label": "Bates-Granger",
+      "pct_mae_improvement_vs_costar_fixed_core": -0.22004085418815555,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 1.2509395107246277,
+      "pct_mae_improvement_vs_online_costar": -0.4411622513463447,
+      "rank_by_test_mae_among_six_methods": 1,
+      "selected_config": "{\"estimator\": \"diagonal_inverse_error\", \"shrinkage\": 1.0, \"structure\": \"horizon_variable\"}",
+      "test_mae": 0.3278479278087616,
+      "test_minus_validation_mae": -0.04104313254356384,
+      "test_minus_validation_mse": -0.042116254568099976,
+      "test_mse": 0.26780879497528076,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.36889106035232544,
+      "validation_mse": 0.30992504954338074
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh1",
+      "delta_mae_vs_costar_fixed_core": 0.004186153411865234,
+      "delta_mae_vs_equal_all5_ensemble": -0.0006867945194244385,
+      "delta_mae_vs_online_costar": 0.004906326532363892,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "MLP router trained on router_train only with frozen validation-selected config/seed; weights frozen before test; top-r sparse combination at test time",
+      "method": "FAME adaptation",
+      "num_windows": 2773,
+      "official_method_label": "FAME routing adaptation to BasicTS frozen expert pool",
+      "pct_mae_improvement_vs_costar_fixed_core": -1.2796678898143121,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 0.206865158476485,
+      "pct_mae_improvement_vs_online_costar": -1.5031272047041968,
+      "rank_by_test_mae_among_six_methods": 4,
+      "selected_config": "{\"dropout\": 0.1, \"epochs\": 80, \"hidden\": 64, \"lr\": 0.0003, \"seed\": 7, \"tau\": 0.1, \"top_r\": 3, \"weight_decay\": 0.001}",
+      "test_mae": 0.3313142657279968,
+      "test_minus_validation_mae": -0.047897279262542725,
+      "test_minus_validation_mse": -0.05492803454399109,
+      "test_mse": 0.27199047803878784,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.37921154499053955,
+      "validation_mse": 0.32691851258277893
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh1",
+      "delta_mae_vs_costar_fixed_core": 0.0010499060153961182,
+      "delta_mae_vs_equal_all5_ensemble": -0.0038230419158935547,
+      "delta_mae_vs_online_costar": 0.0017700791358947754,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "MLP router trained on router_train only with frozen validation-selected config/seed; weights and fallback frozen before test; no threshold/fallback tuning on test",
+      "method": "TimeRouter adaptation",
+      "num_windows": 2773,
+      "official_method_label": "TimeRouter routing-mechanism adaptation",
+      "pct_mae_improvement_vs_costar_fixed_core": -0.32094643531629746,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 1.1515149719836624,
+      "pct_mae_improvement_vs_online_costar": -0.5422904664196531,
+      "rank_by_test_mae_among_six_methods": 2,
+      "selected_config": "{\"epochs\": 80, \"hidden\": 64, \"lr\": 0.0003, \"seed\": 7, \"tau_d\": 0.5, \"tau_m\": 0.15, \"weight_decay\": 0.001}",
+      "test_mae": 0.3281780183315277,
+      "test_minus_validation_mae": -0.040056198835372925,
+      "test_minus_validation_mse": -0.041158437728881836,
+      "test_mse": 0.2678958773612976,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.36823421716690063,
+      "validation_mse": 0.30905431509017944
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "old_forecast_start + forecast_horizon <= current_forecast_start",
+      "dataset": "ETTh1",
+      "delta_mae_vs_costar_fixed_core": 0.003593266010284424,
+      "delta_mae_vs_equal_all5_ensemble": -0.001279681921005249,
+      "delta_mae_vs_online_costar": 0.004313439130783081,
+      "expert_set": "PatchTST+iTransformer",
+      "fit_protocol": "combination state initialized from causal per-branch mean-abs-error over all of router_train only; state then updated online during test strictly after old_forecast_start + forecast_horizon <= current_forecast_start; underlying experts frozen throughout",
+      "method": "OneNet-style frozen-expert adaptation",
+      "num_windows": 2773,
+      "official_method_label": "OneNet-style frozen-expert adaptation",
+      "pct_mae_improvement_vs_costar_fixed_core": -1.0984277642307754,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 0.3854451308232497,
+      "pct_mae_improvement_vs_online_costar": -1.3214871983238792,
+      "rank_by_test_mae_among_six_methods": 3,
+      "selected_config": "{\"decay\": 0.97, \"eta\": 0.5}",
+      "test_mae": 0.330721378326416,
+      "test_minus_validation_mae": -0.03941565752029419,
+      "test_minus_validation_mse": -0.04167693853378296,
+      "test_mse": 0.27281153202056885,
+      "uses_realized_test_feedback": true,
+      "validation_mae": 0.3701370358467102,
+      "validation_mse": 0.3144884705543518
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh2",
+      "delta_mae_vs_costar_fixed_core": 0.017688363790512085,
+      "delta_mae_vs_equal_all5_ensemble": 0.0,
+      "delta_mae_vs_online_costar": 0.02452227473258972,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "no training; mean of five frozen expert forecasts; no validation- or test-target feedback",
+      "method": "Equal all-5 ensemble",
+      "num_windows": 2773,
+      "official_method_label": "Equal all-5 ensemble",
+      "pct_mae_improvement_vs_costar_fixed_core": -5.806277795805183,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 0.0,
+      "pct_mae_improvement_vs_online_costar": -8.234252660144827,
+      "rank_by_test_mae_among_six_methods": 5,
+      "selected_config": "",
+      "test_mae": 0.32233041524887085,
+      "test_minus_validation_mae": 0.02155819535255432,
+      "test_minus_validation_mse": 0.04869347810745239,
+      "test_mse": 0.2495269775390625,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.30077221989631653,
+      "validation_mse": 0.2008334994316101
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh2",
+      "delta_mae_vs_costar_fixed_core": -0.006223231554031372,
+      "delta_mae_vs_equal_all5_ensemble": -0.023911595344543457,
+      "delta_mae_vs_online_costar": 0.0006106793880462646,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "closed-form ridge-extension fit on router_train only using frozen validation-selected config; coefficients frozen before test",
+      "method": "Granger-Ramanathan",
+      "num_windows": 2773,
+      "official_method_label": "Granger-Ramanathan",
+      "pct_mae_improvement_vs_costar_fixed_core": 2.042801223350487,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 7.418349064602342,
+      "pct_mae_improvement_vs_online_costar": -0.20505799035163677,
+      "rank_by_test_mae_among_six_methods": 3,
+      "selected_config": "{\"alpha\": 0.01, \"method\": \"Granger-Ramanathan\", \"structure\": \"global\", \"variant\": \"ridge_extension\"}",
+      "test_mae": 0.2984188199043274,
+      "test_minus_validation_mae": 0.021714866161346436,
+      "test_minus_validation_mse": 0.05287432670593262,
+      "test_mse": 0.21816016733646393,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.27670395374298096,
+      "validation_mse": 0.1652858406305313
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh2",
+      "delta_mae_vs_costar_fixed_core": -0.008348315954208374,
+      "delta_mae_vs_equal_all5_ensemble": -0.02603667974472046,
+      "delta_mae_vs_online_costar": -0.0015144050121307373,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "closed-form inverse-error/covariance combination fit on router_train only using frozen validation-selected config; weights frozen before test",
+      "method": "Bates-Granger",
+      "num_windows": 2773,
+      "official_method_label": "Bates-Granger",
+      "pct_mae_improvement_vs_costar_fixed_core": 2.7403688736482583,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 8.077636646426177,
+      "pct_mae_improvement_vs_online_costar": 0.5085169967165303,
+      "rank_by_test_mae_among_six_methods": 1,
+      "selected_config": "{\"estimator\": \"covariance\", \"shrinkage\": 0.0, \"structure\": \"global\"}",
+      "test_mae": 0.2962937355041504,
+      "test_minus_validation_mae": 0.021378427743911743,
+      "test_minus_validation_mse": 0.052108123898506165,
+      "test_mse": 0.2174234688282013,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.27491530776023865,
+      "validation_mse": 0.16531534492969513
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh2",
+      "delta_mae_vs_costar_fixed_core": -0.006270229816436768,
+      "delta_mae_vs_equal_all5_ensemble": -0.023958593606948853,
+      "delta_mae_vs_online_costar": 0.0005636811256408691,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "MLP router trained on router_train only with frozen validation-selected config/seed; weights frozen before test; top-r sparse combination at test time",
+      "method": "FAME adaptation",
+      "num_windows": 2773,
+      "official_method_label": "FAME routing adaptation to BasicTS frozen expert pool",
+      "pct_mae_improvement_vs_costar_fixed_core": 2.0582285953040333,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 7.43292983643832,
+      "pct_mae_improvement_vs_online_costar": -0.18927660092288603,
+      "rank_by_test_mae_among_six_methods": 2,
+      "selected_config": "{\"dropout\": 0.1, \"epochs\": 80, \"hidden\": 64, \"lr\": 0.0003, \"seed\": 7, \"tau\": 0.1, \"top_r\": 3, \"weight_decay\": 0.001}",
+      "test_mae": 0.298371821641922,
+      "test_minus_validation_mae": 0.021363914012908936,
+      "test_minus_validation_mse": 0.05350819230079651,
+      "test_mse": 0.2206735461950302,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.27700790762901306,
+      "validation_mse": 0.1671653538942337
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "",
+      "dataset": "ETTh2",
+      "delta_mae_vs_costar_fixed_core": 0.0016818344593048096,
+      "delta_mae_vs_equal_all5_ensemble": -0.016006529331207275,
+      "delta_mae_vs_online_costar": 0.008515745401382446,
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "fit_protocol": "MLP router trained on router_train only with frozen validation-selected config/seed; weights and fallback frozen before test; no threshold/fallback tuning on test",
+      "method": "TimeRouter adaptation",
+      "num_windows": 2773,
+      "official_method_label": "TimeRouter routing-mechanism adaptation",
+      "pct_mae_improvement_vs_costar_fixed_core": -0.5520690434080464,
+      "pct_mae_improvement_vs_equal_all5_ensemble": 4.965876186039924,
+      "pct_mae_improvement_vs_online_costar": -2.859473682156412,
+      "rank_by_test_mae_among_six_methods": 4,
+      "selected_config": "{\"epochs\": 80, \"hidden\": 64, \"lr\": 0.0003, \"seed\": 7, \"tau_d\": 0.5, \"tau_m\": 0.15, \"weight_decay\": 0.001}",
+      "test_mae": 0.3063238859176636,
+      "test_minus_validation_mae": 0.023036181926727295,
+      "test_minus_validation_mse": 0.05263276398181915,
+      "test_mse": 0.22859221696853638,
+      "uses_realized_test_feedback": false,
+      "validation_mae": 0.2832877039909363,
+      "validation_mse": 0.17595945298671722
+    },
+    {
+      "audit_label": "after_final_test_audit",
+      "causal_feedback_rule": "old_forecast_start + forecast_horizon <= current_forecast_start",
+      "dataset": "ETTh2",
+      "delta_mae_vs_costar_fixed_core": 0.10288426280021667,
+      "delta_mae_vs_equal_all5_ensemble": 0.08519589900970459,
+      "delta_mae_vs_online_costar": 0.10971817374229431,
+      "expert_set": "PatchTST+iTransformer",
+      "fit_protocol": "combination state initialized from causal per-branch mean-abs-error over all of router_train only; state then updated online during test strictly after old_forecast_start + forecast_horizon <= current_forecast_start; underlying experts frozen throughout",
+      "method": "OneNet-style frozen-expert adaptation",
+      "num_windows": 2773,
+      "official_method_label": "OneNet-style frozen-expert adaptation",
+      "pct_mae_improvement_vs_costar_fixed_core": -33.77218027114022,
+      "pct_mae_improvement_vs_equal_all5_ensemble": -26.4312317358959,
+      "pct_mae_improvement_vs_online_costar": -36.84189879836278,
+      "rank_by_test_mae_among_six_methods": 6,
+      "selected_config": "{\"decay\": 0.97, \"eta\": 0.5}",
+      "test_mae": 0.40752631425857544,
+      "test_minus_validation_mae": 0.004859864711761475,
+      "test_minus_validation_mse": 0.019598543643951416,
+      "test_mse": 0.4137040376663208,
+      "uses_realized_test_feedback": true,
+      "validation_mae": 0.40266644954681396,
+      "validation_mse": 0.3941054940223694
+    }
+  ],
+  "runtime_sec": 19.467312399996445,
+  "selected_configs": {
+    "ETTh1": {
+      "Bates-Granger": {
+        "config": {
+          "estimator": "diagonal_inverse_error",
+          "shrinkage": 1.0,
+          "structure": "horizon_variable"
+        },
+        "fold_mae": 0.3451879620552063,
+        "fold_mse": 0.25881126523017883,
+        "fold_rows": [
+          {
+            "eval_hi": 2218,
+            "eval_lo": 1109,
+            "fold": 0,
+            "mae": 0.3056820034980774,
+            "mse": 0.17442002892494202,
+            "train_hi": 1109,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 3327,
+            "eval_lo": 2218,
+            "fold": 1,
+            "mae": 0.3348488509654999,
+            "mse": 0.23898321390151978,
+            "train_hi": 2218,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 4436,
+            "eval_lo": 3327,
+            "fold": 2,
+            "mae": 0.39872676134109497,
+            "mse": 0.3640613853931427,
+            "train_hi": 3327,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 5546,
+            "eval_lo": 4436,
+            "fold": 3,
+            "mae": 0.341497540473938,
+            "mse": 0.25778135657310486,
+            "train_hi": 4436,
+            "train_lo": 0
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "Bates-Granger"
+      },
+      "FAME adaptation": {
+        "config": {
+          "dropout": 0.1,
+          "epochs": 80,
+          "hidden": 64,
+          "lr": 0.0003,
+          "seed": 7,
+          "tau": 0.1,
+          "top_r": 3,
+          "weight_decay": 0.001
+        },
+        "dataset": "ETTh1",
+        "fold_mae": 0.3556221127510071,
+        "fold_mse": 0.27415239810943604,
+        "fold_rows": [
+          {
+            "eval_hi": 2218,
+            "eval_lo": 1109,
+            "fold": 0,
+            "mae": 0.3305908739566803,
+            "mse": 0.22241339087486267,
+            "train_hi": 1109
+          },
+          {
+            "eval_hi": 3327,
+            "eval_lo": 2218,
+            "fold": 1,
+            "mae": 0.33818235993385315,
+            "mse": 0.2439182549715042,
+            "train_hi": 2218
+          },
+          {
+            "eval_hi": 4436,
+            "eval_lo": 3327,
+            "fold": 2,
+            "mae": 0.40714430809020996,
+            "mse": 0.37124815583229065,
+            "train_hi": 3327
+          },
+          {
+            "eval_hi": 5546,
+            "eval_lo": 4436,
+            "fold": 3,
+            "mae": 0.3465789258480072,
+            "mse": 0.2590436041355133,
+            "train_hi": 4436
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "fame",
+        "official_reproduction": false
+      },
+      "Granger-Ramanathan": {
+        "config": {
+          "alpha": 1.0,
+          "method": "Granger-Ramanathan",
+          "structure": "horizon_variable",
+          "variant": "ridge_extension"
+        },
+        "fold_mae": 0.34876111149787903,
+        "fold_mse": 0.26204562187194824,
+        "fold_rows": [
+          {
+            "eval_hi": 2218,
+            "eval_lo": 1109,
+            "fold": 0,
+            "mae": 0.31257402896881104,
+            "mse": 0.18915531039237976,
+            "train_hi": 1109,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 3327,
+            "eval_lo": 2218,
+            "fold": 1,
+            "mae": 0.3399929404258728,
+            "mse": 0.24333368241786957,
+            "train_hi": 2218,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 4436,
+            "eval_lo": 3327,
+            "fold": 2,
+            "mae": 0.3983549475669861,
+            "mse": 0.35862821340560913,
+            "train_hi": 3327,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 5546,
+            "eval_lo": 4436,
+            "fold": 3,
+            "mae": 0.3441266715526581,
+            "mse": 0.25706979632377625,
+            "train_hi": 4436,
+            "train_lo": 0
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "Granger-Ramanathan"
+      },
+      "OneNet-style frozen-expert adaptation": {
+        "config": {
+          "decay": 0.97,
+          "eta": 0.5
+        },
+        "fold_mae": 0.34732702374458313,
+        "fold_mse": 0.2634493112564087,
+        "fold_rows": [
+          {
+            "eval_hi": 2218,
+            "eval_lo": 1109,
+            "fold": 0,
+            "mae": 0.2848984897136688,
+            "mean_weight_PatchTST": 0.5013594031333923,
+            "mean_weight_iTransformer": 0.4986405074596405,
+            "mse": 0.16475248336791992,
+            "num_updates": 1097,
+            "train_hi": 1109
+          },
+          {
+            "eval_hi": 3327,
+            "eval_lo": 2218,
+            "fold": 1,
+            "mae": 0.3418758809566498,
+            "mean_weight_PatchTST": 0.5006794929504395,
+            "mean_weight_iTransformer": 0.49932053685188293,
+            "mse": 0.24837811291217804,
+            "num_updates": 1097,
+            "train_hi": 2218
+          },
+          {
+            "eval_hi": 4436,
+            "eval_lo": 3327,
+            "fold": 2,
+            "mae": 0.4134763777256012,
+            "mean_weight_PatchTST": 0.4996374249458313,
+            "mean_weight_iTransformer": 0.5003626346588135,
+            "mse": 0.37830692529678345,
+            "num_updates": 1097,
+            "train_hi": 3327
+          },
+          {
+            "eval_hi": 5546,
+            "eval_lo": 4436,
+            "fold": 3,
+            "mae": 0.34905576705932617,
+            "mean_weight_PatchTST": 0.5000901818275452,
+            "mean_weight_iTransformer": 0.49990975856781006,
+            "mse": 0.26236066222190857,
+            "num_updates": 1098,
+            "train_hi": 4436
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "OneNet-style frozen-expert adaptation",
+        "official_reproduction": false
+      },
+      "TimeRouter adaptation": {
+        "config": {
+          "epochs": 80,
+          "hidden": 64,
+          "lr": 0.0003,
+          "seed": 7,
+          "tau_d": 0.5,
+          "tau_m": 0.15,
+          "weight_decay": 0.001
+        },
+        "dataset": "ETTh1",
+        "fold_mae": 0.34720566868782043,
+        "fold_mse": 0.2591845691204071,
+        "fold_rows": [
+          {
+            "eval_hi": 2218,
+            "eval_lo": 1109,
+            "fold": 0,
+            "mae": 0.3089468479156494,
+            "mse": 0.17578741908073425,
+            "train_hi": 1109
+          },
+          {
+            "eval_hi": 3327,
+            "eval_lo": 2218,
+            "fold": 1,
+            "mae": 0.3390112519264221,
+            "mse": 0.24197469651699066,
+            "train_hi": 2218
+          },
+          {
+            "eval_hi": 4436,
+            "eval_lo": 3327,
+            "fold": 2,
+            "mae": 0.39914220571517944,
+            "mse": 0.3624051511287689,
+            "train_hi": 3327
+          },
+          {
+            "eval_hi": 5546,
+            "eval_lo": 4436,
+            "fold": 3,
+            "mae": 0.34172722697257996,
+            "mse": 0.25657349824905396,
+            "train_hi": 4436
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "timerouter",
+        "official_reproduction": false
+      }
+    },
+    "ETTh2": {
+      "Bates-Granger": {
+        "config": {
+          "estimator": "covariance",
+          "shrinkage": 0.0,
+          "structure": "global"
+        },
+        "fold_mae": 0.2822612226009369,
+        "fold_mse": 0.18148276209831238,
+        "fold_rows": [
+          {
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 0,
+            "mae": 0.25998347997665405,
+            "mse": 0.1471434086561203,
+            "train_hi": 411,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 1,
+            "mae": 0.30535876750946045,
+            "mse": 0.21065828204154968,
+            "train_hi": 821,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 2,
+            "mae": 0.29208236932754517,
+            "mse": 0.17601805925369263,
+            "train_hi": 1232,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 3,
+            "mae": 0.2715900242328644,
+            "mse": 0.1920143961906433,
+            "train_hi": 1642,
+            "train_lo": 0
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "Bates-Granger"
+      },
+      "FAME adaptation": {
+        "config": {
+          "dropout": 0.1,
+          "epochs": 80,
+          "hidden": 64,
+          "lr": 0.0003,
+          "seed": 7,
+          "tau": 0.1,
+          "top_r": 3,
+          "weight_decay": 0.001
+        },
+        "dataset": "ETTh2",
+        "fold_mae": 0.28361427783966064,
+        "fold_mse": 0.1835610568523407,
+        "fold_rows": [
+          {
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 0,
+            "mae": 0.26028040051460266,
+            "mse": 0.14693990349769592,
+            "train_hi": 411
+          },
+          {
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 1,
+            "mae": 0.306190550327301,
+            "mse": 0.21141041815280914,
+            "train_hi": 821
+          },
+          {
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 2,
+            "mae": 0.2927255630493164,
+            "mse": 0.17919529974460602,
+            "train_hi": 1232
+          },
+          {
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 3,
+            "mae": 0.2752259373664856,
+            "mse": 0.19659890234470367,
+            "train_hi": 1642
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "fame",
+        "official_reproduction": false
+      },
+      "Granger-Ramanathan": {
+        "config": {
+          "alpha": 0.01,
+          "method": "Granger-Ramanathan",
+          "structure": "global",
+          "variant": "ridge_extension"
+        },
+        "fold_mae": 0.2830832302570343,
+        "fold_mse": 0.1825621873140335,
+        "fold_rows": [
+          {
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 0,
+            "mae": 0.2610968351364136,
+            "mse": 0.1478830873966217,
+            "train_hi": 411,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 1,
+            "mae": 0.3061692416667938,
+            "mse": 0.21105381846427917,
+            "train_hi": 821,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 2,
+            "mae": 0.29195553064346313,
+            "mse": 0.17667292058467865,
+            "train_hi": 1232,
+            "train_lo": 0
+          },
+          {
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 3,
+            "mae": 0.27307945489883423,
+            "mse": 0.19454024732112885,
+            "train_hi": 1642,
+            "train_lo": 0
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "Granger-Ramanathan"
+      },
+      "OneNet-style frozen-expert adaptation": {
+        "config": {
+          "decay": 0.97,
+          "eta": 0.5
+        },
+        "fold_mae": 0.34981483221054077,
+        "fold_mse": 0.29161038994789124,
+        "fold_rows": [
+          {
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 0,
+            "mae": 0.372285932302475,
+            "mean_weight_PatchTST": 0.521491289138794,
+            "mean_weight_iTransformer": 0.47850871086120605,
+            "mse": 0.34201279282569885,
+            "num_updates": 398,
+            "train_hi": 411
+          },
+          {
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 1,
+            "mae": 0.3898812234401703,
+            "mean_weight_PatchTST": 0.5170336365699768,
+            "mean_weight_iTransformer": 0.4829663336277008,
+            "mse": 0.3601049482822418,
+            "num_updates": 399,
+            "train_hi": 821
+          },
+          {
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 2,
+            "mae": 0.3088195025920868,
+            "mean_weight_PatchTST": 0.5035755634307861,
+            "mean_weight_iTransformer": 0.4964244067668915,
+            "mse": 0.19253307580947876,
+            "num_updates": 398,
+            "train_hi": 1232
+          },
+          {
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 3,
+            "mae": 0.32822757959365845,
+            "mean_weight_PatchTST": 0.5121951699256897,
+            "mean_weight_iTransformer": 0.4878048598766327,
+            "mse": 0.27167224884033203,
+            "num_updates": 399,
+            "train_hi": 1642
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "OneNet-style frozen-expert adaptation",
+        "official_reproduction": false
+      },
+      "TimeRouter adaptation": {
+        "config": {
+          "epochs": 80,
+          "hidden": 64,
+          "lr": 0.0003,
+          "seed": 7,
+          "tau_d": 0.5,
+          "tau_m": 0.15,
+          "weight_decay": 0.001
+        },
+        "dataset": "ETTh2",
+        "fold_mae": 0.28633877635002136,
+        "fold_mse": 0.1847902536392212,
+        "fold_rows": [
+          {
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 0,
+            "mae": 0.2642834782600403,
+            "mse": 0.15292221307754517,
+            "train_hi": 411
+          },
+          {
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 1,
+            "mae": 0.30959415435791016,
+            "mse": 0.2077016532421112,
+            "train_hi": 821
+          },
+          {
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 2,
+            "mae": 0.2957282066345215,
+            "mse": 0.1795298159122467,
+            "train_hi": 1232
+          },
+          {
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 3,
+            "mae": 0.2757185101509094,
+            "mse": 0.19891703128814697,
+            "train_hi": 1642
+          }
+        ],
+        "frozen_before_validation": true,
+        "method": "timerouter",
+        "official_reproduction": false
+      }
+    }
+  },
+  "test_caches": {
+    "ETTh1": "experiments\\final_test_evaluation\\generated\\caches\\ETTh1\\test_80_100_cache.pt",
+    "ETTh2": "experiments\\final_test_evaluation\\generated\\caches\\ETTh2\\locked_test_cache_v2.pt"
+  },
+  "test_results_previously_viewed_elsewhere_in_project": true
+}

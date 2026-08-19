@@ -2,13 +2,13 @@
 
 Created: 2026-08-13
 
-Updated: 2026-08-17
+Updated: 2026-08-18
 
 This file consolidates frozen-model test results from the original confirmatory final frozen test evaluation and additional frozen-model evaluations performed later. Rows marked `clean_preregistered` are the official frozen results from the pre-test freeze artifacts. Rows marked `pre_test_frozen` were trained, selected, configured, and frozen without test-data feedback; they are additional frozen-model evaluations unless also marked `clean_preregistered`.
 
 Machine-readable version: `experiments/all_results_summary/all_costar_results.csv`
 
-Coverage note: this file now includes official final frozen test rows, additional final-test audit rows, and ETTh2 validation-only COSTAR/fixed-subset records from the canonical protocol, train-selected core audits, sequential COSTAR, pair selector, pair-potential diagnostics, and limited normalized replication. Validation-only rows have blank test columns in the CSV.
+Coverage note: this file now includes official final frozen test rows, additional final-test audit rows, the 2026-08-18 published-baseline test audit (Equal all-5, Granger-Ramanathan, Bates-Granger, FAME, TimeRouter, OneNet, plus Frozen/Online COSTAR reference rows), and ETTh2 validation-only COSTAR/fixed-subset records from the canonical protocol, train-selected core audits, sequential COSTAR, pair selector, pair-potential diagnostics, and limited normalized replication. Validation-only rows have blank test columns in the CSV.
 
 Main full adaptive model note: the main ETTh1 full adaptive COSTAR implementation now uses equal static weights for every selected triple. Its after-final-test audit result is MAE/MSE `0.326408` / `0.267378` with validation MAE/MSE `0.363100` / `0.306026`. The older ETTh1 preregistered final-test row remains the historical confirmatory record. ETTh2 keeps the existing preregistered full adaptive model.
 
@@ -101,6 +101,34 @@ These rows use the same pooled definition as `pooled_router_train_core`: select 
 | ETTh1 | MLP residual corrector | `mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01` | `0.334217` | `0.364111` | `0.325964` | `0.266587` | `-0.000083` | `-0.000429` |
 | ETTh2 | Ridge residual corrector | `ridge1_alpha0.25_clip0.25_full` | `0.277668` | `0.275036` | `0.296787` | `0.217713` | `+0.000000` | `-0.001021` |
 | ETTh2 | MLP residual corrector | `mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01` | `0.275051` | `0.275975` | `0.297427` | `0.218405` | `+0.000386` | `-0.000381` |
+
+## Published Baseline Methods — Test Audit (2026-08-18)
+
+Six published-baseline methods that previously had validation-only results (Equal all-5 ensemble, Granger-Ramanathan, Bates-Granger, FAME adaptation, TimeRouter adaptation, OneNet-style frozen-expert adaptation) were evaluated once on the canonical ETTh1/ETTh2 test caches using configs frozen before validation. Frozen COSTAR and Online COSTAR are included as reference rows, replayed verbatim, not re-tuned. All 10 leakage/causality checks passed (exact target-replacement invariance for GR/Bates-Granger/FAME/TimeRouter; exact-boundary future-target perturbation causality test for OneNet). These are after-final-test audit rows, not preregistered final competitors.
+
+| Method | ETTh1 Test MAE | ETTh1 Test MSE | ETTh1 Val MAE | ETTh2 Test MAE | ETTh2 Test MSE | ETTh2 Val MAE | Status |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Online COSTAR | `0.326408` | `0.267378` | `0.363100` | `0.297808` | `0.218612` | `0.276832` | reference (main full adaptive model) |
+| Frozen COSTAR + MLP residual | `0.326047` | `0.267322` | `0.363318` | `0.297041` | `0.218149` | `0.275643` | after-final-test audit |
+| Frozen COSTAR + Ridge residual | `0.326448` | `0.267452` | `0.363301` | `0.296787` | `0.217713` | `0.275036` | after-final-test audit |
+| Frozen COSTAR | `0.327175` | `0.267094` | `0.365825` | `0.300574` | `0.220499` | `0.277481` | reference |
+| Bates-Granger | `0.327848` | `0.267809` | `0.368891` | `0.296294` | `0.217423` | `0.274915` | after-final-test audit |
+| TimeRouter adaptation | `0.328178` | `0.267896` | `0.368234` | `0.306324` | `0.228592` | `0.283288` | after-final-test audit |
+| OneNet-style adaptation | `0.330721` | `0.272812` | `0.370137` | `0.407526` | `0.413704` | `0.402666` | after-final-test audit |
+| Equal all-5 ensemble | `0.332001` | `0.270050` | `0.371099` | `0.322330` | `0.249527` | `0.300772` | after-final-test audit |
+| FAME adaptation | `0.331314` | `0.271990` | `0.379212` | `0.298372` | `0.220674` | `0.277008` | after-final-test audit |
+| Granger-Ramanathan | `0.340765` | `0.289594` | `0.382960` | `0.298419` | `0.218160` | `0.276704` | after-final-test audit |
+
+Interpretation: on ETTh1, Online COSTAR beats all six audited baselines on test. On ETTh2, Bates-Granger beats Online COSTAR on test (`0.296294` vs `0.297808`); FAME and Granger-Ramanathan also narrowly beat it. OneNet collapses on ETTh2 test (`0.407526`), the worst row in either table.
+
+Artifacts:
+
+- `experiments/published_baseline_test_audit/PUBLISHED_BASELINE_TEST_AUDIT_RESULTS.json`
+- `experiments/published_baseline_test_audit/TEST_RESULTS.json`
+- `experiments/published_baseline_test_audit/TEST_REPORT.md`
+- `experiments/published_baseline_test_audit/leakage_and_causality_checks.json`
+- `project_memory/experiments/2026-08-18_after_final_test_audit_six_methods.md`
+- `project_memory/experiments/2026-08-18_published_baseline_test_audit.md`
 
 ## Sequential COSTAR Test Audit
 
