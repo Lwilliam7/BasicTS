@@ -1,0 +1,117 @@
+{
+  "causal_observability_rule": "old_start + forecast_horizon <= current_start (enforce_observable(), raises on violation)",
+  "created_at_utc": "2026-08-20T04:50:39.886116+00:00",
+  "datasets": {
+    "ETTm1": {
+      "best_single_expert": "PatchTST",
+      "cache_hashes": {
+        "final_60_DLinear_checkpoint_sha256": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+        "final_60_PatchTST_checkpoint_sha256": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+        "final_60_TimesNet_checkpoint_sha256": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8",
+        "normalizer_checkpoint_sha256": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+        "router_train_20_60_sha256": "f7a6167e81c2cfc366c2cd1baf119f2d2b29ac156969d06d8fb3e58623482b86",
+        "router_val_60_80_sha256": "a47ee159ef1c15c0f5e0f53a2f4c483b35079ec9497c3afffd07b8e975c4b6fe"
+      },
+      "cache_paths": {
+        "normalizer": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\DLinear\\best_expert.pt",
+        "router_train": "cache\\costarts_walkforward_ETTm1\\router_train_20_60_cache.pt",
+        "router_val": "cache\\costarts_walkforward_ETTm1\\router_val_60_80_cache.pt"
+      },
+      "num_features": 7,
+      "num_windows_train": 22826,
+      "num_windows_val": 11413,
+      "selected_core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ]
+    },
+    "Electricity": {
+      "best_single_expert": "iTransformer",
+      "cache_hashes": {
+        "final_60_PatchTST_checkpoint_sha256": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+        "final_60_TimesNet_checkpoint_sha256": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+        "final_60_iTransformer_checkpoint_sha256": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+        "normalizer_checkpoint_sha256": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92",
+        "router_train_20_60_sha256": "49b299e896fc1989143b0cbb64866827c5e06b3b0e3029677324cb36cfc86e76",
+        "router_val_60_80_sha256": "83552b3c6859e527cca859d307d1c4a36bf4019667084f6827a368e9676c96bd"
+      },
+      "cache_paths": {
+        "normalizer": "checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+        "router_train": "cache\\costarts_walkforward_Electricity\\router_train_20_60_cache.pt",
+        "router_val": "cache\\costarts_walkforward_Electricity\\router_val_60_80_cache.pt"
+      },
+      "num_features": 321,
+      "num_windows_train": 10308,
+      "num_windows_val": 5154,
+      "selected_core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ]
+    },
+    "Weather": {
+      "best_single_expert": "PatchTST",
+      "cache_hashes": {
+        "final_60_PatchTST_checkpoint_sha256": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+        "final_60_TimesNet_checkpoint_sha256": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+        "final_60_iTransformer_checkpoint_sha256": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1",
+        "normalizer_checkpoint_sha256": "c34520a0ba154e0518ca38fc26182b03bed785b35a7682573de820fb944c3c06",
+        "router_train_20_60_sha256": "030702a667add4190c82e7bf51ce8aca15748813a3eb63362d6f7f3243e0e1cf",
+        "router_val_60_80_sha256": "029f7ebc8f83ded9826beed73f56280a470afb4c6468945a2ef177446f4a8a6c"
+      },
+      "cache_paths": {
+        "normalizer": "checkpoints\\costarts_walkforward_Weather\\final_60\\DLinear\\best_expert.pt",
+        "router_train": "cache\\costarts_walkforward_Weather\\router_train_20_60_cache.pt",
+        "router_val": "cache\\costarts_walkforward_Weather\\router_val_60_80_cache.pt"
+      },
+      "num_features": 21,
+      "num_windows_train": 20864,
+      "num_windows_val": 10432,
+      "selected_core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ]
+    }
+  },
+  "decay": 0.95,
+  "error_to_weight_rule": "errors_to_weights(): centered per-expert error, softmax(-centered_error/temperature) over the full H x V x expert EMA (aggregate_error mode='hv')",
+  "excluded_from_candidate": [
+    "separate global EMA branch",
+    "global + HxV blend",
+    "dual-timescale memory",
+    "low-rank HxV",
+    "specialists (DLinear/ModernTCN residual correction)",
+    "Ridge residual corrector",
+    "MLP residual corrector"
+  ],
+  "expert_pool": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "expert_selection_rule": "top-3-of-5 combination minimizing pooled chronological out-of-fold MAE over 4 folds within router_train (unchanged from ETTh1/ETTh2 protocol)",
+  "forecast_horizon": 12,
+  "frozen": true,
+  "git_commit_sha": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+  "input_len": 96,
+  "manifest_type": "frozen_router_manifest",
+  "note": "Architecture, decay, temperature, expert pool, and expert-selection rule are frozen as of this manifest. Validation results above are for correctness-checking and reporting only and must not be used to change any of these settings.",
+  "router_type": "Full horizon x variable (HxV) causal EMA only",
+  "split_definitions": {
+    "block_a": "0-20% (expert training range for block_b_oos)",
+    "block_b": "20-40% (out-of-sample prediction range, experts trained on block_a only)",
+    "block_c": "40-60% (out-of-sample prediction range, experts trained on block_a+block_b only)",
+    "router_train_20_60": "block_b_oos + block_c_oos combined (20-60%), both out-of-sample for the experts that produced them",
+    "router_val_60_80": "60-80%, experts trained on 0-60% (block_a+b+c)",
+    "test_80_100": "80-100%, same 0-60%-trained experts, evaluated exactly once after this manifest is frozen"
+  },
+  "temperature": 0.1,
+  "test_accessed": false,
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "walkforward_protocol_source": "scripts/build_costarts_walkforward_cache.py + scripts/train_costarts_walkforward_experts.py (existing canonical scheme, reused; generalized to be dataset-parameterized instead of ETTh1-hardcoded -- see stage_definitions() fix)"
+}

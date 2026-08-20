@@ -368,11 +368,18 @@ def predict_expert(
     }
 
 
-def stage_definitions() -> dict[str, ExpertStage]:
+def stage_definitions(total_timestamps: int, checkpoint_root: str = "checkpoints/costarts_walkforward") -> dict[str, ExpertStage]:
+    """Stage train-end boundaries are always 20/40/60% of the dataset's own
+    length, using the exact same `int(total * fraction)` truncation as
+    `chronological_ranges()` in build_costarts_walkforward_cache.py so the two
+    boundary definitions can never disagree -- not hardcoded to ETTh1's 14400
+    timestamps. `checkpoint_root` defaults to the original ETTh1 path so
+    existing behavior/artifacts are unchanged; pass a dataset-specific root
+    for any other dataset so checkpoints never collide."""
     return {
-        "block_a": ExpertStage("block_a", 0, 2880, "checkpoints/costarts_walkforward/block_a", "block_b_oos"),
-        "block_ab": ExpertStage("block_ab", 0, 5760, "checkpoints/costarts_walkforward/block_ab", "block_c_oos"),
-        "final_60": ExpertStage("final_60", 0, 8640, "checkpoints/costarts_walkforward/final_60", "router_val_60_80"),
+        "block_a": ExpertStage("block_a", 0, int(total_timestamps * 0.2), f"{checkpoint_root}/block_a", "block_b_oos"),
+        "block_ab": ExpertStage("block_ab", 0, int(total_timestamps * 0.4), f"{checkpoint_root}/block_ab", "block_c_oos"),
+        "final_60": ExpertStage("final_60", 0, int(total_timestamps * 0.6), f"{checkpoint_root}/final_60", "router_val_60_80"),
     }
 
 
@@ -484,6 +491,7 @@ def main() -> None:
     parser.add_argument("--cache-dir", default="cache/costarts_walkforward")
     parser.add_argument("--prediction-dir", default="results/router_summary/costarts_walkforward/expert_predictions")
     parser.add_argument("--results-dir", default="results/router_summary/costarts_walkforward/experts")
+    parser.add_argument("--checkpoint-root", default="checkpoints/costarts_walkforward")
     parser.add_argument("--input-len", type=int, default=96)
     parser.add_argument("--forecast-horizon", type=int, default=12)
     parser.add_argument("--hidden-size", type=int, default=64)
@@ -507,7 +515,7 @@ def main() -> None:
         raise ValueError("--train-only and --predict-only are mutually exclusive")
     full_data = load_full_array(ROOT / args.data_dir)
     device = torch.device(args.device)
-    definitions = stage_definitions()
+    definitions = stage_definitions(full_data.shape[0], args.checkpoint_root)
     selected = [definitions[args.stage]] if args.stage else [definitions["block_a"], definitions["block_ab"], definitions["final_60"]]
     report: dict[str, Any] = {
         "dataset": args.dataset,

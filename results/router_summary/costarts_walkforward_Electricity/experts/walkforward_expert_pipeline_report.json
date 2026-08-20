@@ -1,0 +1,766 @@
+{
+  "dataset": "Electricity",
+  "data_dir": "datasets/Electricity",
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "created_at_utc": "2026-08-20T04:39:14.905957+00:00",
+  "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+  "stages": {
+    "block_a": {
+      "training": {
+        "stage": "block_a",
+        "train_range": {
+          "start": 0,
+          "end": 5260
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "checkpoints": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\ModernTCN\\best_expert.pt"
+        },
+        "checkpoint_hashes": {
+          "DLinear": "3f0ce064932d66acd7edd1cdbab68da9fcbc37049e9eaf6cf2c360365eb4a4ea",
+          "PatchTST": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575",
+          "iTransformer": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3",
+          "TimesNet": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f",
+          "ModernTCN": "a430b8b5607b4ab0f99c3f451b8ad726dc8d349bd23314ac09124cd3fa7f3d81"
+        },
+        "rows": [
+          {
+            "expert": "DLinear",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5260
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 4638,
+              "num_val_windows": 515,
+              "first_val_window_start": 4638,
+              "last_val_window_start": 5152
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.30937211712201435,
+            "created_at_utc": "2026-08-20T04:39:26.518874+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "3f0ce064932d66acd7edd1cdbab68da9fcbc37049e9eaf6cf2c360365eb4a4ea"
+          },
+          {
+            "expert": "PatchTST",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5260
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 4638,
+              "num_val_windows": 515,
+              "first_val_window_start": 4638,
+              "last_val_window_start": 5152
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.2650018036365509,
+            "created_at_utc": "2026-08-20T04:40:13.473258+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575"
+          },
+          {
+            "expert": "iTransformer",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5260
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 4638,
+              "num_val_windows": 515,
+              "first_val_window_start": 4638,
+              "last_val_window_start": 5152
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.263727605342865,
+            "created_at_utc": "2026-08-20T04:40:22.611937+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3"
+          },
+          {
+            "expert": "TimesNet",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5260
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 4638,
+              "num_val_windows": 515,
+              "first_val_window_start": 4638,
+              "last_val_window_start": 5152
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.34996552268664044,
+            "created_at_utc": "2026-08-20T04:40:40.186715+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f"
+          },
+          {
+            "expert": "ModernTCN",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5260
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 4638,
+              "num_val_windows": 515,
+              "first_val_window_start": 4638,
+              "last_val_window_start": 5152
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.4063044587771098,
+            "created_at_utc": "2026-08-20T04:40:48.141713+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "a430b8b5607b4ab0f99c3f451b8ad726dc8d349bd23314ac09124cd3fa7f3d81"
+          }
+        ],
+        "created_at_utc": "2026-08-20T04:40:48.425395+00:00",
+        "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+      },
+      "prediction": {
+        "stage": "block_a",
+        "predict_role": "block_b_oos",
+        "expert_training_range": {
+          "start": 0,
+          "end": 5260
+        },
+        "prediction_range": {
+          "name": "block_b",
+          "start_fraction": 0.2,
+          "end_fraction": 0.4,
+          "start": 5260,
+          "end": 10521
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "rows": [
+          {
+            "expert": "DLinear",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "3f0ce064932d66acd7edd1cdbab68da9fcbc37049e9eaf6cf2c360365eb4a4ea",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_b_oos\\DLinear.npy",
+            "prediction_sha256": "f6fc2614f12efc1e854507a677730635193c15fa33450dc5515e4415896d2439",
+            "num_windows": 5154
+          },
+          {
+            "expert": "PatchTST",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_b_oos\\PatchTST.npy",
+            "prediction_sha256": "17830231c1ee68e222e31c52fa904cdc0196f955857804dc3ffe7fd61a700c96",
+            "num_windows": 5154
+          },
+          {
+            "expert": "iTransformer",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_b_oos\\iTransformer.npy",
+            "prediction_sha256": "1db64b7a7d05e7991b597862742b15cd1ab7d3f6a0b6e9d8f8989b5ae2c87fa5",
+            "num_windows": 5154
+          },
+          {
+            "expert": "TimesNet",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_b_oos\\TimesNet.npy",
+            "prediction_sha256": "ac8c62dc1ba7c98e9ea8bf1fc899968b10f66ea673a13a6e703d4b8b81b49b55",
+            "num_windows": 5154
+          },
+          {
+            "expert": "ModernTCN",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "a430b8b5607b4ab0f99c3f451b8ad726dc8d349bd23314ac09124cd3fa7f3d81",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_b_oos\\ModernTCN.npy",
+            "prediction_sha256": "6ce332cbffb6ef8f4ca9444500f5f553d76dfa765463859e9e0a7a3dec3c2299",
+            "num_windows": 5154
+          }
+        ],
+        "expert_checkpoint_paths": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_a\\ModernTCN\\best_expert.pt"
+        },
+        "expert_checkpoint_hashes": {
+          "DLinear": "3f0ce064932d66acd7edd1cdbab68da9fcbc37049e9eaf6cf2c360365eb4a4ea",
+          "PatchTST": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575",
+          "iTransformer": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3",
+          "TimesNet": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f",
+          "ModernTCN": "a430b8b5607b4ab0f99c3f451b8ad726dc8d349bd23314ac09124cd3fa7f3d81"
+        },
+        "created_at_utc": "2026-08-20T04:40:56.868446+00:00",
+        "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+      }
+    },
+    "block_ab": {
+      "training": {
+        "stage": "block_ab",
+        "train_range": {
+          "start": 0,
+          "end": 10521
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "checkpoints": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\ModernTCN\\best_expert.pt"
+        },
+        "checkpoint_hashes": {
+          "DLinear": "a5f072f30628a35938ba399b7dc8fbb35c89fc29127604660be979f4128085cd",
+          "PatchTST": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0",
+          "iTransformer": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8",
+          "TimesNet": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a",
+          "ModernTCN": "2a4e9c00edef35adf2857387c015856dc378e70b3ecf4a82a26b6cfdbbc2b4ff"
+        },
+        "rows": [
+          {
+            "expert": "DLinear",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 10521
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 9373,
+              "num_val_windows": 1041,
+              "first_val_window_start": 9373,
+              "last_val_window_start": 10413
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.25152371525764466,
+            "created_at_utc": "2026-08-20T04:41:15.932616+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "a5f072f30628a35938ba399b7dc8fbb35c89fc29127604660be979f4128085cd"
+          },
+          {
+            "expert": "PatchTST",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 10521
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 9373,
+              "num_val_windows": 1041,
+              "first_val_window_start": 9373,
+              "last_val_window_start": 10413
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.226252681016922,
+            "created_at_utc": "2026-08-20T04:42:48.779895+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0"
+          },
+          {
+            "expert": "iTransformer",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 10521
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 9373,
+              "num_val_windows": 1041,
+              "first_val_window_start": 9373,
+              "last_val_window_start": 10413
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.2236334502696991,
+            "created_at_utc": "2026-08-20T04:43:09.389256+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8"
+          },
+          {
+            "expert": "TimesNet",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 10521
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 9373,
+              "num_val_windows": 1041,
+              "first_val_window_start": 9373,
+              "last_val_window_start": 10413
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.24922074377536774,
+            "created_at_utc": "2026-08-20T04:43:40.026034+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a"
+          },
+          {
+            "expert": "ModernTCN",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 10521
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 9373,
+              "num_val_windows": 1041,
+              "first_val_window_start": 9373,
+              "last_val_window_start": 10413
+            },
+            "best_epoch": 5,
+            "best_internal_val_mae": 0.2995959877967834,
+            "created_at_utc": "2026-08-20T04:43:50.240152+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "2a4e9c00edef35adf2857387c015856dc378e70b3ecf4a82a26b6cfdbbc2b4ff"
+          }
+        ],
+        "created_at_utc": "2026-08-20T04:43:50.466829+00:00",
+        "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+      },
+      "prediction": {
+        "stage": "block_ab",
+        "predict_role": "block_c_oos",
+        "expert_training_range": {
+          "start": 0,
+          "end": 10521
+        },
+        "prediction_range": {
+          "name": "block_c",
+          "start_fraction": 0.4,
+          "end_fraction": 0.6000000000000001,
+          "start": 10521,
+          "end": 15782
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "rows": [
+          {
+            "expert": "DLinear",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "a5f072f30628a35938ba399b7dc8fbb35c89fc29127604660be979f4128085cd",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_c_oos\\DLinear.npy",
+            "prediction_sha256": "1a1e43fb858d463b2a8438d90b5e91077bbe4735b13a4df4d25c6a9cfed97634",
+            "num_windows": 5154
+          },
+          {
+            "expert": "PatchTST",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_c_oos\\PatchTST.npy",
+            "prediction_sha256": "7ab08deae6aecdef8128a4267ce83f7be07cd2f1e419f33175a946244003fc7c",
+            "num_windows": 5154
+          },
+          {
+            "expert": "iTransformer",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_c_oos\\iTransformer.npy",
+            "prediction_sha256": "48a2352815d3cc9a7e942836b77d6cd8400a0bcb07ad91b1ab94ae779e60f8d5",
+            "num_windows": 5154
+          },
+          {
+            "expert": "TimesNet",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_c_oos\\TimesNet.npy",
+            "prediction_sha256": "b1e7d0f523b091b46cd8549dffae429b0f277848e507a7bf9517f1a849fce572",
+            "num_windows": 5154
+          },
+          {
+            "expert": "ModernTCN",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "2a4e9c00edef35adf2857387c015856dc378e70b3ecf4a82a26b6cfdbbc2b4ff",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\block_c_oos\\ModernTCN.npy",
+            "prediction_sha256": "35fbcd71f518c44d3d3ee7e2d954a8076f74a817d4121ae52cae9bd17f2a8fd9",
+            "num_windows": 5154
+          }
+        ],
+        "expert_checkpoint_paths": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\block_ab\\ModernTCN\\best_expert.pt"
+        },
+        "expert_checkpoint_hashes": {
+          "DLinear": "a5f072f30628a35938ba399b7dc8fbb35c89fc29127604660be979f4128085cd",
+          "PatchTST": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0",
+          "iTransformer": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8",
+          "TimesNet": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a",
+          "ModernTCN": "2a4e9c00edef35adf2857387c015856dc378e70b3ecf4a82a26b6cfdbbc2b4ff"
+        },
+        "created_at_utc": "2026-08-20T04:43:56.690212+00:00",
+        "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+      }
+    },
+    "final_60": {
+      "training": {
+        "stage": "final_60",
+        "train_range": {
+          "start": 0,
+          "end": 15782
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "checkpoints": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\ModernTCN\\best_expert.pt"
+        },
+        "checkpoint_hashes": {
+          "DLinear": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92",
+          "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+          "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+          "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+          "ModernTCN": "65899c19b5b3d7a906372fd311e4b6c2087da13ed314d0442c878afd254c9aa8"
+        },
+        "rows": [
+          {
+            "expert": "DLinear",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 15782
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 14108,
+              "num_val_windows": 1567,
+              "first_val_window_start": 14108,
+              "last_val_window_start": 15674
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.24000591039657593,
+            "created_at_utc": "2026-08-20T04:44:26.942178+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92"
+          },
+          {
+            "expert": "PatchTST",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 15782
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 14108,
+              "num_val_windows": 1567,
+              "first_val_window_start": 14108,
+              "last_val_window_start": 15674
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.22420571744441986,
+            "created_at_utc": "2026-08-20T04:46:39.117230+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0"
+          },
+          {
+            "expert": "iTransformer",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 15782
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 14108,
+              "num_val_windows": 1567,
+              "first_val_window_start": 14108,
+              "last_val_window_start": 15674
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.21870073250361852,
+            "created_at_utc": "2026-08-20T04:47:03.403684+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+          },
+          {
+            "expert": "TimesNet",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 15782
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 14108,
+              "num_val_windows": 1567,
+              "first_val_window_start": 14108,
+              "last_val_window_start": 15674
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.25081520421164377,
+            "created_at_utc": "2026-08-20T04:47:51.113192+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc"
+          },
+          {
+            "expert": "ModernTCN",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 321,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 15782
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 14108,
+              "num_val_windows": 1567,
+              "first_val_window_start": 14108,
+              "last_val_window_start": 15674
+            },
+            "best_epoch": 4,
+            "best_internal_val_mae": 0.3171212375164032,
+            "created_at_utc": "2026-08-20T04:48:08.822257+00:00",
+            "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "65899c19b5b3d7a906372fd311e4b6c2087da13ed314d0442c878afd254c9aa8"
+          }
+        ],
+        "created_at_utc": "2026-08-20T04:48:09.069404+00:00",
+        "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+      },
+      "prediction": {
+        "stage": "final_60",
+        "predict_role": "router_val_60_80",
+        "expert_training_range": {
+          "start": 0,
+          "end": 15782
+        },
+        "prediction_range": {
+          "name": "validation",
+          "start_fraction": 0.6000000000000001,
+          "end_fraction": 0.8,
+          "start": 15782,
+          "end": 21043
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "rows": [
+          {
+            "expert": "DLinear",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\router_val_60_80\\DLinear.npy",
+            "prediction_sha256": "0fe1d4011207089c3bc92fea1ea831f8c7b9688525a3e619fece2211a7aac6f3",
+            "num_windows": 5154
+          },
+          {
+            "expert": "PatchTST",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\router_val_60_80\\PatchTST.npy",
+            "prediction_sha256": "05ec4d1264e73063b662e5bcc12d0411af56b39fc2cce2b517af95f36b581576",
+            "num_windows": 5154
+          },
+          {
+            "expert": "iTransformer",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\router_val_60_80\\iTransformer.npy",
+            "prediction_sha256": "b26f82d9717bf3c44476372d02d13d7d438b7fcbe9ec6fc5ba80dc4a2dba3de7",
+            "num_windows": 5154
+          },
+          {
+            "expert": "TimesNet",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\router_val_60_80\\TimesNet.npy",
+            "prediction_sha256": "6a2e17b98a264b81e1b8a6aba367851a3eed6b0aab9cb5f20c6d32e0205b42d3",
+            "num_windows": 5154
+          },
+          {
+            "expert": "ModernTCN",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "65899c19b5b3d7a906372fd311e4b6c2087da13ed314d0442c878afd254c9aa8",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Electricity\\expert_predictions\\router_val_60_80\\ModernTCN.npy",
+            "prediction_sha256": "790eaf56fe4d460cf31e0925da96aff60b2676a65a55845a4b7af94268dfac83",
+            "num_windows": 5154
+          }
+        ],
+        "expert_checkpoint_paths": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Electricity\\final_60\\ModernTCN\\best_expert.pt"
+        },
+        "expert_checkpoint_hashes": {
+          "DLinear": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92",
+          "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+          "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+          "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+          "ModernTCN": "65899c19b5b3d7a906372fd311e4b6c2087da13ed314d0442c878afd254c9aa8"
+        },
+        "created_at_utc": "2026-08-20T04:48:16.277407+00:00",
+        "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+      }
+    }
+  },
+  "safety": "NO TEST DATA USED",
+  "router_train_20_60": {
+    "num_windows": 10308
+  }
+}
