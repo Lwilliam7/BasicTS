@@ -1,0 +1,318 @@
+{
+  "created_at_utc": "2026-08-20T16:50:58.069164+00:00",
+  "datasets": {
+    "ETTh1": {
+      "best_epoch_global": 4,
+      "best_epoch_instance": 6,
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "headroom_captured_learned_probe": 0.010225524524736468,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.7912008762359619,
+        "mean_regret": 0.024101661518216133,
+        "median_regret": 0.012188911437988281,
+        "p90_regret": 0.06840365380048752
+      },
+      "result_rows": [
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36833426356315613,
+          "method": "C",
+          "mse": 0.31202971935272217
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3708641827106476,
+          "method": "Fixed_D",
+          "mse": 0.31635528802871704
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36808526515960693,
+          "method": "Learned_Probe",
+          "mse": 0.3124605119228363
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.37019845843315125,
+          "method": "Learned_Global_Probe",
+          "mse": 0.3161066174507141
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36726489663124084,
+          "method": "Equal_reference",
+          "mse": 0.3105303645133972
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.37955790758132935,
+          "method": "Best_Single_reference",
+          "mse": 0.3265279531478882
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.34398359060287476,
+          "method": "Window_Oracle_reference",
+          "mse": 0.27407777309417725
+        }
+      ],
+      "temperature_global": 0.02,
+      "temperature_instance": 0.02
+    },
+    "ETTh2": {
+      "best_epoch_global": 4,
+      "best_epoch_instance": 3,
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "headroom_captured_learned_probe": 0.43182082190311943,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.7373572587966919,
+        "mean_regret": 0.011369961313903332,
+        "median_regret": 0.006132066249847412,
+        "p90_regret": 0.03283485770225525
+      },
+      "result_rows": [
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2864941656589508,
+          "method": "C",
+          "mse": 0.17661356925964355
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2797102630138397,
+          "method": "Fixed_D",
+          "mse": 0.1711137592792511
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2778528928756714,
+          "method": "Learned_Probe",
+          "mse": 0.16820552945137024
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2787070572376251,
+          "method": "Learned_Global_Probe",
+          "mse": 0.1697392761707306
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2808783948421478,
+          "method": "Equal_reference",
+          "mse": 0.17193281650543213
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.28095653653144836,
+          "method": "Best_Single_reference",
+          "mse": 0.17149297893047333
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2664829194545746,
+          "method": "Window_Oracle_reference",
+          "mse": 0.15691085159778595
+        }
+      ],
+      "temperature_global": 0.02,
+      "temperature_instance": 0.02
+    },
+    "ETTm1": {
+      "best_epoch_global": 1,
+      "best_epoch_instance": 1,
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "headroom_captured_learned_probe": -0.09414272644334933,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.8141592741012573,
+        "mean_regret": 0.02526957355439663,
+        "median_regret": 0.01362597942352295,
+        "p90_regret": 0.07159014791250229
+      },
+      "result_rows": [
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2504013478755951,
+          "method": "C",
+          "mse": 0.14962764084339142
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2514726519584656,
+          "method": "Fixed_D",
+          "mse": 0.15052469074726105
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2525756061077118,
+          "method": "Learned_Probe",
+          "mse": 0.15181660652160645
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.25218382477760315,
+          "method": "Learned_Global_Probe",
+          "mse": 0.15094852447509766
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2481614202260971,
+          "method": "Equal_reference",
+          "mse": 0.14669446647167206
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.26177072525024414,
+          "method": "Best_Single_reference",
+          "mse": 0.16183817386627197
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.22730600833892822,
+          "method": "Window_Oracle_reference",
+          "mse": 0.1243390142917633
+        }
+      ],
+      "temperature_global": 0.02,
+      "temperature_instance": 0.02
+    },
+    "Electricity": {
+      "best_epoch_global": 6,
+      "best_epoch_instance": 8,
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "headroom_captured_learned_probe": 1.0141516448292385,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.2537834644317627,
+        "mean_regret": -2.5539202397339977e-05,
+        "median_regret": -0.001611754298210144,
+        "p90_regret": 0.004638154990971088
+      },
+      "result_rows": [
+        {
+          "dataset": "Electricity",
+          "mae": 0.2192441076040268,
+          "method": "C",
+          "mse": 0.1282535344362259
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.22276581823825836,
+          "method": "Fixed_D",
+          "mse": 0.13336904346942902
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21741485595703125,
+          "method": "Learned_Probe",
+          "mse": 0.12263420969247818
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21800656616687775,
+          "method": "Learned_Global_Probe",
+          "mse": 0.12419454753398895
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21445728838443756,
+          "method": "Equal_reference",
+          "mse": 0.11784618347883224
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.22538480162620544,
+          "method": "Best_Single_reference",
+          "mse": 0.13576708734035492
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.2174403816461563,
+          "method": "Window_Oracle_reference",
+          "mse": 0.12050296366214752
+        }
+      ],
+      "temperature_global": 0.02,
+      "temperature_instance": 0.02
+    },
+    "Weather": {
+      "best_epoch_global": 2,
+      "best_epoch_instance": 7,
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "headroom_captured_learned_probe": 0.04646414200958995,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.7098351120948792,
+        "mean_regret": 0.008990579284727573,
+        "median_regret": 0.003365755081176758,
+        "p90_regret": 0.027270767837762833
+      },
+      "result_rows": [
+        {
+          "dataset": "Weather",
+          "mae": 0.15967164933681488,
+          "method": "C",
+          "mse": 0.2837500274181366
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.16033731400966644,
+          "method": "Fixed_D",
+          "mse": 0.28375571966171265
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15923355519771576,
+          "method": "Learned_Probe",
+          "mse": 0.28195255994796753
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15974287688732147,
+          "method": "Learned_Global_Probe",
+          "mse": 0.28148889541625977
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.16034138202667236,
+          "method": "Equal_reference",
+          "mse": 0.27881529927253723
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.1646728217601776,
+          "method": "Best_Single_reference",
+          "mse": 0.28746822476387024
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15024299919605255,
+          "method": "Window_Oracle_reference",
+          "mse": 0.24644289910793304
+        }
+      ],
+      "temperature_global": 0.02,
+      "temperature_instance": 0.02
+    }
+  },
+  "experiment": "learned_diagnostic_probe",
+  "runtime_sec": 3400.272757291794,
+  "test_set_accessed": false
+}

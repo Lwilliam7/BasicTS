@@ -1,0 +1,53 @@
+{
+  "purpose": "Select 3-5 BasicTS-supported forecasting datasets that were NOT used in any development of the LearnedProbe-Rank method (ETTh1, ETTh2, ETTm1, Weather, Electricity), before inspecting LearnedProbe-Rank performance on any of them.",
+  "selected_at_utc": "2026-08-20T00:00:00+00:00",
+  "note": "This selection was finalized purely from datasets/*/meta.json inspection and directory contents. No forecasting or competence-scorer performance was run or viewed on any candidate before this file was written.",
+  "excluded_development_datasets": ["ETTh1", "ETTh2", "ETTm1", "Weather", "Electricity"],
+  "surveyed_datasets_directory": "datasets/ (BasicTS repository)",
+  "compatibility_criteria": [
+    "Data present as datasets/<Name>/{train,val,test}_data.npy (consumed directly by scripts/build_costarts_walkforward_cache.py::load_full_array, the exact same loader used for every development dataset).",
+    "regular_settings preprocessing convention must match the development family: norm_each_channel=true, rescale=false, metrics=[MAE, MSE], null_val=nan. This is the convention the entire behavioral_competence pipeline (raw-scale perturbations, per-channel z-score normalization, MAE/MSE evaluation) assumes.",
+    "No graph structure required (has_graph=false) -- graph-based datasets use a different rescale=true / null_val=0.0 / MAE+RMSE+MAPE convention that would require real preprocessing/metric changes, not pure shape adaptation.",
+    "Long enough that block_a/block_b/block_c/validation (each ~20% of the series) comfortably exceed input_len+horizon=108 timestamps, so router_train/router_val window counts are large enough for stable competence-scorer training and block-bootstrap statistics."
+  ],
+  "candidates_considered": [
+    {"name": "ETTm2", "domain": "electricity transformer temperature", "num_vars": 7, "frequency_minutes": 15, "num_timesteps": 57600, "compatible": true, "selected": true, "reason_if_excluded": null},
+    {"name": "ExchangeRate", "domain": "exchange rate", "num_vars": 8, "frequency_minutes": 1440, "num_timesteps": 7588, "compatible": true, "selected": true, "reason_if_excluded": null},
+    {"name": "Traffic", "domain": "road occupancy rates", "num_vars": 862, "frequency_minutes": 60, "num_timesteps": 17544, "compatible": true, "selected": true, "reason_if_excluded": null},
+    {"name": "BeijingAirQuality", "domain": "Beijing air quality", "num_vars": 7, "frequency_minutes": 60, "num_timesteps": 36000, "compatible": true, "selected": true, "reason_if_excluded": null},
+    {"name": "Illness", "domain": "influenza-like illness", "num_vars": 7, "frequency_minutes": 10080, "num_timesteps": 966, "compatible": true, "selected": false, "reason_if_excluded": "Preprocessing-compatible, but each 20% chronological block is only ~193 timestamps -- just above the input_len+horizon=108 floor, leaving on the order of tens of windows per block. That is too thin for stable joint ProbeGenerator+CompetenceScorer training and for the block-bootstrap (block=48) dependence statistics used throughout this method family. Excluded for statistical fragility, decided from meta.json length alone, not from any performance result."},
+    {"name": "PEMS03", "domain": "traffic flow", "num_vars": 358, "compatible": false, "reason_if_excluded": "has_graph=true; regular_settings use rescale=true, null_val=0.0, metrics=[MAE,RMSE,MAPE] -- a different preprocessing/masking/metric convention than the one this method's raw-scale perturbation and z-score pipeline assumes. Adapting it would require real methodological changes, not shape-only changes."},
+    {"name": "PEMS04", "domain": "traffic flow", "num_vars": 307, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "PEMS07", "domain": "traffic flow", "num_vars": 883, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "PEMS08", "domain": "traffic flow", "num_vars": 170, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "METR-LA", "domain": "traffic speed", "num_vars": 207, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "PEMS-BAY", "domain": "traffic speed", "num_vars": 325, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "CA", "domain": "traffic flow", "num_vars": 8600, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03; also 8600 variables is impractical for the per-window disagreement/behavioral feature computation used by this method without redesign."},
+    {"name": "GBA", "domain": "traffic flow", "num_vars": 2352, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "GLA", "domain": "traffic flow", "num_vars": 3834, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "SD", "domain": "traffic flow", "num_vars": 716, "compatible": false, "reason_if_excluded": "Same graph/rescale/null_val/metric mismatch as PEMS03."},
+    {"name": "Gaussian", "domain": "simulated Gaussian data", "num_vars": 1, "compatible": false, "reason_if_excluded": "Synthetic single-variable series with rescale=true convention (unlike the development datasets) and no real forecasting domain -- not a meaningful generalization test."},
+    {"name": "Pulse", "domain": "simulated pulse data", "num_vars": 1, "compatible": false, "reason_if_excluded": "Same synthetic/rescale=true mismatch as Gaussian."},
+    {"name": "UEA", "domain": "classification benchmark collection", "compatible": false, "reason_if_excluded": "No meta.json / forecasting-style train/val/test npy triple in this checkout; this is a classification benchmark, not a forecasting dataset."}
+  ],
+  "selected_datasets": ["ExchangeRate", "Traffic", "BeijingAirQuality", "ETTm2"],
+  "selection_rationale": {
+    "ExchangeRate": "Maximum domain diversity from development set (financial exchange rates vs. electricity/weather), very different periodicity (daily, 1440 min vs. 10-60 min for every development dataset), smallest scale (8 variables, 7588 timestamps) -- tests generalization to a small, slow, non-stationary-looking series.",
+    "Traffic": "Maximum variable-count diversity (862 variables vs. the development maximum of 321 for Electricity), road-occupancy domain distinct from electricity/weather/temperature, hourly frequency -- tests generalization to a much higher-dimensional disagreement/ensemble setting.",
+    "BeijingAirQuality": "Distinct domain (air pollution) not represented in development at all, hourly frequency, moderate scale (7 variables, 36000 timestamps, the longest series among the diversity-oriented picks) -- a clean, statistically well-powered diversity test uncomplicated by extreme variable count or short length.",
+    "ETTm2": "Same source family as ETTm1 (electricity transformer temperature) but a genuinely separate, untouched series -- included as a near-transfer control: if the learned probe does not generalize even here, that is a strong negative signal, and if it does, that is the weakest form of the generalization claim, appropriately weighted against the other three domain-diverse datasets in the final interpretation."
+  },
+  "protocol_reused_unmodified": {
+    "expert_family": "walk-forward (scripts/train_costarts_walkforward_experts.py + scripts/build_costarts_walkforward_cache.py), same as ETTh1/ETTm1/Weather/Electricity in development",
+    "expert_pool": ["DLinear", "PatchTST", "iTransformer", "TimesNet", "ModernTCN"],
+    "input_len": 96,
+    "forecast_horizon": 12,
+    "hidden_size": 64,
+    "chronology": "block_a=0-20%, block_b=20-40%, block_c=40-60%, validation(router_val)=60-80%, test=80-100% -- test not built or accessed",
+    "core_selection": "select_core_on_router_train (train-only, pooled OOF MAE over 4 chronological folds, C(5,3) subsets)"
+  },
+  "necessary_shape_only_changes": [
+    "New dataset names were registered in the existing extensible plumbing (checkpoint-root map, WALKFORWARD_DATASETS set, LOADERS registry) purely so the unmodified pipeline functions can locate each new dataset's own checkpoints/caches. No architecture, hyperparameter, loss, or decision-rule code was edited; see experiments/behavioral_competence/generalization/run_generalization_study.py for the exact registration calls, all additive.",
+    "Traffic (862 variables) and BeijingAirQuality/ExchangeRate/ETTm2 (7-8 variables) require no code change beyond this: every model (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) and every feature function is already written generically over the feature dimension."
+  ]
+}

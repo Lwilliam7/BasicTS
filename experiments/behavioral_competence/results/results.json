@@ -1,0 +1,2866 @@
+{
+  "created_at_utc": "2026-08-20T06:54:43.645182+00:00",
+  "datasets": {
+    "ETTh1": {
+      "ablation_train_diag": {
+        "A_window_only": {
+          "best_epoch": 25,
+          "best_internal_val_mse": 0.00658559612929821,
+          "internal_val_windows": 3327,
+          "num_features": 6,
+          "temperature": 0.02,
+          "train_windows": 13311
+        },
+        "B_window_forecast": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0028844315093010664,
+          "internal_val_windows": 3327,
+          "num_features": 10,
+          "temperature": 0.02,
+          "train_windows": 13311
+        },
+        "C_window_forecast_disagreement": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.002390717389062047,
+          "internal_val_windows": 3327,
+          "num_features": 15,
+          "temperature": 0.02,
+          "train_windows": 13311
+        },
+        "D_full_behavioral": {
+          "best_epoch": 146,
+          "best_internal_val_mse": 0.00239780661650002,
+          "internal_val_windows": 3327,
+          "num_features": 35,
+          "temperature": 0.02,
+          "train_windows": 13311
+        }
+      },
+      "behavior_corr_rows": [
+        {
+          "dataset": "ETTh1",
+          "feature": "P1_noise__change",
+          "spearman_router_train": -0.0531909509194727,
+          "spearman_router_train_pvalue": 6.632438557809298e-12,
+          "spearman_router_val_diagnostic": -0.054005601708865036,
+          "spearman_router_val_pvalue": 8.280849452369343e-07
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P1_noise__early_change",
+          "spearman_router_train": -0.09881310845402023,
+          "spearman_router_train_pvalue": 2.230868739086699e-37,
+          "spearman_router_val_diagnostic": -0.06933973895137209,
+          "spearman_router_val_pvalue": 2.4350230016394414e-10
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P1_noise__late_change",
+          "spearman_router_train": 0.014604100244575277,
+          "spearman_router_train_pvalue": 0.059603126953433186,
+          "spearman_router_val_diagnostic": -0.023766542764443007,
+          "spearman_router_val_pvalue": 0.030182099971585493
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P1_noise__slope_change",
+          "spearman_router_train": -0.04111945580062339,
+          "spearman_router_train_pvalue": 1.1219403075285905e-07,
+          "spearman_router_val_diagnostic": -0.0584623161636595,
+          "spearman_router_val_pvalue": 9.50058015629988e-08
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P1_noise__variance_change",
+          "spearman_router_train": 0.01866197004490615,
+          "spearman_router_train_pvalue": 0.016075104694997178,
+          "spearman_router_val_diagnostic": -0.023382204496183563,
+          "spearman_router_val_pvalue": 0.032955247196466954
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P2_mask_recent__change",
+          "spearman_router_train": -0.03900242954355608,
+          "spearman_router_train_pvalue": 4.843859707764341e-07,
+          "spearman_router_val_diagnostic": 0.0745866512373537,
+          "spearman_router_val_pvalue": 9.664879013565892e-12
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P2_mask_recent__early_change",
+          "spearman_router_train": -0.08096552147047566,
+          "spearman_router_train_pvalue": 1.3185356221170202e-25,
+          "spearman_router_val_diagnostic": 0.03981748470605785,
+          "spearman_router_val_pvalue": 0.000280590782541632
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P2_mask_recent__late_change",
+          "spearman_router_train": 0.032022134130045836,
+          "spearman_router_train_pvalue": 3.608242130667339e-05,
+          "spearman_router_val_diagnostic": 0.11714115965467078,
+          "spearman_router_val_pvalue": 8.236549925587197e-27
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P2_mask_recent__slope_change",
+          "spearman_router_train": -0.10256809052106157,
+          "spearman_router_train_pvalue": 3.739321369456226e-40,
+          "spearman_router_val_diagnostic": -0.03442608016364273,
+          "spearman_router_val_pvalue": 0.0016871044642219162
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P2_mask_recent__variance_change",
+          "spearman_router_train": -0.019805274444813295,
+          "spearman_router_train_pvalue": 0.010627669326793284,
+          "spearman_router_val_diagnostic": -0.01514217248711514,
+          "spearman_router_val_pvalue": 0.1672890276549549
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P3_smooth__change",
+          "spearman_router_train": 0.028579702003407283,
+          "spearman_router_train_pvalue": 0.00022697994583672801,
+          "spearman_router_val_diagnostic": -0.051146528286838765,
+          "spearman_router_val_pvalue": 3.0510256233564086e-06
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P3_smooth__early_change",
+          "spearman_router_train": -0.007238317822861958,
+          "spearman_router_train_pvalue": 0.350509795624759,
+          "spearman_router_val_diagnostic": -0.06484791462664168,
+          "spearman_router_val_pvalue": 3.218885139706705e-09
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P3_smooth__late_change",
+          "spearman_router_train": 0.06926691659008503,
+          "spearman_router_train_pvalue": 3.729628948127672e-19,
+          "spearman_router_val_diagnostic": -0.02211346281570376,
+          "spearman_router_val_pvalue": 0.04370799078218753
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P3_smooth__slope_change",
+          "spearman_router_train": 0.035784773815668504,
+          "spearman_router_train_pvalue": 3.894181857959479e-06,
+          "spearman_router_val_diagnostic": -0.01915700813993717,
+          "spearman_router_val_pvalue": 0.08060599255154018
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P3_smooth__variance_change",
+          "spearman_router_train": 0.021063719098152106,
+          "spearman_router_train_pvalue": 0.006586225580276615,
+          "spearman_router_val_diagnostic": 0.0037023229194817512,
+          "spearman_router_val_pvalue": 0.7356390719232151
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P4_amplitude__change",
+          "spearman_router_train": 0.0834065135737177,
+          "spearman_router_train_pvalue": 4.447563356422507e-27,
+          "spearman_router_val_diagnostic": 0.009419626993897439,
+          "spearman_router_val_pvalue": 0.3903181757978535
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P4_amplitude__early_change",
+          "spearman_router_train": 0.06123480495335273,
+          "spearman_router_train_pvalue": 2.6706768646435256e-15,
+          "spearman_router_val_diagnostic": -0.0037807975977710907,
+          "spearman_router_val_pvalue": 0.7302518842154395
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P4_amplitude__late_change",
+          "spearman_router_train": 0.07748690996674991,
+          "spearman_router_train_pvalue": 1.388565511745401e-23,
+          "spearman_router_val_diagnostic": 0.011619022143079293,
+          "spearman_router_val_pvalue": 0.2893126391309576
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P4_amplitude__slope_change",
+          "spearman_router_train": -0.0017846528598105366,
+          "spearman_router_train_pvalue": 0.8179500730642243,
+          "spearman_router_val_diagnostic": 0.007854923026492443,
+          "spearman_router_val_pvalue": 0.47378171199034574
+        },
+        {
+          "dataset": "ETTh1",
+          "feature": "P4_amplitude__variance_change",
+          "spearman_router_train": 0.026726287286226755,
+          "spearman_router_train_pvalue": 0.000565304049281583,
+          "spearman_router_val_diagnostic": 0.02410516677567132,
+          "spearman_router_val_pvalue": 0.02790734368736527
+        }
+      ],
+      "c_mae": 0.36833426356315613,
+      "competence_rows": [
+        {
+          "ablation": "A_window_only",
+          "auprc_useful_vs_harmful": 0.34191947901109854,
+          "auroc_useful_vs_harmful": 0.49184569229909036,
+          "dataset": "ETTh1",
+          "pearson": 0.09989063441753387,
+          "pearson_pvalue": 6.702522365129861e-20,
+          "precision": 0.3333333333333333,
+          "recall": 0.49271240668325633,
+          "spearman": 0.05779518211795035,
+          "spearman_pvalue": 1.32732833295858e-07,
+          "top1_accuracy": 0.35521096285611253
+        },
+        {
+          "ablation": "B_window_forecast",
+          "auprc_useful_vs_harmful": 0.3638462784668707,
+          "auroc_useful_vs_harmful": 0.5373800923505353,
+          "dataset": "ETTh1",
+          "pearson": 0.07506917417049408,
+          "pearson_pvalue": 7.101498208927914e-12,
+          "precision": 0.361384948304881,
+          "recall": 0.5343050124422325,
+          "spearman": 0.10339022849496023,
+          "spearman_pvalue": 3.2612355589529864e-21,
+          "top1_accuracy": 0.35376848178867654
+        },
+        {
+          "ablation": "C_window_forecast_disagreement",
+          "auprc_useful_vs_harmful": 0.3596432924984082,
+          "auroc_useful_vs_harmful": 0.5393743295779584,
+          "dataset": "ETTh1",
+          "pearson": 0.3144606351852417,
+          "pearson_pvalue": 0.0,
+          "precision": 0.36378937244529935,
+          "recall": 0.5378599360113757,
+          "spearman": 0.18122952630790234,
+          "spearman_pvalue": 2.340177786913226e-62,
+          "top1_accuracy": 0.3584565452578435
+        },
+        {
+          "ablation": "D_full_behavioral",
+          "auprc_useful_vs_harmful": 0.36370063710035344,
+          "auroc_useful_vs_harmful": 0.5308197217294155,
+          "dataset": "ETTh1",
+          "pearson": 0.2544545531272888,
+          "pearson_pvalue": 0.0,
+          "precision": 0.35609521519596055,
+          "recall": 0.5264841805901174,
+          "spearman": 0.1522645560524018,
+          "spearman_pvalue": 2.4696701106112113e-44,
+          "top1_accuracy": 0.3443923548503426
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "d_mae": 0.3708641827106476,
+      "d_minus_c_mae": 0.002529919147491455,
+      "dataset": "ETTh1",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.003334773937240243,
+          "ci95_low": 0.0017626696499064565,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": 0.0025299570988863707,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0038330345414578915,
+          "ci95_low": 0.0013022999046370387,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0025299570988863707,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003954748623073101,
+          "ci95_low": 0.0011946572922170162,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0025299570988863707,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004216127097606659,
+          "ci95_low": 0.001122686662711203,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0025299570988863707,
+          "prob_delta_negative": 9.999999747378752e-05,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.003521151142194867,
+          "ci95_low": 0.0015016024699434638,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.0025303445290774107,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.004581656772643328,
+          "ci95_low": 0.0026401057839393616,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": 0.003599340794607997,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.005685483571141958,
+          "ci95_low": 0.001514021074399352,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_delta": 0.003599340794607997,
+          "prob_delta_negative": 9.999999747378752e-05,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.005816057790070772,
+          "ci95_low": 0.0013465607771649957,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_delta": 0.003599340794607997,
+          "prob_delta_negative": 0.0010000000474974513,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.006059650797396898,
+          "ci95_low": 0.0011755174491554499,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_delta": 0.003599340794607997,
+          "prob_delta_negative": 0.0008999999845400453,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.004414108116179705,
+          "ci95_low": 0.002814346458762884,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.003599799470975995,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        }
+      ],
+      "feature_bundle_names": {
+        "A": [
+          "trend_strength",
+          "volatility",
+          "mean_abs_first_diff",
+          "lag1_autocorr",
+          "spectral_entropy",
+          "recent_vs_full_mean_shift"
+        ],
+        "B": [
+          "forecast_variance",
+          "forecast_slope",
+          "first_forecast_vs_last_observed",
+          "mean_forecast_magnitude"
+        ],
+        "C": [
+          "dist_from_ensemble_mean",
+          "dist_from_ensemble_median",
+          "avg_pairwise_disagreement",
+          "early_horizon_disagreement",
+          "late_horizon_disagreement"
+        ],
+        "D": [
+          "P1_noise__change",
+          "P1_noise__early_change",
+          "P1_noise__late_change",
+          "P1_noise__slope_change",
+          "P1_noise__variance_change",
+          "P2_mask_recent__change",
+          "P2_mask_recent__early_change",
+          "P2_mask_recent__late_change",
+          "P2_mask_recent__slope_change",
+          "P2_mask_recent__variance_change",
+          "P3_smooth__change",
+          "P3_smooth__early_change",
+          "P3_smooth__late_change",
+          "P3_smooth__slope_change",
+          "P3_smooth__variance_change",
+          "P4_amplitude__change",
+          "P4_amplitude__early_change",
+          "P4_amplitude__late_change",
+          "P4_amplitude__slope_change",
+          "P4_amplitude__variance_change"
+        ]
+      },
+      "headroom_captured_D_over_C": -0.10389524559005131,
+      "integrity": {
+        "dataset": "ETTh1",
+        "features_identical_after_target_corruption": true,
+        "predictions_identical_after_target_corruption": true,
+        "result": "PASS"
+      },
+      "oracle_mae": 0.34398359060287476,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.802019476890564,
+        "mean_regret": 0.026880638673901558,
+        "median_regret": 0.014722853899002075,
+        "p90_regret": 0.07455257326364517
+      },
+      "relative_improvement_d_vs_c_pct": -0.6868541424894251,
+      "reproduction_checks": [
+        {
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 7.62939453125e-06,
+          "mean_abs_diff": 3.347406907217021e-09,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 7.62939453125e-06,
+          "mean_abs_diff": 2.5141312676169036e-07,
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 6.67572021484375e-06,
+          "mean_abs_diff": 1.9263986672513056e-07,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 7.62939453125e-06,
+          "mean_abs_diff": 3.112412798600417e-07,
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.00829426571726799,
+          "max_abs_diff": 8.449114799499512,
+          "mean_abs_diff": 0.003665168973384425,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.0005254745483398438,
+          "mean_abs_diff": 5.086615715299558e-07,
+          "split": "router_val"
+        }
+      ],
+      "result_rows": [
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.37955790758132935,
+          "method": "best_single_expert",
+          "mse": 0.3265279531478882,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.36726489663124084,
+          "method": "equal_fixed",
+          "mse": 0.3105303645133972,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.3660224676132202,
+          "method": "frozen_hv_costar",
+          "mse": 0.30867233872413635,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.36394888162612915,
+          "method": "online_hv_costar_reference",
+          "mse": 0.3074778914451599,
+          "uses_online_feedback": true
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.36726489663124084,
+          "method": "A_window_only",
+          "mse": 0.3105303645133972,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.36872345209121704,
+          "method": "B_window_forecast",
+          "mse": 0.31324395537376404,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.36833426356315613,
+          "method": "C_window_forecast_disagreement",
+          "mse": 0.31202971935272217,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": false,
+          "mae": 0.3708641827106476,
+          "method": "D_full_behavioral",
+          "mse": 0.31635528802871704,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh1",
+          "is_oracle": true,
+          "mae": 0.34398359060287476,
+          "method": "window_oracle",
+          "mse": 0.27407777309417725,
+          "uses_online_feedback": false
+        }
+      ]
+    },
+    "ETTh2": {
+      "ablation_train_diag": {
+        "A_window_only": {
+          "best_epoch": 78,
+          "best_internal_val_mse": 0.0022306216415017843,
+          "internal_val_windows": 1233,
+          "num_features": 6,
+          "temperature": 0.02,
+          "train_windows": 4926
+        },
+        "B_window_forecast": {
+          "best_epoch": 34,
+          "best_internal_val_mse": 0.002238532993942499,
+          "internal_val_windows": 1233,
+          "num_features": 10,
+          "temperature": 0.05,
+          "train_windows": 4926
+        },
+        "C_window_forecast_disagreement": {
+          "best_epoch": 23,
+          "best_internal_val_mse": 0.0029182082507759333,
+          "internal_val_windows": 1233,
+          "num_features": 15,
+          "temperature": 0.02,
+          "train_windows": 4926
+        },
+        "D_full_behavioral": {
+          "best_epoch": 55,
+          "best_internal_val_mse": 0.0013530616415664554,
+          "internal_val_windows": 1233,
+          "num_features": 35,
+          "temperature": 0.02,
+          "train_windows": 4926
+        }
+      },
+      "behavior_corr_rows": [
+        {
+          "dataset": "ETTh2",
+          "feature": "P1_noise__change",
+          "spearman_router_train": -0.14174848044619678,
+          "spearman_router_train_pvalue": 5.193262681592275e-29,
+          "spearman_router_val_diagnostic": -0.13844407704736744,
+          "spearman_router_val_pvalue": 2.49676437100621e-09
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P1_noise__early_change",
+          "spearman_router_train": -0.11158493807952723,
+          "spearman_router_train_pvalue": 1.5949808251834066e-18,
+          "spearman_router_val_diagnostic": -0.10374378206994352,
+          "spearman_router_val_pvalue": 8.276209774038579e-06
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P1_noise__late_change",
+          "spearman_router_train": -0.15882327060931292,
+          "spearman_router_train_pvalue": 4.4260129445225713e-36,
+          "spearman_router_val_diagnostic": -0.16253000795478514,
+          "spearman_router_val_pvalue": 2.3527675012224773e-12
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P1_noise__slope_change",
+          "spearman_router_train": -0.10221585035497092,
+          "spearman_router_train_pvalue": 8.891324791241998e-16,
+          "spearman_router_val_diagnostic": -0.09813796130441188,
+          "spearman_router_val_pvalue": 2.488679977812586e-05
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P1_noise__variance_change",
+          "spearman_router_train": -0.13642190660473183,
+          "spearman_router_train_pvalue": 5.647923081865326e-27,
+          "spearman_router_val_diagnostic": -0.1787980375212405,
+          "spearman_router_val_pvalue": 1.1219752138834575e-14
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P2_mask_recent__change",
+          "spearman_router_train": -0.048163311172386813,
+          "spearman_router_train_pvalue": 0.0001560429120295276,
+          "spearman_router_val_diagnostic": 0.01716759482783837,
+          "spearman_router_val_pvalue": 0.4618759835755543
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P2_mask_recent__early_change",
+          "spearman_router_train": -0.05217561981645773,
+          "spearman_router_train_pvalue": 4.191444739109355e-05,
+          "spearman_router_val_diagnostic": 0.01609388406141832,
+          "spearman_router_val_pvalue": 0.49035864908429755
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P2_mask_recent__late_change",
+          "spearman_router_train": -0.041983784268043875,
+          "spearman_router_train_pvalue": 0.0009819702359304947,
+          "spearman_router_val_diagnostic": 0.01899077609205416,
+          "spearman_router_val_pvalue": 0.4156954721936118
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P2_mask_recent__slope_change",
+          "spearman_router_train": -0.06793144755090566,
+          "spearman_router_train_pvalue": 9.486509780485101e-08,
+          "spearman_router_val_diagnostic": 0.015589177370870577,
+          "spearman_router_val_pvalue": 0.5040662360575209
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P2_mask_recent__variance_change",
+          "spearman_router_train": -0.04585301363867732,
+          "spearman_router_train_pvalue": 0.00031861500237277137,
+          "spearman_router_val_diagnostic": -0.019288202629918188,
+          "spearman_router_val_pvalue": 0.4084290311056681
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P3_smooth__change",
+          "spearman_router_train": -0.2966939720918355,
+          "spearman_router_train_pvalue": 2.1790658796585681e-125,
+          "spearman_router_val_diagnostic": -0.42018301369740374,
+          "spearman_router_val_pvalue": 1.4330745934981013e-79
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P3_smooth__early_change",
+          "spearman_router_train": -0.24563835583619592,
+          "spearman_router_train_pvalue": 2.5634907988462277e-85,
+          "spearman_router_val_diagnostic": -0.3413820048049773,
+          "spearman_router_val_pvalue": 2.0263638904074197e-51
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P3_smooth__late_change",
+          "spearman_router_train": -0.2912788848086292,
+          "spearman_router_train_pvalue": 1.0135066384069002e-120,
+          "spearman_router_val_diagnostic": -0.4424465622045753,
+          "spearman_router_val_pvalue": 5.251142532775602e-89
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P3_smooth__slope_change",
+          "spearman_router_train": -0.09682922668017786,
+          "spearman_router_train_pvalue": 2.627806475313081e-14,
+          "spearman_router_val_diagnostic": -0.20355426738682414,
+          "spearman_router_val_pvalue": 1.1899512410138531e-18
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P3_smooth__variance_change",
+          "spearman_router_train": -0.2556952673287235,
+          "spearman_router_train_pvalue": 1.579345166282397e-92,
+          "spearman_router_val_diagnostic": -0.42290094042740356,
+          "spearman_router_val_pvalue": 1.1012930896441145e-80
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P4_amplitude__change",
+          "spearman_router_train": -0.041758131756747224,
+          "spearman_router_train_pvalue": 0.0010457749675774055,
+          "spearman_router_val_diagnostic": 0.02324343147527962,
+          "spearman_router_val_pvalue": 0.31914422684927946
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P4_amplitude__early_change",
+          "spearman_router_train": -0.03638407964895728,
+          "spearman_router_train_pvalue": 0.0042933561542708625,
+          "spearman_router_val_diagnostic": 0.04133919197689647,
+          "spearman_router_val_pvalue": 0.07634077279498566
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P4_amplitude__late_change",
+          "spearman_router_train": -0.04056445337117273,
+          "spearman_router_train_pvalue": 0.0014518773132686613,
+          "spearman_router_val_diagnostic": 0.0074816598866665,
+          "spearman_router_val_pvalue": 0.7484933972891065
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P4_amplitude__slope_change",
+          "spearman_router_train": -0.01581798632491942,
+          "spearman_router_train_pvalue": 0.21452813756097555,
+          "spearman_router_val_diagnostic": -0.07111797686513549,
+          "spearman_router_val_pvalue": 0.0022763806654032648
+        },
+        {
+          "dataset": "ETTh2",
+          "feature": "P4_amplitude__variance_change",
+          "spearman_router_train": -0.11318317765842711,
+          "spearman_router_train_pvalue": 5.132141039179157e-19,
+          "spearman_router_val_diagnostic": -0.28431597331793385,
+          "spearman_router_val_pvalue": 1.548966093653514e-35
+        }
+      ],
+      "c_mae": 0.2864941656589508,
+      "competence_rows": [
+        {
+          "ablation": "A_window_only",
+          "auprc_useful_vs_harmful": 0.3018216185277326,
+          "auroc_useful_vs_harmful": 0.46071750093720326,
+          "dataset": "ETTh2",
+          "pearson": -0.059167973697185516,
+          "pearson_pvalue": 0.011154145933687687,
+          "precision": 0.2821350762527233,
+          "recall": 0.4457831325301205,
+          "spearman": -0.0673350364639245,
+          "spearman_pvalue": 0.0038661412659016696,
+          "top1_accuracy": 0.5285481239804242
+        },
+        {
+          "ablation": "B_window_forecast",
+          "auprc_useful_vs_harmful": 0.31490090295695294,
+          "auroc_useful_vs_harmful": 0.5030879821808241,
+          "dataset": "ETTh2",
+          "pearson": -0.1122884675860405,
+          "pearson_pvalue": 1.3837609458278166e-06,
+          "precision": 0.31991294885745375,
+          "recall": 0.5060240963855421,
+          "spearman": -0.07303484507695118,
+          "spearman_pvalue": 0.0017241094555814753,
+          "top1_accuracy": 0.23491027732463296
+        },
+        {
+          "ablation": "C_window_forecast_disagreement",
+          "auprc_useful_vs_harmful": 0.3148372964835152,
+          "auroc_useful_vs_harmful": 0.5109344942796396,
+          "dataset": "ETTh2",
+          "pearson": 0.24362102150917053,
+          "pearson_pvalue": 2.969036097129113e-26,
+          "precision": 0.31120783460282914,
+          "recall": 0.49225473321858865,
+          "spearman": 0.1280118127054443,
+          "spearman_pvalue": 3.618073443928144e-08,
+          "top1_accuracy": 0.3523654159869494
+        },
+        {
+          "ablation": "D_full_behavioral",
+          "auprc_useful_vs_harmful": 0.417705019895129,
+          "auroc_useful_vs_harmful": 0.6694463522953955,
+          "dataset": "ETTh2",
+          "pearson": 0.4801577031612396,
+          "pearson_pvalue": 0.0,
+          "precision": 0.4319912948857454,
+          "recall": 0.6833046471600689,
+          "spearman": 0.44315752257412433,
+          "spearman_pvalue": 2.5535538786168787e-89,
+          "top1_accuracy": 0.47797716150081565
+        }
+      ],
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "d_mae": 0.2797102630138397,
+      "d_minus_c_mae": -0.006783902645111084,
+      "dataset": "ETTh2",
+      "dependence_rows": [
+        {
+          "ci95_high": -0.005077101290225983,
+          "ci95_low": -0.008438348770141602,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.006783914752304554,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.003855727380141616,
+          "ci95_low": -0.009747104719281197,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.006783914752304554,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0038950354792177677,
+          "ci95_low": -0.009851967915892601,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.006783914752304554,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0037769970949739218,
+          "ci95_low": -0.01032062154263258,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.006783914752304554,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00550676928833127,
+          "ci95_low": -0.008054666221141815,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.006783442106097937,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": 0.00026920175878331065,
+          "ci95_low": -0.002582484157755971,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.0011681304313242435,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0017434799810871482,
+          "ci95_low": -0.004257496912032366,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0011681304313242435,
+          "prob_delta_negative": 0.7886999845504761,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.001629999722354114,
+          "ci95_low": -0.004405462183058262,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0011681304313242435,
+          "prob_delta_negative": 0.815500020980835,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0012478386051952839,
+          "ci95_low": -0.004205944482237101,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0011681304313242435,
+          "prob_delta_negative": 0.840499997138977,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00035643100272864103,
+          "ci95_low": -0.0020361621864140034,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.0011651829117909074,
+          "num_phases": 12,
+          "prob_delta_negative": 0.998199999332428,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        }
+      ],
+      "feature_bundle_names": {
+        "A": [
+          "trend_strength",
+          "volatility",
+          "mean_abs_first_diff",
+          "lag1_autocorr",
+          "spectral_entropy",
+          "recent_vs_full_mean_shift"
+        ],
+        "B": [
+          "forecast_variance",
+          "forecast_slope",
+          "first_forecast_vs_last_observed",
+          "mean_forecast_magnitude"
+        ],
+        "C": [
+          "dist_from_ensemble_mean",
+          "dist_from_ensemble_median",
+          "avg_pairwise_disagreement",
+          "early_horizon_disagreement",
+          "late_horizon_disagreement"
+        ],
+        "D": [
+          "P1_noise__change",
+          "P1_noise__early_change",
+          "P1_noise__late_change",
+          "P1_noise__slope_change",
+          "P1_noise__variance_change",
+          "P2_mask_recent__change",
+          "P2_mask_recent__early_change",
+          "P2_mask_recent__late_change",
+          "P2_mask_recent__slope_change",
+          "P2_mask_recent__variance_change",
+          "P3_smooth__change",
+          "P3_smooth__early_change",
+          "P3_smooth__late_change",
+          "P3_smooth__slope_change",
+          "P3_smooth__variance_change",
+          "P4_amplitude__change",
+          "P4_amplitude__early_change",
+          "P4_amplitude__late_change",
+          "P4_amplitude__slope_change",
+          "P4_amplitude__variance_change"
+        ]
+      },
+      "headroom_captured_D_over_C": 0.339004506557294,
+      "integrity": {
+        "dataset": "ETTh2",
+        "features_identical_after_target_corruption": true,
+        "predictions_identical_after_target_corruption": true,
+        "result": "PASS"
+      },
+      "oracle_mae": 0.2664829194545746,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.7210440635681152,
+        "mean_regret": 0.013227332383394241,
+        "median_regret": 0.0051100850105285645,
+        "p90_regret": 0.04163002967834473
+      },
+      "relative_improvement_d_vs_c_pct": 2.3679025468137445,
+      "reproduction_checks": [
+        {
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 1.9073486328125e-06,
+          "mean_abs_diff": 6.633840143877023e-09,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 5.960464477539062e-07,
+          "mean_abs_diff": 4.981233647782801e-09,
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 9.5367431640625e-07,
+          "mean_abs_diff": 2.4243490770459175e-08,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 7.152557373046875e-07,
+          "mean_abs_diff": 3.1801992150803926e-08,
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 9.5367431640625e-07,
+          "mean_abs_diff": 3.0936874395592895e-08,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 7.152557373046875e-07,
+          "mean_abs_diff": 2.895560591298363e-08,
+          "split": "router_val"
+        }
+      ],
+      "result_rows": [
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.28095653653144836,
+          "method": "best_single_expert",
+          "mse": 0.17149297893047333,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.2808783948421478,
+          "method": "equal_fixed",
+          "mse": 0.17193281650543213,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.27689793705940247,
+          "method": "frozen_hv_costar",
+          "mse": 0.16700465977191925,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.276353657245636,
+          "method": "online_hv_costar_reference",
+          "mse": 0.16738149523735046,
+          "uses_online_feedback": true
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.2808783948421478,
+          "method": "A_window_only",
+          "mse": 0.17193278670310974,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.2819216549396515,
+          "method": "B_window_forecast",
+          "mse": 0.17289866507053375,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.2864941656589508,
+          "method": "C_window_forecast_disagreement",
+          "mse": 0.17661356925964355,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": false,
+          "mae": 0.2797102630138397,
+          "method": "D_full_behavioral",
+          "mse": 0.1711137592792511,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTh2",
+          "is_oracle": true,
+          "mae": 0.2664829194545746,
+          "method": "window_oracle",
+          "mse": 0.15691085159778595,
+          "uses_online_feedback": false
+        }
+      ]
+    },
+    "ETTm1": {
+      "ablation_train_diag": {
+        "A_window_only": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.00257185660302639,
+          "internal_val_windows": 13695,
+          "num_features": 6,
+          "temperature": 0.02,
+          "train_windows": 54783
+        },
+        "B_window_forecast": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0024541413877159357,
+          "internal_val_windows": 13695,
+          "num_features": 10,
+          "temperature": 0.02,
+          "train_windows": 54783
+        },
+        "C_window_forecast_disagreement": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0019735461100935936,
+          "internal_val_windows": 13695,
+          "num_features": 15,
+          "temperature": 0.02,
+          "train_windows": 54783
+        },
+        "D_full_behavioral": {
+          "best_epoch": 189,
+          "best_internal_val_mse": 0.0019049944821745157,
+          "internal_val_windows": 13695,
+          "num_features": 35,
+          "temperature": 0.02,
+          "train_windows": 54783
+        }
+      },
+      "behavior_corr_rows": [
+        {
+          "dataset": "ETTm1",
+          "feature": "P1_noise__change",
+          "spearman_router_train": -0.06772081859635463,
+          "spearman_router_train_pvalue": 2.007502587623375e-70,
+          "spearman_router_val_diagnostic": 0.03792496229307767,
+          "spearman_router_val_pvalue": 2.2215124045066565e-12
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P1_noise__early_change",
+          "spearman_router_train": -0.07771983396256815,
+          "spearman_router_train_pvalue": 3.189171886280417e-92,
+          "spearman_router_val_diagnostic": 0.03238189295528041,
+          "spearman_router_val_pvalue": 2.0571590048320538e-09
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P1_noise__late_change",
+          "spearman_router_train": -0.05474792644438664,
+          "spearman_router_train_pvalue": 1.2831773747445067e-46,
+          "spearman_router_val_diagnostic": 0.040896021840222244,
+          "spearman_router_val_pvalue": 3.726447771577231e-14
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P1_noise__slope_change",
+          "spearman_router_train": 0.007018051436410926,
+          "spearman_router_train_pvalue": 0.06628463688370059,
+          "spearman_router_val_diagnostic": 0.05066188028062761,
+          "spearman_router_val_pvalue": 6.594417721954166e-21
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P1_noise__variance_change",
+          "spearman_router_train": 0.06815155718064111,
+          "spearman_router_train_pvalue": 2.6646943056497756e-71,
+          "spearman_router_val_diagnostic": 0.08307339622980843,
+          "spearman_router_val_pvalue": 1.6938652451733121e-53
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P2_mask_recent__change",
+          "spearman_router_train": 0.006565085421925619,
+          "spearman_router_train_pvalue": 0.08580418625479087,
+          "spearman_router_val_diagnostic": 0.06338543826777401,
+          "spearman_router_val_pvalue": 7.940946620976564e-32
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P2_mask_recent__early_change",
+          "spearman_router_train": 0.0025325356564391615,
+          "spearman_router_train_pvalue": 0.5075159646722364,
+          "spearman_router_val_diagnostic": 0.06155466654205367,
+          "spearman_router_val_pvalue": 4.165026097179081e-30
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P2_mask_recent__late_change",
+          "spearman_router_train": 0.011386781429469799,
+          "spearman_router_train_pvalue": 0.002884653679962057,
+          "spearman_router_val_diagnostic": 0.06527075461247929,
+          "spearman_router_val_pvalue": 1.192709442293352e-33
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P2_mask_recent__slope_change",
+          "spearman_router_train": 0.05285999484150797,
+          "spearman_router_train_pvalue": 1.422193227774236e-43,
+          "spearman_router_val_diagnostic": 0.058613755285979625,
+          "spearman_router_val_pvalue": 1.8943035776642954e-27
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P2_mask_recent__variance_change",
+          "spearman_router_train": 0.09779252922680037,
+          "spearman_router_train_pvalue": 4.0496673959330126e-145,
+          "spearman_router_val_diagnostic": 0.08265042304735064,
+          "spearman_router_val_pvalue": 5.699178040164944e-53
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P3_smooth__change",
+          "spearman_router_train": 0.023892137722468162,
+          "spearman_router_train_pvalue": 4.0278404669726414e-10,
+          "spearman_router_val_diagnostic": 0.07007897003824733,
+          "spearman_router_val_pvalue": 1.5327646354624268e-38
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P3_smooth__early_change",
+          "spearman_router_train": 0.006364633345030324,
+          "spearman_router_train_pvalue": 0.09581246487978685,
+          "spearman_router_val_diagnostic": 0.05967881738533659,
+          "spearman_router_val_pvalue": 2.1370020881838617e-28
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P3_smooth__late_change",
+          "spearman_router_train": 0.03632559963796491,
+          "spearman_router_train_pvalue": 1.929544069182128e-21,
+          "spearman_router_val_diagnostic": 0.07141497094420807,
+          "spearman_router_val_pvalue": 5.81988090067174e-40
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P3_smooth__slope_change",
+          "spearman_router_train": 0.12447511757102518,
+          "spearman_router_train_pvalue": 1.5787515298495055e-234,
+          "spearman_router_val_diagnostic": 0.0693405546143809,
+          "spearman_router_val_pvalue": 9.101959676343784e-38
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P3_smooth__variance_change",
+          "spearman_router_train": 0.14141581565431321,
+          "spearman_router_train_pvalue": 9.026464767353436e-303,
+          "spearman_router_val_diagnostic": 0.08925941119900954,
+          "spearman_router_val_pvalue": 1.6331430295616098e-61
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P4_amplitude__change",
+          "spearman_router_train": 0.05277696850013266,
+          "spearman_router_train_pvalue": 1.9249224989308273e-43,
+          "spearman_router_val_diagnostic": 0.03761699083603398,
+          "spearman_router_val_pvalue": 3.3363077515382513e-12
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P4_amplitude__early_change",
+          "spearman_router_train": 0.04240295235643736,
+          "spearman_router_train_pvalue": 1.241559153040715e-28,
+          "spearman_router_val_diagnostic": 0.040810578871643806,
+          "spearman_router_val_pvalue": 4.208842966546584e-14
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P4_amplitude__late_change",
+          "spearman_router_train": 0.05769251352691175,
+          "spearman_router_train_pvalue": 1.4028424843909045e-51,
+          "spearman_router_val_diagnostic": 0.029239558661854164,
+          "spearman_router_val_pvalue": 6.253950672284516e-08
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P4_amplitude__slope_change",
+          "spearman_router_train": 0.07467239512196058,
+          "spearman_router_train_pvalue": 2.9290875758629304e-85,
+          "spearman_router_val_diagnostic": 0.07162121907390284,
+          "spearman_router_val_pvalue": 3.493205086635866e-40
+        },
+        {
+          "dataset": "ETTm1",
+          "feature": "P4_amplitude__variance_change",
+          "spearman_router_train": 0.1295190505290986,
+          "spearman_router_train_pvalue": 6.593219782250146e-254,
+          "spearman_router_val_diagnostic": 0.08516715087793975,
+          "spearman_router_val_pvalue": 3.8077181433855538e-56
+        }
+      ],
+      "c_mae": 0.2504013478755951,
+      "competence_rows": [
+        {
+          "ablation": "A_window_only",
+          "auprc_useful_vs_harmful": 0.32735189989885116,
+          "auroc_useful_vs_harmful": 0.5062415306491321,
+          "dataset": "ETTm1",
+          "pearson": 0.07590193301439285,
+          "pearson_pvalue": 5.605193857299268e-45,
+          "precision": 0.3266736768314055,
+          "recall": 0.5046931407942238,
+          "spearman": 0.06647277175186095,
+          "spearman_pvalue": 7.696158781985867e-35,
+          "top1_accuracy": 0.30894593884167176
+        },
+        {
+          "ablation": "B_window_forecast",
+          "auprc_useful_vs_harmful": 0.3359450191410957,
+          "auroc_useful_vs_harmful": 0.5120752542110785,
+          "dataset": "ETTm1",
+          "pearson": 0.19144891202449799,
+          "pearson_pvalue": 0.0,
+          "precision": 0.32525264326187275,
+          "recall": 0.5025270758122744,
+          "spearman": 0.10944799380796146,
+          "spearman_pvalue": 1.0005616833198271e-91,
+          "top1_accuracy": 0.3444317883115745
+        },
+        {
+          "ablation": "C_window_forecast_disagreement",
+          "auprc_useful_vs_harmful": 0.33178088444859954,
+          "auroc_useful_vs_harmful": 0.5141100710470686,
+          "dataset": "ETTm1",
+          "pearson": 0.26626643538475037,
+          "pearson_pvalue": 0.0,
+          "precision": 0.33138617909924645,
+          "recall": 0.5120036101083032,
+          "spearman": 0.13423703760127084,
+          "spearman_pvalue": 2.081508007376787e-137,
+          "top1_accuracy": 0.35319372645229125
+        },
+        {
+          "ablation": "D_full_behavioral",
+          "auprc_useful_vs_harmful": 0.3454846330276967,
+          "auroc_useful_vs_harmful": 0.5201272715553116,
+          "dataset": "ETTm1",
+          "pearson": 0.18919894099235535,
+          "pearson_pvalue": 0.0,
+          "precision": 0.3340732519422864,
+          "recall": 0.5161552346570397,
+          "spearman": 0.11946929595659325,
+          "spearman_pvalue": 4.791536267899861e-109,
+          "top1_accuracy": 0.3297993516165776
+        }
+      ],
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "d_mae": 0.2514726519584656,
+      "d_minus_c_mae": 0.0010713040828704834,
+      "dataset": "ETTm1",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.001455262885428965,
+          "ci95_low": 0.0006945491768419743,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.001071311067789793,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.001778540899977088,
+          "ci95_low": 0.00037156781763769686,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.001071311067789793,
+          "prob_delta_negative": 0.0017000000225380063,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0018204129301011562,
+          "ci95_low": 0.00031391618540510535,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.001071311067789793,
+          "prob_delta_negative": 0.003000000026077032,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.001858461881056428,
+          "ci95_low": 0.0002697862801142037,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.001071311067789793,
+          "prob_delta_negative": 0.0038999998942017555,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.001353737199679017,
+          "ci95_low": 0.0008092871867120266,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.0010713282972574234,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.0037397872656583786,
+          "ci95_low": 0.002894373144954443,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.0033112261444330215,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0040880655869841576,
+          "ci95_low": 0.0024979952722787857,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0033112261444330215,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0041330051608383656,
+          "ci95_low": 0.0024639240000396967,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0033112261444330215,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004157330375164747,
+          "ci95_low": 0.0024171238765120506,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0033112261444330215,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.003895372385159135,
+          "ci95_low": 0.002791419392451644,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.003311299718916416,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "feature_bundle_names": {
+        "A": [
+          "trend_strength",
+          "volatility",
+          "mean_abs_first_diff",
+          "lag1_autocorr",
+          "spectral_entropy",
+          "recent_vs_full_mean_shift"
+        ],
+        "B": [
+          "forecast_variance",
+          "forecast_slope",
+          "first_forecast_vs_last_observed",
+          "mean_forecast_magnitude"
+        ],
+        "C": [
+          "dist_from_ensemble_mean",
+          "dist_from_ensemble_median",
+          "avg_pairwise_disagreement",
+          "early_horizon_disagreement",
+          "late_horizon_disagreement"
+        ],
+        "D": [
+          "P1_noise__change",
+          "P1_noise__early_change",
+          "P1_noise__late_change",
+          "P1_noise__slope_change",
+          "P1_noise__variance_change",
+          "P2_mask_recent__change",
+          "P2_mask_recent__early_change",
+          "P2_mask_recent__late_change",
+          "P2_mask_recent__slope_change",
+          "P2_mask_recent__variance_change",
+          "P3_smooth__change",
+          "P3_smooth__early_change",
+          "P3_smooth__late_change",
+          "P3_smooth__slope_change",
+          "P3_smooth__variance_change",
+          "P4_amplitude__change",
+          "P4_amplitude__early_change",
+          "P4_amplitude__late_change",
+          "P4_amplitude__slope_change",
+          "P4_amplitude__variance_change"
+        ]
+      },
+      "headroom_captured_D_over_C": -0.04638615860873784,
+      "integrity": {
+        "dataset": "ETTm1",
+        "features_identical_after_target_corruption": true,
+        "predictions_identical_after_target_corruption": true,
+        "result": "PASS"
+      },
+      "oracle_mae": 0.22730600833892822,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.7974240183830261,
+        "mean_regret": 0.024166662245988846,
+        "median_regret": 0.012932494282722473,
+        "p90_regret": 0.06730429083108902
+      },
+      "relative_improvement_d_vs_c_pct": -0.4278347908106033,
+      "reproduction_checks": [
+        {
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 1.1444091796875e-05,
+          "mean_abs_diff": 2.707690782699501e-07,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 7.62939453125e-06,
+          "mean_abs_diff": 2.5568601813574787e-07,
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 2.384185791015625e-05,
+          "mean_abs_diff": 5.890317140710977e-07,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 1.52587890625e-05,
+          "mean_abs_diff": 5.741407562709355e-07,
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.001314290682785213,
+          "max_abs_diff": 1.963968276977539,
+          "mean_abs_diff": 0.0005712617567041889,
+          "split": "router_train"
+        },
+        {
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.008031845092773438,
+          "mean_abs_diff": 0.0003365513985045254,
+          "split": "router_val"
+        }
+      ],
+      "result_rows": [
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.26177072525024414,
+          "method": "best_single_expert",
+          "mse": 0.16183817386627197,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.2481614202260971,
+          "method": "equal_fixed",
+          "mse": 0.14669446647167206,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.25068971514701843,
+          "method": "frozen_hv_costar",
+          "mse": 0.14995557069778442,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.24859286844730377,
+          "method": "online_hv_costar_reference",
+          "mse": 0.14833426475524902,
+          "uses_online_feedback": true
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.2481614202260971,
+          "method": "A_window_only",
+          "mse": 0.14669446647167206,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.2501987814903259,
+          "method": "B_window_forecast",
+          "mse": 0.149152010679245,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.2504013478755951,
+          "method": "C_window_forecast_disagreement",
+          "mse": 0.14962764084339142,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": false,
+          "mae": 0.2514726519584656,
+          "method": "D_full_behavioral",
+          "mse": 0.15052469074726105,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "ETTm1",
+          "is_oracle": true,
+          "mae": 0.22730600833892822,
+          "method": "window_oracle",
+          "mse": 0.1243390142917633,
+          "uses_online_feedback": false
+        }
+      ]
+    },
+    "Electricity": {
+      "ablation_train_diag": {
+        "A_window_only": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.000984234269708395,
+          "internal_val_windows": 6186,
+          "num_features": 6,
+          "temperature": 0.02,
+          "train_windows": 24738
+        },
+        "B_window_forecast": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0006042564637027681,
+          "internal_val_windows": 6186,
+          "num_features": 10,
+          "temperature": 0.02,
+          "train_windows": 24738
+        },
+        "C_window_forecast_disagreement": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0004858043685089797,
+          "internal_val_windows": 6186,
+          "num_features": 15,
+          "temperature": 0.02,
+          "train_windows": 24738
+        },
+        "D_full_behavioral": {
+          "best_epoch": 34,
+          "best_internal_val_mse": 0.0004858881584368646,
+          "internal_val_windows": 6186,
+          "num_features": 35,
+          "temperature": 0.02,
+          "train_windows": 24738
+        }
+      },
+      "behavior_corr_rows": [
+        {
+          "dataset": "Electricity",
+          "feature": "P1_noise__change",
+          "spearman_router_train": -0.6073105275961372,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.2954209182841572,
+          "spearman_router_val_pvalue": 5.88607288692209e-309
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P1_noise__early_change",
+          "spearman_router_train": -0.5999445407426707,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.31074000299173005,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P1_noise__late_change",
+          "spearman_router_train": -0.6126550623007389,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.29452913588193375,
+          "spearman_router_val_pvalue": 5.077523441347686e-307
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P1_noise__slope_change",
+          "spearman_router_train": -0.6435403641025886,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.4798344752506836,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P1_noise__variance_change",
+          "spearman_router_train": -0.46701078782426286,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.3807314550058899,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P2_mask_recent__change",
+          "spearman_router_train": -0.43326433054555574,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.19394195503008338,
+          "spearman_router_val_pvalue": 6.468608877246579e-131
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P2_mask_recent__early_change",
+          "spearman_router_train": -0.49208521103829395,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.2977417197847031,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P2_mask_recent__late_change",
+          "spearman_router_train": -0.25200856872304994,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.11489445718112667,
+          "spearman_router_val_pvalue": 1.3605296146267295e-46
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P2_mask_recent__slope_change",
+          "spearman_router_train": -0.560384853052275,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.42502367544463016,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P2_mask_recent__variance_change",
+          "spearman_router_train": -0.345475530528559,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.265670484421249,
+          "spearman_router_val_pvalue": 4.555853420283587e-248
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P3_smooth__change",
+          "spearman_router_train": -0.5627349683633371,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.3813544514686638,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P3_smooth__early_change",
+          "spearman_router_train": -0.47008821169372605,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.30536746376517754,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P3_smooth__late_change",
+          "spearman_router_train": -0.41091018815952773,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.2708161115536373,
+          "spearman_router_val_pvalue": 4.614997762819274e-258
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P3_smooth__slope_change",
+          "spearman_router_train": -0.03537673877516948,
+          "spearman_router_train_pvalue": 4.884409217771205e-10,
+          "spearman_router_val_diagnostic": -0.07412700727823651,
+          "spearman_router_val_pvalue": 2.7222305198856824e-20
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P3_smooth__variance_change",
+          "spearman_router_train": -0.06137768056228081,
+          "spearman_router_train_pvalue": 3.325928952869896e-27,
+          "spearman_router_val_diagnostic": -0.05961408285583768,
+          "spearman_router_val_pvalue": 1.1819607688646992e-13
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P4_amplitude__change",
+          "spearman_router_train": -0.09558231375096699,
+          "spearman_router_train_pvalue": 1.1175981109506769e-63,
+          "spearman_router_val_diagnostic": -0.06448824461375897,
+          "spearman_router_val_pvalue": 1.0022666293407748e-15
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P4_amplitude__early_change",
+          "spearman_router_train": -0.11067850951670759,
+          "spearman_router_train_pvalue": 7.100565821641785e-85,
+          "spearman_router_val_diagnostic": -0.06302974370075026,
+          "spearman_router_val_pvalue": 4.34053627623411e-15
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P4_amplitude__late_change",
+          "spearman_router_train": -0.03183968038828326,
+          "spearman_router_train_pvalue": 2.1401619692171488e-08,
+          "spearman_router_val_diagnostic": -0.03208168851197149,
+          "spearman_router_val_pvalue": 6.608906131854399e-05
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P4_amplitude__slope_change",
+          "spearman_router_train": -0.012558588738443106,
+          "spearman_router_train_pvalue": 0.027212682560669214,
+          "spearman_router_val_diagnostic": -0.047721916542940855,
+          "spearman_router_val_pvalue": 2.903802590214956e-09
+        },
+        {
+          "dataset": "Electricity",
+          "feature": "P4_amplitude__variance_change",
+          "spearman_router_train": -0.03462827903044827,
+          "spearman_router_train_pvalue": 1.1217959806605547e-09,
+          "spearman_router_val_diagnostic": -0.06439180106108301,
+          "spearman_router_val_pvalue": 1.1053910577371734e-15
+        }
+      ],
+      "c_mae": 0.2192441076040268,
+      "competence_rows": [
+        {
+          "ablation": "A_window_only",
+          "auprc_useful_vs_harmful": 0.13665090465905447,
+          "auroc_useful_vs_harmful": 0.5237471276296755,
+          "dataset": "Electricity",
+          "pearson": 0.05874717980623245,
+          "pearson_pvalue": 2.657215810233926e-13,
+          "precision": 0.1354287931703531,
+          "recall": 0.5293225480283115,
+          "spearman": 0.04314394783048711,
+          "spearman_pvalue": 8.012142144578947e-08,
+          "top1_accuracy": 0.23069460613116027
+        },
+        {
+          "ablation": "B_window_forecast",
+          "auprc_useful_vs_harmful": 0.15186317788140924,
+          "auroc_useful_vs_harmful": 0.5741983758453639,
+          "dataset": "Electricity",
+          "pearson": 0.27533435821533203,
+          "pearson_pvalue": 0.0,
+          "precision": 0.1553485965593067,
+          "recall": 0.6071789686552073,
+          "spearman": 0.32654030067657996,
+          "spearman_pvalue": 0.0,
+          "top1_accuracy": 0.36845168800931316
+        },
+        {
+          "ablation": "C_window_forecast_disagreement",
+          "auprc_useful_vs_harmful": 0.16986570958921376,
+          "auroc_useful_vs_harmful": 0.6227919941966197,
+          "dataset": "Electricity",
+          "pearson": 0.42384403944015503,
+          "pearson_pvalue": 0.0,
+          "precision": 0.174492303712327,
+          "recall": 0.6820020222446916,
+          "spearman": 0.5166946300169164,
+          "spearman_pvalue": 0.0,
+          "top1_accuracy": 0.5448195576251456
+        },
+        {
+          "ablation": "D_full_behavioral",
+          "auprc_useful_vs_harmful": 0.13333160046539105,
+          "auroc_useful_vs_harmful": 0.5404947788173617,
+          "dataset": "Electricity",
+          "pearson": 0.2536320984363556,
+          "pearson_pvalue": 0.0,
+          "precision": 0.1471995860820075,
+          "recall": 0.5753286147623863,
+          "spearman": 0.32034486214507185,
+          "spearman_pvalue": 0.0,
+          "top1_accuracy": 0.3657353511835468
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "d_mae": 0.22276581823825836,
+      "d_minus_c_mae": 0.0035217106342315674,
+      "dataset": "Electricity",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.003974180668592453,
+          "ci95_low": 0.0030944941099733114,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": 0.00352171016857028,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.004653097130358219,
+          "ci95_low": 0.0025862879119813442,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": 0.00352171016857028,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.004913116805255413,
+          "ci95_low": 0.0024332860484719276,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": 0.00352171016857028,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.005140814930200577,
+          "ci95_low": 0.002260820707306266,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": 0.00352171016857028,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.004416169133037329,
+          "ci95_low": 0.0025245980359613895,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.0035216447431594133,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": 0.008793490938842297,
+          "ci95_low": 0.007835465483367443,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": 0.008308540098369122,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.009760935790836811,
+          "ci95_low": 0.007003718055784702,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.008308540098369122,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.010120324790477753,
+          "ci95_low": 0.0067323800176382065,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.008308540098369122,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.010480108670890331,
+          "ci95_low": 0.0064658429473638535,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.008308540098369122,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.009265723638236523,
+          "ci95_low": 0.007332054432481527,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_Equal",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.008308113552629948,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "feature_bundle_names": {
+        "A": [
+          "trend_strength",
+          "volatility",
+          "mean_abs_first_diff",
+          "lag1_autocorr",
+          "spectral_entropy",
+          "recent_vs_full_mean_shift"
+        ],
+        "B": [
+          "forecast_variance",
+          "forecast_slope",
+          "first_forecast_vs_last_observed",
+          "mean_forecast_magnitude"
+        ],
+        "C": [
+          "dist_from_ensemble_mean",
+          "dist_from_ensemble_median",
+          "avg_pairwise_disagreement",
+          "early_horizon_disagreement",
+          "late_horizon_disagreement"
+        ],
+        "D": [
+          "P1_noise__change",
+          "P1_noise__early_change",
+          "P1_noise__late_change",
+          "P1_noise__slope_change",
+          "P1_noise__variance_change",
+          "P2_mask_recent__change",
+          "P2_mask_recent__early_change",
+          "P2_mask_recent__late_change",
+          "P2_mask_recent__slope_change",
+          "P2_mask_recent__variance_change",
+          "P3_smooth__change",
+          "P3_smooth__early_change",
+          "P3_smooth__late_change",
+          "P3_smooth__slope_change",
+          "P3_smooth__variance_change",
+          "P4_amplitude__change",
+          "P4_amplitude__early_change",
+          "P4_amplitude__late_change",
+          "P4_amplitude__slope_change",
+          "P4_amplitude__variance_change"
+        ]
+      },
+      "headroom_captured_D_over_C": -1.9524643523949572,
+      "integrity": {
+        "dataset": "Electricity",
+        "features_identical_after_target_corruption": true,
+        "predictions_identical_after_target_corruption": true,
+        "result": "PASS"
+      },
+      "oracle_mae": 0.2174403816461563,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.4004656672477722,
+        "mean_regret": 0.005325425416231155,
+        "median_regret": -0.0013358592987060547,
+        "p90_regret": 0.02077377587556839
+      },
+      "relative_improvement_d_vs_c_pct": -1.6062965945666696,
+      "reproduction_checks": [
+        {
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.53125,
+          "mean_abs_diff": 0.00031727159512229264,
+          "split": "router_train"
+        },
+        {
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.265625,
+          "mean_abs_diff": 0.00024752962053753436,
+          "split": "router_val"
+        },
+        {
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.25,
+          "mean_abs_diff": 0.00015560589235974476,
+          "split": "router_train"
+        },
+        {
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.125,
+          "mean_abs_diff": 0.0001449411065550521,
+          "split": "router_val"
+        },
+        {
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.0023282886249944568,
+          "max_abs_diff": 55.0625,
+          "mean_abs_diff": 0.04005501139909029,
+          "split": "router_train"
+        },
+        {
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.0005820721853524446,
+          "max_abs_diff": 54.0625,
+          "mean_abs_diff": 0.038645729422569275,
+          "split": "router_val"
+        }
+      ],
+      "result_rows": [
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.22538480162620544,
+          "method": "best_single_expert",
+          "mse": 0.13576708734035492,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.21445728838443756,
+          "method": "equal_fixed",
+          "mse": 0.11784618347883224,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.21535496413707733,
+          "method": "frozen_hv_costar",
+          "mse": 0.12273695319890976,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.21177531778812408,
+          "method": "online_hv_costar_reference",
+          "mse": 0.11901403218507767,
+          "uses_online_feedback": true
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.21445728838443756,
+          "method": "A_window_only",
+          "mse": 0.11784618347883224,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.21711784601211548,
+          "method": "B_window_forecast",
+          "mse": 0.12419404089450836,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.2192441076040268,
+          "method": "C_window_forecast_disagreement",
+          "mse": 0.1282535344362259,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": false,
+          "mae": 0.22276581823825836,
+          "method": "D_full_behavioral",
+          "mse": 0.13336904346942902,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Electricity",
+          "is_oracle": true,
+          "mae": 0.2174403816461563,
+          "method": "window_oracle",
+          "mse": 0.12050296366214752,
+          "uses_online_feedback": false
+        }
+      ]
+    },
+    "Weather": {
+      "ablation_train_diag": {
+        "A_window_only": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.000928468769416213,
+          "internal_val_windows": 12519,
+          "num_features": 6,
+          "temperature": 0.05,
+          "train_windows": 50073
+        },
+        "B_window_forecast": {
+          "best_epoch": 18,
+          "best_internal_val_mse": 0.0017775202868506312,
+          "internal_val_windows": 12519,
+          "num_features": 10,
+          "temperature": 0.02,
+          "train_windows": 50073
+        },
+        "C_window_forecast_disagreement": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0007408225210383534,
+          "internal_val_windows": 12519,
+          "num_features": 15,
+          "temperature": 0.02,
+          "train_windows": 50073
+        },
+        "D_full_behavioral": {
+          "best_epoch": 200,
+          "best_internal_val_mse": 0.0006700673839077353,
+          "internal_val_windows": 12519,
+          "num_features": 35,
+          "temperature": 0.02,
+          "train_windows": 50073
+        }
+      },
+      "behavior_corr_rows": [
+        {
+          "dataset": "Weather",
+          "feature": "P1_noise__change",
+          "spearman_router_train": -0.2129436520450012,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.03602665985942575,
+          "spearman_router_val_pvalue": 1.8275494243734508e-10
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P1_noise__early_change",
+          "spearman_router_train": -0.21800695672922038,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.03587935617484523,
+          "spearman_router_val_pvalue": 2.165907974323877e-10
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P1_noise__late_change",
+          "spearman_router_train": -0.20538619065710317,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": -0.0360876228312244,
+          "spearman_router_val_pvalue": 1.703152886189227e-10
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P1_noise__slope_change",
+          "spearman_router_train": 0.21399298689169094,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.11491000648210725,
+          "spearman_router_val_pvalue": 1.8471680826828372e-92
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P1_noise__variance_change",
+          "spearman_router_train": 0.21568952960751045,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.1510477748814552,
+          "spearman_router_val_pvalue": 4.3487954507574835e-159
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P2_mask_recent__change",
+          "spearman_router_train": -0.029052366467320123,
+          "spearman_router_train_pvalue": 3.599547974743629e-13,
+          "spearman_router_val_diagnostic": 0.07575318012796674,
+          "spearman_router_val_pvalue": 4.617181928884092e-41
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P2_mask_recent__early_change",
+          "spearman_router_train": -0.027178351200041195,
+          "spearman_router_train_pvalue": 1.0410688259467002e-11,
+          "spearman_router_val_diagnostic": 0.07278228195918501,
+          "spearman_router_val_pvalue": 4.976187488140535e-38
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P2_mask_recent__late_change",
+          "spearman_router_train": -0.030944931064088535,
+          "spearman_router_train_pvalue": 9.662227605095976e-15,
+          "spearman_router_val_diagnostic": 0.07785979502026247,
+          "spearman_router_val_pvalue": 2.7575416123589216e-43
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P2_mask_recent__slope_change",
+          "spearman_router_train": 0.3622395979332586,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.21677909624145042,
+          "spearman_router_val_pvalue": 0.0
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P2_mask_recent__variance_change",
+          "spearman_router_train": 0.31764096858212,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.2067708311113976,
+          "spearman_router_val_pvalue": 2.587023171701987e-299
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P3_smooth__change",
+          "spearman_router_train": 0.14390419715558594,
+          "spearman_router_train_pvalue": 8.649534726513288e-287,
+          "spearman_router_val_diagnostic": 0.14261865890175235,
+          "spearman_router_val_pvalue": 7.164791531972482e-142
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P3_smooth__early_change",
+          "spearman_router_train": 0.13243196156858716,
+          "spearman_router_train_pvalue": 7.942532512887682e-243,
+          "spearman_router_val_diagnostic": 0.14451172043858648,
+          "spearman_router_val_pvalue": 1.1969567213440165e-145
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P3_smooth__late_change",
+          "spearman_router_train": 0.15038545901205305,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.13615896434303573,
+          "spearman_router_val_pvalue": 2.265518159863942e-129
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P3_smooth__slope_change",
+          "spearman_router_train": 0.22867270333941844,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.13054601196726184,
+          "spearman_router_val_pvalue": 5.375070161114019e-119
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P3_smooth__variance_change",
+          "spearman_router_train": 0.20140745957458014,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.14663364056247932,
+          "spearman_router_val_pvalue": 6.063969983939913e-150
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P4_amplitude__change",
+          "spearman_router_train": 0.02530279827493406,
+          "spearman_router_train_pvalue": 2.4319759837888007e-10,
+          "spearman_router_val_diagnostic": 0.08688585280009682,
+          "spearman_router_val_pvalue": 1.6568771773119051e-53
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P4_amplitude__early_change",
+          "spearman_router_train": 0.016521837147365295,
+          "spearman_router_train_pvalue": 3.5697286174511904e-05,
+          "spearman_router_val_diagnostic": 0.08275925820969496,
+          "spearman_router_val_pvalue": 1.0762261490781372e-48
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P4_amplitude__late_change",
+          "spearman_router_train": 0.032313187556046265,
+          "spearman_router_train_pvalue": 6.155997148724797e-16,
+          "spearman_router_val_diagnostic": 0.09008942504822733,
+          "spearman_router_val_pvalue": 2.0921858186279505e-57
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P4_amplitude__slope_change",
+          "spearman_router_train": 0.14996650785852603,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.1620789545251782,
+          "spearman_router_val_pvalue": 3.50627295682509e-183
+        },
+        {
+          "dataset": "Weather",
+          "feature": "P4_amplitude__variance_change",
+          "spearman_router_train": 0.19333123663384424,
+          "spearman_router_train_pvalue": 0.0,
+          "spearman_router_val_diagnostic": 0.17165819671362284,
+          "spearman_router_val_pvalue": 1.4879964200056082e-205
+        }
+      ],
+      "c_mae": 0.15967164933681488,
+      "competence_rows": [
+        {
+          "ablation": "A_window_only",
+          "auprc_useful_vs_harmful": 0.2993782560197724,
+          "auroc_useful_vs_harmful": 0.5049753978317415,
+          "dataset": "Weather",
+          "pearson": 0.05943566560745239,
+          "pearson_pvalue": 6.736552888439859e-26,
+          "precision": 0.29351993865030673,
+          "recall": 0.5016382699868939,
+          "spearman": 0.0328724479474982,
+          "spearman_pvalue": 6.0021545507903035e-09,
+          "top1_accuracy": 0.4281058282208589
+        },
+        {
+          "ablation": "B_window_forecast",
+          "auprc_useful_vs_harmful": 0.317791180359411,
+          "auroc_useful_vs_harmful": 0.5360366243370458,
+          "dataset": "Weather",
+          "pearson": 0.05259651318192482,
+          "pearson_pvalue": 1.2691937817174012e-20,
+          "precision": 0.3174207566462168,
+          "recall": 0.5424858016601136,
+          "spearman": 0.0757540552998831,
+          "spearman_pvalue": 4.607504708624222e-41,
+          "top1_accuracy": 0.34576303680981596
+        },
+        {
+          "ablation": "C_window_forecast_disagreement",
+          "auprc_useful_vs_harmful": 0.34411150759311543,
+          "auroc_useful_vs_harmful": 0.548022786702674,
+          "dataset": "Weather",
+          "pearson": 0.39957672357559204,
+          "pearson_pvalue": 0.0,
+          "precision": 0.3214468302658487,
+          "recall": 0.5493665356050678,
+          "spearman": 0.18982087130832132,
+          "spearman_pvalue": 1.0081455905219687e-251,
+          "top1_accuracy": 0.3986771472392638
+        },
+        {
+          "ablation": "D_full_behavioral",
+          "auprc_useful_vs_harmful": 0.33710400855820627,
+          "auroc_useful_vs_harmful": 0.5553151871623566,
+          "dataset": "Weather",
+          "pearson": 0.3654308319091797,
+          "pearson_pvalue": 0.0,
+          "precision": 0.32432259713701433,
+          "recall": 0.5542813455657493,
+          "spearman": 0.23575606082096817,
+          "spearman_pvalue": 0.0,
+          "top1_accuracy": 0.3691526073619632
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "d_mae": 0.16033731400966644,
+      "d_minus_c_mae": 0.0006656646728515625,
+      "dataset": "Weather",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.0008662944310344756,
+          "ci95_low": 0.00046289307647384703,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": 0.0006656826590187848,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.001040286966599524,
+          "ci95_low": 0.0003358388494234532,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0006656826590187848,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0010713477386161685,
+          "ci95_low": 0.00031343387672677636,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0006656826590187848,
+          "prob_delta_negative": 0.00019999999494757503,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0010911950375884771,
+          "ci95_low": 0.00030468867043964565,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0006656826590187848,
+          "prob_delta_negative": 0.0003000000142492354,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0008520738338120282,
+          "ci95_low": 0.000494828971568495,
+          "ci_excludes_zero": true,
+          "comparison": "D_vs_C",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.0006657522753812373,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 0.00036025981535203755,
+          "ci95_low": -0.00037748058093711734,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": -4.056972557009431e-06,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0010090309660881758,
+          "ci95_low": -0.001179222483187914,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "Weather",
+          "mean_delta": -4.056972557009431e-06,
+          "prob_delta_negative": 0.49230000376701355,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0012587395031005144,
+          "ci95_low": -0.001557829207740724,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "Weather",
+          "mean_delta": -4.056972557009431e-06,
+          "prob_delta_negative": 0.4697999954223633,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0014219132717698812,
+          "ci95_low": -0.0019916335586458445,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "Weather",
+          "mean_delta": -4.056972557009431e-06,
+          "prob_delta_negative": 0.4609000086784363,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00020677747670561075,
+          "ci95_low": -0.00019477731257211417,
+          "ci_excludes_zero": false,
+          "comparison": "D_vs_Equal",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -3.975548224843806e-06,
+          "num_phases": 12,
+          "prob_delta_negative": 0.5199999809265137,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "feature_bundle_names": {
+        "A": [
+          "trend_strength",
+          "volatility",
+          "mean_abs_first_diff",
+          "lag1_autocorr",
+          "spectral_entropy",
+          "recent_vs_full_mean_shift"
+        ],
+        "B": [
+          "forecast_variance",
+          "forecast_slope",
+          "first_forecast_vs_last_observed",
+          "mean_forecast_magnitude"
+        ],
+        "C": [
+          "dist_from_ensemble_mean",
+          "dist_from_ensemble_median",
+          "avg_pairwise_disagreement",
+          "early_horizon_disagreement",
+          "late_horizon_disagreement"
+        ],
+        "D": [
+          "P1_noise__change",
+          "P1_noise__early_change",
+          "P1_noise__late_change",
+          "P1_noise__slope_change",
+          "P1_noise__variance_change",
+          "P2_mask_recent__change",
+          "P2_mask_recent__early_change",
+          "P2_mask_recent__late_change",
+          "P2_mask_recent__slope_change",
+          "P2_mask_recent__variance_change",
+          "P3_smooth__change",
+          "P3_smooth__early_change",
+          "P3_smooth__late_change",
+          "P3_smooth__slope_change",
+          "P3_smooth__variance_change",
+          "P4_amplitude__change",
+          "P4_amplitude__early_change",
+          "P4_amplitude__late_change",
+          "P4_amplitude__slope_change",
+          "P4_amplitude__variance_change"
+        ]
+      },
+      "headroom_captured_D_over_C": -0.07060020924668034,
+      "integrity": {
+        "dataset": "Weather",
+        "features_identical_after_target_corruption": true,
+        "predictions_identical_after_target_corruption": true,
+        "result": "PASS"
+      },
+      "oracle_mae": 0.15024299919605255,
+      "regret_summary": {
+        "fraction_regret_gt_0": 0.712806761264801,
+        "mean_regret": 0.010094336234033108,
+        "median_regret": 0.004901088774204254,
+        "p90_regret": 0.02900930494070053
+      },
+      "relative_improvement_d_vs_c_pct": -0.41689597096062736,
+      "reproduction_checks": [
+        {
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.0029296875,
+          "mean_abs_diff": 1.3716769444727106e-05,
+          "split": "router_train"
+        },
+        {
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.00390625,
+          "mean_abs_diff": 1.068685651262058e-05,
+          "split": "router_val"
+        },
+        {
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.00341796875,
+          "mean_abs_diff": 2.2156497379910434e-05,
+          "split": "router_train"
+        },
+        {
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fraction_windows_gt_0.1": 0.0,
+          "max_abs_diff": 0.0048828125,
+          "mean_abs_diff": 1.5145816178119276e-05,
+          "split": "router_val"
+        },
+        {
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.0007668711477890611,
+          "max_abs_diff": 114.67108154296875,
+          "mean_abs_diff": 0.010483131743967533,
+          "split": "router_train"
+        },
+        {
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fraction_windows_gt_0.1": 0.00028757669497281313,
+          "max_abs_diff": 9.07244873046875,
+          "mean_abs_diff": 0.006660464219748974,
+          "split": "router_val"
+        }
+      ],
+      "result_rows": [
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.1646728217601776,
+          "method": "best_single_expert",
+          "mse": 0.28746822476387024,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.16034138202667236,
+          "method": "equal_fixed",
+          "mse": 0.27881529927253723,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.15981753170490265,
+          "method": "frozen_hv_costar",
+          "mse": 0.2790922522544861,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.15928047895431519,
+          "method": "online_hv_costar_reference",
+          "mse": 0.2835647165775299,
+          "uses_online_feedback": true
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.16034138202667236,
+          "method": "A_window_only",
+          "mse": 0.27881529927253723,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.1610344499349594,
+          "method": "B_window_forecast",
+          "mse": 0.2984543442726135,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.15967164933681488,
+          "method": "C_window_forecast_disagreement",
+          "mse": 0.2837500274181366,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": false,
+          "mae": 0.16033731400966644,
+          "method": "D_full_behavioral",
+          "mse": 0.28375571966171265,
+          "uses_online_feedback": false
+        },
+        {
+          "dataset": "Weather",
+          "is_oracle": true,
+          "mae": 0.15024299919605255,
+          "method": "window_oracle",
+          "mse": 0.24644289910793304,
+          "uses_online_feedback": false
+        }
+      ]
+    }
+  },
+  "experiment": "behavioral_competence",
+  "go_no_go": {
+    "beats_c": {
+      "ETTh1": false,
+      "ETTh2": true,
+      "ETTm1": false,
+      "Electricity": false,
+      "Weather": false
+    },
+    "correlation_improved": {
+      "ETTh1": false,
+      "ETTh2": true,
+      "ETTm1": false,
+      "Electricity": false,
+      "Weather": true
+    },
+    "decision": "NO-GO",
+    "headroom": {
+      "ETTh1": -0.10389524559005131,
+      "ETTh2": 0.339004506557294,
+      "ETTm1": -0.04638615860873784,
+      "Electricity": -1.9524643523949572,
+      "Weather": -0.07060020924668034
+    },
+    "reasoning": [
+      "D beats C on MAE on 1/5 datasets: {'ETTh1': False, 'ETTh2': True, 'ETTm1': False, 'Weather': False, 'Electricity': False}.",
+      "Headroom captured (D over C, >=10% of C->Oracle gap) on: ['ETTh2'].",
+      "Dependence-aware (block-bootstrap) statistically supported D<C on: ['ETTh2'].",
+      "D improves competence-ranking Spearman correlation over C on 2/5 datasets."
+    ],
+    "statistically_significant_datasets": [
+      "ETTh2"
+    ]
+  },
+  "runtime_sec": 113.82595920562744,
+  "test_set_accessed": false
+}

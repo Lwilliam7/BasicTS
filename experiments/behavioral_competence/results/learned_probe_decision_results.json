@@ -1,0 +1,2702 @@
+{
+  "created_at_utc": "2026-08-20T18:07:45.813618+00:00",
+  "datasets": {
+    "ETTh1": {
+      "best_pair_oracle_mae": 0.3490735590457916,
+      "best_rule": "LearnedProbe_Rank",
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTh1",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.008781331591308117,
+          "ci95_low": 0.006981453392654657,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": 0.007871542125940323,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.009246314875781536,
+          "ci95_low": 0.006525203585624695,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": 0.007871542125940323,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.009441550821065903,
+          "ci95_low": 0.006395643576979637,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": 0.007871542125940323,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.009571713395416737,
+          "ci95_low": 0.006324198096990585,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": 0.007871542125940323,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.008826188743114471,
+          "ci95_low": 0.006973764393478632,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.007871249690651894,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.0035278890281915665,
+          "ci95_low": 0.0021533346734941006,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": 0.0028329805936664343,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0038555634673684835,
+          "ci95_low": 0.0018165274523198605,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0028329805936664343,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003946242388337851,
+          "ci95_low": 0.0017192773520946503,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0028329805936664343,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004072618205100298,
+          "ci95_low": 0.0016294748056679964,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0028329805936664343,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.003538151504471898,
+          "ci95_low": 0.002097520511597395,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.0028327556792646646,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": -0.0009288706351071596,
+          "ci95_low": -0.0017966963350772858,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": -0.001355998800136149,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0005034048808738589,
+          "ci95_low": -0.0022274795919656754,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": -0.001355998800136149,
+          "prob_delta_negative": 0.9994000196456909,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0004142714897170663,
+          "ci95_low": -0.002271366072818637,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": -0.001355998800136149,
+          "prob_delta_negative": 0.998199999332428,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0004080120415892452,
+          "ci95_low": -0.002318842802196741,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh1",
+          "mean_delta": -0.001355998800136149,
+          "prob_delta_negative": 0.9983999729156494,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0009630913264118135,
+          "ci95_low": -0.0017778376350179315,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -0.0013562333770096302,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.008858585730195045,
+          "ci95_low": 0.006376724224537611,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": 0.007622526027262211,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.009448913857340813,
+          "ci95_low": 0.005741441622376442,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.007622526027262211,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.009510185569524765,
+          "ci95_low": 0.005656660068780184,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.007622526027262211,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.009684581309556961,
+          "ci95_low": 0.005584420636296272,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.007622526027262211,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00910224113613367,
+          "ci95_low": 0.006311067845672369,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.007622463628649712,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.0035470507573336363,
+          "ci95_low": 0.0016597037902101874,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": 0.0025839630980044603,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0042074257507920265,
+          "ci95_low": 0.0009216379257850349,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0025839630980044603,
+          "prob_delta_negative": 0.0007999999797903001,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.004326730966567993,
+          "ci95_low": 0.000728320621419698,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0025839630980044603,
+          "prob_delta_negative": 0.0017999999690800905,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004548595752567053,
+          "ci95_low": 0.0007221195264719427,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0025839630980044603,
+          "prob_delta_negative": 0.0026000000070780516,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.003504317719489336,
+          "ci95_low": 0.0017169680213555694,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.0025839696172624826,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": -0.0008829942089505494,
+          "ci95_low": -0.002302005421370268,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": -0.0016050159465521574,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.00021322877728380263,
+          "ci95_low": -0.0030273261945694685,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0016050159465521574,
+          "prob_delta_negative": 0.9894999861717224,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -8.422244718531147e-05,
+          "ci95_low": -0.00318504823371768,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0016050159465521574,
+          "prob_delta_negative": 0.9804999828338623,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00012555722787510604,
+          "ci95_low": -0.0033521843142807484,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0016050159465521574,
+          "prob_delta_negative": 0.9643999934196472,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0010787771316245198,
+          "ci95_low": -0.0021529134828597307,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -0.001605019555427134,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.005910506006330252,
+          "ci95_low": -0.006763594690710306,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_diff_candidate_minus_baseline": -0.0005356406327337027,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.018529897555708885,
+          "ci95_low": -0.019253522157669067,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0005356406327337027,
+          "prob_delta_negative": 0.5335999727249146,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.022183086723089218,
+          "ci95_low": -0.022810446098446846,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0005356406327337027,
+          "prob_delta_negative": 0.5324000120162964,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.027212396264076233,
+          "ci95_low": -0.02645820938050747,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0005356406327337027,
+          "prob_delta_negative": 0.5252000093460083,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.007245431654155254,
+          "ci95_low": -0.008074019104242325,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -0.0005300268530845642,
+          "num_phases": 12,
+          "prob_delta_negative": 0.5497999787330627,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        }
+      ],
+      "integrity": {
+        "dataset": "ETTh1",
+        "predicted_excess_loss_unchanged_across_rules": true,
+        "reproduction_matches_saved": true,
+        "reproduction_max_diff_softmax_vs_saved": 0.0,
+        "result": "PASS",
+        "weights_unchanged_after_target_corruption": true
+      },
+      "margin_rows": [
+        {
+          "dataset": "ETTh1",
+          "margin_group": "high_margin",
+          "median_margin": 0.013380348682403564,
+          "num_windows": 1387,
+          "softmax_mae": 0.36966416239738464,
+          "top1_mae": 0.3750782012939453,
+          "top1_minus_top2equal": 0.002789020538330078,
+          "top2equal_mae": 0.37228918075561523
+        },
+        {
+          "dataset": "ETTh1",
+          "margin_group": "low_margin",
+          "median_margin": 0.013380348682403564,
+          "num_windows": 1386,
+          "softmax_mae": 0.36650529503822327,
+          "top1_mae": 0.37683603167533875,
+          "top1_minus_top2equal": 0.0072897374629974365,
+          "top2equal_mae": 0.3695462942123413
+        }
+      ],
+      "rank_correlation_pvalue": 3.796394148435561e-110,
+      "rank_correlation_spearman": 0.24090828335490408,
+      "result_rows": [
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36726489663124084,
+          "method": "Equal",
+          "mse": 0.3105303645133972
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36833426356315613,
+          "method": "C",
+          "mse": 0.31202971935272217
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3708641827106476,
+          "method": "Fixed_D",
+          "mse": 0.31635528802871704
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.37955790758132935,
+          "method": "Best_Single",
+          "mse": 0.3265279531478882
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.34398359060287476,
+          "method": "Window_Oracle",
+          "mse": 0.27407777309417725
+        },
+        {
+          "dataset": "ETTh1",
+          "delta_vs_C": -0.00024899840354919434,
+          "delta_vs_Equal": 0.0008203685283660889,
+          "delta_vs_LearnedProbe_Softmax": 0.0,
+          "mae": 0.36808526515960693,
+          "method": "LearnedProbe_Softmax",
+          "mse": 0.3124605119228363
+        },
+        {
+          "dataset": "ETTh1",
+          "delta_vs_C": 0.00762253999710083,
+          "delta_vs_Equal": 0.008691906929016113,
+          "delta_vs_LearnedProbe_Softmax": 0.007871538400650024,
+          "mae": 0.37595680356025696,
+          "method": "LearnedProbe_Top1",
+          "mse": 0.3225080370903015
+        },
+        {
+          "dataset": "ETTh1",
+          "delta_vs_C": 0.0025839805603027344,
+          "delta_vs_Equal": 0.0036533474922180176,
+          "delta_vs_LearnedProbe_Softmax": 0.0028329789638519287,
+          "mae": 0.37091824412345886,
+          "method": "LearnedProbe_Top2Equal",
+          "mse": 0.3162018060684204
+        },
+        {
+          "dataset": "ETTh1",
+          "delta_vs_C": -0.0016050338745117188,
+          "delta_vs_Equal": -0.0005356669425964355,
+          "delta_vs_LearnedProbe_Softmax": -0.0013560354709625244,
+          "mae": 0.3667292296886444,
+          "method": "LearnedProbe_Rank",
+          "mse": 0.3100811243057251
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3490735590457916,
+          "method": "Best_Pair_Oracle",
+          "mse": 0.28507596254348755
+        }
+      ],
+      "temperature": 0.02,
+      "top1_accuracy": 0.38983049988746643,
+      "top1_oracle_headroom_vs_equal": 0.02328130602836609,
+      "top2_oracle_headroom_vs_equal": 0.01819133758544922,
+      "top2_recall": 0.7190768122673035
+    },
+    "ETTh2": {
+      "best_pair_oracle_mae": 0.2684030532836914,
+      "best_rule": "LearnedProbe_Rank",
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "dataset": "ETTh2",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.006365875713527203,
+          "ci95_low": 0.004299830179661512,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": 0.005312092136591673,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.006811030674725771,
+          "ci95_low": 0.0038192225620150566,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": 0.005312092136591673,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0067712995223701,
+          "ci95_low": 0.003752967109903693,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": 0.005312092136591673,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.006853346712887287,
+          "ci95_low": 0.0035749732051044703,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": 0.005312092136591673,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0062063527293503284,
+          "ci95_low": 0.0043703652918338776,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": 0.005310496315360069,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": 0.002543587936088443,
+          "ci95_low": 2.250037869089283e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": 0.0012646176619455218,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0037212022580206394,
+          "ci95_low": -0.0008109752088785172,
+          "ci_excludes_zero": false,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0012646176619455218,
+          "prob_delta_negative": 0.11089999973773956,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.004012693651020527,
+          "ci95_low": -0.0008837396744638681,
+          "ci_excludes_zero": false,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0012646176619455218,
+          "prob_delta_negative": 0.12680000066757202,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0044473810121417046,
+          "ci95_low": -0.0007173314807005227,
+          "ci_excludes_zero": false,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0012646176619455218,
+          "prob_delta_negative": 0.10639999806880951,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0020940368995070457,
+          "ci95_low": 0.0004230312770232558,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": 0.0012652770383283496,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0019000000320374966,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": 0.00022246383014135063,
+          "ci95_low": -0.001544152619317174,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.000650706933811307,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0010370955569669604,
+          "ci95_low": -0.0021119886077940464,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": -0.000650706933811307,
+          "prob_delta_negative": 0.7569000124931335,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0012643835507333279,
+          "ci95_low": -0.002163299359381199,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": -0.000650706933811307,
+          "prob_delta_negative": 0.7085000276565552,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0012501801829785109,
+          "ci95_low": -0.001871334621682763,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh2",
+          "mean_delta": -0.000650706933811307,
+          "prob_delta_negative": 0.7095000147819519,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 8.501910997438245e-06,
+          "ci95_low": -0.0012454870156943798,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.0006500072777271271,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9742000102996826,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": -0.0009619269985705614,
+          "ci95_low": -0.005585435312241316,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.003329196246340871,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0005756380269303918,
+          "ci95_low": -0.007679039146751165,
+          "ci_excludes_zero": false,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.003329196246340871,
+          "prob_delta_negative": 0.9559999704360962,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00026949401944875717,
+          "ci95_low": -0.007548708934336901,
+          "ci_excludes_zero": false,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.003329196246340871,
+          "prob_delta_negative": 0.9650999903678894,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0002184804034186527,
+          "ci95_low": -0.007459351792931557,
+          "ci_excludes_zero": false,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.003329196246340871,
+          "prob_delta_negative": 0.9688000082969666,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0015486017800867558,
+          "ci95_low": -0.005192841403186321,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.003335619578137994,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9998999834060669,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": -0.005437149200588465,
+          "ci95_low": -0.009323343634605408,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.007376669906079769,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.004029841627925634,
+          "ci95_low": -0.010877588763833046,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.007376669906079769,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.004147649277001619,
+          "ci95_low": -0.010983244515955448,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.007376669906079769,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.003435611492022872,
+          "ci95_low": -0.011446637101471424,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.007376669906079769,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0061553651466965675,
+          "ci95_low": -0.008684440515935421,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.007380838971585035,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": -0.007665455341339111,
+          "ci95_low": -0.011038665659725666,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.009291994385421276,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.006308376789093018,
+          "ci95_low": -0.012451485730707645,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.009291994385421276,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.006547949742525816,
+          "ci95_low": -0.012307536788284779,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.009291994385421276,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.006234794855117798,
+          "ci95_low": -0.01272654626518488,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh2",
+          "mean_delta": -0.009291994385421276,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.008047728799283504,
+          "ci95_low": -0.01057589240372181,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.009296122938394547,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": 0.00507808243855834,
+          "ci95_low": -0.011939777061343193,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_diff_candidate_minus_baseline": -0.0036762026138603687,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.022294990718364716,
+          "ci95_low": -0.02795880101621151,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0036762026138603687,
+          "prob_delta_negative": 0.6330000162124634,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.028843631967902184,
+          "ci95_low": -0.03301716223359108,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0036762026138603687,
+          "prob_delta_negative": 0.6157000064849854,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.03203864395618439,
+          "ci95_low": -0.03404735028743744,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0036762026138603687,
+          "prob_delta_negative": 0.5576000213623047,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0010839477181434631,
+          "ci95_low": -0.006052265875041485,
+          "ci_excludes_zero": true,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.0036705899983644485,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9980000257492065,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        }
+      ],
+      "integrity": {
+        "dataset": "ETTh2",
+        "predicted_excess_loss_unchanged_across_rules": true,
+        "reproduction_matches_saved": true,
+        "reproduction_max_diff_softmax_vs_saved": 0.0,
+        "result": "PASS",
+        "weights_unchanged_after_target_corruption": true
+      },
+      "margin_rows": [
+        {
+          "dataset": "ETTh2",
+          "margin_group": "high_margin",
+          "median_margin": 0.017904367297887802,
+          "num_windows": 307,
+          "softmax_mae": 0.2867247462272644,
+          "top1_mae": 0.28996068239212036,
+          "top1_minus_top2equal": 0.0005555152893066406,
+          "top2equal_mae": 0.2894051671028137
+        },
+        {
+          "dataset": "ETTh2",
+          "margin_group": "low_margin",
+          "median_margin": 0.017904367297887802,
+          "num_windows": 306,
+          "softmax_mae": 0.26895207166671753,
+          "top1_mae": 0.2763471007347107,
+          "top1_minus_top2equal": 0.0075508952140808105,
+          "top2equal_mae": 0.2687962055206299
+        }
+      ],
+      "rank_correlation_pvalue": 2.5198552465135936e-70,
+      "rank_correlation_spearman": 0.39660924678364506,
+      "result_rows": [
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2808783948421478,
+          "method": "Equal",
+          "mse": 0.17193281650543213
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2864941656589508,
+          "method": "C",
+          "mse": 0.17661356925964355
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2797102630138397,
+          "method": "Fixed_D",
+          "mse": 0.1711137592792511
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.28095653653144836,
+          "method": "Best_Single",
+          "mse": 0.17149297893047333
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2664829194545746,
+          "method": "Window_Oracle",
+          "mse": 0.15691085159778595
+        },
+        {
+          "dataset": "ETTh2",
+          "delta_vs_C": -0.008641272783279419,
+          "delta_vs_Equal": -0.0030255019664764404,
+          "delta_vs_LearnedProbe_Softmax": 0.0,
+          "mae": 0.2778528928756714,
+          "method": "LearnedProbe_Softmax",
+          "mse": 0.16820552945137024
+        },
+        {
+          "dataset": "ETTh2",
+          "delta_vs_C": -0.0033291876316070557,
+          "delta_vs_Equal": 0.002286583185195923,
+          "delta_vs_LearnedProbe_Softmax": 0.005312085151672363,
+          "mae": 0.28316497802734375,
+          "method": "LearnedProbe_Top1",
+          "mse": 0.17243926227092743
+        },
+        {
+          "dataset": "ETTh2",
+          "delta_vs_C": -0.007376641035079956,
+          "delta_vs_Equal": -0.0017608702182769775,
+          "delta_vs_LearnedProbe_Softmax": 0.0012646317481994629,
+          "mae": 0.27911752462387085,
+          "method": "LearnedProbe_Top2Equal",
+          "mse": 0.16986973583698273
+        },
+        {
+          "dataset": "ETTh2",
+          "delta_vs_C": -0.009291976690292358,
+          "delta_vs_Equal": -0.00367620587348938,
+          "delta_vs_LearnedProbe_Softmax": -0.0006507039070129395,
+          "mae": 0.27720218896865845,
+          "method": "LearnedProbe_Rank",
+          "mse": 0.1680549830198288
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2684030532836914,
+          "method": "Best_Pair_Oracle",
+          "mse": 0.1588706076145172
+        }
+      ],
+      "temperature": 0.02,
+      "top1_accuracy": 0.4600326120853424,
+      "top1_oracle_headroom_vs_equal": 0.014395475387573242,
+      "top2_oracle_headroom_vs_equal": 0.012475341558456421,
+      "top2_recall": 0.8466557860374451
+    },
+    "ETTm1": {
+      "best_pair_oracle_mae": 0.23255613446235657,
+      "best_rule": "LearnedProbe_Rank",
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "dataset": "ETTm1",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.006261464674025774,
+          "ci95_low": 0.005588544998317957,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.005923784803599119,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0064094942063093185,
+          "ci95_low": 0.005420484580099583,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": 0.005923784803599119,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.006438699550926685,
+          "ci95_low": 0.005384189076721668,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": 0.005923784803599119,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.006429155357182026,
+          "ci95_low": 0.00538572808727622,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": 0.005923784803599119,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00622782064601779,
+          "ci95_low": 0.005639580078423023,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.005923768971115351,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.0027841818518936634,
+          "ci95_low": 0.00210202275775373,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.0024476712569594383,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0030288940761238337,
+          "ci95_low": 0.0018428644398227334,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0024476712569594383,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0030546013731509447,
+          "ci95_low": 0.0018006140599027276,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0024476712569594383,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0030248102266341448,
+          "ci95_low": 0.001826865947805345,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0024476712569594383,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0027557983994483948,
+          "ci95_low": 0.0021279819775372744,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.0024477732367813587,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": -0.0025106652174144983,
+          "ci95_low": -0.0029270367231220007,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": -0.0027181964833289385,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0023168055340647697,
+          "ci95_low": -0.003121972316876054,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0027181964833289385,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0022956233005970716,
+          "ci95_low": -0.003145570633932948,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0027181964833289385,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.002292211866006255,
+          "ci95_low": -0.0031621765810996294,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0027181964833289385,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0025473081041127443,
+          "ci95_low": -0.002907081739977002,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": -0.0027181964833289385,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.008588310331106186,
+          "ci95_low": 0.007612556219100952,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.00809800997376442,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.008882968686521053,
+          "ci95_low": 0.007310174405574799,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.00809800997376442,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.008922029286623001,
+          "ci95_low": 0.007250223308801651,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.00809800997376442,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00890262145549059,
+          "ci95_low": 0.007282308768481016,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.00809800997376442,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.008533257059752941,
+          "ci95_low": 0.0076330131851136684,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.008097976446151733,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.005042059812694788,
+          "ci95_low": 0.00419927854090929,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.004621897824108601,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0053881434723734856,
+          "ci95_low": 0.0038595017977058887,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.004621897824108601,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.005396445747464895,
+          "ci95_low": 0.003837032476440072,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.004621897824108601,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00534822978079319,
+          "ci95_low": 0.003829516237601638,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": 0.004621897824108601,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0050533791072666645,
+          "ci95_low": 0.004234516527503729,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.004621980246156454,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": -0.00025746706523932517,
+          "ci95_low": -0.000841776723973453,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": -0.0005439704400487244,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 4.141469253227115e-05,
+          "ci95_low": -0.001119406195357442,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0005439704400487244,
+          "prob_delta_negative": 0.9649999737739563,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 6.313541962299496e-05,
+          "ci95_low": -0.001172172254882753,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0005439704400487244,
+          "prob_delta_negative": 0.9575999975204468,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 9.227899136021733e-05,
+          "ci95_low": -0.0011879586381837726,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0005439704400487244,
+          "prob_delta_negative": 0.9524999856948853,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00018935602565761656,
+          "ci95_low": -0.0009176542516797781,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": -0.0005439891829155385,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9991999864578247,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.004007694311439991,
+          "ci95_low": -0.0006344390567392111,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_diff_candidate_minus_baseline": 0.0016959597123786807,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00884606596082449,
+          "ci95_low": -0.005268870387226343,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0016959597123786807,
+          "prob_delta_negative": 0.31049999594688416,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.010745667852461338,
+          "ci95_low": -0.00679834233596921,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0016959597123786807,
+          "prob_delta_negative": 0.34709998965263367,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.012376644648611546,
+          "ci95_low": -0.008066047914326191,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0016959597123786807,
+          "prob_delta_negative": 0.3644999861717224,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0030979120638221502,
+          "ci95_low": 0.00026028984575532377,
+          "ci_excludes_zero": true,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.001695821643806994,
+          "num_phases": 12,
+          "prob_delta_negative": 0.010900000110268593,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "integrity": {
+        "dataset": "ETTm1",
+        "predicted_excess_loss_unchanged_across_rules": true,
+        "reproduction_matches_saved": true,
+        "reproduction_max_diff_softmax_vs_saved": 0.0,
+        "result": "PASS",
+        "weights_unchanged_after_target_corruption": true
+      },
+      "margin_rows": [
+        {
+          "dataset": "ETTm1",
+          "margin_group": "high_margin",
+          "median_margin": 0.01714804396033287,
+          "num_windows": 5707,
+          "softmax_mae": 0.2614511251449585,
+          "top1_mae": 0.26555782556533813,
+          "top1_minus_top2equal": 0.0023242533206939697,
+          "top2equal_mae": 0.26323357224464417
+        },
+        {
+          "dataset": "ETTm1",
+          "margin_group": "low_margin",
+          "median_margin": 0.01714804396033287,
+          "num_windows": 5706,
+          "softmax_mae": 0.24369849264621735,
+          "top1_mae": 0.25143963098526,
+          "top1_minus_top2equal": 0.00462813675403595,
+          "top2equal_mae": 0.24681149423122406
+        }
+      ],
+      "rank_correlation_pvalue": 1.3933678830735438e-196,
+      "rank_correlation_spearman": 0.1606063714814828,
+      "result_rows": [
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2481614202260971,
+          "method": "Equal",
+          "mse": 0.14669446647167206
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2504013478755951,
+          "method": "C",
+          "mse": 0.14962764084339142
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2514726519584656,
+          "method": "Fixed_D",
+          "mse": 0.15052469074726105
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.26177072525024414,
+          "method": "Best_Single",
+          "mse": 0.16183817386627197
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.22730600833892822,
+          "method": "Window_Oracle",
+          "mse": 0.1243390142917633
+        },
+        {
+          "dataset": "ETTm1",
+          "delta_vs_C": 0.0021742582321166992,
+          "delta_vs_Equal": 0.004414185881614685,
+          "delta_vs_LearnedProbe_Softmax": 0.0,
+          "mae": 0.2525756061077118,
+          "method": "LearnedProbe_Softmax",
+          "mse": 0.15181660652160645
+        },
+        {
+          "dataset": "ETTm1",
+          "delta_vs_C": 0.008098006248474121,
+          "delta_vs_Equal": 0.010337933897972107,
+          "delta_vs_LearnedProbe_Softmax": 0.005923748016357422,
+          "mae": 0.2584993541240692,
+          "method": "LearnedProbe_Top1",
+          "mse": 0.157855823636055
+        },
+        {
+          "dataset": "ETTm1",
+          "delta_vs_C": 0.0046218931674957275,
+          "delta_vs_Equal": 0.006861820816993713,
+          "delta_vs_LearnedProbe_Softmax": 0.0024476349353790283,
+          "mae": 0.2550232410430908,
+          "method": "LearnedProbe_Top2Equal",
+          "mse": 0.15422143042087555
+        },
+        {
+          "dataset": "ETTm1",
+          "delta_vs_C": -0.0005439668893814087,
+          "delta_vs_Equal": 0.0016959607601165771,
+          "delta_vs_LearnedProbe_Softmax": -0.002718225121498108,
+          "mae": 0.24985738098621368,
+          "method": "LearnedProbe_Rank",
+          "mse": 0.14874087274074554
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.23255613446235657,
+          "method": "Best_Pair_Oracle",
+          "mse": 0.1316785365343094
+        }
+      ],
+      "temperature": 0.02,
+      "top1_accuracy": 0.32638218998908997,
+      "top1_oracle_headroom_vs_equal": 0.020855411887168884,
+      "top2_oracle_headroom_vs_equal": 0.01560528576374054,
+      "top2_recall": 0.6404100656509399
+    },
+    "Electricity": {
+      "best_pair_oracle_mae": 0.21168825030326843,
+      "best_rule": "LearnedProbe_Rank",
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Electricity",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.0053709158673882484,
+          "ci95_low": 0.004931728355586529,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": 0.005149583797901869,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.005511165130883455,
+          "ci95_low": 0.004811408929526806,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": 0.005149583797901869,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.005538135301321745,
+          "ci95_low": 0.004791680257767439,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": 0.005149583797901869,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.005618445109575987,
+          "ci95_low": 0.004738929215818644,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": 0.005149583797901869,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0055658407509326935,
+          "ci95_low": 0.004761620424687862,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.005150098819285631,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": 0.001332149375230074,
+          "ci95_low": 0.0006859044078737497,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": 0.0010102930245921016,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0015244826208800077,
+          "ci95_low": 0.0005070142215117812,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": 0.0010102930245921016,
+          "prob_delta_negative": 0.0003000000142492354,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0014445297420024872,
+          "ci95_low": 0.0005686092190444469,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": 0.0010102930245921016,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0014277977170422673,
+          "ci95_low": 0.0005850050365552306,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": 0.0010102930245921016,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0012869982747361064,
+          "ci95_low": 0.0007576883654110134,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.0010101365623995662,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": -0.0035144074354320765,
+          "ci95_low": -0.004073581658303738,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": -0.003790052607655525,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.003322069300338626,
+          "ci95_low": -0.004277446307241917,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": -0.003790052607655525,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.003344988916069269,
+          "ci95_low": -0.004256919026374817,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": -0.003790052607655525,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.003328771097585559,
+          "ci95_low": -0.00429176539182663,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Electricity",
+          "mean_delta": -0.003790052607655525,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0034947036765515804,
+          "ci95_low": -0.004112363327294588,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.0037905266508460045,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": 0.003934182226657867,
+          "ci95_low": 0.002720506861805916,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": 0.003320329124107957,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0043731676414608955,
+          "ci95_low": 0.002224577125161886,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": 0.003320329124107957,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.004333866760134697,
+          "ci95_low": 0.0022240090183913708,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": 0.003320329124107957,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004333835560828447,
+          "ci95_low": 0.0022971215657889843,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": 0.003320329124107957,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.004658028483390808,
+          "ci95_low": 0.001967532793059945,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.003322567790746689,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": -0.0004195769433863461,
+          "ci95_low": -0.0012329926248639822,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": -0.0008189614163711667,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -5.8331679611001164e-05,
+          "ci95_low": -0.0016452919226139784,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": -0.0008189614163711667,
+          "prob_delta_negative": 0.9833999872207642,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -3.317895607324317e-05,
+          "ci95_low": -0.0016629223246127367,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": -0.0008189614163711667,
+          "prob_delta_negative": 0.9805999994277954,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.00010247799218632281,
+          "ci95_low": -0.0016190882306545973,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": -0.0008189614163711667,
+          "prob_delta_negative": 0.9878000020980835,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00025806468329392374,
+          "ci95_low": -0.0018630526028573513,
+          "ci_excludes_zero": false,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.0008173944079317153,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9323999881744385,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": -0.0052411663345992565,
+          "ci95_low": -0.005998085252940655,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": -0.005619307514280081,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.004831243306398392,
+          "ci95_low": -0.006464782636612654,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": -0.005619307514280081,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.004775624256581068,
+          "ci95_low": -0.006571502424776554,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": -0.005619307514280081,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.004754527937620878,
+          "ci95_low": -0.006593565922230482,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Electricity",
+          "mean_delta": -0.005619307514280081,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.004732117988169193,
+          "ci95_low": -0.006555980537086725,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.005618058145046234,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": 0.0007575186900794506,
+          "ci95_low": -0.0023591627832502127,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Electricity",
+          "mean_diff_candidate_minus_baseline": -0.000832481193356216,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0041880435310304165,
+          "ci95_low": -0.005421314854174852,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Electricity",
+          "mean_delta": -0.000832481193356216,
+          "prob_delta_negative": 0.6338000297546387,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00562670174986124,
+          "ci95_low": -0.006464173085987568,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Electricity",
+          "mean_delta": -0.000832481193356216,
+          "prob_delta_negative": 0.6133000254631042,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.007881643250584602,
+          "ci95_low": -0.007708678022027016,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Electricity",
+          "mean_delta": -0.000832481193356216,
+          "prob_delta_negative": 0.5800999999046326,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0009188219555653632,
+          "ci95_low": -0.0025294178631156683,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.0008323222282342613,
+          "num_phases": 12,
+          "prob_delta_negative": 0.8288999795913696,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "integrity": {
+        "dataset": "Electricity",
+        "predicted_excess_loss_unchanged_across_rules": true,
+        "reproduction_matches_saved": true,
+        "reproduction_max_diff_softmax_vs_saved": 0.0,
+        "result": "PASS",
+        "weights_unchanged_after_target_corruption": true
+      },
+      "margin_rows": [
+        {
+          "dataset": "Electricity",
+          "margin_group": "high_margin",
+          "median_margin": 0.01259203627705574,
+          "num_windows": 2578,
+          "softmax_mae": 0.22845745086669922,
+          "top1_mae": 0.23304013907909393,
+          "top1_minus_top2equal": 0.003708586096763611,
+          "top2equal_mae": 0.22933155298233032
+        },
+        {
+          "dataset": "Electricity",
+          "margin_group": "low_margin",
+          "median_margin": 0.01259203627705574,
+          "num_windows": 2576,
+          "softmax_mae": 0.20636367797851562,
+          "top1_mae": 0.21208061277866364,
+          "top1_minus_top2equal": 0.0045703500509262085,
+          "top2equal_mae": 0.20751026272773743
+        }
+      ],
+      "rank_correlation_pvalue": 0.0,
+      "rank_correlation_spearman": 0.6930609578126918,
+      "result_rows": [
+        {
+          "dataset": "Electricity",
+          "mae": 0.21445728838443756,
+          "method": "Equal",
+          "mse": 0.11784618347883224
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.2192441076040268,
+          "method": "C",
+          "mse": 0.1282535344362259
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.22276581823825836,
+          "method": "Fixed_D",
+          "mse": 0.13336904346942902
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.22538480162620544,
+          "method": "Best_Single",
+          "mse": 0.13576708734035492
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.2174403816461563,
+          "method": "Window_Oracle",
+          "mse": 0.12050296366214752
+        },
+        {
+          "dataset": "Electricity",
+          "delta_vs_C": -0.0018292516469955444,
+          "delta_vs_Equal": 0.002957567572593689,
+          "delta_vs_LearnedProbe_Softmax": 0.0,
+          "mae": 0.21741485595703125,
+          "method": "LearnedProbe_Softmax",
+          "mse": 0.12263420969247818
+        },
+        {
+          "dataset": "Electricity",
+          "delta_vs_C": 0.003320366144180298,
+          "delta_vs_Equal": 0.008107185363769531,
+          "delta_vs_LearnedProbe_Softmax": 0.005149617791175842,
+          "mae": 0.2225644737482071,
+          "method": "LearnedProbe_Top1",
+          "mse": 0.12788231670856476
+        },
+        {
+          "dataset": "Electricity",
+          "delta_vs_C": -0.0008189678192138672,
+          "delta_vs_Equal": 0.003967851400375366,
+          "delta_vs_LearnedProbe_Softmax": 0.0010102838277816772,
+          "mae": 0.21842513978481293,
+          "method": "LearnedProbe_Top2Equal",
+          "mse": 0.12494244426488876
+        },
+        {
+          "dataset": "Electricity",
+          "delta_vs_C": -0.0056192874908447266,
+          "delta_vs_Equal": -0.0008324682712554932,
+          "delta_vs_LearnedProbe_Softmax": -0.003790035843849182,
+          "mae": 0.21362482011318207,
+          "method": "LearnedProbe_Rank",
+          "mse": 0.11845888942480087
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21168825030326843,
+          "method": "Best_Pair_Oracle",
+          "mse": 0.11367897689342499
+        }
+      ],
+      "temperature": 0.02,
+      "top1_accuracy": 0.6292200088500977,
+      "top1_oracle_headroom_vs_equal": -0.00298309326171875,
+      "top2_oracle_headroom_vs_equal": 0.0027690380811691284,
+      "top2_recall": 0.9243305921554565
+    },
+    "Weather": {
+      "best_pair_oracle_mae": 0.15132348239421844,
+      "best_rule": "LearnedProbe_Rank",
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Weather",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.0038756299763917923,
+          "ci95_low": 0.0034953258000314236,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": 0.003686116077005863,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0040069278329610825,
+          "ci95_low": 0.0033755663316696882,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": 0.003686116077005863,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0040318407118320465,
+          "ci95_low": 0.0033472569193691015,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": 0.003686116077005863,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00406884727999568,
+          "ci95_low": 0.0033094959799200296,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": 0.003686116077005863,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.003868867177516222,
+          "ci95_low": 0.0035032546147704124,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_Softmax",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.00368608464486897,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 0.002554285107180476,
+          "ci95_low": 0.002189160557463765,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": 0.0023754434660077095,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0026971965562552214,
+          "ci95_low": 0.002050169510766864,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": 0.0023754434660077095,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0027164011262357235,
+          "ci95_low": 0.002022978151217103,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": 0.0023754434660077095,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0027324100956320763,
+          "ci95_low": 0.0020128788892179728,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": 0.0023754434660077095,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0025554820895195007,
+          "ci95_low": 0.002207812387496233,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_Softmax",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.0023755368310958147,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 0.00019268866162747145,
+          "ci95_low": -0.00027662221691571176,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": -4.839442408410832e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0006268403958529234,
+          "ci95_low": -0.0006360870320349932,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": -4.839442408410832e-05,
+          "prob_delta_negative": 0.5759999752044678,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0008179834112524986,
+          "ci95_low": -0.0007206856389530003,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": -4.839442408410832e-05,
+          "prob_delta_negative": 0.5820000171661377,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0010532848536968231,
+          "ci95_low": -0.0008212559623643756,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Weather",
+          "mean_delta": -4.839442408410832e-05,
+          "prob_delta_negative": 0.5796999931335449,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00010188079613726586,
+          "ci95_low": -0.00023142326972447336,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_Softmax",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -4.8485035222256556e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.7123000025749207,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 0.0035761722829192877,
+          "ci95_low": 0.002920089988037944,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": 0.0032480417285114527,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0038592168129980564,
+          "ci95_low": 0.0026520388200879097,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0032480417285114527,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003924788441509008,
+          "ci95_low": 0.0025881147012114525,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0032480417285114527,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.003966349642723799,
+          "ci95_low": 0.002530211117118597,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0032480417285114527,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.003611821448430419,
+          "ci95_low": 0.002858586609363556,
+          "ci_excludes_zero": true,
+          "comparison": "Top1_vs_C",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.003248232416808605,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 0.0021845216397196054,
+          "ci95_low": 0.0016754546668380499,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": 0.0019373694667592645,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.002452859655022621,
+          "ci95_low": 0.0014339078916236758,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0019373694667592645,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0025047268718481064,
+          "ci95_low": 0.0013646559091284871,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0019373694667592645,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0025359380524605513,
+          "ci95_low": 0.0013169493759050965,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Weather",
+          "mean_delta": 0.0019373694667592645,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0023490155581384897,
+          "ci95_low": 0.0015197438187897205,
+          "ci_excludes_zero": true,
+          "comparison": "Top2Equal_vs_C",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.00193768460303545,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": -0.00025184120750054717,
+          "ci95_low": -0.0007211990305222571,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": -0.00048646845971234143,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00010076532635139301,
+          "ci95_low": -0.0010220988187938929,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "Weather",
+          "mean_delta": -0.00048646845971234143,
+          "prob_delta_negative": 0.9463000297546387,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0002656643046066165,
+          "ci95_low": -0.0011320252669975162,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "Weather",
+          "mean_delta": -0.00048646845971234143,
+          "prob_delta_negative": 0.902999997138977,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00043677270878106356,
+          "ci95_low": -0.0012179703917354345,
+          "ci_excludes_zero": false,
+          "comparison": "Rank_vs_C",
+          "dataset": "Weather",
+          "mean_delta": -0.00048646845971234143,
+          "prob_delta_negative": 0.8680999875068665,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00025943262153305113,
+          "ci95_low": -0.0007248448673635721,
+          "ci_excludes_zero": true,
+          "comparison": "Rank_vs_C",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.0004863371141254902,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 0.0010331271914765239,
+          "ci95_low": -0.0033161190804094076,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Weather",
+          "mean_diff_candidate_minus_baseline": -0.0011562047293409705,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.006103403866291046,
+          "ci95_low": -0.007643456570804119,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Weather",
+          "mean_delta": -0.0011562047293409705,
+          "prob_delta_negative": 0.6255000233650208,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.008071793243288994,
+          "ci95_low": -0.009597874246537685,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Weather",
+          "mean_delta": -0.0011562047293409705,
+          "prob_delta_negative": 0.6150000095367432,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00948555301874876,
+          "ci95_low": -0.01110502053052187,
+          "ci_excludes_zero": false,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Weather",
+          "mean_delta": -0.0011562047293409705,
+          "prob_delta_negative": 0.6000999808311462,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0006668361602351069,
+          "ci95_low": -0.001638991991057992,
+          "ci_excludes_zero": true,
+          "comparison": "BestRule(LearnedProbe_Rank)_vs_Equal",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.0011561050778254867,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "integrity": {
+        "dataset": "Weather",
+        "predicted_excess_loss_unchanged_across_rules": true,
+        "reproduction_matches_saved": true,
+        "reproduction_max_diff_softmax_vs_saved": 0.0,
+        "result": "PASS",
+        "weights_unchanged_after_target_corruption": true
+      },
+      "margin_rows": [
+        {
+          "dataset": "Weather",
+          "margin_group": "high_margin",
+          "median_margin": 0.016819672659039497,
+          "num_windows": 5217,
+          "softmax_mae": 0.15765266120433807,
+          "top1_mae": 0.1599973887205124,
+          "top1_minus_top2equal": -0.00029300153255462646,
+          "top2equal_mae": 0.16029039025306702
+        },
+        {
+          "dataset": "Weather",
+          "margin_group": "low_margin",
+          "median_margin": 0.016819672659039497,
+          "num_windows": 5215,
+          "softmax_mae": 0.1608150601387024,
+          "top1_mae": 0.16584309935569763,
+          "top1_minus_top2equal": 0.0029149651527404785,
+          "top2equal_mae": 0.16292813420295715
+        }
+      ],
+      "rank_correlation_pvalue": 0.0,
+      "rank_correlation_spearman": 0.30056492260285367,
+      "result_rows": [
+        {
+          "dataset": "Weather",
+          "mae": 0.16034138202667236,
+          "method": "Equal",
+          "mse": 0.27881529927253723
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15967164933681488,
+          "method": "C",
+          "mse": 0.2837500274181366
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.16033731400966644,
+          "method": "Fixed_D",
+          "mse": 0.28375571966171265
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.1646728217601776,
+          "method": "Best_Single",
+          "mse": 0.28746822476387024
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15024299919605255,
+          "method": "Window_Oracle",
+          "mse": 0.24644289910793304
+        },
+        {
+          "dataset": "Weather",
+          "delta_vs_C": -0.0004380941390991211,
+          "delta_vs_Equal": -0.001107826828956604,
+          "delta_vs_LearnedProbe_Softmax": 0.0,
+          "mae": 0.15923355519771576,
+          "method": "LearnedProbe_Softmax",
+          "mse": 0.28195255994796753
+        },
+        {
+          "dataset": "Weather",
+          "delta_vs_C": 0.003248050808906555,
+          "delta_vs_Equal": 0.0025783181190490723,
+          "delta_vs_LearnedProbe_Softmax": 0.0036861449480056763,
+          "mae": 0.16291970014572144,
+          "method": "LearnedProbe_Top1",
+          "mse": 0.28592801094055176
+        },
+        {
+          "dataset": "Weather",
+          "delta_vs_C": 0.001937374472618103,
+          "delta_vs_Equal": 0.0012676417827606201,
+          "delta_vs_LearnedProbe_Softmax": 0.002375468611717224,
+          "mae": 0.16160902380943298,
+          "method": "LearnedProbe_Top2Equal",
+          "mse": 0.2851201891899109
+        },
+        {
+          "dataset": "Weather",
+          "delta_vs_C": -0.00048647820949554443,
+          "delta_vs_Equal": -0.0011562108993530273,
+          "delta_vs_LearnedProbe_Softmax": -4.838407039642334e-05,
+          "mae": 0.15918517112731934,
+          "method": "LearnedProbe_Rank",
+          "mse": 0.27691298723220825
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15132348239421844,
+          "method": "Best_Pair_Oracle",
+          "mse": 0.25436073541641235
+        }
+      ],
+      "temperature": 0.02,
+      "top1_accuracy": 0.44430598616600037,
+      "top1_oracle_headroom_vs_equal": 0.010098382830619812,
+      "top2_oracle_headroom_vs_equal": 0.009017899632453918,
+      "top2_recall": 0.7383052110671997
+    }
+  },
+  "decision": {
+    "ettm1_still_regresses": false,
+    "n_beats_c": 5,
+    "n_hurts_sig": 0,
+    "n_sig_vs_c": 3,
+    "reasoning": [
+      "Best decision rule per dataset (by MAE): [('ETTh1', 'LearnedProbe_Rank'), ('ETTh2', 'LearnedProbe_Rank'), ('ETTm1', 'LearnedProbe_Rank'), ('Weather', 'LearnedProbe_Rank'), ('Electricity', 'LearnedProbe_Rank')].",
+      "Best rule beats C on 5/5 datasets (need >=3).",
+      "Beats C with dependence-aware (block-bootstrap) support on 3/5 datasets.",
+      "Best rule significantly HURTS on 0/5 datasets.",
+      "ETTm1 still regresses under its best rule: False."
+    ],
+    "verdict": "CONTINUE"
+  },
+  "experiment": "learned_probe_decision_rules",
+  "runtime_sec": 33.5205864906311,
+  "test_set_accessed": false
+}

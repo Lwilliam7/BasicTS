@@ -1,0 +1,37 @@
+{
+  "ablations": {
+    "A_window_only": [
+      "A"
+    ],
+    "B_window_forecast": [
+      "A",
+      "B"
+    ],
+    "C_window_forecast_disagreement": [
+      "A",
+      "B",
+      "C"
+    ],
+    "D_full_behavioral": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "block_lengths": [
+    12,
+    24,
+    48
+  ],
+  "bootstrap_samples": 10000,
+  "code_version": "behavioral_competence_v2",
+  "created_at_utc": "2026-08-20T06:54:43.645182+00:00",
+  "internal_val_fraction": 0.2,
+  "perturbations": [
+    "P1_noise",
+    "P2_mask_recent",
+    "P3_smooth",
+    "P4_amplitude"
+  ]
+}

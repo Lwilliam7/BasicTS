@@ -1,0 +1,56 @@
+{
+  "ablations": {
+    "A_window_only": [
+      "A"
+    ],
+    "B_window_forecast": [
+      "A",
+      "B"
+    ],
+    "C_window_forecast_disagreement": [
+      "A",
+      "B",
+      "C"
+    ],
+    "D_full_behavioral": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "group_a": [
+    "trend_strength",
+    "volatility",
+    "mean_abs_first_diff",
+    "lag1_autocorr",
+    "spectral_entropy",
+    "recent_vs_full_mean_shift"
+  ],
+  "group_b": [
+    "forecast_variance",
+    "forecast_slope",
+    "first_forecast_vs_last_observed",
+    "mean_forecast_magnitude"
+  ],
+  "group_c": [
+    "dist_from_ensemble_mean",
+    "dist_from_ensemble_median",
+    "avg_pairwise_disagreement",
+    "early_horizon_disagreement",
+    "late_horizon_disagreement"
+  ],
+  "group_d_stats": [
+    "change",
+    "early_change",
+    "late_change",
+    "slope_change",
+    "variance_change"
+  ],
+  "perturbations": [
+    "P1_noise",
+    "P2_mask_recent",
+    "P3_smooth",
+    "P4_amplitude"
+  ]
+}
