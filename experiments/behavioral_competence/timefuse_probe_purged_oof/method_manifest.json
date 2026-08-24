@@ -1,0 +1,90 @@
+{
+  "created_at_utc": "2026-08-24T20:26:27.576243+00:00",
+  "decision_rule": "Section 36 of the task instructions, applied verbatim without modification after seeing results.",
+  "derangement": "Per-window non-identity permutation of the K=3 expert axis, chosen deterministically between the two non-identity permutations of {0,1,2} via SHA-256(dataset|absolute_window_start|seed); values never modified, only expert-identity correspondence.",
+  "expert_checkpoint_sha256": {
+    "BeijingAirQuality": {
+      "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "ETTm2": {
+      "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "ExchangeRate": {
+      "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "Traffic": {
+      "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    }
+  },
+  "expert_cores": {
+    "BeijingAirQuality": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ETTm2": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ExchangeRate": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "Traffic": [
+      "PatchTST",
+      "iTransformer",
+      "ModernTCN"
+    ]
+  },
+  "git_commit_sha": "2c694136a4baa8b05a87878d6774bacac510b771",
+  "manifest_type": "timefuse_probe_purged_oof_method_manifest",
+  "matched_passive_architecture": "CompetenceScorer(21) identical to LearnedProbe: 15 passive (group A+B+C) features + 6 constant-zero columns, same optimizer/lr/weight_decay/epochs/patience/Huber+ranking objective, seed=7. No ProbeGenerator, no perturbation penalties.",
+  "mechanism_diagnostic_model": "sklearn Ridge(alpha=1.0), fixed hyperparameter, fit on a chronological 80/20 (fit/holdout) split of the OOF Common window set (router_train only), never tuned, never touching router_val.",
+  "mechanism_thresholds": {
+    "active_only_r2": 0.01,
+    "active_only_spearman": 0.05
+  },
+  "meta_feature_names": [
+    "mean",
+    "std",
+    "min",
+    "max",
+    "skewness",
+    "kurtosis",
+    "autocorrelation_mean",
+    "stationarity",
+    "rate_of_change_mean",
+    "rate_of_change_std",
+    "autoreg_coef_mean",
+    "residual_std_mean",
+    "frequency_mean",
+    "frequency_peak",
+    "spectral_entropy",
+    "spectral_variation",
+    "spectral_skewness",
+    "spectral_kurtosis",
+    "covariance_mean",
+    "covariance_max",
+    "covariance_min",
+    "covariance_std"
+  ],
+  "min_train_fraction": 0.4,
+  "n_purge_folds": 2,
+  "score_scalers": "sklearn StandardScaler (via TimeFuse's own TorchScaler/get_scaler('standard')), fit independently for MatchedPassive/LearnedProbe/ShuffledProbe, each on its own honest OOF router_train Common-window score matrix ONLY, never on router_val.",
+  "selective_gate_used": false,
+  "shuffle_seed": 20260821,
+  "timefuse_input_dims": {
+    "augmented": 25,
+    "base": 22
+  }
+}
