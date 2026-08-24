@@ -1,0 +1,107 @@
+{
+  "basicts_commit_sha": "960c8d61f925caff94f7e3836f199ad532b82eac",
+  "created_at_utc": "2026-08-24T04:40:15.539292+00:00",
+  "decision_rule": "Section 23 of the task instructions, applied verbatim without modification after seeing results.",
+  "expert_checkpoint_sha256": {
+    "BeijingAirQuality": {
+      "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "ETTm2": {
+      "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "ExchangeRate": {
+      "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "Traffic": {
+      "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    }
+  },
+  "expert_cores": {
+    "BeijingAirQuality": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ETTm2": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ExchangeRate": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "Traffic": [
+      "PatchTST",
+      "iTransformer",
+      "ModernTCN"
+    ]
+  },
+  "gate_features": [
+    "probe_best_loss",
+    "probe_gap_best_second",
+    "probe_std",
+    "probe_agrees_timefuse_top",
+    "l1_weight_change",
+    "max_abs_weight_change",
+    "changes_top_expert",
+    "entropy_diff",
+    "mean_pairwise_disagreement"
+  ],
+  "gate_model": "L2-regularized logistic regression, hand-rolled deterministic full-batch gradient descent (reused unmodified from run_simplex_selective_probe.py)",
+  "gate_regularization_grid": [
+    0.001,
+    0.01,
+    0.1,
+    1.0
+  ],
+  "git_commit_sha": "960c8d61f925caff94f7e3836f199ad532b82eac",
+  "manifest_type": "timefuse_probe_manifest",
+  "official_files_used": [
+    "meta_feature.py::extract_meta_feature",
+    "timefuse.py::ModelFusor",
+    "timefuse.py::TorchScaler/get_scaler"
+  ],
+  "probe_feature_order": "one score per (window, core-expert), in bundle.core_names order, identical to every other method in this experiment family; lower predicted_excess_loss = better",
+  "probe_scaler": "sklearn StandardScaler (via TimeFuse's own TorchScaler/get_scaler('standard')), fit on router_train's raw [N,K] probe-loss matrix per dataset, per-expert-column",
+  "random_seeds": {
+    "shuffle_seed": 20260821,
+    "timefuse_fusor_seed": 2021,
+    "training_noise_reference_seed": 2022
+  },
+  "timefuse_commit_sha": "978e6c6b9e4f246632c269aa0f9beeb099eabcfc",
+  "timefuse_feature_names": [
+    "mean",
+    "std",
+    "min",
+    "max",
+    "skewness",
+    "kurtosis",
+    "autocorrelation_mean",
+    "stationarity",
+    "rate_of_change_mean",
+    "rate_of_change_std",
+    "autoreg_coef_mean",
+    "residual_std_mean",
+    "frequency_mean",
+    "frequency_peak",
+    "spectral_entropy",
+    "spectral_variation",
+    "spectral_skewness",
+    "spectral_kurtosis",
+    "covariance_mean",
+    "covariance_max",
+    "covariance_min",
+    "covariance_std"
+  ],
+  "timefuse_repository": "https://github.com/ZhiningLiu1998/TimeFuse"
+}

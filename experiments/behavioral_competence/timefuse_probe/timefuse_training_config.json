@@ -1,0 +1,61 @@
+{
+  "gate_feature_names": [
+    "probe_best_loss",
+    "probe_gap_best_second",
+    "probe_std",
+    "probe_agrees_timefuse_top",
+    "l1_weight_change",
+    "max_abs_weight_change",
+    "changes_top_expert",
+    "entropy_diff",
+    "mean_pairwise_disagreement"
+  ],
+  "gate_l2_grid": [
+    0.001,
+    0.01,
+    0.1,
+    1.0
+  ],
+  "meta_feature_names": [
+    "mean",
+    "std",
+    "min",
+    "max",
+    "skewness",
+    "kurtosis",
+    "autocorrelation_mean",
+    "stationarity",
+    "rate_of_change_mean",
+    "rate_of_change_std",
+    "autoreg_coef_mean",
+    "residual_std_mean",
+    "frequency_mean",
+    "frequency_peak",
+    "spectral_entropy",
+    "spectral_variation",
+    "spectral_skewness",
+    "spectral_kurtosis",
+    "covariance_mean",
+    "covariance_max",
+    "covariance_min",
+    "covariance_std"
+  ],
+  "same_across_all_four_methods": [
+    "optimizer(Adam)",
+    "lr",
+    "scheduler(StepLR)",
+    "loss(SmoothL1Loss beta=0.01)",
+    "epochs(5)",
+    "batch_size(64)",
+    "initial_seed(2021)"
+  ],
+  "shuffle_seed": 20260821,
+  "timefuse_batch_size": 64,
+  "timefuse_gamma": 0.1,
+  "timefuse_huber_beta": 0.01,
+  "timefuse_lr": 0.0005,
+  "timefuse_meta_dim": 22,
+  "timefuse_n_epochs": 5,
+  "timefuse_seed": 2021,
+  "timefuse_step_size": 10
+}

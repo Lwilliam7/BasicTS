@@ -1,0 +1,2236 @@
+{
+  "created_at_utc": "2026-08-24T04:40:15.539292+00:00",
+  "datasets": {
+    "BeijingAirQuality": {
+      "capacity": {
+        "always_on_probe_router_params": 78,
+        "dataset": "BeijingAirQuality",
+        "input_dim_augmented": 25,
+        "input_dim_base": 22,
+        "selective_probe_gate_params": 10,
+        "selective_probe_router_params": 78,
+        "timefuse_router_params": 69
+      },
+      "checkpoint_hashes": {
+        "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+        "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+        "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "BeijingAirQuality",
+      "dependence_rows": [
+        {
+          "ci95_high": -0.0005368865677155554,
+          "ci95_low": -0.0011480603134259582,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": -0.0008374896133318543,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0001706230395939201,
+          "ci95_low": -0.0016525133978575468,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -0.0008374896133318543,
+          "prob_delta_negative": 0.9932000041007996,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0002331067662453279,
+          "ci95_low": -0.0016424678033217788,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": -0.0008374896133318543,
+          "prob_delta_negative": 0.9962999820709229,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0002683908096514642,
+          "ci95_low": -0.0015495311236009002,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -0.0008374896133318543,
+          "prob_delta_negative": 0.9983999729156494,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0004565943672787398,
+          "ci95_low": -0.0012015877291560173,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0008376119658350945,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        },
+        {
+          "ci95_high": -0.0004251037025824189,
+          "ci95_low": -0.0009690900333225727,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": -0.0006940072635188699,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -7.238078978843987e-05,
+          "ci95_low": -0.0014067505253478885,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -0.0006940072635188699,
+          "prob_delta_negative": 0.9858999848365784,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00013392313849180937,
+          "ci95_low": -0.0013830868992954493,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": -0.0006940072635188699,
+          "prob_delta_negative": 0.9908999800682068,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0001764545449987054,
+          "ci95_low": -0.0012892342638224363,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -0.0006940072635188699,
+          "prob_delta_negative": 0.9957000017166138,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00032389757689088583,
+          "ci95_low": -0.00105977279599756,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.000694137706886977,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9997000098228455,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        },
+        {
+          "ci95_high": 0.00021135657152626663,
+          "ci95_low": 7.910243584774435e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": 0.0001434823643648997,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00029905280098319054,
+          "ci95_low": 2.0959974790457636e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": 0.0001434823643648997,
+          "prob_delta_negative": 0.010599999688565731,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00031913144630379975,
+          "ci95_low": 1.7188043784699403e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": 0.0001434823643648997,
+          "prob_delta_negative": 0.014299999922513962,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0003273174515925348,
+          "ci95_low": 9.87500334304059e-06,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": 0.0001434823643648997,
+          "prob_delta_negative": 0.017899999395012856,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00021255537285469472,
+          "ci95_low": 7.277757686097175e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.00014347420074045658,
+          "num_phases": 12,
+          "prob_delta_negative": 9.999999747378752e-05,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        },
+        {
+          "ci95_high": -0.00017354536976199597,
+          "ci95_low": -0.00035779731115326285,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": -0.000262488960288465,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.00011592440569074824,
+          "ci95_low": -0.0004495403845794499,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -0.000262488960288465,
+          "prob_delta_negative": 0.9994999766349792,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00011417910718591884,
+          "ci95_low": -0.00046407111221924424,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": -0.000262488960288465,
+          "prob_delta_negative": 0.9997000098228455,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.00011556076060514897,
+          "ci95_low": -0.0004658199322875589,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -0.000262488960288465,
+          "prob_delta_negative": 0.9998999834060669,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00017605120956432074,
+          "ci95_low": -0.0003495996934361756,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00026246567722409964,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        }
+      ],
+      "gate_diag_rows": [
+        {
+          "dataset": "BeijingAirQuality",
+          "fraction_gate_gt_0.9": 0.0,
+          "fraction_gate_lt_0.1": 0.0,
+          "mean_gate": 0.5075386762619019,
+          "median_gate": 0.5067278742790222,
+          "section": "gate_behavior"
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "fraction_windows_probe_helps": 0.523473858833313,
+          "fraction_windows_probe_hurts": 0.476526141166687,
+          "gate_lower_on_harmful": true,
+          "num_rejected_windows": 0,
+          "num_trusted_windows": 0,
+          "probe_gain_on_rejected": NaN,
+          "probe_gain_on_trusted": NaN,
+          "section": "gate_usefulness"
+        }
+      ],
+      "gate_l2_rows": [
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.4898228943347931,
+          "oof_logloss": 0.6960068941116333,
+          "oof_windows": 11349,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.4892942011356354,
+          "oof_logloss": 0.6957674622535706,
+          "oof_windows": 11349,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.481363981962204,
+          "oof_logloss": 0.6947851181030273,
+          "oof_windows": 11349,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.49669575691223145,
+          "oof_logloss": 0.6936528086662292,
+          "oof_windows": 11349,
+          "probe_variant": "real",
+          "selected": true
+        },
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.5210150480270386,
+          "oof_logloss": 0.6925222873687744,
+          "oof_windows": 11349,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.5235703587532043,
+          "oof_logloss": 0.6924034357070923,
+          "oof_windows": 11349,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.5206626057624817,
+          "oof_logloss": 0.6920793652534485,
+          "oof_windows": 11349,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.5270949006080627,
+          "oof_logloss": 0.691999614238739,
+          "oof_windows": 11349,
+          "probe_variant": "shuffled",
+          "selected": true
+        }
+      ],
+      "gate_label_positive_rate_real": 0.5086000561714172,
+      "gate_selected_l2_real": 1.0,
+      "gate_selected_l2_shuffled": 1.0,
+      "integrity": {
+        "dataset": "BeijingAirQuality",
+        "expert_checkpoints_unchanged": true,
+        "gate_trained_router_train_only": true,
+        "meta_features_target_free_at_inference": true,
+        "no_router_val_fitting": true,
+        "no_test_cache_loaded": true,
+        "official_timefuse_commit_recorded": true,
+        "probe_parameters_frozen": true,
+        "probe_scaler_fit_router_train_only": true,
+        "result": "PASS",
+        "router_val_target_corruption_invariant_gate": true,
+        "router_val_target_corruption_invariant_weights": true,
+        "same_expert_checkpoints": true,
+        "same_expert_ordering": true,
+        "timefuse_scaler_fit_router_train_only": true,
+        "training_noise_reference_max_weight_diff": 0.632689356803894,
+        "weights_c_unmutated": true,
+        "zero_gate_diagnostic": {
+          "mae_diff_vs_b_zeroprobe": 0.00010162591934204102,
+          "max_pred_diff_normalized_vs_b_zeroprobe": 0.6484785676002502,
+          "max_weight_diff_vs_b_zeroprobe": 0.09369450807571411
+        },
+        "zero_probe_diagnostic": {
+          "mae_diff_vs_base_timefuse": -0.0007137656211853027,
+          "max_pred_diff_normalized": 2.4932706356048584,
+          "max_weight_diff": 0.3754591941833496
+        },
+        "zero_probe_within_training_noise_scale": true
+      },
+      "meta_feature_names": [
+        "mean",
+        "std",
+        "min",
+        "max",
+        "skewness",
+        "kurtosis",
+        "autocorrelation_mean",
+        "stationarity",
+        "rate_of_change_mean",
+        "rate_of_change_std",
+        "autoreg_coef_mean",
+        "residual_std_mean",
+        "frequency_mean",
+        "frequency_peak",
+        "spectral_entropy",
+        "spectral_variation",
+        "spectral_skewness",
+        "spectral_kurtosis",
+        "covariance_mean",
+        "covariance_max",
+        "covariance_min",
+        "covariance_std"
+      ],
+      "primary_always_on_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": -0.0002331067662453279,
+        "ci95_low": -0.0016424678033217788,
+        "ci_excludes_zero": true,
+        "comparison": "AlwaysOn_vs_TimeFuse",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": -0.0008374896133318543,
+        "prob_delta_negative": 0.9962999820709229,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_alwayson": {
+        "block_size": 24,
+        "ci95_high": 0.00031913144630379975,
+        "ci95_low": 1.7188043784699403e-05,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_AlwaysOn",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": 0.0001434823643648997,
+        "prob_delta_negative": 0.014299999922513962,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": -0.00011417910718591884,
+        "ci95_low": -0.00046407111221924424,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_SelectiveShuffled",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": -0.000262488960288465,
+        "prob_delta_negative": 0.9997000098228455,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": -0.00013392313849180937,
+        "ci95_low": -0.0013830868992954493,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_TimeFuse",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": -0.0006940072635188699,
+        "prob_delta_negative": 0.9908999800682068,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "BeijingAirQuality",
+          "mae": 0.2581412196159363,
+          "method": "TimeFuse",
+          "mse": 0.19353599846363068
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "delta_vs_timefuse": -0.000837475061416626,
+          "mae": 0.25730374455451965,
+          "method": "TimeFuse_AlwaysOnProbe",
+          "mse": 0.19128818809986115,
+          "relative_pct_vs_timefuse": 0.32442515870290894
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "delta_vs_always_on": 0.00014349818229675293,
+          "delta_vs_timefuse": -0.000693976879119873,
+          "mae": 0.2574472427368164,
+          "method": "TimeFuse_SelectiveProbe",
+          "mse": 0.19173912703990936,
+          "relative_pct_vs_timefuse": 0.2688361355665612
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "delta_selective_real_vs_shuffled": -0.0002624690532684326,
+          "delta_vs_timefuse": -0.00043150782585144043,
+          "mae": 0.25770971179008484,
+          "method": "TimeFuse_SelectiveShuffledProbe",
+          "mse": 0.19239889085292816
+        }
+      ],
+      "weight_change_effect": {
+        "dataset": "BeijingAirQuality",
+        "fraction_always_on_changes_top": 0.5805723667144775,
+        "probe_gain_when_changes_top": 0.0005515085649676621,
+        "probe_gain_when_keeps_top": 0.0012333451304584742
+      },
+      "weight_rows": [
+        {
+          "dataset": "BeijingAirQuality",
+          "fraction_top_expert_changed_vs_timefuse": 0.0,
+          "mean_effective_num_experts": 2.7343976497650146,
+          "mean_entropy": 1.0378607511520386,
+          "mean_max_weight": 0.4561697244644165,
+          "median_effective_num_experts": 2.81276798248291,
+          "median_entropy": 1.064702033996582,
+          "method": "TimeFuse"
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "fraction_top_expert_changed_vs_timefuse": 0.5805723667144775,
+          "mean_effective_num_experts": 2.7926735877990723,
+          "mean_entropy": 1.0524991750717163,
+          "mean_max_weight": 0.4333825409412384,
+          "median_effective_num_experts": 2.879096269607544,
+          "median_entropy": 1.0775229930877686,
+          "method": "TimeFuse_AlwaysOnProbe"
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "fraction_top_expert_changed_vs_timefuse": 0.5200902223587036,
+          "mean_effective_num_experts": 2.810462236404419,
+          "mean_entropy": 1.0546181201934814,
+          "mean_max_weight": 0.42683929204940796,
+          "median_effective_num_experts": 2.898555278778076,
+          "median_entropy": 1.0810014009475708,
+          "method": "TimeFuse_SelectiveProbe"
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "fraction_top_expert_changed_vs_timefuse": 0.47257858514785767,
+          "mean_effective_num_experts": 2.803438901901245,
+          "mean_entropy": 1.0517795085906982,
+          "mean_max_weight": 0.4292480945587158,
+          "median_effective_num_experts": 2.9008874893188477,
+          "median_entropy": 1.0815367698669434,
+          "method": "TimeFuse_SelectiveShuffledProbe"
+        }
+      ]
+    },
+    "ETTm2": {
+      "capacity": {
+        "always_on_probe_router_params": 78,
+        "dataset": "ETTm2",
+        "input_dim_augmented": 25,
+        "input_dim_base": 22,
+        "selective_probe_gate_params": 10,
+        "selective_probe_router_params": 78,
+        "timefuse_router_params": 69
+      },
+      "checkpoint_hashes": {
+        "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+        "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+        "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTm2",
+      "dependence_rows": [
+        {
+          "ci95_high": 9.753255289979279e-05,
+          "ci95_low": -5.653008702211082e-05,
+          "ci_excludes_zero": false,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": 2.1007637769798748e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00017790649144444615,
+          "ci95_low": -0.00013820007734466344,
+          "ci_excludes_zero": false,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": 2.1007637769798748e-05,
+          "prob_delta_negative": 0.4138999879360199,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00019109247659798712,
+          "ci95_low": -0.00015307801368180662,
+          "ci_excludes_zero": false,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": 2.1007637769798748e-05,
+          "prob_delta_negative": 0.4169999957084656,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00018903485033661127,
+          "ci95_low": -0.00015631283167749643,
+          "ci_excludes_zero": false,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": 2.1007637769798748e-05,
+          "prob_delta_negative": 0.42800000309944153,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 9.258917270926759e-05,
+          "ci95_low": -5.219980448600836e-05,
+          "ci_excludes_zero": false,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 2.1007866962463595e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.2928999960422516,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 4.632278432836756e-05,
+          "ci95_low": -7.695628301007673e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": -1.4617097804148216e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00011538509716046974,
+          "ci95_low": -0.00014796537288930267,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -1.4617097804148216e-05,
+          "prob_delta_negative": 0.599399983882904,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0001292694068979472,
+          "ci95_low": -0.00015793033526279032,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": -1.4617097804148216e-05,
+          "prob_delta_negative": 0.5947999954223633,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00012861116556450725,
+          "ci95_low": -0.0001623654825380072,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -1.4617097804148216e-05,
+          "prob_delta_negative": 0.5997999906539917,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 4.5174740080256015e-05,
+          "ci95_low": -7.59288013796322e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -1.4616428416047711e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.6823999881744385,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": -1.342079121968709e-05,
+          "ci95_low": -5.769700146629475e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": -3.562474012142047e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 6.71803172735963e-06,
+          "ci95_low": -7.679004193050787e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -3.562474012142047e-05,
+          "prob_delta_negative": 0.953499972820282,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 9.993080311687663e-06,
+          "ci95_low": -8.105375309241936e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": -3.562474012142047e-05,
+          "prob_delta_negative": 0.9376000165939331,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 9.273962859879248e-06,
+          "ci95_low": -7.982514944160357e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -3.562474012142047e-05,
+          "prob_delta_negative": 0.9352999925613403,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -2.1597483282675967e-05,
+          "ci95_low": -4.9975496949627995e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -3.5624299925984815e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 2.458411836414598e-05,
+          "ci95_low": -6.53578172205016e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": -2.0435047190403566e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 6.851842772448435e-05,
+          "ci95_low": -0.00010948138515232131,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -2.0435047190403566e-05,
+          "prob_delta_negative": 0.6890000104904175,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 7.463309884769842e-05,
+          "ci95_low": -0.00011825762339867651,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": -2.0435047190403566e-05,
+          "prob_delta_negative": 0.6711999773979187,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 7.564456609543413e-05,
+          "ci95_low": -0.0001197132223751396,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -2.0435047190403566e-05,
+          "prob_delta_negative": 0.6697999835014343,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 2.1284806280164048e-05,
+          "ci95_low": -5.852117465110496e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -2.0430916265468113e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.8385000228881836,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "gate_diag_rows": [
+        {
+          "dataset": "ETTm2",
+          "fraction_gate_gt_0.9": 0.0,
+          "fraction_gate_lt_0.1": 0.0,
+          "mean_gate": 0.5321990847587585,
+          "median_gate": 0.5270727276802063,
+          "section": "gate_behavior"
+        },
+        {
+          "dataset": "ETTm2",
+          "fraction_windows_probe_helps": 0.48269516229629517,
+          "fraction_windows_probe_hurts": 0.5173048377037048,
+          "gate_lower_on_harmful": true,
+          "num_rejected_windows": 0,
+          "num_trusted_windows": 0,
+          "probe_gain_on_rejected": NaN,
+          "probe_gain_on_trusted": NaN,
+          "section": "gate_usefulness"
+        }
+      ],
+      "gate_l2_rows": [
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.5377580523490906,
+          "oof_logloss": 0.6897628307342529,
+          "oof_windows": 18261,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.536608099937439,
+          "oof_logloss": 0.6882615685462952,
+          "oof_windows": 18261,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.5394009351730347,
+          "oof_logloss": 0.6861990094184875,
+          "oof_windows": 18261,
+          "probe_variant": "real",
+          "selected": true
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.5407151579856873,
+          "oof_logloss": 0.6876510977745056,
+          "oof_windows": 18261,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.5031487941741943,
+          "oof_logloss": 0.6947305202484131,
+          "oof_windows": 18261,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.5035868883132935,
+          "oof_logloss": 0.6944339275360107,
+          "oof_windows": 18261,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.5025464296340942,
+          "oof_logloss": 0.6937260627746582,
+          "oof_windows": 18261,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.4965226352214813,
+          "oof_logloss": 0.6933212280273438,
+          "oof_windows": 18261,
+          "probe_variant": "shuffled",
+          "selected": true
+        }
+      ],
+      "gate_label_positive_rate_real": 0.5467011332511902,
+      "gate_selected_l2_real": 0.1,
+      "gate_selected_l2_shuffled": 1.0,
+      "integrity": {
+        "dataset": "ETTm2",
+        "expert_checkpoints_unchanged": true,
+        "gate_trained_router_train_only": true,
+        "meta_features_target_free_at_inference": true,
+        "no_router_val_fitting": true,
+        "no_test_cache_loaded": true,
+        "official_timefuse_commit_recorded": true,
+        "probe_parameters_frozen": true,
+        "probe_scaler_fit_router_train_only": true,
+        "result": "PASS",
+        "router_val_target_corruption_invariant_gate": true,
+        "router_val_target_corruption_invariant_weights": true,
+        "same_expert_checkpoints": true,
+        "same_expert_ordering": true,
+        "timefuse_scaler_fit_router_train_only": true,
+        "training_noise_reference_max_weight_diff": 0.7771516442298889,
+        "weights_c_unmutated": true,
+        "zero_gate_diagnostic": {
+          "mae_diff_vs_b_zeroprobe": -2.5898218154907227e-05,
+          "max_pred_diff_normalized_vs_b_zeroprobe": 0.03226875513792038,
+          "max_weight_diff_vs_b_zeroprobe": 0.07571706175804138
+        },
+        "zero_probe_diagnostic": {
+          "mae_diff_vs_base_timefuse": 4.272162914276123e-05,
+          "max_pred_diff_normalized": 0.21988892555236816,
+          "max_weight_diff": 0.4375496208667755
+        },
+        "zero_probe_within_training_noise_scale": true
+      },
+      "meta_feature_names": [
+        "mean",
+        "std",
+        "min",
+        "max",
+        "skewness",
+        "kurtosis",
+        "autocorrelation_mean",
+        "stationarity",
+        "rate_of_change_mean",
+        "rate_of_change_std",
+        "autoreg_coef_mean",
+        "residual_std_mean",
+        "frequency_mean",
+        "frequency_peak",
+        "spectral_entropy",
+        "spectral_variation",
+        "spectral_skewness",
+        "spectral_kurtosis",
+        "covariance_mean",
+        "covariance_max",
+        "covariance_min",
+        "covariance_std"
+      ],
+      "primary_always_on_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": 0.00019109247659798712,
+        "ci95_low": -0.00015307801368180662,
+        "ci_excludes_zero": false,
+        "comparison": "AlwaysOn_vs_TimeFuse",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": 2.1007637769798748e-05,
+        "prob_delta_negative": 0.4169999957084656,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_alwayson": {
+        "block_size": 24,
+        "ci95_high": 9.993080311687663e-06,
+        "ci95_low": -8.105375309241936e-05,
+        "ci_excludes_zero": false,
+        "comparison": "Selective_vs_AlwaysOn",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -3.562474012142047e-05,
+        "prob_delta_negative": 0.9376000165939331,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": 7.463309884769842e-05,
+        "ci95_low": -0.00011825762339867651,
+        "ci_excludes_zero": false,
+        "comparison": "Selective_vs_SelectiveShuffled",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -2.0435047190403566e-05,
+        "prob_delta_negative": 0.6711999773979187,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": 0.0001292694068979472,
+        "ci95_low": -0.00015793033526279032,
+        "ci_excludes_zero": false,
+        "comparison": "Selective_vs_TimeFuse",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -1.4617097804148216e-05,
+        "prob_delta_negative": 0.5947999954223633,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "ETTm2",
+          "mae": 0.1602775752544403,
+          "method": "TimeFuse",
+          "mse": 0.06040837615728378
+        },
+        {
+          "dataset": "ETTm2",
+          "delta_vs_timefuse": 2.0995736122131348e-05,
+          "mae": 0.16029857099056244,
+          "method": "TimeFuse_AlwaysOnProbe",
+          "mse": 0.060310471802949905,
+          "relative_pct_vs_timefuse": -0.013099609280213193
+        },
+        {
+          "dataset": "ETTm2",
+          "delta_vs_always_on": -3.5643577575683594e-05,
+          "delta_vs_timefuse": -1.4647841453552246e-05,
+          "mae": 0.16026292741298676,
+          "method": "TimeFuse_SelectiveProbe",
+          "mse": 0.06030091643333435,
+          "relative_pct_vs_timefuse": 0.009139046076969175
+        },
+        {
+          "dataset": "ETTm2",
+          "delta_selective_real_vs_shuffled": -2.0459294319152832e-05,
+          "delta_vs_timefuse": 5.811452865600586e-06,
+          "mae": 0.1602833867073059,
+          "method": "TimeFuse_SelectiveShuffledProbe",
+          "mse": 0.06035858392715454
+        }
+      ],
+      "weight_change_effect": {
+        "dataset": "ETTm2",
+        "fraction_always_on_changes_top": 0.1942521631717682,
+        "probe_gain_when_changes_top": 0.00016574384062550962,
+        "probe_gain_when_keeps_top": -6.603025394724682e-05
+      },
+      "weight_rows": [
+        {
+          "dataset": "ETTm2",
+          "fraction_top_expert_changed_vs_timefuse": 0.0,
+          "mean_effective_num_experts": 2.6803977489471436,
+          "mean_entropy": 1.0293564796447754,
+          "mean_max_weight": 0.4713394343852997,
+          "median_effective_num_experts": 2.7363121509552,
+          "median_entropy": 1.0495784282684326,
+          "method": "TimeFuse"
+        },
+        {
+          "dataset": "ETTm2",
+          "fraction_top_expert_changed_vs_timefuse": 0.1942521631717682,
+          "mean_effective_num_experts": 2.576788902282715,
+          "mean_entropy": 1.004399061203003,
+          "mean_max_weight": 0.49805089831352234,
+          "median_effective_num_experts": 2.632946729660034,
+          "median_entropy": 1.0272085666656494,
+          "method": "TimeFuse_AlwaysOnProbe"
+        },
+        {
+          "dataset": "ETTm2",
+          "fraction_top_expert_changed_vs_timefuse": 0.15201961994171143,
+          "mean_effective_num_experts": 2.602966547012329,
+          "mean_entropy": 1.0112292766571045,
+          "mean_max_weight": 0.49258410930633545,
+          "median_effective_num_experts": 2.659296751022339,
+          "median_entropy": 1.0336954593658447,
+          "method": "TimeFuse_SelectiveProbe"
+        },
+        {
+          "dataset": "ETTm2",
+          "fraction_top_expert_changed_vs_timefuse": 0.10382896661758423,
+          "mean_effective_num_experts": 2.5905346870422363,
+          "mean_entropy": 1.00803804397583,
+          "mean_max_weight": 0.4982326328754425,
+          "median_effective_num_experts": 2.6558661460876465,
+          "median_entropy": 1.0329066514968872,
+          "method": "TimeFuse_SelectiveShuffledProbe"
+        }
+      ]
+    },
+    "ExchangeRate": {
+      "capacity": {
+        "always_on_probe_router_params": 78,
+        "dataset": "ExchangeRate",
+        "input_dim_augmented": 25,
+        "input_dim_base": 22,
+        "selective_probe_gate_params": 10,
+        "selective_probe_router_params": 78,
+        "timefuse_router_params": 69
+      },
+      "checkpoint_hashes": {
+        "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+        "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+        "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ExchangeRate",
+      "dependence_rows": [
+        {
+          "ci95_high": -0.0019650980830192566,
+          "ci95_low": -0.00408690981566906,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": -0.003008023602887988,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.000612775154877454,
+          "ci95_low": -0.005524565000087023,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.003008023602887988,
+          "prob_delta_negative": 0.9922000169754028,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00035514638875611126,
+          "ci95_low": -0.005519437603652477,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": -0.003008023602887988,
+          "prob_delta_negative": 0.9871000051498413,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0007043180521577597,
+          "ci95_low": -0.005434813909232616,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.003008023602887988,
+          "prob_delta_negative": 0.9940000176429749,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0025272807106375694,
+          "ci95_low": -0.00346373044885695,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.003008828265592456,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        },
+        {
+          "ci95_high": -0.0018822206184267998,
+          "ci95_low": -0.004012175370007753,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": -0.00293112569488585,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0005193797987885773,
+          "ci95_low": -0.005458759609609842,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.00293112569488585,
+          "prob_delta_negative": 0.9904999732971191,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00028802952147088945,
+          "ci95_low": -0.005496435333043337,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": -0.00293112569488585,
+          "prob_delta_negative": 0.9850000143051147,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0006181877106428146,
+          "ci95_low": -0.005392319522798061,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.00293112569488585,
+          "prob_delta_negative": 0.993399977684021,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00245497259311378,
+          "ci95_low": -0.003377562388777733,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0029320328030735254,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        },
+        {
+          "ci95_high": 0.00012474425602704287,
+          "ci95_low": 2.8920212571392767e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": 7.689756603213027e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00016220592078752816,
+          "ci95_low": -2.7312305974191986e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": 7.689756603213027e-05,
+          "prob_delta_negative": 0.07599999755620956,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00016362355381716043,
+          "ci95_low": -3.661783557618037e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": 7.689756603213027e-05,
+          "prob_delta_negative": 0.09809999912977219,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00016744430467952043,
+          "ci95_low": -4.7007684770505875e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": 7.689756603213027e-05,
+          "prob_delta_negative": 0.11599999666213989,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00010505221143830568,
+          "ci95_low": 4.7801506298128515e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 7.679573900531977e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        },
+        {
+          "ci95_high": 0.00018643187650013715,
+          "ci95_low": -3.51885064446833e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": 7.050860585877672e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00026760471519082785,
+          "ci95_low": -9.530729585094377e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": 7.050860585877672e-05,
+          "prob_delta_negative": 0.21089999377727509,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00027485218015499413,
+          "ci95_low": -9.475670231040567e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": 7.050860585877672e-05,
+          "prob_delta_negative": 0.22040000557899475,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.000269056559773162,
+          "ci95_low": -8.300136687466875e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": 7.050860585877672e-05,
+          "prob_delta_negative": 0.21089999377727509,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0001623579446459189,
+          "ci95_low": -2.1147061488591135e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 7.084820390446112e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.06599999964237213,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        }
+      ],
+      "gate_diag_rows": [
+        {
+          "dataset": "ExchangeRate",
+          "fraction_gate_gt_0.9": 0.02480510249733925,
+          "fraction_gate_lt_0.1": 0.0,
+          "mean_gate": 0.5667610168457031,
+          "median_gate": 0.6147950291633606,
+          "section": "gate_behavior"
+        },
+        {
+          "dataset": "ExchangeRate",
+          "fraction_windows_probe_helps": 0.5669738054275513,
+          "fraction_windows_probe_hurts": 0.4330262243747711,
+          "gate_lower_on_harmful": true,
+          "num_rejected_windows": 0,
+          "num_trusted_windows": 35,
+          "probe_gain_on_rejected": NaN,
+          "probe_gain_on_trusted": -0.01566951349377632,
+          "section": "gate_usefulness"
+        }
+      ],
+      "gate_l2_rows": [
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.739034116268158,
+          "oof_logloss": 0.5773573517799377,
+          "oof_windows": 2257,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.739034116268158,
+          "oof_logloss": 0.5751427412033081,
+          "oof_windows": 2257,
+          "probe_variant": "real",
+          "selected": true
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.7239698767662048,
+          "oof_logloss": 0.5786579251289368,
+          "oof_windows": 2257,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.6437749266624451,
+          "oof_logloss": 0.6314737200737,
+          "oof_windows": 2257,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.5653522610664368,
+          "oof_logloss": 0.7088679671287537,
+          "oof_windows": 2257,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.5662383437156677,
+          "oof_logloss": 0.7059184908866882,
+          "oof_windows": 2257,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.5830748677253723,
+          "oof_logloss": 0.690214216709137,
+          "oof_windows": 2257,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.6331413388252258,
+          "oof_logloss": 0.6702753305435181,
+          "oof_windows": 2257,
+          "probe_variant": "shuffled",
+          "selected": true
+        }
+      ],
+      "gate_label_positive_rate_real": 0.3938319683074951,
+      "gate_selected_l2_real": 0.01,
+      "gate_selected_l2_shuffled": 1.0,
+      "integrity": {
+        "dataset": "ExchangeRate",
+        "expert_checkpoints_unchanged": true,
+        "gate_trained_router_train_only": true,
+        "meta_features_target_free_at_inference": true,
+        "no_router_val_fitting": true,
+        "no_test_cache_loaded": true,
+        "official_timefuse_commit_recorded": true,
+        "probe_parameters_frozen": true,
+        "probe_scaler_fit_router_train_only": true,
+        "result": "PASS",
+        "router_val_target_corruption_invariant_gate": true,
+        "router_val_target_corruption_invariant_weights": true,
+        "same_expert_checkpoints": true,
+        "same_expert_ordering": true,
+        "timefuse_scaler_fit_router_train_only": true,
+        "training_noise_reference_max_weight_diff": 0.9483982920646667,
+        "weights_c_unmutated": true,
+        "zero_gate_diagnostic": {
+          "mae_diff_vs_b_zeroprobe": 7.157027721405029e-05,
+          "max_pred_diff_normalized_vs_b_zeroprobe": 0.010747747495770454,
+          "max_weight_diff_vs_b_zeroprobe": 0.020007848739624023
+        },
+        "zero_probe_diagnostic": {
+          "mae_diff_vs_base_timefuse": -0.003038346767425537,
+          "max_pred_diff_normalized": 0.5929202437400818,
+          "max_weight_diff": 0.9998258352279663
+        },
+        "zero_probe_within_training_noise_scale": true
+      },
+      "meta_feature_names": [
+        "mean",
+        "std",
+        "min",
+        "max",
+        "skewness",
+        "kurtosis",
+        "autocorrelation_mean",
+        "stationarity",
+        "rate_of_change_mean",
+        "rate_of_change_std",
+        "autoreg_coef_mean",
+        "residual_std_mean",
+        "frequency_mean",
+        "frequency_peak",
+        "spectral_entropy",
+        "spectral_variation",
+        "spectral_skewness",
+        "spectral_kurtosis",
+        "covariance_mean",
+        "covariance_max",
+        "covariance_min",
+        "covariance_std"
+      ],
+      "primary_always_on_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": -0.00035514638875611126,
+        "ci95_low": -0.005519437603652477,
+        "ci_excludes_zero": true,
+        "comparison": "AlwaysOn_vs_TimeFuse",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": -0.003008023602887988,
+        "prob_delta_negative": 0.9871000051498413,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_alwayson": {
+        "block_size": 24,
+        "ci95_high": 0.00016362355381716043,
+        "ci95_low": -3.661783557618037e-05,
+        "ci_excludes_zero": false,
+        "comparison": "Selective_vs_AlwaysOn",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": 7.689756603213027e-05,
+        "prob_delta_negative": 0.09809999912977219,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": 0.00027485218015499413,
+        "ci95_low": -9.475670231040567e-05,
+        "ci_excludes_zero": false,
+        "comparison": "Selective_vs_SelectiveShuffled",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": 7.050860585877672e-05,
+        "prob_delta_negative": 0.22040000557899475,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": -0.00028802952147088945,
+        "ci95_low": -0.005496435333043337,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_TimeFuse",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": -0.00293112569488585,
+        "prob_delta_negative": 0.9850000143051147,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "ExchangeRate",
+          "mae": 0.12842421233654022,
+          "method": "TimeFuse",
+          "mse": 0.036707475781440735
+        },
+        {
+          "dataset": "ExchangeRate",
+          "delta_vs_timefuse": -0.0030080080032348633,
+          "mae": 0.12541620433330536,
+          "method": "TimeFuse_AlwaysOnProbe",
+          "mse": 0.03559718653559685,
+          "relative_pct_vs_timefuse": 2.342243684821886
+        },
+        {
+          "dataset": "ExchangeRate",
+          "delta_vs_always_on": 7.68899917602539e-05,
+          "delta_vs_timefuse": -0.0029311180114746094,
+          "mae": 0.1254930943250656,
+          "method": "TimeFuse_SelectiveProbe",
+          "mse": 0.035608891397714615,
+          "relative_pct_vs_timefuse": 2.2823718036856713
+        },
+        {
+          "dataset": "ExchangeRate",
+          "delta_selective_real_vs_shuffled": 7.048249244689941e-05,
+          "delta_vs_timefuse": -0.003001600503921509,
+          "mae": 0.1254226118326187,
+          "method": "TimeFuse_SelectiveShuffledProbe",
+          "mse": 0.035569120198488235
+        }
+      ],
+      "weight_change_effect": {
+        "dataset": "ExchangeRate",
+        "fraction_always_on_changes_top": 0.6966690421104431,
+        "probe_gain_when_changes_top": 0.003953920677304268,
+        "probe_gain_when_keeps_top": 0.0008355544414371252
+      },
+      "weight_rows": [
+        {
+          "dataset": "ExchangeRate",
+          "fraction_top_expert_changed_vs_timefuse": 0.0,
+          "mean_effective_num_experts": 2.0615925788879395,
+          "mean_entropy": 0.7591644525527954,
+          "mean_max_weight": 0.6468095779418945,
+          "median_effective_num_experts": 2.00803542137146,
+          "median_entropy": 0.841040849685669,
+          "method": "TimeFuse"
+        },
+        {
+          "dataset": "ExchangeRate",
+          "fraction_top_expert_changed_vs_timefuse": 0.6966690421104431,
+          "mean_effective_num_experts": 2.374394178390503,
+          "mean_entropy": 0.8888242840766907,
+          "mean_max_weight": 0.5611889362335205,
+          "median_effective_num_experts": 2.6040351390838623,
+          "median_entropy": 1.0218055248260498,
+          "method": "TimeFuse_AlwaysOnProbe"
+        },
+        {
+          "dataset": "ExchangeRate",
+          "fraction_top_expert_changed_vs_timefuse": 0.6456413865089417,
+          "mean_effective_num_experts": 2.3394687175750732,
+          "mean_entropy": 0.8796136975288391,
+          "mean_max_weight": 0.5721157789230347,
+          "median_effective_num_experts": 2.535715103149414,
+          "median_entropy": 1.005464792251587,
+          "method": "TimeFuse_SelectiveProbe"
+        },
+        {
+          "dataset": "ExchangeRate",
+          "fraction_top_expert_changed_vs_timefuse": 0.6385542154312134,
+          "mean_effective_num_experts": 2.3062472343444824,
+          "mean_entropy": 0.8667336702346802,
+          "mean_max_weight": 0.5835669040679932,
+          "median_effective_num_experts": 2.5064754486083984,
+          "median_entropy": 0.9986450672149658,
+          "method": "TimeFuse_SelectiveShuffledProbe"
+        }
+      ]
+    },
+    "Traffic": {
+      "capacity": {
+        "always_on_probe_router_params": 78,
+        "dataset": "Traffic",
+        "input_dim_augmented": 25,
+        "input_dim_base": 22,
+        "selective_probe_gate_params": 10,
+        "selective_probe_router_params": 78,
+        "timefuse_router_params": 69
+      },
+      "checkpoint_hashes": {
+        "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+        "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+        "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "ModernTCN"
+      ],
+      "dataset": "Traffic",
+      "dependence_rows": [
+        {
+          "ci95_high": -0.0009350554901175201,
+          "ci95_low": -0.0017625736072659492,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.0013519320636987686,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0002479670802131295,
+          "ci95_low": -0.0024977163411676884,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0013519320636987686,
+          "prob_delta_negative": 0.9940000176429749,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -5.167232757230522e-06,
+          "ci95_low": -0.002741980366408825,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.0013519320636987686,
+          "prob_delta_negative": 0.9757999777793884,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00026265077758580446,
+          "ci95_low": -0.003109718905761838,
+          "ci_excludes_zero": false,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0013519320636987686,
+          "prob_delta_negative": 0.941100001335144,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0004785410419572145,
+          "ci95_low": -0.0021758987568318844,
+          "ci_excludes_zero": true,
+          "comparison": "AlwaysOn_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0013525356771424413,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9983999729156494,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        },
+        {
+          "ci95_high": -0.0014601595466956496,
+          "ci95_low": -0.0021688470151275396,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.0018157042795792222,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0008752576541155577,
+          "ci95_low": -0.0028298404067754745,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0018157042795792222,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0006410020287148654,
+          "ci95_low": -0.0030603581108152866,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.0018157042795792222,
+          "prob_delta_negative": 0.9998000264167786,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0004240384150762111,
+          "ci95_low": -0.0034368953201919794,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0018157042795792222,
+          "prob_delta_negative": 0.9957000017166138,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0011690008686855435,
+          "ci95_low": -0.002423455473035574,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_TimeFuse",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0018163112690672278,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        },
+        {
+          "ci95_high": -0.0003675256157293916,
+          "ci95_low": -0.0005642791511490941,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.00046377250691875815,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.00022787385387346148,
+          "ci95_low": -0.0007086999830789864,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.00046377250691875815,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00018745088891591877,
+          "ci95_low": -0.0007448630640283227,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.00046377250691875815,
+          "prob_delta_negative": 0.9994000196456909,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.00014584533346351236,
+          "ci95_low": -0.0008069172617979348,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.00046377250691875815,
+          "prob_delta_negative": 0.9976999759674072,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00023392813454847783,
+          "ci95_low": -0.0007017143652774394,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_AlwaysOn",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0004637755628209561,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        },
+        {
+          "ci95_high": -0.00042460585245862603,
+          "ci95_low": -0.0008619165164418519,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.0006441569421440363,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.00015556151629425585,
+          "ci95_low": -0.001144809415563941,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0006441569421440363,
+          "prob_delta_negative": 0.9943000078201294,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0001106402778532356,
+          "ci95_low": -0.0011787198018282652,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.0006441569421440363,
+          "prob_delta_negative": 0.9909999966621399,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -1.9504468582454138e-05,
+          "ci95_low": -0.001257235649973154,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0006441569421440363,
+          "prob_delta_negative": 0.9790999889373779,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00016195107309613377,
+          "ci95_low": -0.0011140273418277502,
+          "ci_excludes_zero": true,
+          "comparison": "Selective_vs_SelectiveShuffled",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0006439509452320635,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9951000213623047,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        }
+      ],
+      "gate_diag_rows": [
+        {
+          "dataset": "Traffic",
+          "fraction_gate_gt_0.9": 0.002939447294920683,
+          "fraction_gate_lt_0.1": 0.0,
+          "mean_gate": 0.6272332668304443,
+          "median_gate": 0.6289433836936951,
+          "section": "gate_behavior"
+        },
+        {
+          "dataset": "Traffic",
+          "fraction_windows_probe_helps": 0.6034685373306274,
+          "fraction_windows_probe_hurts": 0.39653146266937256,
+          "gate_lower_on_harmful": true,
+          "num_rejected_windows": 0,
+          "num_trusted_windows": 10,
+          "probe_gain_on_rejected": NaN,
+          "probe_gain_on_trusted": 0.00452011963352561,
+          "section": "gate_usefulness"
+        }
+      ],
+      "gate_l2_rows": [
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.6342090964317322,
+          "oof_logloss": 0.6407361626625061,
+          "oof_windows": 5443,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.6327393054962158,
+          "oof_logloss": 0.6406437754631042,
+          "oof_windows": 5443,
+          "probe_variant": "real",
+          "selected": true
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.6215322613716125,
+          "oof_logloss": 0.6416416764259338,
+          "oof_windows": 5443,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.6209810972213745,
+          "oof_logloss": 0.6527833938598633,
+          "oof_windows": 5443,
+          "probe_variant": "real",
+          "selected": false
+        },
+        {
+          "l2": 0.001,
+          "oof_accuracy": 0.5234245657920837,
+          "oof_logloss": 0.694159746170044,
+          "oof_windows": 5443,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.01,
+          "oof_accuracy": 0.5254455208778381,
+          "oof_logloss": 0.6938055753707886,
+          "oof_windows": 5443,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 0.1,
+          "oof_accuracy": 0.5236083269119263,
+          "oof_logloss": 0.6919291615486145,
+          "oof_windows": 5443,
+          "probe_variant": "shuffled",
+          "selected": false
+        },
+        {
+          "l2": 1.0,
+          "oof_accuracy": 0.5177292227745056,
+          "oof_logloss": 0.6910089254379272,
+          "oof_windows": 5443,
+          "probe_variant": "shuffled",
+          "selected": true
+        }
+      ],
+      "gate_label_positive_rate_real": 0.6221340298652649,
+      "gate_selected_l2_real": 0.01,
+      "gate_selected_l2_shuffled": 1.0,
+      "integrity": {
+        "dataset": "Traffic",
+        "expert_checkpoints_unchanged": true,
+        "gate_trained_router_train_only": true,
+        "meta_features_target_free_at_inference": true,
+        "no_router_val_fitting": true,
+        "no_test_cache_loaded": true,
+        "official_timefuse_commit_recorded": true,
+        "probe_parameters_frozen": true,
+        "probe_scaler_fit_router_train_only": true,
+        "result": "PASS",
+        "router_val_target_corruption_invariant_gate": true,
+        "router_val_target_corruption_invariant_weights": true,
+        "same_expert_checkpoints": true,
+        "same_expert_ordering": true,
+        "timefuse_scaler_fit_router_train_only": true,
+        "training_noise_reference_max_weight_diff": 0.8434895277023315,
+        "weights_c_unmutated": true,
+        "zero_gate_diagnostic": {
+          "mae_diff_vs_b_zeroprobe": 9.882450103759766e-05,
+          "max_pred_diff_normalized_vs_b_zeroprobe": 0.41354241967201233,
+          "max_weight_diff_vs_b_zeroprobe": 0.05926629900932312
+        },
+        "zero_probe_diagnostic": {
+          "mae_diff_vs_base_timefuse": -0.0014104247093200684,
+          "max_pred_diff_normalized": 4.357816219329834,
+          "max_weight_diff": 0.5676810145378113
+        },
+        "zero_probe_within_training_noise_scale": true
+      },
+      "meta_feature_names": [
+        "mean",
+        "std",
+        "min",
+        "max",
+        "skewness",
+        "kurtosis",
+        "autocorrelation_mean",
+        "stationarity",
+        "rate_of_change_mean",
+        "rate_of_change_std",
+        "autoreg_coef_mean",
+        "residual_std_mean",
+        "frequency_mean",
+        "frequency_peak",
+        "spectral_entropy",
+        "spectral_variation",
+        "spectral_skewness",
+        "spectral_kurtosis",
+        "covariance_mean",
+        "covariance_max",
+        "covariance_min",
+        "covariance_std"
+      ],
+      "primary_always_on_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": -5.167232757230522e-06,
+        "ci95_low": -0.002741980366408825,
+        "ci_excludes_zero": true,
+        "comparison": "AlwaysOn_vs_TimeFuse",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.0013519320636987686,
+        "prob_delta_negative": 0.9757999777793884,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_alwayson": {
+        "block_size": 24,
+        "ci95_high": -0.00018745088891591877,
+        "ci95_low": -0.0007448630640283227,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_AlwaysOn",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.00046377250691875815,
+        "prob_delta_negative": 0.9994000196456909,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": -0.0001106402778532356,
+        "ci95_low": -0.0011787198018282652,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_SelectiveShuffled",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.0006441569421440363,
+        "prob_delta_negative": 0.9909999966621399,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_selective_vs_timefuse": {
+        "block_size": 24,
+        "ci95_high": -0.0006410020287148654,
+        "ci95_low": -0.0030603581108152866,
+        "ci_excludes_zero": true,
+        "comparison": "Selective_vs_TimeFuse",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.0018157042795792222,
+        "prob_delta_negative": 0.9998000264167786,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "Traffic",
+          "mae": 0.27004092931747437,
+          "method": "TimeFuse",
+          "mse": 0.33765000104904175
+        },
+        {
+          "dataset": "Traffic",
+          "delta_vs_timefuse": -0.0013519525527954102,
+          "mae": 0.26868897676467896,
+          "method": "TimeFuse_AlwaysOnProbe",
+          "mse": 0.335450142621994,
+          "relative_pct_vs_timefuse": 0.5006472745492531
+        },
+        {
+          "dataset": "Traffic",
+          "delta_vs_always_on": -0.00046378374099731445,
+          "delta_vs_timefuse": -0.0018157362937927246,
+          "mae": 0.26822519302368164,
+          "method": "TimeFuse_SelectiveProbe",
+          "mse": 0.3346196413040161,
+          "relative_pct_vs_timefuse": 0.6723929955292256
+        },
+        {
+          "dataset": "Traffic",
+          "delta_selective_real_vs_shuffled": -0.0006442070007324219,
+          "delta_vs_timefuse": -0.0011715292930603027,
+          "mae": 0.26886940002441406,
+          "method": "TimeFuse_SelectiveShuffledProbe",
+          "mse": 0.33496004343032837
+        }
+      ],
+      "weight_change_effect": {
+        "dataset": "Traffic",
+        "fraction_always_on_changes_top": 0.2522045969963074,
+        "probe_gain_when_changes_top": 0.0016197875374928117,
+        "probe_gain_when_keeps_top": 0.0012615940067917109
+      },
+      "weight_rows": [
+        {
+          "dataset": "Traffic",
+          "fraction_top_expert_changed_vs_timefuse": 0.0,
+          "mean_effective_num_experts": 2.6162843704223633,
+          "mean_entropy": 1.0107115507125854,
+          "mean_max_weight": 0.49505987763404846,
+          "median_effective_num_experts": 2.722017288208008,
+          "median_entropy": 1.0487507581710815,
+          "method": "TimeFuse"
+        },
+        {
+          "dataset": "Traffic",
+          "fraction_top_expert_changed_vs_timefuse": 0.2522045969963074,
+          "mean_effective_num_experts": 2.558380126953125,
+          "mean_entropy": 1.0053997039794922,
+          "mean_max_weight": 0.5054638981819153,
+          "median_effective_num_experts": 2.5924904346466064,
+          "median_entropy": 1.0201880931854248,
+          "method": "TimeFuse_AlwaysOnProbe"
+        },
+        {
+          "dataset": "Traffic",
+          "fraction_top_expert_changed_vs_timefuse": 0.23045267164707184,
+          "mean_effective_num_experts": 2.5666239261627197,
+          "mean_entropy": 1.0079959630966187,
+          "mean_max_weight": 0.5057550668716431,
+          "median_effective_num_experts": 2.6096689701080322,
+          "median_entropy": 1.0230696201324463,
+          "method": "TimeFuse_SelectiveProbe"
+        },
+        {
+          "dataset": "Traffic",
+          "fraction_top_expert_changed_vs_timefuse": 0.1913580298423767,
+          "mean_effective_num_experts": 2.592916488647461,
+          "mean_entropy": 1.0156174898147583,
+          "mean_max_weight": 0.5044760704040527,
+          "median_effective_num_experts": 2.634432315826416,
+          "median_entropy": 1.0317513942718506,
+          "method": "TimeFuse_SelectiveShuffledProbe"
+        }
+      ]
+    }
+  },
+  "decision": {
+    "clearly_beats_shuffled": true,
+    "conclusion": "LearnedProbe provides useful active expert-specific competence information beyond TimeFuse's passive meta-features, and selective trust makes that information more reliable.",
+    "n_alwayson_beats_timefuse_point": 3,
+    "n_alwayson_beats_timefuse_sig": 3,
+    "n_alwayson_hurts_timefuse_sig": 0,
+    "n_datasets": 4,
+    "n_selective_beats_alwayson_point": 2,
+    "n_selective_beats_shuffled_point": 3,
+    "n_selective_beats_shuffled_sig": 2,
+    "n_selective_beats_timefuse_point": 4,
+    "n_selective_beats_timefuse_sig": 3,
+    "n_selective_hurts_timefuse_sig": 0,
+    "tier": "STRONG"
+  },
+  "experiment": "timefuse_probe",
+  "git_commit_sha": "960c8d61f925caff94f7e3836f199ad532b82eac",
+  "runtime_sec": 2692.379876613617,
+  "test_set_accessed": false
+}
