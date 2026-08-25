@@ -1,0 +1,57 @@
+{
+  "active_feature_dim": 6,
+  "canonical_normalization": "Per-window mean-centering divided by Bundle.std (dataset-level canonical scaler, sourced from a single fixed final_60/DLinear/best_expert.pt checkpoint per dataset, independent of the K=3 core expert identity -- see shared_probe_generator.py::canonical_window_norm).",
+  "created_at_utc": "2026-08-25T04:28:09.142797+00:00",
+  "decision_rule": "Section 28 of the task spec, applied verbatim without modification after seeing results.",
+  "development_datasets": [
+    "ExchangeRate",
+    "Traffic",
+    "BeijingAirQuality",
+    "ETTm2"
+  ],
+  "epsilon": 0.05,
+  "expert_cores": {
+    "BeijingAirQuality": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ETTm2": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ExchangeRate": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "Traffic": [
+      "PatchTST",
+      "iTransformer",
+      "ModernTCN"
+    ]
+  },
+  "git_commit_sha": "2904e283a49cb575a3adda6f59cb08585e1df780",
+  "hypothesis": "A controlled learned intervention, applied IDENTICALLY (delta_t=G(X_t)) to every frozen expert on the same window, can expose instance-specific CONDITIONAL competence beyond passive observation.",
+  "loss": "Huber(pred_conditional_error, actual_conditional_error) + 0.25*loss_gap_weighted_pairwise_ranking_loss(...) + perturbation_penalties(delta) (learned variants only)",
+  "manifest_type": "controlled_discriminative_probe_v2_method_manifest",
+  "min_train_fraction": 0.4,
+  "n_purge_folds": 2,
+  "no_router_trained": true,
+  "passive_feature_dim": 15,
+  "predecessor": "LearnedProbe v1 (probe_generator.py::ProbeGenerator, run_learned_probe.py) -- audited, frozen NEGATIVE result, NOT modified or rerun by this experiment.",
+  "random_probe_seed": 20260822,
+  "reused_hyperparameters_from_learned_probe_v1": {
+    "BATCH_SIZE": 128,
+    "INTERNAL_VAL_FRACTION": 0.2,
+    "LR": 0.001,
+    "MAX_EPOCHS": 8,
+    "PATIENCE": 3,
+    "PERTURBATION_WEIGHT": 0.01,
+    "RANKING_WEIGHT": 0.25,
+    "SMOOTHNESS_WEIGHT": 0.01,
+    "WEIGHT_DECAY": 0.0001
+  },
+  "shuffle_seed": 20260821
+}

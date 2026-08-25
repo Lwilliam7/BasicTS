@@ -1,8 +1,48 @@
 # Research Decisions
 
-Last updated: 2026-08-18
+Last updated: 2026-08-25
 
 These are durable conclusions supported by repository outputs. Do not repeatedly rediscover them unless a new hypothesis materially changes the experiment.
+
+## Raw Response Probe V3A Cannot Run From Current Frozen V2 Artifacts
+
+Status: Blocked before scientific evaluation
+
+Evidence:
+
+- `experiments/behavioral_competence/raw_response_probe_v3a/report.md`
+- `experiments/behavioral_competence/raw_response_probe_v3a/raw_response_shape_diagnostics.csv`
+- `project_memory/experiments/2026-08-25_raw_response_probe_v3a_blocked.md`
+
+Decision:
+
+Do not report a V3A scientific classification from the current V2 artifact set. Do not reconstruct OOF raw responses by retraining `SharedControlledProbeGenerator`; that violates the V3A frozen-intervention rule.
+
+If V3A is still desired, first run a separate V2-compatible artifact-generation experiment that saves OOF learned deltas/full raw response tensors or trained fold generator checkpoints. That would be a new experiment, not a continuation of the completed frozen V2 result.
+
+Reason:
+
+The current V2 artifacts have router-val learned deltas and OOF six-stat responses, but lack OOF learned deltas, OOF full raw response tensors, and trained V2 generator checkpoints. Therefore the primary OOF comparisons `RawResponseActive vs SixStatActive`, `RawResponseActive vs ShuffledRawResponse`, `PassivePlusRaw vs PassiveOnly`, and `RawResponse -> passive residual` cannot be run under the hard no-retraining rule.
+
+## Controlled Discriminative LearnedProbe v2 Is Redundant With Passive Signals
+
+Status: Tested / do not integrate into routers
+
+Evidence:
+
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2/report.md`
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2/validation_results.json`
+- `project_memory/experiments/2026-08-25_controlled_discriminative_probe_v2.md`
+
+Decision:
+
+Do not proceed to TimeFuse, FFORMA, simplex/selective, or COSTAR router integration for the current shared active-probing formulation.
+
+Treat the result as `ACTIVE_SIGNAL_BUT_REDUNDANT`: the shared learned intervention produces some competence-related correlation, but it does not provide robust incremental information beyond passive features. Only `1/6` predeclared criteria were met. Active features failed to predict MatchedPassive residuals on all four datasets, and Passive+Active improved over Passive on only one dataset.
+
+Reason:
+
+The experiment directly tested the intended mechanism under strict purged-OOF causality, frozen experts, same-question perturbation invariance, target-corruption invariance, and no test-cache access. Since the active signal is mostly redundant with passive observations, router integration would add complexity without a supported independent signal.
 
 ## Test Split
 

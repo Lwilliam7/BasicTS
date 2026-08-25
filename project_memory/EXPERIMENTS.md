@@ -1,11 +1,13 @@
 # Experiment Ledger
 
-Last updated: 2026-08-18
+Last updated: 2026-08-25
 
 This ledger records compact, evidence-backed results. It intentionally links to raw outputs instead of duplicating full logs.
 
 | Date | Dataset | Experiment | Main change | Seeds | MAE | MSE | Avg queries | Baseline | Improvement | Status | Detailed log |
 |---|---|---|---|---:|---:|---:|---:|---|---:|---|---|
+| 2026-08-25 | ExchangeRate/Traffic/BeijingAirQuality/ETTm2 | Raw Response Probe V3A feasibility audit | Check whether frozen V2 artifacts contain exact OOF raw responses needed for a no-retraining raw-response representation test | n/a | n/a | n/a | n/a | V2 raw_response_cache/per_window_scores | n/a | Blocked: missing OOF learned deltas/full raw responses and V2 generator checkpoints | `experiments/behavioral_competence/raw_response_probe_v3a/report.md`; `project_memory/experiments/2026-08-25_raw_response_probe_v3a_blocked.md` |
+| 2026-08-25 | ExchangeRate/Traffic/BeijingAirQuality/ETTm2 | Controlled Discriminative LearnedProbe v2 | Shared per-window learned intervention `delta_t=G(X_t)` applied identically to every frozen expert; conditional-competence target with purged OOF checks | deterministic/probe training | n/a | n/a | n/a | Random/shared shuffled/MatchedPassive controls | only `1/6` predeclared criteria met | `ACTIVE_SIGNAL_BUT_REDUNDANT`; do not integrate into routers | `experiments/behavioral_competence/controlled_discriminative_probe_v2/report.md`; `project_memory/experiments/2026-08-25_controlled_discriminative_probe_v2.md` |
 | 2026-08-10 | ETTh1 | Fixed ensemble brute force | Equal-average all expert subsets | n/a | `0.367265` | `0.310530` | `3` | best single `0.376550` | `-0.009285` | Strong baseline | `results/router_summary/costarts_walkforward/fixed_ensembles/summary.json`; `project_memory/experiments/2026-08-10_fixed_ensembles.md` |
 | 2026-08-10 | ETTh1 | Sequential utility weighted pairwise | Utility-gap-weighted pairwise ranking | 5 | `0.368074 +/- 0.000078` | `0.310607 +/- 0.000483` | `3.944` | fixed-3 `0.367265` | `+0.000809` | Not competitive | `results/router_summary/costarts_walkforward/utility_ranking_weighted_pairwise/summary.json`; `project_memory/experiments/2026-08-10_sequential_utility_ranking.md` |
 | 2026-08-10 | ETTh1 | STOP-aware listwise | Include STOP as listwise action | 5 | `0.375253 +/- 0.000874` | `0.320148 +/- 0.000990` | `1.000` | fixed-3 `0.367265` | `+0.007988` | Failed/collapsed to one query | `results/router_summary/costarts_walkforward/utility_ranking/summary.json` |

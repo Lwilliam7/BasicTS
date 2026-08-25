@@ -1,0 +1,7 @@
+{
+  "next_step_if_strong_signal": "Freeze this method exactly as specified, then evaluate on new, untouched datasets before any generalization claim; only then consider a separate router-integration experiment.",
+  "no_post_hoc_tuning_performed": true,
+  "reason": "ExchangeRate/Traffic/BeijingAirQuality/ETTm2 already influenced the frozen K=3 expert-core selection reused by this experiment (see ../generalization/dataset_selection.json); no claim of final generalization is made here.",
+  "router_val_used_only_after_freeze": true,
+  "status": "DEVELOPMENT / MECHANISM EVIDENCE"
+}

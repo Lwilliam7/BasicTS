@@ -1,0 +1,35 @@
+{
+  "fully_satisfied": [
+    "New method directory; LearnedProbe v1 untouched.",
+    "Four specified development datasets.",
+    "No test cache access.",
+    "Shared window-only perturbation architecture.",
+    "Active-only six-feature primary scorer.",
+    "MatchedPassive separate control.",
+    "Conditional competence target with purged OOF folds.",
+    "Required controls and router_val report tables.",
+    "Dependence-aware block/bootstrap statistics.",
+    "Checkpoint/frozen-expert/target-corruption integrity checks."
+  ],
+  "no_training_or_scoring_performed": true,
+  "partial_or_not_available_without_rerun": [
+    "Section 39 requested a wide per-window/per-expert mechanism table including absolute origins and SharedTotalLearnedProbe raw response. Existing caches contain core names, actual errors, conditional targets, all primary predictions, random response, conditional response, and common indices, but not SharedTotalLearnedProbe raw response or explicit absolute origins in the npz. Reconstructing total raw response would require rerunning a learned model that was not serialized.",
+    "Section 32 requested saving delta per expert path. The implementation applies the same tensor object by construction and verifies it is not mutated by expert forward calls, but the cache stores one shared delta per window rather than duplicated per-expert delta copies."
+  ],
+  "result_unchanged": {
+    "proceed_to_router_integration": false,
+    "tier": "ACTIVE_SIGNAL_BUT_REDUNDANT"
+  },
+  "satisfied_structurally_or_by_supplement": [
+    "Same-question invariant is structural: one x_probe tensor per batch is reused for every expert. The run records max_abs_diff=0 and this audit documents that per-expert delta copies were not separately persisted.",
+    "Expert-order permutation metric equivariance is now checked in expert_order_permutation_checks.csv from saved predictions/targets.",
+    "RMS normalized perturbation magnitude is now reported in perturbation_rms_diagnostics.csv."
+  ],
+  "status": "post_run_prompt_compliance_audit",
+  "supplemental_files": [
+    "perturbation_rms_diagnostics.csv",
+    "expert_order_permutation_checks.csv",
+    "prompt_compliance_audit.json",
+    "prompt_compliance_audit.md"
+  ]
+}

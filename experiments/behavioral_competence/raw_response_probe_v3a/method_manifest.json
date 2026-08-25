@@ -1,0 +1,11 @@
+{
+  "created_at_utc": "2026-08-25T05:58:15.077476+00:00",
+  "experiment": "raw_response_probe_v3a",
+  "forecasting_experts_retrained": false,
+  "hypothesis": "Holding V2 intervention fixed, test whether full horizon-by-variable raw response contains complementary competence information beyond six handcrafted stats.",
+  "reason_blocked": "V2 did not save OOF learned deltas, OOF full raw response tensors, or trained V2 generator checkpoints; reconstructing them would require retraining the V2 generator.",
+  "router_trained": false,
+  "status": "BLOCKED_MISSING_FROZEN_V2_OOF_RAW_RESPONSE",
+  "test_set_accessed": false,
+  "v2_generator_retrained": false
+}

@@ -1,12 +1,49 @@
 # Current State
 
-Last updated: 2026-08-18
+Last updated: 2026-08-25
 
 Read this first. It is a compact project memory for the COSTAR-TS research branch in this BasicTS repository.
 
 ## Current Research Goal
 
 Improve ETTh1 multivariate forecasting by combining frozen expert forecasts with adaptive COSTAR-style weighting/routing, while keeping chronological train/validation/test separation clean. The current target from recent prompts is validation MAE `<= 0.3619`; this has not been reached.
+
+## Latest Behavioral-Competence Experiment
+
+CONFIRMED RESULT:
+
+Follow-up V3A feasibility audit:
+
+- `experiments/behavioral_competence/raw_response_probe_v3a/` was created on 2026-08-25.
+- Status: `BLOCKED_MISSING_FROZEN_V2_OOF_RAW_RESPONSE`.
+- Reason: V2 saved router-val learned deltas and OOF six-stat responses, but did not save OOF learned deltas, OOF full raw response tensors, or trained V2 generator checkpoints.
+- Running V3A's primary OOF raw-response comparison would require retraining `SharedControlledProbeGenerator`, which violates the V3A hard rule.
+- Test accessed: no. V2 generator retrained: no. Experts retrained: no.
+- Evidence: `experiments/behavioral_competence/raw_response_probe_v3a/report.md`; `project_memory/experiments/2026-08-25_raw_response_probe_v3a_blocked.md`.
+
+On 2026-08-25, `controlled_discriminative_probe_v2` completed across `ExchangeRate`, `Traffic`, `BeijingAirQuality`, and `ETTm2`.
+
+Question:
+
+Can a shared learned intervention `delta_t = G(X_t)`, applied identically to every frozen expert on a window, reveal instance-specific conditional competence that passive observations do not already provide?
+
+Result:
+
+- Predeclared tier: `ACTIVE_SIGNAL_BUT_REDUNDANT`.
+- Predeclared criteria met: `1/6`.
+- Proceed to router integration: `false`.
+- All four integrity suites passed: same-question invariant, purged-OOF causality, checkpoint unchanged/frozen experts, target-corruption invariance, and no test-cache access.
+
+Interpretation:
+
+The active shared probe has some competence-related correlation, but the signal is redundant with passive features. MatchedPassive is stronger by router-val conditional MAE on `Traffic`, `BeijingAirQuality`, and `ETTm2`, and active features do not predict MatchedPassive residuals on any dataset. Do not continue to TimeFuse/FFORMA/router integration for this active-probing formulation.
+
+Artifacts:
+
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2/report.md`
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2/validation_results.json`
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2/prompt_compliance_audit.md`
+- `project_memory/experiments/2026-08-25_controlled_discriminative_probe_v2.md`
 
 ## Final Frozen Test Evaluation
 
