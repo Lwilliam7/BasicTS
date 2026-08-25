@@ -1,0 +1,28 @@
+{
+  "created_at_utc": "2026-08-25T21:29:40.814509+00:00",
+  "git_commit_sha": "42719bca6c3ee60bc08ed366f22162d8a3412765",
+  "note": "This experiment imports V2 fold construction, SharedRandomProbe delta generation, six response statistics, stage runtimes, and dependence statistics. It does not modify frozen V2 artifacts.",
+  "reused_v2_protocol": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2",
+  "source_files": {
+    "experiments/behavioral_competence/common.py": {
+      "path": "experiments/behavioral_competence/common.py",
+      "sha256": "098cc7ce669034efffc0c3f4d41f64a5d41cca358e4cdd01773ee4587e4d4646"
+    },
+    "experiments/behavioral_competence/controlled_discriminative_probe_v2/run_controlled_discriminative_probe_v2.py": {
+      "path": "experiments/behavioral_competence/controlled_discriminative_probe_v2/run_controlled_discriminative_probe_v2.py",
+      "sha256": "75db6932ff36884984affb50f2912f89c4a3dda0a63a2e2e37444f96c232c67c"
+    },
+    "experiments/behavioral_competence/controlled_discriminative_probe_v2/shared_probe_generator.py": {
+      "path": "experiments/behavioral_competence/controlled_discriminative_probe_v2/shared_probe_generator.py",
+      "sha256": "09e038ecce083a1d23998fa041aa5265b82dd874d2f6738fd691ee710de5421e"
+    },
+    "experiments/behavioral_competence/model_runtime.py": {
+      "path": "experiments/behavioral_competence/model_runtime.py",
+      "sha256": "4b3b7bee1ec6064c58998f19dc23df4b2b789d0d0b49b1d921d44da151174a82"
+    },
+    "experiments/behavioral_competence/probe_generator.py": {
+      "path": "experiments/behavioral_competence/probe_generator.py",
+      "sha256": "a39cd5c920533580e28efec58c4aeb0046a60c33b28292e6de8d57a172caea1e"
+    }
+  }
+}
