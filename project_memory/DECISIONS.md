@@ -24,6 +24,27 @@ Reason:
 
 The current V2 artifacts have router-val learned deltas and OOF six-stat responses, but lack OOF learned deltas, OOF full raw response tensors, and trained V2 generator checkpoints. Therefore the primary OOF comparisons `RawResponseActive vs SixStatActive`, `RawResponseActive vs ShuffledRawResponse`, `PassivePlusRaw vs PassiveOnly`, and `RawResponse -> passive residual` cannot be run under the hard no-retraining rule.
 
+## V3A Reproduced: Six-Stat Compression Is Not The Bottleneck
+
+Status: Tested after accepted V2-compatible artifact reproduction
+
+Evidence:
+
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2_reproduction/reproduction_decision.json`
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2_reproduction/reproduction_comparison.csv`
+- `experiments/behavioral_competence/raw_response_probe_v3a_reproduced/report.md`
+- `project_memory/experiments/2026-08-25_v2_reproduction_v3a_reproduced.md`
+
+Decision:
+
+Treat `experiments/behavioral_competence/controlled_discriminative_probe_v2_reproduction/` as accepted frozen-protocol V2 reproduction artifacts, not as exact original V2 tensors. They may be used for the reproduced V3A raw-response representation analysis because the reproduction gate passed `317/317` observable checks and reproduced V2's `ACTIVE_SIGNAL_BUT_REDUNDANT` classification with `proceed_to_router_integration=false`.
+
+Do not treat full raw forecast responses as rescuing the V2 active-probe result. V3A reproduced classified as `SIX_STATS_NOT_THE_BOTTLENECK`: raw response beat six-stat on only `1/4` datasets, real raw beat shuffled raw on `2/4`, Passive+Raw beat Passive on only `1/4`, and raw-response passive-residual R2 was positive on `0/4`.
+
+Reason:
+
+The fixed `Ridge(alpha=1.0)` comparison used train-only standardization and accepted reproduced OOF raw responses. The full raw response did not consistently improve active prediction, did not add reliable incremental value beyond passive features, and did not predict what MatchedPassive missed. The completed V2 interpretation remains active signal but redundant with passive information.
+
 ## Controlled Discriminative LearnedProbe v2 Is Redundant With Passive Signals
 
 Status: Tested / do not integrate into routers

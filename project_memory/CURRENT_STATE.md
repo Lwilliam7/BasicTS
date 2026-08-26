@@ -12,6 +12,38 @@ Improve ETTh1 multivariate forecasting by combining frozen expert forecasts with
 
 CONFIRMED RESULT:
 
+V2-compatible artifact reproduction plus V3A reproduced raw-response representation test completed on 2026-08-25.
+
+Phase A:
+
+- Created `experiments/behavioral_competence/controlled_discriminative_probe_v2_reproduction/`.
+- Reran the archived V2 protocol in a separate directory, without modifying frozen V2.
+- Saved fold/final generator and scorer checkpoints plus OOF/router-val raw response artifacts.
+- Reproduction gate: `REPRODUCTION_ACCEPTED`.
+- Observable checks: `317/317` passed.
+- Reproduced qualitative V2 result: `ACTIVE_SIGNAL_BUT_REDUNDANT`, `proceed_to_router_integration=false`.
+- Source-provenance caveat: the committed V2 implementation is the archived reproduction source; original run HEAD was `2904e28`, while then-uncommitted V2 source was later committed in `7ec1f1e`. Bit-exact original source provenance is not claimed.
+
+Phase B:
+
+- Created `experiments/behavioral_competence/raw_response_probe_v3a_reproduced/`.
+- Used accepted frozen-protocol V2 reproduction artifacts, not exact original V2 tensors.
+- Fixed `Ridge(alpha=1.0)`, train-only standardization, no tuning.
+- Classification: `SIX_STATS_NOT_THE_BOTTLENECK`.
+- Counts: raw better than six-stat `1/4`; raw better than shuffled `2/4`; Passive+Raw better than Passive `1/4`; positive passive-residual R2 `0/4`.
+- Interpretation: full raw forecast responses do not explain V2's redundancy by exposing a missed representation bottleneck.
+- Test accessed: no.
+
+Artifacts:
+
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2_reproduction/report.md`
+- `experiments/behavioral_competence/controlled_discriminative_probe_v2_reproduction/reproduction_decision.json`
+- `experiments/behavioral_competence/raw_response_probe_v3a_reproduced/report.md`
+- `experiments/behavioral_competence/raw_response_probe_v3a_reproduced/method_manifest.json`
+- `project_memory/experiments/2026-08-25_v2_reproduction_v3a_reproduced.md`
+
+CONFIRMED RESULT:
+
 Follow-up V3A feasibility audit:
 
 - `experiments/behavioral_competence/raw_response_probe_v3a/` was created on 2026-08-25.

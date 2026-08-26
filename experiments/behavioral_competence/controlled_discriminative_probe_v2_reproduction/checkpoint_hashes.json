@@ -1,0 +1,226 @@
+{
+  "BeijingAirQuality": {
+    "expert_checkpoints": {
+      "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "raw_files": [
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\BeijingAirQuality\\fold_0.npz",
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\BeijingAirQuality\\fold_1.npz"
+    ],
+    "reproduction_checkpoints": {
+      "BeijingAirQuality_final_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\final_conditional_generator.pt",
+        "generator_sha256": "b0d01fc2e4f444a0612393dc1293f997365f799603a36c06906a8891c062254d",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\final_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\final_conditional_scorer.pt",
+        "scorer_sha256": "bf3577c41c2cb88cad426a30493ecd5c39a5160839662f283f5e068b56292938"
+      },
+      "BeijingAirQuality_final_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\final_total_generator.pt",
+        "generator_sha256": "4bff9a25c3d3bad33eee15a2d67797c0c26083b798e7c9852d2661f50e940ed2",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\final_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\final_total_scorer.pt",
+        "scorer_sha256": "0e93fc8fb88fa6148d174136a60ebcec94ba00122eead0132ab0c3531a13458c"
+      },
+      "BeijingAirQuality_fold_0_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_0_conditional_generator.pt",
+        "generator_sha256": "5935a2fba3e6e321c0122e27aa6654d4ba3db5cc5323a6b0089140a52233a548",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_0_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_0_conditional_scorer.pt",
+        "scorer_sha256": "b67b9a0a18dc474bec4cd412c8e989b93d59a0059d65ab91f38aba73aae84cca"
+      },
+      "BeijingAirQuality_fold_0_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_0_total_generator.pt",
+        "generator_sha256": "62088c5e53bd3477316a2aae723bdf27165f473f8c2dd6d37d33059d7e8d5d67",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_0_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_0_total_scorer.pt",
+        "scorer_sha256": "45a4fc731567d82d9c9e71cc3a806e0c59cfb8b95f96e590823c96d092aaa315"
+      },
+      "BeijingAirQuality_fold_1_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_1_conditional_generator.pt",
+        "generator_sha256": "25b7af321e72f5baa5cc3180498a6d6bfb365694b6068f93b8340b561f63b1a8",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_1_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_1_conditional_scorer.pt",
+        "scorer_sha256": "bcce2f9c4343876b103c8374e3bed261a28c8890c2978dcce549ba744b357591"
+      },
+      "BeijingAirQuality_fold_1_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_1_total_generator.pt",
+        "generator_sha256": "93cecad8b316503aa60fcb9ad44666242b73cd3785a76fb5a26ce31b95512aaf",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_1_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\BeijingAirQuality\\fold_1_total_scorer.pt",
+        "scorer_sha256": "31f1009ec53927243e47c230bc5186afaf4fe53cee018bf2c155bcc66d0cd7b9"
+      }
+    },
+    "router_val_raw_file": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\router_val_raw_response\\BeijingAirQuality.npz"
+  },
+  "ETTm2": {
+    "expert_checkpoints": {
+      "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "raw_files": [
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\ETTm2\\fold_0.npz",
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\ETTm2\\fold_1.npz"
+    ],
+    "reproduction_checkpoints": {
+      "ETTm2_final_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\final_conditional_generator.pt",
+        "generator_sha256": "863e5bde17f4ead51727fe215504f76ef6f03283c1253a9f4e519317d5349e86",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\final_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\final_conditional_scorer.pt",
+        "scorer_sha256": "8be51e6722e9e57809ee499b7a22f8d171e28e87bf945b9e88b8f73d4c888247"
+      },
+      "ETTm2_final_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\final_total_generator.pt",
+        "generator_sha256": "f39130405bd7ce5fef3a5a1d7dce8b5f95aab90b9981eccc77afc8f63b471e11",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\final_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\final_total_scorer.pt",
+        "scorer_sha256": "89c0ba0beead20ef9ee447935c12dbfdb7fa8d07b6cd7730811adaf559ecf58b"
+      },
+      "ETTm2_fold_0_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_0_conditional_generator.pt",
+        "generator_sha256": "8f41ccd2f94eb7f788aea9f39490fe450a07ec922e22d38a77d312941f816c8d",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_0_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_0_conditional_scorer.pt",
+        "scorer_sha256": "9754d93cd185c918ffde0d0f9068ca7405730065ef6d623dafe3a26f63586c79"
+      },
+      "ETTm2_fold_0_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_0_total_generator.pt",
+        "generator_sha256": "704da3cfdb40b0c2de4e1bb639ea149479155a728f18a575f3987a5548b32e36",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_0_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_0_total_scorer.pt",
+        "scorer_sha256": "8b4fba6ac60cd9089aff015ecd0509efac73f7dc7f12073f67be072530506481"
+      },
+      "ETTm2_fold_1_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_1_conditional_generator.pt",
+        "generator_sha256": "bf966893da8188fd683196c9d6f6a2a19586e28cfcf50591567ff852d28c6cd9",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_1_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_1_conditional_scorer.pt",
+        "scorer_sha256": "98a4e4069e48c4af470313e335b0a94c04a8c07dc4deaf08738db3429c3af736"
+      },
+      "ETTm2_fold_1_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_1_total_generator.pt",
+        "generator_sha256": "c062f1a3e29bcc47c630fe3e3fec9b3d807b6527f8ff4653863b29568b468dba",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_1_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ETTm2\\fold_1_total_scorer.pt",
+        "scorer_sha256": "2b993f3bbdbfd06eb1181cd7666730cfcfc43a549868f6b0d5441982bb0bfdc4"
+      }
+    },
+    "router_val_raw_file": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\router_val_raw_response\\ETTm2.npz"
+  },
+  "ExchangeRate": {
+    "expert_checkpoints": {
+      "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "raw_files": [
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\ExchangeRate\\fold_0.npz",
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\ExchangeRate\\fold_1.npz"
+    ],
+    "reproduction_checkpoints": {
+      "ExchangeRate_final_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\final_conditional_generator.pt",
+        "generator_sha256": "f836d88ae5a5d109feb81fe0c59c3c562bf4ff3b0b3d1bce5f49ddbd234869b6",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\final_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\final_conditional_scorer.pt",
+        "scorer_sha256": "9584140aaad389a9a71591e1cb088b8c2388c08f478bf32b94356625ead1ddd0"
+      },
+      "ExchangeRate_final_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\final_total_generator.pt",
+        "generator_sha256": "e36c13b643371f618db2a835204e12604889194ed46827dcbe2ffc27ba09fac0",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\final_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\final_total_scorer.pt",
+        "scorer_sha256": "f2d0d7c7440b5019a1ca23d706ba8f412d2f76ae6854e37b4f4961a12d1a7917"
+      },
+      "ExchangeRate_fold_0_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_0_conditional_generator.pt",
+        "generator_sha256": "119570448579b54795d4005f6ee5e905f5ca79837a30119755b83d5b8c41e430",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_0_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_0_conditional_scorer.pt",
+        "scorer_sha256": "ef35a6f849b3212f9afd32a23640e80d4505300dfe3295f7d080664924280077"
+      },
+      "ExchangeRate_fold_0_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_0_total_generator.pt",
+        "generator_sha256": "ae8e5f3cfcd76e04819db30e106af2d3ae92b2d3c2e808de895da9d2e10639e1",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_0_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_0_total_scorer.pt",
+        "scorer_sha256": "c138c252e4b564adbbcc3ce9e27ea69b91eb301a6af36b69d4d8632a0f007072"
+      },
+      "ExchangeRate_fold_1_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_1_conditional_generator.pt",
+        "generator_sha256": "b36c89cb1972433629be4cfc2f02e491ba7fb6a173d7170164dd29c40a113f11",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_1_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_1_conditional_scorer.pt",
+        "scorer_sha256": "e9008824de0d52c9d044c9673ca9180fd1e4e62d021e8ec46d6018602cef32e5"
+      },
+      "ExchangeRate_fold_1_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_1_total_generator.pt",
+        "generator_sha256": "da5baf3b910b74accd44fd2c8ced1e8cc30965caa58517e8992d8c7bd1e34582",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_1_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\ExchangeRate\\fold_1_total_scorer.pt",
+        "scorer_sha256": "c49db7cb0bd9a14acafac07ed531772a691636d71826181a620716efc606e959"
+      }
+    },
+    "router_val_raw_file": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\router_val_raw_response\\ExchangeRate.npz"
+  },
+  "Traffic": {
+    "expert_checkpoints": {
+      "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    },
+    "raw_files": [
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\Traffic\\fold_0.npz",
+      "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\oof_raw_response\\Traffic\\fold_1.npz"
+    ],
+    "reproduction_checkpoints": {
+      "Traffic_final_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\final_conditional_generator.pt",
+        "generator_sha256": "dae62a6a0b4865bc919083f8b59fd31591d7081ea2fd7ba94ba464987c978b0a",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\final_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\final_conditional_scorer.pt",
+        "scorer_sha256": "0c64ec9f3a992809e44c2db3f1a5561aa5423e5cfae2d24588dfe23354a14035"
+      },
+      "Traffic_final_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\final_total_generator.pt",
+        "generator_sha256": "60829b2f42e710709323e0bf09478847b2b84f485ef8f2a6947aadbc41e600f2",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\final_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\final_total_scorer.pt",
+        "scorer_sha256": "e689dc5d86b5b2179bce2f9487f705a40b58ee8af2d0b3733a2e9688cf9642e6"
+      },
+      "Traffic_fold_0_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_0_conditional_generator.pt",
+        "generator_sha256": "da9c8dd5d3f64ee9ea8fbc09012f2aa9934ab323878008d23c23b674c9491e08",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_0_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_0_conditional_scorer.pt",
+        "scorer_sha256": "0a07021d2a268ef1e5c0d9047518c17be54170de4eaf7b69ec4ffc16a85eddfb"
+      },
+      "Traffic_fold_0_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_0_total_generator.pt",
+        "generator_sha256": "deea7e28ff5922049491ed156b91a63f44f006b3d137606ad868bd3bf24f0385",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_0_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_0_total_scorer.pt",
+        "scorer_sha256": "01f46cb312bc982a8cd545e33a5f9375de8dc400c5edd6ff03c74247dca2a9a9"
+      },
+      "Traffic_fold_1_conditional": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_1_conditional_generator.pt",
+        "generator_sha256": "7ed7e6cb31dd475fe17e1c5e2ca3310aaae87be4b5a94b380697fc5a3a542232",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_1_conditional_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_1_conditional_scorer.pt",
+        "scorer_sha256": "a65620d13a5f360997d1da489f08cdc5b24b7e60481915a6da5ad70e9554f976"
+      },
+      "Traffic_fold_1_total": {
+        "generator": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_1_total_generator.pt",
+        "generator_sha256": "b1bfaad249396ee912d821a462239af344f20594de15cf3f0d9115f6cd89d311",
+        "metadata": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_1_total_metadata.json",
+        "scorer": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\checkpoints\\Traffic\\fold_1_total_scorer.pt",
+        "scorer_sha256": "5c07a2ffacf2d2099c0821fbc9805919750bd7d460ca7f22cfe6e43a5b71b4f0"
+      }
+    },
+    "router_val_raw_file": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction\\router_val_raw_response\\Traffic.npz"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "created_at_utc": "2026-08-25T06:37:48.432676+00:00",
+  "datasets": [
+    "ExchangeRate",
+    "Traffic",
+    "BeijingAirQuality",
+    "ETTm2"
+  ],
+  "manifest_type": "controlled_discriminative_probe_v2_reproduction_manifest",
+  "method_constants": {
+    "batch_size": 128,
+    "epsilon": 0.05,
+    "internal_val_fraction": 0.2,
+    "lr": 0.001,
+    "max_epochs": 8,
+    "min_train_fraction": 0.4,
+    "n_purge_folds": 2,
+    "patience": 3,
+    "perturbation_weight": 0.01,
+    "random_probe_seed": 20260822,
+    "ranking_weight": 0.25,
+    "shuffle_seed": 20260821,
+    "smoothness_weight": 0.01,
+    "weight_decay": 0.0001
+  },
+  "predeclared_tolerances": {
+    "actual_conditional_max_abs": 1e-07,
+    "classification_exact": true,
+    "folds_and_common_windows": "exact",
+    "metric_abs": {
+      "conditional_mae": 0.005,
+      "conditional_r2": 0.05,
+      "pairwise_ranking_accuracy": 0.05,
+      "pearson": 0.05,
+      "spearman": 0.05,
+      "top1_conditional_best_accuracy": 0.05
+    },
+    "prediction_max_abs": 0.05,
+    "prediction_mean_abs": 0.005,
+    "six_response_mean_abs": 0.005,
+    "six_response_p99_abs": 0.05
+  },
+  "purpose": "Rerun frozen V2 protocol to save missing raw artifacts, then run V3A only if observable V2 behavior passes fixed gates.",
+  "test_set_accessed": false
+}

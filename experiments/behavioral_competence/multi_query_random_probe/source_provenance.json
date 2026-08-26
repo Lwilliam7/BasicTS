@@ -1,6 +1,6 @@
 {
-  "created_at_utc": "2026-08-25T21:29:40.814509+00:00",
-  "git_commit_sha": "42719bca6c3ee60bc08ed366f22162d8a3412765",
+  "created_at_utc": "2026-08-25T22:30:43.497678+00:00",
+  "git_commit_sha": "ed654c1f368b48f7a7235b45ce14ddede2a89c14",
   "note": "This experiment imports V2 fold construction, SharedRandomProbe delta generation, six response statistics, stage runtimes, and dependence statistics. It does not modify frozen V2 artifacts.",
   "reused_v2_protocol": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2",
   "source_files": {

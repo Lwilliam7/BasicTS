@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-08-25T06:37:48.432676+00:00",
+  "does_not_modify_frozen_v2": true,
+  "experiment": "controlled_discriminative_probe_v2_reproduction",
+  "phase_b_v3a_runs_only_if_phase_a_accepted": true,
+  "test_set_accessed": false,
+  "uses_archived_v2_implementation": true
+}
