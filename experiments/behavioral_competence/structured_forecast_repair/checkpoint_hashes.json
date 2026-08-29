@@ -1,0 +1,162 @@
+{
+  "ETTh1": {
+    "DLinear": {
+      "forecast_max_abs_diff": 0.0,
+      "parameter_fingerprint": "004655ddf68edc01c5fe4ab901569b0f45ec8314b3e7438dd00868740f76e453",
+      "parameters_unchanged": true,
+      "sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3"
+    },
+    "ModernTCN": {
+      "forecast_max_abs_diff": 0.0,
+      "parameter_fingerprint": "ef938bc1381c7b73fd834c6b8b61841d59ba34e39fb7ddfab3ebc7e5e6808e57",
+      "parameters_unchanged": true,
+      "sha256": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44"
+    },
+    "PatchTST": {
+      "forecast_max_abs_diff": 7.62939453125e-06,
+      "parameter_fingerprint": "af34794a41eb2ae1605c988f7cf10a33d32c5f89a4e847eda788a85c35899349",
+      "parameters_unchanged": true,
+      "sha256": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8"
+    },
+    "TimesNet": {
+      "forecast_max_abs_diff": 3.0517578125e-05,
+      "parameter_fingerprint": "711a739e7fc4ff3e9efa8406fd7e9e4ad88d94845a9b796c6c3ae407a2b71978",
+      "parameters_unchanged": true,
+      "sha256": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6"
+    },
+    "iTransformer": {
+      "forecast_max_abs_diff": 7.62939453125e-06,
+      "parameter_fingerprint": "8d03dbf60113f273cf9b4e96239a76cb1d6b4c44145f0f52ce207eed950510b4",
+      "parameters_unchanged": true,
+      "sha256": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d"
+    }
+  },
+  "ETTh2": {
+    "DLinear": {
+      "forecast_max_abs_diff": 4.870497226715088,
+      "parameter_fingerprint": "c4f121ae28c817bd14c6f6cdceb8fa60287ee5db65606bbb426900e335ca4ce7",
+      "parameters_unchanged": true,
+      "sha256": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4"
+    },
+    "ModernTCN": {
+      "forecast_max_abs_diff": 4.7878594398498535,
+      "parameter_fingerprint": "57580d40ca9acf6b633391df13391a5f7f8da97936d060c1b5ae8c445552fe16",
+      "parameters_unchanged": true,
+      "sha256": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c"
+    },
+    "PatchTST": {
+      "forecast_max_abs_diff": 4.439813613891602,
+      "parameter_fingerprint": "76d7eeb17ea38bca29da47e595a4c67bcc1b3d79f65d6fec67657ddc2102c8d4",
+      "parameters_unchanged": true,
+      "sha256": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b"
+    },
+    "TimesNet": {
+      "forecast_max_abs_diff": 4.69196891784668,
+      "parameter_fingerprint": "d40b70a18a2b09412044b8178909e4224a644eb32aea3b1995055e3577871f75",
+      "parameters_unchanged": true,
+      "sha256": "2b2f1e54962034ca78bad6d9b7b14ab30fee4cebfcdc8537a464c2b19926f4b3"
+    },
+    "iTransformer": {
+      "forecast_max_abs_diff": 4.553504943847656,
+      "parameter_fingerprint": "aaf21e479ccd73d71e1efbee6412c32fe704aabfb78ec4b4c70e5ff745ac4914",
+      "parameters_unchanged": true,
+      "sha256": "664841c6c982da5c5a81a99eb759494101583a4a9e9feef7b806f74ce2175c5f"
+    }
+  },
+  "ETTm1": {
+    "DLinear": {
+      "forecast_max_abs_diff": 7.62939453125e-06,
+      "parameter_fingerprint": "9f4f9960a4fb7b399413b65f6864390998212590f91c94ecb4c1e0cee8580faa",
+      "parameters_unchanged": true,
+      "sha256": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54"
+    },
+    "ModernTCN": {
+      "forecast_max_abs_diff": 0.004213094711303711,
+      "parameter_fingerprint": "e237e9bb4d85d06dbb5906e3855cbb3f409d0753eeba7adf39f86a9d300fc087",
+      "parameters_unchanged": true,
+      "sha256": "d564f97639c32b8c256acb29aca8966405e690331d7cfa946de82daa2c890474"
+    },
+    "PatchTST": {
+      "forecast_max_abs_diff": 1.52587890625e-05,
+      "parameter_fingerprint": "033fcf4b8e99bfb1f8cf2327bb0cc2832254501382031a767a22a4b7cba33259",
+      "parameters_unchanged": true,
+      "sha256": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4"
+    },
+    "TimesNet": {
+      "forecast_max_abs_diff": 0.008031845092773438,
+      "parameter_fingerprint": "d69c1b9f3448666617577a263c0adfacdd1823f659682f939b8cdd07b10b28c7",
+      "parameters_unchanged": true,
+      "sha256": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8"
+    },
+    "iTransformer": {
+      "forecast_max_abs_diff": 0.0005135536193847656,
+      "parameter_fingerprint": "eef99d299178d6f879d46d540f9d9f14dd79e69a85be8076b180916b9a1eb357",
+      "parameters_unchanged": true,
+      "sha256": "0c7626ef55189889929e7d91e6d629c8911fcf4b7a4d771c962635e503f3e10e"
+    }
+  },
+  "Electricity": {
+    "DLinear": {
+      "forecast_max_abs_diff": 0.0,
+      "parameter_fingerprint": "7385d3913d598e69572cb33b131f19bef60f2c88355ee95c78f2b0ae49335612",
+      "parameters_unchanged": true,
+      "sha256": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92"
+    },
+    "ModernTCN": {
+      "forecast_max_abs_diff": 45.6796875,
+      "parameter_fingerprint": "edfa347fb5e58b4f00784cc6699fe3325576754a14bd20229944c97863d8f3a1",
+      "parameters_unchanged": true,
+      "sha256": "65899c19b5b3d7a906372fd311e4b6c2087da13ed314d0442c878afd254c9aa8"
+    },
+    "PatchTST": {
+      "forecast_max_abs_diff": 0.265625,
+      "parameter_fingerprint": "62f52379b06cb38998f1ec2f9d14c37f483c31383933a4f5673b6cc67d16ad0e",
+      "parameters_unchanged": true,
+      "sha256": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0"
+    },
+    "TimesNet": {
+      "forecast_max_abs_diff": 32.5,
+      "parameter_fingerprint": "d6dd50faf6aec4f4149db4313aaa525e253b2a66711c3acd7540979e1c13947c",
+      "parameters_unchanged": true,
+      "sha256": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc"
+    },
+    "iTransformer": {
+      "forecast_max_abs_diff": 0.125,
+      "parameter_fingerprint": "d06f43e4e1217f10610e909168670203e061abc5d5dc946320f91f400c094f0c",
+      "parameters_unchanged": true,
+      "sha256": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    }
+  },
+  "Weather": {
+    "DLinear": {
+      "forecast_max_abs_diff": 0.0,
+      "parameter_fingerprint": "3677d4094c9d2fc4f271ab1871eaeb9490538d505c6e42b6112104f18d1a4df9",
+      "parameters_unchanged": true,
+      "sha256": "c34520a0ba154e0518ca38fc26182b03bed785b35a7682573de820fb944c3c06"
+    },
+    "ModernTCN": {
+      "forecast_max_abs_diff": 0.33740234375,
+      "parameter_fingerprint": "cb02e15f9696206f91c23bbd3e6629e32da87ef01fb46ae07900bceeb7803c48",
+      "parameters_unchanged": true,
+      "sha256": "14f65955440c55708b840029e31c474c4909d5243125836e97dbc9c7ad650322"
+    },
+    "PatchTST": {
+      "forecast_max_abs_diff": 0.00390625,
+      "parameter_fingerprint": "b59012cce1491ed6c151207a24e3955356e46825a1bd299747037e643d2f5e60",
+      "parameters_unchanged": true,
+      "sha256": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078"
+    },
+    "TimesNet": {
+      "forecast_max_abs_diff": 1.66748046875,
+      "parameter_fingerprint": "fd264526b06e6a50ed9cc2cd8014548c566c5b5d96d6cce2209702d64f8c3de5",
+      "parameters_unchanged": true,
+      "sha256": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6"
+    },
+    "iTransformer": {
+      "forecast_max_abs_diff": 0.0048828125,
+      "parameter_fingerprint": "d7659686b27c5a673f2f357241013c682c78b97dac277434c73caa9d4f695f84",
+      "parameters_unchanged": true,
+      "sha256": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1"
+    }
+  }
+}

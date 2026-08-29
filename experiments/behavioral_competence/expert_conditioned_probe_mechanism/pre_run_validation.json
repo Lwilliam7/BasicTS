@@ -1,0 +1,113 @@
+{
+  "checks": [
+    {
+      "check": "tiny_forward_smoke",
+      "dataset": "ETTh2",
+      "delta_shape": null,
+      "device": "cuda",
+      "method": "C_Rank_Passive",
+      "pred_shape": [
+        4,
+        3
+      ],
+      "six_shape": [
+        4,
+        3,
+        6
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "tiny_forward_smoke",
+      "dataset": "ETTh2",
+      "delta_shape": null,
+      "device": "cuda",
+      "method": "MatchedNeuralPassive",
+      "pred_shape": [
+        4,
+        3
+      ],
+      "six_shape": [
+        4,
+        3,
+        6
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "tiny_forward_smoke",
+      "dataset": "ETTh2",
+      "delta_shape": [
+        4,
+        3,
+        96,
+        7
+      ],
+      "device": "cuda",
+      "method": "DeltaOnly",
+      "pred_shape": [
+        4,
+        3
+      ],
+      "six_shape": [
+        4,
+        3,
+        6
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "tiny_forward_smoke",
+      "dataset": "ETTh2",
+      "delta_shape": [
+        4,
+        3,
+        96,
+        7
+      ],
+      "device": "cuda",
+      "method": "OriginalLearnedProbe",
+      "pred_shape": [
+        4,
+        3
+      ],
+      "six_shape": [
+        4,
+        3,
+        6
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "gradient_flow_original_learned_probe",
+      "competence_scorer_has_finite_nonzero_grad": true,
+      "dataset": "ETTh2",
+      "device": "cuda",
+      "frozen_expert_params_require_grad_false_and_no_grad": true,
+      "loss": 0.03801052272319794,
+      "probe_generator_has_finite_nonzero_grad": true,
+      "status": "PASS"
+    },
+    {
+      "check": "cpu_gpu_frozen_expert_forward_equivalence",
+      "checkpoint_sha256_cpu": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "checkpoint_sha256_gpu": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "dataset": "ETTh2",
+      "expert": "DLinear",
+      "max_abs_diff": 9.5367431640625e-07,
+      "max_abs_warn_threshold": 0.001,
+      "mean_abs_diff": 7.08692127204813e-08,
+      "mean_abs_warn_threshold": 0.0001,
+      "status": "PASS"
+    }
+  ],
+  "dataset": "ETTh2",
+  "device": {
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "torch_version": "2.6.0+cu124"
+  },
+  "test_accessed": false
+}

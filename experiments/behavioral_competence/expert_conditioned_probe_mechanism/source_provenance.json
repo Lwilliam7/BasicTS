@@ -1,0 +1,14 @@
+{
+  "reused_sources": [
+    "experiments/behavioral_competence/run_learned_probe.py",
+    "experiments/behavioral_competence/probe_generator.py",
+    "experiments/behavioral_competence/run_learned_probe_decision_rules.py::rule_fixed_rank",
+    "experiments/behavioral_competence/controlled_discriminative_probe_v2/run_controlled_discriminative_probe_v2.py::compute_legal_and_common"
+  ],
+  "source_sha256": {
+    "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\run_controlled_discriminative_probe_v2.py": "75db6932ff36884984affb50f2912f89c4a3dda0a63a2e2e37444f96c232c67c",
+    "experiments\\behavioral_competence\\probe_generator.py": "a39cd5c920533580e28efec58c4aeb0046a60c33b28292e6de8d57a172caea1e",
+    "experiments\\behavioral_competence\\run_learned_probe.py": "9484f18a85938e90452892c29d51daae0fc57897f4df28c2c9b5a6dde6bba883",
+    "experiments\\behavioral_competence\\run_learned_probe_decision_rules.py": "a6aa98c046f9e382eb54e2cc39b944a7681c216bb31cf41e0f9d8aa72e1bfa99"
+  }
+}

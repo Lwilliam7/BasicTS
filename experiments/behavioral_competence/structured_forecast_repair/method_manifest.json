@@ -1,0 +1,13 @@
+{
+  "block_length": 24,
+  "code_version": "structured_forecast_repair_v1",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "ridge_alpha": 1.0,
+  "test_loaded": false
+}

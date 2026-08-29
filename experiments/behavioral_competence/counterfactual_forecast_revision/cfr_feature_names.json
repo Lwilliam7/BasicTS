@@ -1,0 +1,14 @@
+{
+  "feature_dim": 9,
+  "feature_names": [
+    "self_revision",
+    "plus_response",
+    "minus_response",
+    "response_asymmetry",
+    "counterfactual_gain",
+    "directionality_plus",
+    "directionality_minus",
+    "symmetric_response_magnitude",
+    "curvature_magnitude"
+  ]
+}

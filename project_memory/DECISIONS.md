@@ -1,8 +1,103 @@
 # Research Decisions
 
-Last updated: 2026-08-25
+## Expert-Native Latent Competence Is Mixed
+
+Status: Tested validation-only on 2026-08-29
+
+Evidence: `experiments/behavioral_competence/expert_native_competence/RESULTS.md`, `results.json`, `validation_results.csv`, `per_expert_results.csv`, `dependence_tests.csv`, `representation_manifest.json`, and `integrity_report.json`.
+
+Decision: Do not proceed to test-set evaluation or router integration from the current expert-native hidden representation mechanism. Treat the outcome as `MIXED_SUPPORT`: Electricity showed strong unique hidden value and ETTh1 showed a small R2-only positive, but ETTh2, ETTm1, and Weather did not support robust incremental value beyond Passive features.
+
+Reason: The mandatory incremental comparisons were inconsistent. Passive+Hidden minus Passive R2 was ETTh1 `+0.016825`, ETTh2 `-0.178095`, ETTm1 `-0.027923`, Weather `-0.002443`, Electricity `+0.342262`; block-24 dependence support was clear only for Electricity, while ETTh2/ETTm1 significantly regressed. Shuffled and raw/control comparisons do not support a strong cross-dataset Expert-Native routing claim.
+
+## Pair-Residual Fault Gate Is Weak/Inconsistent
+
+Status: Tested validation-only on 2026-08-28
+
+Evidence: `experiments/behavioral_competence/pair_residual_fault_gate/report.md`, `routing_results.csv`, `fault_detector_results.csv`, `dependence_tests.csv`, and `integrity_checks.json`.
+
+Decision: Do not proceed to test-set evaluation or router integration. Signed expert-pair residual/parity features produced a supportive ETTh2 case, but the effect did not generalize: ETTh1, ETTm1, and Electricity regressed versus the train-only Baseline, and Weather's improvement came from the Passive+Raw forecast control rather than parity. Treat the outcome as `WEAK_OR_INCONSISTENT_PARITY_FAULT_SIGNAL`.
+
+Reason: The experiment separates relative bust detection from routing intervention. Fault detectors can rank bust risk, but the multiplicative suppression gate does not reliably improve held-out router_val MAE and does not consistently beat Passive or Raw Forecast Control.
+
+## Capability-Demand Matching Has Signal But No Matching Gain
+
+Status: Tested validation-only on 2026-08-28
+
+Evidence: `experiments/behavioral_competence/capability_demand_matching/report.md`, `competence_results.csv`, `dependence_tests.csv`, `integrity_checks.json`, and `etth2_integrity_audit.json`.
+
+Decision: Do not proceed to test-set evaluation or router integration. The semantic demand/capability profiles are signal-bearing, and correct profiles beat expert-profile shuffles on all five datasets, but the primary CapabilityMatch does not consistently improve over Passive ABC or the capacity-matched FAME-style direct demand baseline. Treat the outcome as `CAPABILITY_SIGNAL_BUT_NO_MATCHING_GAIN`.
+
+ETTh2 note: The earlier ETTh2 runtime/cache reproduction discrepancy is resolved. ETTh2 cache histories are already DLinear-scaler-normalized; passing them through a wrapper that expects raw histories double-normalized them. Direct normalized-cache inference and de-normalized raw-history wrapper inference reproduce the cached forecasts within tolerance.
+
+## Structured Forecast Repair Is Weak/Ambiguous
+
+Status: Tested validation-only on 2026-08-28
+
+Evidence: `experiments/behavioral_competence/structured_forecast_repair/report.md`, `competence_results.csv`, `dependence_tests.csv`, and `integrity_checks.json`.
+
+Decision: Do not proceed to test-set evaluation or router integration. RepairGeometry improved Passive relative-error prediction on only ETTh1 and ETTh2 of five datasets, while REP dominated on Electricity and the expert-shuffle result was mixed. The mechanism does not meet the strong cross-dataset criteria. The later capability-demand audit resolved the ETTh2 cache/runtime convention mismatch, but that does not change this weak/ambiguous scientific conclusion.
+
+Last updated: 2026-08-29
 
 These are durable conclusions supported by repository outputs. Do not repeatedly rediscover them unless a new hypothesis materially changes the experiment.
+
+## Counterfactual Forecast Revision Is Signal-Bearing But Not Strong Incremental Evidence
+
+Status: Tested validation-only
+
+Evidence:
+
+- `experiments/behavioral_competence/counterfactual_forecast_revision/report.md`
+- `experiments/behavioral_competence/counterfactual_forecast_revision/validation_results.json`
+- `experiments/behavioral_competence/counterfactual_forecast_revision/integrity_checks.json`
+- `project_memory/experiments/2026-08-27_counterfactual_forecast_revision.md`
+
+Decision:
+
+Do not freeze the current CFR mechanism for untouched-dataset testing or router integration. Treat the preregistered outcome as `CFR_SIGNAL_BUT_REDUNDANT`, not `INCREMENTAL_MODEL_SPECIFIC_CFR`.
+
+Reason:
+
+CFR and RelativeCFR showed competence association and several Passive+CFR point improvements, with some dependence-aware support. However, the mandatory direct Passive-residual test was positive on only `1/4` datasets (`ETTm2`) and negative on ExchangeRate, Traffic, and BeijingAirQuality. Correct expert mapping beat shuffled mapping on some datasets, but not consistently enough to overcome the residual-test failure. The mechanism is interesting but not yet a robust incremental expert-specific signal beyond passive features.
+
+## Conditional Nuisance Invariance Does Not Establish A Robust LearnedProbe Mechanism
+
+Status: Tested validation-only
+
+Evidence:
+
+- `experiments/behavioral_competence/conditional_nuisance_invariance/results/report.md`
+- `experiments/behavioral_competence/conditional_nuisance_invariance/results/results.json`
+- `experiments/behavioral_competence/conditional_nuisance_invariance/results/integrity_checks.json`
+- `project_memory/experiments/2026-08-27_conditional_nuisance_invariance.md`
+
+Decision:
+
+Do not treat the canonical expert-conditioned LearnedProbe as a robust cross-dataset active competence mechanism after passive and nuisance controls. The preregistered outcome is `MIXED_CNI`, not `PROBE_SURVIVES_CNI`.
+
+Reason:
+
+`Electricity` produced strong supportive evidence, including `+0.088410` pairwise improvement for `Passive+Nuisance+Probe` over `Passive+Nuisance` with block-24 support. The broader pattern did not hold: `ETTh1` and `ETTh2` had smaller non-significant post-nuisance gains, `ETTm1` was nearly flat, `Weather` regressed, and shuffled/wrong-expert/environment-transfer controls mostly failed. This suggests dataset-dependent active information, not a stable mechanism ready for router integration.
+
+## Data-Model Dynamics Alignment Is Weak/Ambiguous, Not A Strong Integration Candidate
+
+Status: Tested validation-only
+
+Evidence:
+
+- `experiments/data_model_dynamics_alignment/report.md`
+- `experiments/data_model_dynamics_alignment/results.json`
+- `experiments/data_model_dynamics_alignment/integrity_checks.json`
+- `project_memory/experiments/2026-08-27_data_model_dynamics_alignment.md`
+
+Decision:
+
+Do not treat the current local PCA + ridge VAR(1) vs frozen-expert JVP mismatch mechanism as a strong-go router integration candidate. It may be useful as a hypothesis-generating feature, but the preregistered outcome is `WEAK_OR_AMBIGUOUS`, not `STRONG_GO`.
+
+Reason:
+
+Only `Weather` passed all criteria A-E. Passive+Align had real routing improvements on `ETTh2`, `Weather`, and `Electricity`, but `ETTm1` showed a block-24 significant regression and `ETTh1` did not improve. Controls also weakened the mechanism story: `Electricity` did not beat J-magnitude or VAR-closeness controls, and `ETTm1` significantly lost to shuffled dynamics. Passive-residual R2 was small or negative across datasets.
 
 ## Raw Response Probe V3A Cannot Run From Current Frozen V2 Artifacts
 

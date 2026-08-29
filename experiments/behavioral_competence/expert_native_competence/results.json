@@ -1,0 +1,1173 @@
+{
+  "classification": "MIXED_SUPPORT",
+  "code_version": "expert_native_competence_v2",
+  "created_at_utc": "2026-08-29T19:40:11.024827+00:00",
+  "datasets": {
+    "ETTh1": {
+      "baseline": {
+        "router_train_final_baseline_mae": 0.3399345576763153,
+        "router_val_final_baseline_mae": 0.3660224676132202,
+        "router_val_final_baseline_mse": 0.30867233872413635
+      },
+      "core_names": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "delta": {
+        "delta_auroc_passive_hidden_minus_passive": -0.004974248522878477,
+        "delta_r2_passive_hidden_minus_passive": 0.016824841499328613,
+        "passive_hidden_r2_minus_raw_control": 0.10853445529937744,
+        "passive_hidden_r2_minus_shuffled": 0.032186806201934814
+      },
+      "dependence_rows": [
+        {
+          "block_size": 24,
+          "ci95_high": 6.438718264689669e-05,
+          "ci95_low": -0.00018158827151637524,
+          "ci_excludes_zero": false,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "ETTh1",
+          "mean_delta": -5.4208532674238086e-05,
+          "metric": "gain_prediction_mse",
+          "prob_delta_negative": 0.8027999997138977,
+          "samples": 5000,
+          "test": "block24"
+        },
+        {
+          "ci95_high": -2.8803173336200416e-05,
+          "ci95_low": -7.821402687113732e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -5.420184970716946e-05,
+          "metric": "gain_prediction_mse",
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every12th_phase",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        }
+      ],
+      "oof_metrics": {
+        "Hidden Only": {
+          "auprc": 0.3123519969009538,
+          "auroc": 0.5588721345647854,
+          "balanced_accuracy": 0.5306786536528635,
+          "mean_probability": 0.44118732213974,
+          "mean_top1_regret": 0.028421232476830482,
+          "pairwise_accuracy": 0.6475847043798362,
+          "pearson": 0.35276445746421814,
+          "positive_rate": 0.291713620314026,
+          "r2": 0.07936990261077881,
+          "spearman": 0.30409632472619863,
+          "top1_accuracy": 0.4617985188961029
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.29837308444890165,
+          "auroc": 0.5189039016825515,
+          "balanced_accuracy": 0.5135810601808455,
+          "mean_probability": 0.44990184903144836,
+          "mean_top1_regret": 0.03676142171025276,
+          "pairwise_accuracy": 0.5928930959356923,
+          "pearson": 0.36018669605255127,
+          "positive_rate": 0.291713620314026,
+          "r2": 0.008263468742370605,
+          "spearman": 0.2374654981227734,
+          "top1_accuracy": 0.38066262006759644
+        },
+        "Passive": {
+          "auprc": 0.2866953882302169,
+          "auroc": 0.49861584295676104,
+          "balanced_accuracy": 0.5011633775414979,
+          "mean_probability": 0.4748532772064209,
+          "mean_top1_regret": 0.03455750644207001,
+          "pairwise_accuracy": 0.5935692284576666,
+          "pearson": 0.4156365692615509,
+          "positive_rate": 0.291713620314026,
+          "r2": 0.14585977792739868,
+          "spearman": 0.25304984903570377,
+          "top1_accuracy": 0.38156411051750183
+        },
+        "Passive + Hidden": {
+          "auprc": 0.3026778308967842,
+          "auroc": 0.529150802137752,
+          "balanced_accuracy": 0.5230656055337763,
+          "mean_probability": 0.4526618421077728,
+          "mean_top1_regret": 0.033357884734869,
+          "pairwise_accuracy": 0.6054391105101045,
+          "pearson": 0.3778853416442871,
+          "positive_rate": 0.291713620314026,
+          "r2": 0.061067402362823486,
+          "spearman": 0.27386046387616186,
+          "top1_accuracy": 0.4029749929904938
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.29162685640777836,
+          "auroc": 0.5057405265448391,
+          "balanced_accuracy": 0.5098864418959705,
+          "mean_probability": 0.4279005527496338,
+          "mean_top1_regret": 0.034560076892375946,
+          "pairwise_accuracy": 0.5940199834723161,
+          "pearson": 0.3647124171257019,
+          "positive_rate": 0.291713620314026,
+          "r2": -0.0254974365234375,
+          "spearman": 0.24235966892820482,
+          "top1_accuracy": 0.3761550486087799
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.28891804164235635,
+          "auroc": 0.502709872051962,
+          "balanced_accuracy": 0.5039205058307641,
+          "mean_probability": 0.47228267788887024,
+          "mean_top1_regret": 0.03484044596552849,
+          "pairwise_accuracy": 0.5896626849973706,
+          "pearson": 0.40957751870155334,
+          "positive_rate": 0.291713620314026,
+          "r2": 0.13720476627349854,
+          "spearman": 0.247671267174669,
+          "top1_accuracy": 0.3770565688610077
+        }
+      },
+      "prototype_oof_metrics": {
+        "auprc": 0.2932479227854857,
+        "auroc": 0.5238773748171347,
+        "balanced_accuracy": 0.5110188980151398,
+        "mean_probability": 0.36428922414779663,
+        "mean_top1_regret": 0.039854712784290314,
+        "pairwise_accuracy": 0.5322665464653294,
+        "pearson": 0.000653022900223732,
+        "positive_rate": 0.291713620314026,
+        "r2": -9270.8125,
+        "spearman": 0.033419280669614485,
+        "top1_accuracy": 0.3921568691730499
+      },
+      "residual_metrics": {
+        "hidden_predicts_passive_residual_pearson": -0.036889005452394485,
+        "hidden_predicts_passive_residual_r2": -0.3610156774520874,
+        "hidden_predicts_passive_residual_spearman": -0.0158394717309372
+      },
+      "selected_pca_dims": {
+        "PatchTST": 16,
+        "TimesNet": 32,
+        "iTransformer": 16
+      },
+      "validation_metrics": {
+        "Hidden Only": {
+          "auprc": 0.2949056707084246,
+          "auroc": 0.48969050941296793,
+          "balanced_accuracy": 0.5042810764425065,
+          "mean_probability": 0.5202191472053528,
+          "mean_top1_regret": 0.03734041005373001,
+          "pairwise_accuracy": 0.5664142324798653,
+          "pearson": 0.23486706614494324,
+          "positive_rate": 0.31325880514484916,
+          "r2": 0.03769189119338989,
+          "spearman": 0.15407949608742066,
+          "top1_accuracy": 0.35052290558815
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.3030440152329349,
+          "auroc": 0.49637961998855723,
+          "balanced_accuracy": 0.49589654890308876,
+          "mean_probability": 0.5004197955131531,
+          "mean_top1_regret": 0.035501472651958466,
+          "pairwise_accuracy": 0.5807188363986056,
+          "pearson": 0.35172462463378906,
+          "positive_rate": 0.31325880514484916,
+          "r2": 0.10241508483886719,
+          "spearman": 0.2093604514821497,
+          "top1_accuracy": 0.36098089814186096
+        },
+        "Passive": {
+          "auprc": 0.29750165298768083,
+          "auroc": 0.4873213990415687,
+          "balanced_accuracy": 0.4952771271080122,
+          "mean_probability": 0.5109589099884033,
+          "mean_top1_regret": 0.03801189735531807,
+          "pairwise_accuracy": 0.5541531434066594,
+          "pearson": 0.3788703680038452,
+          "positive_rate": 0.31325880514484916,
+          "r2": 0.13395947217941284,
+          "spearman": 0.1942066043331843,
+          "top1_accuracy": 0.31554272770881653
+        },
+        "Passive + Hidden": {
+          "auprc": 0.2993364152484319,
+          "auroc": 0.4823471505186902,
+          "balanced_accuracy": 0.48967287785569097,
+          "mean_probability": 0.5042741298675537,
+          "mean_top1_regret": 0.037778399884700775,
+          "pairwise_accuracy": 0.5448972232239452,
+          "pearson": 0.3979460299015045,
+          "positive_rate": 0.31325880514484916,
+          "r2": 0.15078431367874146,
+          "spearman": 0.1886565480634889,
+          "top1_accuracy": 0.31734582781791687
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.30360106134261167,
+          "auroc": 0.498034064571666,
+          "balanced_accuracy": 0.49013395147446165,
+          "mean_probability": 0.5061523914337158,
+          "mean_top1_regret": 0.040004611015319824,
+          "pairwise_accuracy": 0.5388868854429619,
+          "pearson": 0.2996036112308502,
+          "positive_rate": 0.31325880514484916,
+          "r2": 0.042249858379364014,
+          "spearman": 0.14954853167082952,
+          "top1_accuracy": 0.3021997809410095
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.29556874466438887,
+          "auroc": 0.48340118180466274,
+          "balanced_accuracy": 0.48883119768716954,
+          "mean_probability": 0.5119771361351013,
+          "mean_top1_regret": 0.0384848453104496,
+          "pairwise_accuracy": 0.5474215650919582,
+          "pearson": 0.36437979340553284,
+          "positive_rate": 0.31325880514484916,
+          "r2": 0.11859750747680664,
+          "spearman": 0.18138280793946962,
+          "top1_accuracy": 0.3144608736038208
+        }
+      }
+    },
+    "ETTh2": {
+      "baseline": {
+        "router_train_final_baseline_mae": 0.2801966667175293,
+        "router_val_final_baseline_mae": 0.27689793705940247,
+        "router_val_final_baseline_mse": 0.16700465977191925
+      },
+      "core_names": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "delta": {
+        "delta_auroc_passive_hidden_minus_passive": -0.13132442551941848,
+        "delta_r2_passive_hidden_minus_passive": -0.17809468507766724,
+        "passive_hidden_r2_minus_raw_control": -0.006624698638916016,
+        "passive_hidden_r2_minus_shuffled": -0.16339552402496338
+      },
+      "dependence_rows": [
+        {
+          "block_size": 24,
+          "ci95_high": 0.0004603943380061537,
+          "ci95_low": 0.00017225662304554135,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "ETTh2",
+          "mean_delta": 0.00029539098613895476,
+          "metric": "gain_prediction_mse",
+          "prob_delta_negative": 0.0,
+          "samples": 5000,
+          "test": "block24"
+        },
+        {
+          "ci95_high": 0.0003353989159222692,
+          "ci95_low": 0.00026408612029626966,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": 0.0002954699157271534,
+          "metric": "gain_prediction_mse",
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every12th_phase",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        }
+      ],
+      "oof_metrics": {
+        "Hidden Only": {
+          "auprc": 0.35748467415653185,
+          "auroc": 0.5733116679629392,
+          "balanced_accuracy": 0.5541040239823003,
+          "mean_probability": 0.45287784934043884,
+          "mean_top1_regret": 0.019266482442617416,
+          "pairwise_accuracy": 0.6526593585058871,
+          "pearson": 0.3465876579284668,
+          "positive_rate": 0.3219650832318311,
+          "r2": -0.12083637714385986,
+          "spearman": 0.3444663131597221,
+          "top1_accuracy": 0.4451887905597687
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.3258045720533368,
+          "auroc": 0.5502109589144536,
+          "balanced_accuracy": 0.5422346353950359,
+          "mean_probability": 0.4313298165798187,
+          "mean_top1_regret": 0.019116558134555817,
+          "pairwise_accuracy": 0.6270807957775071,
+          "pearson": 0.2653801441192627,
+          "positive_rate": 0.3219650832318311,
+          "r2": -0.42032337188720703,
+          "spearman": 0.28688114847741947,
+          "top1_accuracy": 0.4488428831100464
+        },
+        "Passive": {
+          "auprc": 0.3220417890365989,
+          "auroc": 0.5416188430201387,
+          "balanced_accuracy": 0.5434886846735281,
+          "mean_probability": 0.453189879655838,
+          "mean_top1_regret": 0.01673159934580326,
+          "pairwise_accuracy": 0.6433211530653674,
+          "pearson": 0.34329476952552795,
+          "positive_rate": 0.3219650832318311,
+          "r2": -0.05160164833068848,
+          "spearman": 0.3499477882114804,
+          "top1_accuracy": 0.47137635946273804
+        },
+        "Passive + Hidden": {
+          "auprc": 0.339890952743992,
+          "auroc": 0.5511985486781795,
+          "balanced_accuracy": 0.5420468017307126,
+          "mean_probability": 0.44335487484931946,
+          "mean_top1_regret": 0.01997900940477848,
+          "pairwise_accuracy": 0.631749898497767,
+          "pearson": 0.2464979887008667,
+          "positive_rate": 0.3219650832318311,
+          "r2": -0.7183637619018555,
+          "spearman": 0.2590437517605886,
+          "top1_accuracy": 0.4409256875514984
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.3368456405750221,
+          "auroc": 0.560923990606429,
+          "balanced_accuracy": 0.5429761536196207,
+          "mean_probability": 0.42224106192588806,
+          "mean_top1_regret": 0.02054709568619728,
+          "pairwise_accuracy": 0.6266747868453106,
+          "pearson": 0.2291085124015808,
+          "positive_rate": 0.3219650832318311,
+          "r2": -0.9850612878799438,
+          "spearman": 0.27566976554407335,
+          "top1_accuracy": 0.42630937695503235
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.36039362340016085,
+          "auroc": 0.5963798128836904,
+          "balanced_accuracy": 0.571385664987805,
+          "mean_probability": 0.40623483061790466,
+          "mean_top1_regret": 0.017033208161592484,
+          "pairwise_accuracy": 0.6522533495736906,
+          "pearson": 0.36598730087280273,
+          "positive_rate": 0.3219650832318311,
+          "r2": -0.057929158210754395,
+          "spearman": 0.37745173742361227,
+          "top1_accuracy": 0.46711328625679016
+        }
+      },
+      "prototype_oof_metrics": {
+        "auprc": 0.3025112905009133,
+        "auroc": 0.4888990304384925,
+        "balanced_accuracy": 0.4999743262529166,
+        "mean_probability": 0.7190327048301697,
+        "mean_top1_regret": 0.030577069148421288,
+        "pairwise_accuracy": 0.49066179455948034,
+        "pearson": -0.024357855319976807,
+        "positive_rate": 0.3219650832318311,
+        "r2": -97390.6640625,
+        "spearman": 0.014975484101930501,
+        "top1_accuracy": 0.2959805130958557
+      },
+      "residual_metrics": {
+        "hidden_predicts_passive_residual_pearson": -0.04321371018886566,
+        "hidden_predicts_passive_residual_r2": -1.141068696975708,
+        "hidden_predicts_passive_residual_spearman": 0.05206481811804682
+      },
+      "selected_pca_dims": {
+        "DLinear": 16,
+        "ModernTCN": 16,
+        "PatchTST": 32
+      },
+      "validation_metrics": {
+        "Hidden Only": {
+          "auprc": 0.31496282389966357,
+          "auroc": 0.5283562146685266,
+          "balanced_accuracy": 0.5123221496219074,
+          "mean_probability": 0.4469549357891083,
+          "mean_top1_regret": 0.019361885264515877,
+          "pairwise_accuracy": 0.6949429037520392,
+          "pearson": 0.45382505655288696,
+          "positive_rate": 0.279499728113105,
+          "r2": 0.11644691228866577,
+          "spearman": 0.43487885335465054,
+          "top1_accuracy": 0.43882545828819275
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.3832156251324206,
+          "auroc": 0.6378415681668013,
+          "balanced_accuracy": 0.5832567359224726,
+          "mean_probability": 0.33736664056777954,
+          "mean_top1_regret": 0.017560405656695366,
+          "pairwise_accuracy": 0.723762914627515,
+          "pearson": 0.6057062745094299,
+          "positive_rate": 0.279499728113105,
+          "r2": 0.3639447093009949,
+          "spearman": 0.5255986331449427,
+          "top1_accuracy": 0.4975530207157135
+        },
+        "Passive": {
+          "auprc": 0.3594377228422142,
+          "auroc": 0.6336693341164378,
+          "balanced_accuracy": 0.5644644299243815,
+          "mean_probability": 0.3724154829978943,
+          "mean_top1_regret": 0.01718839816749096,
+          "pairwise_accuracy": 0.7058183795541055,
+          "pearson": 0.6494512557983398,
+          "positive_rate": 0.279499728113105,
+          "r2": 0.4209468364715576,
+          "spearman": 0.5444231436630682,
+          "top1_accuracy": 0.4274061918258667
+        },
+        "Passive + Hidden": {
+          "auprc": 0.3007635776465888,
+          "auroc": 0.5023449085970193,
+          "balanced_accuracy": 0.5209925849790764,
+          "mean_probability": 0.3997880518436432,
+          "mean_top1_regret": 0.01892203651368618,
+          "pairwise_accuracy": 0.6824361065796629,
+          "pearson": 0.5313572287559509,
+          "positive_rate": 0.279499728113105,
+          "r2": 0.24285215139389038,
+          "spearman": 0.46322383299745135,
+          "top1_accuracy": 0.41598695516586304
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.2692717431562622,
+          "auroc": 0.45452903604727996,
+          "balanced_accuracy": 0.4991131341311211,
+          "mean_probability": 0.3121679127216339,
+          "mean_top1_regret": 0.02076129801571369,
+          "pairwise_accuracy": 0.6612289287656336,
+          "pearson": 0.5031366348266602,
+          "positive_rate": 0.279499728113105,
+          "r2": 0.2494768500328064,
+          "spearman": 0.4330687856767468,
+          "top1_accuracy": 0.4029363691806793
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.35167394682601316,
+          "auroc": 0.6085647162469715,
+          "balanced_accuracy": 0.5652360325967256,
+          "mean_probability": 0.3906276822090149,
+          "mean_top1_regret": 0.01784573495388031,
+          "pairwise_accuracy": 0.6949429037520392,
+          "pearson": 0.639222264289856,
+          "positive_rate": 0.279499728113105,
+          "r2": 0.40624767541885376,
+          "spearman": 0.5334554489069713,
+          "top1_accuracy": 0.40619900822639465
+        }
+      }
+    },
+    "ETTm1": {
+      "baseline": {
+        "router_train_final_baseline_mae": 0.24241086840629578,
+        "router_val_final_baseline_mae": 0.25068971514701843,
+        "router_val_final_baseline_mse": 0.14995557069778442
+      },
+      "core_names": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "delta": {
+        "delta_auroc_passive_hidden_minus_passive": -0.008733908962948123,
+        "delta_r2_passive_hidden_minus_passive": -0.027923107147216797,
+        "passive_hidden_r2_minus_raw_control": 0.0848156213760376,
+        "passive_hidden_r2_minus_shuffled": -0.022801518440246582
+      },
+      "dependence_rows": [
+        {
+          "block_size": 24,
+          "ci95_high": 0.00011571075447136536,
+          "ci95_low": 6.143232894828543e-06,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "ETTm1",
+          "mean_delta": 6.336017395369709e-05,
+          "metric": "gain_prediction_mse",
+          "prob_delta_negative": 0.015399999916553497,
+          "samples": 5000,
+          "test": "block24"
+        },
+        {
+          "ci95_high": 9.137478627962992e-05,
+          "ci95_low": 3.6406774597708136e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 6.336461228784174e-05,
+          "metric": "gain_prediction_mse",
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every12th_phase",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "oof_metrics": {
+        "Hidden Only": {
+          "auprc": 0.3955566812937472,
+          "auroc": 0.5822272218814916,
+          "balanced_accuracy": 0.5526392219377565,
+          "mean_probability": 0.42540305852890015,
+          "mean_top1_regret": 0.028419988229870796,
+          "pairwise_accuracy": 0.6150995746855776,
+          "pearson": 0.37824371457099915,
+          "positive_rate": 0.32561195991457204,
+          "r2": 0.06273758411407471,
+          "spearman": 0.2720767797438877,
+          "top1_accuracy": 0.4179398715496063
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.41307081591235384,
+          "auroc": 0.6068912455828112,
+          "balanced_accuracy": 0.5743170944782648,
+          "mean_probability": 0.4762663245201111,
+          "mean_top1_regret": 0.028296692296862602,
+          "pairwise_accuracy": 0.6292828067101108,
+          "pearson": 0.4914454221725464,
+          "positive_rate": 0.32561195991457204,
+          "r2": 0.169916033744812,
+          "spearman": 0.339135659294612,
+          "top1_accuracy": 0.41054707765579224
+        },
+        "Passive": {
+          "auprc": 0.395072341000711,
+          "auroc": 0.5895440113181761,
+          "balanced_accuracy": 0.5618992914850518,
+          "mean_probability": 0.48382067680358887,
+          "mean_top1_regret": 0.0326172411441803,
+          "pairwise_accuracy": 0.6048774254787069,
+          "pearson": 0.4571774899959564,
+          "positive_rate": 0.32561195991457204,
+          "r2": 0.18467140197753906,
+          "spearman": 0.287321767650206,
+          "top1_accuracy": 0.39088767766952515
+        },
+        "Passive + Hidden": {
+          "auprc": 0.4252427122554573,
+          "auroc": 0.6153174096256847,
+          "balanced_accuracy": 0.5771095974202249,
+          "mean_probability": 0.42354029417037964,
+          "mean_top1_regret": 0.027372727170586586,
+          "pairwise_accuracy": 0.6260883850829637,
+          "pearson": 0.5070064663887024,
+          "positive_rate": 0.32561195991457204,
+          "r2": 0.22186291217803955,
+          "spearman": 0.3351529149472636,
+          "top1_accuracy": 0.41098517179489136
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.36713224170984526,
+          "auroc": 0.5543688841746514,
+          "balanced_accuracy": 0.5367069835038557,
+          "mean_probability": 0.46387508511543274,
+          "mean_top1_regret": 0.035819146782159805,
+          "pairwise_accuracy": 0.5788657065147947,
+          "pearson": 0.41768404841423035,
+          "positive_rate": 0.32561195991457204,
+          "r2": 0.12501275539398193,
+          "spearman": 0.22406462187487244,
+          "top1_accuracy": 0.37637588381767273
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.39339230555766425,
+          "auroc": 0.5857521311296108,
+          "balanced_accuracy": 0.5579892875369461,
+          "mean_probability": 0.4880790710449219,
+          "mean_top1_regret": 0.03251469507813454,
+          "pairwise_accuracy": 0.6040377489367139,
+          "pearson": 0.4577459394931793,
+          "positive_rate": 0.32561195991457204,
+          "r2": 0.18249577283859253,
+          "spearman": 0.2857811073465879,
+          "top1_accuracy": 0.39198291301727295
+        }
+      },
+      "prototype_oof_metrics": {
+        "auprc": 0.3411560959386091,
+        "auroc": 0.5051711838934889,
+        "balanced_accuracy": 0.5153142458606004,
+        "mean_probability": 0.28059834241867065,
+        "mean_top1_regret": 0.04834548011422157,
+        "pairwise_accuracy": 0.4702918788675319,
+        "pearson": -0.03449239209294319,
+        "positive_rate": 0.32561195991457204,
+        "r2": -13498.9130859375,
+        "spearman": -0.04326041781363939,
+        "top1_accuracy": 0.3211215138435364
+      },
+      "residual_metrics": {
+        "hidden_predicts_passive_residual_pearson": 0.09068873524665833,
+        "hidden_predicts_passive_residual_r2": -0.25838804244995117,
+        "hidden_predicts_passive_residual_spearman": 0.06781702849116676
+      },
+      "selected_pca_dims": {
+        "DLinear": 64,
+        "PatchTST": 16,
+        "TimesNet": 64
+      },
+      "validation_metrics": {
+        "Hidden Only": {
+          "auprc": 0.3609564749574469,
+          "auroc": 0.5301016643293414,
+          "balanced_accuracy": 0.524309948741691,
+          "mean_probability": 0.48901182413101196,
+          "mean_top1_regret": 0.03386514261364937,
+          "pairwise_accuracy": 0.5350623557931015,
+          "pearson": 0.1211358830332756,
+          "positive_rate": 0.3393498641899588,
+          "r2": -0.18544363975524902,
+          "spearman": 0.08998444512484935,
+          "top1_accuracy": 0.3423289358615875
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.3935502912362203,
+          "auroc": 0.5572429328345619,
+          "balanced_accuracy": 0.5435197608052118,
+          "mean_probability": 0.4620148837566376,
+          "mean_top1_regret": 0.03197605907917023,
+          "pairwise_accuracy": 0.5548351295306522,
+          "pearson": 0.3062862157821655,
+          "positive_rate": 0.3393498641899588,
+          "r2": -0.02129197120666504,
+          "spearman": 0.18199865103741827,
+          "top1_accuracy": 0.3407517671585083
+        },
+        "Passive": {
+          "auprc": 0.3924777486184042,
+          "auroc": 0.5646050072410285,
+          "balanced_accuracy": 0.5478371484281097,
+          "mean_probability": 0.46597349643707275,
+          "mean_top1_regret": 0.030714502558112144,
+          "pairwise_accuracy": 0.5607640410058705,
+          "pearson": 0.309785395860672,
+          "positive_rate": 0.3393498641899588,
+          "r2": 0.0027567148208618164,
+          "spearman": 0.2149064179408051,
+          "top1_accuracy": 0.3560851514339447
+        },
+        "Passive + Hidden": {
+          "auprc": 0.37971487627276534,
+          "auroc": 0.5558710982780803,
+          "balanced_accuracy": 0.54310964068503,
+          "mean_probability": 0.46991872787475586,
+          "mean_top1_regret": 0.03209182247519493,
+          "pairwise_accuracy": 0.5543094132422092,
+          "pearson": 0.2706657946109772,
+          "positive_rate": 0.3393498641899588,
+          "r2": -0.02516639232635498,
+          "spearman": 0.18146442876927404,
+          "top1_accuracy": 0.36134234070777893
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.36914298594878464,
+          "auroc": 0.5466568162653795,
+          "balanced_accuracy": 0.536287911526967,
+          "mean_probability": 0.4819166958332062,
+          "mean_top1_regret": 0.03094979003071785,
+          "pairwise_accuracy": 0.5522065480884372,
+          "pearson": 0.26964297890663147,
+          "positive_rate": 0.3393498641899588,
+          "r2": -0.10998201370239258,
+          "spearman": 0.17278639460921014,
+          "top1_accuracy": 0.35222992300987244
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.39094100010157673,
+          "auroc": 0.562499538660761,
+          "balanced_accuracy": 0.5458771339270284,
+          "mean_probability": 0.45805421471595764,
+          "mean_top1_regret": 0.030759282410144806,
+          "pairwise_accuracy": 0.5602383247174275,
+          "pearson": 0.3079581558704376,
+          "positive_rate": 0.3393498641899588,
+          "r2": -0.0023648738861083984,
+          "spearman": 0.2131110463659978,
+          "top1_accuracy": 0.3580127954483032
+        }
+      }
+    },
+    "Electricity": {
+      "baseline": {
+        "router_train_final_baseline_mae": 0.2337522804737091,
+        "router_val_final_baseline_mae": 0.21535496413707733,
+        "router_val_final_baseline_mse": 0.12273695319890976
+      },
+      "core_names": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "delta": {
+        "delta_auroc_passive_hidden_minus_passive": 0.0329664751723302,
+        "delta_r2_passive_hidden_minus_passive": 0.3422624468803406,
+        "passive_hidden_r2_minus_raw_control": 0.0052337646484375,
+        "passive_hidden_r2_minus_shuffled": 0.3318939805030823
+      },
+      "dependence_rows": [
+        {
+          "block_size": 24,
+          "ci95_high": -0.00016731431242078543,
+          "ci95_low": -0.0002451624895911664,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "Electricity",
+          "mean_delta": -0.00020432671590242535,
+          "metric": "gain_prediction_mse",
+          "prob_delta_negative": 1.0,
+          "samples": 5000,
+          "test": "block24"
+        },
+        {
+          "ci95_high": -0.00012656101898755878,
+          "ci95_low": -0.00030058357515372336,
+          "ci_excludes_zero": true,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.00020423535897862166,
+          "metric": "gain_prediction_mse",
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every12th_phase",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "oof_metrics": {
+        "Hidden Only": {
+          "auprc": 0.16618133876701657,
+          "auroc": 0.69943065479726,
+          "balanced_accuracy": 0.6248838252364886,
+          "mean_probability": 0.32266563177108765,
+          "mean_top1_regret": 0.0050997501239180565,
+          "pairwise_accuracy": 0.8195084485407066,
+          "pearson": 0.7396861910820007,
+          "positive_rate": 0.07559220632225726,
+          "r2": 0.5370361804962158,
+          "spearman": 0.6892764242394845,
+          "top1_accuracy": 0.5867087244987488
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.17752951989942992,
+          "auroc": 0.6977463545724872,
+          "balanced_accuracy": 0.6421213025417205,
+          "mean_probability": 0.2760738730430603,
+          "mean_top1_regret": 0.004970267880707979,
+          "pairwise_accuracy": 0.8116662624302692,
+          "pearson": 0.7428143620491028,
+          "positive_rate": 0.07559220632225726,
+          "r2": 0.4695360064506531,
+          "spearman": 0.7027582215586801,
+          "top1_accuracy": 0.5645161271095276
+        },
+        "Passive": {
+          "auprc": 0.21269822513437625,
+          "auroc": 0.7336117934221885,
+          "balanced_accuracy": 0.6571476944173442,
+          "mean_probability": 0.3401881158351898,
+          "mean_top1_regret": 0.005219797138124704,
+          "pairwise_accuracy": 0.7992966286684453,
+          "pearson": 0.7747539281845093,
+          "positive_rate": 0.07559220632225726,
+          "r2": 0.5296922922134399,
+          "spearman": 0.689977709853444,
+          "top1_accuracy": 0.5270434021949768
+        },
+        "Passive + Hidden": {
+          "auprc": 0.2146587074964834,
+          "auroc": 0.7332442457479755,
+          "balanced_accuracy": 0.6534269216774439,
+          "mean_probability": 0.2583007514476776,
+          "mean_top1_regret": 0.004500364884734154,
+          "pairwise_accuracy": 0.8225402215215458,
+          "pearson": 0.7542688250541687,
+          "positive_rate": 0.07559220632225726,
+          "r2": 0.5163342952728271,
+          "spearman": 0.7211699183707478,
+          "top1_accuracy": 0.5867087244987488
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.2646305651414121,
+          "auroc": 0.7531909826121364,
+          "balanced_accuracy": 0.6560380477027423,
+          "mean_probability": 0.23818208277225494,
+          "mean_top1_regret": 0.004621864762157202,
+          "pairwise_accuracy": 0.8171234537957798,
+          "pearson": 0.7624556422233582,
+          "positive_rate": 0.07559220632225726,
+          "r2": 0.5653392672538757,
+          "spearman": 0.7213216782759482,
+          "top1_accuracy": 0.5677904486656189
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.20200411138563923,
+          "auroc": 0.7221879299845941,
+          "balanced_accuracy": 0.6535340232106327,
+          "mean_probability": 0.3167542815208435,
+          "mean_top1_regret": 0.00526812206953764,
+          "pairwise_accuracy": 0.797800953997898,
+          "pearson": 0.7723161578178406,
+          "positive_rate": 0.07559220632225726,
+          "r2": 0.526322603225708,
+          "spearman": 0.6863936707991449,
+          "top1_accuracy": 0.5229201912879944
+        }
+      },
+      "prototype_oof_metrics": {
+        "auprc": 0.13738796452263002,
+        "auroc": 0.6821337221103398,
+        "balanced_accuracy": 0.6301374360547725,
+        "mean_probability": 0.40245771408081055,
+        "mean_top1_regret": 0.02295137196779251,
+        "pairwise_accuracy": 0.5212628345056188,
+        "pearson": 0.0649256780743599,
+        "positive_rate": 0.07559220632225726,
+        "r2": -55100.578125,
+        "spearman": 0.10622688329799546,
+        "top1_accuracy": 0.392190158367157
+      },
+      "residual_metrics": {
+        "hidden_predicts_passive_residual_pearson": 0.028251931071281433,
+        "hidden_predicts_passive_residual_r2": -1.701822280883789,
+        "hidden_predicts_passive_residual_spearman": 0.26078015823372663
+      },
+      "selected_pca_dims": {
+        "PatchTST": 64,
+        "TimesNet": 32,
+        "iTransformer": 16
+      },
+      "validation_metrics": {
+        "Hidden Only": {
+          "auprc": 0.24989823719685256,
+          "auroc": 0.7731964163625548,
+          "balanced_accuracy": 0.6740081954840486,
+          "mean_probability": 0.2552504539489746,
+          "mean_top1_regret": 0.006946180481463671,
+          "pairwise_accuracy": 0.761609106195835,
+          "pearson": 0.6117531657218933,
+          "positive_rate": 0.060147458284827315,
+          "r2": 0.25171947479248047,
+          "spearman": 0.6760054521885405,
+          "top1_accuracy": 0.5230888724327087
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.3885702072142352,
+          "auroc": 0.781365854813552,
+          "balanced_accuracy": 0.707880939062181,
+          "mean_probability": 0.29038572311401367,
+          "mean_top1_regret": 0.006407696753740311,
+          "pairwise_accuracy": 0.7584400465657741,
+          "pearson": 0.6675119400024414,
+          "positive_rate": 0.060147458284827315,
+          "r2": 0.10499006509780884,
+          "spearman": 0.6975156450779538,
+          "top1_accuracy": 0.5281335115432739
+        },
+        "Passive": {
+          "auprc": 0.386437412226286,
+          "auroc": 0.785553572538469,
+          "balanced_accuracy": 0.7068702662866377,
+          "mean_probability": 0.3405916690826416,
+          "mean_top1_regret": 0.00831613689661026,
+          "pairwise_accuracy": 0.7235157159487776,
+          "pearson": 0.5410037040710449,
+          "positive_rate": 0.060147458284827315,
+          "r2": -0.04319560527801514,
+          "spearman": 0.6285023475723894,
+          "top1_accuracy": 0.4447031319141388
+        },
+        "Passive + Hidden": {
+          "auprc": 0.391158253372099,
+          "auroc": 0.8185200477107992,
+          "balanced_accuracy": 0.7220798593537732,
+          "mean_probability": 0.19976399838924408,
+          "mean_top1_regret": 0.005780677776783705,
+          "pairwise_accuracy": 0.7937524253007373,
+          "pearson": 0.6631348729133606,
+          "positive_rate": 0.060147458284827315,
+          "r2": 0.29906684160232544,
+          "spearman": 0.7389575082437149,
+          "top1_accuracy": 0.5975940823554993
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.45571532306693674,
+          "auroc": 0.8375450248469082,
+          "balanced_accuracy": 0.7517159017252248,
+          "mean_probability": 0.24461542069911957,
+          "mean_top1_regret": 0.0062147220596671104,
+          "pairwise_accuracy": 0.7586987453110853,
+          "pearson": 0.654273509979248,
+          "positive_rate": 0.060147458284827315,
+          "r2": 0.29383307695388794,
+          "spearman": 0.7221193184380454,
+          "top1_accuracy": 0.49068683385849
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.3824742971138835,
+          "auroc": 0.7790747301468912,
+          "balanced_accuracy": 0.7002554984328245,
+          "mean_probability": 0.34178265929222107,
+          "mean_top1_regret": 0.00823567807674408,
+          "pairwise_accuracy": 0.7275255465010995,
+          "pearson": 0.5413963198661804,
+          "positive_rate": 0.060147458284827315,
+          "r2": -0.032827138900756836,
+          "spearman": 0.6306015946037969,
+          "top1_accuracy": 0.4567326307296753
+        }
+      }
+    },
+    "Weather": {
+      "baseline": {
+        "router_train_final_baseline_mae": 0.16754686832427979,
+        "router_val_final_baseline_mae": 0.15981753170490265,
+        "router_val_final_baseline_mse": 0.2790922522544861
+      },
+      "core_names": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "delta": {
+        "delta_auroc_passive_hidden_minus_passive": 0.03602548152188245,
+        "delta_r2_passive_hidden_minus_passive": -0.0024434328079223633,
+        "passive_hidden_r2_minus_raw_control": 1.4492403864860535,
+        "passive_hidden_r2_minus_shuffled": -0.0007048845291137695
+      },
+      "dependence_rows": [
+        {
+          "block_size": 24,
+          "ci95_high": 3.76222851627972e-05,
+          "ci95_low": -3.9360977098112926e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "Weather",
+          "mean_delta": 3.86877673008712e-06,
+          "metric": "gain_prediction_mse",
+          "prob_delta_negative": 0.4007999897003174,
+          "samples": 5000,
+          "test": "block24"
+        },
+        {
+          "ci95_high": 1.014960707834689e-05,
+          "ci95_low": -2.5655874651420163e-06,
+          "ci_excludes_zero": false,
+          "comparison": "Passive+Hidden_vs_Passive",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 3.87289082937059e-06,
+          "metric": "gain_prediction_mse",
+          "num_phases": 12,
+          "prob_delta_negative": 0.11739999800920486,
+          "test": "every12th_phase",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "oof_metrics": {
+        "Hidden Only": {
+          "auprc": 0.2923339049884726,
+          "auroc": 0.5840770701384862,
+          "balanced_accuracy": 0.5533677473220333,
+          "mean_probability": 0.4675716459751129,
+          "mean_top1_regret": 0.013048693537712097,
+          "pairwise_accuracy": 0.6717592315219779,
+          "pearson": 0.40643739700317383,
+          "positive_rate": 0.24460287979549858,
+          "r2": 0.12510335445404053,
+          "spearman": 0.400076998860781,
+          "top1_accuracy": 0.5125516653060913
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.30805223889833566,
+          "auroc": 0.60602336683211,
+          "balanced_accuracy": 0.5674511106228062,
+          "mean_probability": 0.45136499404907227,
+          "mean_top1_regret": 0.011933522298932076,
+          "pairwise_accuracy": 0.6850598126734967,
+          "pearson": 0.22852015495300293,
+          "positive_rate": 0.24460287979549858,
+          "r2": -5.2487382888793945,
+          "spearman": 0.4875183963845284,
+          "top1_accuracy": 0.5005092620849609
+        },
+        "Passive": {
+          "auprc": 0.30924878442788784,
+          "auroc": 0.6006110076700816,
+          "balanced_accuracy": 0.5648978966526982,
+          "mean_probability": 0.4573477804660797,
+          "mean_top1_regret": 0.01187584176659584,
+          "pairwise_accuracy": 0.6838016495915963,
+          "pearson": 0.5590854287147522,
+          "positive_rate": 0.24460287979549858,
+          "r2": 0.25618046522140503,
+          "spearman": 0.4844439799748425,
+          "top1_accuracy": 0.504942774772644
+        },
+        "Passive + Hidden": {
+          "auprc": 0.3240456661800717,
+          "auroc": 0.6180854508045448,
+          "balanced_accuracy": 0.5776327435251983,
+          "mean_probability": 0.4365502893924713,
+          "mean_top1_regret": 0.011801954358816147,
+          "pairwise_accuracy": 0.6866574800790846,
+          "pearson": 0.5979405045509338,
+          "positive_rate": 0.24460287979549858,
+          "r2": 0.3223201036453247,
+          "spearman": 0.4946857090033918,
+          "top1_accuracy": 0.5053022503852844
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.33730093345764856,
+          "auroc": 0.6426617032960154,
+          "balanced_accuracy": 0.5954166459808592,
+          "mean_probability": 0.4218371510505676,
+          "mean_top1_regret": 0.011917820200324059,
+          "pairwise_accuracy": 0.6845405707666806,
+          "pearson": 0.6027019619941711,
+          "positive_rate": 0.24460287979549858,
+          "r2": 0.29030901193618774,
+          "spearman": 0.5020735418381106,
+          "top1_accuracy": 0.5036846399307251
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.31053285364600813,
+          "auroc": 0.6026689300177904,
+          "balanced_accuracy": 0.5648046270446032,
+          "mean_probability": 0.46004927158355713,
+          "mean_top1_regret": 0.011861582286655903,
+          "pairwise_accuracy": 0.6831426117867913,
+          "pearson": 0.5574247241020203,
+          "positive_rate": 0.24460287979549858,
+          "r2": 0.2529364824295044,
+          "spearman": 0.4838108424059025,
+          "top1_accuracy": 0.5053022503852844
+        }
+      },
+      "prototype_oof_metrics": {
+        "auprc": 0.28601994110682094,
+        "auroc": 0.5547760514901767,
+        "balanced_accuracy": 0.5413986998376362,
+        "mean_probability": 0.4013693034648895,
+        "mean_top1_regret": 0.025770874693989754,
+        "pairwise_accuracy": 0.5221376789886766,
+        "pearson": 0.023433983325958252,
+        "positive_rate": 0.24460287979549858,
+        "r2": -57330.703125,
+        "spearman": 0.07799566055909114,
+        "top1_accuracy": 0.3615121841430664
+      },
+      "residual_metrics": {
+        "hidden_predicts_passive_residual_pearson": 0.13710711896419525,
+        "hidden_predicts_passive_residual_r2": -0.015087723731994629,
+        "hidden_predicts_passive_residual_spearman": 0.09868233474268355
+      },
+      "selected_pca_dims": {
+        "PatchTST": 16,
+        "TimesNet": 32,
+        "iTransformer": 16
+      },
+      "validation_metrics": {
+        "Hidden Only": {
+          "auprc": 0.30497767841147994,
+          "auroc": 0.5225712022866595,
+          "balanced_accuracy": 0.5136564824260204,
+          "mean_probability": 0.43718159198760986,
+          "mean_top1_regret": 0.016998926177620888,
+          "pairwise_accuracy": 0.5927594580777096,
+          "pearson": 0.1349625587463379,
+          "positive_rate": 0.2770641615541922,
+          "r2": -0.04474282264709473,
+          "spearman": 0.2072921543308954,
+          "top1_accuracy": 0.4109470844268799
+        },
+        "Matched-Dimension Passive Control": {
+          "auprc": 0.3301250705040376,
+          "auroc": 0.5721985458609411,
+          "balanced_accuracy": 0.5527240977896093,
+          "mean_probability": 0.5003224611282349,
+          "mean_top1_regret": 0.01347432006150484,
+          "pairwise_accuracy": 0.6254792944785276,
+          "pearson": 0.40098750591278076,
+          "positive_rate": 0.2770641615541922,
+          "r2": 0.030338287353515625,
+          "spearman": 0.3586021589263331,
+          "top1_accuracy": 0.43040645122528076
+        },
+        "Passive": {
+          "auprc": 0.3168732840620059,
+          "auroc": 0.5692514388789456,
+          "balanced_accuracy": 0.5558976380912816,
+          "mean_probability": 0.5020755529403687,
+          "mean_top1_regret": 0.013826447539031506,
+          "pairwise_accuracy": 0.61857745398773,
+          "pearson": 0.47927558422088623,
+          "positive_rate": 0.2770641615541922,
+          "r2": 0.2121005654335022,
+          "spearman": 0.35429722772239886,
+          "top1_accuracy": 0.417465478181839
+        },
+        "Passive + Hidden": {
+          "auprc": 0.3390250496037327,
+          "auroc": 0.605276920400828,
+          "balanced_accuracy": 0.5795538541821312,
+          "mean_probability": 0.482704222202301,
+          "mean_top1_regret": 0.014089561067521572,
+          "pairwise_accuracy": 0.6175549591002045,
+          "pearson": 0.48983919620513916,
+          "positive_rate": 0.2770641615541922,
+          "r2": 0.20965713262557983,
+          "spearman": 0.3547143432528545,
+          "top1_accuracy": 0.41641104221343994
+        },
+        "Raw Forecast Control": {
+          "auprc": 0.3377544034671226,
+          "auroc": 0.5804553006114878,
+          "balanced_accuracy": 0.5596544065408859,
+          "mean_probability": 0.5224742293357849,
+          "mean_top1_regret": 0.01530875638127327,
+          "pairwise_accuracy": 0.6186094069529653,
+          "pearson": 0.5577754378318787,
+          "positive_rate": 0.2770641615541922,
+          "r2": -1.2395832538604736,
+          "spearman": 0.34944024944893726,
+          "top1_accuracy": 0.4231211543083191
+        },
+        "Shuffled Hidden": {
+          "auprc": 0.31679735950243937,
+          "auroc": 0.5698601765840412,
+          "balanced_accuracy": 0.5566525313628778,
+          "mean_probability": 0.500666081905365,
+          "mean_top1_regret": 0.013862068764865398,
+          "pairwise_accuracy": 0.6184176891615542,
+          "pearson": 0.4788933992385864,
+          "positive_rate": 0.2770641615541922,
+          "r2": 0.2103620171546936,
+          "spearman": 0.35402292985766043,
+          "top1_accuracy": 0.41564416885375977
+        }
+      }
+    }
+  },
+  "device": "cuda",
+  "experiment": "expert_native_latent_competence",
+  "git_commit": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "runtime_sec": 219.27964839997003,
+  "success_criteria": {
+    "MIXED_SUPPORT": "Incremental signal exists but is dataset/expert dependent or control-limited.",
+    "NO_LATENT_COMPETENCE_SIGNAL": "Hidden representations fail under OOF/validation competence readouts.",
+    "NO_UNIQUE_LATENT_COMPETENCE": "Hidden representations have some predictive signal but do not add value beyond Passive.",
+    "STRONG_SUPPORT": "Passive+Hidden clearly beats Passive on >=3/5, survives dependence, shuffled loses gain, raw control does not explain it, and multiple experts carry signal."
+  },
+  "test_loaded": false
+}

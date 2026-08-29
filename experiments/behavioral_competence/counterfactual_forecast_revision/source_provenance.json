@@ -1,0 +1,47 @@
+{
+  "created_at_utc": "2026-08-27T23:01:18.528616+00:00",
+  "git_commit_sha": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "reuse_statement": "CFR reuses frozen expert runtimes, raw-history reconstruction, train-selected frozen K=3 core bundles, stage runtime groups, build_abc_features, conditional-error targets, V2 purged chronological folds, V2 deranged-expert control, dependence_full statistics, checkpoint hashing, and dataset registration.",
+  "source_files": {
+    "experiments/behavioral_competence/common.py": {
+      "path": "experiments/behavioral_competence/common.py",
+      "sha256": "098cc7ce669034efffc0c3f4d41f64a5d41cca358e4cdd01773ee4587e4d4646"
+    },
+    "experiments/behavioral_competence/controlled_discriminative_probe_v2/run_controlled_discriminative_probe_v2.py": {
+      "path": "experiments/behavioral_competence/controlled_discriminative_probe_v2/run_controlled_discriminative_probe_v2.py",
+      "sha256": "75db6932ff36884984affb50f2912f89c4a3dda0a63a2e2e37444f96c232c67c"
+    },
+    "experiments/behavioral_competence/counterfactual_forecast_revision/run_counterfactual_forecast_revision.py": {
+      "path": "experiments/behavioral_competence/counterfactual_forecast_revision/run_counterfactual_forecast_revision.py",
+      "sha256": "bd7415f9ed102a5adbb2764b77e6a23fda3701b57c16f411f22fd466c00dc4d3"
+    },
+    "experiments/behavioral_competence/generalization/dataset_selection.json": {
+      "path": "experiments/behavioral_competence/generalization/dataset_selection.json",
+      "sha256": "72f106c28f762581cbe0c07036e0f842882caf130bf567178e5bc637d47ca592"
+    },
+    "experiments/behavioral_competence/generalization/run_generalization_study.py": {
+      "path": "experiments/behavioral_competence/generalization/run_generalization_study.py",
+      "sha256": "983e3416fdb86552fefb082e449abde61e5efec0078d5c56cf31102281cce969"
+    },
+    "experiments/behavioral_competence/model_runtime.py": {
+      "path": "experiments/behavioral_competence/model_runtime.py",
+      "sha256": "2f5d7190a386a5be0739267cb57b7482e1141608950ad61b5b06a7813d08f019"
+    },
+    "experiments/behavioral_competence/run_behavioral_competence.py": {
+      "path": "experiments/behavioral_competence/run_behavioral_competence.py",
+      "sha256": "76d273fd30ef97dd25c93850ad15a5776b3795ee61200526587bcbde2b05dc48"
+    },
+    "experiments/behavioral_competence/run_learned_probe.py": {
+      "path": "experiments/behavioral_competence/run_learned_probe.py",
+      "sha256": "9484f18a85938e90452892c29d51daae0fc57897f4df28c2c9b5a6dde6bba883"
+    },
+    "experiments/behavioral_competence/simplex_probe/run_simplex_probe.py": {
+      "path": "experiments/behavioral_competence/simplex_probe/run_simplex_probe.py",
+      "sha256": "83e9afc6ee5dbc19f3a5ff45c53aaf96ae057241c0e77da24bbd55c389e41eb6"
+    },
+    "experiments/frozen_hv_costar/run_frozen_hv_costar.py": {
+      "path": "experiments/frozen_hv_costar/run_frozen_hv_costar.py",
+      "sha256": "34d8c25004bf52c9bab9c73332199f45cf318959da374ba9308175c21f03fdde"
+    }
+  }
+}

@@ -1,0 +1,3019 @@
+{
+  "created_at_utc": "2026-08-26T01:11:35.789095+00:00",
+  "datasets": {
+    "ETTh1": {
+      "common_windows": 3328,
+      "comparison_rows": [
+        {
+          "baseline": "MatchedNeuralPassive",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh1",
+          "delta_router_val_mae": 0.0019497275352478027,
+          "delta_router_val_mse": 0.002948969602584839
+        },
+        {
+          "baseline": "DeltaOnly",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh1",
+          "delta_router_val_mae": -0.0002307891845703125,
+          "delta_router_val_mse": -0.0007891058921813965
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "MatchedNeuralPassive",
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh1",
+          "delta_router_val_mae": 3.7044286727905273e-05,
+          "delta_router_val_mse": 0.0008850693702697754
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "DeltaOnly",
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh1",
+          "delta_router_val_mae": 0.0022175610065460205,
+          "delta_router_val_mse": 0.004623144865036011
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTh1",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.0024564415216445923,
+          "ci95_low": 0.0014431829331442714,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.0019497807370498776,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0030593315605074167,
+          "ci95_low": 0.00097959628328681,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": 0.0019497807370498776,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0032796021550893784,
+          "ci95_low": 0.0008510829648002982,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh1",
+          "is_primary": true,
+          "mean_delta": 0.0019497807370498776,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0036009333562105894,
+          "ci95_low": 0.0007169811287894845,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": 0.0019497807370498776,
+          "prob_delta_negative": 0.00019999999494757503,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0023801173083484173,
+          "ci95_low": 0.0015157521702349186,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.001949360012076795,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 2.715738446568139e-05,
+          "ci95_low": -0.0004954409087076783,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -0.00023077806690707803,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0001471063878852874,
+          "ci95_low": -0.0006282322574406862,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": -0.00023077806690707803,
+          "prob_delta_negative": 0.8806999921798706,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0001700416614767164,
+          "ci95_low": -0.0006702696555294096,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh1",
+          "is_primary": true,
+          "mean_delta": -0.00023077806690707803,
+          "prob_delta_negative": 0.861299991607666,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0002236834989162162,
+          "ci95_low": -0.0007111753802746534,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": -0.00023077806690707803,
+          "prob_delta_negative": 0.8292999863624573,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -5.156338829692686e-06,
+          "ci95_low": -0.0004675996315199882,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00023075360513757914,
+          "num_phases": 12,
+          "prob_delta_negative": 0.977400004863739,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.00041711199446581304,
+          "ci95_low": -0.0003327303857076913,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 3.701619425555691e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0005666724755428731,
+          "ci95_low": -0.0005498636746779084,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": 3.701619425555691e-05,
+          "prob_delta_negative": 0.4805999994277954,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0005920890835113823,
+          "ci95_low": -0.0005757180042564869,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": true,
+          "mean_delta": 3.701619425555691e-05,
+          "prob_delta_negative": 0.4975999891757965,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0006390640628524125,
+          "ci95_low": -0.0006184790981933475,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": 3.701619425555691e-05,
+          "prob_delta_negative": 0.47870001196861267,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0003453860990703106,
+          "ci95_low": -0.0002527086762711406,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 3.732724508154206e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.41429999470710754,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "ci95_high": 0.002821359084919095,
+          "ci95_low": 0.0016448170645162463,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.0022175752092152834,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.003503724467009306,
+          "ci95_low": 0.0010077070910483599,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": 0.0022175752092152834,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003791784169152379,
+          "ci95_low": 0.000806117954198271,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": true,
+          "mean_delta": 0.0022175752092152834,
+          "prob_delta_negative": 0.00039999998989515007,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004227780736982822,
+          "ci95_low": 0.0005856455536559224,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "mean_delta": 0.0022175752092152834,
+          "prob_delta_negative": 0.002099999925121665,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0027030454948544502,
+          "ci95_low": 0.0016546361148357391,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.0022174406331032515,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        }
+      ],
+      "fold_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTh1",
+          "eval_origin_min": 5098,
+          "fold": 0,
+          "num_eval_windows": 1664,
+          "num_purged_windows": 11,
+          "num_train_windows": 2207,
+          "train_target_end_max": 5098
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTh1",
+          "eval_origin_min": 6869,
+          "fold": 1,
+          "num_eval_windows": 1664,
+          "num_purged_windows": 11,
+          "num_train_windows": 3871,
+          "train_target_end_max": 6869
+        }
+      ],
+      "integrity": {
+        "core_expert_selection_unchanged": true,
+        "core_order": "PatchTST+iTransformer+TimesNet",
+        "dataset": "ETTh1",
+        "expert_checkpoints_unchanged": true,
+        "no_expert_parameter_updates": true,
+        "no_test_cache_accessed": true,
+        "purge_correctness": true,
+        "rank_weights_exact_k3": true,
+        "result": "PASS",
+        "router_val_targets_never_used_during_fitting": true,
+        "target_corruption_leaves_original_features_and_scores_unchanged": true
+      },
+      "legal_windows": 5546,
+      "num_train_windows": 5546,
+      "num_val_windows": 2773,
+      "observability": {
+        "max_router_train_target_end": 8544,
+        "min_router_val_origin": 8640,
+        "observability_holds": true
+      },
+      "residual_rows": [
+        {
+          "dataset": "ETTh1",
+          "representation": "MatchedNeuralPassive",
+          "residual_mae_oof": 0.049184978008270264,
+          "residual_mse_oof": 0.004475352820008993,
+          "residual_pearson_oof": 0.04238593950867653,
+          "residual_r2_oof": -0.09755063056945801,
+          "residual_spearman_oof": 0.017385299045314474
+        },
+        {
+          "dataset": "ETTh1",
+          "representation": "DeltaOnly",
+          "residual_mae_oof": 0.05084024369716644,
+          "residual_mse_oof": 0.004281714558601379,
+          "residual_pearson_oof": 0.05981900542974472,
+          "residual_r2_oof": -0.05006217956542969,
+          "residual_spearman_oof": 0.03504366059929334
+        },
+        {
+          "dataset": "ETTh1",
+          "representation": "OriginalProbeResponse",
+          "residual_mae_oof": 0.05243012681603432,
+          "residual_mse_oof": 0.016740528866648674,
+          "residual_pearson_oof": -0.03862549364566803,
+          "residual_r2_oof": -3.105503559112549,
+          "residual_spearman_oof": -0.11215859988260132
+        }
+      ],
+      "router_train_oof_rows": [
+        {
+          "competence_mae": 0.04929790645837784,
+          "competence_mse": 0.004135651048272848,
+          "competence_r2": -0.41655099391937256,
+          "dataset": "ETTh1",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.6147836538461539,
+          "pearson": 0.3076898455619812,
+          "spearman": 0.30081856581789035,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.38311296701431274,
+          "top2_recall": 0.7611178159713745
+        },
+        {
+          "competence_mae": 0.05320754274725914,
+          "competence_mse": 0.005449334625154734,
+          "competence_r2": -0.8665164709091187,
+          "dataset": "ETTh1",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.6307091346153846,
+          "pearson": 0.22028286755084991,
+          "spearman": 0.2567580877057306,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.40835335850715637,
+          "top2_recall": 0.776442289352417
+        },
+        {
+          "competence_mae": 0.05543728545308113,
+          "competence_mse": 0.005889729596674442,
+          "competence_r2": -1.0173614025115967,
+          "dataset": "ETTh1",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.6334134615384616,
+          "pearson": 0.21534240245819092,
+          "spearman": 0.23768791499269348,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4110576808452606,
+          "top2_recall": 0.776442289352417
+        },
+        {
+          "competence_mae": 0.05551234260201454,
+          "competence_mse": 0.005860051140189171,
+          "competence_r2": -1.0071957111358643,
+          "dataset": "ETTh1",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.6319110576923077,
+          "pearson": 0.22251802682876587,
+          "spearman": 0.24438233698889975,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4071514308452606,
+          "top2_recall": 0.7752403616905212
+        }
+      ],
+      "router_val_rows": [
+        {
+          "competence_mae": 0.040286511182785034,
+          "competence_mse": 0.0029530604369938374,
+          "competence_r2": -0.01683223247528076,
+          "dataset": "ETTh1",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.6054814280562567,
+          "pearson": 0.32386815547943115,
+          "router_val_mae": 0.3665846884250641,
+          "router_val_mse": 0.30929648876190186,
+          "spearman": 0.23083462391372045,
+          "top1_expert_accuracy": 0.38622429966926575,
+          "top2_recall": 0.7201586961746216
+        },
+        {
+          "competence_mae": 0.043447017669677734,
+          "competence_mse": 0.003231505397707224,
+          "competence_r2": -0.112709641456604,
+          "dataset": "ETTh1",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.6034379132107225,
+          "pearson": 0.2927488088607788,
+          "router_val_mae": 0.366621732711792,
+          "router_val_mse": 0.31018155813217163,
+          "spearman": 0.18843479473802874,
+          "top1_expert_accuracy": 0.3710782527923584,
+          "top2_recall": 0.7133069038391113
+        },
+        {
+          "competence_mae": 0.042664866894483566,
+          "competence_mse": 0.0032931643072515726,
+          "competence_r2": -0.13394081592559814,
+          "dataset": "ETTh1",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.5667748527467243,
+          "pearson": 0.21589688956737518,
+          "router_val_mae": 0.3688022494316101,
+          "router_val_mse": 0.31391963362693787,
+          "spearman": 0.1828415318138165,
+          "top1_expert_accuracy": 0.33898305892944336,
+          "top2_recall": 0.6830148100852966
+        },
+        {
+          "competence_mae": 0.04325466603040695,
+          "competence_mse": 0.003494960255920887,
+          "competence_r2": -0.20342552661895752,
+          "dataset": "ETTh1",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.5717033297271307,
+          "pearson": 0.24089589715003967,
+          "router_val_mae": 0.3685714602470398,
+          "router_val_mse": 0.31313052773475647,
+          "spearman": 0.1874776582601343,
+          "top1_expert_accuracy": 0.33898305892944336,
+          "top2_recall": 0.6898665428161621
+        }
+      ],
+      "train_diag_rows": [
+        {
+          "best_epoch": 1,
+          "best_internal_val_loss": 0.010657990351319313,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_0",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.010909264907240868,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_0",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.010570657439529896,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_0",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.0105043426156044,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_0",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.011059044860303402,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_1",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.010904855094850063,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_1",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.011120299808681011,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_1",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.01110638678073883,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_1",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.011031478643417358,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 1,
+          "best_internal_val_loss": 0.010884322226047516,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 5,
+          "best_internal_val_loss": 0.010849150829017162,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.010815517045557499,
+          "dataset": "ETTh1",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11400
+        }
+      ]
+    },
+    "ETTh2": {
+      "common_windows": 1232,
+      "comparison_rows": [
+        {
+          "baseline": "MatchedNeuralPassive",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh2",
+          "delta_router_val_mae": 0.0018843114376068115,
+          "delta_router_val_mse": 0.001262664794921875
+        },
+        {
+          "baseline": "DeltaOnly",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh2",
+          "delta_router_val_mae": -0.00018858909606933594,
+          "delta_router_val_mse": -0.00016960501670837402
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "MatchedNeuralPassive",
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh2",
+          "delta_router_val_mae": 0.0004514157772064209,
+          "delta_router_val_mse": 0.000978037714958191
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "DeltaOnly",
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh2",
+          "delta_router_val_mae": 0.0025243163108825684,
+          "delta_router_val_mse": 0.00241030752658844
+        }
+      ],
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "dataset": "ETTh2",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.002588331699371338,
+          "ci95_low": 0.0012008323101326823,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.001884325291030109,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0029831789433956146,
+          "ci95_low": 0.0009363759309053421,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": 0.001884325291030109,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003066807286813855,
+          "ci95_low": 0.0009416708489879966,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh2",
+          "is_primary": true,
+          "mean_delta": 0.001884325291030109,
+          "prob_delta_negative": 9.999999747378752e-05,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.003202552907168865,
+          "ci95_low": 0.0008027643780224025,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": 0.001884325291030109,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0023951169569045305,
+          "ci95_low": 0.0013918904587626457,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.0018835276132449508,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": -1.979147236852441e-05,
+          "ci95_low": -0.0003834676172118634,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -0.00018856053065974265,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -1.8931730664917268e-05,
+          "ci95_low": -0.0003866088518407196,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": -0.00018856053065974265,
+          "prob_delta_negative": 0.9861000180244446,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -2.755935929599218e-05,
+          "ci95_low": -0.00038058171048760414,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh2",
+          "is_primary": true,
+          "mean_delta": -0.00018856053065974265,
+          "prob_delta_negative": 0.9884999990463257,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -1.996653008973226e-05,
+          "ci95_low": -0.0003759252722375095,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": -0.00018856053065974265,
+          "prob_delta_negative": 0.9873999953269958,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -1.3716435205424204e-05,
+          "ci95_low": -0.0003580324409995228,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0001880038034869358,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9825999736785889,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": 0.0012740978272631764,
+          "ci95_low": -0.00034839086583815515,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.0004513936582952738,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0017324506770819426,
+          "ci95_low": -0.0007633372442796826,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": 0.0004513936582952738,
+          "prob_delta_negative": 0.23729999363422394,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0017635126132518053,
+          "ci95_low": -0.0007501047221012414,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": true,
+          "mean_delta": 0.0004513936582952738,
+          "prob_delta_negative": 0.21809999644756317,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0016272923676297069,
+          "ci95_low": -0.0007293487433344126,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": 0.0004513936582952738,
+          "prob_delta_negative": 0.22450000047683716,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0011608856730163097,
+          "ci95_low": -0.00025551195722073317,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.00045090317144058645,
+          "num_phases": 12,
+          "prob_delta_negative": 0.10260000079870224,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "ci95_high": 0.003507844405248761,
+          "ci95_low": 0.0015630957204848528,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.002524279523640871,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.004188492428511381,
+          "ci95_low": 0.001025457284413278,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": 0.002524279523640871,
+          "prob_delta_negative": 0.00039999998989515007,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.004237391985952854,
+          "ci95_low": 0.0011141890427097678,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": true,
+          "mean_delta": 0.002524279523640871,
+          "prob_delta_negative": 0.0006000000284984708,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004049395211040974,
+          "ci95_low": 0.001125403563492,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "mean_delta": 0.002524279523640871,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0036473155487328768,
+          "ci95_low": 0.001354590174742043,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTh2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.002522434340789914,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        }
+      ],
+      "fold_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTh2",
+          "eval_origin_min": 9461,
+          "fold": 0,
+          "num_eval_windows": 616,
+          "num_purged_windows": 11,
+          "num_train_windows": 810,
+          "train_target_end_max": 9461
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTh2",
+          "eval_origin_min": 10077,
+          "fold": 1,
+          "num_eval_windows": 616,
+          "num_purged_windows": 11,
+          "num_train_windows": 1426,
+          "train_target_end_max": 10077
+        }
+      ],
+      "integrity": {
+        "core_expert_selection_unchanged": true,
+        "core_order": "DLinear+PatchTST+ModernTCN",
+        "dataset": "ETTh2",
+        "expert_checkpoints_unchanged": true,
+        "no_expert_parameter_updates": true,
+        "no_test_cache_accessed": true,
+        "purge_correctness": true,
+        "rank_weights_exact_k3": true,
+        "result": "PASS",
+        "router_val_targets_never_used_during_fitting": true,
+        "target_corruption_leaves_original_features_and_scores_unchanged": true
+      },
+      "legal_windows": 2053,
+      "num_train_windows": 2053,
+      "num_val_windows": 613,
+      "observability": {
+        "max_router_train_target_end": 10704,
+        "min_router_val_origin": 10800,
+        "observability_holds": true
+      },
+      "residual_rows": [
+        {
+          "dataset": "ETTh2",
+          "representation": "MatchedNeuralPassive",
+          "residual_mae_oof": 0.05515429005026817,
+          "residual_mse_oof": 0.0052146404050290585,
+          "residual_pearson_oof": 0.7359471917152405,
+          "residual_r2_oof": 0.5402364730834961,
+          "residual_spearman_oof": 0.7472003255170068
+        },
+        {
+          "dataset": "ETTh2",
+          "representation": "DeltaOnly",
+          "residual_mae_oof": 0.09830397367477417,
+          "residual_mse_oof": 0.01799464412033558,
+          "residual_pearson_oof": -0.20995190739631653,
+          "residual_r2_oof": -0.5865486860275269,
+          "residual_spearman_oof": -0.19445812314908897
+        },
+        {
+          "dataset": "ETTh2",
+          "representation": "OriginalProbeResponse",
+          "residual_mae_oof": 0.06783270835876465,
+          "residual_mse_oof": 0.009230898693203926,
+          "residual_pearson_oof": 0.5294675827026367,
+          "residual_r2_oof": 0.18613171577453613,
+          "residual_spearman_oof": 0.6632809528789628
+        }
+      ],
+      "router_train_oof_rows": [
+        {
+          "competence_mae": 0.08688552677631378,
+          "competence_mse": 0.014244223944842815,
+          "competence_r2": -10.125066757202148,
+          "dataset": "ETTh2",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.5844155844155844,
+          "pearson": 0.043369270861148834,
+          "spearman": 0.06519934880386753,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.375,
+          "top2_recall": 0.7053571343421936
+        },
+        {
+          "competence_mae": 0.052626341581344604,
+          "competence_mse": 0.004600663669407368,
+          "competence_r2": -2.593224287033081,
+          "dataset": "ETTh2",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.622564935064935,
+          "pearson": 0.20748324692249298,
+          "spearman": 0.14190648864541888,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.41801947355270386,
+          "top2_recall": 0.7629870176315308
+        },
+        {
+          "competence_mae": 0.05585194751620293,
+          "competence_mse": 0.005262726917862892,
+          "competence_r2": -3.1103105545043945,
+          "dataset": "ETTh2",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.6193181818181818,
+          "pearson": 0.14580239355564117,
+          "spearman": 0.12821454031620527,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.40665584802627563,
+          "top2_recall": 0.7686688303947449
+        },
+        {
+          "competence_mae": 0.06031200662255287,
+          "competence_mse": 0.006023635622113943,
+          "competence_r2": -3.7045979499816895,
+          "dataset": "ETTh2",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.6201298701298701,
+          "pearson": 0.16881036758422852,
+          "spearman": 0.12821832886455362,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4074675440788269,
+          "top2_recall": 0.7540584206581116
+        }
+      ],
+      "router_val_rows": [
+        {
+          "competence_mae": 0.03825031593441963,
+          "competence_mse": 0.002347121713683009,
+          "competence_r2": -0.4773026704788208,
+          "dataset": "ETTh2",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.7041870581837956,
+          "pearson": 0.4183540940284729,
+          "router_val_mae": 0.27726617455482483,
+          "router_val_mse": 0.1678590625524521,
+          "spearman": 0.3562446414021908,
+          "top1_expert_accuracy": 0.48613375425338745,
+          "top2_recall": 0.8564437031745911
+        },
+        {
+          "competence_mae": 0.0421963669359684,
+          "competence_mse": 0.0027688308618962765,
+          "competence_r2": -0.7427307367324829,
+          "dataset": "ETTh2",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.6710168569874932,
+          "pearson": 0.2589857876300812,
+          "router_val_mae": 0.27771759033203125,
+          "router_val_mse": 0.16883710026741028,
+          "spearman": 0.21310355784267954,
+          "top1_expert_accuracy": 0.4632952809333801,
+          "top2_recall": 0.8189233541488647
+        },
+        {
+          "competence_mae": 0.03905009105801582,
+          "competence_mse": 0.0025004460476338863,
+          "competence_r2": -0.573806643486023,
+          "dataset": "ETTh2",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.5948885263730288,
+          "pearson": 0.18154007196426392,
+          "router_val_mae": 0.2797904908657074,
+          "router_val_mse": 0.17026937007904053,
+          "spearman": 0.13017523526506675,
+          "top1_expert_accuracy": 0.4094616770744324,
+          "top2_recall": 0.7781403064727783
+        },
+        {
+          "competence_mae": 0.03906518965959549,
+          "competence_mse": 0.00250536622479558,
+          "competence_r2": -0.5769034624099731,
+          "dataset": "ETTh2",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.5970636215334421,
+          "pearson": 0.18661102652549744,
+          "router_val_mae": 0.27960190176963806,
+          "router_val_mse": 0.17009976506233215,
+          "spearman": 0.13444880601430226,
+          "top1_expert_accuracy": 0.41109299659729004,
+          "top2_recall": 0.7781403064727783
+        }
+      ],
+      "train_diag_rows": [
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.013899896293878555,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_0",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.009648498147726059,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_0",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.009651490487158298,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_0",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.00978684052824974,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_0",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 3,
+          "best_internal_val_loss": 0.014300759881734848,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_1",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.01257103681564331,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_1",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.01278380025178194,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_1",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.012841843068599701,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_1",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.010501100681722164,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.009993769228458405,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.010359233245253563,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.010352117009460926,
+          "dataset": "ETTh2",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11400
+        }
+      ]
+    },
+    "ETTm1": {
+      "common_windows": 13696,
+      "comparison_rows": [
+        {
+          "baseline": "MatchedNeuralPassive",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTm1",
+          "delta_router_val_mae": -0.00039589405059814453,
+          "delta_router_val_mse": -0.00033971667289733887
+        },
+        {
+          "baseline": "DeltaOnly",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTm1",
+          "delta_router_val_mae": 0.0003188401460647583,
+          "delta_router_val_mse": 0.00039936602115631104
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "MatchedNeuralPassive",
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTm1",
+          "delta_router_val_mae": 0.0008828192949295044,
+          "delta_router_val_mse": 0.0007416605949401855
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "DeltaOnly",
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTm1",
+          "delta_router_val_mae": 0.00016808509826660156,
+          "delta_router_val_mse": 2.5779008865356445e-06
+        }
+      ],
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "dataset": "ETTm1",
+      "dependence_rows": [
+        {
+          "ci95_high": -0.00020327734819147736,
+          "ci95_low": -0.0005799057544209063,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -0.0003958611923735589,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -9.136933658737689e-05,
+          "ci95_low": -0.0007061169599182904,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": -0.0003958611923735589,
+          "prob_delta_negative": 0.9952999949455261,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -7.975658809300512e-05,
+          "ci95_low": -0.0007242469000630081,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTm1",
+          "is_primary": true,
+          "mean_delta": -0.0003958611923735589,
+          "prob_delta_negative": 0.9919999837875366,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -6.325500726234168e-05,
+          "ci95_low": -0.0007351412787102163,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": -0.0003958611923735589,
+          "prob_delta_negative": 0.9901000261306763,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00016137442435137928,
+          "ci95_low": -0.0006254950421862304,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00039591535460203886,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9998000264167786,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.0004635780642274767,
+          "ci95_low": 0.00017566846508998424,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.00031885303906165063,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0005333663430064917,
+          "ci95_low": 0.00010105173714691773,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": 0.00031885303906165063,
+          "prob_delta_negative": 0.002199999988079071,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0005528609617613256,
+          "ci95_low": 8.470025932183489e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTm1",
+          "is_primary": true,
+          "mean_delta": 0.00031885303906165063,
+          "prob_delta_negative": 0.003100000089034438,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0005611801170744002,
+          "ci95_low": 7.618259405717254e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": 0.00031885303906165063,
+          "prob_delta_negative": 0.004000000189989805,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0004520397924352437,
+          "ci95_low": 0.00020417173800524324,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.00031887757359072566,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.0011016628704965115,
+          "ci95_low": 0.0006584082148037851,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.0008827899000607431,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0012910626828670502,
+          "ci95_low": 0.0005076144589111209,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": 0.0008827899000607431,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0013271772768348455,
+          "ci95_low": 0.0004828823439311236,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": true,
+          "mean_delta": 0.0008827899000607431,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0013694200897589326,
+          "ci95_low": 0.0004669080663006753,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": 0.0008827899000607431,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0011598612181842327,
+          "ci95_low": 0.000594890327192843,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.0008828198187984526,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.00036425775033421814,
+          "ci95_low": -3.0072747904341668e-05,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.00016807571228127927,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0005186906782910228,
+          "ci95_low": -0.0001556487550260499,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": 0.00016807571228127927,
+          "prob_delta_negative": 0.14839999377727509,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0005561330472119153,
+          "ci95_low": -0.00017117835523094982,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": true,
+          "mean_delta": 0.00016807571228127927,
+          "prob_delta_negative": 0.15680000185966492,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0005859281518496573,
+          "ci95_low": -0.000182240255526267,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "mean_delta": 0.00016807571228127927,
+          "prob_delta_negative": 0.16089999675750732,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0003662662929855287,
+          "ci95_low": -2.7528285500011407e-05,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "ETTm1",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.0001680268906056881,
+          "num_phases": 12,
+          "prob_delta_negative": 0.046799998730421066,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "fold_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTm1",
+          "eval_origin_min": 20650,
+          "fold": 0,
+          "num_eval_windows": 6848,
+          "num_purged_windows": 11,
+          "num_train_windows": 9119,
+          "train_target_end_max": 20650
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTm1",
+          "eval_origin_min": 27605,
+          "fold": 1,
+          "num_eval_windows": 6848,
+          "num_purged_windows": 11,
+          "num_train_windows": 15967,
+          "train_target_end_max": 27605
+        }
+      ],
+      "integrity": {
+        "core_expert_selection_unchanged": true,
+        "core_order": "DLinear+PatchTST+TimesNet",
+        "dataset": "ETTm1",
+        "expert_checkpoints_unchanged": true,
+        "no_expert_parameter_updates": true,
+        "no_test_cache_accessed": true,
+        "purge_correctness": true,
+        "rank_weights_exact_k3": true,
+        "result": "PASS",
+        "router_val_targets_never_used_during_fitting": true,
+        "target_corruption_leaves_original_features_and_scores_unchanged": true
+      },
+      "legal_windows": 22826,
+      "num_train_windows": 22826,
+      "num_val_windows": 11413,
+      "observability": {
+        "max_router_train_target_end": 34464,
+        "min_router_val_origin": 34560,
+        "observability_holds": true
+      },
+      "residual_rows": [
+        {
+          "dataset": "ETTm1",
+          "representation": "MatchedNeuralPassive",
+          "residual_mae_oof": 0.0474330335855484,
+          "residual_mse_oof": 0.004202732816338539,
+          "residual_pearson_oof": -0.02320639044046402,
+          "residual_r2_oof": -0.0824592113494873,
+          "residual_spearman_oof": -0.0043575159732662586
+        },
+        {
+          "dataset": "ETTm1",
+          "representation": "DeltaOnly",
+          "residual_mae_oof": 0.04633099213242531,
+          "residual_mse_oof": 0.004067125730216503,
+          "residual_pearson_oof": 0.015773195773363113,
+          "residual_r2_oof": -0.04753220081329346,
+          "residual_spearman_oof": 0.050740272663107905
+        },
+        {
+          "dataset": "ETTm1",
+          "representation": "OriginalProbeResponse",
+          "residual_mae_oof": 0.046399544924497604,
+          "residual_mse_oof": 0.00398750277236104,
+          "residual_pearson_oof": 0.17944788932800293,
+          "residual_r2_oof": -0.027024507522583008,
+          "residual_spearman_oof": 0.10627660426074767
+        }
+      ],
+      "router_train_oof_rows": [
+        {
+          "competence_mae": 0.046164702624082565,
+          "competence_mse": 0.004015698097646236,
+          "competence_r2": -0.1824967861175537,
+          "dataset": "ETTm1",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.6134881230529595,
+          "pearson": 0.29394879937171936,
+          "spearman": 0.2623107482469422,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.38828855752944946,
+          "top2_recall": 0.7490507960319519
+        },
+        {
+          "competence_mae": 0.04935891926288605,
+          "competence_mse": 0.00461437227204442,
+          "competence_r2": -0.35878753662109375,
+          "dataset": "ETTm1",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.6188424844236761,
+          "pearson": 0.3006494343280792,
+          "spearman": 0.2609921285470993,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.3973422944545746,
+          "top2_recall": 0.7566442489624023
+        },
+        {
+          "competence_mae": 0.046042170375585556,
+          "competence_mse": 0.004216019529849291,
+          "competence_r2": -0.2414851188659668,
+          "dataset": "ETTm1",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.6120278426791277,
+          "pearson": 0.2521612048149109,
+          "spearman": 0.2532757471807179,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.38434579968452454,
+          "top2_recall": 0.7466413378715515
+        },
+        {
+          "competence_mae": 0.046953558921813965,
+          "competence_mse": 0.004317550919950008,
+          "competence_r2": -0.2713829278945923,
+          "dataset": "ETTm1",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.600369937694704,
+          "pearson": 0.21627189218997955,
+          "spearman": 0.22274383133363954,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.3762412369251251,
+          "top2_recall": 0.7398510575294495
+        }
+      ],
+      "router_val_rows": [
+        {
+          "competence_mae": 0.03857051208615303,
+          "competence_mse": 0.0026007751002907753,
+          "competence_r2": -0.2695692777633667,
+          "dataset": "ETTm1",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.5665177137182745,
+          "pearson": 0.22876857221126556,
+          "router_val_mae": 0.2489016205072403,
+          "router_val_mse": 0.14767608046531677,
+          "spearman": 0.1627819278728085,
+          "top1_expert_accuracy": 0.344081312417984,
+          "top2_recall": 0.6720406413078308
+        },
+        {
+          "competence_mae": 0.03749849647283554,
+          "competence_mse": 0.0025154338218271732,
+          "competence_r2": -0.22790992259979248,
+          "dataset": "ETTm1",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.5494027278834078,
+          "pearson": 0.1594458371400833,
+          "router_val_mae": 0.2497844398021698,
+          "router_val_mse": 0.14841774106025696,
+          "spearman": 0.13816591710355142,
+          "top1_expert_accuracy": 0.3276088535785675,
+          "top2_recall": 0.6440024375915527
+        },
+        {
+          "competence_mae": 0.03890848159790039,
+          "competence_mse": 0.0027657905593514442,
+          "competence_r2": -0.35012173652648926,
+          "dataset": "ETTm1",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.5638307193551213,
+          "pearson": 0.22018425166606903,
+          "router_val_mae": 0.2490697056055069,
+          "router_val_mse": 0.1476786583662033,
+          "spearman": 0.1716476839774872,
+          "top1_expert_accuracy": 0.3392622470855713,
+          "top2_recall": 0.6687987446784973
+        },
+        {
+          "competence_mae": 0.03894897550344467,
+          "competence_mse": 0.002563580870628357,
+          "competence_r2": -0.25141286849975586,
+          "dataset": "ETTm1",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.5610853120710301,
+          "pearson": 0.2123485952615738,
+          "router_val_mae": 0.24938854575157166,
+          "router_val_mse": 0.14807802438735962,
+          "spearman": 0.16311833892975422,
+          "top1_expert_accuracy": 0.33251553773880005,
+          "top2_recall": 0.658109188079834
+        }
+      ],
+      "train_diag_rows": [
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.014019066467881203,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_0",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 7,
+          "best_internal_val_loss": 0.014057018794119358,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_0",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.015309976413846016,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_0",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.015354234725236893,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_0",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.011405816301703453,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_1",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 5,
+          "best_internal_val_loss": 0.011302697472274303,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_1",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 7,
+          "best_internal_val_loss": 0.011393239721655846,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_1",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.011438339948654175,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_1",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.010802886448800564,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 1,
+          "best_internal_val_loss": 0.010647831484675407,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11367
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.010830765590071678,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11400
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.010915681719779968,
+          "dataset": "ETTm1",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11400
+        }
+      ]
+    },
+    "Electricity": {
+      "common_windows": 6185,
+      "comparison_rows": [
+        {
+          "baseline": "MatchedNeuralPassive",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Electricity",
+          "delta_router_val_mae": 0.0007139593362808228,
+          "delta_router_val_mse": 0.0012759938836097717
+        },
+        {
+          "baseline": "DeltaOnly",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Electricity",
+          "delta_router_val_mae": 4.2572617530822754e-05,
+          "delta_router_val_mse": 0.00010566413402557373
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "MatchedNeuralPassive",
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Electricity",
+          "delta_router_val_mae": -0.001153320074081421,
+          "delta_router_val_mse": -0.0023269280791282654
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "DeltaOnly",
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Electricity",
+          "delta_router_val_mae": -0.0004819333553314209,
+          "delta_router_val_mse": -0.0011565983295440674
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Electricity",
+      "dependence_rows": [
+        {
+          "ci95_high": 0.0008689978276379406,
+          "ci95_low": 0.00055527756921947,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 0.0007139729568734765,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0009660092764534056,
+          "ci95_low": 0.0004690761270467192,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": 0.0007139729568734765,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0009877374395728111,
+          "ci95_low": 0.0004613790079019964,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Electricity",
+          "is_primary": true,
+          "mean_delta": 0.0007139729568734765,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0010329429060220718,
+          "ci95_low": 0.00042454860522411764,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": 0.0007139729568734765,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.000922108069062233,
+          "ci95_low": 0.0005097721586935222,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.0007137179491110146,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": 0.00011957371316384524,
+          "ci95_low": -3.070328966714442e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": 4.2571140511427075e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00011099658877355978,
+          "ci95_low": -2.3276021238416433e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": 4.2571140511427075e-05,
+          "prob_delta_negative": 0.0966000035405159,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00011072327470174059,
+          "ci95_low": -2.2386491764336824e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Electricity",
+          "is_primary": true,
+          "mean_delta": 4.2571140511427075e-05,
+          "prob_delta_negative": 0.09780000150203705,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00011009564332198352,
+          "ci95_low": -2.0590743588400073e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": 4.2571140511427075e-05,
+          "prob_delta_negative": 0.09539999812841415,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00015896906552370638,
+          "ci95_low": -4.64451004518196e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 4.252003054716624e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.22110000252723694,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": -0.0009468956268392503,
+          "ci95_low": -0.001364386174827814,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -0.0011533042415976524,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0007794097764417529,
+          "ci95_low": -0.0015646887477487326,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": -0.0011533042415976524,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0007600025273859501,
+          "ci95_low": -0.0015853435033932328,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": true,
+          "mean_delta": -0.0011533042415976524,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0007674394291825593,
+          "ci95_low": -0.0015794940991327167,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": -0.0011533042415976524,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0008511474588885903,
+          "ci95_low": -0.0014437590725719929,
+          "ci_excludes_zero": true,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0011530125048011541,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "ci95_high": -0.0003231651789974421,
+          "ci95_low": -0.0006524052587337792,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -0.00048190250527113676,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0001977296924451366,
+          "ci95_low": -0.0008298901957459748,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": -0.00048190250527113676,
+          "prob_delta_negative": 0.9997000098228455,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00018070019723381847,
+          "ci95_low": -0.00085174705600366,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": true,
+          "mean_delta": -0.00048190250527113676,
+          "prob_delta_negative": 0.9997000098228455,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0002031368057942018,
+          "ci95_low": -0.0008271365077234805,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "mean_delta": -0.00048190250527113676,
+          "prob_delta_negative": 0.9998999834060669,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00033685340895317495,
+          "ci95_low": -0.0006278105429373682,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Electricity",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00048181452439166605,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "fold_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "Electricity",
+          "eval_origin_min": 9383,
+          "fold": 0,
+          "num_eval_windows": 3092,
+          "num_purged_windows": 11,
+          "num_train_windows": 4112,
+          "train_target_end_max": 9383
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "Electricity",
+          "eval_origin_min": 12582,
+          "fold": 1,
+          "num_eval_windows": 3093,
+          "num_purged_windows": 11,
+          "num_train_windows": 7204,
+          "train_target_end_max": 12582
+        }
+      ],
+      "integrity": {
+        "core_expert_selection_unchanged": true,
+        "core_order": "PatchTST+iTransformer+TimesNet",
+        "dataset": "Electricity",
+        "expert_checkpoints_unchanged": true,
+        "no_expert_parameter_updates": true,
+        "no_test_cache_accessed": true,
+        "purge_correctness": true,
+        "rank_weights_exact_k3": true,
+        "result": "PASS",
+        "router_val_targets_never_used_during_fitting": true,
+        "target_corruption_leaves_original_features_and_scores_unchanged": true
+      },
+      "legal_windows": 10308,
+      "num_train_windows": 10308,
+      "num_val_windows": 5154,
+      "observability": {
+        "max_router_train_target_end": 15686,
+        "min_router_val_origin": 15782,
+        "observability_holds": true
+      },
+      "residual_rows": [
+        {
+          "dataset": "Electricity",
+          "representation": "MatchedNeuralPassive",
+          "residual_mae_oof": 0.026443669572472572,
+          "residual_mse_oof": 0.0012325298739597201,
+          "residual_pearson_oof": -0.014924921095371246,
+          "residual_r2_oof": -0.024522781372070312,
+          "residual_spearman_oof": -0.00924435778342199
+        },
+        {
+          "dataset": "Electricity",
+          "representation": "DeltaOnly",
+          "residual_mae_oof": 0.02607005648314953,
+          "residual_mse_oof": 0.001182283740490675,
+          "residual_pearson_oof": 0.15327289700508118,
+          "residual_r2_oof": 0.017243564128875732,
+          "residual_spearman_oof": 0.15743297627936284
+        },
+        {
+          "dataset": "Electricity",
+          "representation": "OriginalProbeResponse",
+          "residual_mae_oof": 0.025752130895853043,
+          "residual_mse_oof": 0.0011560269631445408,
+          "residual_pearson_oof": 0.20839816331863403,
+          "residual_r2_oof": 0.03906911611557007,
+          "residual_spearman_oof": 0.2504247032204047
+        }
+      ],
+      "router_train_oof_rows": [
+        {
+          "competence_mae": 0.026308292523026466,
+          "competence_mse": 0.0012044589966535568,
+          "competence_r2": -0.5872479677200317,
+          "dataset": "Electricity",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.7734303422258152,
+          "pearson": 0.6608527302742004,
+          "spearman": 0.5877642703332602,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4847210943698883,
+          "top2_recall": 0.9164106845855713
+        },
+        {
+          "competence_mae": 0.02543170563876629,
+          "competence_mse": 0.0010629674652591348,
+          "competence_r2": -0.40078914165496826,
+          "dataset": "Electricity",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.7712206952303962,
+          "pearson": 0.7060412168502808,
+          "spearman": 0.6384887670684897,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.475828617811203,
+          "top2_recall": 0.9170573949813843
+        },
+        {
+          "competence_mae": 0.027116790413856506,
+          "competence_mse": 0.0012543356278911233,
+          "competence_r2": -0.6529759168624878,
+          "dataset": "Electricity",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.7699272433306387,
+          "pearson": 0.6823363304138184,
+          "spearman": 0.6096260541040374,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4662894010543823,
+          "top2_recall": 0.9235246777534485
+        },
+        {
+          "competence_mae": 0.026814408600330353,
+          "competence_mse": 0.001229431014508009,
+          "competence_r2": -0.6201564073562622,
+          "dataset": "Electricity",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.7682565346267852,
+          "pearson": 0.6797389388084412,
+          "spearman": 0.6054016620640341,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.46289411187171936,
+          "top2_recall": 0.9220695495605469
+        }
+      ],
+      "router_val_rows": [
+        {
+          "competence_mae": 0.026704002171754837,
+          "competence_mse": 0.0012068436481058598,
+          "competence_r2": -1.0941245555877686,
+          "dataset": "Electricity",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.7909067391023153,
+          "pearson": 0.554204523563385,
+          "router_val_mae": 0.21464930474758148,
+          "router_val_mse": 0.12081531435251236,
+          "spearman": 0.6385682899140293,
+          "top1_expert_accuracy": 0.6127279996871948,
+          "top2_recall": 0.8921226263046265
+        },
+        {
+          "competence_mae": 0.025243256241083145,
+          "competence_mse": 0.0011438305955380201,
+          "competence_r2": -0.9847837686538696,
+          "dataset": "Electricity",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.8095330487647134,
+          "pearson": 0.6024520397186279,
+          "router_val_mae": 0.21349598467350006,
+          "router_val_mse": 0.1184883862733841,
+          "spearman": 0.6810099655585725,
+          "top1_expert_accuracy": 0.6303841471672058,
+          "top2_recall": 0.92879319190979
+        },
+        {
+          "competence_mae": 0.024671580642461777,
+          "competence_mse": 0.0010498994961380959,
+          "competence_r2": -0.8217936754226685,
+          "dataset": "Electricity",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.7567585047212521,
+          "pearson": 0.554404079914093,
+          "router_val_mae": 0.21416737139225006,
+          "router_val_mse": 0.11965871602296829,
+          "spearman": 0.5851415441459629,
+          "top1_expert_accuracy": 0.510865330696106,
+          "top2_recall": 0.9064804315567017
+        },
+        {
+          "competence_mae": 0.025351103395223618,
+          "competence_mse": 0.0010906291427090764,
+          "competence_r2": -0.8924682140350342,
+          "dataset": "Electricity",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.7582460225067909,
+          "pearson": 0.5512672662734985,
+          "router_val_mae": 0.21420994400978088,
+          "router_val_mse": 0.11976438015699387,
+          "spearman": 0.5859663940924498,
+          "top1_expert_accuracy": 0.5155219435691833,
+          "top2_recall": 0.9041520953178406
+        }
+      ],
+      "train_diag_rows": [
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.004830668214708567,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_0",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.005001149605959654,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_0",
+          "trainable_parameter_count": 21415
+        },
+        {
+          "best_epoch": 7,
+          "best_internal_val_loss": 0.18459773063659668,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_0",
+          "trainable_parameter_count": 31810
+        },
+        {
+          "best_epoch": 7,
+          "best_internal_val_loss": 0.18468546867370605,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_0",
+          "trainable_parameter_count": 31810
+        },
+        {
+          "best_epoch": 7,
+          "best_internal_val_loss": 0.0057579209096729755,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_1",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.005900620948523283,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_1",
+          "trainable_parameter_count": 21415
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.02433600462973118,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_1",
+          "trainable_parameter_count": 31810
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.024376897141337395,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_1",
+          "trainable_parameter_count": 31810
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.00561144296079874,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.005137983243912458,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 21415
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.015146728605031967,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 31810
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.015122278593480587,
+          "dataset": "Electricity",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 31810
+        }
+      ]
+    },
+    "Weather": {
+      "common_windows": 12518,
+      "comparison_rows": [
+        {
+          "baseline": "MatchedNeuralPassive",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Weather",
+          "delta_router_val_mae": -9.837746620178223e-05,
+          "delta_router_val_mse": 0.0002124011516571045
+        },
+        {
+          "baseline": "DeltaOnly",
+          "candidate": "OriginalLearnedProbe",
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Weather",
+          "delta_router_val_mae": -2.5659799575805664e-05,
+          "delta_router_val_mse": 0.0006964206695556641
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "MatchedNeuralPassive",
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Weather",
+          "delta_router_val_mae": -7.790327072143555e-05,
+          "delta_router_val_mse": -0.0012389123439788818
+        },
+        {
+          "baseline": "C_Rank_Passive",
+          "candidate": "DeltaOnly",
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Weather",
+          "delta_router_val_mae": -0.0001506209373474121,
+          "delta_router_val_mse": -0.0017229318618774414
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Weather",
+      "dependence_rows": [
+        {
+          "ci95_high": -9.137767847278155e-06,
+          "ci95_low": -0.00018653135339263827,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -9.840157872531563e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 3.96155592170544e-05,
+          "ci95_low": -0.00022219159291125834,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -9.840157872531563e-05,
+          "prob_delta_negative": 0.9090999960899353,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 4.684635860030539e-05,
+          "ci95_low": -0.00023641859297640622,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Weather",
+          "is_primary": true,
+          "mean_delta": -9.840157872531563e-05,
+          "prob_delta_negative": 0.8977000117301941,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 5.1866270950995386e-05,
+          "ci95_low": -0.0002525612944737077,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -9.840157872531563e-05,
+          "prob_delta_negative": 0.8901000022888184,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -2.4532864699722268e-05,
+          "ci95_low": -0.0001678643748164177,
+          "ci_excludes_zero": true,
+          "comparison": "Original_vs_MatchedNeuralPassive",
+          "dataset": "Weather",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -9.836057870415971e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9973000288009644,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 3.914185435860418e-05,
+          "ci95_low": -8.851024904288352e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -2.5664079657872207e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 6.186757673276588e-05,
+          "ci95_low": -0.00010229940380668268,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -2.5664079657872207e-05,
+          "prob_delta_negative": 0.7106999754905701,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 6.24363383394666e-05,
+          "ci95_low": -0.00010139821097254753,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Weather",
+          "is_primary": true,
+          "mean_delta": -2.5664079657872207e-05,
+          "prob_delta_negative": 0.70169997215271,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 6.0685324569931254e-05,
+          "ci95_low": -9.923161996994168e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -2.5664079657872207e-05,
+          "prob_delta_negative": 0.6995999813079834,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 3.287363506387919e-05,
+          "ci95_low": -7.505239773308858e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Original_vs_DeltaOnly",
+          "dataset": "Weather",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -2.564065835031215e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.8277999758720398,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": 3.1728683097753674e-05,
+          "ci95_low": -0.00018585762882139534,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -7.788725633872673e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00011074941721744835,
+          "ci95_low": -0.00027417356614023447,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -7.788725633872673e-05,
+          "prob_delta_negative": 0.7857999801635742,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00013646141451317817,
+          "ci95_low": -0.0002842970716301352,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": true,
+          "mean_delta": -7.788725633872673e-05,
+          "prob_delta_negative": 0.767799973487854,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00014793203445151448,
+          "ci95_low": -0.00028553270385600626,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -7.788725633872673e-05,
+          "prob_delta_negative": 0.741599977016449,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 4.031222999856254e-08,
+          "ci95_low": -0.0001661685819271952,
+          "ci_excludes_zero": false,
+          "comparison": "MatchedNeuralPassive_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -7.784009358147159e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9747999906539917,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "ci95_high": -4.669947884394787e-05,
+          "ci95_low": -0.0002605254703667015,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_diff_candidate_minus_baseline": -0.0001506247353972867,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 3.162577559123747e-05,
+          "ci95_low": -0.0003407587646506727,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -0.0001506247353972867,
+          "prob_delta_negative": 0.944599986076355,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 4.3091440602438524e-05,
+          "ci95_low": -0.0003571128472685814,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": true,
+          "mean_delta": -0.0001506247353972867,
+          "prob_delta_negative": 0.9315000176429749,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 4.684836676460691e-05,
+          "ci95_low": -0.0003579059848561883,
+          "ci_excludes_zero": false,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "mean_delta": -0.0001506247353972867,
+          "prob_delta_negative": 0.9222000241279602,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -4.888551848125644e-05,
+          "ci95_low": -0.0002514453371986747,
+          "ci_excludes_zero": true,
+          "comparison": "DeltaOnly_vs_CRank",
+          "dataset": "Weather",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00015056000847835094,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9983000159263611,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "fold_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "Weather",
+          "eval_origin_min": 18885,
+          "fold": 0,
+          "num_eval_windows": 6259,
+          "num_purged_windows": 11,
+          "num_train_windows": 8335,
+          "train_target_end_max": 18885
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "Weather",
+          "eval_origin_min": 25251,
+          "fold": 1,
+          "num_eval_windows": 6259,
+          "num_purged_windows": 11,
+          "num_train_windows": 14594,
+          "train_target_end_max": 25251
+        }
+      ],
+      "integrity": {
+        "core_expert_selection_unchanged": true,
+        "core_order": "PatchTST+iTransformer+TimesNet",
+        "dataset": "Weather",
+        "expert_checkpoints_unchanged": true,
+        "no_expert_parameter_updates": true,
+        "no_test_cache_accessed": true,
+        "purge_correctness": true,
+        "rank_weights_exact_k3": true,
+        "result": "PASS",
+        "router_val_targets_never_used_during_fitting": true,
+        "target_corruption_leaves_original_features_and_scores_unchanged": true
+      },
+      "legal_windows": 20864,
+      "num_train_windows": 20864,
+      "num_val_windows": 10432,
+      "observability": {
+        "max_router_train_target_end": 31521,
+        "min_router_val_origin": 31617,
+        "observability_holds": true
+      },
+      "residual_rows": [
+        {
+          "dataset": "Weather",
+          "representation": "MatchedNeuralPassive",
+          "residual_mae_oof": 0.03427163138985634,
+          "residual_mse_oof": 0.002409114968031645,
+          "residual_pearson_oof": 0.24063244462013245,
+          "residual_r2_oof": 0.02817898988723755,
+          "residual_spearman_oof": 0.18823402979514495
+        },
+        {
+          "dataset": "Weather",
+          "representation": "DeltaOnly",
+          "residual_mae_oof": 0.03634960949420929,
+          "residual_mse_oof": 0.002945155370980501,
+          "residual_pearson_oof": 0.04548852518200874,
+          "residual_r2_oof": -0.18805623054504395,
+          "residual_spearman_oof": 0.08841676213125202
+        },
+        {
+          "dataset": "Weather",
+          "representation": "OriginalProbeResponse",
+          "residual_mae_oof": 0.038145337253808975,
+          "residual_mse_oof": 0.020662778988480568,
+          "residual_pearson_oof": 0.00267765112221241,
+          "residual_r2_oof": -7.33522891998291,
+          "residual_spearman_oof": 0.024902138675273345
+        }
+      ],
+      "router_train_oof_rows": [
+        {
+          "competence_mae": 0.03524883836507797,
+          "competence_mse": 0.0025881382171064615,
+          "competence_r2": -1.5497236251831055,
+          "dataset": "Weather",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.652447142781062,
+          "pearson": 0.29934245347976685,
+          "spearman": 0.32376584614800547,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.44911327958106995,
+          "top2_recall": 0.7818341851234436
+        },
+        {
+          "competence_mae": 0.031995825469493866,
+          "competence_mse": 0.003417959436774254,
+          "competence_r2": -2.3672282695770264,
+          "dataset": "Weather",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.6555626564413911,
+          "pearson": 0.1754843294620514,
+          "spearman": 0.3550651122224037,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4520690143108368,
+          "top2_recall": 0.778878390789032
+        },
+        {
+          "competence_mae": 0.033509936183691025,
+          "competence_mse": 0.005794332828372717,
+          "competence_r2": -4.708330154418945,
+          "dataset": "Weather",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.6527933109655429,
+          "pearson": 0.10147872567176819,
+          "spearman": 0.35043516137387426,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4469563961029053,
+          "top2_recall": 0.7807157635688782
+        },
+        {
+          "competence_mae": 0.03357758745551109,
+          "competence_mse": 0.005707785487174988,
+          "competence_r2": -4.623067855834961,
+          "dataset": "Weather",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.6530862225062577,
+          "pearson": 0.1178678348660469,
+          "spearman": 0.36195132325222634,
+          "split": "router_train_oof_common",
+          "top1_expert_accuracy": 0.4438408613204956,
+          "top2_recall": 0.7805560231208801
+        }
+      ],
+      "router_val_rows": [
+        {
+          "competence_mae": 0.03101928159594536,
+          "competence_mse": 0.0018645980162546039,
+          "competence_r2": -0.3468672037124634,
+          "dataset": "Weather",
+          "method": "C_Rank_Passive",
+          "pairwise_ranking_accuracy": 0.6348734662576687,
+          "pearson": 0.36695340275764465,
+          "router_val_mae": 0.15944406390190125,
+          "router_val_mse": 0.2778208553791046,
+          "spearman": 0.3220001480570943,
+          "top1_expert_accuracy": 0.43596625328063965,
+          "top2_recall": 0.7329370975494385
+        },
+        {
+          "competence_mae": 0.028461413457989693,
+          "competence_mse": 0.0017677443102002144,
+          "competence_r2": -0.2769063711166382,
+          "dataset": "Weather",
+          "method": "MatchedNeuralPassive",
+          "pairwise_ranking_accuracy": 0.6352249488752556,
+          "pearson": 0.35641124844551086,
+          "router_val_mae": 0.1593661606311798,
+          "router_val_mse": 0.27658194303512573,
+          "spearman": 0.3087602232106496,
+          "top1_expert_accuracy": 0.4349118173122406,
+          "top2_recall": 0.7337039709091187
+        },
+        {
+          "competence_mae": 0.02807849645614624,
+          "competence_mse": 0.0016620724927634,
+          "competence_r2": -0.20057570934295654,
+          "dataset": "Weather",
+          "method": "DeltaOnly",
+          "pairwise_ranking_accuracy": 0.6348095603271984,
+          "pearson": 0.3522716760635376,
+          "router_val_mae": 0.15929344296455383,
+          "router_val_mse": 0.2760979235172272,
+          "spearman": 0.30647533034214974,
+          "top1_expert_accuracy": 0.43634968996047974,
+          "top2_recall": 0.7338957190513611
+        },
+        {
+          "competence_mae": 0.027904674410820007,
+          "competence_mse": 0.0016538938507437706,
+          "competence_r2": -0.19466793537139893,
+          "dataset": "Weather",
+          "method": "OriginalLearnedProbe",
+          "pairwise_ranking_accuracy": 0.6356403374233128,
+          "pearson": 0.3524419367313385,
+          "router_val_mae": 0.15926778316497803,
+          "router_val_mse": 0.27679434418678284,
+          "spearman": 0.30654729876033426,
+          "top1_expert_accuracy": 0.4410467743873596,
+          "top2_recall": 0.734375
+        }
+      ],
+      "train_diag_rows": [
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.009138510562479496,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_0",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 4,
+          "best_internal_val_loss": 0.008864614181220531,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_0",
+          "trainable_parameter_count": 11815
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.00921268854290247,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_0",
+          "trainable_parameter_count": 12310
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.009172228164970875,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_0",
+          "trainable_parameter_count": 12310
+        },
+        {
+          "best_epoch": 3,
+          "best_internal_val_loss": 0.010700888000428677,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "fold_1",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 2,
+          "best_internal_val_loss": 0.010343593545258045,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "fold_1",
+          "trainable_parameter_count": 11815
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.010509386658668518,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "fold_1",
+          "trainable_parameter_count": 12310
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.01047340128570795,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "fold_1",
+          "trainable_parameter_count": 12310
+        },
+        {
+          "best_epoch": 3,
+          "best_internal_val_loss": 0.010225273668766022,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "C_Rank_Passive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 3137
+        },
+        {
+          "best_epoch": 6,
+          "best_internal_val_loss": 0.010120469145476818,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "MatchedNeuralPassive",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 11815
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.010125833563506603,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "DeltaOnly",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 12310
+        },
+        {
+          "best_epoch": 8,
+          "best_internal_val_loss": 0.010095113888382912,
+          "dataset": "Weather",
+          "experts_remained_frozen": true,
+          "method": "OriginalLearnedProbe",
+          "split": "final_router_train_legal",
+          "trainable_parameter_count": 12310
+        }
+      ]
+    }
+  },
+  "decision": {
+    "answer_to_explicit_question": "No clear evidence: the matched passive neural encoder approximately matches or beats Original LearnedProbe.",
+    "classification": "GENERATOR_IS_PASSIVE_ENCODER",
+    "delta_only_matches_or_beats_original": [
+      "ETTm1",
+      "Weather",
+      "Electricity"
+    ],
+    "matched_neural_matches_or_beats_original": [
+      "ETTh1",
+      "ETTh2",
+      "Weather",
+      "Electricity"
+    ],
+    "orig_beats_delta_only": [
+      "ETTh1",
+      "ETTh2",
+      "Weather"
+    ],
+    "orig_beats_matched_neural": [
+      "ETTm1",
+      "Weather"
+    ],
+    "positive_residual_r2_delta_only": [
+      "Electricity"
+    ],
+    "positive_residual_r2_matched_neural": [
+      "ETTh2",
+      "Weather"
+    ],
+    "positive_residual_r2_original": [
+      "ETTh2",
+      "Electricity"
+    ]
+  },
+  "experiment": "expert_conditioned_probe_mechanism",
+  "git_commit_sha": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "runtime_sec": 6738.353011608124,
+  "test_set_accessed": false
+}

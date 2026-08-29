@@ -1,0 +1,475 @@
+{
+  "ETTh1": {
+    "cache_expert_order": "PatchTST+iTransformer+TimesNet",
+    "checkpoint_sha256_after": {
+      "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+      "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d"
+    },
+    "checkpoint_sha256_before": {
+      "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+      "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d"
+    },
+    "checkpoint_sha256_unchanged": true,
+    "dataset": "ETTh1",
+    "expert_parameters_updated": false,
+    "feature_tensors_finite": true,
+    "result": "PASS",
+    "router_train_to_val_observability": {
+      "max_router_train_target_end": 8544,
+      "min_router_val_origin": 8640,
+      "observability_holds": true
+    },
+    "router_val_targets_used_in_feature_construction": false,
+    "router_val_targets_used_in_residualization_training": false,
+    "stage_provenance": [
+      "block_a",
+      "block_ab",
+      "final_60"
+    ],
+    "starts_retained": true,
+    "target_corruption_feature_diffs": {
+      "matched_val_max_abs_diff": 0.0,
+      "n_val_max_abs_diff": 0.0,
+      "p_val_max_abs_diff": 0.0,
+      "pres_val_max_abs_diff": 0.0,
+      "x_val_max_abs_diff": 0.0
+    },
+    "target_corruption_left_features_unchanged": true,
+    "target_corruption_left_scores_weights_predictions_unchanged": true,
+    "target_corruption_prediction_diffs": {
+      "MatchedPassive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "Passive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisance": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ProbeOnly": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ShuffledProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "WrongExpertProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      }
+    },
+    "test_cache_loaded": false,
+    "test_metrics_computed": false,
+    "test_set_accessed": false
+  },
+  "ETTh2": {
+    "cache_expert_order": "DLinear+PatchTST+ModernTCN",
+    "checkpoint_sha256_after": {
+      "DLinear": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "ModernTCN": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "PatchTST": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b"
+    },
+    "checkpoint_sha256_before": {
+      "DLinear": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "ModernTCN": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "PatchTST": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b"
+    },
+    "checkpoint_sha256_unchanged": true,
+    "dataset": "ETTh2",
+    "expert_parameters_updated": false,
+    "feature_tensors_finite": true,
+    "result": "PASS",
+    "router_train_to_val_observability": {
+      "max_router_train_target_end": 10704,
+      "min_router_val_origin": 10800,
+      "observability_holds": true
+    },
+    "router_val_targets_used_in_feature_construction": false,
+    "router_val_targets_used_in_residualization_training": false,
+    "stage_provenance": [
+      "final_60"
+    ],
+    "starts_retained": true,
+    "target_corruption_feature_diffs": {
+      "matched_val_max_abs_diff": 0.0,
+      "n_val_max_abs_diff": 0.0,
+      "p_val_max_abs_diff": 0.0,
+      "pres_val_max_abs_diff": 0.0,
+      "x_val_max_abs_diff": 0.0
+    },
+    "target_corruption_left_features_unchanged": true,
+    "target_corruption_left_scores_weights_predictions_unchanged": true,
+    "target_corruption_prediction_diffs": {
+      "MatchedPassive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "Passive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisance": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ProbeOnly": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ShuffledProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "WrongExpertProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      }
+    },
+    "test_cache_loaded": false,
+    "test_metrics_computed": false,
+    "test_set_accessed": false
+  },
+  "ETTm1": {
+    "cache_expert_order": "DLinear+PatchTST+TimesNet",
+    "checkpoint_sha256_after": {
+      "DLinear": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "PatchTST": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+      "TimesNet": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8"
+    },
+    "checkpoint_sha256_before": {
+      "DLinear": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "PatchTST": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+      "TimesNet": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8"
+    },
+    "checkpoint_sha256_unchanged": true,
+    "dataset": "ETTm1",
+    "expert_parameters_updated": false,
+    "feature_tensors_finite": true,
+    "result": "PASS",
+    "router_train_to_val_observability": {
+      "max_router_train_target_end": 34464,
+      "min_router_val_origin": 34560,
+      "observability_holds": true
+    },
+    "router_val_targets_used_in_feature_construction": false,
+    "router_val_targets_used_in_residualization_training": false,
+    "stage_provenance": [
+      "block_a",
+      "block_ab",
+      "final_60"
+    ],
+    "starts_retained": true,
+    "target_corruption_feature_diffs": {
+      "matched_val_max_abs_diff": 0.0,
+      "n_val_max_abs_diff": 0.0,
+      "p_val_max_abs_diff": 0.0,
+      "pres_val_max_abs_diff": 0.0,
+      "x_val_max_abs_diff": 0.0
+    },
+    "target_corruption_left_features_unchanged": true,
+    "target_corruption_left_scores_weights_predictions_unchanged": true,
+    "target_corruption_prediction_diffs": {
+      "MatchedPassive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "Passive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisance": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ProbeOnly": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ShuffledProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "WrongExpertProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      }
+    },
+    "test_cache_loaded": false,
+    "test_metrics_computed": false,
+    "test_set_accessed": false
+  },
+  "Electricity": {
+    "cache_expert_order": "PatchTST+iTransformer+TimesNet",
+    "checkpoint_sha256_after": {
+      "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    },
+    "checkpoint_sha256_before": {
+      "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    },
+    "checkpoint_sha256_unchanged": true,
+    "dataset": "Electricity",
+    "expert_parameters_updated": false,
+    "feature_tensors_finite": true,
+    "result": "PASS",
+    "router_train_to_val_observability": {
+      "max_router_train_target_end": 15686,
+      "min_router_val_origin": 15782,
+      "observability_holds": true
+    },
+    "router_val_targets_used_in_feature_construction": false,
+    "router_val_targets_used_in_residualization_training": false,
+    "stage_provenance": [
+      "block_a",
+      "block_ab",
+      "final_60"
+    ],
+    "starts_retained": true,
+    "target_corruption_feature_diffs": {
+      "matched_val_max_abs_diff": 0.0,
+      "n_val_max_abs_diff": 0.0,
+      "p_val_max_abs_diff": 0.0,
+      "pres_val_max_abs_diff": 0.0,
+      "x_val_max_abs_diff": 0.0
+    },
+    "target_corruption_left_features_unchanged": true,
+    "target_corruption_left_scores_weights_predictions_unchanged": true,
+    "target_corruption_prediction_diffs": {
+      "MatchedPassive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "Passive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisance": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ProbeOnly": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ShuffledProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "WrongExpertProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      }
+    },
+    "test_cache_loaded": false,
+    "test_metrics_computed": false,
+    "test_set_accessed": false
+  },
+  "Weather": {
+    "cache_expert_order": "PatchTST+iTransformer+TimesNet",
+    "checkpoint_sha256_after": {
+      "PatchTST": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+      "TimesNet": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+      "iTransformer": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1"
+    },
+    "checkpoint_sha256_before": {
+      "PatchTST": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+      "TimesNet": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+      "iTransformer": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1"
+    },
+    "checkpoint_sha256_unchanged": true,
+    "dataset": "Weather",
+    "expert_parameters_updated": false,
+    "feature_tensors_finite": true,
+    "result": "PASS",
+    "router_train_to_val_observability": {
+      "max_router_train_target_end": 31521,
+      "min_router_val_origin": 31617,
+      "observability_holds": true
+    },
+    "router_val_targets_used_in_feature_construction": false,
+    "router_val_targets_used_in_residualization_training": false,
+    "stage_provenance": [
+      "block_a",
+      "block_ab",
+      "final_60"
+    ],
+    "starts_retained": true,
+    "target_corruption_feature_diffs": {
+      "matched_val_max_abs_diff": 0.0,
+      "n_val_max_abs_diff": 0.0,
+      "p_val_max_abs_diff": 0.0,
+      "pres_val_max_abs_diff": 0.0,
+      "x_val_max_abs_diff": 0.0
+    },
+    "target_corruption_left_features_unchanged": true,
+    "target_corruption_left_scores_weights_predictions_unchanged": true,
+    "target_corruption_prediction_diffs": {
+      "MatchedPassive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "Passive": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisance": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveNuisanceResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "PassiveResidualProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ProbeOnly": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "ShuffledProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      },
+      "WrongExpertProbe": {
+        "final_prediction_max_abs_diff": 0.0,
+        "score_max_abs_diff": 0.0,
+        "weight_max_abs_diff": 0.0
+      }
+    },
+    "test_cache_loaded": false,
+    "test_metrics_computed": false,
+    "test_set_accessed": false
+  }
+}

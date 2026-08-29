@@ -1,0 +1,3914 @@
+{
+  "classification": "CAPABILITY_SIGNAL_BUT_NO_MATCHING_GAIN",
+  "code_version": "capability_demand_matching_v1",
+  "created_at_utc": "2026-08-28T23:45:34.897971+00:00",
+  "datasets": {
+    "ETTh1": {
+      "counted_in_success": true,
+      "routing_rows": [
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3664824664592743,
+          "mean_entropy": 1.0280288457870483,
+          "method": "GlobalPrior",
+          "mse": 0.3093929886817932,
+          "oracle_single_expert_regret": 0.022498877719044685,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36609947681427,
+          "mean_entropy": 1.0778789520263672,
+          "method": "Passive",
+          "mse": 0.30899447202682495,
+          "oracle_single_expert_regret": 0.02211587503552437,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3650376498699188,
+          "mean_entropy": 1.0578941106796265,
+          "method": "FAMEStyleDemand",
+          "mse": 0.3074849545955658,
+          "oracle_single_expert_regret": 0.021054068580269814,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3664824068546295,
+          "mean_entropy": 1.0280338525772095,
+          "method": "DemandExpertID",
+          "mse": 0.30939289927482605,
+          "oracle_single_expert_regret": 0.02249883860349655,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.36600980162620544,
+          "mean_entropy": 1.0750993490219116,
+          "method": "CapabilityMatch",
+          "mse": 0.30869409441947937,
+          "oracle_single_expert_regret": 0.022026224061846733,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3674076199531555,
+          "mean_entropy": 1.0983465909957886,
+          "method": "ExpertShuffledCapability",
+          "mse": 0.3107527494430542,
+          "oracle_single_expert_regret": 0.02342401258647442,
+          "split": "router_val",
+          "temperature": 1.0
+        },
+        {
+          "dataset": "ETTh1",
+          "mae": 0.3658953607082367,
+          "mean_entropy": 1.0629256963729858,
+          "method": "AxisShuffledCapability",
+          "mse": 0.30842190980911255,
+          "oracle_single_expert_regret": 0.021911760792136192,
+          "split": "router_val",
+          "temperature": 0.1
+        }
+      ],
+      "stability_rows": [
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01581312157213688,
+          "fold_range_z": 0.013213131576776505,
+          "fold_std_z": 0.0054775080643594265,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.014354988001286983,
+          "fold_range_z": 0.01007981225848198,
+          "fold_std_z": 0.004251801874488592,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.023836815729737282,
+          "fold_range_z": 0.009223133325576782,
+          "fold_std_z": 0.0037028775550425053,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.014268627390265465,
+          "fold_range_z": 0.00829693116247654,
+          "fold_std_z": 0.0033249654807150364,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.015809938311576843,
+          "fold_range_z": 0.010998095385730267,
+          "fold_std_z": 0.004067346453666687,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.023927394300699234,
+          "fold_range_z": 0.006612412631511688,
+          "fold_std_z": 0.002836164552718401,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02880946733057499,
+          "fold_range_z": 0.008912358433008194,
+          "fold_std_z": 0.003925038035959005,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.015229977667331696,
+          "fold_range_z": 0.007978306151926517,
+          "fold_std_z": 0.0031587122939527035,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.009962920099496841,
+          "fold_range_z": 0.008816653862595558,
+          "fold_std_z": 0.00332340388558805,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.022608159109950066,
+          "fold_range_z": 0.014616217464208603,
+          "fold_std_z": 0.005412128753960133,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.014923974871635437,
+          "fold_range_z": 0.009686112403869629,
+          "fold_std_z": 0.0036241833586245775,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01647079922258854,
+          "fold_range_z": 0.0075025418773293495,
+          "fold_std_z": 0.0026720708701759577,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.0170616265386343,
+          "fold_range_z": 0.0167501550167799,
+          "fold_std_z": 0.006968993227928877,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.013909507542848587,
+          "fold_range_z": 0.0056332778185606,
+          "fold_std_z": 0.002400733297690749,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.023032957687973976,
+          "fold_range_z": 0.009044904261827469,
+          "fold_std_z": 0.0034671796020120382,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.021097922697663307,
+          "fold_range_z": 0.018021050840616226,
+          "fold_std_z": 0.007214007433503866,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01587834022939205,
+          "fold_range_z": 0.015564808622002602,
+          "fold_std_z": 0.00634784298017621,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.017027437686920166,
+          "fold_range_z": 0.006847548298537731,
+          "fold_std_z": 0.0024396106600761414,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.007089376449584961,
+          "fold_range_z": 0.017149772495031357,
+          "fold_std_z": 0.007013189140707254,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.007094536907970905,
+          "fold_range_z": 0.011497436091303825,
+          "fold_std_z": 0.004679731093347073,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.010971644893288612,
+          "fold_range_z": 0.003593732602894306,
+          "fold_std_z": 0.0014097323874011636,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.007452546618878841,
+          "fold_range_z": 0.013686261139810085,
+          "fold_std_z": 0.005562754347920418,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.006770995445549488,
+          "fold_range_z": 0.013353804126381874,
+          "fold_std_z": 0.005472422111779451,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.010932180099189281,
+          "fold_range_z": 0.005243766587227583,
+          "fold_std_z": 0.0022007215302437544,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.01774049922823906,
+          "fold_range_z": 0.010345447808504105,
+          "fold_std_z": 0.004050661344081163,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.004264553543180227,
+          "fold_range_z": 0.01318325661122799,
+          "fold_std_z": 0.005066411569714546,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.0031472137197852135,
+          "fold_range_z": 0.011880284175276756,
+          "fold_std_z": 0.004804037045687437,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.010949458926916122,
+          "fold_range_z": 0.015774160623550415,
+          "fold_std_z": 0.00607265206053853,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.00636836513876915,
+          "fold_range_z": 0.005404754541814327,
+          "fold_std_z": 0.0022037846501916647,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.007836549542844296,
+          "fold_range_z": 0.013285316526889801,
+          "fold_std_z": 0.005037633236497641,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.00814008992165327,
+          "fold_range_z": 0.015955476090312004,
+          "fold_std_z": 0.006663304753601551,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.006414818111807108,
+          "fold_range_z": 0.013292274437844753,
+          "fold_std_z": 0.005102410446852446,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.01060021948069334,
+          "fold_range_z": 0.004982386715710163,
+          "fold_std_z": 0.0017814100719988346,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.014629079028964043,
+          "fold_range_z": 0.015572324395179749,
+          "fold_std_z": 0.006222133059054613,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.007259812671691179,
+          "fold_range_z": 0.0215767752379179,
+          "fold_std_z": 0.00813635066151619,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.003264931496232748,
+          "fold_range_z": 0.004012030083686113,
+          "fold_std_z": 0.0015644566155970097,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02290249802172184,
+          "fold_range_z": 0.03036290407180786,
+          "fold_std_z": 0.012445024214684963,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.021449528634548187,
+          "fold_range_z": 0.021502871066331863,
+          "fold_std_z": 0.008858096785843372,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.034808460623025894,
+          "fold_range_z": 0.009524650871753693,
+          "fold_std_z": 0.003569526132196188,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02172117307782173,
+          "fold_range_z": 0.02198319137096405,
+          "fold_std_z": 0.00875408947467804,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.022580932825803757,
+          "fold_range_z": 0.024323057383298874,
+          "fold_std_z": 0.009316576644778252,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.03485957533121109,
+          "fold_range_z": 0.011856183409690857,
+          "fold_std_z": 0.004678247030824423,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0465499684214592,
+          "fold_range_z": 0.019257802516222,
+          "fold_std_z": 0.007706000003963709,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.01949452981352806,
+          "fold_range_z": 0.019597813487052917,
+          "fold_std_z": 0.007862869650125504,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.01311013288795948,
+          "fold_range_z": 0.020696938037872314,
+          "fold_std_z": 0.008068528957664967,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.03355761617422104,
+          "fold_range_z": 0.030390378087759018,
+          "fold_std_z": 0.011467522010207176,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.021292340010404587,
+          "fold_range_z": 0.015077339485287666,
+          "fold_std_z": 0.005759638734161854,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02430734783411026,
+          "fold_range_z": 0.012141495943069458,
+          "fold_std_z": 0.004926996771246195,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.025201715528964996,
+          "fold_range_z": 0.03252818062901497,
+          "fold_std_z": 0.01361286360770464,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.020324327051639557,
+          "fold_range_z": 0.01892554946243763,
+          "fold_std_z": 0.007374378386884928,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.03363317996263504,
+          "fold_range_z": 0.011701138690114021,
+          "fold_std_z": 0.004257368855178356,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.03572700172662735,
+          "fold_range_z": 0.0329003632068634,
+          "fold_std_z": 0.012931307777762413,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.023138152435421944,
+          "fold_range_z": 0.03705702722072601,
+          "fold_std_z": 0.01442208793014288,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTh1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0202923696488142,
+          "fold_range_z": 0.010859576985239983,
+          "fold_std_z": 0.0038573883939534426,
+          "num_folds": 4
+        }
+      ],
+      "summary": {
+        "core_names": [
+          "PatchTST",
+          "iTransformer",
+          "TimesNet"
+        ],
+        "method_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.036378413438797,
+            "mse": 0.002435584319755435,
+            "oracle_regret_relative_z": 0.035321932286024094,
+            "pairwise_accuracy": 0.5852866768836975,
+            "pearson": 0.35869401693344116,
+            "spearman": 0.23989557003018933,
+            "top1_accuracy": 0.36098089814186096,
+            "top2_recall": 0.7306166887283325
+          },
+          "CapabilityContinuous": {
+            "mae": 0.03552420809864998,
+            "mse": 0.0023521045222878456,
+            "oracle_regret_relative_z": 0.035574305802583694,
+            "pairwise_accuracy": 0.5837240219116211,
+            "pearson": 0.344097763299942,
+            "spearman": 0.30188545117389265,
+            "top1_accuracy": 0.35521095991134644,
+            "top2_recall": 0.7306166887283325
+          },
+          "CapabilityMatch": {
+            "mae": 0.035850316286087036,
+            "mse": 0.0024007258471101522,
+            "oracle_regret_relative_z": 0.035574305802583694,
+            "pairwise_accuracy": 0.5837240219116211,
+            "pearson": 0.31907910108566284,
+            "spearman": 0.2814647215826675,
+            "top1_accuracy": 0.35521095991134644,
+            "top2_recall": 0.7306166887283325
+          },
+          "CapabilityRegime": {
+            "mae": 0.03622671961784363,
+            "mse": 0.0024585414212197065,
+            "oracle_regret_relative_z": 0.035574305802583694,
+            "pairwise_accuracy": 0.5837240219116211,
+            "pearson": 0.2898445129394531,
+            "spearman": 0.23684560363716836,
+            "top1_accuracy": 0.35521095991134644,
+            "top2_recall": 0.7306166887283325
+          },
+          "DemandExpertID": {
+            "mae": 0.036173127591609955,
+            "mse": 0.002461525611579418,
+            "oracle_regret_relative_z": 0.035574305802583694,
+            "pairwise_accuracy": 0.5837240219116211,
+            "pearson": 0.2823227643966675,
+            "spearman": 0.2084486881766404,
+            "top1_accuracy": 0.35521095991134644,
+            "top2_recall": 0.7306166887283325
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.045754097402095795,
+            "mse": 0.0036269950214773417,
+            "oracle_regret_relative_z": 0.06510282307863235,
+            "pairwise_accuracy": 0.39884600043296814,
+            "pearson": -0.1975860893726349,
+            "spearman": -0.2382977857436852,
+            "top1_accuracy": 0.26938334107398987,
+            "top2_recall": 0.6245943307876587
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.03743353113532066,
+            "mse": 0.002474568784236908,
+            "oracle_regret_relative_z": 0.03313107043504715,
+            "pairwise_accuracy": 0.6007933616638184,
+            "pearson": 0.3831622302532196,
+            "spearman": 0.3282785938330129,
+            "top1_accuracy": 0.37720879912376404,
+            "top2_recall": 0.7360259890556335
+          },
+          "GlobalPrior": {
+            "mae": 0.03617328777909279,
+            "mse": 0.002461537718772888,
+            "oracle_regret_relative_z": 0.035574305802583694,
+            "pairwise_accuracy": 0.5837240219116211,
+            "pearson": 0.2823227643966675,
+            "spearman": 0.22028948585255098,
+            "top1_accuracy": 0.35521095991134644,
+            "top2_recall": 0.7306166887283325
+          },
+          "Passive": {
+            "mae": 0.033262722194194794,
+            "mse": 0.002179668750613928,
+            "oracle_regret_relative_z": 0.030635705217719078,
+            "pairwise_accuracy": 0.6136555075645447,
+            "pearson": 0.41345831751823425,
+            "spearman": 0.3476398575986141,
+            "top1_accuracy": 0.3793725073337555,
+            "top2_recall": 0.7190768122673035
+          },
+          "WindowShuffledCapability": {
+            "mae": 0.03585488721728325,
+            "mse": 0.002401400590315461,
+            "oracle_regret_relative_z": 0.035574305802583694,
+            "pairwise_accuracy": 0.5837240219116211,
+            "pearson": 0.31879478693008423,
+            "spearman": 0.28121910281217116,
+            "top1_accuracy": 0.35521095991134644,
+            "top2_recall": 0.7306166887283325
+          }
+        },
+        "num_train_windows": 5546,
+        "num_val_windows": 2773,
+        "routing_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.3658953607082367,
+            "mean_entropy": 1.0629256963729858,
+            "mse": 0.30842190980911255,
+            "oracle_single_expert_regret": 0.021911760792136192,
+            "temperature": 0.1
+          },
+          "CapabilityMatch": {
+            "mae": 0.36600980162620544,
+            "mean_entropy": 1.0750993490219116,
+            "mse": 0.30869409441947937,
+            "oracle_single_expert_regret": 0.022026224061846733,
+            "temperature": 0.1
+          },
+          "DemandExpertID": {
+            "mae": 0.3664824068546295,
+            "mean_entropy": 1.0280338525772095,
+            "mse": 0.30939289927482605,
+            "oracle_single_expert_regret": 0.02249883860349655,
+            "temperature": 0.05
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.3674076199531555,
+            "mean_entropy": 1.0983465909957886,
+            "mse": 0.3107527494430542,
+            "oracle_single_expert_regret": 0.02342401258647442,
+            "temperature": 1.0
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.3650376498699188,
+            "mean_entropy": 1.0578941106796265,
+            "mse": 0.3074849545955658,
+            "oracle_single_expert_regret": 0.021054068580269814,
+            "temperature": 0.1
+          },
+          "GlobalPrior": {
+            "mae": 0.3664824664592743,
+            "mean_entropy": 1.0280288457870483,
+            "mse": 0.3093929886817932,
+            "oracle_single_expert_regret": 0.022498877719044685,
+            "temperature": 0.05
+          },
+          "Passive": {
+            "mae": 0.36609947681427,
+            "mean_entropy": 1.0778789520263672,
+            "mse": 0.30899447202682495,
+            "oracle_single_expert_regret": 0.02211587503552437,
+            "temperature": 0.1
+          }
+        }
+      }
+    },
+    "ETTh2": {
+      "counted_in_success": true,
+      "routing_rows": [
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2749394178390503,
+          "mean_entropy": 0.8841477036476135,
+          "method": "GlobalPrior",
+          "mse": 0.16562999784946442,
+          "oracle_single_expert_regret": 0.008456458337605,
+          "split": "router_val",
+          "temperature": 0.02
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2776183485984802,
+          "mean_entropy": 0.7989200353622437,
+          "method": "Passive",
+          "mse": 0.16823868453502655,
+          "oracle_single_expert_regret": 0.011135417968034744,
+          "split": "router_val",
+          "temperature": 0.02
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2782886326313019,
+          "mean_entropy": 1.0411936044692993,
+          "method": "FAMEStyleDemand",
+          "mse": 0.1696234941482544,
+          "oracle_single_expert_regret": 0.011805698275566101,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2749393582344055,
+          "mean_entropy": 0.8841821551322937,
+          "method": "DemandExpertID",
+          "mse": 0.1656300276517868,
+          "oracle_single_expert_regret": 0.008456442505121231,
+          "split": "router_val",
+          "temperature": 0.02
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.2750951945781708,
+          "mean_entropy": 0.8817898631095886,
+          "method": "CapabilityMatch",
+          "mse": 0.16590145230293274,
+          "oracle_single_expert_regret": 0.008612261153757572,
+          "split": "router_val",
+          "temperature": 0.02
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.28090763092041016,
+          "mean_entropy": 1.0984843969345093,
+          "method": "ExpertShuffledCapability",
+          "mse": 0.17194975912570953,
+          "oracle_single_expert_regret": 0.014424708671867847,
+          "split": "router_val",
+          "temperature": 1.0
+        },
+        {
+          "dataset": "ETTh2",
+          "mae": 0.27938273549079895,
+          "mean_entropy": 1.0918326377868652,
+          "method": "AxisShuffledCapability",
+          "mse": 0.17033115029335022,
+          "oracle_single_expert_regret": 0.012899807654321194,
+          "split": "router_val",
+          "temperature": 0.2
+        }
+      ],
+      "stability_rows": [
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.01810615509748459,
+          "fold_range_z": 0.011696778237819672,
+          "fold_std_z": 0.00483062444254756,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.020924599841237068,
+          "fold_range_z": 0.006611613556742668,
+          "fold_std_z": 0.0023725423961877823,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.02152535691857338,
+          "fold_range_z": 0.006034012883901596,
+          "fold_std_z": 0.0022272057831287384,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.018051547929644585,
+          "fold_range_z": 0.009321752935647964,
+          "fold_std_z": 0.003718259511515498,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.019353283569216728,
+          "fold_range_z": 0.005687929689884186,
+          "fold_std_z": 0.00217544031329453,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.023152919486165047,
+          "fold_range_z": 0.008355433121323586,
+          "fold_std_z": 0.0029893252067267895,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.019916553050279617,
+          "fold_range_z": 0.008258534595370293,
+          "fold_std_z": 0.003256016643717885,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.018998464569449425,
+          "fold_range_z": 0.007812708616256714,
+          "fold_std_z": 0.0028427112847566605,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.021640757098793983,
+          "fold_range_z": 0.006615115329623222,
+          "fold_std_z": 0.0026519643142819405,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.023025810718536377,
+          "fold_range_z": 0.010010775178670883,
+          "fold_std_z": 0.004104006104171276,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.022173985838890076,
+          "fold_range_z": 0.01262211985886097,
+          "fold_std_z": 0.005062348674982786,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.015356874093413353,
+          "fold_range_z": 0.006330154836177826,
+          "fold_std_z": 0.002420954406261444,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.01757282204926014,
+          "fold_range_z": 0.01258672121912241,
+          "fold_std_z": 0.005267401225864887,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.0195465087890625,
+          "fold_range_z": 0.002989351749420166,
+          "fold_std_z": 0.0011634919792413712,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.023435764014720917,
+          "fold_range_z": 0.007925258949398994,
+          "fold_std_z": 0.0028659182135015726,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.017354639247059822,
+          "fold_range_z": 0.012035994790494442,
+          "fold_std_z": 0.004544923081994057,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.01882706582546234,
+          "fold_range_z": 0.007864429615437984,
+          "fold_std_z": 0.002826100215315819,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "DLinear",
+          "fold_mean_z": -0.024374421685934067,
+          "fold_range_z": 0.0059514883905649185,
+          "fold_std_z": 0.0021043207962065935,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.034376587718725204,
+          "fold_range_z": 0.022437483072280884,
+          "fold_std_z": 0.008326791226863861,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03914991766214371,
+          "fold_range_z": 0.024740096181631088,
+          "fold_std_z": 0.00935207586735487,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.034833673387765884,
+          "fold_range_z": 0.02425842173397541,
+          "fold_std_z": 0.009834869764745235,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03381895273923874,
+          "fold_range_z": 0.02140617184340954,
+          "fold_std_z": 0.008835343644022942,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03595958277583122,
+          "fold_range_z": 0.011767245829105377,
+          "fold_std_z": 0.004350671079009771,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03858068585395813,
+          "fold_range_z": 0.03954710811376572,
+          "fold_std_z": 0.014902932569384575,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03136582672595978,
+          "fold_range_z": 0.03006773069500923,
+          "fold_std_z": 0.01138732023537159,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03714754804968834,
+          "fold_range_z": 0.021128222346305847,
+          "fold_std_z": 0.007674504537135363,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03984323516488075,
+          "fold_range_z": 0.0202384851872921,
+          "fold_std_z": 0.007789968512952328,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.0414954349398613,
+          "fold_range_z": 0.034307315945625305,
+          "fold_std_z": 0.012992419302463531,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03820735216140747,
+          "fold_range_z": 0.03274300694465637,
+          "fold_std_z": 0.013338429853320122,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.028644559904932976,
+          "fold_range_z": 0.008951244875788689,
+          "fold_std_z": 0.0032425960525870323,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.036548443138599396,
+          "fold_range_z": 0.023425821214914322,
+          "fold_std_z": 0.009659038856625557,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.0356525182723999,
+          "fold_range_z": 0.022779136896133423,
+          "fold_std_z": 0.008440458215773106,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03614988550543785,
+          "fold_range_z": 0.025206174701452255,
+          "fold_std_z": 0.009692610241472721,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03308672085404396,
+          "fold_range_z": 0.029044924303889275,
+          "fold_std_z": 0.011972806416451931,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.03164597600698471,
+          "fold_range_z": 0.02727484330534935,
+          "fold_std_z": 0.009850812144577503,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "PatchTST",
+          "fold_mean_z": 0.04361364245414734,
+          "fold_range_z": 0.016523081809282303,
+          "fold_std_z": 0.006041709333658218,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.016270428895950317,
+          "fold_range_z": 0.010740700177848339,
+          "fold_std_z": 0.0037993716541677713,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.01822531595826149,
+          "fold_range_z": 0.02046109549701214,
+          "fold_std_z": 0.007560749538242817,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.013308319263160229,
+          "fold_range_z": 0.018224406987428665,
+          "fold_std_z": 0.007960661314427853,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.015767402946949005,
+          "fold_range_z": 0.012129364535212517,
+          "fold_std_z": 0.005135768558830023,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.016606302931904793,
+          "fold_range_z": 0.006079322658479214,
+          "fold_std_z": 0.002347556408494711,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.015427770093083382,
+          "fold_range_z": 0.03119167871773243,
+          "fold_std_z": 0.01229849923402071,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.011449277400970459,
+          "fold_range_z": 0.022471439093351364,
+          "fold_std_z": 0.008830094709992409,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.018149079754948616,
+          "fold_range_z": 0.013315511867403984,
+          "fold_std_z": 0.005001211538910866,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.018202481791377068,
+          "fold_range_z": 0.013623379170894623,
+          "fold_std_z": 0.005257469601929188,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.01846962608397007,
+          "fold_range_z": 0.024296533316373825,
+          "fold_std_z": 0.009338924661278725,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.016033362597227097,
+          "fold_range_z": 0.021506115794181824,
+          "fold_std_z": 0.008705968968570232,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.013287689536809921,
+          "fold_range_z": 0.004121786914765835,
+          "fold_std_z": 0.0017561475979164243,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.01897561550140381,
+          "fold_range_z": 0.011771379970014095,
+          "fold_std_z": 0.004493386950343847,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.01610601134598255,
+          "fold_range_z": 0.020347990095615387,
+          "fold_std_z": 0.007646279875189066,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.012714122422039509,
+          "fold_range_z": 0.01728091575205326,
+          "fold_std_z": 0.007382927928119898,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.01573208160698414,
+          "fold_range_z": 0.019412187859416008,
+          "fold_std_z": 0.007902952842414379,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.012818912044167519,
+          "fold_range_z": 0.01941041462123394,
+          "fold_std_z": 0.0073066954500973225,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTh2",
+          "expert": "ModernTCN",
+          "fold_mean_z": -0.019239220768213272,
+          "fold_range_z": 0.010571588762104511,
+          "fold_std_z": 0.004033477045595646,
+          "num_folds": 4
+        }
+      ],
+      "summary": {
+        "core_names": [
+          "DLinear",
+          "PatchTST",
+          "ModernTCN"
+        ],
+        "method_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.029687056317925453,
+            "mse": 0.001391900354065001,
+            "oracle_regret_relative_z": 0.021985484287142754,
+            "pairwise_accuracy": 0.688961386680603,
+            "pearson": 0.35204049944877625,
+            "spearman": 0.4433256763493584,
+            "top1_accuracy": 0.394779771566391,
+            "top2_recall": 0.9184339046478271
+          },
+          "CapabilityContinuous": {
+            "mae": 0.02408510074019432,
+            "mse": 0.0010081999935209751,
+            "oracle_regret_relative_z": 0.014473587274551392,
+            "pairwise_accuracy": 0.751495361328125,
+            "pearson": 0.5962212085723877,
+            "spearman": 0.5430253988178264,
+            "top1_accuracy": 0.5318107604980469,
+            "top2_recall": 0.9265905618667603
+          },
+          "CapabilityMatch": {
+            "mae": 0.024120736867189407,
+            "mse": 0.001012421795167029,
+            "oracle_regret_relative_z": 0.014473587274551392,
+            "pairwise_accuracy": 0.751495361328125,
+            "pearson": 0.5946674346923828,
+            "spearman": 0.5372448199931759,
+            "top1_accuracy": 0.5318107604980469,
+            "top2_recall": 0.9265905618667603
+          },
+          "CapabilityRegime": {
+            "mae": 0.024166289716959,
+            "mse": 0.0010173720074817538,
+            "oracle_regret_relative_z": 0.014473587274551392,
+            "pairwise_accuracy": 0.751495361328125,
+            "pearson": 0.5922890901565552,
+            "spearman": 0.5372282791450779,
+            "top1_accuracy": 0.5318107604980469,
+            "top2_recall": 0.9265905618667603
+          },
+          "DemandExpertID": {
+            "mae": 0.02378910593688488,
+            "mse": 0.000983185600489378,
+            "oracle_regret_relative_z": 0.014473587274551392,
+            "pairwise_accuracy": 0.751495361328125,
+            "pearson": 0.619726300239563,
+            "spearman": 0.5800298693503371,
+            "top1_accuracy": 0.5318107604980469,
+            "top2_recall": 0.9265905618667603
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.036247655749320984,
+            "mse": 0.001956174848601222,
+            "oracle_regret_relative_z": 0.021985484287142754,
+            "pairwise_accuracy": 0.43501904606819153,
+            "pearson": -0.16752617061138153,
+            "spearman": -0.05273265431198826,
+            "top1_accuracy": 0.394779771566391,
+            "top2_recall": 0.4681892395019531
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.0268484428524971,
+            "mse": 0.0012413045624271035,
+            "oracle_regret_relative_z": 0.018005695194005966,
+            "pairwise_accuracy": 0.7030994892120361,
+            "pearson": 0.4113349914550781,
+            "spearman": 0.4263979124458082,
+            "top1_accuracy": 0.5138662457466125,
+            "top2_recall": 0.8694943189620972
+          },
+          "GlobalPrior": {
+            "mae": 0.02378878742456436,
+            "mse": 0.0009831581264734268,
+            "oracle_regret_relative_z": 0.014473587274551392,
+            "pairwise_accuracy": 0.751495361328125,
+            "pearson": 0.6197262406349182,
+            "spearman": 0.597635526789428,
+            "top1_accuracy": 0.5318107604980469,
+            "top2_recall": 0.9265905618667603
+          },
+          "Passive": {
+            "mae": 0.02397148497402668,
+            "mse": 0.0009725218405947089,
+            "oracle_regret_relative_z": 0.016281608492136,
+            "pairwise_accuracy": 0.7020119428634644,
+            "pearson": 0.5922318696975708,
+            "spearman": 0.5629799873905812,
+            "top1_accuracy": 0.4698205590248108,
+            "top2_recall": 0.8466557860374451
+          },
+          "WindowShuffledCapability": {
+            "mae": 0.02413199655711651,
+            "mse": 0.0010130662703886628,
+            "oracle_regret_relative_z": 0.014473587274551392,
+            "pairwise_accuracy": 0.751495361328125,
+            "pearson": 0.5941467881202698,
+            "spearman": 0.5367511845544884,
+            "top1_accuracy": 0.5318107604980469,
+            "top2_recall": 0.9265905618667603
+          }
+        },
+        "num_train_windows": 2053,
+        "num_val_windows": 613,
+        "routing_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.27938273549079895,
+            "mean_entropy": 1.0918326377868652,
+            "mse": 0.17033115029335022,
+            "oracle_single_expert_regret": 0.012899807654321194,
+            "temperature": 0.2
+          },
+          "CapabilityMatch": {
+            "mae": 0.2750951945781708,
+            "mean_entropy": 0.8817898631095886,
+            "mse": 0.16590145230293274,
+            "oracle_single_expert_regret": 0.008612261153757572,
+            "temperature": 0.02
+          },
+          "DemandExpertID": {
+            "mae": 0.2749393582344055,
+            "mean_entropy": 0.8841821551322937,
+            "mse": 0.1656300276517868,
+            "oracle_single_expert_regret": 0.008456442505121231,
+            "temperature": 0.02
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.28090763092041016,
+            "mean_entropy": 1.0984843969345093,
+            "mse": 0.17194975912570953,
+            "oracle_single_expert_regret": 0.014424708671867847,
+            "temperature": 1.0
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.2782886326313019,
+            "mean_entropy": 1.0411936044692993,
+            "mse": 0.1696234941482544,
+            "oracle_single_expert_regret": 0.011805698275566101,
+            "temperature": 0.05
+          },
+          "GlobalPrior": {
+            "mae": 0.2749394178390503,
+            "mean_entropy": 0.8841477036476135,
+            "mse": 0.16562999784946442,
+            "oracle_single_expert_regret": 0.008456458337605,
+            "temperature": 0.02
+          },
+          "Passive": {
+            "mae": 0.2776183485984802,
+            "mean_entropy": 0.7989200353622437,
+            "mse": 0.16823868453502655,
+            "oracle_single_expert_regret": 0.011135417968034744,
+            "temperature": 0.02
+          }
+        }
+      }
+    },
+    "ETTm1": {
+      "counted_in_success": true,
+      "routing_rows": [
+        {
+          "dataset": "ETTm1",
+          "mae": 0.24961437284946442,
+          "mean_entropy": 1.0555123090744019,
+          "method": "GlobalPrior",
+          "mse": 0.14847296476364136,
+          "oracle_single_expert_regret": 0.02230837754905224,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.24862384796142578,
+          "mean_entropy": 1.0818370580673218,
+          "method": "Passive",
+          "mse": 0.14761535823345184,
+          "oracle_single_expert_regret": 0.021317830309271812,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.24849273264408112,
+          "mean_entropy": 1.0735224485397339,
+          "method": "FAMEStyleDemand",
+          "mse": 0.1471923291683197,
+          "oracle_single_expert_regret": 0.02118671126663685,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.24961435794830322,
+          "mean_entropy": 1.0555132627487183,
+          "method": "DemandExpertID",
+          "mse": 0.14847294986248016,
+          "oracle_single_expert_regret": 0.02230835147202015,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.24968011677265167,
+          "mean_entropy": 1.0483640432357788,
+          "method": "CapabilityMatch",
+          "mse": 0.14859552681446075,
+          "oracle_single_expert_regret": 0.022374119609594345,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.248191699385643,
+          "mean_entropy": 1.0984601974487305,
+          "method": "ExpertShuffledCapability",
+          "mse": 0.1466987431049347,
+          "oracle_single_expert_regret": 0.020885683596134186,
+          "split": "router_val",
+          "temperature": 1.0
+        },
+        {
+          "dataset": "ETTm1",
+          "mae": 0.2482137233018875,
+          "mean_entropy": 1.0983364582061768,
+          "method": "AxisShuffledCapability",
+          "mse": 0.14676439762115479,
+          "oracle_single_expert_regret": 0.020907703787088394,
+          "split": "router_val",
+          "temperature": 1.0
+        }
+      ],
+      "stability_rows": [
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.0005765757523477077,
+          "fold_range_z": 0.015364784747362137,
+          "fold_std_z": 0.006102649960666895,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.00195393618196249,
+          "fold_range_z": 0.020611383020877838,
+          "fold_std_z": 0.008338083513081074,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.003565695136785507,
+          "fold_range_z": 0.023981286212801933,
+          "fold_std_z": 0.009499181993305683,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.0029731285758316517,
+          "fold_range_z": 0.01079428382217884,
+          "fold_std_z": 0.004293981473892927,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.002064600121229887,
+          "fold_range_z": 0.012806523591279984,
+          "fold_std_z": 0.005101182498037815,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.0028491492848843336,
+          "fold_range_z": 0.035968661308288574,
+          "fold_std_z": 0.014664195477962494,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.003438519313931465,
+          "fold_range_z": 0.036128826439380646,
+          "fold_std_z": 0.014741211198270321,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.002088637789711356,
+          "fold_range_z": 0.015781434252858162,
+          "fold_std_z": 0.006364043336361647,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.003539212280884385,
+          "fold_range_z": 0.007659204304218292,
+          "fold_std_z": 0.002948493929579854,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.008757278323173523,
+          "fold_range_z": 0.03450261056423187,
+          "fold_std_z": 0.013794641941785812,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.006280106492340565,
+          "fold_range_z": 0.013098787516355515,
+          "fold_std_z": 0.0053032333962619305,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.00466686999425292,
+          "fold_range_z": 0.01910700835287571,
+          "fold_std_z": 0.007828336209058762,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.0028147571720182896,
+          "fold_range_z": 0.009012038819491863,
+          "fold_std_z": 0.0036479406990110874,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.0004111402668058872,
+          "fold_range_z": 0.019451137632131577,
+          "fold_std_z": 0.007516141049563885,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.00021534692496061325,
+          "fold_range_z": 0.03135564178228378,
+          "fold_std_z": 0.01278788223862648,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.007330472115427256,
+          "fold_range_z": 0.030070161446928978,
+          "fold_std_z": 0.012175657786428928,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": -0.0036521395668387413,
+          "fold_range_z": 0.011461343616247177,
+          "fold_std_z": 0.004668157547712326,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "DLinear",
+          "fold_mean_z": 0.013171298429369926,
+          "fold_range_z": 0.019654616713523865,
+          "fold_std_z": 0.007670428603887558,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.00971129722893238,
+          "fold_range_z": 0.007002009078860283,
+          "fold_std_z": 0.002842145971953869,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.010239539667963982,
+          "fold_range_z": 0.011306973174214363,
+          "fold_std_z": 0.00455548707395792,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.016317246481776237,
+          "fold_range_z": 0.0038592685014009476,
+          "fold_std_z": 0.0014187049819156528,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.00793713890016079,
+          "fold_range_z": 0.005211869720369577,
+          "fold_std_z": 0.002278414089232683,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.009043192490935326,
+          "fold_range_z": 0.0064502679742872715,
+          "fold_std_z": 0.0024776170030236244,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.0192875899374485,
+          "fold_range_z": 0.010120459832251072,
+          "fold_std_z": 0.004287604708224535,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.0203116275370121,
+          "fold_range_z": 0.008953523822128773,
+          "fold_std_z": 0.0037022128235548735,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.009587902575731277,
+          "fold_range_z": 0.00803176499903202,
+          "fold_std_z": 0.0032224422320723534,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.006367694586515427,
+          "fold_range_z": 0.004907211288809776,
+          "fold_std_z": 0.0018839744152501225,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.017775725573301315,
+          "fold_range_z": 0.014310241676867008,
+          "fold_std_z": 0.00561959482729435,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.008024897426366806,
+          "fold_range_z": 0.0043587530963122845,
+          "fold_std_z": 0.0016674741636961699,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.010466596111655235,
+          "fold_range_z": 0.007509718183428049,
+          "fold_std_z": 0.002843253780156374,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.006800166331231594,
+          "fold_range_z": 0.0038110753521323204,
+          "fold_std_z": 0.0016070632264018059,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.011839156970381737,
+          "fold_range_z": 0.012996593490242958,
+          "fold_std_z": 0.005012704059481621,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.017628895118832588,
+          "fold_range_z": 0.00582453329116106,
+          "fold_std_z": 0.00233149784617126,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01354130543768406,
+          "fold_range_z": 0.012876827269792557,
+          "fold_std_z": 0.005183924455195665,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.011684665456414223,
+          "fold_range_z": 0.006480777636170387,
+          "fold_std_z": 0.0026605327147990465,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.011041881516575813,
+          "fold_range_z": 0.0028648963198065758,
+          "fold_std_z": 0.0011189620709046721,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.009134721010923386,
+          "fold_range_z": 0.02236679196357727,
+          "fold_std_z": 0.00893071573227644,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.012193474918603897,
+          "fold_range_z": 0.03191835433244705,
+          "fold_std_z": 0.012836713343858719,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.01275155134499073,
+          "fold_range_z": 0.02784055657684803,
+          "fold_std_z": 0.010818146169185638,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.004964010789990425,
+          "fold_range_z": 0.016006149351596832,
+          "fold_std_z": 0.006497472058981657,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.006978592369705439,
+          "fold_range_z": 0.019256792962551117,
+          "fold_std_z": 0.007573660463094711,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.022136740386486053,
+          "fold_range_z": 0.04566279798746109,
+          "fold_std_z": 0.018849356099963188,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.023750148713588715,
+          "fold_range_z": 0.04477940499782562,
+          "fold_std_z": 0.01837524026632309,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.007499262690544128,
+          "fold_range_z": 0.023813195526599884,
+          "fold_std_z": 0.009573602117598057,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0028284830041229725,
+          "fold_range_z": 0.012566415593028069,
+          "fold_std_z": 0.004832425154745579,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.026533003896474838,
+          "fold_range_z": 0.048812851309776306,
+          "fold_std_z": 0.019392669200897217,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0017447916325181723,
+          "fold_range_z": 0.017457544803619385,
+          "fold_std_z": 0.0069532268680632114,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0057997251860797405,
+          "fold_range_z": 0.02661672793328762,
+          "fold_std_z": 0.010627015493810177,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.003985408693552017,
+          "fold_range_z": 0.012787582352757454,
+          "fold_std_z": 0.005224674940109253,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.012250298634171486,
+          "fold_range_z": 0.032447732985019684,
+          "fold_std_z": 0.012511462904512882,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.017844242975115776,
+          "fold_range_z": 0.03682045638561249,
+          "fold_std_z": 0.014892205595970154,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.020871777087450027,
+          "fold_range_z": 0.042946990579366684,
+          "fold_std_z": 0.017359312623739243,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.015336805023252964,
+          "fold_range_z": 0.017381560057401657,
+          "fold_std_z": 0.007307256571948528,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "ETTm1",
+          "expert": "TimesNet",
+          "fold_mean_z": -0.0021294159814715385,
+          "fold_range_z": 0.022519510239362717,
+          "fold_std_z": 0.008640682324767113,
+          "num_folds": 4
+        }
+      ],
+      "summary": {
+        "core_names": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "method_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.03533902019262314,
+            "mse": 0.0022717369720339775,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5233213305473328,
+            "pearson": 0.06298777461051941,
+            "spearman": 0.04690183169425663,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6267414093017578
+          },
+          "CapabilityContinuous": {
+            "mae": 0.03316955268383026,
+            "mse": 0.0020104958675801754,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5232921242713928,
+            "pearson": 0.09048199653625488,
+            "spearman": 0.08834967754466637,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6260404586791992
+          },
+          "CapabilityMatch": {
+            "mae": 0.03315863758325577,
+            "mse": 0.002009400399401784,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5233797430992126,
+            "pearson": 0.0923154354095459,
+            "spearman": 0.08700335313911375,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6263909339904785
+          },
+          "CapabilityRegime": {
+            "mae": 0.03316626325249672,
+            "mse": 0.0020103768911212683,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5233797430992126,
+            "pearson": 0.09382282197475433,
+            "spearman": 0.08601539827353305,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6263909339904785
+          },
+          "DemandExpertID": {
+            "mae": 0.0329538993537426,
+            "mse": 0.0019888076931238174,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5233797430992126,
+            "pearson": 0.07815703749656677,
+            "spearman": 0.0471315556708023,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6263909339904785
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.035075850784778595,
+            "mse": 0.002227380406111479,
+            "oracle_regret_relative_z": 0.03703527897596359,
+            "pairwise_accuracy": 0.48803994059562683,
+            "pearson": -0.05275789648294449,
+            "spearman": -0.0336781112801685,
+            "top1_accuracy": 0.3089459240436554,
+            "top2_recall": 0.6825549602508545
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.035092808306217194,
+            "mse": 0.0021815996151417494,
+            "oracle_regret_relative_z": 0.03431074321269989,
+            "pairwise_accuracy": 0.5197873711585999,
+            "pearson": 0.12945201992988586,
+            "spearman": 0.10025014607469891,
+            "top1_accuracy": 0.3283974528312683,
+            "top2_recall": 0.6294576525688171
+          },
+          "GlobalPrior": {
+            "mae": 0.03295395150780678,
+            "mse": 0.001988811418414116,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5233797430992126,
+            "pearson": 0.07815703749656677,
+            "spearman": 0.05972105632613646,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6263909339904785
+          },
+          "Passive": {
+            "mae": 0.030820032581686974,
+            "mse": 0.001869436353445053,
+            "oracle_regret_relative_z": 0.03028891608119011,
+            "pairwise_accuracy": 0.565991997718811,
+            "pearson": 0.2295229732990265,
+            "spearman": 0.169158904493352,
+            "top1_accuracy": 0.32813459634780884,
+            "top2_recall": 0.6312100291252136
+          },
+          "WindowShuffledCapability": {
+            "mae": 0.03315301984548569,
+            "mse": 0.0020086963195353746,
+            "oracle_regret_relative_z": 0.03446470573544502,
+            "pairwise_accuracy": 0.5233797430992126,
+            "pearson": 0.09278392791748047,
+            "spearman": 0.08758676425257768,
+            "top1_accuracy": 0.3174450099468231,
+            "top2_recall": 0.6263909339904785
+          }
+        },
+        "num_train_windows": 22826,
+        "num_val_windows": 11413,
+        "routing_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.2482137233018875,
+            "mean_entropy": 1.0983364582061768,
+            "mse": 0.14676439762115479,
+            "oracle_single_expert_regret": 0.020907703787088394,
+            "temperature": 1.0
+          },
+          "CapabilityMatch": {
+            "mae": 0.24968011677265167,
+            "mean_entropy": 1.0483640432357788,
+            "mse": 0.14859552681446075,
+            "oracle_single_expert_regret": 0.022374119609594345,
+            "temperature": 0.05
+          },
+          "DemandExpertID": {
+            "mae": 0.24961435794830322,
+            "mean_entropy": 1.0555132627487183,
+            "mse": 0.14847294986248016,
+            "oracle_single_expert_regret": 0.02230835147202015,
+            "temperature": 0.05
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.248191699385643,
+            "mean_entropy": 1.0984601974487305,
+            "mse": 0.1466987431049347,
+            "oracle_single_expert_regret": 0.020885683596134186,
+            "temperature": 1.0
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.24849273264408112,
+            "mean_entropy": 1.0735224485397339,
+            "mse": 0.1471923291683197,
+            "oracle_single_expert_regret": 0.02118671126663685,
+            "temperature": 0.1
+          },
+          "GlobalPrior": {
+            "mae": 0.24961437284946442,
+            "mean_entropy": 1.0555123090744019,
+            "mse": 0.14847296476364136,
+            "oracle_single_expert_regret": 0.02230837754905224,
+            "temperature": 0.05
+          },
+          "Passive": {
+            "mae": 0.24862384796142578,
+            "mean_entropy": 1.0818370580673218,
+            "mse": 0.14761535823345184,
+            "oracle_single_expert_regret": 0.021317830309271812,
+            "temperature": 0.1
+          }
+        }
+      }
+    },
+    "Electricity": {
+      "counted_in_success": true,
+      "routing_rows": [
+        {
+          "dataset": "Electricity",
+          "mae": 0.21533453464508057,
+          "mean_entropy": 1.0670452117919922,
+          "method": "GlobalPrior",
+          "mse": 0.12160656601190567,
+          "oracle_single_expert_regret": -0.002105837455019355,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21717706322669983,
+          "mean_entropy": 1.016311526298523,
+          "method": "Passive",
+          "mse": 0.12546920776367188,
+          "oracle_single_expert_regret": -0.00026334531139582396,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21541942656040192,
+          "mean_entropy": 1.0676617622375488,
+          "method": "FAMEStyleDemand",
+          "mse": 0.12167537212371826,
+          "oracle_single_expert_regret": -0.002020960208028555,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21533451974391937,
+          "mean_entropy": 1.0670461654663086,
+          "method": "DemandExpertID",
+          "mse": 0.12160647660493851,
+          "oracle_single_expert_regret": -0.0021058754064142704,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21532154083251953,
+          "mean_entropy": 1.068114161491394,
+          "method": "CapabilityMatch",
+          "mse": 0.1215653121471405,
+          "oracle_single_expert_regret": -0.0021188685204833746,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21451780200004578,
+          "mean_entropy": 1.0982595682144165,
+          "method": "ExpertShuffledCapability",
+          "mse": 0.11776240915060043,
+          "oracle_single_expert_regret": -0.002922582905739546,
+          "split": "router_val",
+          "temperature": 1.0
+        },
+        {
+          "dataset": "Electricity",
+          "mae": 0.21511413156986237,
+          "mean_entropy": 1.0866992473602295,
+          "method": "AxisShuffledCapability",
+          "mse": 0.11661624908447266,
+          "oracle_single_expert_regret": -0.002326279180124402,
+          "split": "router_val",
+          "temperature": 1.0
+        }
+      ],
+      "stability_rows": [
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02351606823503971,
+          "fold_range_z": 0.008279886096715927,
+          "fold_std_z": 0.003397267544642091,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.023594968020915985,
+          "fold_range_z": 0.006317302584648132,
+          "fold_std_z": 0.0024513977114111185,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.024296987801790237,
+          "fold_range_z": 0.005311679095029831,
+          "fold_std_z": 0.0021773299667984247,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02108702063560486,
+          "fold_range_z": 0.009942100383341312,
+          "fold_std_z": 0.003982962109148502,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.023952696472406387,
+          "fold_range_z": 0.00694204680621624,
+          "fold_std_z": 0.002816859632730484,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02636873349547386,
+          "fold_range_z": 0.003481883555650711,
+          "fold_std_z": 0.0012822991702705622,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.024756932631134987,
+          "fold_range_z": 0.004707394167780876,
+          "fold_std_z": 0.001873284694738686,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02518754079937935,
+          "fold_range_z": 0.005358070135116577,
+          "fold_std_z": 0.0020780323538929224,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.021464157849550247,
+          "fold_range_z": 0.009864566847682,
+          "fold_std_z": 0.00411712471395731,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01937277242541313,
+          "fold_range_z": 0.013017073273658752,
+          "fold_std_z": 0.005334864370524883,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02638940140604973,
+          "fold_range_z": 0.003311760723590851,
+          "fold_std_z": 0.0014466147404164076,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.025646977126598358,
+          "fold_range_z": 0.0031739696860313416,
+          "fold_std_z": 0.001293679466471076,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02260516956448555,
+          "fold_range_z": 0.007634682580828667,
+          "fold_std_z": 0.00316808233037591,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.024807799607515335,
+          "fold_range_z": 0.006884582340717316,
+          "fold_std_z": 0.00260505685582757,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.023995665833353996,
+          "fold_range_z": 0.005848715081810951,
+          "fold_std_z": 0.0023117531090974808,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02275095507502556,
+          "fold_range_z": 0.011219555512070656,
+          "fold_std_z": 0.004554803017526865,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02442176267504692,
+          "fold_range_z": 0.0053630731999874115,
+          "fold_std_z": 0.0021632106509059668,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.024235643446445465,
+          "fold_range_z": 0.0035784170031547546,
+          "fold_std_z": 0.0013442576164379716,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.02266673371195793,
+          "fold_range_z": 0.005492851138114929,
+          "fold_std_z": 0.0021755394991487265,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.02257615327835083,
+          "fold_range_z": 0.0045609865337610245,
+          "fold_std_z": 0.0017709637759253383,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.024069899693131447,
+          "fold_range_z": 0.004575449973344803,
+          "fold_std_z": 0.00162896525580436,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.01915230229496956,
+          "fold_range_z": 0.006422596052289009,
+          "fold_std_z": 0.0025388565845787525,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.022218625992536545,
+          "fold_range_z": 0.0049928296357393265,
+          "fold_std_z": 0.0019020489417016506,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.02794170379638672,
+          "fold_range_z": 0.0032137054949998856,
+          "fold_std_z": 0.001150765921920538,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.02329939231276512,
+          "fold_range_z": 0.0035454295575618744,
+          "fold_std_z": 0.001432035001926124,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.023587318137288094,
+          "fold_range_z": 0.003332650288939476,
+          "fold_std_z": 0.001278100535273552,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.022426366806030273,
+          "fold_range_z": 0.008300010114908218,
+          "fold_std_z": 0.0030128764919936657,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.020417239516973495,
+          "fold_range_z": 0.010346907190978527,
+          "fold_std_z": 0.0037071346305310726,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.024555224925279617,
+          "fold_range_z": 0.002779189497232437,
+          "fold_std_z": 0.0011679516173899174,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.02434113807976246,
+          "fold_range_z": 0.0017277617007493973,
+          "fold_std_z": 0.0007524341344833374,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.020750034600496292,
+          "fold_range_z": 0.005404975265264511,
+          "fold_std_z": 0.0021530441008508205,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.023802755400538445,
+          "fold_range_z": 0.0048276521265506744,
+          "fold_std_z": 0.0017788053955882788,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.024760540574789047,
+          "fold_range_z": 0.004397451877593994,
+          "fold_std_z": 0.0016564527759328485,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.022750824689865112,
+          "fold_range_z": 0.008574150502681732,
+          "fold_std_z": 0.0031593518797308207,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.023489635437726974,
+          "fold_range_z": 0.003633623942732811,
+          "fold_std_z": 0.0014260354219004512,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.023072676733136177,
+          "fold_range_z": 0.0024217460304498672,
+          "fold_std_z": 0.0009246444096788764,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04618280008435249,
+          "fold_range_z": 0.013464618474245071,
+          "fold_std_z": 0.005555180832743645,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04617111757397652,
+          "fold_range_z": 0.010878287255764008,
+          "fold_std_z": 0.004209441132843494,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.048366889357566833,
+          "fold_range_z": 0.009788069874048233,
+          "fold_std_z": 0.0036421213299036026,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04023932293057442,
+          "fold_range_z": 0.016364704817533493,
+          "fold_std_z": 0.00651652691885829,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04617132246494293,
+          "fold_range_z": 0.011934876441955566,
+          "fold_std_z": 0.004696188028901815,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.05431044101715088,
+          "fold_range_z": 0.0058315210044384,
+          "fold_std_z": 0.002181453863158822,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04805632308125496,
+          "fold_range_z": 0.008252829313278198,
+          "fold_std_z": 0.0032941862009465694,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04877485707402229,
+          "fold_range_z": 0.008690722286701202,
+          "fold_std_z": 0.0033529724460095167,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04389052838087082,
+          "fold_range_z": 0.018164582550525665,
+          "fold_std_z": 0.00689940620213747,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.03979000821709633,
+          "fold_range_z": 0.023363983258605003,
+          "fold_std_z": 0.008885985240340233,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.050944630056619644,
+          "fold_range_z": 0.006090961396694183,
+          "fold_std_z": 0.002606404712423682,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04998811334371567,
+          "fold_range_z": 0.004882015287876129,
+          "fold_std_z": 0.001973125385120511,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04335520416498184,
+          "fold_range_z": 0.013039655983448029,
+          "fold_std_z": 0.0053139617666602135,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04861055314540863,
+          "fold_range_z": 0.011712230741977692,
+          "fold_std_z": 0.004380376078188419,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.048756204545497894,
+          "fold_range_z": 0.00938081368803978,
+          "fold_std_z": 0.003740511601790786,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04550177976489067,
+          "fold_range_z": 0.019134439527988434,
+          "fold_std_z": 0.007602720987051725,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.047911398112773895,
+          "fold_range_z": 0.008996695280075073,
+          "fold_std_z": 0.0035745734348893166,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "Electricity",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.04730831831693649,
+          "fold_range_z": 0.006000172346830368,
+          "fold_std_z": 0.0022477172315120697,
+          "num_folds": 4
+        }
+      ],
+      "summary": {
+        "core_names": [
+          "PatchTST",
+          "iTransformer",
+          "TimesNet"
+        ],
+        "method_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.1486234813928604,
+            "mse": 0.026040710508823395,
+            "oracle_regret_relative_z": 0.03385639935731888,
+            "pairwise_accuracy": 0.38326218724250793,
+            "pearson": -0.4351078271865845,
+            "spearman": -0.38254554261390733,
+            "top1_accuracy": 0.16220411658287048,
+            "top2_recall": 0.7691113948822021
+          },
+          "CapabilityContinuous": {
+            "mae": 0.016975918784737587,
+            "mse": 0.0006963808555155993,
+            "oracle_regret_relative_z": 0.007944394834339619,
+            "pairwise_accuracy": 0.7680765986442566,
+            "pearson": 0.4503909647464752,
+            "spearman": 0.45679807146690876,
+            "top1_accuracy": 0.6069072484970093,
+            "top2_recall": 0.8377959132194519
+          },
+          "CapabilityMatch": {
+            "mae": 0.01700635254383087,
+            "mse": 0.0006985689396969974,
+            "oracle_regret_relative_z": 0.007944394834339619,
+            "pairwise_accuracy": 0.7680765986442566,
+            "pearson": 0.44898760318756104,
+            "spearman": 0.45107862276219307,
+            "top1_accuracy": 0.6069072484970093,
+            "top2_recall": 0.8377959132194519
+          },
+          "CapabilityRegime": {
+            "mae": 0.017046121880412102,
+            "mse": 0.0007013046415522695,
+            "oracle_regret_relative_z": 0.007944394834339619,
+            "pairwise_accuracy": 0.7680765986442566,
+            "pearson": 0.4474146366119385,
+            "spearman": 0.4400909459361772,
+            "top1_accuracy": 0.6069072484970093,
+            "top2_recall": 0.8377959132194519
+          },
+          "DemandExpertID": {
+            "mae": 0.01737724058330059,
+            "mse": 0.00071133574238047,
+            "oracle_regret_relative_z": 0.007944394834339619,
+            "pairwise_accuracy": 0.7680765986442566,
+            "pearson": 0.45183610916137695,
+            "spearman": 0.5165112024908494,
+            "top1_accuracy": 0.6069072484970093,
+            "top2_recall": 0.8377959132194519
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.03444688767194748,
+            "mse": 0.0016701993299648166,
+            "oracle_regret_relative_z": 0.015320256352424622,
+            "pairwise_accuracy": 0.40020695328712463,
+            "pearson": -0.3305029273033142,
+            "spearman": -0.23826344893434057,
+            "top1_accuracy": 0.23088863492012024,
+            "top2_recall": 0.3930927515029907
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.017444634810090065,
+            "mse": 0.0007429677643813193,
+            "oracle_regret_relative_z": 0.009278906509280205,
+            "pairwise_accuracy": 0.7284956574440002,
+            "pearson": 0.4292992651462555,
+            "spearman": 0.43526793438817774,
+            "top1_accuracy": 0.5095071792602539,
+            "top2_recall": 0.8377959132194519
+          },
+          "GlobalPrior": {
+            "mae": 0.017377642914652824,
+            "mse": 0.0007113554165698588,
+            "oracle_regret_relative_z": 0.007944394834339619,
+            "pairwise_accuracy": 0.7680765986442566,
+            "pearson": 0.45183610916137695,
+            "spearman": 0.5230320497892638,
+            "top1_accuracy": 0.6069072484970093,
+            "top2_recall": 0.8377959132194519
+          },
+          "Passive": {
+            "mae": 0.016233475878834724,
+            "mse": 0.0007093969616107643,
+            "oracle_regret_relative_z": 0.007455070037394762,
+            "pairwise_accuracy": 0.778618574142456,
+            "pearson": 0.37641075253486633,
+            "spearman": 0.3939202148008441,
+            "top1_accuracy": 0.6239813566207886,
+            "top2_recall": 0.8372138142585754
+          },
+          "WindowShuffledCapability": {
+            "mae": 0.017007052898406982,
+            "mse": 0.0006982177146710455,
+            "oracle_regret_relative_z": 0.007944394834339619,
+            "pairwise_accuracy": 0.7680765986442566,
+            "pearson": 0.4492693543434143,
+            "spearman": 0.4530066091923984,
+            "top1_accuracy": 0.6069072484970093,
+            "top2_recall": 0.8377959132194519
+          }
+        },
+        "num_train_windows": 10308,
+        "num_val_windows": 5154,
+        "routing_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.21511413156986237,
+            "mean_entropy": 1.0866992473602295,
+            "mse": 0.11661624908447266,
+            "oracle_single_expert_regret": -0.002326279180124402,
+            "temperature": 1.0
+          },
+          "CapabilityMatch": {
+            "mae": 0.21532154083251953,
+            "mean_entropy": 1.068114161491394,
+            "mse": 0.1215653121471405,
+            "oracle_single_expert_regret": -0.0021188685204833746,
+            "temperature": 0.1
+          },
+          "DemandExpertID": {
+            "mae": 0.21533451974391937,
+            "mean_entropy": 1.0670461654663086,
+            "mse": 0.12160647660493851,
+            "oracle_single_expert_regret": -0.0021058754064142704,
+            "temperature": 0.1
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.21451780200004578,
+            "mean_entropy": 1.0982595682144165,
+            "mse": 0.11776240915060043,
+            "oracle_single_expert_regret": -0.002922582905739546,
+            "temperature": 1.0
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.21541942656040192,
+            "mean_entropy": 1.0676617622375488,
+            "mse": 0.12167537212371826,
+            "oracle_single_expert_regret": -0.002020960208028555,
+            "temperature": 0.1
+          },
+          "GlobalPrior": {
+            "mae": 0.21533453464508057,
+            "mean_entropy": 1.0670452117919922,
+            "mse": 0.12160656601190567,
+            "oracle_single_expert_regret": -0.002105837455019355,
+            "temperature": 0.1
+          },
+          "Passive": {
+            "mae": 0.21717706322669983,
+            "mean_entropy": 1.016311526298523,
+            "mse": 0.12546920776367188,
+            "oracle_single_expert_regret": -0.00026334531139582396,
+            "temperature": 0.05
+          }
+        }
+      }
+    },
+    "Weather": {
+      "counted_in_success": true,
+      "routing_rows": [
+        {
+          "dataset": "Weather",
+          "mae": 0.15987758338451385,
+          "mean_entropy": 1.0635701417922974,
+          "method": "GlobalPrior",
+          "mse": 0.2773772180080414,
+          "oracle_single_expert_regret": 0.009634606540203094,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15937386453151703,
+          "mean_entropy": 1.0897059440612793,
+          "method": "Passive",
+          "mse": 0.2822764217853546,
+          "oracle_single_expert_regret": 0.009130868129432201,
+          "split": "router_val",
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15955372154712677,
+          "mean_entropy": 1.0618919134140015,
+          "method": "FAMEStyleDemand",
+          "mse": 0.2761678397655487,
+          "oracle_single_expert_regret": 0.009310724213719368,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.15987758338451385,
+          "mean_entropy": 1.0635709762573242,
+          "method": "DemandExpertID",
+          "mse": 0.2773771584033966,
+          "oracle_single_expert_regret": 0.009634606540203094,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.1598832607269287,
+          "mean_entropy": 1.0644115209579468,
+          "method": "CapabilityMatch",
+          "mse": 0.27682068943977356,
+          "oracle_single_expert_regret": 0.009640269912779331,
+          "split": "router_val",
+          "temperature": 0.05
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.16035911440849304,
+          "mean_entropy": 1.098516821861267,
+          "method": "ExpertShuffledCapability",
+          "mse": 0.2788822054862976,
+          "oracle_single_expert_regret": 0.010116122663021088,
+          "split": "router_val",
+          "temperature": 1.0
+        },
+        {
+          "dataset": "Weather",
+          "mae": 0.16005750000476837,
+          "mean_entropy": 1.0976393222808838,
+          "method": "AxisShuffledCapability",
+          "mse": 0.2791498005390167,
+          "oracle_single_expert_regret": 0.00981450267136097,
+          "split": "router_val",
+          "temperature": 1.0
+        }
+      ],
+      "stability_rows": [
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.014776685275137424,
+          "fold_range_z": 0.0018479209393262863,
+          "fold_std_z": 0.0006777585949748755,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.018375813961029053,
+          "fold_range_z": 0.0036458373069763184,
+          "fold_std_z": 0.0015844044974073768,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.022949840873479843,
+          "fold_range_z": 0.005238689482212067,
+          "fold_std_z": 0.0019571701996028423,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.015161694958806038,
+          "fold_range_z": 0.0010597137734293938,
+          "fold_std_z": 0.000421952543547377,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.0185136366635561,
+          "fold_range_z": 0.005277884192764759,
+          "fold_std_z": 0.002147556049749255,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.022426936775445938,
+          "fold_range_z": 0.00439484603703022,
+          "fold_std_z": 0.0015794287901371717,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02272489294409752,
+          "fold_range_z": 0.006254265084862709,
+          "fold_std_z": 0.0022714752703905106,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.016215795651078224,
+          "fold_range_z": 0.005123017355799675,
+          "fold_std_z": 0.0019791193772107363,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.017160041257739067,
+          "fold_range_z": 0.0014926213771104813,
+          "fold_std_z": 0.0006019915454089642,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.016892623156309128,
+          "fold_range_z": 0.002088913694024086,
+          "fold_std_z": 0.0007722435984760523,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.017759453505277634,
+          "fold_range_z": 0.005721669644117355,
+          "fold_std_z": 0.002075488679111004,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.021449897438287735,
+          "fold_range_z": 0.005463441833853722,
+          "fold_std_z": 0.002057631965726614,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.012468830682337284,
+          "fold_range_z": 0.0017981603741645813,
+          "fold_std_z": 0.0006434657843783498,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.019527193158864975,
+          "fold_range_z": 0.004053927958011627,
+          "fold_std_z": 0.0016798160504549742,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.024106834083795547,
+          "fold_range_z": 0.005823997780680656,
+          "fold_std_z": 0.0022088049445301294,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01803923025727272,
+          "fold_range_z": 0.0041073039174079895,
+          "fold_std_z": 0.001511573325842619,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.01764933578670025,
+          "fold_range_z": 0.002394977957010269,
+          "fold_std_z": 0.0008506271406076849,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "PatchTST",
+          "fold_mean_z": -0.02041303552687168,
+          "fold_range_z": 0.004230163991451263,
+          "fold_std_z": 0.0016707890899851918,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.005314879585057497,
+          "fold_range_z": 0.0032427560072392225,
+          "fold_std_z": 0.0013376285787671804,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.0061583928763866425,
+          "fold_range_z": 0.001617666333913803,
+          "fold_std_z": 0.0006094329874031246,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.002839497057721019,
+          "fold_range_z": 0.0018398361280560493,
+          "fold_std_z": 0.000746619189158082,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.005634552799165249,
+          "fold_range_z": 0.003375889966264367,
+          "fold_std_z": 0.001420355518348515,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.006249905563890934,
+          "fold_range_z": 0.0010603861883282661,
+          "fold_std_z": 0.00039742630906403065,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.0024282867088913918,
+          "fold_range_z": 0.0024475082755088806,
+          "fold_std_z": 0.0010040679480880499,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.0040200999937951565,
+          "fold_range_z": 0.0022398955188691616,
+          "fold_std_z": 0.0009074821136891842,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.004970385693013668,
+          "fold_range_z": 0.001889298902824521,
+          "fold_std_z": 0.0007570856832899153,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.005322384648025036,
+          "fold_range_z": 0.0025078218895941973,
+          "fold_std_z": 0.0010318498825654387,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.0043147290125489235,
+          "fold_range_z": 0.002809900091961026,
+          "fold_std_z": 0.0010945841204375029,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.003678292967379093,
+          "fold_range_z": 0.003550519235432148,
+          "fold_std_z": 0.0014924624701961875,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.006319848820567131,
+          "fold_range_z": 0.001136156264692545,
+          "fold_std_z": 0.00042835265048779547,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.004577753134071827,
+          "fold_range_z": 0.003755298675969243,
+          "fold_std_z": 0.0014557274989783764,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.00687082065269351,
+          "fold_range_z": 0.001271621324121952,
+          "fold_std_z": 0.0004640708793886006,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.0028643584810197353,
+          "fold_range_z": 0.001908477977849543,
+          "fold_std_z": 0.000773710198700428,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.005604198202490807,
+          "fold_range_z": 0.0024128686636686325,
+          "fold_std_z": 0.0009719555382616818,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.005061242263764143,
+          "fold_range_z": 0.0037939362227916718,
+          "fold_std_z": 0.001491235918365419,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "iTransformer",
+          "fold_mean_z": -0.003647171426564455,
+          "fold_range_z": 0.0006433047819882631,
+          "fold_std_z": 0.00026436601183377206,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02009156532585621,
+          "fold_range_z": 0.0039330292493104935,
+          "fold_std_z": 0.0015653502196073532,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.024534206837415695,
+          "fold_range_z": 0.003943903371691704,
+          "fold_std_z": 0.0015439019771292806,
+          "num_folds": 4
+        },
+        {
+          "axis": "trend",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02578933723270893,
+          "fold_range_z": 0.006079183891415596,
+          "fold_std_z": 0.002249804325401783,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.020796246826648712,
+          "fold_range_z": 0.00397256575524807,
+          "fold_std_z": 0.0016224428545683622,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.024763543158769608,
+          "fold_range_z": 0.006338275969028473,
+          "fold_std_z": 0.0024371230974793434,
+          "num_folds": 4
+        },
+        {
+          "axis": "seasonality",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.024855224415659904,
+          "fold_range_z": 0.004037313163280487,
+          "fold_std_z": 0.0016327700577676296,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02674499712884426,
+          "fold_range_z": 0.005879800766706467,
+          "fold_std_z": 0.002117304829880595,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.021186180412769318,
+          "fold_range_z": 0.005372503772377968,
+          "fold_std_z": 0.0020378115586936474,
+          "num_folds": 4
+        },
+        {
+          "axis": "frequency",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02248242497444153,
+          "fold_range_z": 0.003992820158600807,
+          "fold_std_z": 0.0016331546939909458,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.021207351237535477,
+          "fold_range_z": 0.003533933311700821,
+          "fold_std_z": 0.0013630829052999616,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0214377474039793,
+          "fold_range_z": 0.007329413667321205,
+          "fold_std_z": 0.00283406232483685,
+          "num_folds": 4
+        },
+        {
+          "axis": "volatility",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.027769746258854866,
+          "fold_range_z": 0.006219979375600815,
+          "fold_std_z": 0.002306347945705056,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.017046581953763962,
+          "fold_range_z": 0.004652438685297966,
+          "fold_std_z": 0.0019668664317578077,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.026398014277219772,
+          "fold_range_z": 0.004591388627886772,
+          "fold_std_z": 0.0017058447701856494,
+          "num_folds": 4
+        },
+        {
+          "axis": "shift",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02697119116783142,
+          "fold_range_z": 0.006658567115664482,
+          "fold_std_z": 0.002392950700595975,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "LOW",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.023643426597118378,
+          "fold_range_z": 0.004412524402141571,
+          "fold_std_z": 0.001688432414084673,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "MED",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.02271057665348053,
+          "fold_range_z": 0.004793427884578705,
+          "fold_std_z": 0.001788371242582798,
+          "num_folds": 4
+        },
+        {
+          "axis": "crossvar",
+          "bin": "HIGH",
+          "dataset": "Weather",
+          "expert": "TimesNet",
+          "fold_mean_z": 0.0240602046251297,
+          "fold_range_z": 0.003681706264615059,
+          "fold_std_z": 0.0014957240782678127,
+          "num_folds": 4
+        }
+      ],
+      "summary": {
+        "core_names": [
+          "PatchTST",
+          "iTransformer",
+          "TimesNet"
+        ],
+        "method_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.03237820789217949,
+            "mse": 0.0024368674494326115,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6076176166534424,
+            "pearson": 0.26095399260520935,
+            "spearman": 0.24892039508584576,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7085889577865601
+          },
+          "CapabilityContinuous": {
+            "mae": 0.019471703097224236,
+            "mse": 0.001295636873692274,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6079370975494385,
+            "pearson": 0.19408439099788666,
+            "spearman": 0.24720253921149593,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7095475196838379
+          },
+          "CapabilityMatch": {
+            "mae": 0.019518258050084114,
+            "mse": 0.0012940095039084554,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6076176166534424,
+            "pearson": 0.1969582438468933,
+            "spearman": 0.2437916633431109,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7085889577865601
+          },
+          "CapabilityRegime": {
+            "mae": 0.019570769742131233,
+            "mse": 0.0012929114745929837,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6076176166534424,
+            "pearson": 0.19953112304210663,
+            "spearman": 0.23915140694704326,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7085889577865601
+          },
+          "DemandExpertID": {
+            "mae": 0.019613929092884064,
+            "mse": 0.0012950460659340024,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6076176166534424,
+            "pearson": 0.19832560420036316,
+            "spearman": 0.2340700722459687,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7085889577865601
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.023499689996242523,
+            "mse": 0.001589772175066173,
+            "oracle_regret_relative_z": 0.0315559059381485,
+            "pairwise_accuracy": 0.4514314830303192,
+            "pearson": -0.099428690969944,
+            "spearman": -0.15156585445701443,
+            "top1_accuracy": 0.29141104221343994,
+            "top2_recall": 0.7195168733596802
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.019140148535370827,
+            "mse": 0.0012654343154281378,
+            "oracle_regret_relative_z": 0.014708034694194794,
+            "pairwise_accuracy": 0.6033039093017578,
+            "pearson": 0.23315492272377014,
+            "spearman": 0.28570621547227054,
+            "top1_accuracy": 0.41871166229248047,
+            "top2_recall": 0.7088765501976013
+          },
+          "GlobalPrior": {
+            "mae": 0.019613981246948242,
+            "mse": 0.0012950481614097953,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6076176166534424,
+            "pearson": 0.19832557439804077,
+            "spearman": 0.2491502897406252,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7085889577865601
+          },
+          "Passive": {
+            "mae": 0.017493179067969322,
+            "mse": 0.0010838353773579001,
+            "oracle_regret_relative_z": 0.014836621470749378,
+            "pairwise_accuracy": 0.6138483881950378,
+            "pearson": 0.41616275906562805,
+            "spearman": 0.27491692968095593,
+            "top1_accuracy": 0.384681761264801,
+            "top2_recall": 0.7036042809486389
+          },
+          "WindowShuffledCapability": {
+            "mae": 0.019519314169883728,
+            "mse": 0.0012941349996253848,
+            "oracle_regret_relative_z": 0.014429833739995956,
+            "pairwise_accuracy": 0.6076176166534424,
+            "pearson": 0.19683250784873962,
+            "spearman": 0.24343827177021396,
+            "top1_accuracy": 0.42810583114624023,
+            "top2_recall": 0.7085889577865601
+          }
+        },
+        "num_train_windows": 20864,
+        "num_val_windows": 10432,
+        "routing_metrics": {
+          "AxisShuffledCapability": {
+            "mae": 0.16005750000476837,
+            "mean_entropy": 1.0976393222808838,
+            "mse": 0.2791498005390167,
+            "oracle_single_expert_regret": 0.00981450267136097,
+            "temperature": 1.0
+          },
+          "CapabilityMatch": {
+            "mae": 0.1598832607269287,
+            "mean_entropy": 1.0644115209579468,
+            "mse": 0.27682068943977356,
+            "oracle_single_expert_regret": 0.009640269912779331,
+            "temperature": 0.05
+          },
+          "DemandExpertID": {
+            "mae": 0.15987758338451385,
+            "mean_entropy": 1.0635709762573242,
+            "mse": 0.2773771584033966,
+            "oracle_single_expert_regret": 0.009634606540203094,
+            "temperature": 0.05
+          },
+          "ExpertShuffledCapability": {
+            "mae": 0.16035911440849304,
+            "mean_entropy": 1.098516821861267,
+            "mse": 0.2788822054862976,
+            "oracle_single_expert_regret": 0.010116122663021088,
+            "temperature": 1.0
+          },
+          "FAMEStyleDemand": {
+            "mae": 0.15955372154712677,
+            "mean_entropy": 1.0618919134140015,
+            "mse": 0.2761678397655487,
+            "oracle_single_expert_regret": 0.009310724213719368,
+            "temperature": 0.05
+          },
+          "GlobalPrior": {
+            "mae": 0.15987758338451385,
+            "mean_entropy": 1.0635701417922974,
+            "mse": 0.2773772180080414,
+            "oracle_single_expert_regret": 0.009634606540203094,
+            "temperature": 0.05
+          },
+          "Passive": {
+            "mae": 0.15937386453151703,
+            "mean_entropy": 1.0897059440612793,
+            "mse": 0.2822764217853546,
+            "oracle_single_expert_regret": 0.009130868129432201,
+            "temperature": 0.1
+          }
+        }
+      }
+    }
+  },
+  "etth2_integrity_status": "ETTH2_INTEGRITY_RESOLVED",
+  "experiment": "natural_capability_demand_matching",
+  "git_commit": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "runtime_sec": 77.53778240003157,
+  "success_criteria": [
+    "STRONG_CAPABILITY_DEMAND_SIGNAL",
+    "CAPABILITY_SIGNAL_BUT_NO_MATCHING_GAIN",
+    "MATCHING_SIGNAL_BUT_REDUNDANT",
+    "UNSTABLE_CAPABILITY_PROFILES",
+    "NO_CAPABILITY_DEMAND_SIGNAL"
+  ],
+  "test_loaded": false
+}

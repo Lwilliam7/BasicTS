@@ -1,0 +1,158 @@
+{
+  "cache_paths": {
+    "router_train": "cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+    "router_val": "cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt"
+  },
+  "dataset": "ETTh2",
+  "expected_cache_convention": "ETTh2 histories/targets/predictions are stored in DLinear scaler-normalized units; metrics use std=ones.",
+  "per_expert": {
+    "DLinear": {
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_dlinear.pt",
+      "checkpoint_sha256_after": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "checkpoint_sha256_before": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "denormalized_raw_history_wrapper_max_abs_diff": 1.1920928955078125e-07,
+      "denormalized_raw_history_wrapper_mean_abs_diff": 2.1160662111441297e-09,
+      "direct_normalized_cache_input_max_abs_diff": 4.470348358154297e-08,
+      "direct_normalized_cache_input_mean_abs_diff": 3.0410532425584336e-10,
+      "model_eval_mode": true,
+      "parameters_frozen": true,
+      "runtime_horizon": 12,
+      "runtime_input_len": 96,
+      "runtime_num_features": 7,
+      "runtime_rescale_output": false,
+      "wrong_normalized_history_wrapper_max_abs_diff": 4.114710807800293,
+      "wrong_normalized_history_wrapper_mean_abs_diff": 1.9114466905593872
+    },
+    "ModernTCN": {
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_moderntcn.pt",
+      "checkpoint_sha256_after": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "checkpoint_sha256_before": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "denormalized_raw_history_wrapper_max_abs_diff": 4.76837158203125e-07,
+      "denormalized_raw_history_wrapper_mean_abs_diff": 3.980612106602166e-08,
+      "direct_normalized_cache_input_max_abs_diff": 1.1920928955078125e-07,
+      "direct_normalized_cache_input_mean_abs_diff": 3.3578295699498995e-10,
+      "model_eval_mode": true,
+      "parameters_frozen": true,
+      "runtime_horizon": 12,
+      "runtime_input_len": 96,
+      "runtime_num_features": 7,
+      "runtime_rescale_output": false,
+      "wrong_normalized_history_wrapper_max_abs_diff": 4.22614860534668,
+      "wrong_normalized_history_wrapper_mean_abs_diff": 1.9535082578659058
+    },
+    "PatchTST": {
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_patchtst.pt",
+      "checkpoint_sha256_after": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+      "checkpoint_sha256_before": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+      "denormalized_raw_history_wrapper_max_abs_diff": 9.5367431640625e-07,
+      "denormalized_raw_history_wrapper_mean_abs_diff": 5.217940568513768e-08,
+      "direct_normalized_cache_input_max_abs_diff": 9.5367431640625e-07,
+      "direct_normalized_cache_input_mean_abs_diff": 3.677140369973131e-08,
+      "model_eval_mode": true,
+      "parameters_frozen": true,
+      "runtime_horizon": 12,
+      "runtime_input_len": 96,
+      "runtime_num_features": 7,
+      "runtime_rescale_output": false,
+      "wrong_normalized_history_wrapper_max_abs_diff": 3.9837028980255127,
+      "wrong_normalized_history_wrapper_mean_abs_diff": 1.7527989149093628
+    },
+    "TimesNet": {
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_timesnet.pt",
+      "checkpoint_sha256_after": "2b2f1e54962034ca78bad6d9b7b14ab30fee4cebfcdc8537a464c2b19926f4b3",
+      "checkpoint_sha256_before": "2b2f1e54962034ca78bad6d9b7b14ab30fee4cebfcdc8537a464c2b19926f4b3",
+      "denormalized_raw_history_wrapper_max_abs_diff": 4.76837158203125e-07,
+      "denormalized_raw_history_wrapper_mean_abs_diff": 2.9358835362813807e-08,
+      "direct_normalized_cache_input_max_abs_diff": 1.1920928955078125e-07,
+      "direct_normalized_cache_input_mean_abs_diff": 6.082106485116867e-10,
+      "model_eval_mode": true,
+      "parameters_frozen": true,
+      "runtime_horizon": 12,
+      "runtime_input_len": 96,
+      "runtime_num_features": 7,
+      "runtime_rescale_output": false,
+      "wrong_normalized_history_wrapper_max_abs_diff": 4.292592525482178,
+      "wrong_normalized_history_wrapper_mean_abs_diff": 1.980029821395874
+    },
+    "iTransformer": {
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_itransformer.pt",
+      "checkpoint_sha256_after": "664841c6c982da5c5a81a99eb759494101583a4a9e9feef7b806f74ce2175c5f",
+      "checkpoint_sha256_before": "664841c6c982da5c5a81a99eb759494101583a4a9e9feef7b806f74ce2175c5f",
+      "denormalized_raw_history_wrapper_max_abs_diff": 7.152557373046875e-07,
+      "denormalized_raw_history_wrapper_mean_abs_diff": 1.0531230998367391e-07,
+      "direct_normalized_cache_input_max_abs_diff": 9.5367431640625e-07,
+      "direct_normalized_cache_input_mean_abs_diff": 8.642609827802517e-08,
+      "model_eval_mode": true,
+      "parameters_frozen": true,
+      "runtime_horizon": 12,
+      "runtime_input_len": 96,
+      "runtime_num_features": 7,
+      "runtime_rescale_output": false,
+      "wrong_normalized_history_wrapper_max_abs_diff": 3.5609347820281982,
+      "wrong_normalized_history_wrapper_mean_abs_diff": 1.282808542251587
+    }
+  },
+  "resolution": "The cache is internally consistent. The prior mismatch is explained by passing already-normalized ETTh2 cache histories into a runtime wrapper that expects raw histories.",
+  "schema": {
+    "router_train": {
+      "core_in_cache": true,
+      "expected_role": "router_train",
+      "expert_order_ok": true,
+      "history_shape": [
+        2053,
+        96,
+        7
+      ],
+      "num_windows": 2053,
+      "prediction_shape": [
+        2053,
+        12,
+        7,
+        5
+      ],
+      "role": "router_train",
+      "role_ok": true,
+      "shape_ok": true,
+      "split": "router_train",
+      "start_max": 10692,
+      "start_min": 8640,
+      "starts_chronological": true,
+      "target_shape": [
+        2053,
+        12,
+        7
+      ]
+    },
+    "router_val": {
+      "core_in_cache": true,
+      "expected_role": "router_val",
+      "expert_order_ok": true,
+      "history_shape": [
+        613,
+        96,
+        7
+      ],
+      "num_windows": 613,
+      "prediction_shape": [
+        613,
+        12,
+        7,
+        5
+      ],
+      "role": "router_val",
+      "role_ok": true,
+      "shape_ok": true,
+      "split": "router_val",
+      "start_max": 11412,
+      "start_min": 10800,
+      "starts_chronological": true,
+      "target_shape": [
+        613,
+        12,
+        7
+      ]
+    }
+  },
+  "status": "ETTH2_INTEGRITY_RESOLVED",
+  "structured_repair_prior_status": "runtime wrapper was called on normalized cache histories as if raw, producing ~4.4-4.9 max raw forecast differences."
+}

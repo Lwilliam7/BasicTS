@@ -1,0 +1,28 @@
+{
+  "baseline": "strict train-only frozen HxV COSTAR weights over selected K=3 core",
+  "code_version": "pair_residual_fault_gate_v1",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "detector": "LogisticRegression(C=1.0, class_weight=balanced) with train-only StandardScaler; constant fallback if one class",
+  "fault_quantile_grid": [
+    0.8,
+    0.9
+  ],
+  "gamma_grid": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "intervention_threshold_grid": [
+    null,
+    0.4,
+    0.6,
+    0.8
+  ],
+  "test_loaded": false
+}

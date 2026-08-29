@@ -1,12 +1,137 @@
 # Current State
 
-Last updated: 2026-08-25
+Last updated: 2026-08-29
+
+## Expert-Native Latent Competence (2026-08-29)
+
+Completed strict validation-only `experiments/behavioral_competence/expert_native_competence/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity using only router_train/router_val caches and existing frozen K=3 cores. Final classification: `MIXED_SUPPORT`. The study extracted frozen expert-native internal representations with temporary hooks, used purged chronological OOF Ridge/LogisticRegression readouts, compared Passive, Hidden Only, Passive+Hidden, Shuffled Hidden, Raw Forecast Control, Matched-Dimension Passive Control, and prototype-axis geometry, and evaluated router_val once after train-only PCA choices. Passive+Hidden improved Passive R2 on ETTh1 (`+0.016825`) and Electricity (`+0.342262`), but regressed on ETTh2 (`-0.178095`), ETTm1 (`-0.027923`), and Weather (`-0.002443`). AUROC improved on Weather (`+0.036025`) and Electricity (`+0.032966`) but regressed elsewhere. Do not build an Expert-Native router yet.
+
+Integrity: no test cache/file was loaded; checkpoint hashes were unchanged; hooked-vs-unhooked prediction difference was `0.0`; router_train OOF folds passed the horizon-12 purge; target-corruption feature and prediction invariance passed. Cached-forecast reproduction is recorded as a diagnostic: most experts were near-exact, while TimesNet had rare device/batch-size-sensitive outliers on Weather/Electricity despite exact hook invariance. Treat this as a numeric reproduction caveat, not a permission to touch test data.
+
+## Signed Pair Residual Fault Gate (2026-08-28)
+
+Completed validation-only `experiments/behavioral_competence/pair_residual_fault_gate/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity using router-train/router-val frozen forecast caches only. Final classification: `WEAK_OR_INCONSISTENT_PARITY_FAULT_SIGNAL`. The study tested signed expert-pair residual/parity features for relative bust detection, with q80/q90 router_train-only fault thresholds, purged chronological OOF detectors, train-only gamma/intervention-threshold selection, Passive, Passive+Parity, shuffled parity, and Passive+Raw forecast controls. ETTh2 was supportive (`Passive+Parity` improved Baseline MAE by `-0.001258` and beat Passive/Raw/Shuffled by point estimate), but ETTh1, ETTm1, and Electricity regressed versus Baseline, and Weather's best improvement came from Raw Forecast Control. Do not promote to router integration or test evaluation.
+
+## Natural Capability-Demand Matching (2026-08-28)
+
+Completed validation-only `experiments/behavioral_competence/capability_demand_matching/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity using router-train/router-val frozen forecast caches only. Final classification: `CAPABILITY_SIGNAL_BUT_NO_MATCHING_GAIN`. The mechanism used history-only demand axes (`trend`, `seasonality`, `frequency`, `volatility`, `shift`, `crossvar`) and natural router_train-derived expert capability profiles with purged chronological OOF construction. CapabilityMatch showed meaningful competence association and consistently beat expert-profile shuffles, but it did not consistently beat Passive ABC or the FAME-style direct demand baseline. Do not promote to router integration or test evaluation.
+
+ETTh2 integrity note: the previous cached-forecast/runtime discrepancy is resolved. ETTh2 caches store histories/targets/predictions in DLinear scaler-normalized units; calling the runtime wrapper on those already-normalized histories caused the prior large reproduction mismatch. Direct normalized-cache inference and de-normalized raw-history wrapper inference both reproduce cached ETTh2 forecasts within `<= 9.54e-07`. See `experiments/behavioral_competence/capability_demand_matching/etth2_integrity_audit.json`.
+
+## Structured Forecast Repair Study (2026-08-28)
+
+Completed validation-only `experiments/behavioral_competence/structured_forecast_repair/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity using router-train/router-val frozen forecast caches only. Final classification: `WEAK_OR_AMBIGUOUS`. RepairGeometry improved relative-competence Ridge MAE over Passive on 2/5 datasets; REP was a strong control on Electricity; shuffle and block-24 evidence was mixed. No test cache was loaded. Do not promote to router integration or test evaluation. The ETTh2 reproduction issue noted in that report was later resolved by the capability-demand audit as a normalized-history/runtime-wrapper convention mismatch, not cache corruption.
 
 Read this first. It is a compact project memory for the COSTAR-TS research branch in this BasicTS repository.
 
 ## Current Research Goal
 
 Improve ETTh1 multivariate forecasting by combining frozen expert forecasts with adaptive COSTAR-style weighting/routing, while keeping chronological train/validation/test separation clean. The current target from recent prompts is validation MAE `<= 0.3619`; this has not been reached.
+
+## Latest Counterfactual Forecast Revision Experiment
+
+CONFIRMED RESULT:
+
+`experiments/behavioral_competence/counterfactual_forecast_revision/` completed on 2026-08-27.
+
+Question:
+
+When a frozen forecasting expert is shown a controlled hypothetical realization of the first few future steps, does the way it revises the remainder of its forecast reveal expert-specific instance-level competence beyond passive A+B+C features?
+
+Result:
+
+- Final predeclared classification: `CFR_SIGNAL_BUT_REDUNDANT`.
+- CFR/RelativeCFR had competence association by the fixed router-val signal rule on `4/4` datasets.
+- `PassivePlusCFR` or `PassivePlusRelativeCFR` improved router-val conditional-error MAE by point estimate on `4/4` datasets: ExchangeRate `-0.001615`, Traffic `-0.002823`, BeijingAirQuality `-0.000474` via RelativeCFR, ETTm2 `-0.000012` via RelativeCFR.
+- Dependence-aware support existed for some passive-plus deltas (`ExchangeRate`, `Traffic`, `BeijingAirQuality`), but the sign was not uniformly favorable: `PassivePlusCFR` significantly regressed on `BeijingAirQuality` and `ETTm2`.
+- Correct CFR expert mapping beat shuffled mapping on `3/4` datasets by point estimate.
+- The mandatory direct Passive-residual test was positive on only `1/4` datasets (`ETTm2`; CFR R2 `0.0197`, RelativeCFR R2 `0.0124`) and negative on ExchangeRate, Traffic, and BeijingAirQuality.
+
+Integrity:
+
+- No test data accessed.
+- Checkpoint hashes unchanged and all experts remained frozen.
+- Router-val targets were never used for fitting or surprise-scale estimation.
+- Fold-specific surprise scales used fold training windows only.
+- Target corruption left CFR features unchanged exactly (`max_abs_diff = 0.0`).
+- OOF purge, absolute-horizon alignment, deterministic CFR regeneration, deterministic shuffle, and finite-feature checks passed.
+
+Artifacts:
+
+- `experiments/behavioral_competence/counterfactual_forecast_revision/report.md`
+- `experiments/behavioral_competence/counterfactual_forecast_revision/validation_results.json`
+- `experiments/behavioral_competence/counterfactual_forecast_revision/integrity_checks.json`
+- `project_memory/experiments/2026-08-27_counterfactual_forecast_revision.md`
+
+Decision:
+
+Do not freeze CFR for untouched-dataset testing yet. Treat it as signal-bearing but redundant/insufficient because it fails the direct passive-residual criterion on `3/4` datasets.
+
+## Latest Conditional Nuisance Invariance Experiment
+
+CONFIRMED RESULT:
+
+`experiments/behavioral_competence/conditional_nuisance_invariance/` completed on 2026-08-27.
+
+Question:
+
+Does the canonical expert-conditioned LearnedProbe active response contain expert-competence information after passive features and explicit nuisance features are controlled?
+
+Result:
+
+- Final predeclared classification: `MIXED_CNI`.
+- `Electricity` showed the strongest CNI-surviving evidence: `Passive+Nuisance+Probe` improved pairwise competence over `Passive+Nuisance` by `+0.088410` and had block-24 support.
+- `ETTh1` and `ETTh2` had smaller positive `Passive+Nuisance+Probe` deltas (`+0.020075`, `+0.006525`) but no block-24 support and failed negative controls.
+- `ETTm1` was essentially flat after nuisance (`+0.000117`) and `Weather` regressed (`-0.011567`).
+- Shuffled/wrong-expert controls and environment transfer did not support a robust cross-dataset active mechanism.
+
+Integrity:
+
+- No test data accessed.
+- Checkpoint hashes unchanged and frozen experts remained frozen.
+- Router-val targets not used during feature construction or residualization.
+- Target corruption left recomputed features, scores, weights, and final predictions unchanged with max absolute diff `0.0`.
+- Router-train to router-val observability held on every dataset.
+
+Artifacts:
+
+- `experiments/behavioral_competence/conditional_nuisance_invariance/results/report.md`
+- `experiments/behavioral_competence/conditional_nuisance_invariance/results/results.json`
+- `experiments/behavioral_competence/conditional_nuisance_invariance/results/integrity_checks.json`
+- `project_memory/experiments/2026-08-27_conditional_nuisance_invariance.md`
+
+## Latest Dynamics-Alignment Mechanism Experiment
+
+CONFIRMED RESULT:
+
+`experiments/data_model_dynamics_alignment/` completed on 2026-08-27.
+
+Question:
+
+Does agreement between observed local dynamics and a frozen forecaster's implied local dynamics predict upcoming expert error?
+
+Result:
+
+- Final predeclared classification: `WEAK_OR_AMBIGUOUS`.
+- Only `Weather` passed all criteria A-E.
+- Passive+Align routing MAE improved over Passive on `ETTh2`, `Weather`, and `Electricity`, but regressed on `ETTh1` and `ETTm1`; the `ETTm1` regression was block-24 significant.
+- Direct `D_align` Spearman with excess/error was positive on `ETTh1`, `ETTm1`, `Weather`, and `Electricity`, but negative on `ETTh2`.
+- Passive-residual R2 was small/positive only on `ETTh1` (`0.0033`) and `Electricity` (`0.0090`), negative on the other three.
+
+Integrity:
+
+- No test data accessed.
+- Checkpoint hashes and frozen expert parameter fingerprints unchanged.
+- Router-val targets not used during fitting.
+- Target corruption left features unchanged.
+- All model features finite. ETTm1 had `438` nonfinite condition-number diagnostics, recorded but unused by scorer features.
+
+Artifacts:
+
+- `experiments/data_model_dynamics_alignment/report.md`
+- `experiments/data_model_dynamics_alignment/results.json`
+- `experiments/data_model_dynamics_alignment/integrity_checks.json`
+- `project_memory/experiments/2026-08-27_data_model_dynamics_alignment.md`
 
 ## Latest Behavioral-Competence Experiment
 

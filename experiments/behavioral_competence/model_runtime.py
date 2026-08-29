@@ -64,6 +64,7 @@ class ExpertRuntime:
     input_len: int
     horizon: int
     num_features: int
+    device: torch.device
 
     def predict(self, history_raw: torch.Tensor, batch_size: int = 512) -> torch.Tensor:
         """history_raw: [B, input_len, F] in raw (original) scale. Returns
@@ -75,7 +76,7 @@ class ExpertRuntime:
         std = self.std.view(1, 1, -1)
         with torch.no_grad():
             for lo in range(0, history_raw.shape[0], batch_size):
-                chunk = history_raw[lo : lo + batch_size]
+                chunk = history_raw[lo : lo + batch_size].to(self.device)
                 normalized = (chunk - mean) / std
                 out = self.call_fn(self.model, normalized)
                 if self.rescale_output:
@@ -92,6 +93,8 @@ class ExpertRuntime:
         through the frozen forward computation to reach the perturbation
         `delta` that produced `history_raw`. No chunking: caller controls
         batch size directly since this keeps a single connected graph."""
+        if history_raw.device != self.device:
+            history_raw = history_raw.to(self.device)
         mean = self.mean.view(1, 1, -1)
         std = self.std.view(1, 1, -1)
         normalized = (history_raw - mean) / std
@@ -101,7 +104,11 @@ class ExpertRuntime:
         return out
 
 
-def load_walkforward_expert(dataset: str, expert: str, checkpoint_root: Path, stage: str = "final_60") -> ExpertRuntime:
+def _resolve_device(device: torch.device | str | None) -> torch.device:
+    return torch.device("cpu") if device is None else torch.device(device)
+
+
+def load_walkforward_expert(dataset: str, expert: str, checkpoint_root: Path, stage: str = "final_60", device: torch.device | str | None = None) -> ExpertRuntime:
     """`stage` selects which walk-forward checkpoint to load: "final_60" (used
     for router_val -- trained on 0-60%) or "block_a"/"block_ab" (used for the
     two out-of-sample sub-ranges that make up router_train -- trained on
@@ -111,7 +118,9 @@ def load_walkforward_expert(dataset: str, expert: str, checkpoint_root: Path, st
     ckpt = torch.load(path, map_location="cpu", weights_only=False)
     cfg = ckpt["model_config"]
     model = build_model(ckpt["expert"], int(cfg["input_len"]), int(cfg["output_len"]), int(cfg["num_features"]), int(cfg["hidden_size"]))
+    device_obj = _resolve_device(device)
     model.load_state_dict(ckpt["model_state_dict"], strict=True)
+    model.to(device_obj)
     model.eval()
     for p in model.parameters():
         p.requires_grad_(False)
@@ -119,8 +128,8 @@ def load_walkforward_expert(dataset: str, expert: str, checkpoint_root: Path, st
         dataset=dataset,
         expert=expert,
         model=model,
-        mean=ckpt["scaler_mean"].to(torch.float32),
-        std=ckpt["scaler_std"].to(torch.float32),
+        mean=ckpt["scaler_mean"].to(torch.float32).to(device_obj),
+        std=ckpt["scaler_std"].to(torch.float32).to(device_obj),
         call_fn=call_model,
         rescale_output=True,
         checkpoint_path=path,
@@ -128,16 +137,19 @@ def load_walkforward_expert(dataset: str, expert: str, checkpoint_root: Path, st
         input_len=int(cfg["input_len"]),
         horizon=int(cfg["output_len"]),
         num_features=int(cfg["num_features"]),
+        device=device_obj,
     )
 
 
-def load_etth2_expert(expert: str) -> ExpertRuntime:
+def load_etth2_expert(expert: str, device: torch.device | str | None = None) -> ExpertRuntime:
     path = etth2_checkpoint_path(expert)
     ckpt = torch.load(path, map_location="cpu", weights_only=False)
     model = build_etth2_model(ckpt)
+    device_obj = _resolve_device(device)
     missing, unexpected = model.load_state_dict(ckpt["model_state_dict"], strict=False)
     if missing or unexpected:
         raise RuntimeError(f"ETTh2/{expert}: checkpoint mismatch missing={missing}, unexpected={unexpected}")
+    model.to(device_obj)
     model.eval()
     for p in model.parameters():
         p.requires_grad_(False)
@@ -146,8 +158,8 @@ def load_etth2_expert(expert: str) -> ExpertRuntime:
         dataset="ETTh2",
         expert=expert,
         model=model,
-        mean=stats["mean"].to(torch.float32).view(-1),
-        std=stats["std"].to(torch.float32).view(-1),
+        mean=stats["mean"].to(torch.float32).view(-1).to(device_obj),
+        std=stats["std"].to(torch.float32).view(-1).to(device_obj),
         call_fn=lambda m, h, _e=expert: call_etth2_model(m, _e, h),
         rescale_output=False,
         checkpoint_path=path,
@@ -155,6 +167,7 @@ def load_etth2_expert(expert: str) -> ExpertRuntime:
         input_len=int(ckpt["input_len"]),
         horizon=int(ckpt["output_len"]),
         num_features=int(ckpt["num_features"]),
+        device=device_obj,
     )
 
 
@@ -166,12 +179,12 @@ WALKFORWARD_CHECKPOINT_ROOTS = {
 }
 
 
-def load_expert_runtime(dataset: str, expert: str, stage: str = "final_60") -> ExpertRuntime:
+def load_expert_runtime(dataset: str, expert: str, stage: str = "final_60", device: torch.device | str | None = None) -> ExpertRuntime:
     """`stage` is only meaningful for the walk-forward family; ETTh2 uses a
     single fixed OOS checkpoint (trained on expert_train, 0-50%) for both
     router_train and router_val, so `stage` is ignored there."""
     if dataset == "ETTh2":
-        return load_etth2_expert(expert)
+        return load_etth2_expert(expert, device=device)
     if dataset in WALKFORWARD_CHECKPOINT_ROOTS:
-        return load_walkforward_expert(dataset, expert, WALKFORWARD_CHECKPOINT_ROOTS[dataset], stage=stage)
+        return load_walkforward_expert(dataset, expert, WALKFORWARD_CHECKPOINT_ROOTS[dataset], stage=stage, device=device)
     raise ValueError(f"Unknown dataset: {dataset}")
