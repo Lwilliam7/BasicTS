@@ -1,0 +1,124 @@
+{
+  "ETTm2": {
+    "all_folds_purged": true,
+    "checkpoints_unchanged": true,
+    "finite_features": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 23324,
+        "eval_origin_min": 19509,
+        "fold": 0,
+        "num_purged_windows": 11,
+        "train_origin_max": 19497,
+        "train_origin_min": 11520,
+        "train_target_end_max": 19509
+      },
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 27033,
+        "eval_origin_min": 23325,
+        "fold": 1,
+        "num_purged_windows": 11,
+        "train_origin_max": 23313,
+        "train_origin_min": 11520,
+        "train_target_end_max": 23325
+      },
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 30742,
+        "eval_origin_min": 27034,
+        "fold": 2,
+        "num_purged_windows": 11,
+        "train_origin_max": 27022,
+        "train_origin_min": 11520,
+        "train_target_end_max": 27034
+      },
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 34452,
+        "eval_origin_min": 30743,
+        "fold": 3,
+        "num_purged_windows": 11,
+        "train_origin_max": 30731,
+        "train_origin_min": 11520,
+        "train_target_end_max": 30743
+      }
+    ],
+    "loaded_paths": [
+      "cache\\costarts_walkforward_ETTm2\\router_train_20_60_cache.pt",
+      "cache\\costarts_walkforward_ETTm2\\router_val_60_80_cache.pt"
+    ],
+    "no_test_path_loaded": true,
+    "observability": {
+      "max_router_train_target_end": 34464,
+      "min_router_val_origin": 34560,
+      "observability_holds": true
+    },
+    "result": "PASS",
+    "train_scaler_only": true,
+    "val_feature_target_corruption_invariant": true
+  },
+  "Traffic": {
+    "all_folds_purged": true,
+    "checkpoints_unchanged": true,
+    "finite_features": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 7100,
+        "eval_origin_min": 5889,
+        "fold": 0,
+        "num_purged_windows": 11,
+        "train_origin_max": 5877,
+        "train_origin_min": 3508,
+        "train_target_end_max": 5889
+      },
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 8206,
+        "eval_origin_min": 7101,
+        "fold": 1,
+        "num_purged_windows": 11,
+        "train_origin_max": 7089,
+        "train_origin_min": 3508,
+        "train_target_end_max": 7101
+      },
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 9312,
+        "eval_origin_min": 8207,
+        "fold": 2,
+        "num_purged_windows": 11,
+        "train_origin_max": 8195,
+        "train_origin_min": 3508,
+        "train_target_end_max": 8207
+      },
+      {
+        "assertion_max_train_target_end_leq_min_eval_origin": true,
+        "eval_origin_max": 10418,
+        "eval_origin_min": 9313,
+        "fold": 3,
+        "num_purged_windows": 11,
+        "train_origin_max": 9301,
+        "train_origin_min": 3508,
+        "train_target_end_max": 9313
+      }
+    ],
+    "loaded_paths": [
+      "cache\\costarts_walkforward_Traffic\\router_train_20_60_cache.pt",
+      "cache\\costarts_walkforward_Traffic\\router_val_60_80_cache.pt"
+    ],
+    "no_test_path_loaded": true,
+    "observability": {
+      "max_router_train_target_end": 10430,
+      "min_router_val_origin": 10526,
+      "observability_holds": true
+    },
+    "result": "PASS",
+    "train_scaler_only": true,
+    "val_feature_target_corruption_invariant": true
+  }
+}

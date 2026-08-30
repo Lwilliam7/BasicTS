@@ -1,0 +1,43 @@
+{
+  "assignments_train_only": true,
+  "cache_roles": {
+    "router_train": "router_train_20_60",
+    "router_val": "router_val_60_80"
+  },
+  "checkpoint_hashes_after": {
+    "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+    "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+    "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+  },
+  "checkpoint_hashes_before": {
+    "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+    "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+    "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+  },
+  "checkpoints_unchanged": true,
+  "core_expert_indices": [
+    1,
+    2,
+    3
+  ],
+  "core_experts": [
+    "PatchTST",
+    "iTransformer",
+    "TimesNet"
+  ],
+  "dataset": "Electricity",
+  "expert_ordering_verified": true,
+  "horizon": 12,
+  "loaded_paths": [
+    "cache\\costarts_walkforward_Electricity\\router_train_20_60_cache.pt",
+    "cache\\costarts_walkforward_Electricity\\router_val_60_80_cache.pt",
+    "checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt"
+  ],
+  "no_capacity_identical_to_hard_hxv": true,
+  "no_test_cache_loaded": true,
+  "normalization": "per-location absolute errors divided by train checkpoint scaler std via existing per_location_error utility",
+  "num_variables": 321,
+  "result": "PASS",
+  "same_score_tensor_for_hard_and_expert_choice": true,
+  "total_hxv_cells": 3852
+}

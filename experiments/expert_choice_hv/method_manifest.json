@@ -1,0 +1,54 @@
+{
+  "aggregation_rule": "Average only the original frozen forecasts from experts that claimed the cell; do not alter expert forecasts.",
+  "baselines": [
+    "Best single frozen expert selected on router_train within core",
+    "Equal fixed ensemble",
+    "Existing Frozen HxV COSTAR"
+  ],
+  "capacity_factors": {
+    "primary": 1.0,
+    "secondary": 2.0
+  },
+  "capacity_formula": "capacity_per_expert = round(CF * (H * V) / E)",
+  "created_at_utc": "2026-08-30T07:43:46.204218+00:00",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "experiment": "expert_choice_hv",
+  "expert_core_source": "Reuse LOADERS and selected frozen expert cores from experiments/frozen_hv_costar/run_frozen_hv_costar.py.",
+  "fallback_rule": "If no expert claims a cell, use the equal fixed ensemble for that HxV cell.",
+  "git_commit": "9c6b89c250fa2026be910babc38deaa31e2d3fc5",
+  "matched_token_choice_controls": [
+    "TokenChoice-Top1",
+    "TokenChoice-Top2"
+  ],
+  "score_definition": "score[h,v,e] = mean_t(equal_ensemble_normalized_abs_error[t,h,v] - expert_normalized_abs_error[t,h,v,e]) on router_train only.",
+  "statistical_tests": {
+    "block_bootstrap": {
+      "block_length": 24,
+      "samples": 10000
+    },
+    "every_kth_phase_bootstrap": {
+      "k": 12,
+      "samples": 10000
+    }
+  },
+  "success_criteria": {
+    "EXPERT_CHOICE_SUPPORTED": [
+      "EC CF1 beats Token Top1 by MAE on at least 3/5 datasets",
+      "EC CF2 beats Token Top2 by MAE on at least 3/5 datasets",
+      "At least one matched-budget comparison has block-24 dependence support",
+      "EC claim masks show nontrivial specialization, operationalized as average pairwise Jaccard < 0.98 for CF1 and CF2 on every dataset"
+    ],
+    "MIXED_EXPERT_CHOICE": "Convincing wins or dependence support, but fewer than the full supported rule.",
+    "NO_EXPERT_CHOICE_ADVANTAGE": "Matched-budget Token Choice is equal or better on most datasets."
+  },
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false,
+  "validation_only": true
+}

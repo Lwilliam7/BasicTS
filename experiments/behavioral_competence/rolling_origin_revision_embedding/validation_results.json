@@ -1,0 +1,1114 @@
+{
+  "answers": {
+    "1. Does revision behavior predict expert competence?": "Mixed and insufficient. ContextPlusRevision improves ContextEmbed OOF R2 on ETTm2 by +0.071681, Traffic by -0.070834, so it helps ETTm2 but hurts Traffic.",
+    "2. Does it add information beyond the learned context embedding?": "No robustly. Additivity is positive on ETTm2 but negative on Traffic, so the fixed cross-dataset criterion fails.",
+    "3. Can it predict ContextEmbed's residual errors?": "No. The mandatory OOF residual diagnostic is negative on ETTm2 (R2 -0.157214), Traffic (R2 -0.021563).",
+    "4. Is the signal expert-specific?": "Not convincingly. The real revision model fails at least one wrong-expert or shuffled control on ETTm2, Traffic.",
+    "5. Does it improve actual routing MAE?": "Only by point estimate: ETTm2 delta -0.000370, Traffic delta -0.000332. This is not enough to override the failed competence/residual criteria.",
+    "6. Does it work on both Traffic and ETTm2?": "No. Both datasets would need PROMISING verdicts; observed verdicts are ETTm2=NEGATIVE, Traffic=NEGATIVE.",
+    "7. Did every integrity check pass?": "Yes. Every dataset integrity gate reports PASS.",
+    "Overall decision": "`NEGATIVE_RESULT` because ContextPlusRevision does not beat ContextEmbed on both datasets, the residual diagnostic is negative on both, and both-promising=False."
+  },
+  "classification": "NEGATIVE_RESULT",
+  "created_at_utc": "2026-08-30T05:38:52.659238+00:00",
+  "datasets": {
+    "ETTm2": {
+      "checkpoint_hashes_after": {
+        "block_a/PatchTST": "3f9f6cad3522656fce8f6f119a3d279ee7ab66c9056c588c130bfa4ed0d4c11e",
+        "block_a/TimesNet": "c13df9553df8fb810d032bf0885462a76f9743c3a1493aa521c4fb0aa44bf921",
+        "block_a/iTransformer": "0c9578b65a43ab185b7f6ea5e25af75660d1ba2e983118b465577c12a2b2abc0",
+        "block_ab/PatchTST": "db37898dbdddea6060f7a7099ded5af286bd7564d62e94356aba30f95c77e7e7",
+        "block_ab/TimesNet": "8c4d6a2fc8113f00e917f3325a96ef2b9cb544ec00a1527f16e7c50026cea4be",
+        "block_ab/iTransformer": "b693e8fce82956c4a27df921a6df4a96413b32b65f390b0ecdced0aa9f5131f5",
+        "final_60/PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+        "final_60/TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+        "final_60/iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+      },
+      "checkpoint_hashes_before": {
+        "block_a/PatchTST": "3f9f6cad3522656fce8f6f119a3d279ee7ab66c9056c588c130bfa4ed0d4c11e",
+        "block_a/TimesNet": "c13df9553df8fb810d032bf0885462a76f9743c3a1493aa521c4fb0aa44bf921",
+        "block_a/iTransformer": "0c9578b65a43ab185b7f6ea5e25af75660d1ba2e983118b465577c12a2b2abc0",
+        "block_ab/PatchTST": "db37898dbdddea6060f7a7099ded5af286bd7564d62e94356aba30f95c77e7e7",
+        "block_ab/TimesNet": "8c4d6a2fc8113f00e917f3325a96ef2b9cb544ec00a1527f16e7c50026cea4be",
+        "block_ab/iTransformer": "b693e8fce82956c4a27df921a6df4a96413b32b65f390b0ecdced0aa9f5131f5",
+        "final_60/PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+        "final_60/TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+        "final_60/iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+      },
+      "competence_metrics": [
+        {
+          "dataset": "ETTm2",
+          "mae": 0.07361996173858643,
+          "method": "ContextEmbed",
+          "mse": 0.018412383273243904,
+          "n_rows": 44499,
+          "n_windows": 14833,
+          "pairwise_ranking_accuracy": 0.5203038270522933,
+          "pearson": 0.1670016050338745,
+          "r2": 0.0014677643775939941,
+          "spearman": 0.19547671876372158,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.3182768225669861
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.06648459285497665,
+          "method": "RevisionEmbed",
+          "mse": 0.016319753602147102,
+          "n_rows": 44499,
+          "n_windows": 14833,
+          "pairwise_ranking_accuracy": 0.527247803321423,
+          "pearson": 0.3577686548233032,
+          "r2": 0.11495435237884521,
+          "spearman": 0.4213877949773667,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.3567046523094177
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.07351168245077133,
+          "method": "ContextPlusRevision",
+          "mse": 0.017090624198317528,
+          "n_rows": 44499,
+          "n_windows": 14833,
+          "pairwise_ranking_accuracy": 0.5250679790557091,
+          "pearson": 0.30100157856941223,
+          "r2": 0.07314878702163696,
+          "spearman": 0.33800395315705645,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.346929132938385
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.07275284081697464,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.016732748597860336,
+          "n_rows": 44499,
+          "n_windows": 14833,
+          "pairwise_ranking_accuracy": 0.5288433447942651,
+          "pearson": 0.323740690946579,
+          "r2": 0.09255695343017578,
+          "spearman": 0.32516846588461906,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.3368839621543884
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.07824989408254623,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.018471116200089455,
+          "n_rows": 44499,
+          "n_windows": 14833,
+          "pairwise_ranking_accuracy": 0.5290231241151486,
+          "pearson": 0.20210635662078857,
+          "r2": -0.0017174482345581055,
+          "spearman": 0.20598937207686943,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.3315580189228058
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.04967721551656723,
+          "method": "ContextEmbed",
+          "mse": 0.004945339169353247,
+          "n_rows": 34227,
+          "n_windows": 11409,
+          "pairwise_ranking_accuracy": 0.5315102112367429,
+          "pearson": 0.16766487061977386,
+          "r2": -0.02877485752105713,
+          "spearman": 0.17327932128944187,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.31992286443710327
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.052810803055763245,
+          "method": "RevisionEmbed",
+          "mse": 0.005282016936689615,
+          "n_rows": 34227,
+          "n_windows": 11409,
+          "pairwise_ranking_accuracy": 0.5207292488386361,
+          "pearson": 0.2722509801387787,
+          "r2": -0.09881353378295898,
+          "spearman": 0.24919745888468764,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.3696204721927643
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.05771071836352348,
+          "method": "ContextPlusRevision",
+          "mse": 0.00587507477030158,
+          "n_rows": 34227,
+          "n_windows": 11409,
+          "pairwise_ranking_accuracy": 0.5355128991731674,
+          "pearson": 0.21514442563056946,
+          "r2": -0.22218692302703857,
+          "spearman": 0.15435765475246027,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.3682180643081665
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.05041845515370369,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.004933661315590143,
+          "n_rows": 34227,
+          "n_windows": 11409,
+          "pairwise_ranking_accuracy": 0.5168142110030093,
+          "pearson": 0.2567708194255829,
+          "r2": -0.026345491409301758,
+          "spearman": 0.2278632446095528,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.3233412206172943
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.053461603820323944,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.005174041260033846,
+          "n_rows": 34227,
+          "n_windows": 11409,
+          "pairwise_ranking_accuracy": 0.527624390101382,
+          "pearson": 0.22422648966312408,
+          "r2": -0.07635140419006348,
+          "spearman": 0.23399895353318365,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.32053640484809875
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTm2",
+      "expert_indices": [
+        1,
+        2,
+        3
+      ],
+      "integrity": {
+        "all_folds_purged": true,
+        "checkpoints_unchanged": true,
+        "finite_features": true,
+        "finite_predictions": true,
+        "folds": [
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 23324,
+            "eval_origin_min": 19509,
+            "fold": 0,
+            "num_purged_windows": 11,
+            "train_origin_max": 19497,
+            "train_origin_min": 11520,
+            "train_target_end_max": 19509
+          },
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 27033,
+            "eval_origin_min": 23325,
+            "fold": 1,
+            "num_purged_windows": 11,
+            "train_origin_max": 23313,
+            "train_origin_min": 11520,
+            "train_target_end_max": 23325
+          },
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 30742,
+            "eval_origin_min": 27034,
+            "fold": 2,
+            "num_purged_windows": 11,
+            "train_origin_max": 27022,
+            "train_origin_min": 11520,
+            "train_target_end_max": 27034
+          },
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 34452,
+            "eval_origin_min": 30743,
+            "fold": 3,
+            "num_purged_windows": 11,
+            "train_origin_max": 30731,
+            "train_origin_min": 11520,
+            "train_target_end_max": 30743
+          }
+        ],
+        "loaded_paths": [
+          "cache\\costarts_walkforward_ETTm2\\router_train_20_60_cache.pt",
+          "cache\\costarts_walkforward_ETTm2\\router_val_60_80_cache.pt"
+        ],
+        "no_test_path_loaded": true,
+        "observability": {
+          "max_router_train_target_end": 34464,
+          "min_router_val_origin": 34560,
+          "observability_holds": true
+        },
+        "result": "PASS",
+        "train_scaler_only": true,
+        "val_feature_target_corruption_invariant": true
+      },
+      "model_fit_details_final": {
+        "ContextEmbed": {
+          "epochs": 10,
+          "eval_windows": 11409,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 987,
+          "lr": 0.001,
+          "parameter_count": 31649,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 68454,
+          "train_windows": 22818,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusRevision": {
+          "epochs": 10,
+          "eval_windows": 11409,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1254,
+          "lr": 0.001,
+          "parameter_count": 40193,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 68454,
+          "train_windows": 22818,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusShuffledRevision": {
+          "epochs": 10,
+          "eval_windows": 11409,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1254,
+          "lr": 0.001,
+          "parameter_count": 40193,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 68454,
+          "train_windows": 22818,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusWrongExpertRevision": {
+          "epochs": 10,
+          "eval_windows": 11409,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1254,
+          "lr": 0.001,
+          "parameter_count": 40193,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 68454,
+          "train_windows": 22818,
+          "weight_decay": 0.0001
+        },
+        "RevisionEmbed": {
+          "epochs": 10,
+          "eval_windows": 11409,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 267,
+          "lr": 0.001,
+          "parameter_count": 8609,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 68454,
+          "train_windows": 22818,
+          "weight_decay": 0.0001
+        }
+      },
+      "model_fit_details_oof_first_variant_fit": {
+        "ContextEmbed": {
+          "epochs": 10,
+          "eval_windows": 3705,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 987,
+          "lr": 0.001,
+          "parameter_count": 31649,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 23922,
+          "train_windows": 7974,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusRevision": {
+          "epochs": 10,
+          "eval_windows": 3705,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1254,
+          "lr": 0.001,
+          "parameter_count": 40193,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 23922,
+          "train_windows": 7974,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusShuffledRevision": {
+          "epochs": 10,
+          "eval_windows": 3705,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1254,
+          "lr": 0.001,
+          "parameter_count": 40193,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 23922,
+          "train_windows": 7974,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusWrongExpertRevision": {
+          "epochs": 10,
+          "eval_windows": 3705,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1254,
+          "lr": 0.001,
+          "parameter_count": 40193,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 23922,
+          "train_windows": 7974,
+          "weight_decay": 0.0001
+        },
+        "RevisionEmbed": {
+          "epochs": 10,
+          "eval_windows": 3705,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 267,
+          "lr": 0.001,
+          "parameter_count": 8609,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 23922,
+          "train_windows": 7974,
+          "weight_decay": 0.0001
+        }
+      },
+      "num_features": 7,
+      "num_oof_common_windows": 14833,
+      "num_train_windows": 22826,
+      "num_val_evaluated_windows": 11409,
+      "num_val_windows": 11413,
+      "projection": {
+        "dimension": 7,
+        "type": "identity"
+      },
+      "residual_diagnostic": {
+        "dataset": "ETTm2",
+        "mae": 0.10159908980131149,
+        "method": "RevisionEmbedding_to_ContextResidual",
+        "n_rows": 29370,
+        "n_windows": 9790,
+        "pearson": 0.13592463731765747,
+        "r2": -0.15721416473388672,
+        "second_stage_note": "Ridge on honest OOF RevisionEmbed z vectors; second-stage folds train only on earlier common OOF windows.",
+        "spearman": 0.11524488639805804,
+        "split": "router_train_oof"
+      },
+      "revision_diagnostics": {
+        "router_train": {
+          "feature_dim": 267,
+          "first_valid_origin": 11524,
+          "fraction_valid": 0.9996495246887207,
+          "lags": [
+            1,
+            2,
+            4
+          ],
+          "projection_dim": 7,
+          "total_windows": 22826,
+          "valid_windows": 22818
+        },
+        "router_val": {
+          "feature_dim": 267,
+          "first_valid_origin": 34564,
+          "fraction_valid": 0.9996495246887207,
+          "lags": [
+            1,
+            2,
+            4
+          ],
+          "projection_dim": 7,
+          "total_windows": 11413,
+          "valid_windows": 11409
+        }
+      },
+      "routing_metrics": [
+        {
+          "dataset": "ETTm2",
+          "mae": 0.1777789443731308,
+          "method": "ContextEmbed",
+          "mse": 0.10536264628171921,
+          "n_windows": 14833,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.17571480572223663,
+          "method": "ContextPlusRevision",
+          "mse": 0.10153033584356308,
+          "n_windows": 14833,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.17493978142738342,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.09993363916873932,
+          "n_windows": 14833,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.1765545904636383,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.10329767316579819,
+          "n_windows": 14833,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.16102096438407898,
+          "method": "ContextEmbed",
+          "mse": 0.06107163056731224,
+          "n_windows": 11409,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.16065077483654022,
+          "method": "ContextPlusRevision",
+          "mse": 0.06066536530852318,
+          "n_windows": 11409,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.1610593944787979,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.06108715385198593,
+          "n_windows": 11409,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.16108497977256775,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.06109049543738365,
+          "n_windows": 11409,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        }
+      ],
+      "summary": {
+        "context_oof_r2": 0.0014677643775939941,
+        "context_plus_beats_context_oof": true,
+        "context_plus_revision_oof_r2": 0.07314878702163696,
+        "context_plus_revision_val_routing_mae": 0.16065077483654022,
+        "context_val_routing_mae": 0.16102096438407898,
+        "real_beats_shuffled_oof": true,
+        "real_beats_wrong_oof": false,
+        "residual_positive_oof": false,
+        "revision_to_context_residual_oof_r2": -0.15721416473388672,
+        "routing_improves_val": true,
+        "shuffled_revision_oof_r2": -0.0017174482345581055,
+        "shuffled_revision_val_routing_mae": 0.16108497977256775,
+        "verdict": "NEGATIVE",
+        "works_by_success_criteria_count": 3,
+        "wrong_expert_oof_r2": 0.09255695343017578,
+        "wrong_expert_val_routing_mae": 0.1610593944787979
+      }
+    },
+    "Traffic": {
+      "checkpoint_hashes_after": {
+        "block_a/ModernTCN": "dceec13fdf318f8407557ff1c387bf11ef4e7b917f780e5642a8e0b9c33d5ec4",
+        "block_a/PatchTST": "7b231d5c75f93aa98443239b68d50b13b1a3a3cbe0199e2f6c00a15d31d23513",
+        "block_a/iTransformer": "964c8f84bfb0c1caee12c4c0e81d2665461de83fbd77bfdcd25366d804a98927",
+        "block_ab/ModernTCN": "fb94061fb5ed554cf2ad86417201bc54817c6dbd3d1a9c1fe37b0acae12cf715",
+        "block_ab/PatchTST": "90b6703e638ad7743727df797d876451ad77d5266331b568751266d4ff994937",
+        "block_ab/iTransformer": "1502f0c2c0b9ff331aeba528140804b1e83660288237ad5476a0ad53a87888ce",
+        "final_60/ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+        "final_60/PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+        "final_60/iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+      },
+      "checkpoint_hashes_before": {
+        "block_a/ModernTCN": "dceec13fdf318f8407557ff1c387bf11ef4e7b917f780e5642a8e0b9c33d5ec4",
+        "block_a/PatchTST": "7b231d5c75f93aa98443239b68d50b13b1a3a3cbe0199e2f6c00a15d31d23513",
+        "block_a/iTransformer": "964c8f84bfb0c1caee12c4c0e81d2665461de83fbd77bfdcd25366d804a98927",
+        "block_ab/ModernTCN": "fb94061fb5ed554cf2ad86417201bc54817c6dbd3d1a9c1fe37b0acae12cf715",
+        "block_ab/PatchTST": "90b6703e638ad7743727df797d876451ad77d5266331b568751266d4ff994937",
+        "block_ab/iTransformer": "1502f0c2c0b9ff331aeba528140804b1e83660288237ad5476a0ad53a87888ce",
+        "final_60/ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+        "final_60/PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+        "final_60/iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+      },
+      "competence_metrics": [
+        {
+          "dataset": "Traffic",
+          "mae": 0.08582398295402527,
+          "method": "ContextEmbed",
+          "mse": 0.011106448248028755,
+          "n_rows": 13257,
+          "n_windows": 4419,
+          "pairwise_ranking_accuracy": 0.7774006185411481,
+          "pearson": 0.38797441124916077,
+          "r2": 0.032519757747650146,
+          "spearman": 0.37935071099282713,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.5707173347473145
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.08500465005636215,
+          "method": "RevisionEmbed",
+          "mse": 0.012055784463882446,
+          "n_rows": 13257,
+          "n_windows": 4419,
+          "pairwise_ranking_accuracy": 0.6888436297804933,
+          "pearson": 0.2807174623012543,
+          "r2": -0.05017662048339844,
+          "spearman": 0.2770540580371523,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.49558722972869873
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.08774442225694656,
+          "method": "ContextPlusRevision",
+          "mse": 0.011919601820409298,
+          "n_rows": 13257,
+          "n_windows": 4419,
+          "pairwise_ranking_accuracy": 0.7537904503281285,
+          "pearson": 0.3473111391067505,
+          "r2": -0.03831374645233154,
+          "spearman": 0.3466594695272459,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.5582711100578308
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.08816233277320862,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.011826726607978344,
+          "n_rows": 13257,
+          "n_windows": 4419,
+          "pairwise_ranking_accuracy": 0.7665384325262126,
+          "pearson": 0.35240328311920166,
+          "r2": -0.030223488807678223,
+          "spearman": 0.3467410949152149,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.5460511445999146
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.0880391001701355,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.011814627796411514,
+          "n_rows": 13257,
+          "n_windows": 4419,
+          "pairwise_ranking_accuracy": 0.7782303688617335,
+          "pearson": 0.3572240173816681,
+          "r2": -0.029169559478759766,
+          "spearman": 0.35646797681766135,
+          "split": "router_train_oof",
+          "top1_expert_accuracy": 0.5754695534706116
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.09350383281707764,
+          "method": "ContextEmbed",
+          "mse": 0.012926612980663776,
+          "n_rows": 10194,
+          "n_windows": 3398,
+          "pairwise_ranking_accuracy": 0.8426525407102217,
+          "pearson": 0.41149061918258667,
+          "r2": -0.21849966049194336,
+          "spearman": 0.39309303799288375,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.6583284139633179
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.07166416943073273,
+          "method": "RevisionEmbed",
+          "mse": 0.008327233605086803,
+          "n_rows": 10194,
+          "n_windows": 3398,
+          "pairwise_ranking_accuracy": 0.7320973121443987,
+          "pearson": 0.47914230823516846,
+          "r2": 0.21505111455917358,
+          "spearman": 0.4902690216558375,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.5388463735580444
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.09310998022556305,
+          "method": "ContextPlusRevision",
+          "mse": 0.012512859888374805,
+          "n_rows": 10194,
+          "n_windows": 3398,
+          "pairwise_ranking_accuracy": 0.8418677653521679,
+          "pearson": 0.3838350176811218,
+          "r2": -0.1794980764389038,
+          "spearman": 0.3638780642626539,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.6901118159294128
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.09418688714504242,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.012918990105390549,
+          "n_rows": 10194,
+          "n_windows": 3398,
+          "pairwise_ranking_accuracy": 0.8301942319011183,
+          "pearson": 0.4036891460418701,
+          "r2": -0.21778106689453125,
+          "spearman": 0.38909609601557804,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.6386109590530396
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.0948718711733818,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.013217554427683353,
+          "n_rows": 10194,
+          "n_windows": 3398,
+          "pairwise_ranking_accuracy": 0.8308809103394154,
+          "pearson": 0.41192612051963806,
+          "r2": -0.24592459201812744,
+          "spearman": 0.39952609910122555,
+          "split": "router_val",
+          "top1_expert_accuracy": 0.6315479874610901
+        }
+      ],
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "ModernTCN"
+      ],
+      "dataset": "Traffic",
+      "expert_indices": [
+        1,
+        2,
+        4
+      ],
+      "integrity": {
+        "all_folds_purged": true,
+        "checkpoints_unchanged": true,
+        "finite_features": true,
+        "finite_predictions": true,
+        "folds": [
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 7100,
+            "eval_origin_min": 5889,
+            "fold": 0,
+            "num_purged_windows": 11,
+            "train_origin_max": 5877,
+            "train_origin_min": 3508,
+            "train_target_end_max": 5889
+          },
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 8206,
+            "eval_origin_min": 7101,
+            "fold": 1,
+            "num_purged_windows": 11,
+            "train_origin_max": 7089,
+            "train_origin_min": 3508,
+            "train_target_end_max": 7101
+          },
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 9312,
+            "eval_origin_min": 8207,
+            "fold": 2,
+            "num_purged_windows": 11,
+            "train_origin_max": 8195,
+            "train_origin_min": 3508,
+            "train_target_end_max": 8207
+          },
+          {
+            "assertion_max_train_target_end_leq_min_eval_origin": true,
+            "eval_origin_max": 10418,
+            "eval_origin_min": 9313,
+            "fold": 3,
+            "num_purged_windows": 11,
+            "train_origin_max": 9301,
+            "train_origin_min": 3508,
+            "train_target_end_max": 9313
+          }
+        ],
+        "loaded_paths": [
+          "cache\\costarts_walkforward_Traffic\\router_train_20_60_cache.pt",
+          "cache\\costarts_walkforward_Traffic\\router_val_60_80_cache.pt"
+        ],
+        "no_test_path_loaded": true,
+        "observability": {
+          "max_router_train_target_end": 10430,
+          "min_router_val_origin": 10526,
+          "observability_holds": true
+        },
+        "result": "PASS",
+        "train_scaler_only": true,
+        "val_feature_target_corruption_invariant": true
+      },
+      "model_fit_details_final": {
+        "ContextEmbed": {
+          "epochs": 10,
+          "eval_windows": 3398,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1095,
+          "lr": 0.001,
+          "parameter_count": 35105,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 20388,
+          "train_windows": 6796,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusRevision": {
+          "epochs": 10,
+          "eval_windows": 3398,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1391,
+          "lr": 0.001,
+          "parameter_count": 44577,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 20388,
+          "train_windows": 6796,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusShuffledRevision": {
+          "epochs": 10,
+          "eval_windows": 3398,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1391,
+          "lr": 0.001,
+          "parameter_count": 44577,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 20388,
+          "train_windows": 6796,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusWrongExpertRevision": {
+          "epochs": 10,
+          "eval_windows": 3398,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1391,
+          "lr": 0.001,
+          "parameter_count": 44577,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 20388,
+          "train_windows": 6796,
+          "weight_decay": 0.0001
+        },
+        "RevisionEmbed": {
+          "epochs": 10,
+          "eval_windows": 3398,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 296,
+          "lr": 0.001,
+          "parameter_count": 9537,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 20388,
+          "train_windows": 6796,
+          "weight_decay": 0.0001
+        }
+      },
+      "model_fit_details_oof_first_variant_fit": {
+        "ContextEmbed": {
+          "epochs": 10,
+          "eval_windows": 1101,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1095,
+          "lr": 0.001,
+          "parameter_count": 35105,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 7098,
+          "train_windows": 2366,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusRevision": {
+          "epochs": 10,
+          "eval_windows": 1101,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1391,
+          "lr": 0.001,
+          "parameter_count": 44577,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 7098,
+          "train_windows": 2366,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusShuffledRevision": {
+          "epochs": 10,
+          "eval_windows": 1101,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1391,
+          "lr": 0.001,
+          "parameter_count": 44577,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 7098,
+          "train_windows": 2366,
+          "weight_decay": 0.0001
+        },
+        "ContextPlusWrongExpertRevision": {
+          "epochs": 10,
+          "eval_windows": 1101,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 1391,
+          "lr": 0.001,
+          "parameter_count": 44577,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 7098,
+          "train_windows": 2366,
+          "weight_decay": 0.0001
+        },
+        "RevisionEmbed": {
+          "epochs": 10,
+          "eval_windows": 1101,
+          "feature_standardization": "fit on training rows only",
+          "hidden_dim": 32,
+          "input_dim": 296,
+          "lr": 0.001,
+          "parameter_count": 9537,
+          "target_standardization": "fit on training rows only",
+          "train_rows": 7098,
+          "train_windows": 2366,
+          "weight_decay": 0.0001
+        }
+      },
+      "num_features": 862,
+      "num_oof_common_windows": 4419,
+      "num_train_windows": 6804,
+      "num_val_evaluated_windows": 3398,
+      "num_val_windows": 3402,
+      "projection": {
+        "dimension": 8,
+        "type": "deterministic_random_variable_projection"
+      },
+      "residual_diagnostic": {
+        "dataset": "Traffic",
+        "mae": 0.08961308747529984,
+        "method": "RevisionEmbedding_to_ContextResidual",
+        "n_rows": 8751,
+        "n_windows": 2917,
+        "pearson": 0.14833477139472961,
+        "r2": -0.021562814712524414,
+        "second_stage_note": "Ridge on honest OOF RevisionEmbed z vectors; second-stage folds train only on earlier common OOF windows.",
+        "spearman": 0.1645832140736914,
+        "split": "router_train_oof"
+      },
+      "revision_diagnostics": {
+        "router_train": {
+          "feature_dim": 296,
+          "first_valid_origin": 3512,
+          "fraction_valid": 0.9988242387771606,
+          "lags": [
+            1,
+            2,
+            4
+          ],
+          "projection_dim": 8,
+          "total_windows": 6804,
+          "valid_windows": 6796
+        },
+        "router_val": {
+          "feature_dim": 296,
+          "first_valid_origin": 10530,
+          "fraction_valid": 0.9988242387771606,
+          "lags": [
+            1,
+            2,
+            4
+          ],
+          "projection_dim": 8,
+          "total_windows": 3402,
+          "valid_windows": 3398
+        }
+      },
+      "routing_metrics": [
+        {
+          "dataset": "Traffic",
+          "mae": 0.28376325964927673,
+          "method": "ContextEmbed",
+          "mse": 0.2934827506542206,
+          "n_windows": 4419,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.28345105051994324,
+          "method": "ContextPlusRevision",
+          "mse": 0.2915441691875458,
+          "n_windows": 4419,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.2838503122329712,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.2932834327220917,
+          "n_windows": 4419,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.2835041582584381,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.29307109117507935,
+          "n_windows": 4419,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_train_oof"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.2691132426261902,
+          "method": "ContextEmbed",
+          "mse": 0.34044280648231506,
+          "n_windows": 3398,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.26878076791763306,
+          "method": "ContextPlusRevision",
+          "mse": 0.33807894587516785,
+          "n_windows": 3398,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.2693282663822174,
+          "method": "ContextPlusWrongExpertRevision",
+          "mse": 0.34040412306785583,
+          "n_windows": 3398,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.269309401512146,
+          "method": "ContextPlusShuffledRevision",
+          "mse": 0.3406378924846649,
+          "n_windows": 3398,
+          "rank_weights": [
+            0.5,
+            0.3333333432674408,
+            0.1666666716337204
+          ],
+          "split": "router_val"
+        }
+      ],
+      "summary": {
+        "context_oof_r2": 0.032519757747650146,
+        "context_plus_beats_context_oof": false,
+        "context_plus_revision_oof_r2": -0.03831374645233154,
+        "context_plus_revision_val_routing_mae": 0.26878076791763306,
+        "context_val_routing_mae": 0.2691132426261902,
+        "real_beats_shuffled_oof": false,
+        "real_beats_wrong_oof": false,
+        "residual_positive_oof": false,
+        "revision_to_context_residual_oof_r2": -0.021562814712524414,
+        "routing_improves_val": true,
+        "shuffled_revision_oof_r2": -0.029169559478759766,
+        "shuffled_revision_val_routing_mae": 0.269309401512146,
+        "verdict": "NEGATIVE",
+        "works_by_success_criteria_count": 1,
+        "wrong_expert_oof_r2": -0.030223488807678223,
+        "wrong_expert_val_routing_mae": 0.2693282663822174
+      }
+    }
+  },
+  "datasets_requested": [
+    "Traffic",
+    "ETTm2"
+  ],
+  "experiment": "rolling_origin_revision_embedding",
+  "git_commit_sha": "9c6b89c250fa2026be910babc38deaa31e2d3fc5",
+  "runtime_seconds": 122.08562830009032,
+  "test_split_accessed": false
+}

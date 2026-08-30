@@ -1,0 +1,1574 @@
+{
+  "classification": "MIXED_EXPERT_CHOICE",
+  "classification_details": {
+    "cf1_wins_vs_token_top1": 5,
+    "cf2_wins_vs_token_top2": 2,
+    "matched_budget_dependence_supported": [
+      {
+        "comparison": "primary_ec_cf1_vs_token_top1",
+        "dataset": "ETTm1",
+        "mean_delta": -0.008953789249062538
+      },
+      {
+        "comparison": "primary_ec_cf1_vs_token_top1",
+        "dataset": "Weather",
+        "mean_delta": -0.004069024231284857
+      },
+      {
+        "comparison": "secondary_ec_cf2_vs_token_top2",
+        "dataset": "Weather",
+        "mean_delta": -0.002376803196966648
+      },
+      {
+        "comparison": "primary_ec_cf1_vs_token_top1",
+        "dataset": "Electricity",
+        "mean_delta": -0.003746218513697386
+      },
+      {
+        "comparison": "secondary_ec_cf2_vs_token_top2",
+        "dataset": "Electricity",
+        "mean_delta": -0.002648721681907773
+      }
+    ],
+    "nontrivial_rule": "average pairwise EC claim-mask Jaccard < 0.98 for CF1 and CF2 on every dataset",
+    "nontrivial_specialization": true
+  },
+  "created_at_utc": "2026-08-30T07:43:46.204218+00:00",
+  "datasets": {
+    "ETTh1": {
+      "allocation": {
+        "ec_cf1": {
+          "average_pairwise_jaccard": 0.1381047914425532,
+          "capacity_per_expert": 28,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 21.428571701049805,
+            "cells_with_1_experts_pct": 59.523807525634766,
+            "cells_with_2_experts_pct": 16.666667938232422,
+            "cells_with_3_experts_pct": 2.3809523582458496
+          },
+          "claim_mask_sha256": "8dde1e7fc62021342d554441f04e8b7b2357643a8c1e6322fb063ad73914e745",
+          "fallback_rate": 0.2142857164144516
+        },
+        "ec_cf2": {
+          "average_pairwise_jaccard": 0.5254298746585846,
+          "capacity_per_expert": 56,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 1.1904761791229248,
+            "cells_with_1_experts_pct": 33.333335876464844,
+            "cells_with_2_experts_pct": 29.761903762817383,
+            "cells_with_3_experts_pct": 35.71428680419922
+          },
+          "claim_mask_sha256": "12ba1972ea20495238d55e03620554fd448734a892b66f46c0d5f723667cdce8",
+          "fallback_rate": 0.011904762126505375
+        },
+        "token_top1": {
+          "average_pairwise_jaccard": 0.0,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 100.0,
+            "cells_with_2_experts_pct": 0.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "929428539d9ef566da538edbd731caf79a90eec487ee026ad2f6d7910fe008eb"
+        },
+        "token_top2": {
+          "average_pairwise_jaccard": 0.3333333345750968,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 0.0,
+            "cells_with_2_experts_pct": 100.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "d613ad513dafa555413c94b974efd1f87558664fe67201ca92529c2511d973ca"
+        }
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTh1",
+      "deltas": {
+        "ec_cf1_minus_frozen_hv": 0.00932997465133667,
+        "ec_cf1_minus_token_top1": -0.0013274848461151123,
+        "ec_cf2_minus_token_top2": 0.005204528570175171
+      },
+      "dependence": [
+        {
+          "baseline": "token_top1",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.0037250977475196123,
+          "ci95_low": -0.0061265649273991585,
+          "ci_excludes_zero": false,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0013274740194901824,
+          "prob_delta_negative": 0.7041000127792358,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top1",
+          "candidate": "ec_cf1",
+          "ci95_high": -0.0007604441489093006,
+          "ci95_low": -0.001944633200764656,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -0.0013271704083308578,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "baseline": "token_top2",
+          "block_size": 24,
+          "candidate": "ec_cf2",
+          "ci95_high": 0.00937639083713293,
+          "ci95_low": 0.0015194170409813523,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "ETTh1",
+          "mean_delta": 0.005204563494771719,
+          "prob_delta_negative": 0.00279999990016222,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top2",
+          "candidate": "ec_cf2",
+          "ci95_high": 0.0062895240262150764,
+          "ci95_low": 0.004085770342499018,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.005204690154641867,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "baseline": "frozen_hv",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.013060889206826687,
+          "ci95_low": 0.006030859891325235,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "ETTh1",
+          "mean_delta": 0.009329959750175476,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "frozen_hv",
+          "candidate": "ec_cf1",
+          "ci95_high": 0.009974868968129158,
+          "ci95_low": 0.008590188808739185,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.009329920634627342,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        }
+      ],
+      "expert_indices": [
+        1,
+        2,
+        3
+      ],
+      "expert_order_in_cache": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "horizon": 12,
+      "integrity": [
+        {
+          "all_pass": true,
+          "dataset": "ETTh1",
+          "frozen_allocation_after_sha256": "8dde1e7fc62021342d554441f04e8b7b2357643a8c1e6322fb063ad73914e745",
+          "frozen_allocation_before_sha256": "8dde1e7fc62021342d554441f04e8b7b2357643a8c1e6322fb063ad73914e745",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf1",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTh1",
+          "frozen_allocation_after_sha256": "12ba1972ea20495238d55e03620554fd448734a892b66f46c0d5f723667cdce8",
+          "frozen_allocation_before_sha256": "12ba1972ea20495238d55e03620554fd448734a892b66f46c0d5f723667cdce8",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf2",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        }
+      ],
+      "metrics": [
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "num_causal_updates": 0,
+            "router_train_mae": 0.3489782512187958,
+            "selected_expert": "PatchTST"
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.37955790758132935,
+          "method": "best_single",
+          "mse": 0.3265279531478882
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.36726489663124084,
+          "method": "equal",
+          "mse": 0.3105303645133972
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "frozen_weight_source": "router_train_only",
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.3660224676132202,
+          "method": "frozen_hv",
+          "mse": 0.30867233872413635
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.376679927110672,
+          "method": "token_top1",
+          "mse": 0.3226926028728485
+        },
+        {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.2142857164144516,
+          "mae": 0.3753524422645569,
+          "method": "ec_cf1",
+          "mse": 0.3201405704021454
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.36979785561561584,
+          "method": "token_top2",
+          "mse": 0.3142862915992737
+        },
+        {
+          "capacity_per_expert": 56,
+          "dataset": "ETTh1",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.011904762126505375,
+          "mae": 0.375002384185791,
+          "method": "ec_cf2",
+          "mse": 0.32292842864990234
+        }
+      ],
+      "score_info": {
+        "mask_all_observed": true,
+        "score_max": 0.028420813381671906,
+        "score_mean": -0.024530407041311264,
+        "score_min": -0.1324731409549713,
+        "score_sha256": "92e143de7849c63b21a03a5f5b58c139674eb256d81a38fcb6407e3bbff7f20f",
+        "target_shape": [
+          5546,
+          12,
+          7
+        ],
+        "train_forecast_shape": [
+          5546,
+          12,
+          7,
+          3
+        ]
+      },
+      "train_role": "router_train_20_60",
+      "train_windows": 5546,
+      "val_role": "router_val_60_80",
+      "val_windows": 2773,
+      "variables": 7
+    },
+    "ETTh2": {
+      "allocation": {
+        "ec_cf1": {
+          "average_pairwise_jaccard": 0.17703703790903091,
+          "capacity_per_expert": 28,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 28.571430206298828,
+            "cells_with_1_experts_pct": 44.0476188659668,
+            "cells_with_2_experts_pct": 26.19047737121582,
+            "cells_with_3_experts_pct": 1.1904761791229248
+          },
+          "claim_mask_sha256": "d873bed3f7fe61df031606670e44e8d4d49d4bbe1f09a04e9b663d6c7f8b6e90",
+          "fallback_rate": 0.2857142984867096
+        },
+        "ec_cf2": {
+          "average_pairwise_jaccard": 0.5646621584892273,
+          "capacity_per_expert": 56,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 8.333333969116211,
+            "cells_with_1_experts_pct": 19.047618865966797,
+            "cells_with_2_experts_pct": 36.904762268066406,
+            "cells_with_3_experts_pct": 35.71428680419922
+          },
+          "claim_mask_sha256": "4bd0bcf6f1e0dc52018912cd0a21d7ccc46a684a501dfd44a1513f66e51614aa",
+          "fallback_rate": 0.0833333358168602
+        },
+        "token_top1": {
+          "average_pairwise_jaccard": 0.0,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 100.0,
+            "cells_with_2_experts_pct": 0.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "ae5593384df908fb915b8cf4f0517749cc896e86b443ec8e3180177b9d20702a"
+        },
+        "token_top2": {
+          "average_pairwise_jaccard": 0.3333333333333333,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 0.0,
+            "cells_with_2_experts_pct": 100.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "550eb73e97cde97bbdb22e3c319bbc34e85ff83563176642e5d12728ca479ae3"
+        }
+      },
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "dataset": "ETTh2",
+      "deltas": {
+        "ec_cf1_minus_frozen_hv": 0.0008657276630401611,
+        "ec_cf1_minus_token_top1": -0.0013686716556549072,
+        "ec_cf2_minus_token_top2": 0.0014763176441192627
+      },
+      "dependence": [
+        {
+          "baseline": "token_top1",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.0028523276560008526,
+          "ci95_low": -0.004823165480047464,
+          "ci_excludes_zero": false,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "ETTh2",
+          "mean_delta": -0.0013687129830941558,
+          "prob_delta_negative": 0.7009000182151794,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top1",
+          "candidate": "ec_cf1",
+          "ci95_high": -0.0004488302511163056,
+          "ci95_low": -0.002411792054772377,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.0013705218443647027,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9995999932289124,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "baseline": "token_top2",
+          "block_size": 24,
+          "candidate": "ec_cf2",
+          "ci95_high": 0.0035884014796465635,
+          "ci95_low": -0.00048800979857333004,
+          "ci_excludes_zero": false,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0014763177605345845,
+          "prob_delta_negative": 0.06539999693632126,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top2",
+          "candidate": "ec_cf2",
+          "ci95_high": 0.0023633744567632675,
+          "ci95_low": 0.0006603854126296937,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": 0.0014768429100513458,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "baseline": "frozen_hv",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.002419464522972703,
+          "ci95_low": -0.0005980046116746962,
+          "ci_excludes_zero": false,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0008657046710141003,
+          "prob_delta_negative": 0.12610000371932983,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "frozen_hv",
+          "candidate": "ec_cf1",
+          "ci95_high": 0.0014349918346852064,
+          "ci95_low": 0.0003547745000105351,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": 0.0008645362104289234,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        }
+      ],
+      "expert_indices": [
+        0,
+        1,
+        4
+      ],
+      "expert_order_in_cache": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "horizon": 12,
+      "integrity": [
+        {
+          "all_pass": true,
+          "dataset": "ETTh2",
+          "frozen_allocation_after_sha256": "d873bed3f7fe61df031606670e44e8d4d49d4bbe1f09a04e9b663d6c7f8b6e90",
+          "frozen_allocation_before_sha256": "d873bed3f7fe61df031606670e44e8d4d49d4bbe1f09a04e9b663d6c7f8b6e90",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf1",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train",
+          "val_role": "router_val",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTh2",
+          "frozen_allocation_after_sha256": "4bd0bcf6f1e0dc52018912cd0a21d7ccc46a684a501dfd44a1513f66e51614aa",
+          "frozen_allocation_before_sha256": "4bd0bcf6f1e0dc52018912cd0a21d7ccc46a684a501dfd44a1513f66e51614aa",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf2",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train",
+          "val_role": "router_val",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        }
+      ],
+      "metrics": [
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {
+            "num_causal_updates": 0,
+            "router_train_mae": 0.2802519202232361,
+            "selected_expert": "DLinear"
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.28095653653144836,
+          "method": "best_single",
+          "mse": 0.17149297893047333
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.2808783948421478,
+          "method": "equal",
+          "mse": 0.17193281650543213
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {
+            "frozen_weight_source": "router_train_only",
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.27689793705940247,
+          "method": "frozen_hv",
+          "mse": 0.16700465977191925
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.27913233637809753,
+          "method": "token_top1",
+          "mse": 0.16966889798641205
+        },
+        {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {},
+          "fallback_rate": 0.2857142984867096,
+          "mae": 0.2777636647224426,
+          "method": "ec_cf1",
+          "mse": 0.16816282272338867
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.275229811668396,
+          "method": "token_top2",
+          "mse": 0.16544057428836823
+        },
+        {
+          "capacity_per_expert": 56,
+          "dataset": "ETTh2",
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "extra": {},
+          "fallback_rate": 0.0833333358168602,
+          "mae": 0.27670612931251526,
+          "method": "ec_cf2",
+          "mse": 0.16719485819339752
+        }
+      ],
+      "score_info": {
+        "mask_all_observed": true,
+        "score_max": 0.017964225262403488,
+        "score_mean": -0.014791104011237621,
+        "score_min": -0.17483143508434296,
+        "score_sha256": "51d9fd2bc709290379771daf70f21cd0e3151d306673924cf14b473d07fbeb60",
+        "target_shape": [
+          2053,
+          12,
+          7
+        ],
+        "train_forecast_shape": [
+          2053,
+          12,
+          7,
+          3
+        ]
+      },
+      "train_role": "router_train",
+      "train_windows": 2053,
+      "val_role": "router_val",
+      "val_windows": 613,
+      "variables": 7
+    },
+    "ETTm1": {
+      "allocation": {
+        "ec_cf1": {
+          "average_pairwise_jaccard": 0.32765958706537884,
+          "capacity_per_expert": 28,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 36.904762268066406,
+            "cells_with_1_experts_pct": 35.71428680419922,
+            "cells_with_2_experts_pct": 17.85714340209961,
+            "cells_with_3_experts_pct": 9.523809432983398
+          },
+          "claim_mask_sha256": "aca0cab3cd7e07c562293768be2bd9f681b7ba029d62e640fc248bbad0f02c92",
+          "fallback_rate": 0.369047611951828
+        },
+        "ec_cf2": {
+          "average_pairwise_jaccard": 0.5102343360582987,
+          "capacity_per_expert": 56,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 33.333335876464844,
+            "cells_with_2_experts_pct": 33.333335876464844,
+            "cells_with_3_experts_pct": 33.333335876464844
+          },
+          "claim_mask_sha256": "dcc8029d11432c5a9b45cf9c8806e40560b39351778ab98fbb58466df323ce0d",
+          "fallback_rate": 0.0
+        },
+        "token_top1": {
+          "average_pairwise_jaccard": 0.0,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 100.0,
+            "cells_with_2_experts_pct": 0.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "46acb519d278ea285ae91a66ceb379830b0fde25369ac76d7f9e3dafc0a1c3e3"
+        },
+        "token_top2": {
+          "average_pairwise_jaccard": 0.3333333383003871,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 0.0,
+            "cells_with_2_experts_pct": 100.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "1ae672576697182cb1d0c0dcd405e50cc56eb5289c5523579860b3a3a9a5a7a8"
+        }
+      },
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "dataset": "ETTm1",
+      "deltas": {
+        "ec_cf1_minus_frozen_hv": 0.002880781888961792,
+        "ec_cf1_minus_token_top1": -0.008953779935836792,
+        "ec_cf2_minus_token_top2": 0.0029540956020355225
+      },
+      "dependence": [
+        {
+          "baseline": "token_top1",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": -0.007360391318798065,
+          "ci95_low": -0.010476088151335716,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "ETTm1",
+          "mean_delta": -0.008953789249062538,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top1",
+          "candidate": "ec_cf1",
+          "ci95_high": -0.008765766397118568,
+          "ci95_low": -0.00915415771305561,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": -0.008953781798481941,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "baseline": "token_top2",
+          "block_size": 24,
+          "candidate": "ec_cf2",
+          "ci95_high": 0.004266869742423296,
+          "ci95_low": 0.0016170187154784799,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0029541379772126675,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top2",
+          "candidate": "ec_cf2",
+          "ci95_high": 0.003649149788543582,
+          "ci95_low": 0.002172481268644333,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.002954312600195408,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "baseline": "frozen_hv",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.003950045444071293,
+          "ci95_low": 0.0018434891244396567,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0028808284550905228,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "frozen_hv",
+          "candidate": "ec_cf1",
+          "ci95_high": 0.0034473573323339224,
+          "ci95_low": 0.0022995693143457174,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.002880966989323497,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "expert_indices": [
+        0,
+        1,
+        3
+      ],
+      "expert_order_in_cache": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "horizon": 12,
+      "integrity": [
+        {
+          "all_pass": true,
+          "dataset": "ETTm1",
+          "frozen_allocation_after_sha256": "aca0cab3cd7e07c562293768be2bd9f681b7ba029d62e640fc248bbad0f02c92",
+          "frozen_allocation_before_sha256": "aca0cab3cd7e07c562293768be2bd9f681b7ba029d62e640fc248bbad0f02c92",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf1",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTm1",
+          "frozen_allocation_after_sha256": "dcc8029d11432c5a9b45cf9c8806e40560b39351778ab98fbb58466df323ce0d",
+          "frozen_allocation_before_sha256": "dcc8029d11432c5a9b45cf9c8806e40560b39351778ab98fbb58466df323ce0d",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf2",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        }
+      ],
+      "metrics": [
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {
+            "num_causal_updates": 0,
+            "router_train_mae": 0.24895915389060974,
+            "selected_expert": "PatchTST"
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.26177072525024414,
+          "method": "best_single",
+          "mse": 0.16183817386627197
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.2481614202260971,
+          "method": "equal",
+          "mse": 0.14669446647167206
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {
+            "frozen_weight_source": "router_train_only",
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.25068971514701843,
+          "method": "frozen_hv",
+          "mse": 0.14995557069778442
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.262524276971817,
+          "method": "token_top1",
+          "mse": 0.1630878895521164
+        },
+        {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.369047611951828,
+          "mae": 0.2535704970359802,
+          "method": "ec_cf1",
+          "mse": 0.153139129281044
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.25625574588775635,
+          "method": "token_top2",
+          "mse": 0.15622985363006592
+        },
+        {
+          "capacity_per_expert": 56,
+          "dataset": "ETTm1",
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.25920984148979187,
+          "method": "ec_cf2",
+          "mse": 0.16153402626514435
+        }
+      ],
+      "score_info": {
+        "mask_all_observed": true,
+        "score_max": 0.016095513477921486,
+        "score_mean": -0.01930052787065506,
+        "score_min": -0.09789431840181351,
+        "score_sha256": "1bf8ce0ae1d54117ea8cccec47e126339d61a1611ef2d4c07f4c397dcfa39647",
+        "target_shape": [
+          22826,
+          12,
+          7
+        ],
+        "train_forecast_shape": [
+          22826,
+          12,
+          7,
+          3
+        ]
+      },
+      "train_role": "router_train_20_60",
+      "train_windows": 22826,
+      "val_role": "router_val_60_80",
+      "val_windows": 11413,
+      "variables": 7
+    },
+    "Electricity": {
+      "allocation": {
+        "ec_cf1": {
+          "average_pairwise_jaccard": 0.17012497379134098,
+          "capacity_per_expert": 1284,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 24.117341995239258,
+            "cells_with_1_experts_pct": 52.18068313598633,
+            "cells_with_2_experts_pct": 23.286605834960938,
+            "cells_with_3_experts_pct": 0.4153686463832855
+          },
+          "claim_mask_sha256": "39c57e83e68fd41ebef39ba89b2ed2dee754f17ab670befd38a0546896dd5b30",
+          "fallback_rate": 0.2411734163761139
+        },
+        "ec_cf2": {
+          "average_pairwise_jaccard": 0.5342320501804352,
+          "capacity_per_expert": 2568,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 3.089304208755493,
+            "cells_with_1_experts_pct": 27.25856590270996,
+            "cells_with_2_experts_pct": 36.2149543762207,
+            "cells_with_3_experts_pct": 33.43717575073242
+          },
+          "claim_mask_sha256": "4e38d6febaec30f01db7f5c4069a767efe84c42264c966c5b3a335507e08f1b0",
+          "fallback_rate": 0.03089304268360138
+        },
+        "token_top1": {
+          "average_pairwise_jaccard": 0.0,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 100.0,
+            "cells_with_2_experts_pct": 0.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "a6d983fabe2f583a704e94bde55dab6bf98fdf76476ebdf006cbe9835e81514c"
+        },
+        "token_top2": {
+          "average_pairwise_jaccard": 0.33333333923170966,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 0.0,
+            "cells_with_2_experts_pct": 100.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "e0276dfac5ff4f6081f9e90a64a0864e2176edc7a28cb6c31e5fdf8db1a423bb"
+        }
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Electricity",
+      "deltas": {
+        "ec_cf1_minus_frozen_hv": 0.003659546375274658,
+        "ec_cf1_minus_token_top1": -0.003746211528778076,
+        "ec_cf2_minus_token_top2": -0.0026487112045288086
+      },
+      "dependence": [
+        {
+          "baseline": "token_top1",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": -0.0021649820264428854,
+          "ci95_low": -0.005364974495023489,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "Electricity",
+          "mean_delta": -0.003746218513697386,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top1",
+          "candidate": "ec_cf1",
+          "ci95_high": -0.00245572323910892,
+          "ci95_low": -0.005021773278713226,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.00374448555521667,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "baseline": "token_top2",
+          "block_size": 24,
+          "candidate": "ec_cf2",
+          "ci95_high": -0.0009586139349266887,
+          "ci95_low": -0.00428850157186389,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "Electricity",
+          "mean_delta": -0.002648721681907773,
+          "prob_delta_negative": 0.9988999962806702,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top2",
+          "candidate": "ec_cf2",
+          "ci95_high": -0.0015365807339549065,
+          "ci95_low": -0.003784793196246028,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.002647353569045663,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "baseline": "frozen_hv",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.005020419135689735,
+          "ci95_low": 0.0023422411177307367,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "Electricity",
+          "mean_delta": 0.0036595480050891638,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "frozen_hv",
+          "candidate": "ec_cf1",
+          "ci95_high": 0.004513269755989313,
+          "ci95_low": 0.0028183478862047195,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.0036609217058867216,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "expert_indices": [
+        1,
+        2,
+        3
+      ],
+      "expert_order_in_cache": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "horizon": 12,
+      "integrity": [
+        {
+          "all_pass": true,
+          "dataset": "Electricity",
+          "frozen_allocation_after_sha256": "39c57e83e68fd41ebef39ba89b2ed2dee754f17ab670befd38a0546896dd5b30",
+          "frozen_allocation_before_sha256": "39c57e83e68fd41ebef39ba89b2ed2dee754f17ab670befd38a0546896dd5b30",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf1",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "Electricity",
+          "frozen_allocation_after_sha256": "4e38d6febaec30f01db7f5c4069a767efe84c42264c966c5b3a335507e08f1b0",
+          "frozen_allocation_before_sha256": "4e38d6febaec30f01db7f5c4069a767efe84c42264c966c5b3a335507e08f1b0",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf2",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        }
+      ],
+      "metrics": [
+        {
+          "capacity_per_expert": null,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "num_causal_updates": 0,
+            "router_train_mae": 0.24101541936397552,
+            "selected_expert": "iTransformer"
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.22538480162620544,
+          "method": "best_single",
+          "mse": 0.13576708734035492
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.21445728838443756,
+          "method": "equal",
+          "mse": 0.11784618347883224
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "frozen_weight_source": "router_train_only",
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.21535496413707733,
+          "method": "frozen_hv",
+          "mse": 0.12273695319890976
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.22276072204113007,
+          "method": "token_top1",
+          "mse": 0.1312716007232666
+        },
+        {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.2411734163761139,
+          "mae": 0.219014510512352,
+          "method": "ec_cf1",
+          "mse": 0.12091808021068573
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.2191299945116043,
+          "method": "token_top2",
+          "mse": 0.12744010984897614
+        },
+        {
+          "capacity_per_expert": 2568,
+          "dataset": "Electricity",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.03089304268360138,
+          "mae": 0.2164812833070755,
+          "method": "ec_cf2",
+          "mse": 0.11900151520967484
+        }
+      ],
+      "score_info": {
+        "mask_all_observed": true,
+        "score_max": 0.11526672542095184,
+        "score_mean": -0.021335499361157417,
+        "score_min": -0.2817932069301605,
+        "score_sha256": "09f7bcf9984df00a028fb701fe00f2b16623c7bdf36e93dd7fa2e609cf0faacc",
+        "target_shape": [
+          10308,
+          12,
+          321
+        ],
+        "train_forecast_shape": [
+          10308,
+          12,
+          321,
+          3
+        ]
+      },
+      "train_role": "router_train_20_60",
+      "train_windows": 10308,
+      "val_role": "router_val_60_80",
+      "val_windows": 5154,
+      "variables": 321
+    },
+    "Weather": {
+      "allocation": {
+        "ec_cf1": {
+          "average_pairwise_jaccard": 0.25297645231088,
+          "capacity_per_expert": 84,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 34.92063522338867,
+            "cells_with_1_experts_pct": 33.333335876464844,
+            "cells_with_2_experts_pct": 28.571430206298828,
+            "cells_with_3_experts_pct": 3.1746034622192383
+          },
+          "claim_mask_sha256": "c857d05e38e54cde0c8140e4e585c91dc8095cc75a3dc7712b348c95ac0704dd",
+          "fallback_rate": 0.3492063581943512
+        },
+        "ec_cf2": {
+          "average_pairwise_jaccard": 0.6217184265454611,
+          "capacity_per_expert": 168,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 11.904762268066406,
+            "cells_with_1_experts_pct": 17.063491821289062,
+            "cells_with_2_experts_pct": 30.15873146057129,
+            "cells_with_3_experts_pct": 40.873016357421875
+          },
+          "claim_mask_sha256": "ff128ba1bb83f553a4808c4adbdd2eb1fa01a483fcf71558b84e92d4dd5be9d6",
+          "fallback_rate": 0.1190476194024086
+        },
+        "token_top1": {
+          "average_pairwise_jaccard": 0.0,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 100.0,
+            "cells_with_2_experts_pct": 0.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "13de4a0dae9d1251195e13e86c00def57ee225ae90443c69df38f45bf1dbfeba"
+        },
+        "token_top2": {
+          "average_pairwise_jaccard": 0.33333333519597846,
+          "claim_distribution": {
+            "cells_with_0_experts_pct": 0.0,
+            "cells_with_1_experts_pct": 0.0,
+            "cells_with_2_experts_pct": 100.0,
+            "cells_with_3_experts_pct": 0.0
+          },
+          "claim_mask_sha256": "37e69eceb713244687f9d478d460762363ada78c3e9997d989ed37fa2d946828"
+        }
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Weather",
+      "deltas": {
+        "ec_cf1_minus_frozen_hv": 0.0005128532648086548,
+        "ec_cf1_minus_token_top1": -0.004069030284881592,
+        "ec_cf2_minus_token_top2": -0.0023768097162246704
+      },
+      "dependence": [
+        {
+          "baseline": "token_top1",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": -0.0029771821573376656,
+          "ci95_low": -0.005094614345580339,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "Weather",
+          "mean_delta": -0.004069024231284857,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top1",
+          "candidate": "ec_cf1",
+          "ci95_high": -0.003691765246912837,
+          "ci95_low": -0.004467363934963942,
+          "ci_excludes_zero": true,
+          "comparison": "primary_ec_cf1_vs_token_top1",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.004069170448929071,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "baseline": "token_top2",
+          "block_size": 24,
+          "candidate": "ec_cf2",
+          "ci95_high": -0.0013122993987053633,
+          "ci95_low": -0.003350251354277134,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "Weather",
+          "mean_delta": -0.002376803196966648,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "token_top2",
+          "candidate": "ec_cf2",
+          "ci95_high": -0.0021827013697475195,
+          "ci95_low": -0.002563251182436943,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf2_vs_token_top2",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.0023769401013851166,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "baseline": "frozen_hv",
+          "block_size": 24,
+          "candidate": "ec_cf1",
+          "ci95_high": 0.001485247048549354,
+          "ci95_low": -0.00047140565584413707,
+          "ci_excludes_zero": false,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "Weather",
+          "mean_delta": 0.0005128617631271482,
+          "prob_delta_negative": 0.14090000092983246,
+          "samples": 10000,
+          "test": "block_len_24"
+        },
+        {
+          "baseline": "frozen_hv",
+          "candidate": "ec_cf1",
+          "ci95_high": 0.0006836343090981245,
+          "ci95_low": 0.00034594349563121796,
+          "ci_excludes_zero": true,
+          "comparison": "secondary_ec_cf1_vs_frozen_hv",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.0005128869670443237,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_phase",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "expert_indices": [
+        1,
+        2,
+        3
+      ],
+      "expert_order_in_cache": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "horizon": 12,
+      "integrity": [
+        {
+          "all_pass": true,
+          "dataset": "Weather",
+          "frozen_allocation_after_sha256": "c857d05e38e54cde0c8140e4e585c91dc8095cc75a3dc7712b348c95ac0704dd",
+          "frozen_allocation_before_sha256": "c857d05e38e54cde0c8140e4e585c91dc8095cc75a3dc7712b348c95ac0704dd",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf1",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "Weather",
+          "frozen_allocation_after_sha256": "ff128ba1bb83f553a4808c4adbdd2eb1fa01a483fcf71558b84e92d4dd5be9d6",
+          "frozen_allocation_before_sha256": "ff128ba1bb83f553a4808c4adbdd2eb1fa01a483fcf71558b84e92d4dd5be9d6",
+          "frozen_allocation_identical": true,
+          "method": "ec_cf2",
+          "no_test_access": true,
+          "router_val_target_corruption_claims_identical": true,
+          "router_val_target_corruption_predictions_identical": true,
+          "targetless_claims_identical": true,
+          "targetless_prediction_identical": true,
+          "targetless_prediction_succeeded": true,
+          "train_role": "router_train_20_60",
+          "val_role": "router_val_60_80",
+          "validation_order_claims_identical": true,
+          "validation_order_invariant": true
+        }
+      ],
+      "metrics": [
+        {
+          "capacity_per_expert": null,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "num_causal_updates": 0,
+            "router_train_mae": 0.17278380692005157,
+            "selected_expert": "PatchTST"
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.1646728217601776,
+          "method": "best_single",
+          "mse": 0.28746822476387024
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.16034138202667236,
+          "method": "equal",
+          "mse": 0.27881529927253723
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {
+            "frozen_weight_source": "router_train_only",
+            "num_causal_updates": 0
+          },
+          "fallback_rate": 0.0,
+          "mae": 0.15981753170490265,
+          "method": "frozen_hv",
+          "mse": 0.2790922522544861
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.1643994152545929,
+          "method": "token_top1",
+          "mse": 0.2871684432029724
+        },
+        {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.3492063581943512,
+          "mae": 0.1603303849697113,
+          "method": "ec_cf1",
+          "mse": 0.2834845185279846
+        },
+        {
+          "capacity_per_expert": null,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.0,
+          "mae": 0.16233903169631958,
+          "method": "token_top2",
+          "mse": 0.28680917620658875
+        },
+        {
+          "capacity_per_expert": 168,
+          "dataset": "Weather",
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "extra": {},
+          "fallback_rate": 0.1190476194024086,
+          "mae": 0.1599622219800949,
+          "method": "ec_cf2",
+          "mse": 0.2785317003726959
+        }
+      ],
+      "score_info": {
+        "mask_all_observed": true,
+        "score_max": 0.02733440138399601,
+        "score_mean": -0.01874806359410286,
+        "score_min": -0.11542811989784241,
+        "score_sha256": "deb6b2327b2e543a0037e83891ee89f3323427ebb715bb4c68a3f09925070d0e",
+        "target_shape": [
+          20864,
+          12,
+          21
+        ],
+        "train_forecast_shape": [
+          20864,
+          12,
+          21,
+          3
+        ]
+      },
+      "train_role": "router_train_20_60",
+      "train_windows": 20864,
+      "val_role": "router_val_60_80",
+      "val_windows": 10432,
+      "variables": 21
+    }
+  },
+  "experiment": "expert_choice_hv",
+  "runtime_sec": 15.672479629516602,
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false
+}

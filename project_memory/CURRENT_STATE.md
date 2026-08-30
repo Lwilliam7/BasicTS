@@ -1,6 +1,30 @@
 # Current State
 
-Last updated: 2026-08-29
+Last updated: 2026-08-30
+
+## Expert-Choice Horizon-Variable Routing (2026-08-30)
+
+Completed validation-only `experiments/expert_choice_hv/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity using only router_train/router_val caches and existing frozen selected cores. Final classification: `MIXED_EXPERT_CHOICE`. EC-HVR used the train-only score tensor `score[h,v,e] = mean_t(equal_error[t,h,v] - expert_error[t,h,v,e])`, then reversed allocation so each expert claimed its top HxV cells at predeclared capacities `CF=1.0` and `CF=2.0`. Matched TokenChoice Top1/Top2 controls used the exact same score tensor with cell-to-expert direction.
+
+Results: EC CF1 beat Token Top1 by point estimate on `5/5` datasets, with block-24 support on ETTm1 (`-0.008954`, CI `[-0.010476,-0.007360]`), Weather (`-0.004069`, CI `[-0.005095,-0.002977]`), and Electricity (`-0.003746`, CI `[-0.005365,-0.002165]`). EC CF2 beat Token Top2 on only `2/5` datasets, with supported gains on Weather and Electricity but significant regressions on ETTh1 and ETTm1. EC CF1 was worse than existing Frozen HxV on every dataset. Claim masks were non-identical and passed the predeclared specialization rule (average pairwise EC Jaccard `<0.98` for both capacities on all datasets).
+
+Interpretation: expert-to-cell allocation has a real primary-budget direction signal and creates distinct HxV claim regions, but static EC-HVR is not strong enough to replace Frozen HxV or justify a learned input-dependent Expert-Choice router yet. No test cache/file was loaded or scored; target-corruption, targetless prediction, validation-order invariance, frozen-allocation, and no-test checks passed.
+
+## Expert-Choice HxV Pilot (2026-08-30)
+
+Completed validation-only `experiments/behavioral_competence/expert_choice_hv_pilot/` on Electricity using only `router_train_20_60` and `router_val_60_80` caches with the fixed core `PatchTST+iTransformer+TimesNet`. Final verdict by the requested decision rule: `STRONG GO` for the predeclared `Expert Choice cap 1.25` variant versus `Hard Normal HxV`. Both methods used the exact same router_train score tensor `score[k,h,v] = -mean_train_normalized_abs_error[k,h,v]`; only the allocation mechanism changed.
+
+Results: Equal ensemble MAE `0.214457`; existing soft/causal HxV MAE `0.211775`; static Hard Normal HxV MAE `0.222761`; Expert Choice cap `1.00` MAE `0.222948`; cap `1.25` MAE `0.220627`; cap `1.50` MAE `0.222734`. Cap `1.25` improved Hard Normal HxV by `-0.002134` MAE with block-24 CI `[-0.003012, -0.001256]`, probability delta<0 `1.000`, and `12/12` phase agreement. No-capacity Expert Choice was exactly identical to Hard Normal HxV, confirming any difference comes from capacity constraints. Important caveat: even the best Expert Choice variant is worse than Equal and the existing soft/causal HxV reference, so this supports pursuing allocation constraints only as a component inside a stronger HxV router, not replacing the current Electricity HxV baseline.
+
+Integrity: no test cache/file was loaded; expert ordering was verified as `DLinear, PatchTST, iTransformer, TimesNet, ModernTCN`; assignments were train-only; checkpoints were unchanged.
+
+## Rolling-Origin Revision Embedding (2026-08-30)
+
+Completed strict validation-only `experiments/behavioral_competence/rolling_origin_revision_embedding/` on Traffic and ETTm2 using only router_train/router_val frozen forecast caches. Final classification: `NEGATIVE_RESULT`. The experiment measured real historical forecast-origin revisions with lags `[1, 2, 4]`, preserved signed lag/horizon trajectories through a deterministic compact variable projection, trained small learned ContextEmbed/RevisionEmbed/ContextPlusRevision competence encoders with purged chronological router_train OOF predictions, and evaluated router_val once with fixed rank routing weights `[0.5, 0.3333, 0.1667]`.
+
+Results: ContextPlusRevision improved ContextEmbed OOF R2 on ETTm2 (`+0.071681`) but regressed on Traffic (`-0.070834`). The mandatory `RevisionEmbedding -> ContextEmbed residual` OOF diagnostic was negative on both datasets: ETTm2 R2 `-0.157214`, Traffic R2 `-0.021563`. Router_val rank-routing MAE improved only by point estimate on both datasets (ETTm2 `-0.000370`, Traffic `-0.000332`), which is insufficient because the competence/residual and expert-specific controls failed. Do not promote rolling-origin revision embeddings to router integration or test evaluation.
+
+Integrity: no test cache/file was loaded; router_train OOF folds passed the horizon-12 purge; router_train-to-router_val observability held; router_val target-corruption feature invariance passed; all features/predictions were finite; checkpoint hashes were unchanged.
 
 ## Expert-Native Latent Competence (2026-08-29)
 

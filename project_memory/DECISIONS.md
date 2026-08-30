@@ -1,5 +1,35 @@
 # Research Decisions
 
+## Static Expert-Choice HxV Routing Is Mixed, Not Ready For Learned Router Integration
+
+Status: Tested validation-only on 2026-08-30
+
+Evidence: `experiments/expert_choice_hv/report.md`, `results.json`, `assignment_stats.csv`, `dependence_tests.csv`, `integrity_checks.json`, and `project_memory/experiments/2026-08-30_expert_choice_hv.md`.
+
+Decision: Do not proceed directly to an input-dependent learned Expert-Choice HxV router from the current static EC-HVR mechanism. Treat the result as `MIXED_EXPERT_CHOICE`: the primary CF1 expert-to-cell allocation beats matched TokenChoice Top1 on all five datasets and creates distinct HxV claim regions, but the secondary CF2 budget fails the predeclared consistency requirement and EC CF1 remains worse than Frozen HxV on every dataset.
+
+Reason: Reversing routing direction is not empty; CF1 improved over Token Top1 on ETTh1, ETTh2, ETTm1, Weather, and Electricity, with block-24 support on ETTm1, Weather, and Electricity. However, CF2 beat Token Top2 only on Weather and Electricity, while ETTh1 and ETTm1 significantly regressed. Since existing Frozen HxV still beats EC CF1 across the board, the durable lesson is that expert-choice allocation may be a useful constraint or diagnostic, not that static expert-to-cell HxV routing is a replacement router.
+
+## Expert-Choice HxV Allocation Has A Positive Pilot Signal
+
+Status: Tested validation-only on 2026-08-30
+
+Evidence: `experiments/behavioral_competence/expert_choice_hv_pilot/RESULTS.md`, `results.json`, `integrity_report.json`, and `project_memory/experiments/2026-08-30_expert_choice_hv_pilot.md`.
+
+Decision: Treat the capacity-constrained Expert-Choice HxV allocation direction as worth a targeted follow-up, but do not replace the existing Electricity soft/causal HxV router. The requested decision rule gives `STRONG GO` for `Expert Choice cap 1.25` versus static Hard Normal HxV because it improves MAE by `-0.002134`, block-24 CI excludes zero, and every-12th phase analysis agrees.
+
+Reason: The pilot isolated allocation from competence modeling: Hard Normal HxV and Expert Choice consumed the same train-derived score tensor. No-capacity Expert Choice was exactly identical to Hard Normal HxV, so the cap-constrained improvement is genuinely from the allocation constraint. However, Hard Normal HxV itself is weak on Electricity (`0.222761` MAE), and the best Expert Choice variant (`0.220627`) remains worse than Equal (`0.214457`) and existing soft/causal HxV (`0.211775`), so the durable lesson is "capacity constraints can repair hard HxV over-allocation," not "deploy this static hard router."
+
+## Rolling-Origin Revision Embeddings Are Negative
+
+Status: Tested validation-only on 2026-08-30
+
+Evidence: `experiments/behavioral_competence/rolling_origin_revision_embedding/report.md`, `validation_results.json`, `dependence_tests.csv`, `integrity_checks.json`, and `project_memory/experiments/2026-08-30_rolling_origin_revision_embedding.md`.
+
+Decision: Do not proceed to test-set evaluation or router integration from the current rolling-origin revision embedding mechanism. Treat the outcome as `NEGATIVE_RESULT`: real historical revision trajectories produced small router_val point-estimate routing gains, but did not establish robust competence information beyond the learned context encoder.
+
+Reason: The mandatory incremental evidence failed. ContextPlusRevision beat ContextEmbed OOF R2 on ETTm2 but regressed on Traffic; `RevisionEmbedding -> ContextEmbed residual` OOF R2 was negative on both datasets (ETTm2 `-0.157214`, Traffic `-0.021563`); and the expert-specific wrong/shuffled controls were not consistently beaten. Fixed-rank routing improved by only small point estimates, which is not enough to rescue the failed mechanism criteria.
+
 ## Expert-Native Latent Competence Is Mixed
 
 Status: Tested validation-only on 2026-08-29

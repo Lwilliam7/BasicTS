@@ -1,0 +1,64 @@
+{
+  "allowed_splits": [
+    "router_train",
+    "router_val"
+  ],
+  "context_encoder": {
+    "baseline_note": "This is a learned context encoder; old 15 handcrafted passive features are not used as the primary baseline.",
+    "hidden_dim": 32,
+    "input": "current history plus current frozen expert forecasts and disagreement profiles"
+  },
+  "controls": {
+    "shuffled_revision": "shuffle revision features within each training/evaluation partition with deterministic seeds",
+    "wrong_expert": "derange expert axis within each window"
+  },
+  "created_at_utc": "2026-08-30T05:38:52.659238+00:00",
+  "datasets": [
+    "Traffic",
+    "ETTm2"
+  ],
+  "decision_rule": "PROMISING only if ContextPlusRevision beats ContextEmbed OOF and most fixed criteria hold; otherwise NEGATIVE_RESULT.",
+  "experiment": "rolling_origin_revision_embedding",
+  "fixed_training": {
+    "batch_rows": 2048,
+    "epochs": 10,
+    "lr": 0.001,
+    "seed": 20260830,
+    "weight_decay": 0.0001
+  },
+  "git_commit_sha": "9c6b89c250fa2026be910babc38deaa31e2d3fc5",
+  "lag_rule": "R[t,k,d,h] = F[t,k,h] - F[t-d,k,h+d] for overlapping horizons only",
+  "lags": [
+    1,
+    2,
+    4
+  ],
+  "models": [
+    "ContextEmbed",
+    "RevisionEmbed",
+    "ContextPlusRevision",
+    "ContextPlusWrongExpertRevision",
+    "ContextPlusShuffledRevision"
+  ],
+  "normalization": "differences and errors divided by train-only per-variable scaler std from the dataset checkpoint",
+  "oof": {
+    "folds": 4,
+    "horizon": 12,
+    "min_train_fraction": 0.35,
+    "purge_rule": "max(train target end) <= min(eval origin)"
+  },
+  "revision_encoder": {
+    "hidden_dim": 32,
+    "input": "complete signed aligned revision trajectories over lags/horizons after compact deterministic variable projection"
+  },
+  "routing": {
+    "rule": "fixed rank weights assigned by predicted competence, lower predicted MAE is better",
+    "weights": [
+      0.5,
+      0.3333333432674408,
+      0.1666666716337204
+    ]
+  },
+  "status": "STRICT_VALIDATION_ONLY",
+  "test_split_access": "forbidden"
+}
