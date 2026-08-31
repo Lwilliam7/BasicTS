@@ -1,0 +1,52 @@
+{
+  "ETTh1": {
+    "dataset": "ETTh1",
+    "equal_combine_mean_abs_error_on_multiclaim": 0.3796267509460449,
+    "multi_claim_cells": 51797,
+    "note": "Analysis-only: best achievable convex combination given TRUE OOF targets (1-D closed form: clip target to [min,max] of claiming forecasts). Never used to fit a parameter or select a method.",
+    "oracle_headroom_vs_equal": 0.06064268946647644,
+    "oracle_headroom_vs_weighted": 0.06030258536338806,
+    "oracle_mean_abs_error": 0.3189840614795685,
+    "weighted_combine_mean_abs_error_on_multiclaim": 0.37928664684295654
+  },
+  "ETTh2": {
+    "dataset": "ETTh2",
+    "equal_combine_mean_abs_error_on_multiclaim": 0.32362937927246094,
+    "multi_claim_cells": 22031,
+    "note": "Analysis-only: best achievable convex combination given TRUE OOF targets (1-D closed form: clip target to [min,max] of claiming forecasts). Never used to fit a parameter or select a method.",
+    "oracle_headroom_vs_equal": 0.0499386191368103,
+    "oracle_headroom_vs_weighted": 0.04947090148925781,
+    "oracle_mean_abs_error": 0.27369076013565063,
+    "weighted_combine_mean_abs_error_on_multiclaim": 0.32316166162490845
+  },
+  "ETTm1": {
+    "dataset": "ETTm1",
+    "equal_combine_mean_abs_error_on_multiclaim": 0.2628917396068573,
+    "multi_claim_cells": 233425,
+    "note": "Analysis-only: best achievable convex combination given TRUE OOF targets (1-D closed form: clip target to [min,max] of claiming forecasts). Never used to fit a parameter or select a method.",
+    "oracle_headroom_vs_equal": 0.043640196323394775,
+    "oracle_headroom_vs_weighted": 0.04325476288795471,
+    "oracle_mean_abs_error": 0.21925154328346252,
+    "weighted_combine_mean_abs_error_on_multiclaim": 0.26250630617141724
+  },
+  "Electricity": {
+    "dataset": "Electricity",
+    "equal_combine_mean_abs_error_on_multiclaim": 0.23610052466392517,
+    "multi_claim_cells": 6554120,
+    "note": "Analysis-only: best achievable convex combination given TRUE OOF targets (1-D closed form: clip target to [min,max] of claiming forecasts). Never used to fit a parameter or select a method.",
+    "oracle_headroom_vs_equal": 0.03333763778209686,
+    "oracle_headroom_vs_weighted": 0.03323076665401459,
+    "oracle_mean_abs_error": 0.2027628868818283,
+    "weighted_combine_mean_abs_error_on_multiclaim": 0.2359936535358429
+  },
+  "Weather": {
+    "dataset": "Weather",
+    "equal_combine_mean_abs_error_on_multiclaim": 0.18910376727581024,
+    "multi_claim_cells": 818698,
+    "note": "Analysis-only: best achievable convex combination given TRUE OOF targets (1-D closed form: clip target to [min,max] of claiming forecasts). Never used to fit a parameter or select a method.",
+    "oracle_headroom_vs_equal": 0.02877865731716156,
+    "oracle_headroom_vs_weighted": 0.02833057940006256,
+    "oracle_mean_abs_error": 0.16032510995864868,
+    "weighted_combine_mean_abs_error_on_multiclaim": 0.18865568935871124
+  }
+}

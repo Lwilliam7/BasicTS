@@ -1,0 +1,23 @@
+{
+  "before": {
+    "experiments/behavioral_competence/common.py": "098cc7ce669034efffc0c3f4d41f64a5d41cca358e4cdd01773ee4587e4d4646",
+    "experiments/costar_multidataset_frozen/common.py": "9df35e7c9f69bf8c8980d938da65714fa45a18bd7aa7e22788d0564ba4479120",
+    "experiments/expert_choice_hv/run_expert_choice_hv.py": "bfafe670f9dcaca2854a3506561331b9d3233d3fa88927a060a50c9e15d4b370",
+    "experiments/frozen_hv_costar/run_frozen_hv_costar.py": "34d8c25004bf52c9bab9c73332199f45cf318959da374ba9308175c21f03fdde",
+    "experiments/horizon_variable_adaptive_costar/run_hv_adaptive_costar.py": "92a9307f4882d3b7489b1abfa647cf00802d92df75fe938d5acc348a61ce4179",
+    "experiments/oracle_weight_tournament/run_tournament.py": "0fa52877e216a114d89013b7712a21f8741f30087c7b8c205ac6d6820918d90c",
+    "experiments/window_dependent_expert_choice_hv/run_window_dependent_expert_choice_hv.py": "3a7bd2ed3c8f6cb914031ccd2c87edbecc6ae6c7e2b68a7e60b217f506877a80"
+  },
+  "environment": {
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "python_version": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "torch_version": "2.6.0+cu124"
+  },
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "cb516ced1c6e3304d6451532767c39f93c90ad7c",
+    "dirty_files_count": 6,
+    "dirty_working_tree": true
+  }
+}

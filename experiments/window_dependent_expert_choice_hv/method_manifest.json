@@ -1,0 +1,132 @@
+{
+  "affinity_definition": "affinity[t,h,v,:] = softmax_e((raw_score - fit_only_scalar_mean)/fit_only_scalar_std / temperature=1.0); PRIMARY for both Dynamic Token Choice and Dynamic Expert Choice",
+  "bootstrap": {
+    "block_length_primary": 24,
+    "phase_k": 12,
+    "samples": 10000
+  },
+  "bootstrap_seed": 20260830,
+  "capacity_factor": 1.0,
+  "capacity_formula": "C = round(H*V/E), fixed, no sweep",
+  "classification": "WINDOW_DEPENDENT_EC_SUPPORTED",
+  "classification_details": {
+    "block24_ci_below_zero_datasets": 4,
+    "criteria": {
+      "block24_support_ge_2": true,
+      "genuinely_dynamic_ge_3": true,
+      "integrity_pass": true,
+      "oof_wins_ge_3": true,
+      "shuffle_wins_ge_3": true,
+      "static_wins_ge_3": true,
+      "val_wins_ge_3": true
+    },
+    "genuinely_dynamic_datasets": 5,
+    "integrity_pass": true,
+    "oof_wins_vs_dynamic_token": 3,
+    "shuffle_weakened_datasets": 5,
+    "val_wins_vs_dynamic_token": 4,
+    "val_wins_vs_static_ec": 3
+  },
+  "classification_rules": {
+    "INVALID_EXPERIMENT": "Any leakage/causality/test-access/checkpoint/provenance/order/target-invariance failure.",
+    "MIXED_WINDOW_DEPENDENT_EC": "Meaningful matched-routing evidence exists but one or more full-support criteria fail.",
+    "NO_WINDOW_DEPENDENT_EC_ADVANTAGE": "Dynamic EC beats Dynamic Token on <=2/5 val datasets, or fails to improve Static EC on most datasets, or assignments are effectively static, or shuffled context performs essentially the same or better.",
+    "WINDOW_DEPENDENT_EC_SUPPORTED": [
+      "Dynamic EC beats Dynamic Token on router_train OOF on >=3/5 datasets",
+      "Dynamic EC beats Dynamic Token on router_val on >=3/5 datasets",
+      "Dynamic EC vs Dynamic Token has block-24 CI entirely below zero on >=2/5 router_val datasets",
+      "Dynamic EC beats Static EC CF1 on >=3/5 router_val datasets",
+      "Correctly matched Dynamic EC beats Shuffled-Window Dynamic EC on >=3/5 datasets",
+      "Claim maps genuinely dynamic: >=3/5 datasets have mean adjacent claim-change fraction > 5% AND mean adjacent Jaccard < 0.95",
+      "All integrity checks pass"
+    ]
+  },
+  "created_at_utc": "2026-08-30T20:10:44.372770+00:00",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "development_datasets_disclaimer": "ETTh1/ETTh2/ETTm1/Weather/Electricity are DEVELOPMENT datasets that already informed the static Expert-Choice CF=1 choice and the decision to try window dependence. This run is additional development evidence, not untouched confirmation on held-out data. Test remains locked throughout.",
+  "experiment": "window_dependent_expert_choice_hv",
+  "forbidden_rescue_behavior": [
+    "no CF sweep",
+    "no ranking-loss sweep",
+    "no architecture/lr/seed/embedding tuning after router_val",
+    "no dataset removal",
+    "no fallback-rule change",
+    "no test access"
+  ],
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "9c6b89c250fa2026be910babc38deaa31e2d3fc5",
+    "dirty_files_count": 13,
+    "dirty_working_tree": true
+  },
+  "model": {
+    "architecture": "Linear(input_dim) -> ReLU -> Linear(64->32) -> ReLU -> Linear(32->1)",
+    "dropout": 0.0,
+    "expert_embedding_dim": 4,
+    "horizon_embedding_dim": 4,
+    "inputs": [
+      "global_history_group_a(6)",
+      "per_variable_history(7)",
+      "cell_local_forecast(6)",
+      "horizon_embed",
+      "variable_embed",
+      "expert_embed",
+      "static_gain_scalar"
+    ],
+    "no_load_balancing_aux_loss": true,
+    "no_noisy_or_stochastic_routing": true,
+    "no_ranking_loss_sweep": true,
+    "type": "ONE shared scorer across experts (not per-expert)",
+    "variable_embedding_dim": 8
+  },
+  "oof_protocol": {
+    "full_horizon_observability_rule": "starts[i] + H <= current_eval_origin",
+    "num_folds": 4,
+    "warmup_fraction": 0.2
+  },
+  "required_methods": [
+    "best_single_expert",
+    "equal",
+    "frozen_hv",
+    "static_token_top1",
+    "static_ec_cf1",
+    "dynamic_token_top1",
+    "dynamic_ec_cf1",
+    "dynamic_ec_shuffled_window"
+  ],
+  "residual_definition": "raw_score[t,h,v,e] = static_gain[h,v,e] (fit-only mean of gain) + predicted_residual_gain[t,h,v,e]; coefficient exactly 1.0",
+  "runtime_sec": 1669.676842212677,
+  "score_definition": "gain[t,h,v,e] = equal_ensemble_normalized_abs_error[t,h,v] - expert_normalized_abs_error[t,h,v,e]; higher = better",
+  "shuffle_control_seed": 20260830,
+  "source_file_sha256": {
+    "experiments\\behavioral_competence\\common.py": "098cc7ce669034efffc0c3f4d41f64a5d41cca358e4cdd01773ee4587e4d4646",
+    "experiments\\costar_multidataset_frozen\\common.py": "9df35e7c9f69bf8c8980d938da65714fa45a18bd7aa7e22788d0564ba4479120",
+    "experiments\\expert_choice_hv\\run_expert_choice_hv.py": "bfafe670f9dcaca2854a3506561331b9d3233d3fa88927a060a50c9e15d4b370",
+    "experiments\\frozen_hv_costar\\run_frozen_hv_costar.py": "34d8c25004bf52c9bab9c73332199f45cf318959da374ba9308175c21f03fdde",
+    "experiments\\oracle_weight_tournament\\run_tournament.py": "0fa52877e216a114d89013b7712a21f8741f30087c7b8c205ac6d6820918d90c",
+    "experiments\\window_dependent_expert_choice_hv\\run_window_dependent_expert_choice_hv.py": "3a7bd2ed3c8f6cb914031ccd2c87edbecc6ae6c7e2b68a7e60b217f506877a80"
+  },
+  "static_reference": "experiments/expert_choice_hv/results.json (reproduced, not reinterpreted)",
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false,
+  "training": {
+    "batch_size": 32,
+    "fixed_no_tuning_after_router_val": true,
+    "internal_val_fraction": 0.2,
+    "loss": "MSE on residual_gain",
+    "lr": 0.001,
+    "max_epochs": 100,
+    "minibatch_unit": "forecasting window",
+    "optimizer": "AdamW",
+    "patience": 10,
+    "seed": 7,
+    "weight_decay": 0.0001
+  }
+}

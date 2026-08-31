@@ -1,0 +1,77 @@
+{
+  "baseline_tolerance": 0.0005,
+  "bootstrap": {
+    "block_length_primary": 24,
+    "phase_k": 12,
+    "samples": 10000
+  },
+  "bootstrap_seed": 20260830,
+  "capacity_factor": 1.0,
+  "classification": "AFFINITY_WEIGHTED_EC_SUPPORTED",
+  "classification_details": {
+    "OOF_SUPPORT": true,
+    "block24_ci_below_zero_datasets": 2,
+    "criteria": {
+      "block24_support_ge_2": true,
+      "integrity_pass": true,
+      "oof_wins_ge_3": true,
+      "token_wins_ge_3": true,
+      "val_wins_ge_3": true
+    },
+    "integrity_pass": true,
+    "negligible_multiclaim_everywhere": false,
+    "oof_wins_vs_existing": 5,
+    "total_multiclaim_cells_across_datasets": 7680071,
+    "val_wins_vs_dynamic_token": 4,
+    "val_wins_vs_existing": 4
+  },
+  "classification_rules": {
+    "AFFINITY_WEIGHTED_EC_SUPPORTED": [
+      "Weighted EC improves existing Dynamic EC on >=3/5 causal OOF datasets",
+      "Weighted EC improves existing Dynamic EC on >=3/5 router-val datasets",
+      "Block-24 supports Weighted EC vs Existing EC on >=2/5 router-val datasets",
+      "Weighted EC still beats Dynamic Token on >=3/5 router-val datasets",
+      "All integrity checks pass"
+    ],
+    "INVALID_EXPERIMENT": "Any integrity/leakage/test-access failure.",
+    "MIXED_AFFINITY_WEIGHTED_EC": "Meaningful improvement on some datasets but full support criteria fail.",
+    "NO_AFFINITY_WEIGHTED_EC": "Weighted EC improves existing EC on <=2/5 OOF datasets, or produces negligible changes because multi-claim cells are too rare."
+  },
+  "created_at_utc": "2026-08-30T22:08:04.378225+00:00",
+  "current_multi_claim_rule_verified": "simple unweighted average of claiming experts' forecasts (claimed_sum/counts); fallback to equal fixed ensemble on zero claims; affinity was previously used only for top-C selection, never as a combination weight.",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "experiment": "affinity_weighted_expert_choice_hv",
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "cb516ced1c6e3304d6451532767c39f93c90ad7c",
+    "dirty_files_count": 5,
+    "dirty_working_tree": true
+  },
+  "new_multi_claim_rule": "affinity[t,h,v,e] renormalized across ONLY the claiming experts at each cell, used as convex combination weights; zero new learned parameters.",
+  "no_retraining_note": "The competence scorer is not retrained. window_dependent_expert_choice_hv never persisted scorer checkpoints, only its final score/affinity/claim tensors (tensors.pt); those are loaded directly here and never recomputed.",
+  "post_hoc_development_disclaimer": "This is a post-hoc development experiment: the same five datasets previously produced WINDOW_DEPENDENT_EC_SUPPORTED and directly motivated this combination-rule follow-up. Not untouched confirmation. Test remains locked.",
+  "runtime_sec": 26.47794222831726,
+  "single_mechanism_only": [
+    "no dynamic capacity",
+    "no CF2",
+    "no token caps",
+    "no fallback change",
+    "no new scorer",
+    "no ranking loss",
+    "no temperature tuning",
+    "no memory",
+    "no online updates",
+    "no selective routing",
+    "no larger networks",
+    "no additional datasets"
+  ],
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false
+}

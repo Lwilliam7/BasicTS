@@ -1,0 +1,452 @@
+{
+  "ETTh1": {
+    "capacity_per_expert": 28,
+    "dataset": "ETTh1",
+    "delta_ec_minus_token": -0.0006328821182250977,
+    "dependence": [
+      {
+        "block_size": 24,
+        "ci95_high": -3.284186823293567e-05,
+        "ci95_low": -0.001206568325869739,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "ETTh1",
+        "mean_delta": -0.0006329073221422732,
+        "prob_delta_negative": 0.98089998960495,
+        "samples": 10000,
+        "split": "router_train_oof",
+        "test": "block_len_24"
+      },
+      {
+        "ci95_high": -0.00035355158615857363,
+        "ci95_low": -0.0008777640759944916,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "ETTh1",
+        "k": 12,
+        "mean_delta": -0.0006332409684546292,
+        "num_phases": 12,
+        "prob_delta_negative": 1.0,
+        "split": "router_train_oof",
+        "test": "every_12th_phase",
+        "windows_per_phase_max": 370,
+        "windows_per_phase_min": 369
+      }
+    ],
+    "dynamic_ec_cf1": {
+      "fallback_rate": 0.1389443576335907,
+      "mae": 0.3513719439506531,
+      "mse": 0.27164795994758606
+    },
+    "dynamic_token_top1": {
+      "fallback_rate": 0.0,
+      "mae": 0.3520048260688782,
+      "mse": 0.2727724611759186
+    },
+    "fold_ranking_rows": [
+      {
+        "dataset": "ETTh1",
+        "fold": 1,
+        "mean_spearman_predicted_vs_true_gain": 0.06903112679719925,
+        "mean_topC_overlap_fraction": 0.312465101480484,
+        "num_eval_windows": 1109,
+        "pairwise_ranking_accuracy": 0.5264538337126254,
+        "top1_expert_accuracy": 0.33218473196029663
+      },
+      {
+        "dataset": "ETTh1",
+        "fold": 2,
+        "mean_spearman_predicted_vs_true_gain": 0.10040433704853058,
+        "mean_topC_overlap_fraction": 0.32940444350242615,
+        "num_eval_windows": 1109,
+        "pairwise_ranking_accuracy": 0.5473614152604234,
+        "top1_expert_accuracy": 0.30755937099456787
+      },
+      {
+        "dataset": "ETTh1",
+        "fold": 3,
+        "mean_spearman_predicted_vs_true_gain": 0.16512718796730042,
+        "mean_topC_overlap_fraction": 0.34907039999961853,
+        "num_eval_windows": 1109,
+        "pairwise_ranking_accuracy": 0.5548184407517139,
+        "top1_expert_accuracy": 0.33659666776657104
+      },
+      {
+        "dataset": "ETTh1",
+        "fold": 4,
+        "mean_spearman_predicted_vs_true_gain": 0.22205381095409393,
+        "mean_topC_overlap_fraction": 0.3770342469215393,
+        "num_eval_windows": 1109,
+        "pairwise_ranking_accuracy": 0.5791181816880645,
+        "top1_expert_accuracy": 0.351925790309906
+      }
+    ],
+    "oof_scored_windows": 4436,
+    "ranking_diagnostics_pooled": {
+      "mean_spearman_predicted_vs_true_gain": 0.13915411569178104,
+      "mean_topC_overlap_fraction": 0.341993547976017,
+      "pairwise_ranking_accuracy": 0.5519379678532067,
+      "top1_expert_accuracy": 0.3320666402578354
+    }
+  },
+  "ETTh2": {
+    "capacity_per_expert": 28,
+    "dataset": "ETTh2",
+    "delta_ec_minus_token": 0.0008063316345214844,
+    "dependence": [
+      {
+        "block_size": 24,
+        "ci95_high": 0.00206034816801548,
+        "ci95_low": -0.0005782352527603507,
+        "ci_excludes_zero": false,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "ETTh2",
+        "mean_delta": 0.0008063629502430558,
+        "prob_delta_negative": 0.12479999661445618,
+        "samples": 10000,
+        "split": "router_train_oof",
+        "test": "block_len_24"
+      },
+      {
+        "ci95_high": 0.001318735652603209,
+        "ci95_low": 0.00027483675512485206,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "ETTh2",
+        "k": 12,
+        "mean_delta": 0.0008062474080361426,
+        "num_phases": 12,
+        "prob_delta_negative": 0.0013000000035390258,
+        "split": "router_train_oof",
+        "test": "every_12th_phase",
+        "windows_per_phase_max": 137,
+        "windows_per_phase_min": 136
+      }
+    ],
+    "dynamic_ec_cf1": {
+      "fallback_rate": 0.15968476235866547,
+      "mae": 0.28620609641075134,
+      "mse": 0.18660253286361694
+    },
+    "dynamic_token_top1": {
+      "fallback_rate": 0.0,
+      "mae": 0.28539976477622986,
+      "mse": 0.18640471994876862
+    },
+    "fold_ranking_rows": [
+      {
+        "dataset": "ETTh2",
+        "fold": 1,
+        "mean_spearman_predicted_vs_true_gain": 0.12053517997264862,
+        "mean_topC_overlap_fraction": 0.37383854389190674,
+        "num_eval_windows": 410,
+        "pairwise_ranking_accuracy": 0.5439508323654665,
+        "top1_expert_accuracy": 0.3378048837184906
+      },
+      {
+        "dataset": "ETTh2",
+        "fold": 2,
+        "mean_spearman_predicted_vs_true_gain": 0.12007150053977966,
+        "mean_topC_overlap_fraction": 0.35163941979408264,
+        "num_eval_windows": 411,
+        "pairwise_ranking_accuracy": 0.5639361989726953,
+        "top1_expert_accuracy": 0.3543621897697449
+      },
+      {
+        "dataset": "ETTh2",
+        "fold": 3,
+        "mean_spearman_predicted_vs_true_gain": 0.04188597947359085,
+        "mean_topC_overlap_fraction": 0.31260165572166443,
+        "num_eval_windows": 410,
+        "pairwise_ranking_accuracy": 0.5520131629887728,
+        "top1_expert_accuracy": 0.3430604040622711
+      },
+      {
+        "dataset": "ETTh2",
+        "fold": 4,
+        "mean_spearman_predicted_vs_true_gain": 0.10514529794454575,
+        "mean_topC_overlap_fraction": 0.33055269718170166,
+        "num_eval_windows": 411,
+        "pairwise_ranking_accuracy": 0.554271424709381,
+        "top1_expert_accuracy": 0.31983548402786255
+      }
+    ],
+    "oof_scored_windows": 1642,
+    "ranking_diagnostics_pooled": {
+      "mean_spearman_predicted_vs_true_gain": 0.09692861117540556,
+      "mean_topC_overlap_fraction": 0.3421567855777171,
+      "pairwise_ranking_accuracy": 0.5535496780929181,
+      "top1_expert_accuracy": 0.3387637100614671
+    }
+  },
+  "ETTm1": {
+    "capacity_per_expert": 28,
+    "dataset": "ETTm1",
+    "delta_ec_minus_token": -0.0008010566234588623,
+    "dependence": [
+      {
+        "block_size": 24,
+        "ci95_high": -0.00047465795069001615,
+        "ci95_low": -0.0011188903590664268,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "ETTm1",
+        "mean_delta": -0.0008010850287973881,
+        "prob_delta_negative": 1.0,
+        "samples": 10000,
+        "split": "router_train_oof",
+        "test": "block_len_24"
+      },
+      {
+        "ci95_high": -0.0006345974979922175,
+        "ci95_low": -0.0009650185238569975,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "ETTm1",
+        "k": 12,
+        "mean_delta": -0.0008010645397007465,
+        "num_phases": 12,
+        "prob_delta_negative": 1.0,
+        "split": "router_train_oof",
+        "test": "every_12th_phase",
+        "windows_per_phase_max": 1522,
+        "windows_per_phase_min": 1521
+      }
+    ],
+    "dynamic_ec_cf1": {
+      "fallback_rate": 0.15220949053764343,
+      "mae": 0.2548221945762634,
+      "mse": 0.1611122190952301
+    },
+    "dynamic_token_top1": {
+      "fallback_rate": 0.0,
+      "mae": 0.2556232511997223,
+      "mse": 0.16204950213432312
+    },
+    "fold_ranking_rows": [
+      {
+        "dataset": "ETTm1",
+        "fold": 1,
+        "mean_spearman_predicted_vs_true_gain": 0.1306481957435608,
+        "mean_topC_overlap_fraction": 0.3367573916912079,
+        "num_eval_windows": 4565,
+        "pairwise_ranking_accuracy": 0.5639666892678941,
+        "top1_expert_accuracy": 0.34094297885894775
+      },
+      {
+        "dataset": "ETTm1",
+        "fold": 2,
+        "mean_spearman_predicted_vs_true_gain": 0.16377080976963043,
+        "mean_topC_overlap_fraction": 0.3706071078777313,
+        "num_eval_windows": 4565,
+        "pairwise_ranking_accuracy": 0.5646116935273562,
+        "top1_expert_accuracy": 0.34733739495277405
+      },
+      {
+        "dataset": "ETTm1",
+        "fold": 3,
+        "mean_spearman_predicted_vs_true_gain": 0.16122666001319885,
+        "mean_topC_overlap_fraction": 0.3908829987049103,
+        "num_eval_windows": 4565,
+        "pairwise_ranking_accuracy": 0.5543272657730489,
+        "top1_expert_accuracy": 0.3809315264225006
+      },
+      {
+        "dataset": "ETTm1",
+        "fold": 4,
+        "mean_spearman_predicted_vs_true_gain": 0.1922205090522766,
+        "mean_topC_overlap_fraction": 0.37053409218788147,
+        "num_eval_windows": 4565,
+        "pairwise_ranking_accuracy": 0.5652488742850189,
+        "top1_expert_accuracy": 0.35316330194473267
+      }
+    ],
+    "oof_scored_windows": 18260,
+    "ranking_diagnostics_pooled": {
+      "mean_spearman_predicted_vs_true_gain": 0.16196654364466667,
+      "mean_topC_overlap_fraction": 0.36719539761543274,
+      "pairwise_ranking_accuracy": 0.5620386307133296,
+      "top1_expert_accuracy": 0.35559380054473877
+    }
+  },
+  "Electricity": {
+    "capacity_per_expert": 1284,
+    "dataset": "Electricity",
+    "delta_ec_minus_token": 0.00021149218082427979,
+    "dependence": [
+      {
+        "block_size": 24,
+        "ci95_high": 0.00038045400287956,
+        "ci95_low": 3.5490927984938025e-05,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "Electricity",
+        "mean_delta": 0.00021149609528947622,
+        "prob_delta_negative": 0.009100000374019146,
+        "samples": 10000,
+        "split": "router_train_oof",
+        "test": "block_len_24"
+      },
+      {
+        "ci95_high": 0.0003620065108407289,
+        "ci95_low": 7.392225234070793e-05,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "Electricity",
+        "k": 12,
+        "mean_delta": 0.00021151550754439086,
+        "num_phases": 12,
+        "prob_delta_negative": 0.0005000000237487257,
+        "split": "router_train_oof",
+        "test": "every_12th_phase",
+        "windows_per_phase_max": 688,
+        "windows_per_phase_min": 687
+      }
+    ],
+    "dynamic_ec_cf1": {
+      "fallback_rate": 0.2063397318124771,
+      "mae": 0.229082852602005,
+      "mse": 0.12933677434921265
+    },
+    "dynamic_token_top1": {
+      "fallback_rate": 0.0,
+      "mae": 0.22887136042118073,
+      "mse": 0.12971295416355133
+    },
+    "fold_ranking_rows": [
+      {
+        "dataset": "Electricity",
+        "fold": 1,
+        "mean_spearman_predicted_vs_true_gain": 0.2655832767486572,
+        "mean_topC_overlap_fraction": 0.45402148365974426,
+        "num_eval_windows": 2061,
+        "pairwise_ranking_accuracy": 0.6027884130758155,
+        "top1_expert_accuracy": 0.36043471097946167
+      },
+      {
+        "dataset": "Electricity",
+        "fold": 2,
+        "mean_spearman_predicted_vs_true_gain": 0.3184552490711212,
+        "mean_topC_overlap_fraction": 0.47964468598365784,
+        "num_eval_windows": 2062,
+        "pairwise_ranking_accuracy": 0.6166899413441198,
+        "top1_expert_accuracy": 0.40611928701400757
+      },
+      {
+        "dataset": "Electricity",
+        "fold": 3,
+        "mean_spearman_predicted_vs_true_gain": 0.2670128345489502,
+        "mean_topC_overlap_fraction": 0.4422374963760376,
+        "num_eval_windows": 2061,
+        "pairwise_ranking_accuracy": 0.5982777954962767,
+        "top1_expert_accuracy": 0.3835035562515259
+      },
+      {
+        "dataset": "Electricity",
+        "fold": 4,
+        "mean_spearman_predicted_vs_true_gain": 0.30931705236434937,
+        "mean_topC_overlap_fraction": 0.45283085107803345,
+        "num_eval_windows": 2062,
+        "pairwise_ranking_accuracy": 0.6127653506276022,
+        "top1_expert_accuracy": 0.3844159245491028
+      }
+    ],
+    "oof_scored_windows": 8246,
+    "ranking_diagnostics_pooled": {
+      "mean_spearman_predicted_vs_true_gain": 0.2900978742353031,
+      "mean_topC_overlap_fraction": 0.4571858252819493,
+      "pairwise_ranking_accuracy": 0.6076320965210735,
+      "top1_expert_accuracy": 0.3836211951256608
+    }
+  },
+  "Weather": {
+    "capacity_per_expert": 84,
+    "dataset": "Weather",
+    "delta_ec_minus_token": -0.0002911388874053955,
+    "dependence": [
+      {
+        "block_size": 24,
+        "ci95_high": -0.00015368817548733205,
+        "ci95_low": -0.00042264306102879345,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "Weather",
+        "mean_delta": -0.0002911542251240462,
+        "prob_delta_negative": 1.0,
+        "samples": 10000,
+        "split": "router_train_oof",
+        "test": "block_len_24"
+      },
+      {
+        "ci95_high": -0.00025993643794208765,
+        "ci95_low": -0.0003243455430492759,
+        "ci_excludes_zero": true,
+        "comparison": "dynamic_ec_cf1_vs_dynamic_token_top1",
+        "dataset": "Weather",
+        "k": 12,
+        "mean_delta": -0.0002911501796916127,
+        "num_phases": 12,
+        "prob_delta_negative": 1.0,
+        "split": "router_train_oof",
+        "test": "every_12th_phase",
+        "windows_per_phase_max": 1391,
+        "windows_per_phase_min": 1390
+      }
+    ],
+    "dynamic_ec_cf1": {
+      "fallback_rate": 0.19465841352939606,
+      "mae": 0.16686952114105225,
+      "mse": 0.23986931145191193
+    },
+    "dynamic_token_top1": {
+      "fallback_rate": 0.0,
+      "mae": 0.16716066002845764,
+      "mse": 0.24049590528011322
+    },
+    "fold_ranking_rows": [
+      {
+        "dataset": "Weather",
+        "fold": 1,
+        "mean_spearman_predicted_vs_true_gain": 0.4531833231449127,
+        "mean_topC_overlap_fraction": 0.5345319509506226,
+        "num_eval_windows": 4172,
+        "pairwise_ranking_accuracy": 0.6713796816265656,
+        "top1_expert_accuracy": 0.4878973960876465
+      },
+      {
+        "dataset": "Weather",
+        "fold": 2,
+        "mean_spearman_predicted_vs_true_gain": 0.40762224793434143,
+        "mean_topC_overlap_fraction": 0.5145606994628906,
+        "num_eval_windows": 4173,
+        "pairwise_ranking_accuracy": 0.6565068714601425,
+        "top1_expert_accuracy": 0.4765993654727936
+      },
+      {
+        "dataset": "Weather",
+        "fold": 3,
+        "mean_spearman_predicted_vs_true_gain": 0.37220096588134766,
+        "mean_topC_overlap_fraction": 0.4952700436115265,
+        "num_eval_windows": 4173,
+        "pairwise_ranking_accuracy": 0.6352173268061119,
+        "top1_expert_accuracy": 0.4664110541343689
+      },
+      {
+        "dataset": "Weather",
+        "fold": 4,
+        "mean_spearman_predicted_vs_true_gain": 0.40907901525497437,
+        "mean_topC_overlap_fraction": 0.5008653402328491,
+        "num_eval_windows": 4173,
+        "pairwise_ranking_accuracy": 0.6350160454521825,
+        "top1_expert_accuracy": 0.4606379270553589
+      }
+    ],
+    "oof_scored_windows": 16691,
+    "ranking_diagnostics_pooled": {
+      "mean_spearman_predicted_vs_true_gain": 0.4105188320695258,
+      "mean_topC_overlap_fraction": 0.511305617099468,
+      "pairwise_ranking_accuracy": 0.6495286722654765,
+      "top1_expert_accuracy": 0.47288553634296104
+    }
+  }
+}
