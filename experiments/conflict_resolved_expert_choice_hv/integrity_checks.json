@@ -1,0 +1,63 @@
+{
+  "ROUTER_VAL_ACCESSED_FOR_THIS_EXPERIMENT": "NO",
+  "TEST_CACHE_LOADED": "NO",
+  "TEST_METRICS_COMPUTED": "NO",
+  "TEST_SET_ACCESSED": "NO",
+  "UNTOUCHED_CONFIRMATION_ACCESSED": "NO",
+  "all_pass": true,
+  "conflict_resolved_capacity_exact_per_dataset": {
+    "ETTh1": 28,
+    "ETTh2": 28,
+    "ETTm1": 28,
+    "Electricity": 1284,
+    "Weather": 84
+  },
+  "conflict_resolved_claim_rates_zero_and_multi_are_zero": {
+    "ETTh1": true,
+    "ETTh2": true,
+    "ETTm1": true,
+    "Electricity": true,
+    "Weather": true
+  },
+  "deferred_acceptance_verification_all_datasets": {
+    "ETTh1": {
+      "all_match": true,
+      "mismatches": 0,
+      "seed": 20260830,
+      "windows_checked": 30
+    },
+    "ETTh2": {
+      "all_match": true,
+      "mismatches": 0,
+      "seed": 20260830,
+      "windows_checked": 30
+    },
+    "ETTm1": {
+      "all_match": true,
+      "mismatches": 0,
+      "seed": 20260830,
+      "windows_checked": 30
+    },
+    "Electricity": {
+      "all_match": true,
+      "mismatches": 0,
+      "seed": 20260830,
+      "windows_checked": 30
+    },
+    "Weather": {
+      "all_match": true,
+      "mismatches": 0,
+      "seed": 20260830,
+      "windows_checked": 30
+    }
+  },
+  "oof_gate": {
+    "oof_wins": 0,
+    "pass": false,
+    "required": 3
+  },
+  "source_hash_after": "3299bcd036ac87e8d70a9ec281d713b65d0409c28fbec6ca8c29b22b56785f4b",
+  "source_hash_after_oof_stage": "3299bcd036ac87e8d70a9ec281d713b65d0409c28fbec6ca8c29b22b56785f4b",
+  "source_hash_before": "3299bcd036ac87e8d70a9ec281d713b65d0409c28fbec6ca8c29b22b56785f4b",
+  "source_unchanged_throughout": true
+}

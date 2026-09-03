@@ -1,0 +1,20 @@
+{
+  "OTHER_DATASETS_ACCESSED": "NO",
+  "ROUTER_VAL_ACCESSED": "NO",
+  "TEST_CACHE_LOADED": "NO",
+  "TEST_METRICS_COMPUTED": "NO",
+  "TEST_SET_ACCESSED": "NO",
+  "UNTOUCHED_DATA_ACCESSED": "NO",
+  "all_pass": true,
+  "checkpoint_hash_count": 3,
+  "dataset": "ETTh1",
+  "frozen_checkpoint_hashes_unchanged": true,
+  "no_test_in_roles": true,
+  "oof_causality_all_folds": true,
+  "router_train_oos_provenance_result": "PASS",
+  "source_hash_after": "a8170e411fdc0101c17e43b8fef4abb5a23d341031e06104bede026da7b0ddfc",
+  "source_hash_before": "a8170e411fdc0101c17e43b8fef4abb5a23d341031e06104bede026da7b0ddfc",
+  "source_unchanged": true,
+  "train_role": "router_train_20_60",
+  "val_role": "router_val_60_80"
+}

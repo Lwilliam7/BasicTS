@@ -1,0 +1,76 @@
+{
+  "OTHER_DATASETS_ACCESSED": false,
+  "ROUTER_VAL_ACCESSED": false,
+  "TEST_CACHE_LOADED": false,
+  "TEST_METRICS_COMPUTED": false,
+  "TEST_SET_ACCESSED": false,
+  "UNTOUCHED_DATA_ACCESSED": false,
+  "also_reported": [
+    "MSE",
+    "zero/one/two/more-than-two claim cell fractions",
+    "expert utilization vs intended capacity",
+    "delta vs matched Token Choice",
+    "delta vs current EC baseline",
+    "block-24 CI",
+    "every-12th-phase CI"
+  ],
+  "assignment_definitions": {
+    "max2": "single deterministic global greedy assignment over all (cell,expert) pairs ranked by affinity (ties -> lower cell*E+expert index), accepting a pair iff expert has remaining capacity AND cell has <2 claims so far; experts may end under capacity if the constraint binds",
+    "unrestricted": "each expert independently claims its top-C cells by affinity; no cap on claims per cell (0..E allowed)"
+  },
+  "baseline_key": "cf1.0_unrestricted_existing",
+  "best_config": "cf2.0_unrestricted_existing",
+  "capacity_formula": "C = max(1, round(CF * H*V / E))",
+  "created_at_utc": "2026-09-03T13:08:05.863596+00:00",
+  "dataset": "ETTh1",
+  "evidence_source": "router_train causal OOF ONLY. router_val is loaded (Bundle convention) but never used for any prediction, metric, or selection in this file. Test is never loaded.",
+  "experiment": "ec_variant_sweep_etth1",
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "d22dca3b8e0e6211e2df46a7f48566650ab10b37",
+    "dirty_files_count": 38,
+    "dirty_working_tree": true
+  },
+  "grid": {
+    "assignment_rules": [
+      "unrestricted",
+      "max2"
+    ],
+    "capacity_factors": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "max_claims_per_cell_for_max2": 2,
+    "predeclared_current_ec_baseline": "cf1.0_unrestricted_existing",
+    "scoring_variants": [
+      "existing",
+      "expert_relative"
+    ],
+    "total_configs": 12
+  },
+  "integrity_valid": true,
+  "kept_fixed": [
+    "frozen K=3 core PatchTST+iTransformer+TimesNet (checkpoints unchanged, hash-verified before/after)",
+    "existing router_train/router_val split and caches, unmodified",
+    "causal 4-fold OOF protocol (wdec.oof_bounds, full-horizon-observability legality rule)",
+    "scorer seed=7, AdamW lr=1e-3 wd=1e-4, max_epochs=100 patience=10 batch_size=32",
+    "residual-gain target (gain - static_gain, fit-only per fold)",
+    "claim combination rule: equal average of claiming experts + equal-ensemble zero-claim fallback (dynamic_prediction_from_claims, unmodified)"
+  ],
+  "no_tuning_after_results": "Per explicit instruction, this method (grid, capacity formula, assignment definitions, scoring definitions) is not to change after OOF results are seen, except to fix implementation bugs.",
+  "other_datasets_touched": [],
+  "primary_metric": "router_train strict chronological OOF MAE",
+  "required_comparisons_per_config": [
+    "matched_dynamic_token_choice (same scoring variant)",
+    "current_ec_baseline (cf1.0_unrestricted_existing)",
+    "frozen_dense_ensemble (equal average of the 3 frozen experts)"
+  ],
+  "runtime_sec": 8.179325819015503,
+  "scoring_definitions": {
+    "existing": "wdec.raw_to_affinity: ONE fit-only scalar (mean,std) over the whole raw-score tensor on fit windows, then softmax over experts, temperature=1.0",
+    "expert_relative": "fit-only PER-EXPERT (mean[e],std[e]) over fit windows, then softmax over experts, temperature=1.0 -- same softmax-over-experts normalization, but each expert's raw score is standardized against its own distribution first"
+  },
+  "source_sha256": "a8170e411fdc0101c17e43b8fef4abb5a23d341031e06104bede026da7b0ddfc",
+  "starting_point": "F2_local scorer (cell-local + per-variable-history features, no global-history features), identical architecture/training/seed to feature_ablation_affinity_weighted_ec.FlexibleResidualScorer with enabled_groups={'cell','local'}"
+}

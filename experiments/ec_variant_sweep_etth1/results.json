@@ -1,0 +1,573 @@
+{
+  "answers": {
+    "q1_capacity_factor": {
+      "best_beats_cf1": true,
+      "best_cf": 2.0,
+      "cf1_is_best": false,
+      "mae_by_cf_unrestricted_existing": {
+        "0.5": 0.34972673654556274,
+        "1.0": 0.35192441940307617,
+        "2.0": 0.3491500914096832
+      }
+    },
+    "q2_assignment_rule": {
+      "forced_one_expert_reference": "Conflict-Resolved Expert Choice (2026-08-30) already tested forcing exactly ONE expert per cell on this same window-dependent-EC family and lost on 0/5 datasets by 0.0012-0.0022 MAE (experiments/conflict_resolved_expert_choice_hv/report.md) -- reused as context, not recomputed here.",
+      "max2_better_majority": false,
+      "max2_minus_unrestricted_by_matched_pair": {
+        "cf0.5_existing": 0.0,
+        "cf0.5_expert_relative": 0.0,
+        "cf1.0_existing": 0.0,
+        "cf1.0_expert_relative": 0.0,
+        "cf2.0_existing": 0.0026687979698181152,
+        "cf2.0_expert_relative": -0.00161704421043396
+      },
+      "max2_wins_of_6_matched_pairs": 1
+    },
+    "q3_scoring_normalization": {
+      "expert_relative_better_majority": false,
+      "expert_relative_minus_existing_by_matched_pair": {
+        "cf0.5_max2": 0.003179997205734253,
+        "cf0.5_unrestricted": 0.003179997205734253,
+        "cf1.0_max2": 0.0042465925216674805,
+        "cf1.0_unrestricted": 0.0042465925216674805,
+        "cf2.0_max2": -0.001956939697265625,
+        "cf2.0_unrestricted": 0.00232890248298645
+      },
+      "expert_relative_wins_of_6_matched_pairs": 1
+    },
+    "q4_best_config": {
+      "best_config": "cf2.0_unrestricted_existing",
+      "best_config_is_baseline": false,
+      "best_config_mae": 0.3491500914096832,
+      "best_vs_baseline_block24": {
+        "baseline": "cf1.0_unrestricted_existing",
+        "block_size": 24,
+        "ci95_high": -0.002337795915082097,
+        "ci95_low": -0.0032273016404360533,
+        "ci_excludes_zero": true,
+        "comparison": "vs_current_ec_baseline",
+        "config": "cf2.0_unrestricted_existing",
+        "dataset": "ETTh1",
+        "mean_delta": -0.0027743466198444366,
+        "prob_delta_negative": 1.0,
+        "samples": 10000,
+        "test": "block_len_24"
+      },
+      "ranked_configs_by_oof_mae": [
+        {
+          "config": "cf2.0_unrestricted_existing",
+          "mae": 0.3491500914096832,
+          "mse": 0.26949062943458557
+        },
+        {
+          "config": "cf0.5_unrestricted_existing",
+          "mae": 0.34972673654556274,
+          "mse": 0.2703664302825928
+        },
+        {
+          "config": "cf0.5_max2_existing",
+          "mae": 0.34972673654556274,
+          "mse": 0.2703664302825928
+        },
+        {
+          "config": "cf2.0_max2_expert_relative",
+          "mae": 0.3498619496822357,
+          "mse": 0.26765933632850647
+        },
+        {
+          "config": "cf2.0_unrestricted_expert_relative",
+          "mae": 0.3514789938926697,
+          "mse": 0.27366018295288086
+        },
+        {
+          "config": "cf2.0_max2_existing",
+          "mae": 0.35181888937950134,
+          "mse": 0.2713797390460968
+        },
+        {
+          "config": "cf1.0_unrestricted_existing",
+          "mae": 0.35192441940307617,
+          "mse": 0.2732785642147064
+        },
+        {
+          "config": "cf1.0_max2_existing",
+          "mae": 0.35192441940307617,
+          "mse": 0.2732785642147064
+        },
+        {
+          "config": "cf0.5_unrestricted_expert_relative",
+          "mae": 0.352906733751297,
+          "mse": 0.2756340205669403
+        },
+        {
+          "config": "cf0.5_max2_expert_relative",
+          "mae": 0.352906733751297,
+          "mse": 0.2756340205669403
+        },
+        {
+          "config": "cf1.0_unrestricted_expert_relative",
+          "mae": 0.35617101192474365,
+          "mse": 0.28001320362091064
+        },
+        {
+          "config": "cf1.0_max2_expert_relative",
+          "mae": 0.35617101192474365,
+          "mse": 0.28001320362091064
+        }
+      ]
+    }
+  },
+  "baseline_key": "cf1.0_unrestricted_existing",
+  "configs": {
+    "cf0.5_max2_existing": {
+      "assignment": "max2",
+      "capacity_factor": 0.5,
+      "capacity_per_expert": 14,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 46.95188522338867,
+        "two_claim_cells_pct": 1.5240564346313477,
+        "zero_claim_cells_pct": 51.52405548095703
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.5152405500411987,
+      "mae": 0.34972673654556274,
+      "mse": 0.2703664302825928,
+      "scoring": "existing"
+    },
+    "cf0.5_max2_expert_relative": {
+      "assignment": "max2",
+      "capacity_factor": 0.5,
+      "capacity_per_expert": 14,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 48.05595016479492,
+        "two_claim_cells_pct": 0.9720253944396973,
+        "zero_claim_cells_pct": 50.97202682495117
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.5097202658653259,
+      "mae": 0.352906733751297,
+      "mse": 0.2756340205669403,
+      "scoring": "expert_relative"
+    },
+    "cf0.5_unrestricted_existing": {
+      "assignment": "unrestricted",
+      "capacity_factor": 0.5,
+      "capacity_per_expert": 14,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 46.95188522338867,
+        "two_claim_cells_pct": 1.5240564346313477,
+        "zero_claim_cells_pct": 51.52405548095703
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.5152405500411987,
+      "mae": 0.34972673654556274,
+      "mse": 0.2703664302825928,
+      "scoring": "existing"
+    },
+    "cf0.5_unrestricted_expert_relative": {
+      "assignment": "unrestricted",
+      "capacity_factor": 0.5,
+      "capacity_per_expert": 14,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 48.05595016479492,
+        "two_claim_cells_pct": 0.9720253944396973,
+        "zero_claim_cells_pct": 50.97202682495117
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 62104,
+          "intended_total_claims": 62104,
+          "mean_claims_per_window": 14.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.5097202658653259,
+      "mae": 0.352906733751297,
+      "mse": 0.2756340205669403,
+      "scoring": "expert_relative"
+    },
+    "cf1.0_max2_existing": {
+      "assignment": "max2",
+      "capacity_factor": 1.0,
+      "capacity_per_expert": 28,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 72.16175079345703,
+        "two_claim_cells_pct": 13.9191255569458,
+        "zero_claim_cells_pct": 13.9191255569458
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.13919125497341156,
+      "mae": 0.35192441940307617,
+      "mse": 0.2732785642147064,
+      "scoring": "existing"
+    },
+    "cf1.0_max2_expert_relative": {
+      "assignment": "max2",
+      "capacity_factor": 1.0,
+      "capacity_per_expert": 28,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 75.14276885986328,
+        "two_claim_cells_pct": 12.428614616394043,
+        "zero_claim_cells_pct": 12.428614616394043
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.12428614497184753,
+      "mae": 0.35617101192474365,
+      "mse": 0.28001320362091064,
+      "scoring": "expert_relative"
+    },
+    "cf1.0_unrestricted_existing": {
+      "assignment": "unrestricted",
+      "capacity_factor": 1.0,
+      "capacity_per_expert": 28,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 72.16175079345703,
+        "two_claim_cells_pct": 13.9191255569458,
+        "zero_claim_cells_pct": 13.9191255569458
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.13919125497341156,
+      "mae": 0.35192441940307617,
+      "mse": 0.2732785642147064,
+      "scoring": "existing"
+    },
+    "cf1.0_unrestricted_expert_relative": {
+      "assignment": "unrestricted",
+      "capacity_factor": 1.0,
+      "capacity_per_expert": 28,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 75.14276885986328,
+        "two_claim_cells_pct": 12.428614616394043,
+        "zero_claim_cells_pct": 12.428614616394043
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 124208,
+          "intended_total_claims": 124208,
+          "mean_claims_per_window": 28.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.12428614497184753,
+      "mae": 0.35617101192474365,
+      "mse": 0.28001320362091064,
+      "scoring": "expert_relative"
+    },
+    "cf2.0_max2_existing": {
+      "assignment": "max2",
+      "capacity_factor": 2.0,
+      "capacity_per_expert": 56,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 3.7971251010894775,
+        "two_claim_cells_pct": 96.20287322998047,
+        "zero_claim_cells_pct": 0.0
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 246990,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 55.67853927612305,
+          "utilization_pct": 99.42596290094036
+        },
+        "TimesNet": {
+          "actual_total_claims": 236402,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 53.29170608520508,
+          "utilization_pct": 95.16375756795054
+        },
+        "iTransformer": {
+          "actual_total_claims": 247707,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 55.840171813964844,
+          "utilization_pct": 99.71459165271158
+        }
+      },
+      "fallback_rate": 0.0,
+      "mae": 0.35181888937950134,
+      "mse": 0.2713797390460968,
+      "scoring": "existing"
+    },
+    "cf2.0_max2_expert_relative": {
+      "assignment": "max2",
+      "capacity_factor": 2.0,
+      "capacity_per_expert": 56,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 0.0,
+        "more_than_two_claim_cells_pct": 0.0,
+        "one_claim_cells_pct": 3.175318956375122,
+        "two_claim_cells_pct": 96.8246841430664,
+        "zero_claim_cells_pct": 0.0
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 240386,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 54.18981170654297,
+          "utilization_pct": 96.76751900038644
+        },
+        "TimesNet": {
+          "actual_total_claims": 247445,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 55.78110885620117,
+          "utilization_pct": 99.60912340589978
+        },
+        "iTransformer": {
+          "actual_total_claims": 245585,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 55.361812591552734,
+          "utilization_pct": 98.86037936364808
+        }
+      },
+      "fallback_rate": 0.0,
+      "mae": 0.3498619496822357,
+      "mse": 0.26765933632850647,
+      "scoring": "expert_relative"
+    },
+    "cf2.0_unrestricted_existing": {
+      "assignment": "unrestricted",
+      "capacity_factor": 2.0,
+      "capacity_per_expert": 56,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 19.604480743408203,
+        "more_than_two_claim_cells_pct": 19.604480743408203,
+        "one_claim_cells_pct": 19.604480743408203,
+        "two_claim_cells_pct": 60.791038513183594,
+        "zero_claim_cells_pct": 0.0
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 248416,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 56.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 248416,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 56.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 248416,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 56.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.0,
+      "mae": 0.3491500914096832,
+      "mse": 0.26949062943458557,
+      "scoring": "existing"
+    },
+    "cf2.0_unrestricted_expert_relative": {
+      "assignment": "unrestricted",
+      "capacity_factor": 2.0,
+      "capacity_per_expert": 56,
+      "claim_distribution_pct": {
+        "claim_cells_3_pct": 20.765974044799805,
+        "more_than_two_claim_cells_pct": 20.765974044799805,
+        "one_claim_cells_pct": 20.765974044799805,
+        "two_claim_cells_pct": 58.468055725097656,
+        "zero_claim_cells_pct": 0.0
+      },
+      "expert_utilization": {
+        "PatchTST": {
+          "actual_total_claims": 248416,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 56.0,
+          "utilization_pct": 100.0
+        },
+        "TimesNet": {
+          "actual_total_claims": 248416,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 56.0,
+          "utilization_pct": 100.0
+        },
+        "iTransformer": {
+          "actual_total_claims": 248416,
+          "intended_total_claims": 248416,
+          "mean_claims_per_window": 56.0,
+          "utilization_pct": 100.0
+        }
+      },
+      "fallback_rate": 0.0,
+      "mae": 0.3514789938926697,
+      "mse": 0.27366018295288086,
+      "scoring": "expert_relative"
+    }
+  },
+  "dataset": "ETTh1",
+  "frozen_dense_ensemble": {
+    "mae": 0.3455910086631775,
+    "mse": 0.26082080602645874
+  },
+  "oof_scored_windows": 4436,
+  "token_choice": {
+    "existing": {
+      "fallback_rate": 0.0,
+      "mae": 0.35149145126342773,
+      "mse": 0.2730373740196228
+    },
+    "expert_relative": {
+      "fallback_rate": 0.0,
+      "mae": 0.36053934693336487,
+      "mse": 0.28501394391059875
+    }
+  }
+}

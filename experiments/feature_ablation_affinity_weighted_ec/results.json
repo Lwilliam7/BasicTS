@@ -1,0 +1,1890 @@
+{
+  "best_variant_by_mean_oof_mae_among_F0_F1_F2_F3": "F2_local",
+  "datasets": {
+    "ETTh1": {
+      "results": {
+        "F0_anchor": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 30.33171844482422,
+          "fallback_rate": 0.0982142835855484,
+          "fold_logs": [
+            {
+              "best_epoch": 6,
+              "best_internal_val_mse": 0.02540089376270771,
+              "calibration_mean": -0.018986715718046835,
+              "calibration_std": 0.02094207731485682,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 16,
+              "best_internal_val_mse": 0.035628288984298706,
+              "calibration_mean": -0.017224447239728068,
+              "calibration_std": 0.021188437019136058,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 9,
+              "best_internal_val_mse": 0.02223687618970871,
+              "calibration_mean": -0.023307135289845366,
+              "calibration_std": 0.03168627945134789,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 6,
+              "best_internal_val_mse": 0.03158693388104439,
+              "calibration_mean": -0.021316816517644346,
+              "calibration_std": 0.026208288249656847,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.3601852357387543,
+          "mse": 0.28123101592063904,
+          "reused_from": null
+        },
+        "F1_cell": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 47.06782031059265,
+          "fallback_rate": 0.14094369113445282,
+          "fold_logs": [
+            {
+              "best_epoch": 12,
+              "best_internal_val_mse": 0.02449333854019642,
+              "calibration_mean": -0.01651535195748114,
+              "calibration_std": 0.04395733638711065,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 9,
+              "best_internal_val_mse": 0.03051067888736725,
+              "calibration_mean": -0.020483135102316006,
+              "calibration_std": 0.048142193759919474,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 20,
+              "best_internal_val_mse": 0.020716670900583267,
+              "calibration_mean": -0.025144291746623942,
+              "calibration_std": 0.06484108938410213,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 31,
+              "best_internal_val_mse": 0.026460828259587288,
+              "calibration_mean": -0.024971447971154102,
+              "calibration_std": 0.07975378105365974,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.3530915379524231,
+          "mse": 0.27422037720680237,
+          "reused_from": null
+        },
+        "F2_local": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 32.78690242767334,
+          "fallback_rate": 0.13919125497341156,
+          "fold_logs": [
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.024137023836374283,
+              "calibration_mean": -0.0166754782107965,
+              "calibration_std": 0.043591210545142985,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.03262545168399811,
+              "calibration_mean": -0.021554485882189247,
+              "calibration_std": 0.04374717164811434,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 15,
+              "best_internal_val_mse": 0.020170725882053375,
+              "calibration_mean": -0.016838393908351547,
+              "calibration_std": 0.07822401489497972,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 11,
+              "best_internal_val_mse": 0.02604704722762108,
+              "calibration_mean": -0.026696395002456862,
+              "calibration_std": 0.08097646797919654,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.3518036901950836,
+          "mse": 0.2731108069419861,
+          "reused_from": null
+        },
+        "F3_full": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 31.235223293304443,
+          "fallback_rate": 0.1389443576335907,
+          "fold_logs": [
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.024398114532232285,
+              "calibration_mean": -0.020783756334708147,
+              "calibration_std": 0.049199764129548545,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 5,
+              "best_internal_val_mse": 0.03156083822250366,
+              "calibration_mean": -0.018383010233131256,
+              "calibration_std": 0.0504683684507188,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 17,
+              "best_internal_val_mse": 0.020410243421792984,
+              "calibration_mean": -0.023401354554056928,
+              "calibration_std": 0.08223888896624103,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 11,
+              "best_internal_val_mse": 0.026791760697960854,
+              "calibration_mean": -0.02917973463321744,
+              "calibration_std": 0.08306737687350878,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.3513239324092865,
+          "mse": 0.2716006636619568,
+          "reused_from": null
+        },
+        "Full_NoCell": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 23.575189113616943,
+          "fallback_rate": 0.11722809076309204,
+          "fold_logs": [
+            {
+              "best_epoch": 18,
+              "best_internal_val_mse": 0.025130953639745712,
+              "calibration_mean": -0.018476494595786354,
+              "calibration_std": 0.036482769376724095,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.03426067903637886,
+              "calibration_mean": -0.016445751599341724,
+              "calibration_std": 0.033166778464720846,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 1,
+              "best_internal_val_mse": 0.022904880344867706,
+              "calibration_mean": -0.018479393308789078,
+              "calibration_std": 0.045500145186835136,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.031001899391412735,
+              "calibration_mean": -0.022003747018440017,
+              "calibration_std": 0.040882588842543005,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.3604225218296051,
+          "mse": 0.2816758453845978,
+          "reused_from": null
+        },
+        "Full_NoGlobal": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 32.78690242767334,
+          "fallback_rate": 0.13919125497341156,
+          "fold_logs": [
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.024137023836374283,
+              "calibration_mean": -0.0166754782107965,
+              "calibration_std": 0.043591210545142985,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.03262545168399811,
+              "calibration_mean": -0.021554485882189247,
+              "calibration_std": 0.04374717164811434,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 15,
+              "best_internal_val_mse": 0.020170725882053375,
+              "calibration_mean": -0.016838393908351547,
+              "calibration_std": 0.07822401489497972,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 11,
+              "best_internal_val_mse": 0.02604704722762108,
+              "calibration_mean": -0.026696395002456862,
+              "calibration_std": 0.08097646797919654,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.3518036901950836,
+          "mse": 0.2731108069419861,
+          "reused_from": "F2_local"
+        },
+        "Full_NoPerVariable": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh1",
+          "elapsed_sec": 37.56475567817688,
+          "fallback_rate": 0.1351040154695511,
+          "fold_logs": [
+            {
+              "best_epoch": 33,
+              "best_internal_val_mse": 0.023457329720258713,
+              "calibration_mean": -0.018354390286425014,
+              "calibration_std": 0.0737899646456492,
+              "eval_hi": 2219,
+              "eval_lo": 1110,
+              "fold": 1,
+              "legal_fit_windows": 1099
+            },
+            {
+              "best_epoch": 5,
+              "best_internal_val_mse": 0.030454512685537338,
+              "calibration_mean": -0.020458576122416416,
+              "calibration_std": 0.04210261631453508,
+              "eval_hi": 3328,
+              "eval_lo": 2219,
+              "fold": 2,
+              "legal_fit_windows": 2208
+            },
+            {
+              "best_epoch": 19,
+              "best_internal_val_mse": 0.020054392516613007,
+              "calibration_mean": -0.020773814691175615,
+              "calibration_std": 0.07198210426834542,
+              "eval_hi": 4437,
+              "eval_lo": 3328,
+              "fold": 3,
+              "legal_fit_windows": 3317
+            },
+            {
+              "best_epoch": 11,
+              "best_internal_val_mse": 0.026864053681492805,
+              "calibration_mean": -0.015524085489730428,
+              "calibration_std": 0.0756344229729496,
+              "eval_hi": 5546,
+              "eval_lo": 4437,
+              "fold": 4,
+              "legal_fit_windows": 4426
+            }
+          ],
+          "mae": 0.35430681705474854,
+          "mse": 0.2755383551120758,
+          "reused_from": null
+        }
+      }
+    },
+    "ETTh2": {
+      "results": {
+        "F0_anchor": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 14.313422203063965,
+          "fallback_rate": 0.1637013554573059,
+          "fold_logs": [
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.018984152004122734,
+              "calibration_mean": -0.01771043512798358,
+              "calibration_std": 0.08224588227402518,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 7,
+              "best_internal_val_mse": 0.012770800851285458,
+              "calibration_mean": -0.014313783493240148,
+              "calibration_std": 0.055819387165258076,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 16,
+              "best_internal_val_mse": 0.02319062314927578,
+              "calibration_mean": -0.015120954023529073,
+              "calibration_std": 0.05324731791616904,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 18,
+              "best_internal_val_mse": 0.009827529080212116,
+              "calibration_mean": -0.014179290937756868,
+              "calibration_std": 0.04194899274045068,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.2887175977230072,
+          "mse": 0.1909729391336441,
+          "reused_from": null
+        },
+        "F1_cell": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 18.209760665893555,
+          "fallback_rate": 0.15418189764022827,
+          "fold_logs": [
+            {
+              "best_epoch": 20,
+              "best_internal_val_mse": 0.01792406477034092,
+              "calibration_mean": -0.015109046853402842,
+              "calibration_std": 0.08429267227761965,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 51,
+              "best_internal_val_mse": 0.012233956716954708,
+              "calibration_mean": -0.01455987486329991,
+              "calibration_std": 0.06872292141995388,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.023635711520910263,
+              "calibration_mean": -0.01810240916356891,
+              "calibration_std": 0.06951686060728253,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 28,
+              "best_internal_val_mse": 0.007426249794661999,
+              "calibration_mean": -0.012568579167938522,
+              "calibration_std": 0.05719908602879623,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.2860132157802582,
+          "mse": 0.1871965527534485,
+          "reused_from": null
+        },
+        "F2_local": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 13.535551071166992,
+          "fallback_rate": 0.15262310206890106,
+          "fold_logs": [
+            {
+              "best_epoch": 19,
+              "best_internal_val_mse": 0.01759920082986355,
+              "calibration_mean": -0.020536103328940663,
+              "calibration_std": 0.08513431254188174,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 23,
+              "best_internal_val_mse": 0.012097383849322796,
+              "calibration_mean": -0.017109811257632924,
+              "calibration_std": 0.0726998622402226,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.023770110681653023,
+              "calibration_mean": -0.014992026466676118,
+              "calibration_std": 0.06813520553462034,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.007824273779988289,
+              "calibration_mean": -0.016554776455955357,
+              "calibration_std": 0.060072174429301725,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.284353643655777,
+          "mse": 0.18476049602031708,
+          "reused_from": null
+        },
+        "F3_full": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 9.883572816848755,
+          "fallback_rate": 0.15968476235866547,
+          "fold_logs": [
+            {
+              "best_epoch": 19,
+              "best_internal_val_mse": 0.017692971974611282,
+              "calibration_mean": -0.01868491295004304,
+              "calibration_std": 0.08614967558093195,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 6,
+              "best_internal_val_mse": 0.012710723094642162,
+              "calibration_mean": -0.014348483420985709,
+              "calibration_std": 0.0651900657580743,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 7,
+              "best_internal_val_mse": 0.023569975048303604,
+              "calibration_mean": -0.017194737011725466,
+              "calibration_std": 0.06915394872396727,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.00873618945479393,
+              "calibration_mean": -0.0147619050890169,
+              "calibration_std": 0.06265446021653884,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.2861317992210388,
+          "mse": 0.18651676177978516,
+          "reused_from": null
+        },
+        "Full_NoCell": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 14.204313278198242,
+          "fallback_rate": 0.15496490895748138,
+          "fold_logs": [
+            {
+              "best_epoch": 20,
+              "best_internal_val_mse": 0.01838460937142372,
+              "calibration_mean": -0.014984314230477327,
+              "calibration_std": 0.0837833794865064,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.01319419126957655,
+              "calibration_mean": -0.021247934813004313,
+              "calibration_std": 0.06032029844171578,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 16,
+              "best_internal_val_mse": 0.023427020758390427,
+              "calibration_mean": -0.012291795036950314,
+              "calibration_std": 0.059099943532997676,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 17,
+              "best_internal_val_mse": 0.00909471046179533,
+              "calibration_mean": -0.012688078899156565,
+              "calibration_std": 0.05481103584920271,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.2897437810897827,
+          "mse": 0.19111038744449615,
+          "reused_from": null
+        },
+        "Full_NoGlobal": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 13.535551071166992,
+          "fallback_rate": 0.15262310206890106,
+          "fold_logs": [
+            {
+              "best_epoch": 19,
+              "best_internal_val_mse": 0.01759920082986355,
+              "calibration_mean": -0.020536103328940663,
+              "calibration_std": 0.08513431254188174,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 23,
+              "best_internal_val_mse": 0.012097383849322796,
+              "calibration_mean": -0.017109811257632924,
+              "calibration_std": 0.0726998622402226,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.023770110681653023,
+              "calibration_mean": -0.014992026466676118,
+              "calibration_std": 0.06813520553462034,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.007824273779988289,
+              "calibration_mean": -0.016554776455955357,
+              "calibration_std": 0.060072174429301725,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.284353643655777,
+          "mse": 0.18476049602031708,
+          "reused_from": "F2_local"
+        },
+        "Full_NoPerVariable": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTh2",
+          "elapsed_sec": 12.871756792068481,
+          "fallback_rate": 0.16222232580184937,
+          "fold_logs": [
+            {
+              "best_epoch": 20,
+              "best_internal_val_mse": 0.01768972910940647,
+              "calibration_mean": -0.01789354635052412,
+              "calibration_std": 0.08423709850737002,
+              "eval_hi": 821,
+              "eval_lo": 411,
+              "fold": 1,
+              "legal_fit_windows": 400
+            },
+            {
+              "best_epoch": 13,
+              "best_internal_val_mse": 0.012398040853440762,
+              "calibration_mean": -0.014162291004425485,
+              "calibration_std": 0.06723955075463386,
+              "eval_hi": 1232,
+              "eval_lo": 821,
+              "fold": 2,
+              "legal_fit_windows": 810
+            },
+            {
+              "best_epoch": 22,
+              "best_internal_val_mse": 0.02243497222661972,
+              "calibration_mean": -0.018882784421850506,
+              "calibration_std": 0.06651448899124093,
+              "eval_hi": 1642,
+              "eval_lo": 1232,
+              "fold": 3,
+              "legal_fit_windows": 1221
+            },
+            {
+              "best_epoch": 7,
+              "best_internal_val_mse": 0.008636930957436562,
+              "calibration_mean": -0.01322203682900005,
+              "calibration_std": 0.05271872641123679,
+              "eval_hi": 2053,
+              "eval_lo": 1642,
+              "fold": 4,
+              "legal_fit_windows": 1631
+            }
+          ],
+          "mae": 0.2862214148044586,
+          "mse": 0.1835288107395172,
+          "reused_from": null
+        }
+      }
+    },
+    "ETTm1": {
+      "results": {
+        "F0_anchor": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 108.45456194877625,
+          "fallback_rate": 0.1041666641831398,
+          "fold_logs": [
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.011522204615175724,
+              "calibration_mean": -0.012965393191460327,
+              "calibration_std": 0.020995469684843223,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 10,
+              "best_internal_val_mse": 0.0274850744754076,
+              "calibration_mean": -0.01750242378468448,
+              "calibration_std": 0.018493778166243702,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 11,
+              "best_internal_val_mse": 0.017303258180618286,
+              "calibration_mean": -0.02048951899759852,
+              "calibration_std": 0.023563876804289435,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.020283866673707962,
+              "calibration_mean": -0.02055227568399416,
+              "calibration_std": 0.024193727427891942,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.26199743151664734,
+          "mse": 0.16921305656433105,
+          "reused_from": null
+        },
+        "F1_cell": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 146.54461526870728,
+          "fallback_rate": 0.15714547038078308,
+          "fold_logs": [
+            {
+              "best_epoch": 52,
+              "best_internal_val_mse": 0.009921773336827755,
+              "calibration_mean": -0.014049048166028944,
+              "calibration_std": 0.06926003193459129,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 24,
+              "best_internal_val_mse": 0.022834347561001778,
+              "calibration_mean": -0.013192511698948675,
+              "calibration_std": 0.05572659424310183,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 7,
+              "best_internal_val_mse": 0.016256889328360558,
+              "calibration_mean": -0.019377374927489737,
+              "calibration_std": 0.0777304376440616,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.01727147214114666,
+              "calibration_mean": -0.01832262414951883,
+              "calibration_std": 0.07274992030337217,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.2556109130382538,
+          "mse": 0.16300399601459503,
+          "reused_from": null
+        },
+        "F2_local": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 107.79255080223083,
+          "fallback_rate": 0.15626531839370728,
+          "fold_logs": [
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.010289729572832584,
+              "calibration_mean": -0.014437903196523065,
+              "calibration_std": 0.06919436411893189,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.021213699132204056,
+              "calibration_mean": -0.01424681614084751,
+              "calibration_std": 0.07331095723851187,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.015659552067518234,
+              "calibration_mean": -0.021768580991097006,
+              "calibration_std": 0.07447122270585672,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.01668374612927437,
+              "calibration_mean": -0.020545277466533254,
+              "calibration_std": 0.08242582639927261,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.25368112325668335,
+          "mse": 0.16046242415905,
+          "reused_from": null
+        },
+        "F3_full": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 102.2658634185791,
+          "fallback_rate": 0.15220949053764343,
+          "fold_logs": [
+            {
+              "best_epoch": 5,
+              "best_internal_val_mse": 0.010283511132001877,
+              "calibration_mean": -0.01713748537480578,
+              "calibration_std": 0.06286980304940956,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.02031588926911354,
+              "calibration_mean": -0.01930735210036652,
+              "calibration_std": 0.07558522442173132,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 6,
+              "best_internal_val_mse": 0.01644766516983509,
+              "calibration_mean": -0.013673439048819217,
+              "calibration_std": 0.08232258766062861,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.01656404323875904,
+              "calibration_mean": -0.02024941635171005,
+              "calibration_std": 0.08662763881842177,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.25476330518722534,
+          "mse": 0.16106970608234406,
+          "reused_from": null
+        },
+        "Full_NoCell": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 71.66679501533508,
+          "fallback_rate": 0.1244627833366394,
+          "fold_logs": [
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.011372944340109825,
+              "calibration_mean": -0.016833106737008025,
+              "calibration_std": 0.03722498258888902,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.023928463459014893,
+              "calibration_mean": -0.010133930762134289,
+              "calibration_std": 0.048706934037292024,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 1,
+              "best_internal_val_mse": 0.01993168704211712,
+              "calibration_mean": -0.021212586705868678,
+              "calibration_std": 0.05731585649593994,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 1,
+              "best_internal_val_mse": 0.019958002492785454,
+              "calibration_mean": -0.02386074341110176,
+              "calibration_std": 0.04272618310736748,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.25599199533462524,
+          "mse": 0.15836243331432343,
+          "reused_from": null
+        },
+        "Full_NoGlobal": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 107.79255080223083,
+          "fallback_rate": 0.15626531839370728,
+          "fold_logs": [
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.010289729572832584,
+              "calibration_mean": -0.014437903196523065,
+              "calibration_std": 0.06919436411893189,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.021213699132204056,
+              "calibration_mean": -0.01424681614084751,
+              "calibration_std": 0.07331095723851187,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.015659552067518234,
+              "calibration_mean": -0.021768580991097006,
+              "calibration_std": 0.07447122270585672,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.01668374612927437,
+              "calibration_mean": -0.020545277466533254,
+              "calibration_std": 0.08242582639927261,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.25368112325668335,
+          "mse": 0.16046242415905,
+          "reused_from": "F2_local"
+        },
+        "Full_NoPerVariable": {
+          "capacity_per_expert": 28,
+          "dataset": "ETTm1",
+          "elapsed_sec": 146.5985131263733,
+          "fallback_rate": 0.1610885113477707,
+          "fold_logs": [
+            {
+              "best_epoch": 18,
+              "best_internal_val_mse": 0.010129909962415695,
+              "calibration_mean": -0.013036244304647423,
+              "calibration_std": 0.06842050372892443,
+              "eval_hi": 9131,
+              "eval_lo": 4566,
+              "fold": 1,
+              "legal_fit_windows": 4555
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.020015794783830643,
+              "calibration_mean": -0.016251066262620607,
+              "calibration_std": 0.07219626984174864,
+              "eval_hi": 13696,
+              "eval_lo": 9131,
+              "fold": 2,
+              "legal_fit_windows": 9120
+            },
+            {
+              "best_epoch": 7,
+              "best_internal_val_mse": 0.016109079122543335,
+              "calibration_mean": -0.014629811505474466,
+              "calibration_std": 0.08152751963181389,
+              "eval_hi": 18261,
+              "eval_lo": 13696,
+              "fold": 3,
+              "legal_fit_windows": 13685
+            },
+            {
+              "best_epoch": 21,
+              "best_internal_val_mse": 0.01680486835539341,
+              "calibration_mean": -0.017366907866052387,
+              "calibration_std": 0.08083849439278654,
+              "eval_hi": 22826,
+              "eval_lo": 18261,
+              "fold": 4,
+              "legal_fit_windows": 18250
+            }
+          ],
+          "mae": 0.25395625829696655,
+          "mse": 0.15783119201660156,
+          "reused_from": null
+        }
+      }
+    },
+    "Electricity": {
+      "results": {
+        "F0_anchor": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 156.5562720298767,
+          "fallback_rate": 0.11740728467702866,
+          "fold_logs": [
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.01756080612540245,
+              "calibration_mean": -0.020377449481768697,
+              "calibration_std": 0.04743414369075268,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 4,
+              "best_internal_val_mse": 0.024012872949242592,
+              "calibration_mean": -0.022859448094061256,
+              "calibration_std": 0.04835278460193394,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.016527052968740463,
+              "calibration_mean": -0.021819586654057154,
+              "calibration_std": 0.045441532616049225,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 1,
+              "best_internal_val_mse": 0.018371839076280594,
+              "calibration_mean": -0.02013698604743277,
+              "calibration_std": 0.039302498791391034,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.243443101644516,
+          "mse": 0.14348767697811127,
+          "reused_from": null
+        },
+        "F1_cell": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 487.14420914649963,
+          "fallback_rate": 0.19805675745010376,
+          "fold_logs": [
+            {
+              "best_epoch": 45,
+              "best_internal_val_mse": 0.01435245480388403,
+              "calibration_mean": -0.021856526309147726,
+              "calibration_std": 0.07874971404996647,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 93,
+              "best_internal_val_mse": 0.01865811087191105,
+              "calibration_mean": -0.022725449617670056,
+              "calibration_std": 0.08495556795582869,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 18,
+              "best_internal_val_mse": 0.01497756876051426,
+              "calibration_mean": -0.022991469633297998,
+              "calibration_std": 0.07545999209992638,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 24,
+              "best_internal_val_mse": 0.015173614956438541,
+              "calibration_mean": -0.02136866711915454,
+              "calibration_std": 0.07456189820789826,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.2325650304555893,
+          "mse": 0.13480587303638458,
+          "reused_from": null
+        },
+        "F2_local": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 824.3892204761505,
+          "fallback_rate": 0.21038463711738586,
+          "fold_logs": [
+            {
+              "best_epoch": 61,
+              "best_internal_val_mse": 0.014315563254058361,
+              "calibration_mean": -0.022744761758216724,
+              "calibration_std": 0.08573183460290573,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 99,
+              "best_internal_val_mse": 0.016533175483345985,
+              "calibration_mean": -0.022856748670823525,
+              "calibration_std": 0.09501833276862966,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 52,
+              "best_internal_val_mse": 0.013210308738052845,
+              "calibration_mean": -0.02218432909868227,
+              "calibration_std": 0.08378144139483377,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 69,
+              "best_internal_val_mse": 0.014116160571575165,
+              "calibration_mean": -0.02261182629652922,
+              "calibration_std": 0.08560609209973347,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.2279050350189209,
+          "mse": 0.12873394787311554,
+          "reused_from": null
+        },
+        "F3_full": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 3.170124053955078,
+          "fallback_rate": 0.2063397318124771,
+          "fold_logs": [
+            {
+              "best_epoch": 8,
+              "best_internal_val_mse": 0.01524482574313879,
+              "calibration_mean": -0.01915885299829384,
+              "calibration_std": 0.07401401028688506,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 50,
+              "best_internal_val_mse": 0.016806676983833313,
+              "calibration_mean": -0.025332882870413735,
+              "calibration_std": 0.09302277401515543,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 37,
+              "best_internal_val_mse": 0.01325351744890213,
+              "calibration_mean": -0.015728948071396867,
+              "calibration_std": 0.08541106372001075,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 54,
+              "best_internal_val_mse": 0.014423631131649017,
+              "calibration_mean": -0.023166533227825453,
+              "calibration_std": 0.0856383832803963,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.22906078398227692,
+          "mse": 0.1293317973613739,
+          "reused_from": null
+        },
+        "Full_NoCell": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 329.93334436416626,
+          "fallback_rate": 0.13665220141410828,
+          "fold_logs": [
+            {
+              "best_epoch": 25,
+              "best_internal_val_mse": 0.01722569949924946,
+              "calibration_mean": -0.021900853366816898,
+              "calibration_std": 0.05061094851607767,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 29,
+              "best_internal_val_mse": 0.022451341152191162,
+              "calibration_mean": -0.022941784554235137,
+              "calibration_std": 0.059604947928318136,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 3,
+              "best_internal_val_mse": 0.016351871192455292,
+              "calibration_mean": -0.021580439618887556,
+              "calibration_std": 0.0478384869087475,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 18,
+              "best_internal_val_mse": 0.018047558143734932,
+              "calibration_mean": -0.019714173297407853,
+              "calibration_std": 0.049323323669103344,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.2433222085237503,
+          "mse": 0.14135780930519104,
+          "reused_from": null
+        },
+        "Full_NoGlobal": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 824.3892204761505,
+          "fallback_rate": 0.21038463711738586,
+          "fold_logs": [
+            {
+              "best_epoch": 61,
+              "best_internal_val_mse": 0.014315563254058361,
+              "calibration_mean": -0.022744761758216724,
+              "calibration_std": 0.08573183460290573,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 99,
+              "best_internal_val_mse": 0.016533175483345985,
+              "calibration_mean": -0.022856748670823525,
+              "calibration_std": 0.09501833276862966,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 52,
+              "best_internal_val_mse": 0.013210308738052845,
+              "calibration_mean": -0.02218432909868227,
+              "calibration_std": 0.08378144139483377,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 69,
+              "best_internal_val_mse": 0.014116160571575165,
+              "calibration_mean": -0.02261182629652922,
+              "calibration_std": 0.08560609209973347,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.2279050350189209,
+          "mse": 0.12873394787311554,
+          "reused_from": "F2_local"
+        },
+        "Full_NoPerVariable": {
+          "capacity_per_expert": 1284,
+          "dataset": "Electricity",
+          "elapsed_sec": 858.3218705654144,
+          "fallback_rate": 0.19839613139629364,
+          "fold_logs": [
+            {
+              "best_epoch": 10,
+              "best_internal_val_mse": 0.015242747962474823,
+              "calibration_mean": -0.021379508384487884,
+              "calibration_std": 0.07131333476077366,
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 1,
+              "legal_fit_windows": 2051
+            },
+            {
+              "best_epoch": 78,
+              "best_internal_val_mse": 0.01742188073694706,
+              "calibration_mean": -0.025082743936629834,
+              "calibration_std": 0.08907329113028781,
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 2,
+              "legal_fit_windows": 4112
+            },
+            {
+              "best_epoch": 90,
+              "best_internal_val_mse": 0.013705532066524029,
+              "calibration_mean": -0.021683283713320043,
+              "calibration_std": 0.07985198977527416,
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 3,
+              "legal_fit_windows": 6174
+            },
+            {
+              "best_epoch": 54,
+              "best_internal_val_mse": 0.015375044196844101,
+              "calibration_mean": -0.02087232673980267,
+              "calibration_std": 0.08166654188851905,
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 4,
+              "legal_fit_windows": 8235
+            }
+          ],
+          "mae": 0.23234891891479492,
+          "mse": 0.1333659291267395,
+          "reused_from": null
+        }
+      }
+    },
+    "Weather": {
+      "results": {
+        "F0_anchor": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 118.97719168663025,
+          "fallback_rate": 0.11706195026636124,
+          "fold_logs": [
+            {
+              "best_epoch": 32,
+              "best_internal_val_mse": 0.014662597328424454,
+              "calibration_mean": -0.01967966640919383,
+              "calibration_std": 0.02790260431142828,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 7,
+              "best_internal_val_mse": 0.015690885484218597,
+              "calibration_mean": -0.021675189995847024,
+              "calibration_std": 0.029904367638060623,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 2,
+              "best_internal_val_mse": 0.01775381527841091,
+              "calibration_mean": -0.0201259626912707,
+              "calibration_std": 0.030580408115472475,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 12,
+              "best_internal_val_mse": 0.020015109330415726,
+              "calibration_mean": -0.019020688608867763,
+              "calibration_std": 0.02526070046912148,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.1853097379207611,
+          "mse": 0.25849464535713196,
+          "reused_from": null
+        },
+        "F1_cell": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 309.0602626800537,
+          "fallback_rate": 0.17825284600257874,
+          "fold_logs": [
+            {
+              "best_epoch": 35,
+              "best_internal_val_mse": 0.009955205023288727,
+              "calibration_mean": -0.0191859757855265,
+              "calibration_std": 0.0652126697059129,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 28,
+              "best_internal_val_mse": 0.012724277563393116,
+              "calibration_mean": -0.019798431920232486,
+              "calibration_std": 0.07192247894518004,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 38,
+              "best_internal_val_mse": 0.01174367219209671,
+              "calibration_mean": -0.02015446908819476,
+              "calibration_std": 0.07231397977884539,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 58,
+              "best_internal_val_mse": 0.011617491953074932,
+              "calibration_mean": -0.016793311978808498,
+              "calibration_std": 0.08292402387207855,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.17418456077575684,
+          "mse": 0.24441145360469818,
+          "reused_from": null
+        },
+        "F2_local": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 215.03545832633972,
+          "fallback_rate": 0.18896982073783875,
+          "fold_logs": [
+            {
+              "best_epoch": 41,
+              "best_internal_val_mse": 0.00706383166834712,
+              "calibration_mean": -0.021460553886739658,
+              "calibration_std": 0.08093531682826313,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 48,
+              "best_internal_val_mse": 0.011081202886998653,
+              "calibration_mean": -0.017070991190065738,
+              "calibration_std": 0.08361697878914169,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 22,
+              "best_internal_val_mse": 0.01088231336325407,
+              "calibration_mean": -0.018971114810870476,
+              "calibration_std": 0.08539182147591368,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 16,
+              "best_internal_val_mse": 0.010743718594312668,
+              "calibration_mean": -0.01969703416202841,
+              "calibration_std": 0.08476970259919735,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.16630399227142334,
+          "mse": 0.23990826308727264,
+          "reused_from": null
+        },
+        "F3_full": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 184.26618885993958,
+          "fallback_rate": 0.19465841352939606,
+          "fold_logs": [
+            {
+              "best_epoch": 31,
+              "best_internal_val_mse": 0.0073600709438323975,
+              "calibration_mean": -0.021165375720125116,
+              "calibration_std": 0.08095533172194548,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 22,
+              "best_internal_val_mse": 0.011417651548981667,
+              "calibration_mean": -0.017511908674696142,
+              "calibration_std": 0.08739217697047595,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 22,
+              "best_internal_val_mse": 0.011073649860918522,
+              "calibration_mean": -0.021330302191819174,
+              "calibration_std": 0.08497334035874529,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 14,
+              "best_internal_val_mse": 0.011146671138703823,
+              "calibration_mean": -0.01807571079755372,
+              "calibration_std": 0.08994358322292163,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.16678237915039062,
+          "mse": 0.23984917998313904,
+          "reused_from": null
+        },
+        "Full_NoCell": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 108.60894703865051,
+          "fallback_rate": 0.12508760392665863,
+          "fold_logs": [
+            {
+              "best_epoch": 21,
+              "best_internal_val_mse": 0.011828528717160225,
+              "calibration_mean": -0.02657742607419834,
+              "calibration_std": 0.06477684559863171,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 3,
+              "best_internal_val_mse": 0.014679519459605217,
+              "calibration_mean": -0.019681381031243533,
+              "calibration_std": 0.05521716575690971,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 1,
+              "best_internal_val_mse": 0.017602717503905296,
+              "calibration_mean": -0.018663333674905743,
+              "calibration_std": 0.04965692712283055,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 13,
+              "best_internal_val_mse": 0.017096880823373795,
+              "calibration_mean": -0.016186302444267647,
+              "calibration_std": 0.060007695866269826,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.18046419322490692,
+          "mse": 0.24869979918003082,
+          "reused_from": null
+        },
+        "Full_NoGlobal": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 215.03545832633972,
+          "fallback_rate": 0.18896982073783875,
+          "fold_logs": [
+            {
+              "best_epoch": 41,
+              "best_internal_val_mse": 0.00706383166834712,
+              "calibration_mean": -0.021460553886739658,
+              "calibration_std": 0.08093531682826313,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 48,
+              "best_internal_val_mse": 0.011081202886998653,
+              "calibration_mean": -0.017070991190065738,
+              "calibration_std": 0.08361697878914169,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 22,
+              "best_internal_val_mse": 0.01088231336325407,
+              "calibration_mean": -0.018971114810870476,
+              "calibration_std": 0.08539182147591368,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 16,
+              "best_internal_val_mse": 0.010743718594312668,
+              "calibration_mean": -0.01969703416202841,
+              "calibration_std": 0.08476970259919735,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.16630399227142334,
+          "mse": 0.23990826308727264,
+          "reused_from": "F2_local"
+        },
+        "Full_NoPerVariable": {
+          "capacity_per_expert": 84,
+          "dataset": "Weather",
+          "elapsed_sec": 173.93814969062805,
+          "fallback_rate": 0.18471911549568176,
+          "fold_logs": [
+            {
+              "best_epoch": 26,
+              "best_internal_val_mse": 0.008969996124505997,
+              "calibration_mean": -0.019415702558338698,
+              "calibration_std": 0.07568763544363209,
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 1,
+              "legal_fit_windows": 4162
+            },
+            {
+              "best_epoch": 9,
+              "best_internal_val_mse": 0.012101813219487667,
+              "calibration_mean": -0.014471781860942307,
+              "calibration_std": 0.07621062761853485,
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 2,
+              "legal_fit_windows": 8334
+            },
+            {
+              "best_epoch": 24,
+              "best_internal_val_mse": 0.011655519716441631,
+              "calibration_mean": -0.01715013368351408,
+              "calibration_std": 0.08078953273287837,
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 3,
+              "legal_fit_windows": 12507
+            },
+            {
+              "best_epoch": 22,
+              "best_internal_val_mse": 0.012024923227727413,
+              "calibration_mean": -0.01802966160453021,
+              "calibration_std": 0.08536696816290781,
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 4,
+              "legal_fit_windows": 16680
+            }
+          ],
+          "mae": 0.17209486663341522,
+          "mse": 0.2425941377878189,
+          "reused_from": null
+        }
+      }
+    }
+  },
+  "group_classifications": {
+    "cell": {
+      "add_block24_support_datasets": 5,
+      "add_deltas_mae": {
+        "ETTh1": -0.007093697786331177,
+        "ETTh2": -0.0027043819427490234,
+        "ETTm1": -0.006386518478393555,
+        "Electricity": -0.010878071188926697,
+        "Weather": -0.011125177145004272
+      },
+      "add_pass_ge_3": true,
+      "add_wins_of_5": 5,
+      "group": "cell",
+      "independent_add_remove_evidence": true,
+      "label": "MIXED",
+      "note": null,
+      "remove_block24_support_datasets": 0,
+      "remove_deltas_mae": {
+        "ETTh1": -0.009098589420318604,
+        "ETTh2": -0.0036119818687438965,
+        "ETTm1": -0.0012286901473999023,
+        "Electricity": -0.014261424541473389,
+        "Weather": -0.013681814074516296
+      },
+      "remove_hurts_of_5": 0,
+      "remove_pass_ge_3": false
+    },
+    "global": {
+      "add_block24_support_datasets": 0,
+      "add_deltas_mae": {
+        "ETTh1": -0.00047975778579711914,
+        "ETTh2": 0.0017781555652618408,
+        "ETTm1": 0.0010821819305419922,
+        "Electricity": 0.001155748963356018,
+        "Weather": 0.00047838687896728516
+      },
+      "add_pass_ge_3": false,
+      "add_wins_of_5": 1,
+      "group": "global",
+      "independent_add_remove_evidence": false,
+      "label": "MIXED",
+      "note": "add and remove tests for this group are the SAME comparison (F3_full vs F2_local); only one independent piece of evidence exists.",
+      "remove_block24_support_datasets": 4,
+      "remove_deltas_mae": {
+        "ETTh1": -0.00047975778579711914,
+        "ETTh2": 0.0017781555652618408,
+        "ETTm1": 0.0010821819305419922,
+        "Electricity": 0.001155748963356018,
+        "Weather": 0.00047838687896728516
+      },
+      "remove_hurts_of_5": 4,
+      "remove_pass_ge_3": true
+    },
+    "local": {
+      "add_block24_support_datasets": 4,
+      "add_deltas_mae": {
+        "ETTh1": -0.0012878477573394775,
+        "ETTh2": -0.0016595721244812012,
+        "ETTm1": -0.0019297897815704346,
+        "Electricity": -0.004659995436668396,
+        "Weather": -0.007880568504333496
+      },
+      "add_pass_ge_3": true,
+      "add_wins_of_5": 5,
+      "group": "local",
+      "independent_add_remove_evidence": true,
+      "label": "MIXED",
+      "note": null,
+      "remove_block24_support_datasets": 0,
+      "remove_deltas_mae": {
+        "ETTh1": -0.002982884645462036,
+        "ETTh2": -8.96155834197998e-05,
+        "ETTm1": 0.0008070468902587891,
+        "Electricity": -0.0032881349325180054,
+        "Weather": -0.005312487483024597
+      },
+      "remove_hurts_of_5": 1,
+      "remove_pass_ge_3": false
+    }
+  }
+}

@@ -1,5 +1,21 @@
 # Research Decisions
 
+## Window-Dependent Expert-Choice Family: Keep the Core Result, Reject Two Follow-Up Mechanisms, Keep Embeddings
+
+Status: Tested 2026-08-30 through 2026-08-31 (OOF-only for the two ablations below).
+
+Evidence: `experiments/window_dependent_expert_choice_hv/`, `experiments/affinity_weighted_expert_choice_hv/`, `experiments/conflict_resolved_expert_choice_hv/`, `experiments/feature_ablation_affinity_weighted_ec/`, `experiments/embedding_ablation_affinity_weighted_ec/`, and the five matching `project_memory/experiments/2026-08-3*_*.md` records.
+
+Decisions:
+
+1. `WINDOW_DEPENDENT_EC_SUPPORTED` is real but fragile (two of six predeclared criteria clear the bar at the exact minimum, 3/5). Keep it as the current best Expert-Choice mechanism, but do not oversell it — Dynamic EC still loses to Frozen HxV on 0/5 datasets, and ETTh2 loses on both OOF and val.
+2. Do NOT replace the equal-average multi-claim rule with affinity-weighted combination: the effect is real by the predeclared rule but ~100x smaller than the window-dependent effect itself (practically negligible). An oracle diagnostic shows real headroom in combining multi-claim forecasts better exists, but simple affinity-renormalization does not capture it — if this is revisited, it needs a genuinely smarter combination rule, not a variant of affinity weighting.
+3. Do NOT pursue conflict-resolved (exactly-one-expert-per-cell) assignment: it lost to affinity-weighted EC OOF MAE on 0/5 datasets, uniformly. Multi-claim cells are providing real ensembling value; removing that redundancy costs more than it gains.
+4. Prefer `F2_local` (cell-local + per-variable features, no global-history features) over the current full model `F3_full` for this scorer family — it wins OOF MAE on 4/5 datasets. None of the three feature groups (cell/local/global) reached a clean `SUPPORTED` bar in the leave-one-group-out ablation; global in particular has only one independent piece of evidence (its add-test and remove-test are mathematically the same comparison).
+5. Keep all three identity embeddings (H, V, Expert) — all three are `SUPPORTED` in the embedding ablation (V and Expert unanimous 5/5), including confirming V adds real information beyond the `static_gain[h,v,e]` scalar and that the shared (not per-expert) scorer needs the Expert embedding to distinguish heterogeneous experts.
+
+None of these five experiments touched `router_val` except the original `window_dependent_expert_choice_hv` run (once) and its direct reuse in `affinity_weighted_expert_choice_hv`/the passed-gate half of `conflict_resolved_expert_choice_hv`; the two ablations are router_train-OOF-only by design and were never extended to router_val.
+
 ## Static Expert-Choice HxV Routing Is Mixed, Not Ready For Learned Router Integration
 
 Status: Tested validation-only on 2026-08-30

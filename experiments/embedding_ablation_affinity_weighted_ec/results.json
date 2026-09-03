@@ -1,0 +1,1111 @@
+{
+  "Expert_diagnostic_note": "The scorer is SHARED across all K=3 experts (one set of weights, not one network per expert). The expert embedding is the only per-expert-identity signal available to that shared network (besides static_gain, which already varies by expert). E_noExpert tests whether the shared scorer can still distinguish heterogeneous experts' residual competence without a learned expert identity vector.",
+  "Expert_embedding": {
+    "block24_support_datasets": 3,
+    "embedding": "Expert",
+    "hurts_on_n_of_5": 5,
+    "label": "SUPPORTED",
+    "positive_aggregate_evidence": true,
+    "removal_deltas_mae": {
+      "ETTh1": 0.0002084672451019287,
+      "ETTh2": 0.001912921667098999,
+      "ETTm1": 0.0008506476879119873,
+      "Electricity": 0.0005752593278884888,
+      "Weather": 0.00021563470363616943
+    },
+    "sum_delta_mae_positive_means_net_hurt": 0.0037629306316375732
+  },
+  "H_embedding": {
+    "block24_support_datasets": 3,
+    "embedding": "H",
+    "hurts_on_n_of_5": 4,
+    "label": "SUPPORTED",
+    "positive_aggregate_evidence": true,
+    "removal_deltas_mae": {
+      "ETTh1": -0.0013110339641571045,
+      "ETTh2": 0.00038561224937438965,
+      "ETTm1": 0.0018320977687835693,
+      "Electricity": 0.000886082649230957,
+      "Weather": 0.0014527291059494019
+    },
+    "sum_delta_mae_positive_means_net_hurt": 0.0032454878091812134
+  },
+  "V_diagnostic_note": "F0_anchor (from the feature-ablation experiment) already includes static_gain[h,v,e] as an explicit scalar input alongside the V embedding for every variant here (feature groups are held fixed at the selected variant, embeddings are the only thing ablated in this experiment). The V-embedding removal test above (E_noV vs E_full, same static_gain scalar present in both) isolates whether the LEARNED variable identity vector adds anything beyond what static_gain[h,v,e] already encodes numerically.",
+  "V_embedding": {
+    "block24_support_datasets": 3,
+    "embedding": "V",
+    "hurts_on_n_of_5": 5,
+    "label": "SUPPORTED",
+    "positive_aggregate_evidence": true,
+    "removal_deltas_mae": {
+      "ETTh1": 0.0011027157306671143,
+      "ETTh2": 0.000587165355682373,
+      "ETTm1": 0.0015835165977478027,
+      "Electricity": 0.0013450086116790771,
+      "Weather": 0.0011927485466003418
+    },
+    "sum_delta_mae_positive_means_net_hurt": 0.005811154842376709
+  },
+  "datasets": {
+    "ETTh1": {
+      "E_full": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh1",
+        "elapsed_sec": 35.7851836681366,
+        "fallback_rate": 0.13919125497341156,
+        "fold_logs": [
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.024137023836374283,
+            "eval_hi": 2219,
+            "eval_lo": 1110,
+            "fold": 1,
+            "legal_fit_windows": 1099
+          },
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.03262545168399811,
+            "eval_hi": 3328,
+            "eval_lo": 2219,
+            "fold": 2,
+            "legal_fit_windows": 2208
+          },
+          {
+            "best_epoch": 15,
+            "best_internal_val_mse": 0.020170725882053375,
+            "eval_hi": 4437,
+            "eval_lo": 3328,
+            "fold": 3,
+            "legal_fit_windows": 3317
+          },
+          {
+            "best_epoch": 11,
+            "best_internal_val_mse": 0.02604704722762108,
+            "eval_hi": 5546,
+            "eval_lo": 4437,
+            "fold": 4,
+            "legal_fit_windows": 4426
+          }
+        ],
+        "mae": 0.3518036901950836,
+        "mse": 0.2731108069419861
+      },
+      "E_noExpert": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh1",
+        "elapsed_sec": 38.911725997924805,
+        "fallback_rate": 0.15329930186271667,
+        "fold_logs": [
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.024237673729658127,
+            "eval_hi": 2219,
+            "eval_lo": 1110,
+            "fold": 1,
+            "legal_fit_windows": 1099
+          },
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.03262633830308914,
+            "eval_hi": 3328,
+            "eval_lo": 2219,
+            "fold": 2,
+            "legal_fit_windows": 2208
+          },
+          {
+            "best_epoch": 11,
+            "best_internal_val_mse": 0.020291274413466454,
+            "eval_hi": 4437,
+            "eval_lo": 3328,
+            "fold": 3,
+            "legal_fit_windows": 3317
+          },
+          {
+            "best_epoch": 17,
+            "best_internal_val_mse": 0.0255699772387743,
+            "eval_hi": 5546,
+            "eval_lo": 4437,
+            "fold": 4,
+            "legal_fit_windows": 4426
+          }
+        ],
+        "mae": 0.35201215744018555,
+        "mse": 0.2735549807548523
+      },
+      "E_noH": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh1",
+        "elapsed_sec": 33.77419924736023,
+        "fallback_rate": 0.13766156136989594,
+        "fold_logs": [
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.02401713840663433,
+            "eval_hi": 2219,
+            "eval_lo": 1110,
+            "fold": 1,
+            "legal_fit_windows": 1099
+          },
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.03243107348680496,
+            "eval_hi": 3328,
+            "eval_lo": 2219,
+            "fold": 2,
+            "legal_fit_windows": 2208
+          },
+          {
+            "best_epoch": 17,
+            "best_internal_val_mse": 0.020223107188940048,
+            "eval_hi": 4437,
+            "eval_lo": 3328,
+            "fold": 3,
+            "legal_fit_windows": 3317
+          },
+          {
+            "best_epoch": 11,
+            "best_internal_val_mse": 0.02653936669230461,
+            "eval_hi": 5546,
+            "eval_lo": 4437,
+            "fold": 4,
+            "legal_fit_windows": 4426
+          }
+        ],
+        "mae": 0.3504926562309265,
+        "mse": 0.2720537781715393
+      },
+      "E_noV": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh1",
+        "elapsed_sec": 43.102561950683594,
+        "fallback_rate": 0.1387135535478592,
+        "fold_logs": [
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.02387704886496067,
+            "eval_hi": 2219,
+            "eval_lo": 1110,
+            "fold": 1,
+            "legal_fit_windows": 1099
+          },
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.03314405679702759,
+            "eval_hi": 3328,
+            "eval_lo": 2219,
+            "fold": 2,
+            "legal_fit_windows": 2208
+          },
+          {
+            "best_epoch": 23,
+            "best_internal_val_mse": 0.020143961533904076,
+            "eval_hi": 4437,
+            "eval_lo": 3328,
+            "fold": 3,
+            "legal_fit_windows": 3317
+          },
+          {
+            "best_epoch": 17,
+            "best_internal_val_mse": 0.026291634887456894,
+            "eval_hi": 5546,
+            "eval_lo": 4437,
+            "fold": 4,
+            "legal_fit_windows": 4426
+          }
+        ],
+        "mae": 0.35290640592575073,
+        "mse": 0.2746797502040863
+      },
+      "E_none": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh1",
+        "elapsed_sec": 39.03562903404236,
+        "fallback_rate": 0.15289406478405,
+        "fold_logs": [
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.0238112173974514,
+            "eval_hi": 2219,
+            "eval_lo": 1110,
+            "fold": 1,
+            "legal_fit_windows": 1099
+          },
+          {
+            "best_epoch": 2,
+            "best_internal_val_mse": 0.033441945910453796,
+            "eval_hi": 3328,
+            "eval_lo": 2219,
+            "fold": 2,
+            "legal_fit_windows": 2208
+          },
+          {
+            "best_epoch": 11,
+            "best_internal_val_mse": 0.02048543468117714,
+            "eval_hi": 4437,
+            "eval_lo": 3328,
+            "fold": 3,
+            "legal_fit_windows": 3317
+          },
+          {
+            "best_epoch": 22,
+            "best_internal_val_mse": 0.02565436251461506,
+            "eval_hi": 5546,
+            "eval_lo": 4437,
+            "fold": 4,
+            "legal_fit_windows": 4426
+          }
+        ],
+        "mae": 0.3536829948425293,
+        "mse": 0.2758813202381134
+      }
+    },
+    "ETTh2": {
+      "E_full": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh2",
+        "elapsed_sec": 15.941817045211792,
+        "fallback_rate": 0.15262310206890106,
+        "fold_logs": [
+          {
+            "best_epoch": 19,
+            "best_internal_val_mse": 0.01759920082986355,
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 1,
+            "legal_fit_windows": 400
+          },
+          {
+            "best_epoch": 23,
+            "best_internal_val_mse": 0.012097383849322796,
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 2,
+            "legal_fit_windows": 810
+          },
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.023770110681653023,
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 3,
+            "legal_fit_windows": 1221
+          },
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.007824273779988289,
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 4,
+            "legal_fit_windows": 1631
+          }
+        ],
+        "mae": 0.284353643655777,
+        "mse": 0.18476049602031708
+      },
+      "E_noExpert": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh2",
+        "elapsed_sec": 13.065851211547852,
+        "fallback_rate": 0.17628037929534912,
+        "fold_logs": [
+          {
+            "best_epoch": 19,
+            "best_internal_val_mse": 0.01738295517861843,
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 1,
+            "legal_fit_windows": 400
+          },
+          {
+            "best_epoch": 10,
+            "best_internal_val_mse": 0.012333679012954235,
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 2,
+            "legal_fit_windows": 810
+          },
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.023630153387784958,
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 3,
+            "legal_fit_windows": 1221
+          },
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.007690539117902517,
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 4,
+            "legal_fit_windows": 1631
+          }
+        ],
+        "mae": 0.286266565322876,
+        "mse": 0.18843507766723633
+      },
+      "E_noH": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh2",
+        "elapsed_sec": 20.471432209014893,
+        "fallback_rate": 0.14888203144073486,
+        "fold_logs": [
+          {
+            "best_epoch": 38,
+            "best_internal_val_mse": 0.017425812780857086,
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 1,
+            "legal_fit_windows": 400
+          },
+          {
+            "best_epoch": 22,
+            "best_internal_val_mse": 0.012132617644965649,
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 2,
+            "legal_fit_windows": 810
+          },
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.02378302626311779,
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 3,
+            "legal_fit_windows": 1221
+          },
+          {
+            "best_epoch": 28,
+            "best_internal_val_mse": 0.00770465936511755,
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 4,
+            "legal_fit_windows": 1631
+          }
+        ],
+        "mae": 0.28473925590515137,
+        "mse": 0.18568406999111176
+      },
+      "E_noV": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh2",
+        "elapsed_sec": 13.807652711868286,
+        "fallback_rate": 0.1567484438419342,
+        "fold_logs": [
+          {
+            "best_epoch": 30,
+            "best_internal_val_mse": 0.017744826152920723,
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 1,
+            "legal_fit_windows": 400
+          },
+          {
+            "best_epoch": 9,
+            "best_internal_val_mse": 0.01228625699877739,
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 2,
+            "legal_fit_windows": 810
+          },
+          {
+            "best_epoch": 7,
+            "best_internal_val_mse": 0.023477859795093536,
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 3,
+            "legal_fit_windows": 1221
+          },
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.007760921958833933,
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 4,
+            "legal_fit_windows": 1631
+          }
+        ],
+        "mae": 0.28494080901145935,
+        "mse": 0.18437644839286804
+      },
+      "E_none": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTh2",
+        "elapsed_sec": 15.188574075698853,
+        "fallback_rate": 0.18158750236034393,
+        "fold_logs": [
+          {
+            "best_epoch": 19,
+            "best_internal_val_mse": 0.01749487780034542,
+            "eval_hi": 821,
+            "eval_lo": 411,
+            "fold": 1,
+            "legal_fit_windows": 400
+          },
+          {
+            "best_epoch": 10,
+            "best_internal_val_mse": 0.012235937640070915,
+            "eval_hi": 1232,
+            "eval_lo": 821,
+            "fold": 2,
+            "legal_fit_windows": 810
+          },
+          {
+            "best_epoch": 7,
+            "best_internal_val_mse": 0.02382737398147583,
+            "eval_hi": 1642,
+            "eval_lo": 1232,
+            "fold": 3,
+            "legal_fit_windows": 1221
+          },
+          {
+            "best_epoch": 26,
+            "best_internal_val_mse": 0.007651505526155233,
+            "eval_hi": 2053,
+            "eval_lo": 1642,
+            "fold": 4,
+            "legal_fit_windows": 1631
+          }
+        ],
+        "mae": 0.28567183017730713,
+        "mse": 0.18512125313282013
+      }
+    },
+    "ETTm1": {
+      "E_full": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTm1",
+        "elapsed_sec": 131.10439014434814,
+        "fallback_rate": 0.15626531839370728,
+        "fold_logs": [
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.010289729572832584,
+            "eval_hi": 9131,
+            "eval_lo": 4566,
+            "fold": 1,
+            "legal_fit_windows": 4555
+          },
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.021213699132204056,
+            "eval_hi": 13696,
+            "eval_lo": 9131,
+            "fold": 2,
+            "legal_fit_windows": 9120
+          },
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.015659552067518234,
+            "eval_hi": 18261,
+            "eval_lo": 13696,
+            "fold": 3,
+            "legal_fit_windows": 13685
+          },
+          {
+            "best_epoch": 8,
+            "best_internal_val_mse": 0.01668374612927437,
+            "eval_hi": 22826,
+            "eval_lo": 18261,
+            "fold": 4,
+            "legal_fit_windows": 18250
+          }
+        ],
+        "mae": 0.25368112325668335,
+        "mse": 0.16046242415905
+      },
+      "E_noExpert": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTm1",
+        "elapsed_sec": 129.01431107521057,
+        "fallback_rate": 0.17464664578437805,
+        "fold_logs": [
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.010182380676269531,
+            "eval_hi": 9131,
+            "eval_lo": 4566,
+            "fold": 1,
+            "legal_fit_windows": 4555
+          },
+          {
+            "best_epoch": 24,
+            "best_internal_val_mse": 0.022410999983549118,
+            "eval_hi": 13696,
+            "eval_lo": 9131,
+            "fold": 2,
+            "legal_fit_windows": 9120
+          },
+          {
+            "best_epoch": 4,
+            "best_internal_val_mse": 0.01570487581193447,
+            "eval_hi": 18261,
+            "eval_lo": 13696,
+            "fold": 3,
+            "legal_fit_windows": 13685
+          },
+          {
+            "best_epoch": 8,
+            "best_internal_val_mse": 0.016771867871284485,
+            "eval_hi": 22826,
+            "eval_lo": 18261,
+            "fold": 4,
+            "legal_fit_windows": 18250
+          }
+        ],
+        "mae": 0.25453177094459534,
+        "mse": 0.16169442236423492
+      },
+      "E_noH": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTm1",
+        "elapsed_sec": 131.8137583732605,
+        "fallback_rate": 0.14975160360336304,
+        "fold_logs": [
+          {
+            "best_epoch": 5,
+            "best_internal_val_mse": 0.010369985364377499,
+            "eval_hi": 9131,
+            "eval_lo": 4566,
+            "fold": 1,
+            "legal_fit_windows": 4555
+          },
+          {
+            "best_epoch": 24,
+            "best_internal_val_mse": 0.018018826842308044,
+            "eval_hi": 13696,
+            "eval_lo": 9131,
+            "fold": 2,
+            "legal_fit_windows": 9120
+          },
+          {
+            "best_epoch": 1,
+            "best_internal_val_mse": 0.016142509877681732,
+            "eval_hi": 18261,
+            "eval_lo": 13696,
+            "fold": 3,
+            "legal_fit_windows": 13685
+          },
+          {
+            "best_epoch": 8,
+            "best_internal_val_mse": 0.01692057214677334,
+            "eval_hi": 22826,
+            "eval_lo": 18261,
+            "fold": 4,
+            "legal_fit_windows": 18250
+          }
+        ],
+        "mae": 0.2555132210254669,
+        "mse": 0.1626364290714264
+      },
+      "E_noV": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTm1",
+        "elapsed_sec": 135.54603576660156,
+        "fallback_rate": 0.15853869915008545,
+        "fold_logs": [
+          {
+            "best_epoch": 5,
+            "best_internal_val_mse": 0.010123105719685555,
+            "eval_hi": 9131,
+            "eval_lo": 4566,
+            "fold": 1,
+            "legal_fit_windows": 4555
+          },
+          {
+            "best_epoch": 21,
+            "best_internal_val_mse": 0.0182624701410532,
+            "eval_hi": 13696,
+            "eval_lo": 9131,
+            "fold": 2,
+            "legal_fit_windows": 9120
+          },
+          {
+            "best_epoch": 6,
+            "best_internal_val_mse": 0.01605359837412834,
+            "eval_hi": 18261,
+            "eval_lo": 13696,
+            "fold": 3,
+            "legal_fit_windows": 13685
+          },
+          {
+            "best_epoch": 8,
+            "best_internal_val_mse": 0.01698487065732479,
+            "eval_hi": 22826,
+            "eval_lo": 18261,
+            "fold": 4,
+            "legal_fit_windows": 18250
+          }
+        ],
+        "mae": 0.25526463985443115,
+        "mse": 0.1635953187942505
+      },
+      "E_none": {
+        "capacity_per_expert": 28,
+        "dataset": "ETTm1",
+        "elapsed_sec": 115.85187339782715,
+        "fallback_rate": 0.17919665575027466,
+        "fold_logs": [
+          {
+            "best_epoch": 7,
+            "best_internal_val_mse": 0.010138380341231823,
+            "eval_hi": 9131,
+            "eval_lo": 4566,
+            "fold": 1,
+            "legal_fit_windows": 4555
+          },
+          {
+            "best_epoch": 21,
+            "best_internal_val_mse": 0.019627591595053673,
+            "eval_hi": 13696,
+            "eval_lo": 9131,
+            "fold": 2,
+            "legal_fit_windows": 9120
+          },
+          {
+            "best_epoch": 6,
+            "best_internal_val_mse": 0.015914935618638992,
+            "eval_hi": 18261,
+            "eval_lo": 13696,
+            "fold": 3,
+            "legal_fit_windows": 13685
+          },
+          {
+            "best_epoch": 9,
+            "best_internal_val_mse": 0.016813235357403755,
+            "eval_hi": 22826,
+            "eval_lo": 18261,
+            "fold": 4,
+            "legal_fit_windows": 18250
+          }
+        ],
+        "mae": 0.2537493109703064,
+        "mse": 0.16191479563713074
+      }
+    },
+    "Electricity": {
+      "E_full": {
+        "capacity_per_expert": 1284,
+        "dataset": "Electricity",
+        "elapsed_sec": 864.2102982997894,
+        "fallback_rate": 0.21038463711738586,
+        "fold_logs": [
+          {
+            "best_epoch": 61,
+            "best_internal_val_mse": 0.014315563254058361,
+            "eval_hi": 4123,
+            "eval_lo": 2062,
+            "fold": 1,
+            "legal_fit_windows": 2051
+          },
+          {
+            "best_epoch": 99,
+            "best_internal_val_mse": 0.016533175483345985,
+            "eval_hi": 6185,
+            "eval_lo": 4123,
+            "fold": 2,
+            "legal_fit_windows": 4112
+          },
+          {
+            "best_epoch": 52,
+            "best_internal_val_mse": 0.013210308738052845,
+            "eval_hi": 8246,
+            "eval_lo": 6185,
+            "fold": 3,
+            "legal_fit_windows": 6174
+          },
+          {
+            "best_epoch": 69,
+            "best_internal_val_mse": 0.014116160571575165,
+            "eval_hi": 10308,
+            "eval_lo": 8246,
+            "fold": 4,
+            "legal_fit_windows": 8235
+          }
+        ],
+        "mae": 0.2279050350189209,
+        "mse": 0.12873394787311554
+      },
+      "E_noExpert": {
+        "capacity_per_expert": 1284,
+        "dataset": "Electricity",
+        "elapsed_sec": 642.9006414413452,
+        "fallback_rate": 0.2113986611366272,
+        "fold_logs": [
+          {
+            "best_epoch": 80,
+            "best_internal_val_mse": 0.014049024321138859,
+            "eval_hi": 4123,
+            "eval_lo": 2062,
+            "fold": 1,
+            "legal_fit_windows": 2051
+          },
+          {
+            "best_epoch": 48,
+            "best_internal_val_mse": 0.016712935641407967,
+            "eval_hi": 6185,
+            "eval_lo": 4123,
+            "fold": 2,
+            "legal_fit_windows": 4112
+          },
+          {
+            "best_epoch": 52,
+            "best_internal_val_mse": 0.013371553272008896,
+            "eval_hi": 8246,
+            "eval_lo": 6185,
+            "fold": 3,
+            "legal_fit_windows": 6174
+          },
+          {
+            "best_epoch": 37,
+            "best_internal_val_mse": 0.014222159050405025,
+            "eval_hi": 10308,
+            "eval_lo": 8246,
+            "fold": 4,
+            "legal_fit_windows": 8235
+          }
+        ],
+        "mae": 0.2284802943468094,
+        "mse": 0.1296006441116333
+      },
+      "E_noH": {
+        "capacity_per_expert": 1284,
+        "dataset": "Electricity",
+        "elapsed_sec": 600.5653860569,
+        "fallback_rate": 0.21150243282318115,
+        "fold_logs": [
+          {
+            "best_epoch": 51,
+            "best_internal_val_mse": 0.014390275813639164,
+            "eval_hi": 4123,
+            "eval_lo": 2062,
+            "fold": 1,
+            "legal_fit_windows": 2051
+          },
+          {
+            "best_epoch": 48,
+            "best_internal_val_mse": 0.01694599911570549,
+            "eval_hi": 6185,
+            "eval_lo": 4123,
+            "fold": 2,
+            "legal_fit_windows": 4112
+          },
+          {
+            "best_epoch": 52,
+            "best_internal_val_mse": 0.013329215347766876,
+            "eval_hi": 8246,
+            "eval_lo": 6185,
+            "fold": 3,
+            "legal_fit_windows": 6174
+          },
+          {
+            "best_epoch": 34,
+            "best_internal_val_mse": 0.014322164468467236,
+            "eval_hi": 10308,
+            "eval_lo": 8246,
+            "fold": 4,
+            "legal_fit_windows": 8235
+          }
+        ],
+        "mae": 0.22879111766815186,
+        "mse": 0.12990255653858185
+      },
+      "E_noV": {
+        "capacity_per_expert": 1284,
+        "dataset": "Electricity",
+        "elapsed_sec": 744.1753115653992,
+        "fallback_rate": 0.1994509994983673,
+        "fold_logs": [
+          {
+            "best_epoch": 94,
+            "best_internal_val_mse": 0.01418457180261612,
+            "eval_hi": 4123,
+            "eval_lo": 2062,
+            "fold": 1,
+            "legal_fit_windows": 2051
+          },
+          {
+            "best_epoch": 44,
+            "best_internal_val_mse": 0.01741834543645382,
+            "eval_hi": 6185,
+            "eval_lo": 4123,
+            "fold": 2,
+            "legal_fit_windows": 4112
+          },
+          {
+            "best_epoch": 52,
+            "best_internal_val_mse": 0.013550498522818089,
+            "eval_hi": 8246,
+            "eval_lo": 6185,
+            "fold": 3,
+            "legal_fit_windows": 6174
+          },
+          {
+            "best_epoch": 59,
+            "best_internal_val_mse": 0.014489575289189816,
+            "eval_hi": 10308,
+            "eval_lo": 8246,
+            "fold": 4,
+            "legal_fit_windows": 8235
+          }
+        ],
+        "mae": 0.22925004363059998,
+        "mse": 0.13099882006645203
+      },
+      "E_none": {
+        "capacity_per_expert": 1284,
+        "dataset": "Electricity",
+        "elapsed_sec": 589.3986394405365,
+        "fallback_rate": 0.20154644548892975,
+        "fold_logs": [
+          {
+            "best_epoch": 73,
+            "best_internal_val_mse": 0.014274044893682003,
+            "eval_hi": 4123,
+            "eval_lo": 2062,
+            "fold": 1,
+            "legal_fit_windows": 2051
+          },
+          {
+            "best_epoch": 44,
+            "best_internal_val_mse": 0.01755511201918125,
+            "eval_hi": 6185,
+            "eval_lo": 4123,
+            "fold": 2,
+            "legal_fit_windows": 4112
+          },
+          {
+            "best_epoch": 32,
+            "best_internal_val_mse": 0.014162030071020126,
+            "eval_hi": 8246,
+            "eval_lo": 6185,
+            "fold": 3,
+            "legal_fit_windows": 6174
+          },
+          {
+            "best_epoch": 51,
+            "best_internal_val_mse": 0.014629552140831947,
+            "eval_hi": 10308,
+            "eval_lo": 8246,
+            "fold": 4,
+            "legal_fit_windows": 8235
+          }
+        ],
+        "mae": 0.22982938587665558,
+        "mse": 0.13167785108089447
+      }
+    },
+    "Weather": {
+      "E_full": {
+        "capacity_per_expert": 84,
+        "dataset": "Weather",
+        "elapsed_sec": 225.51990509033203,
+        "fallback_rate": 0.18896982073783875,
+        "fold_logs": [
+          {
+            "best_epoch": 41,
+            "best_internal_val_mse": 0.00706383166834712,
+            "eval_hi": 8345,
+            "eval_lo": 4173,
+            "fold": 1,
+            "legal_fit_windows": 4162
+          },
+          {
+            "best_epoch": 48,
+            "best_internal_val_mse": 0.011081202886998653,
+            "eval_hi": 12518,
+            "eval_lo": 8345,
+            "fold": 2,
+            "legal_fit_windows": 8334
+          },
+          {
+            "best_epoch": 22,
+            "best_internal_val_mse": 0.01088231336325407,
+            "eval_hi": 16691,
+            "eval_lo": 12518,
+            "fold": 3,
+            "legal_fit_windows": 12507
+          },
+          {
+            "best_epoch": 16,
+            "best_internal_val_mse": 0.010743718594312668,
+            "eval_hi": 20864,
+            "eval_lo": 16691,
+            "fold": 4,
+            "legal_fit_windows": 16680
+          }
+        ],
+        "mae": 0.16630399227142334,
+        "mse": 0.23990826308727264
+      },
+      "E_noExpert": {
+        "capacity_per_expert": 84,
+        "dataset": "Weather",
+        "elapsed_sec": 171.2866039276123,
+        "fallback_rate": 0.19658394157886505,
+        "fold_logs": [
+          {
+            "best_epoch": 28,
+            "best_internal_val_mse": 0.007281912956386805,
+            "eval_hi": 8345,
+            "eval_lo": 4173,
+            "fold": 1,
+            "legal_fit_windows": 4162
+          },
+          {
+            "best_epoch": 46,
+            "best_internal_val_mse": 0.011075452901422977,
+            "eval_hi": 12518,
+            "eval_lo": 8345,
+            "fold": 2,
+            "legal_fit_windows": 8334
+          },
+          {
+            "best_epoch": 7,
+            "best_internal_val_mse": 0.010917517356574535,
+            "eval_hi": 16691,
+            "eval_lo": 12518,
+            "fold": 3,
+            "legal_fit_windows": 12507
+          },
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.010513946413993835,
+            "eval_hi": 20864,
+            "eval_lo": 16691,
+            "fold": 4,
+            "legal_fit_windows": 16680
+          }
+        ],
+        "mae": 0.1665196269750595,
+        "mse": 0.24044258892536163
+      },
+      "E_noH": {
+        "capacity_per_expert": 84,
+        "dataset": "Weather",
+        "elapsed_sec": 208.03957319259644,
+        "fallback_rate": 0.18778012692928314,
+        "fold_logs": [
+          {
+            "best_epoch": 39,
+            "best_internal_val_mse": 0.0075280205346643925,
+            "eval_hi": 8345,
+            "eval_lo": 4173,
+            "fold": 1,
+            "legal_fit_windows": 4162
+          },
+          {
+            "best_epoch": 47,
+            "best_internal_val_mse": 0.01140078529715538,
+            "eval_hi": 12518,
+            "eval_lo": 8345,
+            "fold": 2,
+            "legal_fit_windows": 8334
+          },
+          {
+            "best_epoch": 22,
+            "best_internal_val_mse": 0.010941327549517155,
+            "eval_hi": 16691,
+            "eval_lo": 12518,
+            "fold": 3,
+            "legal_fit_windows": 12507
+          },
+          {
+            "best_epoch": 17,
+            "best_internal_val_mse": 0.01066574826836586,
+            "eval_hi": 20864,
+            "eval_lo": 16691,
+            "fold": 4,
+            "legal_fit_windows": 16680
+          }
+        ],
+        "mae": 0.16775672137737274,
+        "mse": 0.2401001900434494
+      },
+      "E_noV": {
+        "capacity_per_expert": 84,
+        "dataset": "Weather",
+        "elapsed_sec": 165.73100876808167,
+        "fallback_rate": 0.1835472583770752,
+        "fold_logs": [
+          {
+            "best_epoch": 29,
+            "best_internal_val_mse": 0.0073298015631735325,
+            "eval_hi": 8345,
+            "eval_lo": 4173,
+            "fold": 1,
+            "legal_fit_windows": 4162
+          },
+          {
+            "best_epoch": 33,
+            "best_internal_val_mse": 0.011216191574931145,
+            "eval_hi": 12518,
+            "eval_lo": 8345,
+            "fold": 2,
+            "legal_fit_windows": 8334
+          },
+          {
+            "best_epoch": 8,
+            "best_internal_val_mse": 0.011704339645802975,
+            "eval_hi": 16691,
+            "eval_lo": 12518,
+            "fold": 3,
+            "legal_fit_windows": 12507
+          },
+          {
+            "best_epoch": 14,
+            "best_internal_val_mse": 0.010754006914794445,
+            "eval_hi": 20864,
+            "eval_lo": 16691,
+            "fold": 4,
+            "legal_fit_windows": 16680
+          }
+        ],
+        "mae": 0.16749674081802368,
+        "mse": 0.24114568531513214
+      },
+      "E_none": {
+        "capacity_per_expert": 84,
+        "dataset": "Weather",
+        "elapsed_sec": 177.0763704776764,
+        "fallback_rate": 0.1933579295873642,
+        "fold_logs": [
+          {
+            "best_epoch": 29,
+            "best_internal_val_mse": 0.007911333814263344,
+            "eval_hi": 8345,
+            "eval_lo": 4173,
+            "fold": 1,
+            "legal_fit_windows": 4162
+          },
+          {
+            "best_epoch": 41,
+            "best_internal_val_mse": 0.011613519862294197,
+            "eval_hi": 12518,
+            "eval_lo": 8345,
+            "fold": 2,
+            "legal_fit_windows": 8334
+          },
+          {
+            "best_epoch": 16,
+            "best_internal_val_mse": 0.011287912726402283,
+            "eval_hi": 16691,
+            "eval_lo": 12518,
+            "fold": 3,
+            "legal_fit_windows": 12507
+          },
+          {
+            "best_epoch": 10,
+            "best_internal_val_mse": 0.010984019376337528,
+            "eval_hi": 20864,
+            "eval_lo": 16691,
+            "fold": 4,
+            "legal_fit_windows": 16680
+          }
+        ],
+        "mae": 0.16878700256347656,
+        "mse": 0.24144607782363892
+      }
+    }
+  }
+}

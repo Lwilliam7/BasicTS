@@ -1,0 +1,32 @@
+{
+  "bootstrap": {
+    "block_length_primary": 24,
+    "phase_k": 12,
+    "samples": 10000,
+    "seed": 20260830
+  },
+  "capacity_formula": "C = round(H*V/E); asserted C*E == M exactly (no fallback).",
+  "created_at_utc": "2026-08-31T00:56:06.148670+00:00",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "development_datasets_disclaimer": "ETTh1/ETTh2/ETTm1/Weather/Electricity development datasets only. No test. No untouched-confirmation datasets.",
+  "experiment": "conflict_resolved_expert_choice_hv",
+  "new_mechanism": "Conflict-resolved assignment via expert-proposing deferred acceptance over the SAME affinity tensor and CF=1 capacity; implemented as a provably-equivalent vectorized greedy pass, empirically verified against a literal round-based simulation per dataset.",
+  "no_retraining_note": "The competence scorer is not retrained or touched. Loads window_dependent_expert_choice_hv/tensors.pt (oof_affinity, val_affinity, val_ec_claim) directly, same as affinity_weighted_expert_choice_hv.",
+  "oof_gate_result": {
+    "gate_pass": false,
+    "oof_wins": 0
+  },
+  "predeclared_gate": "If Conflict-Resolved EC does not beat Affinity-Weighted EC OOF MAE on >= 3/5 datasets, STOP and do not evaluate router_val.",
+  "runtime_sec": 29.39233160018921,
+  "source_sha256_before": "3299bcd036ac87e8d70a9ec281d713b65d0409c28fbec6ca8c29b22b56785f4b",
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false,
+  "untouched_confirmation_accessed": false
+}

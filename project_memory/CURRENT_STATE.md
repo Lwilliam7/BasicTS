@@ -1,6 +1,56 @@
 # Current State
 
-Last updated: 2026-08-30
+Last updated: 2026-09-03
+
+## Expert-Choice Variant Sweep on Window-Dependent EC -- ETTh1 only (2026-09-03)
+
+Completed `experiments/ec_variant_sweep_etth1/` per explicit user instruction to work ONLY on
+ETTh1, using ONLY router_train OOF (no router_val, no test, no other datasets). Starting from the
+F2_local scorer (identified as the best feature variant by `feature_ablation_affinity_weighted_ec`),
+swept a 12-configuration grid over capacity factor (`CF in {0.5,1.0,2.0}`), assignment rule
+(`unrestricted` vs `max2` claims per cell), and scoring normalization (`existing` scalar-calibrated
+softmax vs `expert_relative` per-expert-calibrated softmax) -- all downstream of one frozen
+per-fold raw-score tensor, no retraining across the grid. Best config: `cf2.0_unrestricted_existing`,
+OOF MAE `0.349150` vs the F2_local `cf1.0_unrestricted_existing` baseline `0.351924` (block-24
+supported win, CI `[-0.003227,-0.002338]`). CF=2.0 beat CF=1.0; `max2` beat `unrestricted` on only
+1/6 matched pairs (identical results at CF<=1.0 since the 2-claim cap never actually bound);
+`expert_relative` scoring beat `existing` on only 1/6 matched pairs. The best config still lost to
+the Frozen Dense Ensemble reference by `+0.003559` MAE (block-24 supported), continuing the
+established pattern that no Expert-Choice variant in this line of work has beaten Frozen HxV/dense
+ensembling. `INTEGRITY VALID: YES`; no router_val/test/other-dataset access.
+
+Evidence: `experiments/ec_variant_sweep_etth1/report.md`, `results.json`;
+`project_memory/experiments/2026-09-03_ec_variant_sweep_etth1.md`.
+
+## Embedding Ablation for Affinity-Weighted Window-Dependent EC (2026-08-31)
+
+Completed OOF-only `experiments/embedding_ablation_affinity_weighted_ec/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity. Used the feature variant selected by the feature-ablation experiment below (`F2_local` = cell-local + per-variable features, no global) without reconsidering it. Tested whether the H(4)/V(8)/Expert(4) identity embeddings are useful to the shared scorer by zeroing each one (fixed zero vector of the same dimension, so MLP capacity is unchanged) and retraining from scratch under the identical causal-OOF recipe. Result: `H EMBEDDING: SUPPORTED` (hurts OOF on 4/5 datasets), `V EMBEDDING: SUPPORTED` (hurts on 5/5, unanimous — V adds real information beyond the `static_gain[h,v,e]` scalar already present in every variant), `EXPERT EMBEDDING: SUPPORTED` (hurts on 5/5, unanimous — the shared scorer needs learned per-expert identity to distinguish heterogeneous experts). `EMBEDDING ABLATION VALID: YES`. `router_val` never touched.
+
+Evidence: `experiments/embedding_ablation_affinity_weighted_ec/report.md`, `results.json`; `project_memory/experiments/2026-08-31_embedding_ablation_affinity_weighted_ec.md`.
+
+## Feature-Group Ablation for Affinity-Weighted Window-Dependent EC (2026-08-31)
+
+Completed OOF-only `experiments/feature_ablation_affinity_weighted_ec/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity (`router_val` never touched; primary and only evidence is router_train causal OOF). Retrained 6 distinct scorer variants (predeclared F0_anchor/F1_cell/F2_local/F3_full plus leave-one-group-out Full-NoCell/Full-NoPerVariable; Full-NoGlobal is provably identical to F2_local and was reused, not retrained) under the identical causal-OOF recipe used by `window_dependent_expert_choice_hv`. Surprising result: **`F2_local` (cell-local + per-variable features, NO global-history features) beats `F3_full` (the current full model) on OOF MAE on 4/5 datasets** — `BEST PREDECLARED FEATURE VARIANT BY OOF: F2_local`. All three feature groups classified `MIXED` (none reached `SUPPORTED`): cell and local features help when added but removing them from the full model doesn't clearly hurt; global features neither help when added nor have independent removal evidence (add and remove reduce to the same F3_full-vs-F2_local comparison by construction). `FEATURE ABLATION VALID: YES`. One post-hoc labeling bug was found and fixed (a disclosure field compared variant name strings instead of underlying feature-group sets) and the report was regenerated from the already-computed OOF numbers without any retraining.
+
+Evidence: `experiments/feature_ablation_affinity_weighted_ec/report.md`, `results.json`; `project_memory/experiments/2026-08-31_feature_ablation_affinity_weighted_ec.md`.
+
+## Conflict-Resolved Window-Dependent Expert Choice (2026-08-30)
+
+Completed OOF-gated `experiments/conflict_resolved_expert_choice_hv/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity. Tested whether resolving duplicate H×V claims via expert-proposing deferred acceptance (every cell held by exactly one expert) beats the affinity-weighted multi-claim combination, using the same frozen affinity tensors (no retraining). Predeclared gate required beating Affinity-Weighted EC OOF MAE on ≥3/5 datasets; result was **0/5** — Conflict-Resolved EC was worse on every dataset by 0.0012-0.0022 MAE, uniformly. `OOF GATE: FAIL`, `router_val` never accessed. Two real implementation bugs (an fp16-affinity exact-tie handling gap, and a numeric key-scaling bug that broke down for Electricity's large cell count) were found and fixed via an explicit literal-deferred-acceptance cross-check before any OOF number was trusted. Interpretation: multi-claim cells provide real ensembling value that strict one-expert-per-cell assignment removes at a net cost.
+
+Evidence: `experiments/conflict_resolved_expert_choice_hv/report.md`; `project_memory/experiments/2026-08-30_conflict_resolved_expert_choice_hv.md`.
+
+## Affinity-Weighted Expert Choice H×V (2026-08-30)
+
+Completed `experiments/affinity_weighted_expert_choice_hv/` on ETTh1, ETTh2, ETTm1, Weather, and Electricity, reusing the frozen `window_dependent_expert_choice_hv` score/affinity/claim tensors with no retraining. Tested whether restoring affinity-weighted multi-claim combination (vs. the existing simple equal-average rule, verified from source) improves OOF/val MAE. Classification `AFFINITY_WEIGHTED_EC_SUPPORTED` by the letter of the predeclared rule, but the effect size (~1e-5 MAE) is about two orders of magnitude smaller than the underlying window-dependent effect and is judged practically negligible. An oracle diagnostic (analysis-only, never used to fit anything) showed real headroom exists in combining multi-claim forecasts better, but affinity-renormalization captures only ~0.5-1% of it. Weighted EC still loses to Frozen HxV on 3/5 datasets. Motivated the conflict-resolved follow-up above.
+
+Evidence: `experiments/affinity_weighted_expert_choice_hv/report.md`; `project_memory/experiments/2026-08-30_affinity_weighted_expert_choice_hv.md`.
+
+## Window-Dependent Expert-Choice H×V Routing (2026-08-30)
+
+`experiments/window_dependent_expert_choice_hv/` tests whether making the static Expert-Choice competence score `S[h,v,e]` window-dependent (`S[t,h,v,e] = static_gain + predicted_residual_gain[t,h,v,e]`, one shared scorer, strict causal 4-fold OOF, fit-only affinity calibration) makes expert-side H×V allocation beat matched cell-side Top1 allocation using the identical score/affinity tensor. **Provenance note:** this implementation was found already on disk, uncommitted, with no prior `project_memory` entry; it was verified and reproduced directly from its raw stored artifacts (not trusted from any prior summary) before being backfilled into memory. Recomputed win counts: router-val EC beats Token on 4/5 datasets (ETTh2 the sole loser), router-train OOF EC beats Token on 3/5 (ETTh2 and Electricity lose OOF despite Electricity winning on router-val). Classification `WINDOW_DEPENDENT_EC_SUPPORTED`, but two of six predeclared criteria clear the bar only at the exact minimum (3/5) — treat as real but fragile support, not decisive. Dynamic EC beat Frozen HxV on 0/5 datasets. Static parity vs `experiments/expert_choice_hv/` reproduces exactly (0.0 diff); all integrity checks passed; no test access.
+
+Evidence: `experiments/window_dependent_expert_choice_hv/report.md`; `project_memory/experiments/2026-08-30_window_dependent_expert_choice_hv.md`.
 
 ## Expert-Choice Horizon-Variable Routing (2026-08-30)
 
