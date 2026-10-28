@@ -1,0 +1,136 @@
+Selecting fforma_mae: five configurations, four purged folds
+  fforma_mae config 1/5, fold 1/4
+  fforma_mae config 1/5, fold 2/4
+  fforma_mae config 1/5, fold 3/4
+  fforma_mae config 1/5, fold 4/4
+  fforma_mae config 2/5, fold 1/4
+  fforma_mae config 2/5, fold 2/4
+  fforma_mae config 2/5, fold 3/4
+  fforma_mae config 2/5, fold 4/4
+  fforma_mae config 3/5, fold 1/4
+  fforma_mae config 3/5, fold 2/4
+  fforma_mae config 3/5, fold 3/4
+  fforma_mae config 3/5, fold 4/4
+  fforma_mae config 4/5, fold 1/4
+  fforma_mae config 4/5, fold 2/4
+  fforma_mae config 4/5, fold 3/4
+  fforma_mae config 4/5, fold 4/4
+  fforma_mae config 5/5, fold 1/4
+  fforma_mae config 5/5, fold 2/4
+  fforma_mae config 5/5, fold 3/4
+  fforma_mae config 5/5, fold 4/4
+Fitting fforma_mae, seed=7
+Fitting fforma_mae, seed=11
+Selecting fforma_mae: five configurations, four purged folds
+Reusing fforma_mae, seed=7
+Fitting fforma_mae, seed=11
+Fitting fforma_mae, seed=13
+Fitting fforma_mae, seed=17
+Fitting fforma_mae, seed=19
+Selecting conditional_error_softmax: five configurations, four purged folds
+  conditional_error_softmax config 1/5, fold 1/4
+  conditional_error_softmax config 1/5, fold 2/4
+  conditional_error_softmax config 1/5, fold 3/4
+  conditional_error_softmax config 1/5, fold 4/4
+  conditional_error_softmax config 2/5, fold 1/4
+  conditional_error_softmax config 2/5, fold 2/4
+  conditional_error_softmax config 2/5, fold 3/4
+  conditional_error_softmax config 2/5, fold 4/4
+  conditional_error_softmax config 3/5, fold 1/4
+  conditional_error_softmax config 3/5, fold 2/4
+  conditional_error_softmax config 3/5, fold 3/4
+  conditional_error_softmax config 3/5, fold 4/4
+  conditional_error_softmax config 4/5, fold 1/4
+  conditional_error_softmax config 4/5, fold 2/4
+  conditional_error_softmax config 4/5, fold 3/4
+  conditional_error_softmax config 4/5, fold 4/4
+  conditional_error_softmax config 5/5, fold 1/4
+  conditional_error_softmax config 5/5, fold 2/4
+  conditional_error_softmax config 5/5, fold 3/4
+  conditional_error_softmax config 5/5, fold 4/4
+Fitting conditional_error_softmax, seed=7
+Fitting conditional_error_softmax, seed=11
+Fitting conditional_error_softmax, seed=13
+Fitting conditional_error_softmax, seed=17
+Fitting conditional_error_softmax, seed=19
+Selecting conditional_mlp: five configurations, four purged folds
+  conditional_mlp config 1/5, fold 1/4
+  conditional_mlp config 1/5, fold 2/4
+  conditional_mlp config 1/5, fold 3/4
+  conditional_mlp config 1/5, fold 4/4
+  conditional_mlp config 2/5, fold 1/4
+  conditional_mlp config 2/5, fold 2/4
+  conditional_mlp config 2/5, fold 3/4
+  conditional_mlp config 2/5, fold 4/4
+  conditional_mlp config 3/5, fold 1/4
+  conditional_mlp config 3/5, fold 2/4
+  conditional_mlp config 3/5, fold 3/4
+  conditional_mlp config 3/5, fold 4/4
+  conditional_mlp config 4/5, fold 1/4
+  conditional_mlp config 4/5, fold 2/4
+  conditional_mlp config 4/5, fold 3/4
+  conditional_mlp config 4/5, fold 4/4
+  conditional_mlp config 5/5, fold 1/4
+  conditional_mlp config 5/5, fold 2/4
+  conditional_mlp config 5/5, fold 3/4
+  conditional_mlp config 5/5, fold 4/4
+Fitting conditional_mlp, seed=7
+Fitting conditional_mlp, seed=11
+Fitting conditional_mlp, seed=13
+Fitting conditional_mlp, seed=17
+Fitting conditional_mlp, seed=19
+{
+  "archived_equal5": {
+    "mae": 0.2704436058799426,
+    "mse": 0.12850353432198366,
+    "seed_mae_sd": null
+  },
+  "archived_equal3": {
+    "mae": 0.3474630204339822,
+    "mse": 0.21157623082399368,
+    "seed_mae_sd": null
+  },
+  "archived_bates_all5": {
+    "mae": 0.2704436058799426,
+    "mse": 0.12850353432198366,
+    "seed_mae_sd": null
+  },
+  "equal_all": {
+    "mae": 0.2704436058799426,
+    "mse": 0.12850353432198366,
+    "seed_mae_sd": null
+  },
+  "train_best_single": {
+    "mae": 0.6021643479665121,
+    "mse": 0.6333183000485102,
+    "seed_mae_sd": null
+  },
+  "fforma_mae": {
+    "mae": 0.2704436108469963,
+    "mse": 0.12850353897859654,
+    "seed_mae_sd": 0.0
+  },
+  "conditional_error_softmax": {
+    "mae": 0.2704436108469963,
+    "mse": 0.12850353897859654,
+    "seed_mae_sd": 0.0
+  },
+  "conditional_mlp": {
+    "mae": 0.2704436108469963,
+    "mse": 0.12850353897859654,
+    "seed_mae_sd": 0.0
+  },
+  "wide_top3": {
+    "mae": 0.3474630204339822,
+    "mse": 0.21157623082399368,
+    "seed_mae_sd": 0.0
+  }
+}
+COMPLETE: C:\Users\luwil\OneDrive\Documents\Code\BasicTS\research_review\server_runner_synthetic_checks\a51f149509\output
+Already complete; inputs and protocol revalidated: C:\Users\luwil\OneDrive\Documents\Code\BasicTS\research_review\server_runner_synthetic_checks\a51f149509\output
+ETTh1_h96: COMPLETE
+COMPLETE: C:\Users\luwil\OneDrive\Documents\Code\BasicTS\research_review\server_runner_synthetic_checks\a51f149509\queue/report.md
+ETTh1_h96: FAILED
+INCOMPLETE: C:\Users\luwil\OneDrive\Documents\Code\BasicTS\research_review\server_runner_synthetic_checks\a51f149509\queue/report.md
+Results bundle: C:\Users\luwil\OneDrive\Documents\Code\BasicTS\research_review\server_runner_synthetic_checks\a51f149509\queue.tar.gz
+PASS: archive alignment, training/normalizer drift rejection, interrupted/complete resume, changed-protocol refusal, duplicate lock, server layouts/exclusions, queue invocation, stale-success rejection and packing

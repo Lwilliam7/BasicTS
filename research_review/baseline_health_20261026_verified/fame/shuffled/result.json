@@ -1,0 +1,86 @@
+{
+  "status": "CHECKED",
+  "method": "fame",
+  "case": "shuffled",
+  "seed": 7,
+  "mae": 0.9718618988990784,
+  "mse": 1.0813274383544922,
+  "tail32_mae": 0.9648441076278687,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true,
+    "unpredictable_guard": true
+  },
+  "software_case_passed": true,
+  "baselines": {
+    "equal_mae": 2.4043753147125244,
+    "single_mae": 1.0153121948242188,
+    "oracle_mae": 0.019999979063868523,
+    "selected_single": "DLinear"
+  },
+  "diagnostics": {
+    "convex_calls": 17,
+    "winner_accuracy": 0.515625,
+    "routing": {
+      "selected": {
+        "tau": 1.0,
+        "top_r": 2,
+        "delta": 0.0,
+        "calib_mse": 1.095575299281813
+      },
+      "val_mae": 0.9718618988990784,
+      "val_mse": 1.0813274383544922,
+      "avg_experts_used": 2.0,
+      "expert_usage": {
+        "DLinear": 1.0,
+        "PatchTST": 1.0,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "top1_frequency": {
+        "DLinear": 0.5234375,
+        "PatchTST": 0.4765625,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "routing_entropy": 0.6836770423162977
+    },
+    "training_devices": [
+      "cpu",
+      "cpu",
+      "cpu"
+    ]
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "aaad8f2812ebb23a495087bcd707dc6feb1e951c",
+    "file_hashes": {
+      "fame/__init__.py": "51911a2b3a983eb6868c3ed90338f600b6d9f579bad0a400efe8aa5d48196b73",
+      "fame/config.py": "72501402d4f3aeaa01a7f9251869423bbcae667ed1b9826549d6cea47457304e",
+      "fame/utils.py": "6abb031ed3ab8ba52abcce8ae837d4c85c76d58e267ad98a056d0818b7ace221",
+      "fame/features.py": "8846951363d881f9659a0206b258c605ef25e14e87fd54233cb90f5983cca672",
+      "fame/oracle.py": "f5fda614359f261a01dfcb50c9df2e9002e572034d2d3b4cc7919b8805bc7d65",
+      "fame/router.py": "ff576b1c14a66d5e34f5973aa715b3e83b62d17c3b4d5adeef5c5cc9747e2750",
+      "fame/pipeline.py": "6adde916a8d78af91ac87346cd94e509b90fa88f6ecdb3451371328332f0200f",
+      "fame/experts.py": "e33302584d7d64c7e3261557c935bd17236582c0b4a88b19e076c898d3dfdb9f"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\fingerprints_ETTh1.pt",
+    "_work\\seed7_ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "per_window_losses.npz": "7b81374b9cc663be0cdfea3297502722a256d92bf9945e5ae2e45fe4581a75e7",
+    "_work\\fingerprints_ETTh1.json": "10e972243ba0b442e6a0a05c04bb6d6a8371b57262448e274c324a1da4229cac",
+    "_work\\fingerprints_ETTh1.pt": "a66e1d4e062a3eff5271f37b80337f67f9b25ca4e7a92cf1c89357ed01ef3c97",
+    "_work\\seed7_ETTh1.json": "f173eeaf3fd4998b5a3eca4995232d2d5bfcc0d1020bb413abe3a52c956bf90e",
+    "_work\\seed7_ETTh1.pt": "79340412365403d7524311097a8db5da1cc3bddc170ee927691425174780f65f"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

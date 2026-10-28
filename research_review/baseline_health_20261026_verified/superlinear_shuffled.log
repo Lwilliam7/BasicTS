@@ -1,0 +1,6 @@
+[superlinear] ETTh1 pool A k=2 seed 7: holdout MSE 0.90988 (30 epochs)
+[superlinear] ETTh1 pool A k=3 seed 7: holdout MSE 0.91796 (25 epochs)
+[superlinear] ETTh1 pool A k=4 seed 7: holdout MSE 0.91852 (30 epochs)
+[superlinear] ETTh1 pool A k=5 seed 7: holdout MSE 0.92097 (30 epochs)
+[superlinear] ETTh1 pool A: selected k=2, val MAE seed-mean 1.008490
+{"method": "superlinear", "case": "shuffled", "mae": 1.0084903240203857, "software_case_passed": true, "checks": {"finite": true, "source_gate_passed": true, "synthetic_load_guard": true, "unpredictable_guard": true}}

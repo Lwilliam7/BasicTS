@@ -1,0 +1,52 @@
+[
+  {
+    "config": {
+      "max_depth": 14,
+      "eta": 0.575188,
+      "subsample": 0.9161483,
+      "colsample_bytree": 0.7670739,
+      "nrounds": 94
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "max_depth": 6,
+      "eta": 0.1,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "nrounds": 100
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "max_depth": 10,
+      "eta": 0.05,
+      "subsample": 0.7,
+      "colsample_bytree": 0.7,
+      "nrounds": 150
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "max_depth": 8,
+      "eta": 0.3,
+      "subsample": 0.9,
+      "colsample_bytree": 0.6,
+      "nrounds": 50
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "max_depth": 14,
+      "eta": 0.01,
+      "subsample": 0.6,
+      "colsample_bytree": 0.9,
+      "nrounds": 250
+    },
+    "oof_mae": 0.2710334141738713
+  }
+]

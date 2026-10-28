@@ -1,0 +1,183 @@
+{
+  "dataset": "ETTh1",
+  "horizon": 96,
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "train_windows": 80,
+  "evaluation_windows": 24,
+  "seeds": [
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "selection_seed": 7,
+  "folds": [
+    {
+      "fit_windows": 16,
+      "eval_windows": 16,
+      "max_fit_target_end": 1536,
+      "eval_origin": 1536
+    },
+    {
+      "fit_windows": 32,
+      "eval_windows": 16,
+      "max_fit_target_end": 3072,
+      "eval_origin": 3072
+    },
+    {
+      "fit_windows": 48,
+      "eval_windows": 16,
+      "max_fit_target_end": 4608,
+      "eval_origin": 4608
+    },
+    {
+      "fit_windows": 64,
+      "eval_windows": 16,
+      "max_fit_target_end": 6144,
+      "eval_origin": 6144
+    }
+  ],
+  "hashes": {
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\train.pt": "c7444dd7aeefde8b563824da4d62f752d4cba59636b11b0fe6dcf77655435762",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\val.pt": "56a5fd8253e69b73be925017ec75165a349ae992e83f773d1399a3216e2f5692",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\normalizer.pt": "4e2fe9b0df177ababf23defe8f30458e620312bf6fe34ccf79316040aa9c16ab",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\comparators_ETTh1.json": "2fdd319ac5c93c009fa0787c00882dd7b12964140a2c54b532e79363aa2a8efa",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\comparators_ETTh1.pt": "3c82c69a9b3539f7034e4abb988e9a2e0b8b5b310e1e10e189c85d3f63e7ca25",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed7_ETTh1.json": "7f4a6ad2a9f10c31f9afc2671c8f9d068653a0f496085598fcb952485585b7fe",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed7_ETTh1.pt": "f6ea54ced63a7433ff9d1a05af0507cbadf85315362372ffaae0b90cb077910d",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed11_ETTh1.json": "e1afd43e60373e7714bd0ccdc94e6ad010aba9c3f9ffa46ac62cacc3a3901af8",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed11_ETTh1.pt": "3b95f63a98e316c78993b1f87a610ad4c9ec419d6225fe80ce17dc6ca7ba6465",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed13_ETTh1.json": "96842963d6f47387cad6e2d5e6e6cd78706397123c873b10adbdb588ded8685d",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed13_ETTh1.pt": "a230ccd34066ea0312dfe4a967f09813324da480d62782b42a90dc1dfee78c68",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed17_ETTh1.json": "0eefc8b83d615babb9fd50f8e087df83f4262446750a787753eae051d886235e",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed17_ETTh1.pt": "15dcb3e1b2a46041ddc1ae57410ba403872579e79a4852646b42531d4c97ff96",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed19_ETTh1.json": "f339d43de88b3a58b655eca6bdefdc579cddcdf01de346ca362fe3d3a1d281dc",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\work\\seed19_ETTh1.pt": "0676f98aabf4448a2fb9620de005dfbc016fc00032520479ffec1c89ca962d20"
+  },
+  "frequency": 24,
+  "methods": [
+    "fforma_mae",
+    "conditional_error_softmax",
+    "conditional_mlp"
+  ],
+  "configurations_per_method": 5,
+  "bootstrap_samples": 10,
+  "bootstrap_seed": 20260821,
+  "block_rule": "ceil(2*horizon/evaluation_stride); nonwrapping; minimum eight blocks",
+  "primary_available": true,
+  "reference_audit": {
+    "binding": "archived numerical sentinels and producer metadata; original input hashes unavailable",
+    "equal_window_max_differences": {
+      "equal5": 0.0,
+      "equal3": 0.0
+    },
+    "training_core_fold_max_differences": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "primary_seed_means_match": true,
+    "fold_origins_and_purge_match": true,
+    "historical_cache_byte_identity_proven": false
+  },
+  "threads": 2,
+  "workers": 1,
+  "test_set_accessed": false,
+  "tree_grid": [
+    {
+      "max_depth": 14,
+      "eta": 0.575188,
+      "subsample": 0.9161483,
+      "colsample_bytree": 0.7670739,
+      "nrounds": 94
+    },
+    {
+      "max_depth": 6,
+      "eta": 0.1,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "nrounds": 100
+    },
+    {
+      "max_depth": 10,
+      "eta": 0.05,
+      "subsample": 0.7,
+      "colsample_bytree": 0.7,
+      "nrounds": 150
+    },
+    {
+      "max_depth": 8,
+      "eta": 0.3,
+      "subsample": 0.9,
+      "colsample_bytree": 0.6,
+      "nrounds": 50
+    },
+    {
+      "max_depth": 14,
+      "eta": 0.01,
+      "subsample": 0.6,
+      "colsample_bytree": 0.9,
+      "nrounds": 250
+    }
+  ],
+  "mlp_grid": [
+    {
+      "hidden": 32,
+      "lr": 0.001,
+      "epochs": 20,
+      "weight_decay": 0.001
+    },
+    {
+      "hidden": 64,
+      "lr": 0.001,
+      "epochs": 30,
+      "weight_decay": 0.001
+    },
+    {
+      "hidden": 32,
+      "lr": 0.003,
+      "epochs": 30,
+      "weight_decay": 0.01
+    },
+    {
+      "hidden": 64,
+      "lr": 0.0003,
+      "epochs": 40,
+      "weight_decay": 0.01
+    },
+    {
+      "hidden": 128,
+      "lr": 0.001,
+      "epochs": 20,
+      "weight_decay": 0.01
+    }
+  ],
+  "primary": "frozen wide_top3; cache-bound NPZ or audited original server outputs",
+  "selection_metric": "pooled purged-OOF normalized MAE; no validation selection",
+  "inference": "static after router_train; no validation feedback",
+  "evidence": "development; reused validation blocks; no new confirmation",
+  "adaptation": "FFORMA-MAE with cross-channel mean THA features and window-level weights",
+  "tuning_budget": "5 configurations x 4 folds, seed 7, per family; unequal runtime disclosed",
+  "limitations": [
+    "Generic conditional controls are not published-method replications",
+    "FFORMA uses original window-level granularity, not cell-level routing",
+    "Frozen primary has historical development selection; budgets are not retroactively equal"
+  ],
+  "source_sha256": "1231908440da7e568e7ae63b93a19f57083e384bdfc76d5727d17fe44dcabfd1",
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.3.3",
+    "torch": "2.6.0+cu124",
+    "xgboost": "3.4.1",
+    "tsfeatures": "0.4.5",
+    "threadpoolctl": "3.6.0"
+  }
+}

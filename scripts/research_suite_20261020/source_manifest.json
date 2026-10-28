@@ -1,0 +1,14 @@
+{
+  "experiments/gate_granularity_exploratory_20261020/AMENDMENT_2026-10-19.md": "4558926404b8f5c12b474665f1b631f4fdb776f07af3f5fbc9beb500930c19d8",
+  "experiments/gate_granularity_exploratory_20261020/ORIGINAL_PREDECLARATION.md": "a7a67c9c217b2c9532fe45708c1acaeb17020de260086cbcd4cb08a00984ea4a",
+  "experiments/gate_granularity_exploratory_20261020/PROTOCOL.md": "b5c9f66ed202fd3c23ec6e80c67989b3f9a65736fe4a6c5e2c2b0cd6a31bcdcb",
+  "experiments/gate_granularity_exploratory_20261020/run_granularity.py": "f830b5d90281a99c3c84797cb39f7d9af89be2bad0be7cfc0e3be0384eefb795",
+  "scripts/research_suite_20261020/conditional.py": "0e21893666d2666f61449003804640394f09ae6f3760429745fb13bf913ac73c",
+  "scripts/research_suite_20261020/granularity_source_record.json": "9b16773d5cc584967ff6d1400615a41e0ce8abc93d8817d93c3122082e373b1b",
+  "scripts/research_suite_20261020/launch.sh": "c0803d54727d274a7a11326642180d662521b55edd86d0c5bf5e657dc691dcdc",
+  "scripts/research_suite_20261020/LOCAL_VALIDATION.md": "0007de9ebfea35b55dda5f16d48a1f7ee105a23b1fbaa09f349970e949ebd51f",
+  "scripts/research_suite_20261020/PROTOCOL.md": "b5c9f66ed202fd3c23ec6e80c67989b3f9a65736fe4a6c5e2c2b0cd6a31bcdcb",
+  "scripts/research_suite_20261020/README.md": "78b6b782cecf49781b71c5831306bb18e36e66783438748ef990e2137ec4dd8a",
+  "scripts/research_suite_20261020/run_router_checks.py": "11cf5143fa2c3803908ce1cde02db17a8bad8a80034166cd9ddd791c8d0889e3",
+  "scripts/research_suite_20261020/run_suite.py": "e4e40c613589aa1da12de2be0b7e00f1a29157819dd7fde0e9aecb37815d74a1"
+}

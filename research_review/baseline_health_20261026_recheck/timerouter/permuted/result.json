@@ -1,0 +1,47 @@
+{
+  "status": "CHECKED",
+  "method": "timerouter",
+  "case": "permuted",
+  "seed": 7,
+  "mae": 0.019999980926513672,
+  "mse": 0.0003999992914032191,
+  "tail32_mae": 0.019999980926513672,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true
+  },
+  "software_case_passed": true,
+  "baselines": {
+    "equal_mae": 2.4200005531311035,
+    "single_mae": 0.9999997615814209,
+    "oracle_mae": 0.019999980926513672,
+    "selected_single": "DLinear"
+  },
+  "diagnostics": {
+    "convex_calls": 512,
+    "winner_accuracy": 1.0,
+    "fallback_frequency": 0.0
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "a8b17342ac44aeadbe053de7e373ceda06732341",
+    "file_hashes": {
+      "gift_eval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gift_eval/_features.py": "5d9d1c41176ace368404abb42bdec1016073c923e5d7ff7ce6857d894f136d18",
+      "gift_eval/_router.py": "13a5578fb475c5068a9c93d61bdc0c163438a2d1e7a7a3318fc33301f6bcacca"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "per_window_losses.npz": "2b0b4f9f8e5f81f04813ed49fca073a42ab104e481069956f497b021bd3e05d4",
+    "_work\\ETTh1.json": "89af8afdff2cd18c36c28a4c0dac514cbaa2355de40accfa96aff776c82e5751",
+    "_work\\ETTh1.pt": "45fd3a1525bf05e9b213d4e0b2fa3b5cc48efa9775bb115cd0cdc20f414ffa4d"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

@@ -1,0 +1,59 @@
+{
+  "status": "CHECKED",
+  "method": "superlinear",
+  "case": "predictable",
+  "seed": 7,
+  "mae": 0.13611695170402527,
+  "mse": 0.05937999486923218,
+  "tail32_mae": 0.13823282718658447,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true,
+    "learns_predictable_winner": true
+  },
+  "software_case_passed": true,
+  "baselines": {
+    "equal_mae": 2.4200005531311035,
+    "single_mae": 0.9999997615814209,
+    "oracle_mae": 0.019999980926513672,
+    "selected_single": "DLinear"
+  },
+  "diagnostics": {
+    "convex_calls": 1564,
+    "winner_accuracy": 0.9765625,
+    "routing": [
+      {
+        "expert_usage": [
+          0.3359375,
+          0.5,
+          0.0,
+          0.0,
+          0.1640625
+        ],
+        "seed": 7,
+        "val_mae": 0.13611696660518646,
+        "val_mse": 0.05937999486923218
+      }
+    ]
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "eb32d734ff714f633fb6217f1ac431d2196edfa6",
+    "file_hashes": {
+      "model_files/modeling_super_linear.py": "e3fe675e6b39b64c3c6253df85022d998eed957be9fb204774e4f8416957a9f0"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "per_window_losses.npz": "1a5b679a01b57be8b185b713e7128cfc46100359cbd06ecd60b2df36984a5bdb",
+    "_work\\ETTh1.json": "d7f7a0600cb993e728079d4cd52b102ae3939340c2ef52e782a6219dde97057f",
+    "_work\\ETTh1.pt": "bdc9128732ce7be0b40a00230891afaf32752aab857c615f2a6ecdddc379058d"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

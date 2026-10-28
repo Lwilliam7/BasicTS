@@ -1,0 +1,62 @@
+{
+  "TEST_SET_ACCESSED": "NO",
+  "dataset": "ETTh1",
+  "elapsed_sec": 5.5424864292144775,
+  "pools": {
+    "A": {
+      "holdout_table": [
+        {
+          "epochs_run": 30,
+          "holdout_mse": 0.9098767862691508,
+          "k": 2,
+          "seed": 7
+        },
+        {
+          "epochs_run": 25,
+          "holdout_mse": 0.9179579004064783,
+          "k": 3,
+          "seed": 7
+        },
+        {
+          "epochs_run": 30,
+          "holdout_mse": 0.9185212700913995,
+          "k": 4,
+          "seed": 7
+        },
+        {
+          "epochs_run": 30,
+          "holdout_mse": 0.9209673827860778,
+          "k": 5,
+          "seed": 7
+        }
+      ],
+      "k_grid": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "mean_holdout_mse_by_k": {
+        "2": 0.9098767862691508,
+        "3": 0.9179579004064783,
+        "4": 0.9185212700913995,
+        "5": 0.9209673827860778
+      },
+      "per_seed": [
+        {
+          "expert_usage": [
+            0.5,
+            0.5,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "seed": 7,
+          "val_mae": 1.0084904432296753,
+          "val_mse": 1.0396162271499634
+        }
+      ],
+      "selected_k": 2
+    }
+  }
+}

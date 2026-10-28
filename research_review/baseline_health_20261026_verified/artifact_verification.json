@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "source_hashes_verified": 24,
+  "artifact_hashes_verified": 58,
+  "cases": {
+    "fame/predictable": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "fame/shuffled": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "fame/permuted": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "timerouter/predictable": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "timerouter/shuffled": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "timerouter/permuted": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "onenet/branch1": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "onenet/branch2": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "onenet/shuffled": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "onenet/permuted": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "onenet/poisoned": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "superlinear/predictable": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "superlinear/shuffled": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    },
+    "superlinear/permuted": {
+      "artifact_hashes_valid": true,
+      "exported_metrics_match": true,
+      "identical_losses_to_both_prior_cpu_runs": true
+    }
+  },
+  "fixture_generator_ast_unchanged": true,
+  "environment_unchanged": true,
+  "changed_hashed_sources": [
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\scripts\\baseline_health_20261025\\PROTOCOL.md",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\scripts\\baseline_health_20261025\\reference_fixture.py"
+  ],
+  "poison_prefix_identical_through_row_64": true,
+  "poison_observable_suffix_max_difference": 1.9545655250549316,
+  "fame_shuffled_accuracy_correction": {
+    "old_secondary_top1": 0.5390625,
+    "corrected_primary_top2": 0.515625
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false
+}

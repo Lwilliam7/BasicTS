@@ -1,0 +1,23 @@
+{
+  "status": "HEALTH_FAILURE_OR_INCOMPLETE",
+  "pid": 41112,
+  "started_utc": "2026-10-25T22:39:13.337454+00:00",
+  "cases": {
+    "fame/predictable": true,
+    "fame/shuffled": true,
+    "fame/permuted": true,
+    "timerouter/predictable": true,
+    "timerouter/shuffled": true,
+    "timerouter/permuted": true,
+    "onenet/branch1": true,
+    "onenet/branch2": true,
+    "onenet/shuffled": true,
+    "onenet/permuted": true,
+    "onenet/poisoned": true,
+    "superlinear/predictable": true,
+    "superlinear/shuffled": true,
+    "superlinear/permuted": true
+  },
+  "active_case": null,
+  "table_eligible": false
+}

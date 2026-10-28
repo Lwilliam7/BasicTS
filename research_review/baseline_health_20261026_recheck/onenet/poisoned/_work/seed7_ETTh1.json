@@ -1,0 +1,17 @@
+{
+  "TEST_SET_ACCESSED": "NO",
+  "branches": [
+    "PatchTST",
+    "iTransformer"
+  ],
+  "dataset": "ETTh1",
+  "elapsed_sec": 2.226682424545288,
+  "final_branch1_weight_max": 0.4917418360710144,
+  "final_branch1_weight_mean": 0.4917418360710144,
+  "final_branch1_weight_min": 0.4917418360710144,
+  "online_updates": 127,
+  "seed": 7,
+  "val_mae": 17.602445602416992,
+  "val_mse": 613.7232666015625,
+  "warmup_epochs": 4
+}

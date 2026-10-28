@@ -1,0 +1,86 @@
+[
+  {
+    "path": "FAME\\fame\\__init__.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/__init__.py",
+    "sha256_lf": "51911a2b3a983eb6868c3ed90338f600b6d9f579bad0a400efe8aa5d48196b73",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\config.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/config.py",
+    "sha256_lf": "72501402d4f3aeaa01a7f9251869423bbcae667ed1b9826549d6cea47457304e",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\utils.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/utils.py",
+    "sha256_lf": "6abb031ed3ab8ba52abcce8ae837d4c85c76d58e267ad98a056d0818b7ace221",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\features.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/features.py",
+    "sha256_lf": "8846951363d881f9659a0206b258c605ef25e14e87fd54233cb90f5983cca672",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\oracle.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/oracle.py",
+    "sha256_lf": "f5fda614359f261a01dfcb50c9df2e9002e572034d2d3b4cc7919b8805bc7d65",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\router.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/router.py",
+    "sha256_lf": "ff576b1c14a66d5e34f5973aa715b3e83b62d17c3b4d5adeef5c5cc9747e2750",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\pipeline.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/pipeline.py",
+    "sha256_lf": "6adde916a8d78af91ac87346cd94e509b90fa88f6ecdb3451371328332f0200f",
+    "matches_port_pin": true
+  },
+  {
+    "path": "FAME\\fame\\experts.py",
+    "url": "https://raw.githubusercontent.com/hit636/FAME/aaad8f2812ebb23a495087bcd707dc6feb1e951c/fame/experts.py",
+    "sha256_lf": "e33302584d7d64c7e3261557c935bd17236582c0b4a88b19e076c898d3dfdb9f",
+    "matches_port_pin": true
+  },
+  {
+    "path": "TimeRouter\\gift_eval\\__init__.py",
+    "url": "https://raw.githubusercontent.com/UConn-DSIS/TimeRouter/a8b17342ac44aeadbe053de7e373ceda06732341/gift_eval/__init__.py",
+    "sha256_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matches_port_pin": true
+  },
+  {
+    "path": "TimeRouter\\gift_eval\\_features.py",
+    "url": "https://raw.githubusercontent.com/UConn-DSIS/TimeRouter/a8b17342ac44aeadbe053de7e373ceda06732341/gift_eval/_features.py",
+    "sha256_lf": "5d9d1c41176ace368404abb42bdec1016073c923e5d7ff7ce6857d894f136d18",
+    "matches_port_pin": true
+  },
+  {
+    "path": "TimeRouter\\gift_eval\\_router.py",
+    "url": "https://raw.githubusercontent.com/UConn-DSIS/TimeRouter/a8b17342ac44aeadbe053de7e373ceda06732341/gift_eval/_router.py",
+    "sha256_lf": "13a5578fb475c5068a9c93d61bdc0c163438a2d1e7a7a3318fc33301f6bcacca",
+    "matches_port_pin": true
+  },
+  {
+    "path": "TimeRouter\\gift_eval\\predictor.py",
+    "url": "https://raw.githubusercontent.com/UConn-DSIS/TimeRouter/a8b17342ac44aeadbe053de7e373ceda06732341/gift_eval/predictor.py",
+    "sha256_lf": "a69a2c9317a9fcda91c6d32ecdda29188c77f0ac46a8abc8beae5a826d3685c0",
+    "matches_port_pin": false
+  },
+  {
+    "path": "OneNet\\exp\\exp_onenet_fsnet.py",
+    "url": "https://raw.githubusercontent.com/yfzhang114/OneNet/65eed9d6c878133a4d81d9c381c69e742ad47fd0/exp/exp_onenet_fsnet.py",
+    "sha256_lf": "26a74503a6e0973b193ef5ec750a7522512ca215d4c4782d896cf352188a7a9f",
+    "matches_port_pin": true
+  },
+  {
+    "path": "SuperLinear\\model_files\\modeling_super_linear.py",
+    "url": "https://raw.githubusercontent.com/azencot-group/SuperLinear/eb32d734ff714f633fb6217f1ac431d2196edfa6/model_files/modeling_super_linear.py",
+    "sha256_lf": "e3fe675e6b39b64c3c6253df85022d998eed957be9fb204774e4f8416957a9f0",
+    "matches_port_pin": true
+  }
+]

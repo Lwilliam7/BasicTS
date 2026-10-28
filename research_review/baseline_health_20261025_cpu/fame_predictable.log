@@ -1,0 +1,7 @@
+[fame] ETTh1 router_train: 384 units, parity max|d|=1.17e-14
+[fame] ETTh1 router_val: 128 units, parity max|d|=7.99e-15
+[fame] ETTh1 seed 7 tau=0.1: 200 epochs, best loss 0.04456
+[fame] ETTh1 seed 7 tau=0.3: 200 epochs, best loss 0.04454
+[fame] ETTh1 seed 7 tau=1.0: 200 epochs, best loss 0.05261
+[fame] ETTh1 seed 7: top2 val MAE 0.021294 (tau=0.1, delta=0.1), top1 0.020000, 5s
+{"method": "fame", "case": "predictable", "mae": 0.021293573081493378, "software_case_passed": true, "checks": {"finite": true, "source_gate_passed": true, "synthetic_load_guard": true, "learns_predictable_winner": true}}
