@@ -101,3 +101,25 @@ about one gate-ablation job: the 70 jobs take about the gate ablation's 18 GPU-h
 
 At 12 steps, every Bates-router arm beat the learned gate, and the 95% block-bootstrap intervals excluded 0.
 No arm beat Bates alone significantly, at either horizon.
+
+## Amendment 1 (2026-11-10, before any real-pool result)
+
+A code review of the server path found no interface mismatch with the gate-ablation modules but found
+failure-handling, memory and reporting problems. Changes:
+
+- Each job now runs in its own process, with a per-job lock, as the gate-ablation queue does. A job is skipped
+  on resume only if its record is valid; an invalid record is renamed `*.invalid-<UTC time>` and the job reruns.
+  `analyze` uses valid records only and lists invalid seeds per unit.
+- Window chunks follow the unit's `wdec.STAT_CHUNK` (16 at 192 steps), and the scorer's raw score tensors are
+  freed after `head_inputs`, to keep the widest 192-step units within memory.
+- Each job sets its thread count from `OMP_NUM_THREADS` (default 8), as the gate-ablation main does.
+- `analyze` checks that compared arms cover the same windows and prints the block-bootstrap interval
+  (`ci95_low`, `ci95_high`).
+- **Underpowered switch.** When the late-OOF slice holds fewer than `lh.MIN_BLOCKS` moving blocks
+  (`late_independent_blocks` in each record), the switch arm is labelled underpowered. At 192 steps this is
+  expected, because the slice holds about 4 blocks. An underpowered switch cannot replace
+  `bates_router_chosen` under decision rule 2; it is reported descriptively.
+
+Correction to the lab disclosure: the 96-step lab intervals above used 24-window blocks, which is too short when
+consecutive windows share 96 targets. With 96-window blocks, no 96-step lab contrast excludes zero; for example,
+the switch against the learned gate is −0.0021 [−0.0052, +0.0005].

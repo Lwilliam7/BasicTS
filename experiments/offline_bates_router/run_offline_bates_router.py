@@ -13,6 +13,9 @@ router_train windows. Per-cell weights are inverse mean squared errors, as in th
 Development evidence on 60-80% blocks; no test cache is opened. Reuses the gate-ablation loaders, the frozen
 scorer protocol and score_arms unchanged, and writes only under experiments/offline_bates_router/.
 
+Each job runs in its own process (as the gate-ablation queue does), so one failure or one horizon's module
+settings cannot affect the next job. A finished job is skipped on resume only if its record is valid.
+
 Usage (repo root):
   python experiments/offline_bates_router/run_offline_bates_router.py --selftest
   python -m experiments.offline_bates_router.run_offline_bates_router --run ETTh1:12 --seeds 7
@@ -23,6 +26,8 @@ import argparse
 import hashlib
 import json
 import math
+import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -33,6 +38,7 @@ import torch
 OUT = Path(__file__).resolve().parent
 CHUNK = 256
 LATE_SHARE = 0.3
+MIN_BLOCKS = 8
 ARMS = ("bates_only", "bates_router_constant", "bates_router_static", "bates_router_chosen", "bates_router_switch")
 REFERENCE_ARMS = ("full", "core_only", "router_only", "constant", "static_hv")
 CONTRASTS = (("bates_router_chosen", "full", "primary"), ("bates_router_chosen", "bates_all5", "primary"),
@@ -115,7 +121,7 @@ def fallback_and_router(fc_tr, y_tr, m_tr, origins_tr, oof_rows, fold_bounds, af
 
 
 def offline_arms(fc_tr, y_tr, m_tr, origins_tr, oof_rows, fold_bounds, aff_oof, fc_v, y_v, m_v, aff_v,
-                 first_val_origin, horizon, std, block_length):
+                 first_val_origin, horizon, std, block_length, min_blocks=MIN_BLOCKS):
     """All tensors raw scale. fc_tr [N,H,V,E] router_train forecasts; oof_rows: train indices of the pooled OOF
     rows, in the order of aff_oof; fold_bounds: (lo, hi) train index ranges of the OOF folds.
     Returns router_val predictions per arm (raw scale) and the fitted choices."""
@@ -152,6 +158,8 @@ def offline_arms(fc_tr, y_tr, m_tr, origins_tr, oof_rows, fold_bounds, aff_oof, 
                "lambda_static_share_0": float((lam_hv == 0).float().mean()), "lambda_static_share_1": float((lam_hv == 1).float().mean()),
                "late_oof_mae_constant": late_mae(early_c), "late_oof_mae_static": late_mae(early_hv),
                "variables_routed": int(route.sum()), "variables": v, "oof_rows": len(rows), "late_rows": len(rows) - cut,
+               "late_independent_blocks": (len(rows) - cut) / block_length,
+               "switch_underpowered": (len(rows) - cut) / block_length < min_blocks,
                "bates_fit_windows": {str(k): c for k, c in cuts.items()}}
     return preds, choices
 
@@ -171,10 +179,17 @@ def result_path(ds, h, seed, ext="json"):
 def run_job(ds, h, seed):
     import experiments.gate_ablation.run_gate_ablation as ga
     torch_, topk, _, lh = ga.deps()
+    global CHUNK
     path = result_path(ds, h, seed)
     if path.exists():
-        print(f"[offline] {ds} H{h} seed {seed}: already done", flush=True)
-        return
+        if json.loads(path.read_text()).get("integrity", {}).get("ok"):
+            print(f"[offline] {ds} H{h} seed {seed}: already done", flush=True)
+            return
+        stamp = time.strftime("%Y%m%dT%H%M%S", time.gmtime())
+        for old in (path, path.with_suffix(".pt")):
+            if old.exists():
+                old.rename(old.with_name(f"{old.name}.invalid-{stamp}"))
+        print(f"[offline] {ds} H{h} seed {seed}: earlier INVALID record set aside; rerunning", flush=True)
     t0 = time.monotonic()
     conf, settings = ga.configure(ds, h)
     bundle, core, causality, chosen, ckroot, caches = ga.load_unit(ds, h, conf)
@@ -184,6 +199,7 @@ def run_job(ds, h, seed):
         n_val = int(bundle.val_cache["num_windows"])
         settings.update(evaluation_windows=n_val, independent_blocks=n_val / 24, interval_eligible=n_val / 24 >= lh.MIN_BLOCKS)
     require(causality["result"] == "PASS", "router_train forecasts are not out of sample")
+    CHUNK = int(topk.wdec.STAT_CHUNK)
     before = ga.checkpoint_hashes(ds, h, conf, ckroot)
     inputs = {Path(p).as_posix(): sha(p) for p in caches}
     topk.wdec.SCORER_SEED = seed
@@ -191,13 +207,18 @@ def run_job(ds, h, seed):
     sc = topk.wide.train_scorer_bank_protocol(wb, seed)
     require(sc["tensors_finite"] and sc["oof_mask_covers_folds"], "scorer integrity failed")
     hi = topk.wide.head_inputs(wb, sc)
+    for key in ("oof_raw", "val_raw"):
+        sc.pop(key, None)
     ref_arms, fit, gate_diag = ga.score_arms(wb, hi, core, topk.wdec.STAT_CHUNK)
+    for key in ("oof_fc", "oof_g", "oof_l", "oof_target", "oof_tmask", "val_g", "val_l"):
+        hi.pop(key, None)
     fc_tr = wb.forecasts_fn(wb.train_cache, wb.expert_idx).float()
     preds, choices = offline_arms(
         fc_tr, wb.train_cache["targets"].float(), wb.train_cache["target_masks"].bool(),
         wb.train_cache["absolute_window_starts"].long(), torch.nonzero(sc["oof_mask"]).flatten(), sc["fold_bounds"],
         hi["oof_aff"].float(), hi["val_fc"].float(), wb.val_cache["targets"].float(), wb.val_cache["target_masks"].bool(),
-        hi["val_aff"].float(), int(wb.val_cache["absolute_window_starts"][0]), h, wb.std.float(), int(settings["block_length"]))
+        hi["val_aff"].float(), int(wb.val_cache["absolute_window_starts"][0]), h, wb.std.float(), int(settings["block_length"]),
+        min_blocks=int(lh.MIN_BLOCKS))
     arms = {a: topk.cf.metrics_of(wb, p) for a, p in preds.items()}
     arms.update({a: ref_arms[a] for a in REFERENCE_ARMS})
     gate_path = ga.result_path(ds, h, seed, "pt")
@@ -228,11 +249,14 @@ def analyze():
     units = {}
     for h in ga.HORIZONS:
         for ds in ga.DATASETS:
-            seeds = [s for s in ga.SEEDS if result_path(ds, h, s).exists()]
+            found = {s: json.loads(result_path(ds, h, s).read_text()) for s in ga.SEEDS if result_path(ds, h, s).exists()}
+            invalid = sorted(s for s, r in found.items() if not r.get("integrity", {}).get("ok"))
+            recs = {s: r for s, r in found.items() if s not in invalid}
+            seeds = sorted(recs)
             if not seeds:
+                if invalid:
+                    units[f"{ds}_h{h}"] = {"seeds": [], "invalid_seeds": invalid, "confirmatory": False, "arms": {}, "contrasts": {}}
                 continue
-            recs = {s: json.loads(result_path(ds, h, s).read_text()) for s in seeds}
-            require(all(r["integrity"]["ok"] for r in recs.values()), f"{ds} H{h}: an INVALID job is present")
             runs = {s: torch.load(result_path(ds, h, s, "pt"), map_location="cpu", weights_only=False) for s in seeds}
             settings = recs[seeds[0]]["settings"]
             topk.cf.BLOCK_LENGTH, topk.cf.PHASE_K = settings["block_length"], settings["phase_k"]
@@ -246,7 +270,7 @@ def analyze():
                 else:
                     avg["bates_all5"] = {m: saved["bates_all5"][f"per_window_{m}"] for m in ("mae", "mse")}
             confirmatory = sorted(seeds) == sorted(ga.SEEDS)
-            unit = {"seeds": seeds, "confirmatory": confirmatory, "arms": {a: {m: float(x.mean()) for m, x in mm.items()} for a, mm in avg.items()},
+            unit = {"seeds": seeds, "invalid_seeds": invalid, "confirmatory": confirmatory, "arms": {a: {m: float(x.mean()) for m, x in mm.items()} for a, mm in avg.items()},
                     "choices_by_seed": {s: recs[s]["choices"] for s in seeds}, "anchor_by_seed": {s: recs[s]["anchor"] for s in seeds},
                     "contrasts": {}}
             for a, b, role in CONTRASTS:
@@ -255,8 +279,9 @@ def analyze():
                 for m in ("mae", "mse"):
                     if m not in avg[b]:
                         continue
+                    require(avg[a][m].shape == avg[b][m].shape, f"{ds} H{h}: {a} and {b} cover different windows")
                     paired = topk.cf.paired(avg[a][m], avg[b][m])
-                    cell = {"role": role, "delta": float(avg[a][m].mean() - avg[b][m].mean()),
+                    cell = {"role": role, "mean_delta": float(avg[a][m].mean() - avg[b][m].mean()),
                             "relative_pct": float(100 * (avg[a][m].mean() / avg[b][m].mean() - 1)), "paired": paired}
                     if confirmatory:
                         deltas = [float(runs[s]["arms"][a][f"per_window_{m}"].mean() - (runs[s]["arms"][b][f"per_window_{m}"].mean()
@@ -282,14 +307,18 @@ def analyze():
                                                                      "test_set_accessed": False}), indent=1))
     lines = ["# Offline Bates-router experiment", "", "Development evidence on 60-80% blocks. No test access.",
              "Negative deltas favour the first arm. Confirmatory readings need all five scorer seeds.", "",
-             "| Unit | Seeds | learned gate | constant (core) | Bates archived | Bates + router, chosen | Bates + router, switch | chosen form | variables routed |",
-             "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |"]
+             "| Unit | Valid seeds | Invalid seeds | learned gate | constant (core) | Bates archived | Bates + router, chosen | Bates + router, switch | chosen form | variables routed | switch underpowered |",
+             "| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | --- | --- |"]
     for name, u in units.items():
         a = u["arms"]
+        if not u["seeds"]:
+            lines.append(f"| {name} | 0 | {u['invalid_seeds']} | | | | | | | | |")
+            continue
         c0 = u["choices_by_seed"][u["seeds"][0]]
-        lines.append(f"| {name} | {len(u['seeds'])} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | "
+        lines.append(f"| {name} | {len(u['seeds'])} | {u['invalid_seeds'] or ''} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | "
                      f"{a.get('bates_all5', {}).get('mae', float('nan')):.4f} | {a['bates_router_chosen']['mae']:.4f} | "
-                     f"{a['bates_router_switch']['mae']:.4f} | {c0['chosen_form']} | {c0['variables_routed']}/{c0['variables']} |")
+                     f"{a['bates_router_switch']['mae']:.4f} | {c0['chosen_form']} | {c0['variables_routed']}/{c0['variables']} | "
+                     f"{c0.get('switch_underpowered')} |")
     for h, rr in readings.items():
         if rr:
             lines += ["", f"## Horizon {h}: confirmatory readings (all five seeds)", "",
@@ -301,8 +330,9 @@ def analyze():
         for key, cell in u["contrasts"].items():
             if key.endswith(":mae"):
                 blk = cell["paired"].get("block", {})
-                ci = blk.get("ci", blk.get("interval", "see results.json"))
-                lines.append(f"| {name} | {key[:-4]} | {cell['role']} | {cell['delta']:+.5f} | {cell['relative_pct']:+.2f}% | {ci} |")
+                ci = (f"[{float(blk['ci95_low']):+.5f}, {float(blk['ci95_high']):+.5f}]"
+                      if "ci95_low" in blk and "ci95_high" in blk else "see results.json")
+                lines.append(f"| {name} | {key[:-4]} | {cell['role']} | {cell['mean_delta']:+.5f} | {cell['relative_pct']:+.2f}% | {ci} |")
     (OUT / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
 
@@ -395,6 +425,7 @@ def main():
     ap.add_argument("--run", nargs="*", default=[], help="units like ETTh1:12, or 'all' for the 14 gate-ablation units")
     ap.add_argument("--seeds", nargs="*", type=int, default=[7])
     ap.add_argument("--analyze", action="store_true")
+    ap.add_argument("--job", nargs=3, metavar=("DATASET", "HORIZON", "SEED"), help=argparse.SUPPRESS)
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--lab", nargs=2, metavar=("CACHE", "RUN_DIR"))
     ap.add_argument("--block", type=int, default=24, help="lab mode only: moving-block length in windows")
@@ -405,14 +436,34 @@ def main():
         return lab(args.lab[0], args.lab[1], args.seeds, args.block)
     if args.analyze:
         return analyze()
+    if args.job:
+        torch.set_num_threads(int(os.environ.get("OMP_NUM_THREADS", "8")))
+        return run_job(args.job[0], int(args.job[1]), int(args.job[2]))
     units = args.run
     if units == ["all"]:
         import experiments.gate_ablation.run_gate_ablation as ga
         units = [f"{ds}:{h}" for h in ga.HORIZONS for ds in ga.DATASETS]
+    failed = []
     for unit in units:
         ds, h = unit.split(":")
         for seed in args.seeds:
-            run_job(ds, int(h), seed)
+            lock = result_path(ds, h, seed, "lock")
+            lock.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            except FileExistsError:
+                print(f"[offline] {ds} H{h} seed {seed}: locked by another runner ({lock}); skipped", flush=True)
+                continue
+            try:
+                os.write(fd, str(os.getpid()).encode())
+                os.close(fd)
+                code = subprocess.run([sys.executable, "-m", "experiments.offline_bates_router.run_offline_bates_router",
+                                       "--job", ds, str(h), str(seed)], cwd=OUT.parents[1]).returncode
+            finally:
+                lock.unlink(missing_ok=True)
+            if code != 0:
+                failed.append(f"{ds}:{h} seed {seed} (exit {code})")
+    print(f"[offline] finished; {len(failed)} failed" + (": " + "; ".join(failed) if failed else ""), flush=True)
 
 
 if __name__ == "__main__":
