@@ -123,3 +123,24 @@ failure-handling, memory and reporting problems. Changes:
 Correction to the lab disclosure: the 96-step lab intervals above used 24-window blocks, which is too short when
 consecutive windows share 96 targets. With 96-window blocks, no 96-step lab contrast excludes zero; for example,
 the switch against the learned gate is −0.0021 [−0.0052, +0.0005].
+
+## Lab results after amendment 1 (disclosure; no design change)
+
+Public ETT data, re-implemented experts, first 14,400 rows, lab mode at commit d383d12. Each cell is the MAE change
+against the learned gate, in percent. "Better" or "worse" marks a 95% moving-block interval (block = max(24, H))
+that excludes zero.
+
+| Slice | Seeds | Core-3 constant | Bates alone | Bates + router, constant | Bates + router, chosen | Bates + router, switch |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| ETTh1 H12 | 3 | −0.25 better | −0.46 better | −0.66 better | −0.54 better | −0.59 better |
+| ETTh2 H12 | 3 | +0.21 worse | −0.29 | +0.10 | −0.08 | −0.35 |
+| ETTm1 H12 | 3 | −0.32 better | +0.11 | +0.06 | −0.13 | +0.02 |
+| ETTm2 H12 | 3 | +0.04 | −0.01 | −0.02 | −0.15 | −0.15 |
+| ETTh1 H96 | 1 | +0.13 | −0.32 | +0.07 | −0.13 | −0.39 |
+| ETTh2 H96 | 1 | +0.01 | +0.90 | +0.90 | +0.96 | +0.90 |
+| ETTm1 H96 | 1 | +0.10 | +1.52 worse | +0.23 | +0.23 | +0.49 |
+| ETTh1 H192 | 1 | +0.00 | +0.62 | +0.08 | +0.41 | +0.41 |
+
+No offline arm was reliably better than the learned gate. The Bates fallback helped where Bates beat the equal
+core-3 and hurt where it did not. The late-OOF choice picked the per-cell form in 7 of 8 slices, although the
+constant form did better on router_val in some of them. The switch's routed-variable count varied across seeds.
