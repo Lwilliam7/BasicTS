@@ -362,8 +362,9 @@ def selftest():
                                                  "choices": {k: ch[k] for k in ("chosen_form", "variables_routed", "variables")}}))
 
 
-def lab(cache, run_dir, seeds):
-    """Same arms on the throwaway ETTh1 lab (sigma = 1), checked against the lab pipeline's learned gate."""
+def lab(cache, run_dir, seeds, block=24):
+    """Same arms on the throwaway ETTh1 lab (sigma = 1), checked against the lab pipeline's learned gate.
+    `block` is the moving-block length in windows for the switch and the intervals; use about H at long horizons."""
     sys.path.insert(0, str(Path(run_dir).resolve().parent))
     import pipeline as P
     _, horizon, train_raw, val_raw = P.load(cache)
@@ -376,16 +377,16 @@ def lab(cache, run_dir, seeds):
         rows = torch.arange(lo, len(train))
         preds, ch = offline_arms(train.fc, train.y, torch.ones_like(train.y, dtype=torch.bool), train.origins, rows, sv["bounds"],
                                  sv["oof_aff"][rows], val.fc, val.y, torch.ones_like(val.y, dtype=torch.bool), sv["val_aff"],
-                                 int(val.origins[0]), horizon, torch.ones(train.y.shape[-1]), 24)
+                                 int(val.origins[0]), horizon, torch.ones(train.y.shape[-1]), block)
         choices.append({k: ch[k] for k in ("chosen_form", "lambda_constant", "variables_routed", "variables")})
         for a, p in preds.items():
             per_window.setdefault(a, []).append((p - val.y).abs().mean((1, 2)).numpy())
     avg = {a: np.mean(x, 0) for a, x in per_window.items()}
     avg["learned gate (lab pipeline)"] = pw_gate["full"]
     avg["core constant (lab pipeline)"] = pw_gate["constant"]
-    out = {"horizon": horizon, "seeds": seeds, "choices": choices, "mae": {a: float(x.mean()) for a, x in avg.items()},
-           "vs_learned_gate": {a: P.block_bootstrap(x - avg["learned gate (lab pipeline)"]) for a, x in avg.items()},
-           "vs_bates_only": {a: P.block_bootstrap(x - avg["bates_only"]) for a, x in avg.items()}}
+    out = {"horizon": horizon, "seeds": seeds, "block": block, "choices": choices, "mae": {a: float(x.mean()) for a, x in avg.items()},
+           "vs_learned_gate": {a: P.block_bootstrap(x - avg["learned gate (lab pipeline)"], block=block) for a, x in avg.items()},
+           "vs_bates_only": {a: P.block_bootstrap(x - avg["bates_only"], block=block) for a, x in avg.items()}}
     print(json.dumps(out, indent=1))
 
 
@@ -396,11 +397,12 @@ def main():
     ap.add_argument("--analyze", action="store_true")
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--lab", nargs=2, metavar=("CACHE", "RUN_DIR"))
+    ap.add_argument("--block", type=int, default=24, help="lab mode only: moving-block length in windows")
     args = ap.parse_args()
     if args.selftest:
         return selftest()
     if args.lab:
-        return lab(args.lab[0], args.lab[1], args.seeds)
+        return lab(args.lab[0], args.lab[1], args.seeds, args.block)
     if args.analyze:
         return analyze()
     units = args.run
