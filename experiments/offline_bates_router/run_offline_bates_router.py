@@ -16,6 +16,14 @@ scorer protocol and score_arms unchanged, and writes only under experiments/offl
 Each job runs in its own process (as the gate-ablation queue does), so one failure or one horizon's module
 settings cannot affect the next job. A finished job is skipped on resume only if its record is valid.
 
+Amendment 2 adds anchored arms. The constant core/router blend (the `constant` arm) gets one weight per horizon
+toward the last observed value (`anchored_last_*`), or toward the last value and the value one day before each
+target when a day fits in the input window (`anchored_both_*`). Both values are in the input window, so nothing
+realised after the forecast origin is used. The weights are least squares on OOF rows, clipped to [0, 1].
+`*_pooled` fits them on all OOF rows. `*_robust` fits them separately on each expert vintage of router_train
+(forecasts from the 0-20% and the 0-40% experts) and keeps the smaller weight.
+These arms are exploratory: they failed lab confirmation (PREDECLARATION.md, amendment 2) and license no claim.
+
 Usage (repo root):
   python experiments/offline_bates_router/run_offline_bates_router.py --selftest
   python -m experiments.offline_bates_router.run_offline_bates_router --run ETTh1:12 --seeds 7
@@ -40,10 +48,17 @@ CHUNK = 256
 LATE_SHARE = 0.3
 MIN_BLOCKS = 8
 ARMS = ("bates_only", "bates_router_constant", "bates_router_static", "bates_router_chosen", "bates_router_switch")
+ANCHOR_ARMS = ("anchored_last_robust", "anchored_last_pooled", "anchored_both_robust", "anchored_both_pooled")
 REFERENCE_ARMS = ("full", "core_only", "router_only", "constant", "static_hv")
 CONTRASTS = (("bates_router_chosen", "full", "primary"), ("bates_router_chosen", "bates_all5", "primary"),
              ("bates_router_switch", "bates_all5", "primary"), ("bates_router_switch", "bates_router_chosen", "secondary"),
-             ("bates_router_constant", "constant", "secondary"), ("bates_only", "bates_all5", "descriptive"))
+             ("bates_router_constant", "constant", "secondary"), ("bates_only", "bates_all5", "descriptive"),
+             ("anchored_last_robust", "full", "exploratory"), ("anchored_last_robust", "bates_all5", "exploratory"),
+             ("anchored_last_robust", "constant", "exploratory"), ("anchored_last_pooled", "anchored_last_robust", "exploratory"),
+             ("anchored_both_robust", "anchored_last_robust", "exploratory"))
+STEPS_PER_DAY = {"ETTh1": 24, "Electricity": 24, "Traffic": 24, "OikolabWeather": 24,
+                 "AppliancesEnergy": 144, "SolarAL": 144, "TetouanPower": 144}
+ANCHOR_RIDGE = 1e-6
 
 
 def require(ok, message):
@@ -164,6 +179,123 @@ def offline_arms(fc_tr, y_tr, m_tr, origins_tr, oof_rows, fold_bounds, aff_oof, 
     return preds, choices
 
 
+def seasonal_index(input_len, horizon, period):
+    """History index of the value one period (or a whole number of periods) before each target step."""
+    steps = torch.arange(1, horizon + 1)
+    return input_len - 1 + steps - period * torch.ceil(steps / period).long()
+
+
+def anchor_features(hist, base, period):
+    """[N, H, V, K]: last observed value minus the forecast, and, when one period fits in the input window, the value
+    one period before each target minus the forecast."""
+    feats = [hist[:, -1, None, :].expand_as(base) - base]
+    if period <= hist.shape[1]:
+        feats.append(hist[:, seasonal_index(hist.shape[1], base.shape[1], period), :] - base)
+    return torch.stack(feats, -1)
+
+
+def vintage_split(starts, rows):
+    """True for OOF rows forecast by the later expert vintage. router_train windows do not cross the block edge
+    where the experts were retrained, so window starts jump once there. Without exactly one jump the rows are split
+    at the midpoint of router_train (equal-length blocks), and the record says so."""
+    d = starts[1:] - starts[:-1]
+    jumps = torch.nonzero(d > d.median()).flatten()
+    if len(jumps) == 1:
+        edge, how = int(jumps[0]) + 1, "start_jump"
+    else:
+        edge, how = len(starts) // 2, f"midpoint ({len(jumps)} jumps)"
+    return rows >= edge, {"vintage_split": how, "vintage_edge_index": edge, "vintage_rows_early": int((rows < edge).sum()),
+                          "vintage_rows_late": int((rows >= edge).sum())}
+
+
+def history_alignment_gap(cache, horizon, samples=512):
+    """Largest |history[j, -1] - target[i, d - 1]| over window pairs whose starts differ by d in 1..H: zero when the
+    cached histories are the raw input windows on the target scale."""
+    s = cache["absolute_window_starts"].long()
+    d = s[1:] - s[:-1]
+    i = torch.nonzero((d >= 1) & (d <= horizon)).flatten()
+    if len(i) == 0:
+        return float("nan")
+    i = i[torch.linspace(0, len(i) - 1, min(len(i), samples)).long()]
+    step = d[i] - 1
+    nxt, tgt = cache["histories"][i + 1, -1, :].double(), cache["targets"][i, step, :].double()
+    m = cache["target_masks"][i, step, :].bool()
+    return float((nxt - tgt).abs()[m].max() / (1.0 + tgt[m].abs().max())) if bool(m.any()) else float("nan")
+
+
+def anchored_arms(blend, oof_fc, oof_aff, oof_y, oof_m, train_hist, oof_rows, oof_late, val_fc, val_aff, val_hist, inv_var,
+                  period, chunk, score):
+    """blend(fc, aff) -> constant core/router blend [n, H, V]. One weight per horizon and anchor: least squares of the
+    blend's OOF residual on the anchor features, shared over variables, 1/sigma^2-weighted, masked, clipped to [0, 1].
+    "last" uses the last observed value only; "both" adds the value one day before each target when a day fits in
+    the input window (otherwise it equals "last"). Each is fitted on all OOF rows (pooled) and on each expert vintage
+    (oof_late False / True); robust keeps, per horizon and anchor, the smaller vintage weight. score(pred) is applied
+    to the plain blend ("_blend") and to each arm's router_val prediction in turn, so one prediction is held at a time.
+    train_hist [N_train, L, V] is indexed by oof_rows (train indices of the OOF rows) one chunk at a time."""
+    k = 2 if period <= train_hist.shape[1] else 1
+    h = oof_y.shape[1]
+    stats = {g: [torch.zeros(h, k, k, dtype=torch.float64), torch.zeros(h, k, dtype=torch.float64), 0.0] for g in ("early", "late")}
+    iv = inv_var.double().view(1, 1, -1)
+    for lo in range(0, len(oof_y), chunk):
+        sl = slice(lo, lo + chunk)
+        b, m = blend(oof_fc[sl], oof_aff[sl]), oof_m[sl].bool()
+        u = torch.nan_to_num(anchor_features(train_hist[oof_rows[sl]], b, period).double())
+        r = torch.where(m, oof_y[sl].double() - b.double(), 0.0)
+        for g, sel in (("early", ~oof_late[sl]), ("late", oof_late[sl])):
+            w = m[sel].double() * iv
+            stats[g][0] += torch.einsum("nhvk,nhvj,nhv->hkj", u[sel], u[sel], w)
+            stats[g][1] += torch.einsum("nhvk,nhv,nhv->hk", u[sel], r[sel], w)
+            stats[g][2] += float(w.sum())
+
+    def solve(gram, rhs, wsum, kk):
+        eye = torch.eye(kk, dtype=torch.float64) * ANCHOR_RIDGE * max(wsum, 1.0)
+        return torch.linalg.solve(gram[:, :kk, :kk] + eye, rhs[:, :kk].unsqueeze(-1)).squeeze(-1).clamp(0, 1).float()
+
+    pooled = [stats["early"][i] + stats["late"][i] for i in range(3)]
+    theta = {}
+    for name, kk in (("last", 1), ("both", k)):
+        early, late = solve(*stats["early"], kk), solve(*stats["late"], kk)
+        theta[name] = {"early": early, "late": late, "pooled": solve(*pooled, kk), "robust": torch.minimum(early, late)}
+    out = {"_blend": score(torch.cat([blend(val_fc[lo:lo + chunk], val_aff[lo:lo + chunk]) for lo in range(0, len(val_fc), chunk)]))}
+    finite = True
+    for name in ("last", "both"):
+        for fit in ("robust", "pooled"):
+            th, kk = theta[name][fit], theta[name][fit].shape[-1]
+            pred = torch.cat([blend(val_fc[lo:lo + chunk], val_aff[lo:lo + chunk]) for lo in range(0, len(val_fc), chunk)])
+            for lo in range(0, len(val_fc), chunk):
+                sl = slice(lo, lo + chunk)
+                pred[sl] += (anchor_features(val_hist[sl], pred[sl], period)[..., :kk] * th.view(1, h, 1, kk)).sum(-1)
+            finite = finite and bool(torch.isfinite(pred).all())
+            out[f"anchored_{name}_{fit}"] = score(pred)
+            del pred
+    choices = {"anchors": ["last_value", "one_day_before"][:k], "period": period,
+               **{f"weight_{name}_{g}": theta[name][g].tolist() for name in theta for g in theta[name]}}
+    return out, choices, finite
+
+
+def run_anchoring(ds, h, wb, hi, sc, core, fit, ref_constant, topk):
+    """Amendment 2 arms for one job. Caches without usable input windows skip this family and say why in the record,
+    so the amendment 1 arms are never blocked by it. Returns per-arm metrics, choices and integrity checks."""
+    tr, va = wb.train_cache, wb.val_cache
+    if not all("histories" in c and c["histories"].dim() == 3 and c["histories"].shape[2] == c["targets"].shape[2] for c in (tr, va)):
+        return {}, {"skipped": "no usable histories in the caches"}, {}
+    align = {"train": history_alignment_gap(tr, h), "val": history_alignment_gap(va, h)}
+    if not all(not math.isnan(g) and g <= 1e-4 for g in align.values()):
+        return {}, {"skipped": "histories do not line up with targets", "history_alignment": align}, {}
+    weights = topk.weights_fn(topk.wide.fallback_vector(topk.CANDIDATES, core), 3)
+    lam_c = torch.as_tensor(fit["lambda_c"])
+    blend = lambda fc, aff: (fc * weights(aff, lam_c.to(aff.dtype).expand(aff.shape[:-1]))).sum(-1)
+    oof_rows = torch.nonzero(sc["oof_mask"]).flatten()
+    late, split = vintage_split(tr["absolute_window_starts"].long(), oof_rows)
+    arms, choices, finite = anchored_arms(
+        blend, hi["oof_fc"], hi["oof_aff"], hi["oof_target"], hi["oof_tmask"], tr["histories"], oof_rows, late, hi["val_fc"],
+        hi["val_aff"], va["histories"], 1.0 / wb.std.double().square(), STEPS_PER_DAY[ds], CHUNK, lambda p: topk.cf.metrics_of(wb, p))
+    blend_pw = arms.pop("_blend")["per_window_mae"]
+    gap = float((blend_pw - ref_constant).abs().max() / (1.0 + ref_constant.abs().max()))
+    choices.update(split, history_alignment=align, constant_blend_max_gap=gap)
+    return arms, choices, {"anchor_predictions_finite": finite, "constant_blend_matches_score_arms": gap <= 1e-5}
+
+
 def sha(path):
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -210,6 +342,7 @@ def run_job(ds, h, seed):
     for key in ("oof_raw", "val_raw"):
         sc.pop(key, None)
     ref_arms, fit, gate_diag = ga.score_arms(wb, hi, core, topk.wdec.STAT_CHUNK)
+    anchor_arms, anchor_choices, anchor_checks = run_anchoring(ds, h, wb, hi, sc, core, fit, ref_arms["constant"]["per_window_mae"], topk)
     for key in ("oof_fc", "oof_g", "oof_l", "oof_target", "oof_tmask", "val_g", "val_l"):
         hi.pop(key, None)
     fc_tr = wb.forecasts_fn(wb.train_cache, wb.expert_idx).float()
@@ -220,7 +353,9 @@ def run_job(ds, h, seed):
         hi["val_aff"].float(), int(wb.val_cache["absolute_window_starts"][0]), h, wb.std.float(), int(settings["block_length"]),
         min_blocks=int(lh.MIN_BLOCKS))
     arms = {a: topk.cf.metrics_of(wb, p) for a, p in preds.items()}
+    arms.update(anchor_arms)
     arms.update({a: ref_arms[a] for a in REFERENCE_ARMS})
+    choices["anchoring"] = anchor_choices
     gate_path = ga.result_path(ds, h, seed, "pt")
     anchor = None
     if gate_path.exists():
@@ -229,7 +364,7 @@ def run_job(ds, h, seed):
                   "max_abs_diff": float((prior - ref_arms["full"]["per_window_mae"]).abs().max())}
     checks = {"test_set_not_accessed": True, "checkpoints_unchanged": before == ga.checkpoint_hashes(ds, h, conf, ckroot),
               "inputs_unchanged": all(sha(p) == d for p, d in inputs.items()),
-              "predictions_finite": all(bool(torch.isfinite(p).all()) for p in preds.values())}
+              "predictions_finite": all(bool(torch.isfinite(p).all()) for p in preds.values()), **anchor_checks}
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save({"arms": {a: {f"per_window_{m}": arms[a][f"per_window_{m}"] for m in ("mae", "mse")} for a in arms},
                 "absolute_window_starts": wb.val_cache["absolute_window_starts"]}, path.with_suffix(".pt"))
@@ -274,7 +409,7 @@ def analyze():
                     "choices_by_seed": {s: recs[s]["choices"] for s in seeds}, "anchor_by_seed": {s: recs[s]["anchor"] for s in seeds},
                     "contrasts": {}}
             for a, b, role in CONTRASTS:
-                if b not in avg:
+                if a not in avg or b not in avg:
                     continue
                 for m in ("mae", "mse"):
                     if m not in avg[b]:
@@ -319,6 +454,17 @@ def analyze():
                      f"{a.get('bates_all5', {}).get('mae', float('nan')):.4f} | {a['bates_router_chosen']['mae']:.4f} | "
                      f"{a['bates_router_switch']['mae']:.4f} | {c0['chosen_form']} | {c0['variables_routed']}/{c0['variables']} | "
                      f"{c0.get('switch_underpowered')} |")
+    lines += ["", "## Anchoring arms (amendment 2), MAE", "",
+              "| Unit | learned gate | constant (core) | Bates archived | last value, robust | last value, pooled | both anchors, robust | anchors | vintage split |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |"]
+    for name, u in units.items():
+        a = u["arms"]
+        if not u["seeds"] or "anchored_last_robust" not in a:
+            continue
+        an = u["choices_by_seed"][u["seeds"][0]].get("anchoring", {})
+        lines.append(f"| {name} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | {a.get('bates_all5', {}).get('mae', float('nan')):.4f} | "
+                     f"{a['anchored_last_robust']['mae']:.4f} | {a['anchored_last_pooled']['mae']:.4f} | {a['anchored_both_robust']['mae']:.4f} | "
+                     f"{'+'.join(an.get('anchors', []))} | {an.get('vintage_split')} |")
     for h, rr in readings.items():
         if rr:
             lines += ["", f"## Horizon {h}: confirmatory readings (all five seeds)", "",
@@ -388,8 +534,59 @@ def selftest():
     assert not torch.equal(fold_w_later[bounds[3][0]], fold_w[bounds[3][0]]), "later folds must see those windows"
     _, ch_again = run(y)
     assert ch_again == ch, "deterministic"
+    anchors = anchor_selftest()
     print("[offline] selftest PASS", json.dumps({"mae": {k: round(x, 4) for k, x in mae.items()},
-                                                 "choices": {k: ch[k] for k in ("chosen_form", "variables_routed", "variables")}}))
+                                                 "choices": {k: ch[k] for k in ("chosen_form", "variables_routed", "variables")},
+                                                 "anchors": anchors}))
+
+
+def anchor_selftest(n=800, h=6, v=3, e=5, n_fit=600, seed=1):
+    """Targets keep a decaying share of the last observed value; the experts ignore it. In the later vintage the
+    experts are broken, which inflates a pooled fit. The early vintage must recover the planted weights, the robust
+    weights must never exceed the pooled ones, and router_val targets must not change any prediction. A second case
+    plants a one-period-before component and checks that the "both" fit finds it."""
+    g = torch.Generator().manual_seed(seed)
+    hist = torch.randn(n, 24, v, generator=g)
+    decay = 0.6 ** torch.arange(1, h + 1).float()
+    y = decay.view(1, h, 1) * hist[:, -1:, :] + 0.5 * torch.randn(n, h, v, generator=g)
+    fc = 0.3 * torch.randn(n, h, v, e, generator=g)
+    late = torch.arange(n) >= n // 2
+    fc[late] += 3.0 * torch.randn(int(late.sum()), h, v, e, generator=g)
+    blend = lambda f, a: f.mean(-1)
+
+    def run(yy, hh, period):
+        return anchored_arms(blend, fc[:n_fit], fc[:n_fit], yy[:n_fit], torch.ones_like(yy[:n_fit], dtype=torch.bool),
+                             hh[:n_fit], torch.arange(n_fit), late[:n_fit], fc[n_fit:], fc[n_fit:], hh[n_fit:], torch.ones(v),
+                             period, 64, lambda p: p)
+
+    preds, ch, finite = run(y, hist, 48)
+    preds.pop("_blend")
+    early, pooled, robust = (torch.tensor(ch[f"weight_last_{k}"])[:, 0] for k in ("early", "pooled", "robust"))
+    assert finite and ch["anchors"] == ["last_value"], "a period longer than the input window must drop the day-before anchor"
+    assert torch.allclose(early, decay, atol=0.08), ("the early vintage must recover the planted weights", early)
+    assert bool((robust <= pooled + 1e-6).all()) and float(pooled[-1]) > 0.3, ("the broken vintage inflates the pooled fit", pooled)
+    assert torch.equal(preds["anchored_last_robust"], preds["anchored_both_robust"]), "without a day-before anchor both = last"
+    poisoned = y.clone()
+    poisoned[n_fit:] += 50.0
+    again, _, _ = run(poisoned, hist, 48)
+    again.pop("_blend")
+    assert all(torch.equal(preds[a], again[a]) for a in preds), "router_val targets must not change any prediction"
+    y2 = 0.5 * hist[:, seasonal_index(24, h, 12), :] + 0.5 * torch.randn(n, h, v, generator=g)
+    _, ch2, _ = run(y2, hist, 12)
+    day = torch.tensor(ch2["weight_both_early"])[:, 1]
+    assert ch2["anchors"] == ["last_value", "one_day_before"] and bool((day > 0.35).all()), ("day-before weight", day)
+    starts = torch.cat([torch.arange(100), torch.arange(150, 250)])
+    late_rows, info = vintage_split(starts, torch.arange(20, 200))
+    assert info["vintage_split"] == "start_jump" and int(late_rows.sum()) == 100, ("vintage edge at the start jump", info)
+    series = torch.randn(400, 2)
+    idx = torch.arange(300)
+    cache = {"absolute_window_starts": idx, "histories": torch.stack([series[i:i + 24] for i in idx]),
+             "targets": torch.stack([series[i + 24:i + 30] for i in idx]), "target_masks": torch.ones(300, 6, 2, dtype=torch.bool)}
+    assert history_alignment_gap(cache, 6) == 0.0, "aligned histories must give a zero gap"
+    cache["histories"] = cache["histories"] * 2.0
+    assert history_alignment_gap(cache, 6) > 1e-3, "rescaled histories must be caught"
+    return {"last_early": [round(float(x), 3) for x in early], "last_pooled": [round(float(x), 3) for x in pooled],
+            "last_robust": [round(float(x), 3) for x in robust], "day_before_early": [round(float(x), 3) for x in day]}
 
 
 def lab(cache, run_dir, seeds, block=24):

@@ -144,3 +144,54 @@ that excludes zero.
 No offline arm was reliably better than the learned gate. The Bates fallback helped where Bates beat the equal
 core-3 and hurt where it did not. The late-OOF choice picked the per-cell form in 7 of 8 slices, although the
 constant form did better on router_val in some of them. The switch's routed-variable count varied across seeds.
+
+## Amendment 2 (2026-11-11, before any real-pool result): exploratory anchoring arms
+
+Why. A lab hillclimb tested 17 offline replacements for the gate (public data, re-implemented experts; record in
+`project_memory/experiments/2026-11-11_offline_contribution_hillclimb_lab.md`). No re-weighting of the five experts
+beat the learned gate past noise. Even an in-sample oracle that picks the best equal-weight subset per cell on
+router_val is only 1.2-2.0% better than the gate. Anchoring the blend to values from the input window was the only
+change that moved MAE. It failed all three pre-committed lab confirmations, so it is added as exploratory only. It
+costs no extra scorer training, and it tests whether the real experts under-use the last observation.
+
+Every anchored arm starts from the `constant` arm's blend, core-3 + λ_c (routed − core-3).
+
+| Arm | Definition |
+| --- | --- |
+| `anchored_last_robust` | Adds θ_h (last observed value − blend). θ_h is one value per horizon, least squares of the blend's OOF residual (1/σ² weights, masked targets), clipped to [0, 1]. It is fitted on the OOF rows of each expert vintage, and the smaller of the two is kept. |
+| `anchored_last_pooled` | The same, with θ_h fitted on all OOF rows. |
+| `anchored_both_robust` | Adds the value one day before each target when a day fits in the 96-step input window (ETTh1, Electricity, Traffic, OikolabWeather). For the 10-minute units it equals `anchored_last_robust`. |
+| `anchored_both_pooled` | The pooled version of `anchored_both_robust`. |
+
+- The vintage edge is the single jump in router_train window starts, where the experts were retrained. If there is
+  not exactly one jump, the rows are split at the midpoint, and the record says so.
+- Contrasts, all exploratory: `anchored_last_robust − full`, `− bates_all5` and `− constant`;
+  `anchored_last_pooled − anchored_last_robust`; `anchored_both_robust − anchored_last_robust`.
+- Decision rule: none of these arms licenses a claim, and none changes the amendment 1 decision rules. Using an
+  anchor in the paper would need its own predeclared confirmation.
+- Integrity:
+  - Cached histories must line up with targets: `histories[j, -1]` equals `targets[i, d - 1]` for windows d steps
+    apart, relative gap ≤ 1e-4. If the histories are missing or misaligned, this family is skipped, the record says
+    why, and the amendment 1 arms are unaffected.
+  - The recomputed blend must reproduce the `constant` arm of `score_arms` (relative gap ≤ 1e-5).
+  - All predictions must be finite.
+
+Lab disclosure. Each cell is the MAE change against the lab learned gate. "b" or "w" marks a 95% moving-block
+interval (block = max(24, H)) that excludes zero. Each round's candidate and pass rule were written down before its
+slices were scored. Pass rule: mean change < 0 and no slice significantly worse.
+
+| Round | Candidate | Slices and result | Verdict |
+| --- | --- | --- | --- |
+| 1 | both anchors, pooled fit | ETTh2 H12 +5.15% w, ETTm2 H12 −0.23% b, ETTh2 H96 +1.57% w, ETTh1 H192 −0.73% b | failed |
+| 2 | both anchors, vintage rule | ETTm1 rows 28800-43200 +2.84% w, ETTm2 same rows −0.20% b, exchange rate −3.11% b | failed |
+| 3 | last value, vintage rule | ETTm1 rows 43200-57600 +0.08%, electricity (7 clients) +0.24% w, traffic (7 sensors) −0.47% b | failed |
+
+- Round 1 failed because ETTh2's second router_train block is a regime where the experts fail. That inflates the
+  pooled anchor weight to 0.25-0.39 at every step. The vintage rule was written after this was seen.
+- Round 2 failed on the day-before anchor. The last value alone helped on all three round-2 slices.
+- Round 3's electricity loss belongs to the constant blend itself (+0.24% against the learned gate). There the anchor
+  weight is zero.
+
+In the lab the last-value anchor changes MAE by −0.05% to −0.2% against the constant blend on most ETT slices, by
+about −3% on exchange rates, and by nothing on electricity and traffic. Its weight is 0.1-0.3 at step 1 and near
+zero after step 3, so no effect is expected at 192 steps.
