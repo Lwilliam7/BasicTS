@@ -25,6 +25,8 @@ realised after the forecast origin is used. The weights are least squares on OOF
 These arms are exploratory: they failed lab confirmation (PREDECLARATION.md, amendment 2) and license no claim.
 
 Usage (repo root):
+  bash experiments/offline_bates_router/launch_pilot.sh           # seed-7 pilot in the background, then --analyze
+  bash experiments/offline_bates_router/launch_pilot.sh --status
   python experiments/offline_bates_router/run_offline_bates_router.py --selftest
   python -m experiments.offline_bates_router.run_offline_bates_router --run ETTh1:12 --seeds 7
   python -m experiments.offline_bates_router.run_offline_bates_router --run all --seeds 7 11 13 17 19
