@@ -195,3 +195,62 @@ slices were scored. Pass rule: mean change < 0 and no slice significantly worse.
 In the lab the last-value anchor changes MAE by −0.05% to −0.2% against the constant blend on most ETT slices, by
 about −3% on exchange rates, and by nothing on electricity and traffic. Its weight is 0.1-0.3 at step 1 and near
 zero after step 3, so no effect is expected at 192 steps.
+
+## Amendment 3 (2026-11-16, before any real-pool result of the arm below): pooled static gate
+
+Status: the definition is fixed here. The runner arm is not written yet and must be added, with a self-test, before
+any job computes it. No real-pool number of this arm exists.
+
+Why. The lab search (amendment 2) used weak experts, 7 variables and mostly 12 steps. The user's own server results
+at 192 steps (`experiments/routing_granularity/results.json`, the six gate-ablation arms reproduced bit for bit, five
+seeds, 60-80% block) say something the lab could not. MAE change against the learned gate (`full`), in percent:
+
+| Dataset at 192 | One constant λ (`constant`) | One λ per cell (`static_hv`) | Window mean of the learned λ (`window_gate`) |
+| --- | ---: | ---: | ---: |
+| ETTh1 | −0.09 | −0.05 | −0.16 |
+| Electricity | +0.13 | −0.03 | −0.09 |
+| Traffic | −0.77 | +0.28 (significant loss) | −0.72 |
+| AppliancesEnergy | −0.15 | −0.14 | −0.03 |
+| OikolabWeather | +0.13 | +0.01 | +0.15 (significant loss) |
+| SolarAL | −2.04 | −1.24 | −0.46 |
+| TetouanPower | −1.05 | −1.13 | −0.48 |
+
+- No learned or per-window signal is needed to match the learned gate at 192 steps. Averaging the learned λ over the
+  window already beats it on six datasets.
+- The two closed-form gates fail on different datasets. The constant is significantly better than the per-cell fit on
+  Traffic (1.06%) and SolarAL (0.81%); the per-cell fit is significantly better than the constant on Electricity and
+  OikolabWeather. So the open question is how far to pool the per-cell weights, and that can be estimated.
+
+Arm `pooled_static`. Core-3, the routed forecast and the scorer are unchanged. With d = routed − core and
+e = target − core on the OOF rows of router_train, and static_fits' weights and masks:
+
+1. λ̂_c is the per-cell least-squares weight and λ̂_0 the single constant, both as static_fits computes them, unclipped.
+   S_c is the cell's weighted sum of d².
+2. Order the OOF windows by origin and cut them at the midpoint, dropping one bootstrap block of windows around it.
+   λ̂_c^A and λ̂_c^B are the per-cell weights fitted on the first and the second part.
+3. Spread of the true weights: τ² = max(0, mean over cells of (λ̂_c^A − mean^A)(λ̂_c^B − mean^B)). Cells with a zero
+   denominator in either part are left out of this mean and receive λ̂_0.
+4. Mean sampling variance of the full fit: n = max(0, mean over cells of (λ̂_c − λ̂_0)² − τ²). Per cell,
+   s_c² = n · (1/S_c) / mean(1/S_c).
+5. λ_c = λ̂_0 + τ² / (τ² + s_c²) · (λ̂_c − λ̂_0), clipped as static_fits clips. If τ² = 0 every cell gets λ̂_0.
+
+No tuning constant, no training, no value from the evaluation block. The record stores τ², n and the mean kept share
+τ² / (τ² + s_c²).
+
+Contrasts. Primary: `pooled_static − full`. Secondary: `pooled_static − constant`, `pooled_static − static_hv`,
+`pooled_static − bates_all5`.
+
+Pass rule (the user's, 2026-11-16), at 192 steps, five seeds: `pooled_static` has lower MAE than `full` on at least
+5 of the 7 datasets, and the interval reading is a significant loss on none. Otherwise the arm is reported as failed
+and is not tuned. The 12-step units are reported with the same contrasts and carry no rule.
+
+Limits, stated in advance.
+- This is development evidence. The rule above was designed after the table above was read, on the same block, so
+  passing it is not a confirmation. A confirmation needs the locked test pass or untouched datasets.
+- The paper's method (`wide_top3`) was frozen by user decision on 2026-10-27. Replacing its gate needs a new freeze.
+- Planted check only so far: `planted_pooled_gate.py` (numpy, seeds 0-4). On seven planted regimes the pooled weight
+  matched the better of the constant and the per-cell fit in six, and fell between them in one (uneven cells, mild
+  spread). It shows the estimator behaves; it says nothing about the real pools.
+- Prior work. Shrinking combination weights toward a simple target is established (Blanc and Setzer 2020; Diebold and
+  Shin 2019; Hendry and Clements 2002). Three web searches on 2026-11-16 found no use of split-half pooling for a
+  per-cell routing weight among deep forecasting experts. That search is not exhaustive.
