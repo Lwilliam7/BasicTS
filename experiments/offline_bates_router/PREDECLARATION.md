@@ -198,8 +198,13 @@ zero after step 3, so no effect is expected at 192 steps.
 
 ## Amendment 3 (2026-11-16, before any real-pool result of the arm below): pooled static gate
 
-Status: the definition is fixed here. The runner arm is not written yet and must be added, with a self-test, before
-any job computes it. No real-pool number of this arm exists.
+Status: the definition is fixed here. No real-pool number of this arm exists.
+
+Revised 2026-11-18, before the arm was run on any real pool. Steps 3 and 4 below now weight each cell by its
+information S_c. The first version used plain means over cells. A planted check with cells where the routed and core
+forecasts hardly differ showed those cells could dominate the plain means (30% such cells, equal true weights: the
+plain version lost 0.27% against the true weights where the weighted one lost 0.00%). The arm is now in
+`run_offline_bates_router.py` (`pooled_lambda`, `pooled_static_arm`, `run_pooling`) and `--selftest` covers it.
 
 Why. The lab search (amendment 2) used weak experts, 7 variables and mostly 12 steps. The user's own server results
 at 192 steps (`experiments/routing_granularity/results.json`, the six gate-ablation arms reproduced bit for bit, five
@@ -228,14 +233,15 @@ e = target − core on the OOF rows of router_train, and static_fits' weights an
    S_c is the cell's weighted sum of d².
 2. Order the OOF windows by origin and cut them at the midpoint, dropping one bootstrap block of windows around it.
    λ̂_c^A and λ̂_c^B are the per-cell weights fitted on the first and the second part.
-3. Spread of the true weights: τ² = max(0, mean over cells of (λ̂_c^A − mean^A)(λ̂_c^B − mean^B)). Cells with a zero
-   denominator in either part are left out of this mean and receive λ̂_0.
-4. Mean sampling variance of the full fit: n = max(0, mean over cells of (λ̂_c − λ̂_0)² − τ²). Per cell,
-   s_c² = n · (1/S_c) / mean(1/S_c).
+3. Spread of the true weights: τ² = max(0, mean over cells of (λ̂_c^A − mean^A)(λ̂_c^B − mean^B)), every mean weighted
+   by S_c. Cells with a zero denominator in either part are left out of these means and receive λ̂_0.
+4. Mean sampling variance of the full fit: n = max(0, S-weighted mean over cells of (λ̂_c − λ̂_0)² − τ²). Per cell,
+   s_c² = n · mean(S) / S_c.
 5. λ_c = λ̂_0 + τ² / (τ² + s_c²) · (λ̂_c − λ̂_0), clipped as static_fits clips. If τ² = 0 every cell gets λ̂_0.
 
 No tuning constant, no training, no value from the evaluation block. The record stores τ², n and the mean kept share
-τ² / (τ² + s_c²).
+τ² / (τ² + s_c²). It also stores whether this code's clipped per-cell and constant fits reproduce the `static_hv` and
+`constant` arms of `score_arms`; a mismatch is reported beside the arm and does not invalidate the job.
 
 Contrasts. Primary: `pooled_static − full`. Secondary: `pooled_static − constant`, `pooled_static − static_hv`,
 `pooled_static − bates_all5`.
@@ -248,9 +254,12 @@ Limits, stated in advance.
 - This is development evidence. The rule above was designed after the table above was read, on the same block, so
   passing it is not a confirmation. A confirmation needs the locked test pass or untouched datasets.
 - The paper's method (`wide_top3`) was frozen by user decision on 2026-10-27. Replacing its gate needs a new freeze.
-- Planted check only so far: `planted_pooled_gate.py` (numpy, seeds 0-4). On seven planted regimes the pooled weight
-  matched the better of the constant and the per-cell fit in six, and fell between them in one (uneven cells, mild
-  spread). It shows the estimator behaves; it says nothing about the real pools.
+- Planted check only so far: `planted_pooled_gate.py` (numpy, seeds 0-4, seven regimes). The weighted version was the
+  best of the three, or within 0.001% of the best, in every regime. It shows the estimator behaves; it says nothing
+  about the real pools.
+- Stand-in run only: through stand-ins for the gate-ablation modules on the lab data (ETTh1, 12 steps, 84 cells, five
+  seeds) every job was valid and both reproduction flags were true. The two halves did not agree there (τ² = 0), so the
+  arm equalled the constant: MAE 0.36456 at seed 7, against 0.36553 per cell and 0.36547 for the lab gate.
 - Prior work. Shrinking combination weights toward a simple target is established (Blanc and Setzer 2020; Diebold and
   Shin 2019; Hendry and Clements 2002). Three web searches on 2026-11-16 found no use of split-half pooling for a
   per-cell routing weight among deep forecasting experts. That search is not exhaustive.

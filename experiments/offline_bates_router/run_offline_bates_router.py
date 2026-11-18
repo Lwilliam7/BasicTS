@@ -24,6 +24,11 @@ realised after the forecast origin is used. The weights are least squares on OOF
 (forecasts from the 0-20% and the 0-40% experts) and keeps the smaller weight.
 These arms are exploratory: they failed lab confirmation (PREDECLARATION.md, amendment 2) and license no claim.
 
+Amendment 3 adds `pooled_static`: core-3 + lambda[h, v] * (routed - core-3), where each cell's closed-form weight is
+pulled toward the single constant. How far is estimated from the data: the per-cell weights are fitted on the first
+and on the second half of the OOF windows, and only what the two halves agree on is kept. No training, no tuning
+constant, nothing from the evaluation block.
+
 Usage (repo root):
   bash experiments/offline_bates_router/launch_pilot.sh           # seed-7 pilot in the background, then --analyze
   bash experiments/offline_bates_router/launch_pilot.sh --status
@@ -51,13 +56,17 @@ LATE_SHARE = 0.3
 MIN_BLOCKS = 8
 ARMS = ("bates_only", "bates_router_constant", "bates_router_static", "bates_router_chosen", "bates_router_switch")
 ANCHOR_ARMS = ("anchored_last_robust", "anchored_last_pooled", "anchored_both_robust", "anchored_both_pooled")
+POOLED_ARM = "pooled_static"
+POOLED_WINS_NEEDED = 5
 REFERENCE_ARMS = ("full", "core_only", "router_only", "constant", "static_hv")
 CONTRASTS = (("bates_router_chosen", "full", "primary"), ("bates_router_chosen", "bates_all5", "primary"),
              ("bates_router_switch", "bates_all5", "primary"), ("bates_router_switch", "bates_router_chosen", "secondary"),
              ("bates_router_constant", "constant", "secondary"), ("bates_only", "bates_all5", "descriptive"),
              ("anchored_last_robust", "full", "exploratory"), ("anchored_last_robust", "bates_all5", "exploratory"),
              ("anchored_last_robust", "constant", "exploratory"), ("anchored_last_pooled", "anchored_last_robust", "exploratory"),
-             ("anchored_both_robust", "anchored_last_robust", "exploratory"))
+             ("anchored_both_robust", "anchored_last_robust", "exploratory"),
+             (POOLED_ARM, "full", "pooled primary"), (POOLED_ARM, "constant", "pooled secondary"),
+             (POOLED_ARM, "static_hv", "pooled secondary"), (POOLED_ARM, "bates_all5", "pooled secondary"))
 STEPS_PER_DAY = {"ETTh1": 24, "Electricity": 24, "Traffic": 24, "OikolabWeather": 24,
                  "AppliancesEnergy": 144, "SolarAL": 144, "TetouanPower": 144}
 ANCHOR_RIDGE = 1e-6
@@ -298,6 +307,82 @@ def run_anchoring(ds, h, wb, hi, sc, core, fit, ref_constant, topk):
     return arms, choices, {"anchor_predictions_finite": finite, "constant_blend_matches_score_arms": gap <= 1e-5}
 
 
+def pooled_lambda(sums, inv_var):
+    """sums[part] = (sum of d * e, sum of d^2) per cell [H, V] over the OOF windows of "all", "first" and "second", with
+    d = routed - core and e = target - core. Every cell starts at the single constant and moves toward its own
+    least-squares weight by tau2 / (tau2 + s2). tau2 is the spread of the true weights: the covariance, across cells,
+    of the two half fits, whose noise does not covary. s2 is the cell's sampling variance: the rest of the spread around
+    the constant, divided among cells by their information. All moments weight a cell by its information, sum of d^2
+    over sigma^2, so a cell where the routed and core forecasts hardly differ cannot move them. A cell without data
+    in both halves gets the constant. Returns the clipped weights [H, V] and the fitted quantities."""
+    iv = inv_var.double().view(1, -1)
+    (num, den), (num_a, den_a), (num_b, den_b) = (sums[k] for k in ("all", "first", "second"))
+    info = den * iv
+    const = float((num * iv).sum() / info.sum()) if float(info.sum()) > 0 else 0.0
+    ratio = lambda n, d: torch.where(d > 0, n / d.clamp_min(1e-300), torch.zeros_like(n))
+    cell, first, second = ratio(num, den), ratio(num_a, den_a), ratio(num_b, den_b)
+    both = (den_a > 0) & (den_b > 0)
+    total, tau2, noise, keep = float(info[both].sum()), 0.0, 0.0, torch.zeros_like(cell)
+    if total > 0:
+        w = torch.where(both, info, torch.zeros_like(info)) / total
+        mean = lambda x: float((w * x).sum())
+        tau2 = max(0.0, mean((first - mean(first)) * (second - mean(second))))
+        noise = max(0.0, mean((cell - const).square()) - tau2)
+        if tau2 > 0:
+            s2 = noise * (total / int(both.sum())) / info.clamp_min(1e-300)
+            keep = torch.where(both, tau2 / (tau2 + s2), torch.zeros_like(cell))
+    lam = (const + keep * (cell - const)).clamp(0, 1).float()
+    fits = {"static": cell.clamp(0, 1).float(), "lambda_constant_unclipped": const, "spread_tau2": tau2, "noise_mean": noise,
+            "kept_share_mean": float(keep.mean()), "kept_share_information_weighted": float((keep * info).sum() / info.sum().clamp_min(1e-300)),
+            "cells": cell.numel(), "cells_without_both_halves": int((~both).sum()), "lambda_pooled_mean": float(lam.mean()),
+            "lambda_pooled_share_0": float((lam == 0).float().mean()), "lambda_pooled_share_1": float((lam == 1).float().mean())}
+    return lam, fits
+
+
+def pooled_static_arm(core, routed, blend, oof_fc, oof_aff, oof_y, oof_m, val_fc, val_aff, inv_var, block_length, chunk, score):
+    """core(fc, aff) and routed(fc, aff) -> [n, H, V]; blend(fc, aff, lam [H, V]) -> [n, H, V]. The OOF rows arrive in
+    origin order and are cut at the midpoint, with block_length windows dropped around it so the halves share no
+    target. score(pred) is applied to the pooled prediction and to the plain per-cell blend ("_static"), which must
+    reproduce the static_hv arm. Returns the scores, the fitted quantities and whether every prediction was finite."""
+    n, (h, v) = len(oof_y), oof_y.shape[1:]
+    first_end, second_start = n // 2 - block_length // 2, n // 2 + block_length - block_length // 2
+    sums = {k: [torch.zeros(h, v, dtype=torch.float64), torch.zeros(h, v, dtype=torch.float64)] for k in ("all", "first", "second")}
+    for lo in range(0, n, chunk):
+        sl = slice(lo, lo + chunk)
+        c, m = core(oof_fc[sl], oof_aff[sl]).double(), oof_m[sl].bool()
+        d = torch.where(m, routed(oof_fc[sl], oof_aff[sl]).double() - c, 0.0)
+        e = torch.where(m, oof_y[sl].double() - c, 0.0)
+        row = torch.arange(lo, lo + len(d))
+        for part, sel in (("all", row >= 0), ("first", row < first_end), ("second", row >= second_start)):
+            sums[part][0] += (d[sel] * e[sel]).sum(0)
+            sums[part][1] += d[sel].square().sum(0)
+    lam, fits = pooled_lambda(sums, inv_var)
+    fits.update(oof_rows=n, first_half_rows=max(first_end, 0), second_half_rows=max(n - second_start, 0))
+    out, finite = {}, True
+    for name, weight in ((POOLED_ARM, lam), ("_static", fits.pop("static"))):
+        pred = torch.cat([blend(val_fc[lo:lo + chunk], val_aff[lo:lo + chunk], weight) for lo in range(0, len(val_fc), chunk)])
+        finite = finite and bool(torch.isfinite(pred).all())
+        out[name] = score(pred)
+        del pred
+    return out, fits, finite
+
+
+def run_pooling(wb, hi, core, fit, ref_static, block_length, topk):
+    """Amendment 3 arm for one job. The two reproduction flags say whether this code's per-cell and constant fits are
+    the ones score_arms used; they are recorded, not enforced, so the amendment 1 arms are never blocked by them."""
+    weights = topk.weights_fn(topk.wide.fallback_vector(topk.CANDIDATES, core), 3)
+    blend = lambda fc, aff, lam: (fc * weights(aff, lam.to(aff.dtype).expand(aff.shape[:-1]))).sum(-1)
+    arms, choices, finite = pooled_static_arm(
+        lambda fc, aff: blend(fc, aff, torch.zeros(())), lambda fc, aff: blend(fc, aff, torch.ones(())), blend, hi["oof_fc"],
+        hi["oof_aff"], hi["oof_target"], hi["oof_tmask"], hi["val_fc"], hi["val_aff"], 1.0 / wb.std.double().square(), block_length, CHUNK,
+        lambda p: topk.cf.metrics_of(wb, p))
+    static_gap = float((arms.pop("_static")["per_window_mae"] - ref_static).abs().max() / (1.0 + ref_static.abs().max()))
+    constant_gap = abs(min(max(choices["lambda_constant_unclipped"], 0.0), 1.0) - float(fit["lambda_c"]))
+    choices.update(static_hv_max_gap=static_gap, reproduces_static_hv=static_gap <= 1e-5, lambda_constant_gap=constant_gap,
+                   reproduces_constant=constant_gap <= 1e-5)
+    return arms, choices, {"pooled_predictions_finite": finite}
+
+
 def sha(path):
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -345,6 +430,8 @@ def run_job(ds, h, seed):
         sc.pop(key, None)
     ref_arms, fit, gate_diag = ga.score_arms(wb, hi, core, topk.wdec.STAT_CHUNK)
     anchor_arms, anchor_choices, anchor_checks = run_anchoring(ds, h, wb, hi, sc, core, fit, ref_arms["constant"]["per_window_mae"], topk)
+    pool_arms, pool_choices, pool_checks = run_pooling(wb, hi, core, fit, ref_arms["static_hv"]["per_window_mae"],
+                                                       int(settings["block_length"]), topk)
     for key in ("oof_fc", "oof_g", "oof_l", "oof_target", "oof_tmask", "val_g", "val_l"):
         hi.pop(key, None)
     fc_tr = wb.forecasts_fn(wb.train_cache, wb.expert_idx).float()
@@ -356,8 +443,9 @@ def run_job(ds, h, seed):
         min_blocks=int(lh.MIN_BLOCKS))
     arms = {a: topk.cf.metrics_of(wb, p) for a, p in preds.items()}
     arms.update(anchor_arms)
+    arms.update(pool_arms)
     arms.update({a: ref_arms[a] for a in REFERENCE_ARMS})
-    choices["anchoring"] = anchor_choices
+    choices["anchoring"], choices["pooling"] = anchor_choices, pool_choices
     gate_path = ga.result_path(ds, h, seed, "pt")
     anchor = None
     if gate_path.exists():
@@ -366,7 +454,7 @@ def run_job(ds, h, seed):
                   "max_abs_diff": float((prior - ref_arms["full"]["per_window_mae"]).abs().max())}
     checks = {"test_set_not_accessed": True, "checkpoints_unchanged": before == ga.checkpoint_hashes(ds, h, conf, ckroot),
               "inputs_unchanged": all(sha(p) == d for p, d in inputs.items()),
-              "predictions_finite": all(bool(torch.isfinite(p).all()) for p in preds.values()), **anchor_checks}
+              "predictions_finite": all(bool(torch.isfinite(p).all()) for p in preds.values()), **anchor_checks, **pool_checks}
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save({"arms": {a: {f"per_window_{m}": arms[a][f"per_window_{m}"] for m in ("mae", "mse")} for a in arms},
                 "absolute_window_starts": wb.val_cache["absolute_window_starts"]}, path.with_suffix(".pt"))
@@ -407,7 +495,8 @@ def analyze():
                 else:
                     avg["bates_all5"] = {m: saved["bates_all5"][f"per_window_{m}"] for m in ("mae", "mse")}
             confirmatory = sorted(seeds) == sorted(ga.SEEDS)
-            unit = {"seeds": seeds, "invalid_seeds": invalid, "confirmatory": confirmatory, "arms": {a: {m: float(x.mean()) for m, x in mm.items()} for a, mm in avg.items()},
+            unit = {"seeds": seeds, "invalid_seeds": invalid, "confirmatory": confirmatory,
+                    "interval_eligible": bool(settings.get("interval_eligible", True)), "arms": {a: {m: float(x.mean()) for m, x in mm.items()} for a, mm in avg.items()},
                     "choices_by_seed": {s: recs[s]["choices"] for s in seeds}, "anchor_by_seed": {s: recs[s]["anchor"] for s in seeds},
                     "contrasts": {}}
             for a, b, role in CONTRASTS:
@@ -467,6 +556,27 @@ def analyze():
         lines.append(f"| {name} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | {a.get('bates_all5', {}).get('mae', float('nan')):.4f} | "
                      f"{a['anchored_last_robust']['mae']:.4f} | {a['anchored_last_pooled']['mae']:.4f} | {a['anchored_both_robust']['mae']:.4f} | "
                      f"{'+'.join(an.get('anchors', []))} | {an.get('vintage_split')} |")
+    lines += ["", "## Pooled static gate (amendment 3), MAE", "",
+              "| Unit | learned gate | constant | per cell (static_hv) | pooled | pooled vs learned gate | kept share | reproduces static_hv / constant |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |"]
+    for name, u in units.items():
+        a = u["arms"]
+        if not u["seeds"] or POOLED_ARM not in a:
+            continue
+        po = u["choices_by_seed"][u["seeds"][0]].get("pooling", {})
+        lines.append(f"| {name} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | {a['static_hv']['mae']:.4f} | {a[POOLED_ARM]['mae']:.4f} | "
+                     f"{100 * (a[POOLED_ARM]['mae'] / a['full']['mae'] - 1):+.2f}% | {po.get('kept_share_mean', float('nan')):.2f} | "
+                     f"{po.get('reproduces_static_hv')} / {po.get('reproduces_constant')} |")
+    rule = {n: u for n, u in units.items() if n.endswith("_h192") and f"{POOLED_ARM}-full:mae" in u["contrasts"]}
+    if rule:
+        cells = {n: u["contrasts"][f"{POOLED_ARM}-full:mae"] for n, u in rule.items()}
+        wins = sorted(n for n, c in cells.items() if c["mean_delta"] < 0)
+        losses = sorted(n for n, c in cells.items() if rule[n]["interval_eligible"]
+                        and float(c["paired"].get("block", {}).get("ci95_low", -1.0)) > 0)
+        complete = len(rule) == len(ga.DATASETS) and all(u["confirmatory"] for u in rule.values())
+        verdict = ("PASS" if len(wins) >= POOLED_WINS_NEEDED and not losses else "FAIL") if complete else "NOT READ: needs every dataset and all five seeds"
+        lines += ["", f"Pass rule at 192 steps (lower MAE than the learned gate on at least {POOLED_WINS_NEEDED} datasets, a significant loss on none): "
+                      f"lower on {len(wins)} of {len(rule)}; significant losses: {', '.join(losses) or 'none'}. **{verdict}**"]
     for h, rr in readings.items():
         if rr:
             lines += ["", f"## Horizon {h}: confirmatory readings (all five seeds)", "",
@@ -536,10 +646,51 @@ def selftest():
     assert not torch.equal(fold_w_later[bounds[3][0]], fold_w[bounds[3][0]]), "later folds must see those windows"
     _, ch_again = run(y)
     assert ch_again == ch, "deterministic"
-    anchors = anchor_selftest()
+    anchors, pooled = anchor_selftest(), pooled_selftest()
     print("[offline] selftest PASS", json.dumps({"mae": {k: round(x, 4) for k, x in mae.items()},
                                                  "choices": {k: ch[k] for k in ("chosen_form", "variables_routed", "variables")},
-                                                 "anchors": anchors}))
+                                                 "anchors": anchors, "pooled": pooled}))
+
+
+def pooled_selftest(h=8, v=40, n_val=400, seed=3):
+    """Planted cells with a known weight each. With one shared weight and heavy noise the pooled gate must fall back
+    to the constant; with weights that really differ it must keep them and beat the constant; cells where the routed
+    and core forecasts hardly differ, or that lack data in one half, must get the constant and must not disturb the
+    rest. The per-cell and constant fits it starts from must be closed_form's."""
+    core, routed = lambda fc, aff: fc[..., 0], lambda fc, aff: fc[..., 1]
+    blend = lambda fc, aff, lam: fc[..., 0] + lam * (fc[..., 1] - fc[..., 0])
+
+    def case(n, spread, noise, quiet=0.0, masked=False):
+        g = torch.Generator().manual_seed(seed)
+        lam_true = (0.5 + spread * (torch.rand(h, v, generator=g) - 0.5)).clamp(0, 1)
+        scale = torch.where(torch.rand(h, v, generator=g) < quiet, 0.01, 1.0)
+        fc = torch.randn(n + n_val, h, v, 2, generator=g)
+        fc[..., 1] = fc[..., 0] + scale * torch.randn(n + n_val, h, v, generator=g)
+        y = fc[..., 0] + lam_true * (fc[..., 1] - fc[..., 0]) + noise * torch.randn(n + n_val, h, v, generator=g)
+        m = torch.ones(n, h, v, dtype=torch.bool)
+        if masked:
+            m[n // 2:, 0, 0] = False
+        out, fits, finite = pooled_static_arm(core, routed, blend, fc[:n], fc[:n], y[:n], m, fc[n:], fc[n:], torch.ones(v), 16, 64, lambda p: p)
+        const, static = closed_form(fc[:n, ..., 0], fc[:n, ..., 1], y[:n], m, torch.ones(v))
+        assert finite and abs(min(max(fits["lambda_constant_unclipped"], 0.0), 1.0) - float(const)) < 1e-5, "the constant must be closed_form's"
+        assert torch.allclose(out["_static"], blend(fc[n:], None, static), atol=1e-5), "the per-cell fit must be closed_form's"
+        d = fc[n:, ..., 1] - fc[n:, ..., 0]
+        lam = (out[POOLED_ARM] - fc[n:, ..., 0]).mul(d).sum(0) / d.square().sum(0)
+        err = lambda pred: float((pred - y[n:]).abs().mean())
+        return fits, lam, float(const), scale, {"pooled": err(out[POOLED_ARM]), "static": err(out["_static"]),
+                                               "constant": err(blend(fc[n:], None, const))}
+
+    fits, lam, const, _, mae = case(n=300, spread=0.0, noise=6.0)
+    assert fits["kept_share_mean"] < 0.25 and mae["pooled"] < mae["static"], ("noise must be pooled away", fits, mae)
+    noisy = {"kept_share": round(fits["kept_share_mean"], 3), **{k: round(x, 4) for k, x in mae.items()}}
+    fits, lam, const, _, mae = case(n=1500, spread=1.0, noise=1.0)
+    assert fits["kept_share_mean"] > 0.75 and mae["pooled"] < mae["constant"], ("real differences must be kept", fits, mae)
+    real = {"kept_share": round(fits["kept_share_mean"], 3), **{k: round(x, 4) for k, x in mae.items()}}
+    fits, lam, const, scale, mae = case(n=300, spread=0.0, noise=6.0, quiet=0.3)
+    assert float((lam - const).abs()[scale < 1].max()) < 0.05 and fits["kept_share_mean"] < 0.25, ("near-empty cells must get the constant", fits)
+    fits, lam, const, _, _ = case(n=1500, spread=1.0, noise=1.0, masked=True)
+    assert fits["cells_without_both_halves"] == 1 and abs(float(lam[0, 0]) - min(max(const, 0.0), 1.0)) < 1e-4, "a cell without both halves gets the constant"
+    return {"noise": noisy, "real_differences": real}
 
 
 def anchor_selftest(n=800, h=6, v=3, e=5, n_fit=600, seed=1):
