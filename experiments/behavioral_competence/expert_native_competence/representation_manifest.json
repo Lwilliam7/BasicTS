@@ -1,0 +1,1400 @@
+{
+  "ETTh1": [
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\block_a\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945",
+      "dataset": "ETTh1",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 1.52587890625e-05,
+      "prediction_with_hook_vs_cached_mean_abs": 5.011665376370773e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\block_ab\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0",
+      "dataset": "ETTh1",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 2.09808349609375e-05,
+      "prediction_with_hook_vs_cached_mean_abs": 6.757694454056228e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "dataset": "ETTh1",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 1.52587890625e-05,
+      "prediction_with_hook_vs_cached_mean_abs": 6.303598296292508e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\block_a\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f",
+      "dataset": "ETTh1",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 9.5367431640625e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 3.96534450149516e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        7,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\block_ab\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe",
+      "dataset": "ETTh1",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 9.5367431640625e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 4.3855290143822923e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        7,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+      "dataset": "ETTh1",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.00024509429931640625,
+      "prediction_with_hook_vs_cached_mean_abs": 8.090673241616326e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        7,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\block_a\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910",
+      "dataset": "ETTh1",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.005583763122558594,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0002340438935542637,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\block_ab\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9",
+      "dataset": "ETTh1",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.006244659423828125,
+      "prediction_with_hook_vs_cached_mean_abs": 0.00033486775323717357,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+      "dataset": "ETTh1",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2773,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.005331993103027344,
+      "prediction_with_hook_vs_cached_mean_abs": 0.00027141758220545174,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    }
+  ],
+  "ETTh2": [
+    {
+      "batch_size": 256,
+      "capture_description": "DLinear decomposition branch outputs before seasonal+trend summation.",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_dlinear.pt",
+      "checkpoint_sha256": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "dataset": "ETTh2",
+      "expert": "DLinear",
+      "hook_kind": "forward",
+      "module_paths": [
+        "linear_seasonal",
+        "linear_trend"
+      ],
+      "num_windows": 2053,
+      "pooled_feature_dim": 72,
+      "pooling": "Stack seasonal/trend outputs as tokens and pool over branch/variable tokens.",
+      "prediction_with_hook_vs_cached_max_abs": 1.9073486328125e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 5.729291959251381e-08,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "linear_seasonal": [
+          256,
+          7,
+          12
+        ],
+        "linear_trend": [
+          256,
+          7,
+          12
+        ]
+      },
+      "split": "router_train",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        14,
+        12
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "DLinear decomposition branch outputs before seasonal+trend summation.",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_dlinear.pt",
+      "checkpoint_sha256": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "dataset": "ETTh2",
+      "expert": "DLinear",
+      "hook_kind": "forward",
+      "module_paths": [
+        "linear_seasonal",
+        "linear_trend"
+      ],
+      "num_windows": 613,
+      "pooled_feature_dim": 72,
+      "pooling": "Stack seasonal/trend outputs as tokens and pool over branch/variable tokens.",
+      "prediction_with_hook_vs_cached_max_abs": 1.9073486328125e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 9.884160780912572e-08,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "linear_seasonal": [
+          256,
+          7,
+          12
+        ],
+        "linear_trend": [
+          256,
+          7,
+          12
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        14,
+        12
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_patchtst.pt",
+      "checkpoint_sha256": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+      "dataset": "ETTh2",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2053,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 3.814697265625e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 2.174435102411231e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_train",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_patchtst.pt",
+      "checkpoint_sha256": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+      "dataset": "ETTh2",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 613,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 3.337860107421875e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 3.057224507092527e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "ModernTCN backbone convolutional state before temporal_head and feature_head.",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_moderntcn.pt",
+      "checkpoint_sha256": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "dataset": "ETTh2",
+      "expert": "ModernTCN",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 2053,
+      "pooled_feature_dim": 384,
+      "pooling": "Transpose channel-first backbone output to time tokens; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0004973411560058594,
+      "prediction_with_hook_vs_cached_mean_abs": 3.2693642945396515e-05,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          64,
+          96
+        ]
+      },
+      "split": "router_train",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        96,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "ModernTCN backbone convolutional state before temporal_head and feature_head.",
+      "checkpoint_path": "checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_moderntcn.pt",
+      "checkpoint_sha256": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "dataset": "ETTh2",
+      "expert": "ModernTCN",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 613,
+      "pooled_feature_dim": 384,
+      "pooling": "Transpose channel-first backbone output to time tokens; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0003204345703125,
+      "prediction_with_hook_vs_cached_mean_abs": 3.1509299990534935e-05,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          64,
+          96
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        96,
+        64
+      ]
+    }
+  ],
+  "ETTm1": [
+    {
+      "batch_size": 256,
+      "capture_description": "DLinear decomposition branch outputs before seasonal+trend summation.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\block_a\\DLinear\\best_expert.pt",
+      "checkpoint_sha256": "22e631eb840c142f5acfac58b7b5583595c6e3772bb32a7120bdf70f375c538b",
+      "dataset": "ETTm1",
+      "expert": "DLinear",
+      "hook_kind": "forward",
+      "module_paths": [
+        "linear_seasonal",
+        "linear_trend"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 72,
+      "pooling": "Stack seasonal/trend outputs as tokens and pool over branch/variable tokens.",
+      "prediction_with_hook_vs_cached_max_abs": 3.814697265625e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 7.084991692049908e-08,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "linear_seasonal": [
+          256,
+          7,
+          12
+        ],
+        "linear_trend": [
+          256,
+          7,
+          12
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        14,
+        12
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "DLinear decomposition branch outputs before seasonal+trend summation.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\block_ab\\DLinear\\best_expert.pt",
+      "checkpoint_sha256": "a8699631a840edd127de4a4a17f1bb5b6cf2d7a5f24deea99464ca93aa917ad5",
+      "dataset": "ETTm1",
+      "expert": "DLinear",
+      "hook_kind": "forward",
+      "module_paths": [
+        "linear_seasonal",
+        "linear_trend"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 72,
+      "pooling": "Stack seasonal/trend outputs as tokens and pool over branch/variable tokens.",
+      "prediction_with_hook_vs_cached_max_abs": 6.67572021484375e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 1.263148726413202e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "linear_seasonal": [
+          256,
+          7,
+          12
+        ],
+        "linear_trend": [
+          256,
+          7,
+          12
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        14,
+        12
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "DLinear decomposition branch outputs before seasonal+trend summation.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\DLinear\\best_expert.pt",
+      "checkpoint_sha256": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "dataset": "ETTm1",
+      "expert": "DLinear",
+      "hook_kind": "forward",
+      "module_paths": [
+        "linear_seasonal",
+        "linear_trend"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 72,
+      "pooling": "Stack seasonal/trend outputs as tokens and pool over branch/variable tokens.",
+      "prediction_with_hook_vs_cached_max_abs": 3.814697265625e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 9.261247649796751e-08,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "linear_seasonal": [
+          256,
+          7,
+          12
+        ],
+        "linear_trend": [
+          256,
+          7,
+          12
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        14,
+        12
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\block_a\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "b2647a0c637f96dc1c4fa9e67fe83b5f6b6b30091e467abd997063bee06e58e5",
+      "dataset": "ETTm1",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 5.7220458984375e-06,
+      "prediction_with_hook_vs_cached_mean_abs": 1.938638747591696e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\block_ab\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "4d0dafc2576c8577aeb195a67d9b41a83d1f9f13828b266bbc695c76e9e7adc8",
+      "dataset": "ETTm1",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 1.1444091796875e-05,
+      "prediction_with_hook_vs_cached_mean_abs": 3.534552620659938e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+      "dataset": "ETTm1",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 1.1444091796875e-05,
+      "prediction_with_hook_vs_cached_mean_abs": 3.404317214307842e-07,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          7,
+          12,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        84,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\block_a\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "507b6e269c5dcbcda99d41e9ce6e2dd5e39b9b3ce523b8d526ec8a69c5c7ce96",
+      "dataset": "ETTm1",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\block_ab\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "d83ac3f5a93c1cd544502403009dfda4a609034ea3aebcd09ebedefac8a028ac",
+      "dataset": "ETTm1",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8",
+      "dataset": "ETTm1",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 11413,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.004444122314453125,
+      "prediction_with_hook_vs_cached_mean_abs": 2.0192113374013237e-05,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    }
+  ],
+  "Electricity": [
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\block_a\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575",
+      "dataset": "Electricity",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.25,
+      "prediction_with_hook_vs_cached_mean_abs": 0.00013577476419335166,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          321,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        3852,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\block_ab\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0",
+      "dataset": "Electricity",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.1875,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0001496750931585295,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          321,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        3852,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\final_60\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "dataset": "Electricity",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.125,
+      "prediction_with_hook_vs_cached_mean_abs": 0.00012339209065231218,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          321,
+          12,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        3852,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\block_a\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3",
+      "dataset": "Electricity",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          321,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        321,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\block_ab\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8",
+      "dataset": "Electricity",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          321,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        321,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\final_60\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+      "dataset": "Electricity",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.15625,
+      "prediction_with_hook_vs_cached_mean_abs": 0.00012143261472135855,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          321,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        321,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\block_a\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f",
+      "dataset": "Electricity",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\block_ab\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a",
+      "dataset": "Electricity",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Electricity\\final_60\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "dataset": "Electricity",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 5154,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 15.1875,
+      "prediction_with_hook_vs_cached_mean_abs": 0.008213495656047096,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    }
+  ],
+  "Weather": [
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\block_a\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "fcd15c7a9e4a1ade7873beb930a4a9de05caf59b5caf971dcb4823b5089e700a",
+      "dataset": "Weather",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0009765625,
+      "prediction_with_hook_vs_cached_mean_abs": 7.650796621079069e-06,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          21,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        252,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\block_ab\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "17f1b05741ccc36849d769cd9393f38dca875278c7184af35298dbfa9f15323f",
+      "dataset": "Weather",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.00146484375,
+      "prediction_with_hook_vs_cached_mean_abs": 8.237598417871389e-06,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          21,
+          12,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        252,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "PatchTST backbone encoder output before flatten and forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\final_60\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+      "dataset": "Weather",
+      "expert": "PatchTST",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable-patch states as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0029296875,
+      "prediction_with_hook_vs_cached_mean_abs": 7.783422533752492e-06,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          21,
+          12,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        252,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\block_a\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "fab4277535708c271c5473b2d39109adac10236d0ac0be22de0d8c1ab81d18f9",
+      "dataset": "Weather",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          21,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        21,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\block_ab\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "708670bcab3aa3bd8076ec2d2c518aa546deae764f0fffb439821de082e2ac7d",
+      "dataset": "Weather",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          21,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        21,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "iTransformer final inverted-token encoder output before forecasting_head.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\final_60\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1",
+      "dataset": "Weather",
+      "expert": "iTransformer",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Treat variable tokens as tokens; concatenate mean/std/max/min/first/last token summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0068359375,
+      "prediction_with_hook_vs_cached_mean_abs": 1.815544014984629e-05,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          21,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        21,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\block_a\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "82b07718f2b72d3888ec9b4a6d200ed5f6a4cad41e58f84d53a26d18a27415b2",
+      "dataset": "Weather",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_b",
+      "stage": "block_a",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\block_ab\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "f7e3f601c305096aae6985e818e97cb7d07e832b33eaff53a07ee8d1f70171cc",
+      "dataset": "Weather",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.0,
+      "prediction_with_hook_vs_cached_mean_abs": 0.0,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_train_block_c",
+      "stage": "block_ab",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    },
+    {
+      "batch_size": 256,
+      "capture_description": "TimesNet final temporal backbone state before output projection.",
+      "checkpoint_path": "checkpoints\\costarts_walkforward_Weather\\final_60\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+      "dataset": "Weather",
+      "expert": "TimesNet",
+      "hook_kind": "forward",
+      "module_paths": [
+        "backbone"
+      ],
+      "num_windows": 10432,
+      "pooled_feature_dim": 384,
+      "pooling": "Use the last forecast-horizon temporal states; concatenate mean/std/max/min/first/last summaries.",
+      "prediction_with_hook_vs_cached_max_abs": 0.40869140625,
+      "prediction_with_hook_vs_cached_mean_abs": 0.000941951447409332,
+      "prediction_without_hook_vs_with_hook_max_abs": 0.0,
+      "raw_shape_before_pooling": {
+        "backbone": [
+          256,
+          108,
+          64
+        ]
+      },
+      "split": "router_val",
+      "stage": "final_60",
+      "token_shape_after_adapter": [
+        256,
+        12,
+        64
+      ]
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "method": "Walk-forward Sequential COSTAR-TS Q/K attention comparison",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "normalizer_checkpoint": "checkpoints/costarts_walkforward/final_60/DLinear/best_expert.pt",
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "validation_range": [
+    8640,
+    11520
+  ],
+  "test_range": [
+    11520,
+    14400
+  ],
+  "test_usage": "NO TEST DATA LOADED OR EVALUATED",
+  "frozen_experts": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "modes": [
+    {
+      "mode": "qk",
+      "model": "Q/K expert scoring",
+      "validation_mae_mean": 0.3717903792858124,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3174768388271332,
+      "validation_mse_std": 0.0,
+      "average_queries_mean": 1.8438514471054077,
+      "average_queries_std": 0.0,
+      "parameter_count": 72896,
+      "per_seed": [
+        {
+          "mode": "qk",
+          "model": "Q/K expert scoring",
+          "seed": 7,
+          "best_epoch": 1,
+          "validation_mae": 0.3717903792858124,
+          "validation_mse": 0.3174768388271332,
+          "raw_validation_mae": 1.2671704292297363,
+          "raw_validation_mse": 5.116839408874512,
+          "average_queries": 1.8438514471054077,
+          "top1_expert_accuracy": 20.158672332763672,
+          "top2_oracle_coverage": 41.32708258204111,
+          "oracle_next_expert_accuracy": 21.53334637199296,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention_smoke\\qk\\seed_7\\best_attention_router.pt",
+          "parameter_count": 72896
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "raw_mae": 1.2671704292297363,
+          "raw_mse": 5.116839408874512,
+          "mae": 0.3717903792858124,
+          "mse": 0.3174768388271332,
+          "average_queries": 1.8438514471054077,
+          "top1_expert_accuracy": 20.158672332763672,
+          "top2_oracle_coverage": 41.32708258204111,
+          "oracle_next_expert_accuracy": 21.53334637199296,
+          "query_count_percent": {
+            "1": 17.634331049404977,
+            "2": 80.34619545618463,
+            "3": 2.019473494410386,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 3.9307609087630726,
+            "PatchTST": 67.72448611611972,
+            "iTransformer": 28.344752975117203,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.0,
+            "PatchTST": 15.109989181391994,
+            "iTransformer": 67.25567976920303,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 0.0,
+            "PatchTST": 18.345008756567424,
+            "iTransformer": 81.65499124343258,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 3.9307609087630726,
+            "PatchTST": 84.45726649837721,
+            "iTransformer": 95.60043274432023,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.3966822935448972
+          },
+          "hard_stop_percent_by_step": {
+            "1": 0.0,
+            "2": 17.634331049404977,
+            "3": 97.54816112084063,
+            "4": 100.0,
+            "5": 0.0
+          },
+          "qk_diagnostics": {
+            "qk_score_mean_by_expert": {
+              "DLinear": -0.42017547925355736,
+              "PatchTST": -0.7030098015728721,
+              "iTransformer": -0.5851577093974958,
+              "TimesNet": -0.5353227447306499,
+              "ModernTCN": -0.8217644672051301
+            },
+            "qk_attention_probability_mean_by_expert": {
+              "DLinear": 0.27953213505189084,
+              "PatchTST": 0.2584149182526528,
+              "iTransformer": 0.2730267990560782,
+              "TimesNet": 0.2506060108030479,
+              "ModernTCN": 0.21198035320255104
+            },
+            "attention_entropy_by_step": {
+              "1": 1.5501436986864752,
+              "2": 1.3753070712218507,
+              "3": 1.0979811272040767,
+              "4": 0.6928183351244245,
+              "5": NaN
+            },
+            "qk_argmax_vs_counterfactual_best_accuracy": 23.142277453715447,
+            "score_utility_pearson": -0.7991021153280254,
+            "chosen_expert_improves_percent": 83.35615098767846,
+            "chosen_expert_actual_utility_mean": 2.3359005288464108,
+            "oracle_best_available_utility_mean": 2.495057551677321,
+            "by_routing_step": {
+              "first": {
+                "count": 2773,
+                "oracle_next_accuracy": 20.15867291741796,
+                "chosen_improves_percent": 99.9639379733141,
+                "chosen_actual_utility_mean": 4.2751037560771445,
+                "oracle_best_utility_mean": 4.470595501881836,
+                "attention_entropy_mean": 1.5501436986864752
+              },
+              "second": {
+                "count": 2284,
+                "oracle_next_accuracy": 23.204903677758317,
+                "chosen_improves_percent": 64.01050788091068,
+                "chosen_actual_utility_mean": 0.038832430324913535,
+                "oracle_best_utility_mean": 0.1550150956899815,
+                "attention_entropy_mean": 1.3743228621115409
+              },
+              "third_plus": {
+                "count": 56,
+                "oracle_next_accuracy": 21.428571428571427,
+                "chosen_improves_percent": 50.0,
+                "chosen_actual_utility_mean": -0.0017246870057923453,
+                "oracle_best_utility_mean": 0.11095457949808665,
+                "attention_entropy_mean": 1.0962134429386683
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "model": "Q/K expert scoring",
+      "mode": "qk",
+      "validation_mae_mean": 0.3717903792858124,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3174768388271332,
+      "validation_mse_std": 0.0,
+      "average_queries_mean": 1.8438514471054077,
+      "average_queries_std": 0.0,
+      "parameter_count": 72896,
+      "improvement_vs_reference_embedding_mae": 0.002332836389541626
+    }
+  ],
+  "individual_expert_validation": [
+    {
+      "expert": "DLinear",
+      "raw_mae": 1.3566420078277588,
+      "raw_mse": 5.805386066436768,
+      "mae": 0.39209187030792236,
+      "mse": 0.3435719311237335
+    },
+    {
+      "expert": "PatchTST",
+      "raw_mae": 1.3002585172653198,
+      "raw_mse": 5.307104110717773,
+      "mae": 0.37955790758132935,
+      "mse": 0.3265279531478882
+    },
+    {
+      "expert": "iTransformer",
+      "raw_mae": 1.286491870880127,
+      "raw_mse": 5.200030326843262,
+      "mae": 0.37654954195022583,
+      "mse": 0.32209450006484985
+    },
+    {
+      "expert": "TimesNet",
+      "raw_mae": 1.34023118019104,
+      "raw_mse": 5.603475093841553,
+      "mae": 0.4090864062309265,
+      "mse": 0.3794470429420471
+    },
+    {
+      "expert": "ModernTCN",
+      "raw_mae": 1.5430413484573364,
+      "raw_mse": 6.519838333129883,
+      "mae": 0.4703761339187622,
+      "mse": 0.4657808840274811
+    }
+  ],
+  "expert_complementarity": {
+    "per_expert": [
+      {
+        "expert": "DLinear",
+        "pct_windows_beats_iTransformer": 40.389469265937805,
+        "mean_improvement_when_beats_iTransformer": 0.040669746696949005,
+        "unique_oracle_wins_percent": 16.516408324241638
+      },
+      {
+        "expert": "PatchTST",
+        "pct_windows_beats_iTransformer": 47.385501861572266,
+        "mean_improvement_when_beats_iTransformer": 0.039053212851285934,
+        "unique_oracle_wins_percent": 24.48611557483673
+      },
+      {
+        "expert": "iTransformer",
+        "pct_windows_beats_iTransformer": 0.0,
+        "mean_improvement_when_beats_iTransformer": 0.0,
+        "unique_oracle_wins_percent": 28.020194172859192
+      },
+      {
+        "expert": "TimesNet",
+        "pct_windows_beats_iTransformer": 34.18680131435394,
+        "mean_improvement_when_beats_iTransformer": 0.058090779930353165,
+        "unique_oracle_wins_percent": 21.637216210365295
+      },
+      {
+        "expert": "ModernTCN",
+        "pct_windows_beats_iTransformer": 21.45690619945526,
+        "mean_improvement_when_beats_iTransformer": 0.06728648394346237,
+        "unique_oracle_wins_percent": 9.340064972639084
+      }
+    ]
+  },
+  "architecture": {
+    "embedding": "Original SequentialCOSTARTSRouterFull: sequential state followed by linear utility head.",
+    "qk": "Original sequential state s_t, Q=W_Q(s_t), K_j=W_K(e_j), score_j=Q dot K_j / sqrt(d_attn). No V/context.",
+    "qkv": "Q/K scores over learned expert embeddings form attention probabilities, V_j=W_V(e_j), context=sum a_j V_j, fused state=LayerNorm(s_t+projection(context)), final scores from fused Q against K."
+  },
+  "leakage_checks": [
+    "cache loader refuses paths containing test",
+    "validation cache role must be router_val_60_80",
+    "validation range asserted to [8640, 11520)",
+    "Q/K/V uses only learned expert embeddings for unqueried experts; cached forecasts enter only through queried_forecast state after selection",
+    "router modules contain no trainable forecasting expert submodules"
+  ],
+  "safety": "NO TEST DATA USED"
+}

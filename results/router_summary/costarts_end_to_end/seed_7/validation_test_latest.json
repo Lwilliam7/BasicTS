@@ -1,0 +1,56 @@
+{
+  "checkpoint": "checkpoints\\costarts_end_to_end\\seed_7\\best_full_end_to_end_costarts.pt",
+  "split": "validation",
+  "range": {
+    "start": 8640,
+    "end": 11520
+  },
+  "metrics": {
+    "mae": 0.4217952787876129,
+    "mse": 0.38460683822631836,
+    "average_hard_queries": 1.042553186416626,
+    "routing_entropy": 1.5881957298919176,
+    "expert_usage_percent": {
+      "DLinear": 0.21637216011539848,
+      "PatchTST": 47.20519293184277,
+      "iTransformer": 5.553552109628561,
+      "TimesNet": 47.34944103858637,
+      "ModernTCN": 3.9307609087630726
+    },
+    "stop_distribution_percent": {
+      "1": 95.85286693112153,
+      "2": 4.038946988820772,
+      "3": 0.10818608005769924,
+      "4": 0.0,
+      "5": 0.0
+    },
+    "individual_experts": [
+      {
+        "expert": "DLinear",
+        "mae": 0.5291426418234285,
+        "mse": 0.57364115971243
+      },
+      {
+        "expert": "PatchTST",
+        "mae": 0.4153552022687029,
+        "mse": 0.3738487097832686
+      },
+      {
+        "expert": "iTransformer",
+        "mae": 0.42033630547177864,
+        "mse": 0.39096050214303174
+      },
+      {
+        "expert": "TimesNet",
+        "mae": 0.4441118099351588,
+        "mse": 0.43188023421036137
+      },
+      {
+        "expert": "ModernTCN",
+        "mae": 0.48642330396661165,
+        "mse": 0.4904006493035697
+      }
+    ]
+  },
+  "safety": "NO TEST DATA USED"
+}

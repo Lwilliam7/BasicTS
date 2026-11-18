@@ -1,0 +1,7 @@
+{
+  "cross_variable": "train future standardized PCA projection",
+  "multi_horizon": "train normalized horizon PCA projection",
+  "optimizer": "deterministic mean of four projections",
+  "seasonal": "lag-24 train offset when active",
+  "temporal": "train future first-difference PCA projection"
+}

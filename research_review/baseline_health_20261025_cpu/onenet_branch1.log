@@ -1,0 +1,2 @@
+[onenet] ETTh1 seed 7: val MAE 0.132602, 127 delayed updates, mean sigma(w) 0.531, 2s
+{"method": "onenet", "case": "branch1", "mae": 0.13260197639465332, "software_case_passed": true, "checks": {"finite": true, "source_gate_passed": true, "synthetic_load_guard": true, "learns_known_branch": true, "causal_feedback": true}}

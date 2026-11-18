@@ -1,0 +1,70 @@
+{
+  "config": {
+    "train_cache": "cache/costarts_subset_states_train.pt",
+    "val_cache": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_adaptive_full\\forecast",
+    "results_dir": "results\\router_summary\\costarts_adaptive_full\\forecast",
+    "seed": 7,
+    "batch_size": 512,
+    "max_epochs": 8,
+    "patience": 3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "device": "cpu",
+    "cost": 0.0,
+    "max_queries": 5,
+    "variant": "forecast",
+    "train_state_mode": "all",
+    "utility_loss_weight": 1.0,
+    "action_loss_weight": 0.5,
+    "stop_loss_weight": 0.5,
+    "max_train_states": null
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "best": {
+    "epoch": 1,
+    "train_metrics": {
+      "loss": 0.7151095412210668,
+      "utility_loss": 0.0028287518948236735,
+      "action_loss": 0.977741783674438,
+      "stop_loss": 0.4468197938992927,
+      "action_accuracy": 0.545817096989386,
+      "stop_frequency": 0.11973331708241484
+    },
+    "val_metrics": {
+      "mae": 0.3510241210460663,
+      "mse": 0.31470245122909546,
+      "average_experts_queried": 2.768352365415987,
+      "stop_step_distribution": {
+        "2": 219,
+        "3": 317,
+        "4": 77
+      },
+      "query_order_distribution": {
+        "DLinear->TimesNet->ModernTCN": 234,
+        "DLinear->TimesNet": 219,
+        "DLinear->TimesNet->PatchTST->ModernTCN": 71,
+        "DLinear->TimesNet->PatchTST": 68,
+        "DLinear->ModernTCN->TimesNet": 15,
+        "DLinear->TimesNet->ModernTCN->PatchTST": 5,
+        "DLinear->TimesNet->PatchTST->iTransformer": 1
+      },
+      "regret_to_oracle": 0.03288087248802185,
+      "oracle_mae": 0.31814324855804443,
+      "all_queries_unique": true
+    }
+  },
+  "baselines": {
+    "best_fixed_expert": "ModernTCN",
+    "best_fixed_expert_mae": 0.35864511132240295,
+    "oracle_best_expert_mae": 0.31814324855804443
+  },
+  "test_set_used": false
+}

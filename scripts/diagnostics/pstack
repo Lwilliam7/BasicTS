@@ -1,0 +1,45 @@
+#!/bin/sh
+# GDB-backed pstack for Linux distributions without a pstack package.
+
+usage() {
+    printf 'Usage: pstack PID [PID ...]\nPrint native stack traces for every thread, then detach.\n'
+}
+
+if [ "$#" -eq 0 ]; then
+    usage >&2
+    exit 2
+fi
+if [ "$#" -eq 1 ] && [ "$1" = '--help' ]; then
+    usage
+    exit 0
+fi
+
+for pid in "$@"; do
+    case "$pid" in
+        ''|*[!0-9]*)
+            printf 'pstack: invalid PID: %s\n' "$pid" >&2
+            exit 2
+            ;;
+    esac
+    case "$pid" in
+        *[1-9]*) ;;
+        *)
+            printf 'pstack: PID must be positive\n' >&2
+            exit 2
+            ;;
+    esac
+done
+
+result=0
+for pid in "$@"; do
+    if [ "$#" -gt 1 ]; then
+        printf '\nProcess %s:\n' "$pid"
+    fi
+    /usr/bin/gdb --quiet --nx --batch \
+        --init-eval-command='set debuginfod enabled off' \
+        --eval-command='set pagination off' \
+        --eval-command='thread apply all bt' \
+        --eval-command='detach' \
+        --pid="$pid" || result=$?
+done
+exit "$result"

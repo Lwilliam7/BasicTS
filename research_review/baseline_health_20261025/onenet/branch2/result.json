@@ -1,0 +1,52 @@
+{
+  "status": "CHECKED",
+  "method": "onenet",
+  "case": "branch2",
+  "seed": 7,
+  "mae": 0.08015792816877365,
+  "mse": 0.014267396181821823,
+  "tail32_mae": 0.048732221126556396,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true,
+    "learns_known_branch": true,
+    "causal_feedback": true
+  },
+  "software_case_passed": true,
+  "baselines": {
+    "equal_mae": 0.9799997806549072,
+    "single_mae": 0.019999980926513672,
+    "oracle_mae": 0.019999980926513672,
+    "selected_single": "iTransformer"
+  },
+  "diagnostics": {
+    "convex_calls": 0,
+    "online_updates": 127,
+    "causality_passed": true,
+    "branch1_weight_mean": 0.05007895454764366,
+    "branch1_weight_tail_mean": 0.03436611592769623,
+    "target_feedback": "Fully observed previous windows only"
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "65eed9d6c878133a4d81d9c381c69e742ad47fd0",
+    "file_hashes": {
+      "exp/exp_onenet_fsnet.py": "26a74503a6e0973b193ef5ec750a7522512ca215d4c4782d896cf352188a7a9f"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\seed7_ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "causality_trace.json": "44feb7ff75d5d0980116f3e1c5ae54047db727f7bf12bcdf2ecf060d42b94659",
+    "one_net_trace.npz": "2e828f8be2f8e0a37ff32003e26caabf70c46722db6d1b5bc5da2ab887f46d29",
+    "per_window_losses.npz": "b01d373330554080830c888915d27275736d87ef2892a1cdc674f030ceee1de9",
+    "_work\\seed7_ETTh1.json": "21d2bcd601da9303dc57b71431d3e65ae701c110a95d124d300c974e108069ba",
+    "_work\\seed7_ETTh1.pt": "3b38b838f0a2b01e3c264d5ccaee4db19ff65b97da7cea3e5cd7faad503989df"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

@@ -1,0 +1,239 @@
+[
+  {
+    "metadata": {
+      "mode": "greedy",
+      "finalizer": "sparse_mixture",
+      "force_k": null,
+      "temperature": 1.0,
+      "max_queries": 5,
+      "num_windows": 613,
+      "num_experts": 5,
+      "expert_names": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "test_data_used": false,
+      "frozen_expert_calls_simulated_from_cache": 613,
+      "router_state_changes": 613,
+      "duplicate_query_count": 0,
+      "checkpoint": "checkpoints\\costarts_subset_utility\\utility_threshold_decision_trial\\best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1
+    },
+    "metrics": {
+      "mae": 0.3668588697910309,
+      "mse": 0.33756881952285767,
+      "oracle_mae": 0.31814324855804443,
+      "selected_expert_mae_mean": 0.3668588697910309,
+      "regret_to_oracle": 0.04871562123298645,
+      "oracle_match_rate": 0.2349102795124054,
+      "average_experts_queried": 1.0,
+      "latency_seconds": 0.22419270000318647,
+      "latency_ms_per_sample": 0.36573034258268594,
+      "stop_step_distribution": {
+        "1": 613
+      },
+      "selection_counts": {
+        "DLinear": 40,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 228,
+        "ModernTCN": 345
+      },
+      "query_utilization_counts": {
+        "DLinear": 40,
+        "PatchTST": 0,
+        "iTransformer": 0,
+        "TimesNet": 228,
+        "ModernTCN": 345
+      },
+      "all_queries_unique": true,
+      "state_changed_for_every_query": true,
+      "stop_step_one_fraction": 1.0
+    },
+    "rollouts": [
+      {
+        "sample_index": 0,
+        "query_sequence_indices": [
+          3
+        ],
+        "query_sequence_names": [
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 1,
+        "final_selected_expert": "TimesNet",
+        "mix_weights": {
+          "TimesNet": 1.0
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 0.524795413017273,
+        "oracle_error": 0.41421839594841003,
+        "predicted_utilities": [
+          -1.4229443073272705
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21661970019340515,
+            "1": 0.1465875655412674,
+            "2": 0.18449252843856812,
+            "3": 0.23341307044029236,
+            "4": 0.21888719499111176,
+            "5": 0.0
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 1,
+        "query_sequence_indices": [
+          3
+        ],
+        "query_sequence_names": [
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 1,
+        "final_selected_expert": "TimesNet",
+        "mix_weights": {
+          "TimesNet": 1.0
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 0.654617428779602,
+        "oracle_error": 0.5599779486656189,
+        "predicted_utilities": [
+          -1.4237432479858398
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21648219227790833,
+            "1": 0.1469687670469284,
+            "2": 0.1843891441822052,
+            "3": 0.2328164279460907,
+            "4": 0.21934343874454498,
+            "5": 0.0
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 2,
+        "query_sequence_indices": [
+          3
+        ],
+        "query_sequence_names": [
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 1,
+        "final_selected_expert": "TimesNet",
+        "mix_weights": {
+          "TimesNet": 1.0
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 0.7963131666183472,
+        "oracle_error": 0.7285911440849304,
+        "predicted_utilities": [
+          -1.4239661693572998
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21644610166549683,
+            "1": 0.1474175900220871,
+            "2": 0.18408261239528656,
+            "3": 0.23240074515342712,
+            "4": 0.21965292096138,
+            "5": 0.0
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 3,
+        "query_sequence_indices": [
+          3
+        ],
+        "query_sequence_names": [
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 1,
+        "final_selected_expert": "TimesNet",
+        "mix_weights": {
+          "TimesNet": 1.0
+        },
+        "oracle_best_expert": "iTransformer",
+        "selected_expert_error": 0.975497841835022,
+        "oracle_error": 0.9030627012252808,
+        "predicted_utilities": [
+          -1.4241752624511719
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21645697951316833,
+            "1": 0.14792990684509277,
+            "2": 0.1838434487581253,
+            "3": 0.23183438181877136,
+            "4": 0.219935342669487,
+            "5": 0.0
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 4,
+        "query_sequence_indices": [
+          3
+        ],
+        "query_sequence_names": [
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 1,
+        "final_selected_expert": "TimesNet",
+        "mix_weights": {
+          "TimesNet": 1.0
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 1.1127798557281494,
+        "oracle_error": 0.98487788438797,
+        "predicted_utilities": [
+          -1.4242304563522339
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21640171110630035,
+            "1": 0.14853905141353607,
+            "2": 0.18347543478012085,
+            "3": 0.23145446181297302,
+            "4": 0.2201293557882309,
+            "5": 0.0
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      }
+    ]
+  }
+]

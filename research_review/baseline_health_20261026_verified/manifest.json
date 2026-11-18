@@ -1,0 +1,66 @@
+{
+  "source_hashes": {
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\fame_official_replication\\run_fame_official_replication.py": "4a0ed6874c1070534264e147765e2143d99dd28a9699bfe65db980285b869a6c",
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\official_router_ports\\common.py": "a86c3dcec838d9fbbe1cbbfd060e181d66edc8545784916936e34847f1a5da13",
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\onenet_official_replication\\run_onenet_official_replication.py": "602945b9d992b2d018a216462c5a299be4b50b24bc115a71aecbf0fc6273de36",
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\published_baseline_comparisons\\run_published_baselines.py": "f039d79a3a38b80e175fb808c0e0d48f3e365929a239b82ade546e1661843e02",
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\super_linear_replication\\run_super_linear_replication.py": "734f9356e2a1ce350c6d55a9d3f01cf169605bc77a53dccc7f56d257844ee704",
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\timerouter_official_replication\\run_timerouter_official_replication.py": "3d3763a24cb7d0ad316c2f0049d78fa5d6ea798874dc8c50aae46fec36b5379d",
+    "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\window_dependent_expert_choice_hv\\run_window_dependent_expert_choice_hv.py": "8926780bed55c77bb179e54fc75e2c7bc3e2524abe14df2b8c2226aeea9606ba",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\__init__.py": "51911a2b3a983eb6868c3ed90338f600b6d9f579bad0a400efe8aa5d48196b73",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\config.py": "72501402d4f3aeaa01a7f9251869423bbcae667ed1b9826549d6cea47457304e",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\experts.py": "e33302584d7d64c7e3261557c935bd17236582c0b4a88b19e076c898d3dfdb9f",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\features.py": "8846951363d881f9659a0206b258c605ef25e14e87fd54233cb90f5983cca672",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\oracle.py": "f5fda614359f261a01dfcb50c9df2e9002e572034d2d3b4cc7919b8805bc7d65",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\pipeline.py": "6adde916a8d78af91ac87346cd94e509b90fa88f6ecdb3451371328332f0200f",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\router.py": "ff576b1c14a66d5e34f5973aa715b3e83b62d17c3b4d5adeef5c5cc9747e2750",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\FAME\\fame\\utils.py": "6abb031ed3ab8ba52abcce8ae837d4c85c76d58e267ad98a056d0818b7ace221",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\OneNet\\exp\\exp_onenet_fsnet.py": "26a74503a6e0973b193ef5ec750a7522512ca215d4c4782d896cf352188a7a9f",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\SuperLinear\\model_files\\modeling_super_linear.py": "e3fe675e6b39b64c3c6253df85022d998eed957be9fb204774e4f8416957a9f0",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\TimeRouter\\gift_eval\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\TimeRouter\\gift_eval\\_features.py": "5d9d1c41176ace368404abb42bdec1016073c923e5d7ff7ce6857d894f136d18",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\TimeRouter\\gift_eval\\_router.py": "13a5578fb475c5068a9c93d61bdc0c163438a2d1e7a7a3318fc33301f6bcacca",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\reference_checks\\baseline_health_20261025\\third_party\\TimeRouter\\gift_eval\\predictor.py": "a69a2c9317a9fcda91c6d32ecdda29188c77f0ac46a8abc8beae5a826d3685c0",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\scripts\\baseline_health_20261025\\PROTOCOL.md": "1fd7ea41c6578b5bed05c5c27d9d4aa3258d7eb7b66a738484b5e6e221f5da1d",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\scripts\\baseline_health_20261025\\reference_fixture.py": "0ccb08d5903af8f3eb32452928f93fccd2e36960b894358d3686315dc4147694",
+    "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\scripts\\baseline_health_20261025\\run_health.py": "ff320d322e0e6ae3d9001fb50303095e922ef7cca3c9efa089853475f6e0fe15"
+  },
+  "environment": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "packages": {
+      "numpy": "2.3.3",
+      "torch": "2.6.0+cu124",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.8.0",
+      "xgboost": "3.4.1",
+      "tsfeatures": "0.4.5"
+    }
+  },
+  "controls": {
+    "fame": [
+      "predictable",
+      "shuffled",
+      "permuted"
+    ],
+    "timerouter": [
+      "predictable",
+      "shuffled",
+      "permuted"
+    ],
+    "onenet": [
+      "branch1",
+      "branch2",
+      "shuffled",
+      "permuted",
+      "poisoned"
+    ],
+    "superlinear": [
+      "predictable",
+      "shuffled",
+      "permuted"
+    ]
+  },
+  "seed": 7,
+  "test_set_accessed": false,
+  "table_eligible": false
+}

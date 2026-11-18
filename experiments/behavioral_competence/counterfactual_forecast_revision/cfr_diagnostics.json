@@ -1,0 +1,218 @@
+{
+  "BeijingAirQuality": {
+    "router_train_final": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "BeijingAirQuality",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "759aa1b5965b8a2468d1511ad3f9d8ba77bf39bf9d3e8dfba65d2b34f8e6eeac",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "d23cf818dfe9dbe1373d3563fb51a3b24107742f5627c56074125145ea0c4f12",
+      "history_sha256_sample": "ecd1b3566bcf69f97dad37f3802730ba84147ad9fa15264cc1222385825c8a17",
+      "input_magnitude": 0.31616678833961487,
+      "num_experts": 3,
+      "num_windows": 14186,
+      "prefix_k": 3,
+      "split": "router_train_final",
+      "surprise_scale_sha256": "eccbc3f1640192d0b03d8040b6625b2c5c5e0255e67a40d8e59bfb055322de5c"
+    },
+    "router_val": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "BeijingAirQuality",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "8fd301f73a0170477dbc1bf686f4374fbc364dc8dbb7581ee7b0b9546e50d4a3",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "e0f98ba7334a443e128976052a973f3c97ede58db97c22cf7462630d70201980",
+      "history_sha256_sample": "eca1a598969fef05ac6bd12875562116ecb38b753c43be4d462bd6dc6e1a9ad4",
+      "input_magnitude": 0.31616678833961487,
+      "num_experts": 3,
+      "num_windows": 7093,
+      "prefix_k": 3,
+      "split": "router_val",
+      "surprise_scale_sha256": "eccbc3f1640192d0b03d8040b6625b2c5c5e0255e67a40d8e59bfb055322de5c"
+    }
+  },
+  "ETTm2": {
+    "router_train_final": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "ETTm2",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "661fda3d932f37c4d2c85395440cc62acb1eae90633a7c7c3c251e7ff72acb4d",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "6967f8e3354390cf81a9cbcbba1e55b9b5c9a9eb3e08db418dc8da393a0915b1",
+      "history_sha256_sample": "9fbb2d33111e1055b13763bbe8a3874b3d4df39834a4ef07679833ba5fe62731",
+      "input_magnitude": 0.185880646109581,
+      "num_experts": 3,
+      "num_windows": 22826,
+      "prefix_k": 3,
+      "split": "router_train_final",
+      "surprise_scale_sha256": "ad30bd0e74479553527daf51ae3a968291553d0e58caea4aaa3cbf3933a4ef8c"
+    },
+    "router_val": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "ETTm2",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "b1d7f515977db528d8aada5575e31114babd6b3a2f861917e862001e36a59369",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "40dc076a7bf4698ecd32374d3c97f9817c2b0a78abbe9e6dd8ea17057fbb8b51",
+      "history_sha256_sample": "510194d5ebb074d7544af1b752298fccbdb23962788dcfb0fb2f801b8b053858",
+      "input_magnitude": 0.185880646109581,
+      "num_experts": 3,
+      "num_windows": 11413,
+      "prefix_k": 3,
+      "split": "router_val",
+      "surprise_scale_sha256": "ad30bd0e74479553527daf51ae3a968291553d0e58caea4aaa3cbf3933a4ef8c"
+    }
+  },
+  "ExchangeRate": {
+    "router_train_final": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "ExchangeRate",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "53991f19cc8fe98b33493a05c64bdc6d3e2982cd40e811c8d6e89df243686ae8",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "05663195efb6f46729b352d19fa308472cae46e554a683304aa4524e451e40db",
+      "history_sha256_sample": "01e6dbb4b7d1e3191e8e331ee5f807cf007eb7bed4ab4de24f42edfae4fdc03f",
+      "input_magnitude": 0.11834058165550232,
+      "num_experts": 3,
+      "num_windows": 2821,
+      "prefix_k": 3,
+      "split": "router_train_final",
+      "surprise_scale_sha256": "62a35c6328177297e73ed923235f9e1ab53a7c088e0152713863b5407c81344f"
+    },
+    "router_val": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "ExchangeRate",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "4de3fb01049b04e9e5d4ee50c94478a16fcd38345021025f743273c50728d93f",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "8d1e7d2f2b4972d1723a9d67719bb291c0828db82a9da8c17240be7a50e3e150",
+      "history_sha256_sample": "2d8626a778cf7e724f41236f8e897d67ab229d562404e863f12c416a7a95d140",
+      "input_magnitude": 0.11834058165550232,
+      "num_experts": 3,
+      "num_windows": 1411,
+      "prefix_k": 3,
+      "split": "router_val",
+      "surprise_scale_sha256": "62a35c6328177297e73ed923235f9e1ab53a7c088e0152713863b5407c81344f"
+    }
+  },
+  "Traffic": {
+    "router_train_final": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "Traffic",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "a261647b11c506e6aa2cf92bf21b6e39363b10e59fc1afd55fc86b7e76c0d8ea",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "b6da40e0f0fa4ef807460539012ba0001ed42e39708affa0a9986f6c5f932e60",
+      "history_sha256_sample": "2f8e58c0e3e6d0ce8227ea4c31cbee70967f2db6bbbdcd0d4e942b5e953c1a70",
+      "input_magnitude": 0.29836133122444153,
+      "num_experts": 3,
+      "num_windows": 6804,
+      "prefix_k": 3,
+      "split": "router_train_final",
+      "surprise_scale_sha256": "f041a1acf170aeed04b9d38a8e08c8cfb73530738412703e8f47648b4732eb37"
+    },
+    "router_val": {
+      "absolute_horizon_alignment_assertion": true,
+      "dataset": "Traffic",
+      "feature_dim": 9,
+      "feature_names": [
+        "self_revision",
+        "plus_response",
+        "minus_response",
+        "response_asymmetry",
+        "counterfactual_gain",
+        "directionality_plus",
+        "directionality_minus",
+        "symmetric_response_magnitude",
+        "curvature_magnitude"
+      ],
+      "feature_sample_sha256": "7508f950d51df35d3d1872d3b3c56f7417dbbb47c48548274ad70a0ecbf992c9",
+      "forecast_horizon": 12,
+      "forecast_sha256_sample": "d86c1d24dac723d40dcd296bd8cc93b19ed048570dfc74885ff9c30872a6868d",
+      "history_sha256_sample": "95bf0e6d8a9f35a5120845818719f85351ef021654aaa9d4f49dcc58262e29c5",
+      "input_magnitude": 0.29836133122444153,
+      "num_experts": 3,
+      "num_windows": 3402,
+      "prefix_k": 3,
+      "split": "router_val",
+      "surprise_scale_sha256": "f041a1acf170aeed04b9d38a8e08c8cfb73530738412703e8f47648b4732eb37"
+    }
+  }
+}

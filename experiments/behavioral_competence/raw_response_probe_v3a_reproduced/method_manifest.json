@@ -1,0 +1,202 @@
+{
+  "classification": "SIX_STATS_NOT_THE_BOTTLENECK",
+  "counts": {
+    "passive_plus_raw_better_passive": 1,
+    "raw_better_shuffled": 2,
+    "raw_better_six": 1,
+    "raw_predicts_positive_passive_residual": 0
+  },
+  "created_at_utc": "2026-08-25T13:47:13.918142+00:00",
+  "datasets": {
+    "BeijingAirQuality": {
+      "holdout_windows": 1702,
+      "n_common_windows": 8512,
+      "raw_feature_dim": 84
+    },
+    "ETTm2": {
+      "holdout_windows": 2739,
+      "n_common_windows": 13696,
+      "raw_feature_dim": 84
+    },
+    "ExchangeRate": {
+      "holdout_windows": 339,
+      "n_common_windows": 1693,
+      "raw_feature_dim": 96
+    },
+    "Traffic": {
+      "holdout_windows": 816,
+      "n_common_windows": 4082,
+      "raw_feature_dim": 10344
+    }
+  },
+  "experiment": "raw_response_probe_v3a_reproduced",
+  "primary_dependence": {
+    "BeijingAirQuality": {
+      "PassivePlusRaw_vs_Passive": {
+        "block_size": 24,
+        "ci95_high": 0.009152622893452644,
+        "ci95_low": -0.003228753339499235,
+        "ci_excludes_zero": false,
+        "comparison": "PassivePlusRaw_vs_Passive",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": 0.002792319981381297,
+        "prob_delta_negative": 0.19370000064373016,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_ShuffledRaw": {
+        "block_size": 24,
+        "ci95_high": 0.002082507126033306,
+        "ci95_low": -0.0020293027628213167,
+        "ci_excludes_zero": false,
+        "comparison": "Raw_vs_ShuffledRaw",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": 5.363472610042663e-06,
+        "prob_delta_negative": 0.482699990272522,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_SixStat": {
+        "block_size": 24,
+        "ci95_high": 0.011341153644025326,
+        "ci95_low": -0.016732534393668175,
+        "ci_excludes_zero": false,
+        "comparison": "Raw_vs_SixStat",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": -0.002617333084344864,
+        "prob_delta_negative": 0.6685000061988831,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      }
+    },
+    "ETTm2": {
+      "PassivePlusRaw_vs_Passive": {
+        "block_size": 24,
+        "ci95_high": 0.0011982179712504148,
+        "ci95_low": -0.0017656233394518495,
+        "ci_excludes_zero": false,
+        "comparison": "PassivePlusRaw_vs_Passive",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -0.00036861165426671505,
+        "prob_delta_negative": 0.6902999877929688,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_ShuffledRaw": {
+        "block_size": 24,
+        "ci95_high": 0.0014887215802446008,
+        "ci95_low": -0.005020748823881149,
+        "ci_excludes_zero": false,
+        "comparison": "Raw_vs_ShuffledRaw",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -0.0013767710188403726,
+        "prob_delta_negative": 0.8375999927520752,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_SixStat": {
+        "block_size": 24,
+        "ci95_high": 0.00804902520030737,
+        "ci95_low": 0.001421184279024601,
+        "ci_excludes_zero": true,
+        "comparison": "Raw_vs_SixStat",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": 0.004635021556168795,
+        "prob_delta_negative": 0.0015999999595806003,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      }
+    },
+    "ExchangeRate": {
+      "PassivePlusRaw_vs_Passive": {
+        "block_size": 24,
+        "ci95_high": 0.0036936302203685045,
+        "ci95_low": -0.0019791864324361086,
+        "ci_excludes_zero": false,
+        "comparison": "PassivePlusRaw_vs_Passive",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": 0.0010441284393891692,
+        "prob_delta_negative": 0.311599999666214,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_ShuffledRaw": {
+        "block_size": 24,
+        "ci95_high": 0.0017976536182686687,
+        "ci95_low": -0.0003718541411217302,
+        "ci_excludes_zero": false,
+        "comparison": "Raw_vs_ShuffledRaw",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": 0.0007112852763384581,
+        "prob_delta_negative": 0.10520000010728836,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_SixStat": {
+        "block_size": 24,
+        "ci95_high": 0.006001145113259554,
+        "ci95_low": -0.0027269255369901657,
+        "ci_excludes_zero": false,
+        "comparison": "Raw_vs_SixStat",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": 0.00157123280223459,
+        "prob_delta_negative": 0.21879999339580536,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      }
+    },
+    "Traffic": {
+      "PassivePlusRaw_vs_Passive": {
+        "block_size": 24,
+        "ci95_high": 0.12326715886592865,
+        "ci95_low": 0.0889740139245987,
+        "ci_excludes_zero": true,
+        "comparison": "PassivePlusRaw_vs_Passive",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": 0.1055976152420044,
+        "prob_delta_negative": 0.0,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_ShuffledRaw": {
+        "block_size": 24,
+        "ci95_high": -0.025746572762727737,
+        "ci95_low": -0.06529717147350311,
+        "ci_excludes_zero": true,
+        "comparison": "Raw_vs_ShuffledRaw",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.04338772967457771,
+        "prob_delta_negative": 1.0,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "Raw_vs_SixStat": {
+        "block_size": 24,
+        "ci95_high": 0.09437382221221924,
+        "ci95_low": 0.06805504113435745,
+        "ci_excludes_zero": true,
+        "comparison": "Raw_vs_SixStat",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": 0.08137252926826477,
+        "prob_delta_negative": 0.0,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      }
+    }
+  },
+  "ridge_alpha": 1.0,
+  "source_reproduction": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2_reproduction",
+  "test_set_accessed": false
+}

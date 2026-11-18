@@ -1,0 +1,12 @@
+{
+  "axes": {
+    "crossvar": "average absolute correlation to the within-window cross-variable common factor; zero for univariate windows",
+    "frequency": "spectral entropy plus a small high/low power-ratio contribution",
+    "seasonality": "maximum absolute observed-lag autocorrelation over lags 2..48 within the history",
+    "shift": "first-half vs second-half mean, variance, and slope change",
+    "trend": "mean normalized least-squares history slope magnitude",
+    "volatility": "normalized RMS/median first-difference variation"
+  },
+  "binning": "LOW/MED/HIGH from legal train-prefix q33/q67 only",
+  "history_only": true
+}

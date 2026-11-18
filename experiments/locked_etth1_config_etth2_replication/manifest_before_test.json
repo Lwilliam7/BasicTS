@@ -1,0 +1,429 @@
+{
+  "label": "locked_etth1_config_etth2_replication",
+  "created_at_utc": "2026-08-13T06:45:35.755139+00:00",
+  "note": "ETTh2 locked replication of ETTh1 method configs after the earlier final test evaluation; not claimed as pre-test preregistration.",
+  "test_loaded_before_manifest": false,
+  "test_metrics_seen_before_manifest": true,
+  "dataset": "ETTh2",
+  "core": [
+    "DLinear",
+    "PatchTST",
+    "ModernTCN"
+  ],
+  "splits": {
+    "router_train": [
+      8640,
+      10800
+    ],
+    "router_val": [
+      10800,
+      11520
+    ],
+    "test": [
+      11520,
+      14400
+    ]
+  },
+  "canonical_protocol": {
+    "input_len": 96,
+    "horizon": 12,
+    "variables": 7,
+    "metric": "sample_mae/sample_mse",
+    "std": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "inverse_transform": "none"
+  },
+  "cache_paths": {
+    "router_train": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+    "router_val": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt",
+    "test_planned_after_manifest": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\caches\\ETTh2\\locked_test_cache_v2.pt"
+  },
+  "cache_hashes": {
+    "router_train": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+    "router_val": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088"
+  },
+  "baseline_artifacts": {
+    "train_base_extra": {
+      "chrono_num_updates": 2041,
+      "hv_num_updates": 2041,
+      "static_prior": "equal_weights_no_etth2_static_neural_artifact",
+      "mean_core_weight_DLinear": 0.4041341543197632,
+      "mean_core_weight_PatchTST": 0.3628575801849365,
+      "mean_core_weight_ModernTCN": 0.2330082654953003
+    },
+    "val_base_extra": {
+      "chrono_num_updates": 601,
+      "hv_num_updates": 601,
+      "static_prior": "equal_weights_no_etth2_static_neural_artifact",
+      "mean_core_weight_DLinear": 0.41557231545448303,
+      "mean_core_weight_PatchTST": 0.34058499336242676,
+      "mean_core_weight_ModernTCN": 0.24384267628192902,
+      "num_specialist_updates": 601,
+      "avg_weight_DLinear": 0.0,
+      "avg_weight_ModernTCN": 0.0,
+      "DLinear_specialist_disabled_duplicate_core": true,
+      "ModernTCN_specialist_disabled_duplicate_core": true
+    },
+    "oof_baseline": {
+      "chrono_oof_online_updates": 2041,
+      "chrono_oof_hv_updates": 2041
+    }
+  },
+  "methods": {
+    "ridge_residual_corrector": {
+      "source": "experiments/residual_correction_costar/run_residual_correction_experiments.py",
+      "locked_etth1_config": {
+        "ridge": 1.0,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "feature_set": "full"
+      },
+      "artifact_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\ridge\\ridge_artifact.pt",
+      "artifact_sha256": "73907d87e7d75ed8f6c602b2194ff066e70535b8b2a26dc66f250867f2f31731"
+    },
+    "mlp_residual_corrector": {
+      "source": "experiments/residual_correction_costar/run_residual_correction_experiments.py",
+      "locked_etth1_config": {
+        "seed": 7,
+        "hidden": 64,
+        "lr": 0.0003,
+        "weight_decay": 0.01,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "epochs": 40,
+        "patience": 6
+      },
+      "seeds": [
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "artifact_paths": [
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\mlp\\seed_7\\mlp_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\mlp\\seed_11\\mlp_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\mlp\\seed_13\\mlp_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\mlp\\seed_17\\mlp_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\mlp\\seed_19\\mlp_artifact.pt"
+      ],
+      "artifact_sha256": {
+        "7": "41e605527cfa3d519c4527364a857f062ae7e9074d2f77dd3b6b01c569c5b84b",
+        "11": "e9794327d1474c832bd65b02043cb803883a183bee874113ecd93115536dc229",
+        "13": "7978433ade8c933e3d24536793c2e41835767b1355621cadf13125e8887e30ae",
+        "17": "150694579decff008d19bcdea4aa1e679e1ee947e926b4b62aaf230289c1223d",
+        "19": "d1ce8a5c7834561e03741bfe013ad45e4ef0c54501eb093afd08eeace4272247"
+      }
+    },
+    "oracle_prototype_residual": {
+      "source": "experiments/oracle_weight_tournament/run_tournament.py",
+      "locked_etth1_config": {
+        "family": "prototype_residual",
+        "teacher_lambda": 0.01,
+        "num_prototypes": 16,
+        "residual_scale": 0.3,
+        "residual_weight": 0.001,
+        "epochs": 10,
+        "global_weights": [
+          0.36,
+          0.42,
+          0.22
+        ]
+      },
+      "seeds": [
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "artifact_paths": [
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\oracle_prototype_residual\\seed_7\\oracle_protores_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\oracle_prototype_residual\\seed_11\\oracle_protores_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\oracle_prototype_residual\\seed_13\\oracle_protores_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\oracle_prototype_residual\\seed_17\\oracle_protores_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\oracle_prototype_residual\\seed_19\\oracle_protores_artifact.pt"
+      ],
+      "artifact_sha256": {
+        "7": "35448f18e0054b5a4306f9b742f5ba047e801de202f82bf31f3c199e85e41679",
+        "11": "2d5db62ed64976e832d7d73927853a42beb706d7fd950bb7f8201c22e4f64b52",
+        "13": "a259d0f23a21adb653df1df40e216ac50f31e92b94a007359b0f182a710cfd4f",
+        "17": "94876e2392452381bbbe9c02f0aca0efbef414ac08531d4a6f1fa731aa75711d",
+        "19": "0a832b7fc8db462c8fe2e7784c39693412ff815915b127ed1dced702f08133d8"
+      }
+    },
+    "dynamic_fixed_three_seed7": {
+      "source": "scripts/train_costarts_fixed3_dynamic_weighting.py",
+      "locked_etth1_config": {
+        "seed": 7,
+        "batch_size": 512,
+        "epochs": 2,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0,
+        "grad_clip_norm": 1.0,
+        "entropy_weight": 0.0,
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "ablation": "full"
+      },
+      "etth1_selected_epoch_reused": 2,
+      "artifact_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\locked_etth1_config_etth2_replication\\artifacts\\dynamic_fixed3_seed7\\dynamic_seed7_artifact.pt",
+      "artifact_sha256": "6f48d759f4d307784f536df4137ec40d182356b2d2132d828c9c0ae331ab3e7d"
+    }
+  },
+  "validation_results": [
+    {
+      "method": "Full adaptive model",
+      "split": "router_val",
+      "seed": "mean",
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.27683213353157043,
+      "mse": 0.16727977991104126,
+      "prediction_sha256": "4b4723d03df9fafdd3886d7c631c015db3a9f678ff489ba811bec6b8ea48cb31"
+    },
+    {
+      "method": "Ridge residual corrector",
+      "split": "router_val",
+      "seed": "mean",
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.276038259267807,
+      "mse": 0.1665598452091217,
+      "prediction_sha256": "4c9f6ce7cb5e7ca9d7da578c917704bb4f3c3dfbd725bb118768645a13be87cd",
+      "mean_abs_delta_norm": 0.06007213145494461,
+      "mean_abs_applied_delta_norm": 0.0049039097502827644,
+      "clip_frequency": 0.24739766120910645,
+      "num_residual_stat_updates": 601
+    },
+    {
+      "method": "MLP residual corrector",
+      "split": "router_val",
+      "seed": "mean",
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.27612873911857605,
+      "mse": 0.1666449010372162,
+      "prediction_sha256": "b134c23565f858afbb596250ad9c902af907609a82616189edcb520379c226cc"
+    },
+    {
+      "method": "Oracle prototype residual",
+      "split": "router_val",
+      "seed": "mean",
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.27640360593795776,
+      "mse": 0.16729576885700226,
+      "prediction_sha256": "701b3e59c7cc51adba1227f969bf51d27ede2f40ffde2350b69709d4b83c0079"
+    },
+    {
+      "method": "Dynamic fixed-three, seed 7",
+      "split": "router_val",
+      "seed": 7,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2753792703151703,
+      "mse": 0.1660275161266327,
+      "prediction_sha256": "b6cedab801df379648c1add3b1f48caeb35eaec173642dd7187ccd728a8c73f6",
+      "mean_weights": {
+        "DLinear": 0.6693941950798035,
+        "PatchTST": 0.06639059633016586,
+        "ModernTCN": 0.26421523094177246
+      },
+      "weight_std": {
+        "DLinear": 0.01651459001004696,
+        "PatchTST": 0.0024798254016786814,
+        "ModernTCN": 0.015023338608443737
+      }
+    }
+  ],
+  "validation_per_seed": [
+    {
+      "method": "MLP residual corrector",
+      "split": "router_val",
+      "seed": 7,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.27615007758140564,
+      "mse": 0.16666041314601898,
+      "prediction_sha256": "43f4c282161adca7b0f743736105886ba09d246288d4293233713d47b51d2741",
+      "mean_abs_delta_norm": 0.05643083155155182,
+      "mean_abs_applied_delta_norm": 0.005094860214740038,
+      "clip_frequency": 0.21933504939079285,
+      "num_residual_stat_updates": 601,
+      "best_epoch": 1,
+      "early_stop_loss": 0.07401193678379059
+    },
+    {
+      "method": "MLP residual corrector",
+      "split": "router_val",
+      "seed": 11,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2761175036430359,
+      "mse": 0.16669929027557373,
+      "prediction_sha256": "02d295b883671ebd2c6e3dd8f431f9f14a9119339f6c609770d24396501dff02",
+      "mean_abs_delta_norm": 0.04795847460627556,
+      "mean_abs_applied_delta_norm": 0.004378862213343382,
+      "clip_frequency": 0.15969471633434296,
+      "num_residual_stat_updates": 601,
+      "best_epoch": 1,
+      "early_stop_loss": 0.07300009578466415
+    },
+    {
+      "method": "MLP residual corrector",
+      "split": "router_val",
+      "seed": 13,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2760418653488159,
+      "mse": 0.16657444834709167,
+      "prediction_sha256": "1f0dd5cbb30b40fca98c9ea9aa25a7c774b0be853c67dd9982a0a220a953bd97",
+      "mean_abs_delta_norm": 0.05753282830119133,
+      "mean_abs_applied_delta_norm": 0.005155731923878193,
+      "clip_frequency": 0.20733317732810974,
+      "num_residual_stat_updates": 601,
+      "best_epoch": 1,
+      "early_stop_loss": 0.07512636482715607
+    },
+    {
+      "method": "MLP residual corrector",
+      "split": "router_val",
+      "seed": 17,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.27614590525627136,
+      "mse": 0.16663798689842224,
+      "prediction_sha256": "636040215c008aadd4af292af791d085d946ca40e00588b8593db7b2e42e64f3",
+      "mean_abs_delta_norm": 0.05000299960374832,
+      "mean_abs_applied_delta_norm": 0.004621736705303192,
+      "clip_frequency": 0.15429581701755524,
+      "num_residual_stat_updates": 601,
+      "best_epoch": 1,
+      "early_stop_loss": 0.07288001477718353
+    },
+    {
+      "method": "MLP residual corrector",
+      "split": "router_val",
+      "seed": 19,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2762284278869629,
+      "mse": 0.16667506098747253,
+      "prediction_sha256": "0f83c50a6738190b3b1a6229b95cba1d1f07c979566021c6fb3b682685a865fe",
+      "mean_abs_delta_norm": 0.05252157524228096,
+      "mean_abs_applied_delta_norm": 0.004735311958938837,
+      "clip_frequency": 0.19975918531417847,
+      "num_residual_stat_updates": 601,
+      "best_epoch": 1,
+      "early_stop_loss": 0.07322036474943161
+    },
+    {
+      "method": "Oracle prototype residual",
+      "split": "router_val",
+      "seed": 7,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2765620946884155,
+      "mse": 0.16753239929676056,
+      "prediction_sha256": "97c62df82859eab1936684aab51e0b49e566fbbaacd5d5a147e34e6f8da3e085",
+      "mean_weights": {
+        "DLinear": 0.35674750804901123,
+        "PatchTST": 0.2090875208377838,
+        "ModernTCN": 0.43416497111320496
+      },
+      "weight_std": {
+        "DLinear": 0.006620365660637617,
+        "PatchTST": 0.009796678088605404,
+        "ModernTCN": 0.008728805929422379
+      },
+      "teacher_sha256": "75dc3082ec6f0836cd61fc94a4f46ab74ce0b98c821d561e00c4825e1b75bb13"
+    },
+    {
+      "method": "Oracle prototype residual",
+      "split": "router_val",
+      "seed": 11,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2774241268634796,
+      "mse": 0.16842120885849,
+      "prediction_sha256": "43fbeaa7afd6fc4f9b86a73429c8ee00a6dfe1d8ed4a656e984ef5d14fcee9e0",
+      "mean_weights": {
+        "DLinear": 0.3827979266643524,
+        "PatchTST": 0.24279819428920746,
+        "ModernTCN": 0.3744038939476013
+      },
+      "weight_std": {
+        "DLinear": 0.0030246174428611994,
+        "PatchTST": 0.004782086703926325,
+        "ModernTCN": 0.006513033527880907
+      },
+      "teacher_sha256": "75dc3082ec6f0836cd61fc94a4f46ab74ce0b98c821d561e00c4825e1b75bb13"
+    },
+    {
+      "method": "Oracle prototype residual",
+      "split": "router_val",
+      "seed": 13,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2772725820541382,
+      "mse": 0.16813702881336212,
+      "prediction_sha256": "1f8edb0a44ff9dd784911be2c4ba931b96172776da327d4fef91a093a1d4e40b",
+      "mean_weights": {
+        "DLinear": 0.28809869289398193,
+        "PatchTST": 0.2189907282590866,
+        "ModernTCN": 0.49291056394577026
+      },
+      "weight_std": {
+        "DLinear": 0.009756537154316902,
+        "PatchTST": 0.005453957710415125,
+        "ModernTCN": 0.008042186498641968
+      },
+      "teacher_sha256": "75dc3082ec6f0836cd61fc94a4f46ab74ce0b98c821d561e00c4825e1b75bb13"
+    },
+    {
+      "method": "Oracle prototype residual",
+      "split": "router_val",
+      "seed": 17,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.2759957015514374,
+      "mse": 0.16682055592536926,
+      "prediction_sha256": "15941983d2409cd660c1dbdf641d66342e0e0da500e5fbf054624cc7923b701a",
+      "mean_weights": {
+        "DLinear": 0.3489930033683777,
+        "PatchTST": 0.1715639978647232,
+        "ModernTCN": 0.4794430136680603
+      },
+      "weight_std": {
+        "DLinear": 0.008103997446596622,
+        "PatchTST": 0.006869418080896139,
+        "ModernTCN": 0.006778290960937738
+      },
+      "teacher_sha256": "75dc3082ec6f0836cd61fc94a4f46ab74ce0b98c821d561e00c4825e1b75bb13"
+    },
+    {
+      "method": "Oracle prototype residual",
+      "split": "router_val",
+      "seed": 19,
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "mae": 0.27578672766685486,
+      "mse": 0.16648626327514648,
+      "prediction_sha256": "a638f29d93f889198730e28fef549b689393aa64cc6fdebb603d364e991fea0c",
+      "mean_weights": {
+        "DLinear": 0.3436816334724426,
+        "PatchTST": 0.14156116545200348,
+        "ModernTCN": 0.5147571563720703
+      },
+      "weight_std": {
+        "DLinear": 0.0047165886498987675,
+        "PatchTST": 0.0066846092231571674,
+        "ModernTCN": 0.006710902787744999
+      },
+      "teacher_sha256": "75dc3082ec6f0836cd61fc94a4f46ab74ce0b98c821d561e00c4825e1b75bb13"
+    }
+  ],
+  "checks": {
+    "router_train_only_fitting": true,
+    "router_val_not_used_for_training_or_checkpoint_selection": true,
+    "test_cache_not_loaded_before_manifest": true,
+    "causal_residual_rule": "old_start + horizon <= current_start",
+    "long_history_features_pre_test_from_train_plus_val_only": true,
+    "tensor_shapes_checked": true,
+    "config_and_artifact_hashes_recorded": true
+  },
+  "runtime_sec_train_validate": 55.83114009999554
+}

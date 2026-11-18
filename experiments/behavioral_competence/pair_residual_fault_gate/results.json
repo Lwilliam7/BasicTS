@@ -1,0 +1,527 @@
+{
+  "classification": "WEAK_OR_INCONSISTENT_PARITY_FAULT_SIGNAL",
+  "code_version": "pair_residual_fault_gate_v1",
+  "created_at_utc": "2026-08-29T03:46:00.693587+00:00",
+  "datasets": {
+    "ETTh1": {
+      "core_names": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "summary": {
+        "baseline_mae": 0.3660224676132202,
+        "baseline_mse": 0.30867233872413635,
+        "best_gate_by_val_mae": {
+          "dataset": "ETTh1",
+          "delta_vs_baseline_mae": 0.0004601478576660156,
+          "delta_vs_baseline_mse": 0.0008220970630645752,
+          "final_fault_threshold": 0.1428844928741455,
+          "mae": 0.36648261547088623,
+          "method": "Raw Forecast Control",
+          "mse": 0.3094944357872009,
+          "oof_selected_mae": 0.34405839443206787,
+          "selected_fault_quantile": 0.9,
+          "selected_gamma": 0.5,
+          "selected_intervention_threshold": 0.8
+        },
+        "methods": {
+          "Baseline": {
+            "dataset": "ETTh1",
+            "delta_vs_baseline_mae": 0.0,
+            "delta_vs_baseline_mse": 0.0,
+            "mae": 0.3660224676132202,
+            "method": "Baseline",
+            "mse": 0.30867233872413635,
+            "selected_fault_quantile": null,
+            "selected_gamma": null,
+            "selected_intervention_threshold": null
+          },
+          "Parity Fault Gate": {
+            "dataset": "ETTh1",
+            "delta_vs_baseline_mae": 0.0009209811687469482,
+            "delta_vs_baseline_mse": 0.0015905499458312988,
+            "final_fault_threshold": 0.1428844928741455,
+            "mae": 0.36694344878196716,
+            "method": "Parity Fault Gate",
+            "mse": 0.31026288866996765,
+            "oof_selected_mae": 0.34396761655807495,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive + Parity Fault Gate": {
+            "dataset": "ETTh1",
+            "delta_vs_baseline_mae": 0.0009966492652893066,
+            "delta_vs_baseline_mse": 0.0016863048076629639,
+            "final_fault_threshold": 0.1428844928741455,
+            "mae": 0.3670191168785095,
+            "method": "Passive + Parity Fault Gate",
+            "mse": 0.3103586435317993,
+            "oof_selected_mae": 0.3439502418041229,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive Fault Gate": {
+            "dataset": "ETTh1",
+            "delta_vs_baseline_mae": 0.0006393194198608398,
+            "delta_vs_baseline_mse": 0.0010009706020355225,
+            "final_fault_threshold": 0.1428844928741455,
+            "mae": 0.36666178703308105,
+            "method": "Passive Fault Gate",
+            "mse": 0.3096733093261719,
+            "oof_selected_mae": 0.34410494565963745,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Raw Forecast Control": {
+            "dataset": "ETTh1",
+            "delta_vs_baseline_mae": 0.0004601478576660156,
+            "delta_vs_baseline_mse": 0.0008220970630645752,
+            "final_fault_threshold": 0.1428844928741455,
+            "mae": 0.36648261547088623,
+            "method": "Raw Forecast Control",
+            "mse": 0.3094944357872009,
+            "oof_selected_mae": 0.34405839443206787,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Shuffled Parity Control": {
+            "dataset": "ETTh1",
+            "delta_vs_baseline_mae": 0.0006476938724517822,
+            "delta_vs_baseline_mse": 0.0010122060775756836,
+            "final_fault_threshold": 0.1428844928741455,
+            "mae": 0.366670161485672,
+            "method": "Shuffled Parity Control",
+            "mse": 0.30968454480171204,
+            "oof_selected_mae": 0.344209223985672,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          }
+        }
+      }
+    },
+    "ETTh2": {
+      "core_names": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "summary": {
+        "baseline_mae": 0.27689793705940247,
+        "baseline_mse": 0.16700465977191925,
+        "best_gate_by_val_mae": {
+          "dataset": "ETTh2",
+          "delta_vs_baseline_mae": -0.0012575387954711914,
+          "delta_vs_baseline_mse": -0.0004899650812149048,
+          "final_fault_threshold": 0.07414979487657547,
+          "mae": 0.2756403982639313,
+          "method": "Passive + Parity Fault Gate",
+          "mse": 0.16651469469070435,
+          "oof_selected_mae": 0.2817820906639099,
+          "selected_fault_quantile": 0.8,
+          "selected_gamma": 1.0,
+          "selected_intervention_threshold": "none"
+        },
+        "methods": {
+          "Baseline": {
+            "dataset": "ETTh2",
+            "delta_vs_baseline_mae": 0.0,
+            "delta_vs_baseline_mse": 0.0,
+            "mae": 0.27689793705940247,
+            "method": "Baseline",
+            "mse": 0.16700465977191925,
+            "selected_fault_quantile": null,
+            "selected_gamma": null,
+            "selected_intervention_threshold": null
+          },
+          "Parity Fault Gate": {
+            "dataset": "ETTh2",
+            "delta_vs_baseline_mae": -0.000433117151260376,
+            "delta_vs_baseline_mse": -1.4871358871459961e-05,
+            "final_fault_threshold": 0.07414979487657547,
+            "mae": 0.2764648199081421,
+            "method": "Parity Fault Gate",
+            "mse": 0.1669897884130478,
+            "oof_selected_mae": 0.2813068628311157,
+            "selected_fault_quantile": 0.8,
+            "selected_gamma": 2.0,
+            "selected_intervention_threshold": "none"
+          },
+          "Passive + Parity Fault Gate": {
+            "dataset": "ETTh2",
+            "delta_vs_baseline_mae": -0.0012575387954711914,
+            "delta_vs_baseline_mse": -0.0004899650812149048,
+            "final_fault_threshold": 0.07414979487657547,
+            "mae": 0.2756403982639313,
+            "method": "Passive + Parity Fault Gate",
+            "mse": 0.16651469469070435,
+            "oof_selected_mae": 0.2817820906639099,
+            "selected_fault_quantile": 0.8,
+            "selected_gamma": 1.0,
+            "selected_intervention_threshold": "none"
+          },
+          "Passive Fault Gate": {
+            "dataset": "ETTh2",
+            "delta_vs_baseline_mae": -0.0006234347820281982,
+            "delta_vs_baseline_mse": 0.00020219385623931885,
+            "final_fault_threshold": 0.07414979487657547,
+            "mae": 0.27627450227737427,
+            "method": "Passive Fault Gate",
+            "mse": 0.16720685362815857,
+            "oof_selected_mae": 0.28100791573524475,
+            "selected_fault_quantile": 0.8,
+            "selected_gamma": 1.0,
+            "selected_intervention_threshold": "none"
+          },
+          "Raw Forecast Control": {
+            "dataset": "ETTh2",
+            "delta_vs_baseline_mae": -0.0005799829959869385,
+            "delta_vs_baseline_mse": 5.392730236053467e-05,
+            "final_fault_threshold": 0.100981205701828,
+            "mae": 0.2763179540634155,
+            "method": "Raw Forecast Control",
+            "mse": 0.16705858707427979,
+            "oof_selected_mae": 0.282031774520874,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 1.0,
+            "selected_intervention_threshold": "none"
+          },
+          "Shuffled Parity Control": {
+            "dataset": "ETTh2",
+            "delta_vs_baseline_mae": -0.0009253919124603271,
+            "delta_vs_baseline_mse": -0.0002540796995162964,
+            "final_fault_threshold": 0.07414979487657547,
+            "mae": 0.27597254514694214,
+            "method": "Shuffled Parity Control",
+            "mse": 0.16675058007240295,
+            "oof_selected_mae": 0.2814176678657532,
+            "selected_fault_quantile": 0.8,
+            "selected_gamma": 2.0,
+            "selected_intervention_threshold": "none"
+          }
+        }
+      }
+    },
+    "ETTm1": {
+      "core_names": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "summary": {
+        "baseline_mae": 0.25068971514701843,
+        "baseline_mse": 0.14995557069778442,
+        "best_gate_by_val_mae": {
+          "dataset": "ETTm1",
+          "delta_vs_baseline_mae": 0.0004811286926269531,
+          "delta_vs_baseline_mse": 0.000809893012046814,
+          "final_fault_threshold": 0.13707943260669708,
+          "mae": 0.2511708438396454,
+          "method": "Passive Fault Gate",
+          "mse": 0.15076546370983124,
+          "oof_selected_mae": 0.24842597544193268,
+          "selected_fault_quantile": 0.9,
+          "selected_gamma": 0.5,
+          "selected_intervention_threshold": 0.8
+        },
+        "methods": {
+          "Baseline": {
+            "dataset": "ETTm1",
+            "delta_vs_baseline_mae": 0.0,
+            "delta_vs_baseline_mse": 0.0,
+            "mae": 0.25068971514701843,
+            "method": "Baseline",
+            "mse": 0.14995557069778442,
+            "selected_fault_quantile": null,
+            "selected_gamma": null,
+            "selected_intervention_threshold": null
+          },
+          "Parity Fault Gate": {
+            "dataset": "ETTm1",
+            "delta_vs_baseline_mae": 0.000767141580581665,
+            "delta_vs_baseline_mse": 0.0011051297187805176,
+            "final_fault_threshold": 0.13707943260669708,
+            "mae": 0.2514568567276001,
+            "method": "Parity Fault Gate",
+            "mse": 0.15106070041656494,
+            "oof_selected_mae": 0.24832779169082642,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive + Parity Fault Gate": {
+            "dataset": "ETTm1",
+            "delta_vs_baseline_mae": 0.0005105733871459961,
+            "delta_vs_baseline_mse": 0.0008569061756134033,
+            "final_fault_threshold": 0.13707943260669708,
+            "mae": 0.25120028853416443,
+            "method": "Passive + Parity Fault Gate",
+            "mse": 0.15081247687339783,
+            "oof_selected_mae": 0.2480860948562622,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive Fault Gate": {
+            "dataset": "ETTm1",
+            "delta_vs_baseline_mae": 0.0004811286926269531,
+            "delta_vs_baseline_mse": 0.000809893012046814,
+            "final_fault_threshold": 0.13707943260669708,
+            "mae": 0.2511708438396454,
+            "method": "Passive Fault Gate",
+            "mse": 0.15076546370983124,
+            "oof_selected_mae": 0.24842597544193268,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Raw Forecast Control": {
+            "dataset": "ETTm1",
+            "delta_vs_baseline_mae": 0.0006059110164642334,
+            "delta_vs_baseline_mse": 0.0009678751230239868,
+            "final_fault_threshold": 0.13707943260669708,
+            "mae": 0.25129562616348267,
+            "method": "Raw Forecast Control",
+            "mse": 0.1509234458208084,
+            "oof_selected_mae": 0.24819298088550568,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Shuffled Parity Control": {
+            "dataset": "ETTm1",
+            "delta_vs_baseline_mae": 0.0005016922950744629,
+            "delta_vs_baseline_mse": 0.0008359551429748535,
+            "final_fault_threshold": 0.13707943260669708,
+            "mae": 0.2511914074420929,
+            "method": "Shuffled Parity Control",
+            "mse": 0.15079152584075928,
+            "oof_selected_mae": 0.24843518435955048,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          }
+        }
+      }
+    },
+    "Electricity": {
+      "core_names": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "summary": {
+        "baseline_mae": 0.21535496413707733,
+        "baseline_mse": 0.12273695319890976,
+        "best_gate_by_val_mae": {
+          "dataset": "Electricity",
+          "delta_vs_baseline_mae": 0.0003798753023147583,
+          "delta_vs_baseline_mse": 0.0008248016238212585,
+          "final_fault_threshold": 0.09489227831363678,
+          "mae": 0.2157348394393921,
+          "method": "Raw Forecast Control",
+          "mse": 0.12356175482273102,
+          "oof_selected_mae": 0.23311719298362732,
+          "selected_fault_quantile": 0.9,
+          "selected_gamma": 0.5,
+          "selected_intervention_threshold": 0.8
+        },
+        "methods": {
+          "Baseline": {
+            "dataset": "Electricity",
+            "delta_vs_baseline_mae": 0.0,
+            "delta_vs_baseline_mse": 0.0,
+            "mae": 0.21535496413707733,
+            "method": "Baseline",
+            "mse": 0.12273695319890976,
+            "selected_fault_quantile": null,
+            "selected_gamma": null,
+            "selected_intervention_threshold": null
+          },
+          "Parity Fault Gate": {
+            "dataset": "Electricity",
+            "delta_vs_baseline_mae": 0.0005375891923904419,
+            "delta_vs_baseline_mse": 0.0011958777904510498,
+            "final_fault_threshold": 0.08478236198425293,
+            "mae": 0.21589255332946777,
+            "method": "Parity Fault Gate",
+            "mse": 0.12393283098936081,
+            "oof_selected_mae": 0.23320679366588593,
+            "selected_fault_quantile": 0.8,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive + Parity Fault Gate": {
+            "dataset": "Electricity",
+            "delta_vs_baseline_mae": 0.0005277544260025024,
+            "delta_vs_baseline_mse": 0.0011045262217521667,
+            "final_fault_threshold": 0.09489227831363678,
+            "mae": 0.21588271856307983,
+            "method": "Passive + Parity Fault Gate",
+            "mse": 0.12384147942066193,
+            "oof_selected_mae": 0.23316842317581177,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive Fault Gate": {
+            "dataset": "Electricity",
+            "delta_vs_baseline_mae": 0.0014276057481765747,
+            "delta_vs_baseline_mse": 0.0026675090193748474,
+            "final_fault_threshold": 0.09489227831363678,
+            "mae": 0.2167825698852539,
+            "method": "Passive Fault Gate",
+            "mse": 0.1254044622182846,
+            "oof_selected_mae": 0.23361878097057343,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Raw Forecast Control": {
+            "dataset": "Electricity",
+            "delta_vs_baseline_mae": 0.0003798753023147583,
+            "delta_vs_baseline_mse": 0.0008248016238212585,
+            "final_fault_threshold": 0.09489227831363678,
+            "mae": 0.2157348394393921,
+            "method": "Raw Forecast Control",
+            "mse": 0.12356175482273102,
+            "oof_selected_mae": 0.23311719298362732,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Shuffled Parity Control": {
+            "dataset": "Electricity",
+            "delta_vs_baseline_mae": 0.0011701583862304688,
+            "delta_vs_baseline_mse": 0.002205304801464081,
+            "final_fault_threshold": 0.09489227831363678,
+            "mae": 0.2165251225233078,
+            "method": "Shuffled Parity Control",
+            "mse": 0.12494225800037384,
+            "oof_selected_mae": 0.23369134962558746,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          }
+        }
+      }
+    },
+    "Weather": {
+      "core_names": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "summary": {
+        "baseline_mae": 0.15981753170490265,
+        "baseline_mse": 0.2790922522544861,
+        "best_gate_by_val_mae": {
+          "dataset": "Weather",
+          "delta_vs_baseline_mae": -0.00021760165691375732,
+          "delta_vs_baseline_mse": -0.002491593360900879,
+          "final_fault_threshold": 0.05966769531369209,
+          "mae": 0.1595999300479889,
+          "method": "Raw Forecast Control",
+          "mse": 0.2766006588935852,
+          "oof_selected_mae": 0.17630043625831604,
+          "selected_fault_quantile": 0.8,
+          "selected_gamma": 0.5,
+          "selected_intervention_threshold": 0.8
+        },
+        "methods": {
+          "Baseline": {
+            "dataset": "Weather",
+            "delta_vs_baseline_mae": 0.0,
+            "delta_vs_baseline_mse": 0.0,
+            "mae": 0.15981753170490265,
+            "method": "Baseline",
+            "mse": 0.2790922522544861,
+            "selected_fault_quantile": null,
+            "selected_gamma": null,
+            "selected_intervention_threshold": null
+          },
+          "Parity Fault Gate": {
+            "dataset": "Weather",
+            "delta_vs_baseline_mae": 0.0003548860549926758,
+            "delta_vs_baseline_mse": 0.0005590617656707764,
+            "final_fault_threshold": 0.08573955297470093,
+            "mae": 0.16017241775989532,
+            "method": "Parity Fault Gate",
+            "mse": 0.27965131402015686,
+            "oof_selected_mae": 0.1764422357082367,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive + Parity Fault Gate": {
+            "dataset": "Weather",
+            "delta_vs_baseline_mae": 0.00023427605628967285,
+            "delta_vs_baseline_mse": 0.00037351250648498535,
+            "final_fault_threshold": 0.08573955297470093,
+            "mae": 0.16005180776119232,
+            "method": "Passive + Parity Fault Gate",
+            "mse": 0.27946576476097107,
+            "oof_selected_mae": 0.17631930112838745,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Passive Fault Gate": {
+            "dataset": "Weather",
+            "delta_vs_baseline_mae": 0.00035165250301361084,
+            "delta_vs_baseline_mse": 0.0018590688705444336,
+            "final_fault_threshold": 0.08573955297470093,
+            "mae": 0.16016918420791626,
+            "method": "Passive Fault Gate",
+            "mse": 0.2809513211250305,
+            "oof_selected_mae": 0.17680194973945618,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Raw Forecast Control": {
+            "dataset": "Weather",
+            "delta_vs_baseline_mae": -0.00021760165691375732,
+            "delta_vs_baseline_mse": -0.002491593360900879,
+            "final_fault_threshold": 0.05966769531369209,
+            "mae": 0.1595999300479889,
+            "method": "Raw Forecast Control",
+            "mse": 0.2766006588935852,
+            "oof_selected_mae": 0.17630043625831604,
+            "selected_fault_quantile": 0.8,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          },
+          "Shuffled Parity Control": {
+            "dataset": "Weather",
+            "delta_vs_baseline_mae": 0.00030937790870666504,
+            "delta_vs_baseline_mse": 0.0009383857250213623,
+            "final_fault_threshold": 0.08573955297470093,
+            "mae": 0.16012690961360931,
+            "method": "Shuffled Parity Control",
+            "mse": 0.28003063797950745,
+            "oof_selected_mae": 0.17675261199474335,
+            "selected_fault_quantile": 0.9,
+            "selected_gamma": 0.5,
+            "selected_intervention_threshold": 0.8
+          }
+        }
+      }
+    }
+  },
+  "experiment": "signed_pair_residual_fault_gate",
+  "git_commit": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "runtime_sec": 238.82543590001296,
+  "success_criteria": [
+    "STRONG_PARITY_FAULT_ISOLATION_SIGNAL",
+    "PARITY_FAULT_SIGNAL_BUT_CONTROL_LIMITED",
+    "WEAK_OR_INCONSISTENT_PARITY_FAULT_SIGNAL",
+    "NO_PARITY_FAULT_ISOLATION_SIGNAL"
+  ],
+  "test_loaded": false
+}

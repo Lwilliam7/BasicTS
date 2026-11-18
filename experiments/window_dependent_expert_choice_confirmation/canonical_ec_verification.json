@@ -1,0 +1,177 @@
+{
+  "CANONICAL_EC_VERIFIED": "YES",
+  "all_checks": {
+    "cf_1_design_verified": true,
+    "frozen_checkpoints_unchanged": true,
+    "integrity_all_pass_flag_in_artifact": true,
+    "no_test_access_recorded": true,
+    "same_score_affinity_tensor_for_token_and_ec": true,
+    "source_exists_and_is_the_generating_implementation": true,
+    "stored_metrics_reproduce_within_tolerance": true,
+    "strict_causal_router_train_oof_all_folds": true,
+    "win_counts_reproduce_from_raw_artifacts": true
+  },
+  "canonical_source_file": "experiments/window_dependent_expert_choice_hv/run_window_dependent_expert_choice_hv.py",
+  "canonical_source_sha256": "3a7bd2ed3c8f6cb914031ccd2c87edbecc6ae6c7e2b68a7e60b217f506877a80",
+  "committed_to_git": false,
+  "created_at_utc": "2026-08-31T00:21:43.172195+00:00",
+  "design_checks": {
+    "capacity_formula_round_M_over_E": true,
+    "cf_equals_1": true,
+    "multi_claim_is_equal_average": true,
+    "not_affinity_weighted": true,
+    "zero_claim_fallback_is_equal_ensemble": true
+  },
+  "git_log_of_directory": "",
+  "git_status_of_directory": "?? experiments/window_dependent_expert_choice_hv/",
+  "per_dataset_router_train_oof_delta_ec_minus_token": {
+    "ETTh1": {
+      "delta_ec_minus_token": -0.0006328821182250977,
+      "ec_wins": true
+    },
+    "ETTh2": {
+      "delta_ec_minus_token": 0.0008063316345214844,
+      "ec_wins": false
+    },
+    "ETTm1": {
+      "delta_ec_minus_token": -0.0008010566234588623,
+      "ec_wins": true
+    },
+    "Electricity": {
+      "delta_ec_minus_token": 0.00021149218082427979,
+      "ec_wins": false
+    },
+    "Weather": {
+      "delta_ec_minus_token": -0.0002911388874053955,
+      "ec_wins": true
+    }
+  },
+  "per_dataset_router_val_delta_ec_minus_token": {
+    "ETTh1": {
+      "delta_ec_minus_token": -0.0015682876110076904,
+      "ec_wins": true
+    },
+    "ETTh2": {
+      "delta_ec_minus_token": 0.0004992187023162842,
+      "ec_wins": false
+    },
+    "ETTm1": {
+      "delta_ec_minus_token": -0.0011028647422790527,
+      "ec_wins": true
+    },
+    "Electricity": {
+      "delta_ec_minus_token": -0.0006773471832275391,
+      "ec_wins": true
+    },
+    "Weather": {
+      "delta_ec_minus_token": -0.0002592504024505615,
+      "ec_wins": true
+    }
+  },
+  "provenance_caveat": "This directory remains UNCOMMITTED (untracked in git) as of this verification pass. Trustworthiness here is established by re-deriving every claim from the raw stored artifacts (validation_results.json, oof_results.json, integrity_checks.json, tensors.pt) and by the independent affinity_weighted_expert_choice_hv baseline_parity.json cross-check -- not by trusting the git history (there isn't one) or any prior prose summary.",
+  "recomputed_win_counts_from_raw_deltas": {
+    "oof_wins_vs_dynamic_token": "3/5",
+    "val_wins_vs_dynamic_token": "4/5"
+  },
+  "resolution_of_conflicting_summaries": "Recomputed directly from validation_results.json/oof_results.json deltas fields: router-val EC beats Token on 4/5 datasets (ETTh2 is the sole loser), router-train OOF EC beats Token on 3/5 datasets (ETTh2 and Electricity lose OOF despite Electricity winning on router-val -- a real OOF/val sign flip on Electricity, disclosed, not smoothed over). This matches the win counts already embedded in the stored artifact's own classification_details field, so there is no actual numeric discrepancy in the raw data; any conflicting external summary should be treated as an error in that summary, not in this artifact.",
+  "same_tensor_reproduction_evidence": {
+    "all_pass": true,
+    "max_abs_diff": 0.0,
+    "note": "Both Dynamic EC and Dynamic Token predictions were recomputed there from the SAME loaded val_affinity/claim tensors (tensors.pt) and a fresh cache reload, and compared to these validation_results.json numbers.",
+    "rows": [
+      {
+        "abs_diff": 0.0,
+        "dataset": "ETTh1",
+        "method": "dynamic_ec_cf1",
+        "passed": true,
+        "reproduced_mae": 0.3756404221057892,
+        "stored_mae": 0.3756404221057892,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "ETTh1",
+        "method": "dynamic_token_top1",
+        "passed": true,
+        "reproduced_mae": 0.3772087097167969,
+        "stored_mae": 0.3772087097167969,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "ETTh2",
+        "method": "dynamic_ec_cf1",
+        "passed": true,
+        "reproduced_mae": 0.28095123171806335,
+        "stored_mae": 0.28095123171806335,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "ETTh2",
+        "method": "dynamic_token_top1",
+        "passed": true,
+        "reproduced_mae": 0.28045201301574707,
+        "stored_mae": 0.28045201301574707,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "ETTm1",
+        "method": "dynamic_ec_cf1",
+        "passed": true,
+        "reproduced_mae": 0.25355589389801025,
+        "stored_mae": 0.25355589389801025,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "ETTm1",
+        "method": "dynamic_token_top1",
+        "passed": true,
+        "reproduced_mae": 0.2546587586402893,
+        "stored_mae": 0.2546587586402893,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "Weather",
+        "method": "dynamic_ec_cf1",
+        "passed": true,
+        "reproduced_mae": 0.15562117099761963,
+        "stored_mae": 0.15562117099761963,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "Weather",
+        "method": "dynamic_token_top1",
+        "passed": true,
+        "reproduced_mae": 0.1558804214000702,
+        "stored_mae": 0.1558804214000702,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "Electricity",
+        "method": "dynamic_ec_cf1",
+        "passed": true,
+        "reproduced_mae": 0.2063562422990799,
+        "stored_mae": 0.2063562422990799,
+        "tolerance": 0.0005
+      },
+      {
+        "abs_diff": 0.0,
+        "dataset": "Electricity",
+        "method": "dynamic_token_top1",
+        "passed": true,
+        "reproduced_mae": 0.20703358948230743,
+        "stored_mae": 0.20703358948230743,
+        "tolerance": 0.0005
+      }
+    ],
+    "source": "experiments/affinity_weighted_expert_choice_hv/baseline_parity.json"
+  },
+  "stored_classification": "WINDOW_DEPENDENT_EC_SUPPORTED",
+  "win_counts_match_stored_classification_details_field": true
+}

@@ -1,0 +1,135 @@
+{
+  "manifest_type": "frozen_method_manifest",
+  "method": "LearnedProbe-Rank",
+  "frozen_at_utc": "2026-08-20T00:00:00+00:00",
+  "git_commit_sha": "4bba4b6389f5a362a01dcda6e8284456e5d543d2",
+  "git_branch": "costarts-pair-selector-regressor",
+  "development_datasets_now_closed_to_further_tuning": ["ETTh1", "ETTh2", "ETTm1", "Weather", "Electricity"],
+  "explicit_note": "The LearnedProbe-Rank architecture and hyperparameters were frozen before evaluating the new generalization datasets. No changes are permitted based on new-dataset validation results.",
+  "why_this_method_and_not_gaprank": "A loss-gap-weighted pairwise ranking loss (GapRank) was tested as a candidate improvement (experiments/behavioral_competence/reports/learned_probe_gaprank_report.md). GapRank improved ETTm1 but produced statistically significant regressions on ETTh2, Weather, and Electricity, and its benefit was isolated to the one dataset that motivated it. Verdict: NO IMPROVEMENT -- KEEP ORIGINAL. The standing, frozen method is therefore the ORIGINAL LearnedProbe-Rank, trained with the plain (non-gap-weighted) pairwise ranking loss.",
+  "final_inference_rule": [
+    "current window + original expert forecasts + expert disagreement -> learned diagnostic probe",
+    "probe each frozen expert (differentiable forward pass, expert weights never updated)",
+    "probe-response features (6 stats: change, early_change, late_change, slope_change, variance_change, cosine_change)",
+    "competence scorer -> predicted_excess_loss per expert",
+    "rank experts by predicted competence (ascending predicted excess loss)",
+    "fixed rank weights: raw=[K,K-1,...,1]/sum -> for K=3, rank1=0.5000, rank2=0.3333, rank3=0.1667 (see rank_decision_rule_correction below)",
+    "combine ORIGINAL (unperturbed) expert forecasts with those weights"
+  ],
+  "expert_pool": ["DLinear", "PatchTST", "iTransformer", "TimesNet", "ModernTCN"],
+  "expert_selection_protocol": {
+    "core_size": 3,
+    "rule": "pooled out-of-fold MAE over 4 chronological router_train folds (train_folds), minimized over all C(5,3)=10 subsets of the expert pool, ties broken by pooled MSE then worst-fold MAE then subset name",
+    "source_function": "experiments/costar_multidataset_frozen/common.py::select_core_on_router_train",
+    "uses_router_val": false,
+    "uses_test": false
+  },
+  "input_len": 96,
+  "forecast_horizon": 12,
+  "expert_training_protocol": {
+    "family": "walk-forward (scripts/train_costarts_walkforward_experts.py + scripts/build_costarts_walkforward_cache.py), used for ETTh1/ETTm1/Weather/Electricity in development; ETTh2 used a separate one-off fixed-OOS-split family",
+    "chronology": "block_a=0-20%, block_b=20-40%, block_c=40-60%, validation(router_val)=60-80%, test=80-100% (fractions of each dataset's own total timestamp count)",
+    "router_train": "block_b predicted by block_a-trained (0-20%) experts, concatenated with block_c predicted by block_ab-trained (0-40%) experts -- both strictly out-of-sample for the predicting checkpoint",
+    "router_val": "60-80% predicted by final_60 experts trained on 0-60%",
+    "hidden_size": 64,
+    "max_epochs": 8,
+    "patience": 3,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "internal_val_fraction": 0.1,
+    "expert_seed": 7,
+    "optimizer": "AdamW, grad-norm clip 1.0, MSE training loss, best checkpoint selected by internal validation MAE"
+  },
+  "probe_generator": {
+    "class": "ProbeGenerator",
+    "architecture": "Linear(num_features->32) window projection -> Conv1d(32,32,kernel=5,pad=2) temporal mixing -> Linear(4->32) forecast-summary projection (broadcast + concat) -> head = Linear(64->32) + ReLU + Linear(32->num_features)",
+    "epsilon": 0.05,
+    "perturbation_formula": "delta = eps * historical_std * tanh(raw_head_output)",
+    "constraints": {
+      "magnitude": "structural, |tanh| <= 1, so |delta| <= eps * historical_std",
+      "near_zero_mean_shift": "soft penalty, delta.mean(dim=time).pow(2).mean()",
+      "temporal_smoothness": "soft penalty, (delta[:,1:]-delta[:,:-1]).pow(2).mean()",
+      "no_modification_outside_window": "structural -- delta has exactly the shape of the input history and is only ever added to it"
+    },
+    "probe_input": "normalized current window + 4-stat summary of the expert's OWN forecast (variance, slope, first-vs-last-observed, magnitude) -- no target, error, or expert identity"
+  },
+  "competence_scorer": {
+    "class": "CompetenceScorer",
+    "architecture": "Linear(input_dim->64) -> ReLU -> Linear(64->32) -> ReLU -> Linear(32->1), shared across experts, no expert-identity input",
+    "input_dim": 21,
+    "input_feature_groups": {
+      "A_window": ["trend_strength", "volatility", "mean_abs_first_diff", "lag1_autocorr", "spectral_entropy", "recent_vs_full_mean_shift"],
+      "B_own_forecast": ["forecast_variance", "forecast_slope", "first_forecast_vs_last_observed", "mean_forecast_magnitude"],
+      "C_disagreement": ["dist_from_ensemble_mean", "dist_from_ensemble_median", "avg_pairwise_disagreement", "early_horizon_disagreement", "late_horizon_disagreement"],
+      "D_probe_response": ["change", "early_change", "late_change", "slope_change", "variance_change", "cosine_change"]
+    },
+    "normalization": "per-dataset z-score of the 15 static (A+B+C) features, mean/std fit on the chronological first 80% of router_train only (feat_mean/feat_std), applied unchanged to router_val; probe-response (D) features are not separately normalized"
+  },
+  "training_objective": {
+    "formula": "Huber(predicted_excess_loss, actual_excess_loss, delta=1.0) + 0.25 * pairwise_ranking_loss(margin=0.05) + 0.01 * (perturbation_L2 + perturbation_mean_shift) + 0.01 * temporal_smoothness_penalty",
+    "ranking_loss": "PLAIN (non-gap-weighted) pairwise hinge ranking loss over all unordered expert pairs within a window -- experiments/behavioral_competence/probe_generator.py::pairwise_ranking_loss. loss_gap_weighted_pairwise_ranking_loss (GapRank) is explicitly NOT used.",
+    "optimizer": "AdamW, lr=0.001, weight_decay=0.0001",
+    "batch_size": 128,
+    "max_epochs": 8,
+    "patience": 3,
+    "seed": 7,
+    "internal_val_fraction": 0.2,
+    "internal_split": "chronological 80/20 split of router_train (by window index, not shuffled) used only for early stopping and temperature-grid selection",
+    "early_stopping": "best epoch = lowest internal-validation joint loss; training halts after `patience` consecutive non-improving epochs",
+    "temperature_grid": [0.02, 0.05, 0.1, 0.2, 0.5],
+    "temperature_note": "selected on the internal-validation slice only, for diagnostic/Softmax-rule comparisons; the frozen final inference rule uses fixed RANK weights and does not depend on this temperature value at all"
+  },
+  "rank_decision_rule": {
+    "type": "fixed_rank_weighting",
+    "rule": "sort experts by ascending predicted_excess_loss; raw_weights = [K, K-1, ..., 1] / sum",
+    "source_function": "experiments/behavioral_competence/run_learned_probe_decision_rules.py::rule_fixed_rank",
+    "weights_for_k_equals_3": [0.5, 0.3333333333333333, 0.16666666666666666],
+    "tuned_per_dataset": false,
+    "selected_on_router_val": false
+  },
+  "rank_decision_rule_correction": "Every prior report/manifest in this experiment family (including an earlier draft of this file) mislabeled these weights as [0.60, 0.30, 0.10]. That figure was never actually computed by any code path -- it originated from an incorrect annotation written alongside the correct formula in run_learned_probe_mechanism_ablation.py's (never-triggered) write_frozen_manifest() function, and was echoed forward through every subsequent report. The ACTUAL, always-used rule_fixed_rank function computes [K,K-1,...,1]/sum, which is [0.5000, 0.3333, 0.1667] for K=3. Every previously reported MAE/MSE number for every 'Rank' method (C-Rank, FixedD-Rank, LearnedProbe-Rank, LearnedProbe-GapRank, LearnedProbe-FrozenProbe-GapRank, across all five development datasets) used this correct [0.5,0.333,0.167] rule consistently -- only the prose label was wrong, not any computation. This is the rule frozen here, confirmed with the user, to preserve exact numerical continuity with every already-reported development-dataset result.",
+  "preprocessing_and_normalization": {
+    "expert_input_normalization": "per-dataset z-score using the training-range mean/std stored in each checkpoint (channel-wise)",
+    "final_forecast_scale": "ORIGINAL (raw) scale; the ensemble combination uses each expert's ORIGINAL unperturbed forecast, never a perturbed one",
+    "probe_features_scale": "probe-response features are computed in std-normalized units (divided by the reference channel std) before being concatenated with the z-scored A/B/C features"
+  },
+  "random_seeds": {"expert_training_seed": 7, "probe_and_scorer_training_seed": 7},
+  "development_dataset_final_60_checkpoint_sha256": {
+    "ETTh1": {
+      "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+      "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6"
+    },
+    "ETTh2": {
+      "DLinear": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "PatchTST": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+      "ModernTCN": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c"
+    },
+    "ETTm1": {
+      "DLinear": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "PatchTST": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+      "TimesNet": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8"
+    },
+    "Weather": {
+      "PatchTST": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+      "iTransformer": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1",
+      "TimesNet": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6"
+    },
+    "Electricity": {
+      "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+      "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc"
+    }
+  },
+  "development_dataset_selected_core": {
+    "ETTh1": ["PatchTST", "iTransformer", "TimesNet"],
+    "ETTh2": ["DLinear", "PatchTST", "ModernTCN"],
+    "ETTm1": ["DLinear", "PatchTST", "TimesNet"],
+    "Weather": ["PatchTST", "iTransformer", "TimesNet"],
+    "Electricity": ["PatchTST", "iTransformer", "TimesNet"]
+  },
+  "generalization_extension_note": "For new (generalization) datasets, this exact protocol is reused unmodified: same expert pool, same walk-forward training/caching pipeline (input_len=96, horizon=12, hidden_size=64, identical optimizer/epochs/stopping), same train-only core-selection rule, same frozen ProbeGenerator/CompetenceScorer architecture, same training objective and hyperparameters, same fixed rank rule (rule_fixed_rank, [0.5,0.333,0.167] for K=3 -- see rank_decision_rule_correction). The only additions are pure registry/plumbing entries (new dataset name -> its own checkpoint root and Bundle loader) so the existing, unmodified functions can run on new data; no methodological parameter is changed. See experiments/behavioral_competence/generalization/dataset_selection.json for the new checkpoint hashes and selected cores.",
+  "test_accessed": false,
+  "frozen": true
+}

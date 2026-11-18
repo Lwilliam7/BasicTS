@@ -1,0 +1,857 @@
+{
+  "controls": {
+    "control_results": [
+      {
+        "allocation_pct": {
+          "PatchTST": 0.3333333333333333,
+          "TimesNet": 0.3333333333333333,
+          "iTransformer": 0.3333333333333333
+        },
+        "assigned_cells": {
+          "PatchTST": 1284,
+          "TimesNet": 1284,
+          "iTransformer": 1284
+        },
+        "delta_mae_vs_equal": 0.021602675318717957,
+        "delta_mae_vs_hard_hxv": 0.013299241662025452,
+        "mae": 0.23605996370315552,
+        "method": "Random scores cap 1.00",
+        "mse": 0.14085441827774048
+      },
+      {
+        "allocation_pct": {
+          "PatchTST": 0.333852544132918,
+          "TimesNet": 0.3335929387331256,
+          "iTransformer": 0.3325545171339564
+        },
+        "assigned_cells": {
+          "PatchTST": 1286,
+          "TimesNet": 1285,
+          "iTransformer": 1281
+        },
+        "delta_mae_vs_equal": 0.02158603072166443,
+        "delta_mae_vs_hard_hxv": 0.013282597064971924,
+        "mae": 0.236043319106102,
+        "method": "Random scores cap 1.25",
+        "mse": 0.14082017540931702
+      },
+      {
+        "allocation_pct": {
+          "PatchTST": 0.333852544132918,
+          "TimesNet": 0.3335929387331256,
+          "iTransformer": 0.3325545171339564
+        },
+        "assigned_cells": {
+          "PatchTST": 1286,
+          "TimesNet": 1285,
+          "iTransformer": 1281
+        },
+        "delta_mae_vs_equal": 0.02158603072166443,
+        "delta_mae_vs_hard_hxv": 0.013282597064971924,
+        "mae": 0.236043319106102,
+        "method": "Random scores cap 1.50",
+        "mse": 0.14082017540931702
+      },
+      {
+        "allocation_pct": {
+          "PatchTST": 0.3333333333333333,
+          "TimesNet": 0.3333333333333333,
+          "iTransformer": 0.3333333333333333
+        },
+        "assigned_cells": {
+          "PatchTST": 1284,
+          "TimesNet": 1284,
+          "iTransformer": 1284
+        },
+        "delta_mae_vs_equal": 0.021104589104652405,
+        "delta_mae_vs_hard_hxv": 0.0128011554479599,
+        "mae": 0.23556187748908997,
+        "method": "Permuted HxV locations cap 1.00",
+        "mse": 0.1398082822561264
+      },
+      {
+        "allocation_pct": {
+          "PatchTST": 0.4166666666666667,
+          "TimesNet": 0.16666666666666666,
+          "iTransformer": 0.4166666666666667
+        },
+        "assigned_cells": {
+          "PatchTST": 1605,
+          "TimesNet": 642,
+          "iTransformer": 1605
+        },
+        "delta_mae_vs_equal": 0.017463520169258118,
+        "delta_mae_vs_hard_hxv": 0.009160086512565613,
+        "mae": 0.23192080855369568,
+        "method": "Permuted HxV locations cap 1.25",
+        "mse": 0.13942988216876984
+      },
+      {
+        "allocation_pct": {
+          "PatchTST": 0.4374350986500519,
+          "TimesNet": 0.12980269989615784,
+          "iTransformer": 0.43276220145379024
+        },
+        "assigned_cells": {
+          "PatchTST": 1685,
+          "TimesNet": 500,
+          "iTransformer": 1667
+        },
+        "delta_mae_vs_equal": 0.0167122483253479,
+        "delta_mae_vs_hard_hxv": 0.008408814668655396,
+        "mae": 0.23116953670978546,
+        "method": "Permuted HxV locations cap 1.50",
+        "mse": 0.13946497440338135
+      },
+      {
+        "allocation_pct": {
+          "PatchTST": 0.504932502596054,
+          "TimesNet": 0.03608515057113188,
+          "iTransformer": 0.45898234683281414
+        },
+        "assigned_cells": {
+          "PatchTST": 1945,
+          "TimesNet": 139,
+          "iTransformer": 1768
+        },
+        "delta_mae_vs_equal": 0.008303433656692505,
+        "delta_mae_vs_hard_hxv": 0.0,
+        "mae": 0.22276072204113007,
+        "method": "Expert Choice no capacity",
+        "mse": 0.1312716007232666
+      }
+    ],
+    "no_capacity_identical_to_hard_hxv": true,
+    "permuted_assignment_metadata": {
+      "1.00": {
+        "allocation_pct": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "capacity_factor": 1.0,
+        "capacity_limits": [
+          1284,
+          1284,
+          1284
+        ],
+        "counts": [
+          1284,
+          1284,
+          1284
+        ],
+        "exact_capacity": true,
+        "objective_score_sum": -698.9669189453125,
+        "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+      },
+      "1.25": {
+        "allocation_pct": [
+          0.4166666666666667,
+          0.4166666666666667,
+          0.16666666666666666
+        ],
+        "capacity_factor": 1.25,
+        "capacity_limits": [
+          1605,
+          1605,
+          1605
+        ],
+        "counts": [
+          1605,
+          1605,
+          642
+        ],
+        "exact_capacity": false,
+        "objective_score_sum": -674.0059204101562,
+        "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+      },
+      "1.50": {
+        "allocation_pct": [
+          0.4374350986500519,
+          0.43276220145379024,
+          0.12980269989615784
+        ],
+        "capacity_factor": 1.5,
+        "capacity_limits": [
+          1926,
+          1926,
+          1926
+        ],
+        "counts": [
+          1685,
+          1667,
+          500
+        ],
+        "exact_capacity": false,
+        "objective_score_sum": -672.89990234375,
+        "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+      }
+    },
+    "random_assignment_metadata": {
+      "1.00": {
+        "allocation_pct": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "capacity_factor": 1.0,
+        "capacity_limits": [
+          1284,
+          1284,
+          1284
+        ],
+        "counts": [
+          1284,
+          1284,
+          1284
+        ],
+        "exact_capacity": true,
+        "objective_score_sum": 3257.716796875,
+        "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+      },
+      "1.25": {
+        "allocation_pct": [
+          0.333852544132918,
+          0.3325545171339564,
+          0.3335929387331256
+        ],
+        "capacity_factor": 1.25,
+        "capacity_limits": [
+          1605,
+          1605,
+          1605
+        ],
+        "counts": [
+          1286,
+          1281,
+          1285
+        ],
+        "exact_capacity": false,
+        "objective_score_sum": 3257.720947265625,
+        "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+      },
+      "1.50": {
+        "allocation_pct": [
+          0.333852544132918,
+          0.3325545171339564,
+          0.3335929387331256
+        ],
+        "capacity_factor": 1.5,
+        "capacity_limits": [
+          1926,
+          1926,
+          1926
+        ],
+        "counts": [
+          1286,
+          1281,
+          1285
+        ],
+        "exact_capacity": false,
+        "objective_score_sum": 3257.720947265625,
+        "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+      }
+    }
+  },
+  "created_at_utc": "2026-08-30T06:55:34.291934+00:00",
+  "dataset": "Electricity",
+  "deployable_results": [
+    {
+      "allocation_pct": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "assigned_cells": null,
+      "delta_mae_vs_equal": 0.0,
+      "delta_mae_vs_hard_hxv": -0.008303433656692505,
+      "mae": 0.21445728838443756,
+      "method": "Equal ensemble",
+      "mse": 0.11784618347883224,
+      "soft_or_equal_weighted_cell_equivalent_counts": [
+        1284.0,
+        1284.0,
+        1284.0
+      ]
+    },
+    {
+      "allocation_pct": null,
+      "assigned_cells": null,
+      "delta_mae_vs_equal": -0.0026819705963134766,
+      "delta_mae_vs_hard_hxv": -0.010985404253005981,
+      "mae": 0.21177531778812408,
+      "method": "Existing soft HxV",
+      "mse": 0.11901403218507767,
+      "soft_hxv_extra": {
+        "decay": 0.95,
+        "mode": "hv",
+        "num_causal_updates": 5142,
+        "temperature": 0.1
+      }
+    },
+    {
+      "allocation_pct": {
+        "PatchTST": 0.504932502596054,
+        "TimesNet": 0.03608515057113188,
+        "iTransformer": 0.45898234683281414
+      },
+      "assigned_cells": {
+        "PatchTST": 1945,
+        "TimesNet": 139,
+        "iTransformer": 1768
+      },
+      "delta_mae_vs_equal": 0.008303433656692505,
+      "delta_mae_vs_hard_hxv": 0.0,
+      "mae": 0.22276072204113007,
+      "method": "Hard Normal HxV",
+      "mse": 0.1312716007232666
+    },
+    {
+      "allocation_pct": {
+        "PatchTST": 0.3333333333333333,
+        "TimesNet": 0.3333333333333333,
+        "iTransformer": 0.3333333333333333
+      },
+      "assigned_cells": {
+        "PatchTST": 1284,
+        "TimesNet": 1284,
+        "iTransformer": 1284
+      },
+      "delta_mae_vs_equal": 0.008490681648254395,
+      "delta_mae_vs_hard_hxv": 0.00018724799156188965,
+      "mae": 0.22294797003269196,
+      "method": "Expert Choice cap 1.00",
+      "mse": 0.12708407640457153
+    },
+    {
+      "allocation_pct": {
+        "PatchTST": 0.4166666666666667,
+        "TimesNet": 0.16666666666666666,
+        "iTransformer": 0.4166666666666667
+      },
+      "assigned_cells": {
+        "PatchTST": 1605,
+        "TimesNet": 642,
+        "iTransformer": 1605
+      },
+      "delta_mae_vs_equal": 0.0061698853969573975,
+      "delta_mae_vs_hard_hxv": -0.0021335482597351074,
+      "mae": 0.22062717378139496,
+      "method": "Expert Choice cap 1.25",
+      "mse": 0.1273808479309082
+    },
+    {
+      "allocation_pct": {
+        "PatchTST": 0.5,
+        "TimesNet": 0.03608515057113188,
+        "iTransformer": 0.4639148494288681
+      },
+      "assigned_cells": {
+        "PatchTST": 1926,
+        "TimesNet": 139,
+        "iTransformer": 1787
+      },
+      "delta_mae_vs_equal": 0.00827692449092865,
+      "delta_mae_vs_hard_hxv": -2.650916576385498e-05,
+      "mae": 0.2227342128753662,
+      "method": "Expert Choice cap 1.50",
+      "mse": 0.13124658167362213
+    }
+  ],
+  "experiment": "expert_choice_hv_pilot",
+  "expert_choice_assignments": {
+    "1.00": {
+      "allocation_pct": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "capacity_factor": 1.0,
+      "capacity_limits": [
+        1284,
+        1284,
+        1284
+      ],
+      "counts": [
+        1284,
+        1284,
+        1284
+      ],
+      "exact_capacity": true,
+      "objective_score_sum": -946.9090576171875,
+      "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+    },
+    "1.25": {
+      "allocation_pct": [
+        0.4166666666666667,
+        0.4166666666666667,
+        0.16666666666666666
+      ],
+      "capacity_factor": 1.25,
+      "capacity_limits": [
+        1605,
+        1605,
+        1605
+      ],
+      "counts": [
+        1605,
+        1605,
+        642
+      ],
+      "exact_capacity": false,
+      "objective_score_sum": -921.3170776367188,
+      "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+    },
+    "1.50": {
+      "allocation_pct": [
+        0.5,
+        0.4639148494288681,
+        0.03608515057113188
+      ],
+      "capacity_factor": 1.5,
+      "capacity_limits": [
+        1926,
+        1926,
+        1926
+      ],
+      "counts": [
+        1926,
+        1787,
+        139
+      ],
+      "exact_capacity": false,
+      "objective_score_sum": -911.7583618164062,
+      "solver": "scipy.optimize.linear_sum_assignment with cloned expert-capacity slots"
+    }
+  },
+  "expert_choice_vs_hard_stats": [
+    {
+      "block24": {
+        "block_size": 24,
+        "ci95_high": 0.0015911911614239216,
+        "ci95_low": -0.0012344364076852798,
+        "ci_excludes_zero": false,
+        "mean_delta": 0.00018722855020314455,
+        "prob_delta_negative": 0.3935000002384186,
+        "samples": 10000
+      },
+      "comparison": "Expert Choice cap 1.00 vs Hard Normal HxV",
+      "decision_inputs": {
+        "ci_excludes_zero": false,
+        "every_12th_agrees": false,
+        "mean_delta": 0.00018722855020314455,
+        "prob_delta_negative": 0.3935000002384186
+      },
+      "every_12th_phase_bootstrap": {
+        "ci95_high": 0.0013372382381930947,
+        "ci95_low": -0.000924828986171633,
+        "ci_excludes_zero": false,
+        "k": 12,
+        "mean_delta": 0.0001889472914626822,
+        "num_phases": 12,
+        "prob_delta_negative": 0.38109999895095825,
+        "windows_per_phase_max": 430,
+        "windows_per_phase_min": 429
+      },
+      "phase_analysis": {
+        "all_phases_agree_negative": false,
+        "k": 12,
+        "majority_phases_agree_negative": false,
+        "num_phases": 12,
+        "num_phases_negative": 6,
+        "phase_rows": [
+          {
+            "count": 430,
+            "expert_choice_better": false,
+            "mean_delta": 0.0008188678766600788,
+            "phase": 0
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -5.967020842945203e-05,
+            "phase": 1
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.0015943030593916774,
+            "phase": 2
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.002587691880762577,
+            "phase": 3
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.002513137413188815,
+            "phase": 4
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.0017896788194775581,
+            "phase": 5
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.0009214601595886052,
+            "phase": 6
+          },
+          {
+            "count": 429,
+            "expert_choice_better": false,
+            "mean_delta": 0.00034367816988378763,
+            "phase": 7
+          },
+          {
+            "count": 429,
+            "expert_choice_better": false,
+            "mean_delta": 0.0028163972310721874,
+            "phase": 8
+          },
+          {
+            "count": 429,
+            "expert_choice_better": false,
+            "mean_delta": 0.0032528096344321966,
+            "phase": 9
+          },
+          {
+            "count": 429,
+            "expert_choice_better": false,
+            "mean_delta": 0.002625082852318883,
+            "phase": 10
+          },
+          {
+            "count": 429,
+            "expert_choice_better": false,
+            "mean_delta": 0.0018764757551252842,
+            "phase": 11
+          }
+        ]
+      }
+    },
+    {
+      "block24": {
+        "block_size": 24,
+        "ci95_high": -0.0012555106077343225,
+        "ci95_low": -0.0030123319011181593,
+        "ci_excludes_zero": true,
+        "mean_delta": -0.002133570844307542,
+        "prob_delta_negative": 1.0,
+        "samples": 10000
+      },
+      "comparison": "Expert Choice cap 1.25 vs Hard Normal HxV",
+      "decision_inputs": {
+        "ci_excludes_zero": true,
+        "every_12th_agrees": true,
+        "mean_delta": -0.002133570844307542,
+        "prob_delta_negative": 1.0
+      },
+      "every_12th_phase_bootstrap": {
+        "ci95_high": -0.001524097751826048,
+        "ci95_low": -0.0026950829196721315,
+        "ci_excludes_zero": true,
+        "k": 12,
+        "mean_delta": -0.0021325957495719194,
+        "num_phases": 12,
+        "prob_delta_negative": 1.0,
+        "windows_per_phase_max": 430,
+        "windows_per_phase_min": 429
+      },
+      "phase_analysis": {
+        "all_phases_agree_negative": true,
+        "k": 12,
+        "majority_phases_agree_negative": true,
+        "num_phases": 12,
+        "num_phases_negative": 12,
+        "phase_rows": [
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.002517703687772155,
+            "phase": 0
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.0026477458886802197,
+            "phase": 1
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.0032813705038279295,
+            "phase": 2
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.003593216883018613,
+            "phase": 3
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.003199331695213914,
+            "phase": 4
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -0.0025819854345172644,
+            "phase": 5
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.002412777626886964,
+            "phase": 6
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.001691089360974729,
+            "phase": 7
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.00017760979244485497,
+            "phase": 8
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.00041784890345297754,
+            "phase": 9
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.0012631738791242242,
+            "phase": 10
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -0.0018072951352223754,
+            "phase": 11
+          }
+        ]
+      }
+    },
+    {
+      "block24": {
+        "block_size": 24,
+        "ci95_high": -1.7140546333394013e-05,
+        "ci95_low": -3.585486774682067e-05,
+        "ci_excludes_zero": true,
+        "mean_delta": -2.6498051738599315e-05,
+        "prob_delta_negative": 1.0,
+        "samples": 10000
+      },
+      "comparison": "Expert Choice cap 1.50 vs Hard Normal HxV",
+      "decision_inputs": {
+        "ci_excludes_zero": true,
+        "every_12th_agrees": true,
+        "mean_delta": -2.6498051738599315e-05,
+        "prob_delta_negative": 1.0
+      },
+      "every_12th_phase_bootstrap": {
+        "ci95_high": -1.753294600348454e-05,
+        "ci95_low": -3.607631515478715e-05,
+        "ci_excludes_zero": true,
+        "k": 12,
+        "mean_delta": -2.650138776516542e-05,
+        "num_phases": 12,
+        "prob_delta_negative": 1.0,
+        "windows_per_phase_max": 430,
+        "windows_per_phase_min": 429
+      },
+      "phase_analysis": {
+        "all_phases_agree_negative": true,
+        "k": 12,
+        "majority_phases_agree_negative": true,
+        "num_phases": 12,
+        "num_phases_negative": 12,
+        "phase_rows": [
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -2.9509843443520367e-05,
+            "phase": 0
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -1.3877416677132715e-05,
+            "phase": 1
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -7.5276852840033825e-06,
+            "phase": 2
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -9.407588549947832e-06,
+            "phase": 3
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -2.989807035191916e-05,
+            "phase": 4
+          },
+          {
+            "count": 430,
+            "expert_choice_better": true,
+            "mean_delta": -5.1593087846413255e-05,
+            "phase": 5
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -9.371476153319236e-06,
+            "phase": 6
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -2.3878537831478752e-05,
+            "phase": 7
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -1.5392170098493807e-05,
+            "phase": 8
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -2.5062745407922193e-05,
+            "phase": 9
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -4.35650217696093e-05,
+            "phase": 10
+          },
+          {
+            "count": 429,
+            "expert_choice_better": true,
+            "mean_delta": -5.893301567994058e-05,
+            "phase": 11
+          }
+        ]
+      }
+    }
+  ],
+  "git_commit_sha": "9c6b89c250fa2026be910babc38deaa31e2d3fc5",
+  "hard_normal_assignment": {
+    "allocation_pct": [
+      0.504932502596054,
+      0.45898234683281414,
+      0.03608515057113188
+    ],
+    "counts": [
+      1945,
+      1768,
+      139
+    ],
+    "objective_score_sum": -911.7575073242188
+  },
+  "integrity": {
+    "assignments_train_only": true,
+    "cache_roles": {
+      "router_train": "router_train_20_60",
+      "router_val": "router_val_60_80"
+    },
+    "checkpoint_hashes_after": {
+      "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    },
+    "checkpoint_hashes_before": {
+      "PatchTST": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "TimesNet": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "iTransformer": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    },
+    "checkpoints_unchanged": true,
+    "core_expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "core_experts": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "Electricity",
+    "expert_ordering_verified": true,
+    "horizon": 12,
+    "loaded_paths": [
+      "cache\\costarts_walkforward_Electricity\\router_train_20_60_cache.pt",
+      "cache\\costarts_walkforward_Electricity\\router_val_60_80_cache.pt",
+      "checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt"
+    ],
+    "no_capacity_identical_to_hard_hxv": true,
+    "no_test_cache_loaded": true,
+    "normalization": "per-location absolute errors divided by train checkpoint scaler std via existing per_location_error utility",
+    "num_variables": 321,
+    "result": "PASS",
+    "same_score_tensor_for_hard_and_expert_choice": true,
+    "total_hxv_cells": 3852
+  },
+  "interpretation": "Among the predeclared capacity settings, `Expert Choice cap 1.25` had the lowest reported router_val MAE with delta -0.002134 versus Hard Normal HxV. Strong-Go variants by the fixed rule: ['Expert Choice cap 1.25']; Weak variants: ['Expert Choice cap 1.50']. Because Hard Normal HxV and all Expert Choice variants use the same train-derived score tensor, any difference comes from the capacity-constrained assignment mechanism rather than a changed competence model. No-capacity Expert Choice was exactly identical to Hard Normal HxV: True. This pilot does not select a deployment capacity; it reports all predeclared capacities.",
+  "oracle_diagnostics": [
+    {
+      "allocation_pct": "per-window dynamic oracle",
+      "assigned_cells": "per-window dynamic oracle",
+      "mae": 0.13887502253055573,
+      "method": "Dynamic oracle per-window HxV (ORACLE / NON-DEPLOYABLE)",
+      "mse": 0.06447120755910873
+    },
+    {
+      "allocation_pct": {
+        "PatchTST": 0.26921079958463134,
+        "TimesNet": 0.1918483904465213,
+        "iTransformer": 0.5389408099688473
+      },
+      "assigned_cells": {
+        "PatchTST": 1037,
+        "TimesNet": 739,
+        "iTransformer": 2076
+      },
+      "mae": 0.2157888114452362,
+      "method": "Static val-average HxV oracle (ORACLE / NON-DEPLOYABLE)",
+      "mse": 0.11885940283536911
+    }
+  ],
+  "reference_electricity_hxv_mae_from_existing_report": 0.211775,
+  "runtime_seconds": 36.31834060000256,
+  "score_definition": "score[k,h,v] = -mean_router_train_normalized_abs_error[k,h,v]",
+  "strong_go_variants": [
+    "Expert Choice cap 1.25"
+  ],
+  "test_split_accessed": false,
+  "train_error_mean_hvk_shape": [
+    12,
+    321,
+    3
+  ],
+  "verdict": "STRONG GO",
+  "weak_variants": [
+    "Expert Choice cap 1.50"
+  ]
+}

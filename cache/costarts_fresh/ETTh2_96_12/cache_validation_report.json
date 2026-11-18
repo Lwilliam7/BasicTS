@@ -1,0 +1,411 @@
+{
+  "dataset": "ETTh2",
+  "input_len": 96,
+  "forecast_horizon": 12,
+  "num_features": 7,
+  "splits_built": [
+    "router_train",
+    "router_val"
+  ],
+  "chronological_boundaries": {
+    "expert_train": {
+      "fraction": [
+        0.0,
+        0.5
+      ],
+      "start": 0,
+      "end": 7200,
+      "num_timestamps": 7200,
+      "first_valid_window_start": 0,
+      "last_valid_window_start": 7092,
+      "num_windows": 7093
+    },
+    "expert_val": {
+      "fraction": [
+        0.5,
+        0.6
+      ],
+      "start": 7200,
+      "end": 8640,
+      "num_timestamps": 1440,
+      "first_valid_window_start": 7200,
+      "last_valid_window_start": 8532,
+      "num_windows": 1333
+    },
+    "router_train": {
+      "fraction": [
+        0.6,
+        0.75
+      ],
+      "start": 8640,
+      "end": 10800,
+      "num_timestamps": 2160,
+      "first_valid_window_start": 8640,
+      "last_valid_window_start": 10692,
+      "num_windows": 2053
+    },
+    "router_val": {
+      "fraction": [
+        0.75,
+        0.8
+      ],
+      "start": 10800,
+      "end": 11520,
+      "num_timestamps": 720,
+      "first_valid_window_start": 10800,
+      "last_valid_window_start": 11412,
+      "num_windows": 613
+    },
+    "locked_test": {
+      "fraction": [
+        0.8,
+        1.0
+      ],
+      "start": 11520,
+      "end": 14400,
+      "num_timestamps": 2880,
+      "first_valid_window_start": 11520,
+      "last_valid_window_start": 14292,
+      "num_windows": 2773
+    },
+    "sha256": "0344cf17320c986e746ab2af3e20c0b1cbb3c0741d36275f754e860b5daa0899"
+  },
+  "cache_shapes": {
+    "router_train": {
+      "histories": [
+        2053,
+        96,
+        7
+      ],
+      "targets": [
+        2053,
+        12,
+        7
+      ],
+      "target_masks": [
+        2053,
+        12,
+        7
+      ],
+      "prediction_stack": [
+        2053,
+        12,
+        7,
+        5
+      ],
+      "error_matrix": [
+        2053,
+        5
+      ],
+      "mse_matrix": [
+        2053,
+        5
+      ],
+      "best_expert": [
+        2053
+      ],
+      "sample_indices": [
+        2053
+      ],
+      "absolute_window_starts": [
+        2053
+      ]
+    },
+    "router_val": {
+      "histories": [
+        613,
+        96,
+        7
+      ],
+      "targets": [
+        613,
+        12,
+        7
+      ],
+      "target_masks": [
+        613,
+        12,
+        7
+      ],
+      "prediction_stack": [
+        613,
+        12,
+        7,
+        5
+      ],
+      "error_matrix": [
+        613,
+        5
+      ],
+      "mse_matrix": [
+        613,
+        5
+      ],
+      "best_expert": [
+        613
+      ],
+      "sample_indices": [
+        613
+      ],
+      "absolute_window_starts": [
+        613
+      ]
+    }
+  },
+  "num_windows": {
+    "router_train": 2053,
+    "router_val": 613
+  },
+  "source_index_ranges": {
+    "router_train": [
+      8640,
+      10692
+    ],
+    "router_val": [
+      10800,
+      11412
+    ]
+  },
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "checkpoint_hashes": {
+    "DLinear": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+    "PatchTST": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b",
+    "iTransformer": "664841c6c982da5c5a81a99eb759494101583a4a9e9feef7b806f74ce2175c5f",
+    "TimesNet": "2b2f1e54962034ca78bad6d9b7b14ab30fee4cebfcdc8537a464c2b19926f4b3",
+    "ModernTCN": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c"
+  },
+  "model_config_hashes": {
+    "DLinear": "1435f816ecf845ab141d09f1a649df87d813b7fc6d35f7af480b88b0d718aa65",
+    "PatchTST": "f08e733e1834bc550c5471a728102fc7b3923a623aadfa3f73317b122b209b31",
+    "iTransformer": "84c12960444f1ee565031c512393b14c02506f8259503b435fbb0a0f473c4766",
+    "TimesNet": "fc97f14d5534bafc62de38115d0f06748f624df5064a782e39c851db2c668cc6",
+    "ModernTCN": "4c19d2646b557ff850ca2f1fa7b23c6014287cd2d58032660e5f3d406cfabf10"
+  },
+  "scaler_hash": "4a24d2d9e46d97c80f80da889563a0d2cb7bb7aabe174d9b94fdbb82ce7982de",
+  "cache_hashes": {
+    "router_train": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+    "router_val": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088"
+  },
+  "hashes": {
+    "clean_expert_manifest": "6cf22085a548fd6784e953a17e2f309d7d1e5d64d96af87f4768fd474482f5c4",
+    "scaler_manifest": "631094e8041c926e9deca21986cdf1b61e7667e763d08bb8016e8e598b8e6e2a",
+    "metric_mae_file": "6f485c46ca22079a00fb62c549e6a552c2e56f7bc145f591d18c0fed547accb6",
+    "metric_mse_file": "26757eaff51b46579ee6db41a4d633404cc87824244f9d6700d4ac84fff9719a",
+    "cache_builder": "6c56e60e4e4e494cbc990f5c0f8a2197c341210fef08377a8911b3a6c3ce878b",
+    "expert_inference_helper": "1a20070764595a6c3e1538b54be8ac5482055ab76d03d7e3c930515cce81b399"
+  },
+  "direct_inference_checks": {
+    "router_train": {
+      "sampled_windows": [
+        {
+          "cache_index": 0,
+          "absolute_window_start": 8640,
+          "prediction_match": true,
+          "mae_match": true,
+          "mse_match": true
+        },
+        {
+          "cache_index": 1026,
+          "absolute_window_start": 9666,
+          "prediction_match": true,
+          "mae_match": true,
+          "mse_match": true
+        },
+        {
+          "cache_index": 2052,
+          "absolute_window_start": 10692,
+          "prediction_match": true,
+          "mae_match": true,
+          "mse_match": true
+        }
+      ]
+    },
+    "router_val": {
+      "sampled_windows": [
+        {
+          "cache_index": 0,
+          "absolute_window_start": 10800,
+          "prediction_match": true,
+          "mae_match": true,
+          "mse_match": true
+        },
+        {
+          "cache_index": 306,
+          "absolute_window_start": 11106,
+          "prediction_match": true,
+          "mae_match": true,
+          "mse_match": true
+        },
+        {
+          "cache_index": 612,
+          "absolute_window_start": 11412,
+          "prediction_match": true,
+          "mae_match": true,
+          "mse_match": true
+        }
+      ]
+    }
+  },
+  "leakage_assertions": {
+    "test_arrays_loaded": false,
+    "test_cache_created": false,
+    "locked_test_indices_absent": true,
+    "router_train_router_val_disjoint": true,
+    "no_gradients_enabled_for_cache_generation": true,
+    "frozen_expert_parameters_received_no_gradients": true,
+    "no_expert_router_selector_or_gate_training": true
+  },
+  "working_tree_status": [
+    "## master...origin/master [behind 13]",
+    " D notebooks/ForFunTesting.ipynb",
+    " D notebooks/Modeltesting.ipynb",
+    " D notebooks/dlinear_etth1.ipynb",
+    " D notebooks/mixed.ipynb",
+    " D results/model_benchmark_results.json",
+    " M scripts/evaluate_costarts_cost_sweep.py",
+    " M scripts/evaluate_costarts_final_comparison.py",
+    " M scripts/evaluate_costarts_subset_utility_rollouts.py",
+    " M scripts/run_costarts_subset_utility_ablations.py",
+    "?? =",
+    "?? cache/.gitkeep",
+    "?? cache/costarts_fresh/ETTh2_96_12/cache_validation_report.json",
+    "?? \"notebooks/Past Models/ForFunTesting.ipynb\"",
+    "?? \"notebooks/Past Models/Modeltesting.ipynb\"",
+    "?? \"notebooks/Past Models/dlinear_etth1.ipynb\"",
+    "?? \"notebooks/Past Models/mixed.ipynb\"",
+    "?? \"notebooks/Past Models/mixed2.ipynb\"",
+    "?? \"notebooks/Past Models/mixed3.ipynb\"",
+    "?? \"notebooks/Past Models/mixed4.ipynb\"",
+    "?? \"notebooks/Past Models/mixed4_testing.ipynb\"",
+    "?? \"notebooks/Past Models/mixed5.ipynb\"",
+    "?? \"notebooks/Past Models/mixed6.ipynb\"",
+    "?? \"notebooks/Past Models/mixed7.ipynb\"",
+    "?? \"notebooks/Past Models/mixed_dlinear_patchtst.ipynb\"",
+    "?? \"notebooks/Past Models/regieme\"",
+    "?? \"notebooks/Past Models/results.ipynb\"",
+    "?? notebooks/modeltest.ipynb",
+    "?? notebooks/router.ipynb",
+    "?? \"notebooks/router2(RouterDC inspired).ipynb\"",
+    "?? notebooks/router2_executed.ipynb",
+    "?? notebooks/router_model_results.ipynb",
+    "?? notebooks/tour.ipynb",
+    "?? r'",
+    "?? results/router2_summary/router2_best_mae_by_variant.png",
+    "?? results/router2_summary/router2_multiscale_tcn_expert_embeddings_test_metrics.json",
+    "?? results/router2_summary/router2_soft_vs_baselines.png",
+    "?? results/router2_summary/router2_summary_visualization.ipynb",
+    "?? results/router2_summary/router2_test_metrics.json",
+    "?? results/router2_summary/router2_trained_routers_mae.png",
+    "?? results/router2_summary/routerdc_hard_test_metrics.json",
+    "?? results/router2_summary/visualize_router2_summary.py",
+    "?? results/router_diagnostics/average_router_probabilities_routerdc_hard_with_contrastive.png",
+    "?? results/router_diagnostics/average_router_probabilities_routerdc_hard_without_contrastive.png",
+    "?? results/router_diagnostics/expert_selection_by_horizon.png",
+    "?? results/router_diagnostics/expert_selection_by_variable.png",
+    "?? results/router_diagnostics/expert_utilization_histogram_routerdc_hard_with_contrastive.png",
+    "?? results/router_diagnostics/expert_utilization_histogram_routerdc_hard_without_contrastive.png",
+    "?? results/router_diagnostics/expert_utilization_histogram_soft_router_weights.png",
+    "?? results/router_diagnostics/latency_vs_mae_pareto.png",
+    "?? results/router_diagnostics/learned_expert_representation_similarity_routerdc_hard_with_contrastive.png",
+    "?? results/router_diagnostics/learned_expert_representation_similarity_routerdc_hard_without_contrastive.png",
+    "?? results/router_diagnostics/predicted_loss_map_summary_by_horizon_and_variable.png",
+    "?? results/router_diagnostics/router_diagnostics_manifest.json",
+    "?? results/router_diagnostics/routing_entropy_scalar_routerdc_hard_with_contrastive.png",
+    "?? results/router_diagnostics/routing_entropy_scalar_routerdc_hard_without_contrastive.png",
+    "?? results/router_robustness/router_robustness_manifest.json",
+    "?? results/router_robustness_smoke/router_robustness_manifest.json",
+    "?? results/router_summary/best_1_expert/router_test_metrics.json",
+    "?? results/router_summary/best_2_experts/router_test_metrics.json",
+    "?? results/router_summary/best_3_experts/router_test_metrics.json",
+    "?? results/router_summary/best_4_experts/router_test_metrics.json",
+    "?? results/router_summary/best_5_experts/router_test_metrics.json",
+    "?? results/router_summary/candidate_expert_combinations.json",
+    "?? results/router_summary/costarts/costarts_repository_inspection_report.md",
+    "?? results/router_summary/costarts/costarts_routerdc_same_val_comparison.json",
+    "?? results/router_summary/costarts/costarts_training_summary.json",
+    "?? results/router_summary/costarts/inspection/costarts_inspection_metrics.json",
+    "?? results/router_summary/costarts/inspection/stop_best_last_diagnostics.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/cache_build_summary.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/expert_training_summary.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/scaler_manifest.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/split_manifest.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/clean_experts/training_integrity_report.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_git_diff.patch",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_python_processes.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/pre_cache_workspace_snapshot.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/prelock_run_audit.json",
+    "?? results/router_summary/costarts_fresh/ETTh2_96_12/prelock_run_audit.md",
+    "?? results/router_summary/costarts_subset_utility/best_single_lambda0_seed7_ablation/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/best_single_lambda0_seed7_ablation/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/cost_aware_smoke/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/cost_aware_sweep_smoke/cost_aware_training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/cost_aware_sweep_smoke/lambda_0_seed_7/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/cost_aware_sweep_smoke/lambda_0p01_seed_7/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/cost_lambda_0p01_eval_now/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/cost_lambda_0p01_eval_now/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/equal_average_lambda0_seed7/diagnostics/forced_query_diagnostics.json",
+    "?? results/router_summary/costarts_subset_utility/equal_average_lambda0_seed7/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/equal_average_lambda0_seed7/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/evaluation_now/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_audit.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_exp_a_soft_shared/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_exp_a_soft_shared/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_exp_b_soft_separate/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_exp_b_soft_separate/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_exp_c_soft_separate_regret/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_exp_c_soft_separate_regret/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/first_query_experiment_summary/first_query_experiment_summary.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_finetune_seed7/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_finetune_seed7/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_first_query_initialization_summary/summary.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_frozen_seed7/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_frozen_seed7/training_summary.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_init_random_seed7/final_comparison/final_comparison.json",
+    "?? results/router_summary/costarts_subset_utility/routerdc_init_random_seed7/training_summary.json",
+    "?? results/router_summary/past/benchmark_transformer_patchtst.json",
+    "?? results/router_summary/past/checkpoint_mixed_results_mae_vs_mse.svg",
+    "?? results/router_summary/past/checkpoint_mixed_results_top_mae.svg",
+    "?? results/router_summary/past/checkpoint_results_mae_vs_mse.svg",
+    "?? results/router_summary/past/checkpoint_results_top_mae.svg",
+    "?? results/router_summary/past/checkpoint_results_top_mse.svg",
+    "?? results/router_summary/past/checkpoint_results_top_rmse.svg",
+    "?? results/router_summary/past/model_benchmark_results.json",
+    "?? results/router_summary/past/router_test_metrics.json",
+    "?? results/router_summary/results_explained.ipynb",
+    "?? results/router_summary/results_explained_best_mae_by_count.png",
+    "?? results/router_summary/results_explained_oracle_mae_by_count.png",
+    "?? results/router_summary/results_explained_router_vs_baselines.png",
+    "?? results/router_summary/router_significance_tests.json",
+    "?? scripts/chronological_expert_training.py",
+    "?? scripts/costars/build_clean_etth2_router_caches.py",
+    "?? scripts/costars/build_costarts_paper_package.py",
+    "?? scripts/costars/build_costarts_subset_state_cache.py",
+    "?? scripts/costars/build_costarts_subset_states.py",
+    "?? scripts/costars/train_candidate_experts.py",
+    "?? scripts/costars/train_clean_etth2_experts.py",
+    "?? scripts/costars/train_costarts_queried_subset_reranker.py",
+    "?? scripts/costars/train_costarts_router.py",
+    "?? scripts/costars/train_costarts_sparse_mixer.py",
+    "?? scripts/costars/train_costarts_subset_utility_router.py",
+    "?? scripts/router_diagnostics.py",
+    "?? scripts/router_robustness.py",
+    "?? scripts/router_significance_tests.py",
+    "?? scripts/select_best_models.py",
+    "?? scripts/selectors.py",
+    "?? src/basicts/models/ModernTCN/__init__.py",
+    "?? src/basicts/models/ModernTCN/arch/__init__.py",
+    "?? src/basicts/models/ModernTCN/arch/moderntcn_arch.py",
+    "?? src/basicts/models/ModernTCN/config/__init__.py",
+    "?? src/basicts/models/ModernTCN/config/moderntcn_config.py",
+    "?? tests/test_chronological_expert_training.py",
+    "?? tests/test_clean_etth2_expert_training.py",
+    "?? tests/test_clean_etth2_router_cache_building.py",
+    "?? tests/test_selectors.py"
+  ]
+}

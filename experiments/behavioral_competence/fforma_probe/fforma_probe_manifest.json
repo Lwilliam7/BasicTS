@@ -1,0 +1,144 @@
+{
+  "clamp_zero": false,
+  "created_at_utc": "2026-08-24T06:57:25.830541+00:00",
+  "decision_rule": "Section 13 of the Final Audit Overrides, applied verbatim without modification after seeing results.",
+  "expert_checkpoint_sha256": {
+    "BeijingAirQuality": {
+      "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "ETTm2": {
+      "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "ExchangeRate": {
+      "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "Traffic": {
+      "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    }
+  },
+  "expert_cores": {
+    "BeijingAirQuality": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ETTm2": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ExchangeRate": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "Traffic": [
+      "PatchTST",
+      "iTransformer",
+      "ModernTCN"
+    ]
+  },
+  "fforma_commit_sha": "61ddc7101680e9df7219c359587d0b509d2b50d6",
+  "fforma_m4_config": {
+    "colsample_bytree": 0.7670739,
+    "eta": 0.575188,
+    "max_depth": 14,
+    "nrounds": 94,
+    "subsample": 0.9161483
+  },
+  "fforma_repository": "https://github.com/robjhyndman/M4metalearning",
+  "fforma_search_grid": [
+    {
+      "colsample_bytree": 0.7670739,
+      "eta": 0.575188,
+      "max_depth": 14,
+      "nrounds": 94,
+      "subsample": 0.9161483
+    },
+    {
+      "colsample_bytree": 0.8,
+      "eta": 0.1,
+      "max_depth": 6,
+      "nrounds": 100,
+      "subsample": 0.8
+    },
+    {
+      "colsample_bytree": 0.7,
+      "eta": 0.05,
+      "max_depth": 10,
+      "nrounds": 150,
+      "subsample": 0.7
+    },
+    {
+      "colsample_bytree": 0.6,
+      "eta": 0.3,
+      "max_depth": 8,
+      "nrounds": 50,
+      "subsample": 0.9
+    },
+    {
+      "colsample_bytree": 0.9,
+      "eta": 0.01,
+      "max_depth": 14,
+      "nrounds": 250,
+      "subsample": 0.6
+    }
+  ],
+  "fforma_source_functions_cited": [
+    "R/generate_classif_problem.R::THA_features",
+    "R/ensemble_classifier.R::error_softmax_obj",
+    "R/ensemble_classifier.R::train_selection_ensemble",
+    "R/ensemble_classifier.R::ensemble_forecast"
+  ],
+  "git_commit_sha": "2c694136a4baa8b05a87878d6774bacac510b771",
+  "manifest_type": "fforma_probe_manifest",
+  "matched_passive_architecture": "CompetenceScorer(21) identical to LearnedProbe: 15 passive (group A+B+C) features + 6 constant-zero columns, same optimizer/lr/weight_decay/epochs/patience/Huber+ranking objective, seed=7. No ProbeGenerator, no perturbation penalties (nothing to regularize).",
+  "min_train_fraction": 0.4,
+  "n_purge_folds": 2,
+  "predeclared_frequency_by_dataset": {
+    "BeijingAirQuality": 24,
+    "ETTm2": 96,
+    "ExchangeRate": 1,
+    "Traffic": 24
+  },
+  "selected_fforma_hyperparameters": {
+    "BeijingAirQuality": {
+      "colsample_bytree": 0.9,
+      "eta": 0.01,
+      "max_depth": 14,
+      "nrounds": 250,
+      "subsample": 0.6
+    },
+    "ETTm2": {
+      "colsample_bytree": 0.8,
+      "eta": 0.1,
+      "max_depth": 6,
+      "nrounds": 100,
+      "subsample": 0.8
+    },
+    "ExchangeRate": {
+      "colsample_bytree": 0.7670739,
+      "eta": 0.575188,
+      "max_depth": 14,
+      "nrounds": 94,
+      "subsample": 0.9161483
+    },
+    "Traffic": {
+      "colsample_bytree": 0.9,
+      "eta": 0.01,
+      "max_depth": 14,
+      "nrounds": 250,
+      "subsample": 0.6
+    }
+  },
+  "shuffle_seed": 20260821,
+  "tsfeatures_python_package_version": "0.4.5 (Nixtla port of R tsfeatures, verified same function names as THA_features calls)"
+}

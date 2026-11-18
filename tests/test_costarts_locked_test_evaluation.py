@@ -5,7 +5,7 @@ import numpy as np
 import pytest
 import torch
 
-from scripts import costarts_locked_test_evaluation as locked
+from scripts.old import costarts_locked_test_evaluation as locked
 
 
 def _manifest(tmp_path: Path) -> dict:

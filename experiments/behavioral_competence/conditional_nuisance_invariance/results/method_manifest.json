@@ -1,0 +1,32 @@
+{
+  "artifact_gap_note": "prior mechanism outputs lacked OOF P and raw deltas, so this runner regenerates missing target-clean features in a new CNI cache",
+  "code_version": "cni_v2",
+  "competence_model": "CompetenceScorer MLP, same architecture/procedure for every CNI feature set",
+  "created_at_utc": "2026-08-27T06:34:31.753581+00:00",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "device": "cuda",
+  "experiment": "conditional_nuisance_invariance",
+  "primary_nuisance_names": [
+    "log_history_scale",
+    "history_mean_magnitude",
+    "volatility",
+    "trend_strength",
+    "seasonality_strength",
+    "normalized_time_index",
+    "forecast_magnitude",
+    "forecast_variance",
+    "disagreement_magnitude",
+    "perturbation_norm",
+    "perturbation_recent_fraction",
+    "perturbation_direction_trend_alignment"
+  ],
+  "residualizer": "StandardScaler + Ridge(alpha=1.0)",
+  "source_mechanism": "experiments/behavioral_competence/expert_conditioned_probe_mechanism/run_experiment.py",
+  "test_accessed": false
+}

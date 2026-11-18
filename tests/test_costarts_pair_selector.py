@@ -2,7 +2,7 @@ import inspect
 
 import torch
 
-from scripts.train_costarts_pair_selector import (
+from scripts.old.train_costarts_pair_selector import (
     CostartsPairDataset,
     CostartsPairSelector,
     build_pair_index,

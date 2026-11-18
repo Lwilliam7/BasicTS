@@ -1,0 +1,10 @@
+{
+  "basicts_git_commit_sha_at_experiment_time": "2c694136a4baa8b05a87878d6774bacac510b771",
+  "created_at_utc": "2026-08-24T20:26:27.576243+00:00",
+  "fforma_probe_purged_oof_machinery_reused_unmodified_from": "experiments/behavioral_competence/fforma_probe/run_fforma_probe.py::purged_walkforward_folds, verify_router_train_to_val_observability, train_probe_and_scorer_prefix, train_matched_passive_prefix, score_matched_passive_on_windows, N_PURGE_FOLDS, MIN_TRAIN_FRACTION",
+  "manifest_type": "source_manifest",
+  "note": "See ../timefuse_probe/official_timefuse_source_manifest.json for the full official-source citation and engineering-adaptation list -- unchanged here.",
+  "reused_unmodified_from": "experiments/behavioral_competence/timefuse_probe/ (official_timefuse_source_manifest.json, meta_feature_cache.py, run_timefuse_probe.py::train_timefuse_fusor/evaluate_fusor/count_params)",
+  "timefuse_commit_sha": "978e6c6b9e4f246632c269aa0f9beeb099eabcfc",
+  "timefuse_repository": "https://github.com/ZhiningLiu1998/TimeFuse"
+}

@@ -1,0 +1,154 @@
+{
+  "baseline_reference": {
+    "name": "hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75",
+    "mae": 0.36364156007766724,
+    "mse": 0.3067120909690857
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "train_lo": 0,
+      "eval_lo": 1109,
+      "eval_hi": 2218
+    },
+    {
+      "fold": 1,
+      "train_lo": 0,
+      "eval_lo": 2218,
+      "eval_hi": 3327
+    },
+    {
+      "fold": 2,
+      "train_lo": 0,
+      "eval_lo": 3327,
+      "eval_hi": 4436
+    },
+    {
+      "fold": 3,
+      "train_lo": 0,
+      "eval_lo": 4436,
+      "eval_hi": 5546
+    }
+  ],
+  "selection": {
+    "best": {
+      "name": "full_covariance_hv_decay0.99_ridge0.0001_sd0.25_sg0_bias0_alpha0.75_warm96",
+      "family": "full_covariance",
+      "structure": "hv",
+      "decay": 0.99,
+      "ridge": 0.0001,
+      "shrink_diag": 0.25,
+      "shrink_global": 0.0,
+      "bias_weight": 0.0,
+      "hybrid_alpha": 0.75,
+      "min_count": 96,
+      "fold_mae_mean": 0.3414810001850128,
+      "fold_baseline_mae_mean": 0.34241849184036255,
+      "fold_delta_mean": -0.0009374916553497314,
+      "fold_delta_std": 0.0010156951611861587,
+      "fold_mae_se": 0.0005864118575118482,
+      "fold_wins": 3,
+      "fallback_group_rate": 0.0,
+      "mean_condition": 8.678113870576995,
+      "mean_abs_delta_vs_hv": 0.07712647598236799,
+      "avg_weight_PatchTST": 0.41108179092407227,
+      "avg_weight_iTransformer": 0.32293931394815445,
+      "avg_weight_TimesNet": 0.2659789063036442
+    },
+    "selected": {
+      "name": "diagonal_variance_hv_decay0.99_ridge0.0001_sd1_sg0_bias0_alpha0.5_warm96",
+      "family": "diagonal_variance",
+      "structure": "hv",
+      "decay": 0.99,
+      "ridge": 0.0001,
+      "shrink_diag": 1.0,
+      "shrink_global": 0.0,
+      "bias_weight": 0.0,
+      "hybrid_alpha": 0.5,
+      "min_count": 96,
+      "fold_mae_mean": 0.3420545756816864,
+      "fold_baseline_mae_mean": 0.34241849184036255,
+      "fold_delta_mean": -0.00036391615867614746,
+      "fold_delta_std": 0.0010462693171575665,
+      "fold_mae_se": 0.0006040638545528054,
+      "fold_wins": 3,
+      "fallback_group_rate": 0.0,
+      "mean_condition": 1.4124000246331576,
+      "mean_abs_delta_vs_hv": 0.058473448269069195,
+      "avg_weight_PatchTST": 0.3664606586098671,
+      "avg_weight_iTransformer": 0.34528641402721405,
+      "avg_weight_TimesNet": 0.28825291991233826
+    },
+    "one_se_threshold": 0.34206741204252467
+  },
+  "validation_seed_summary": [
+    {
+      "method": "baseline_fixed3_hv",
+      "seeds": 5,
+      "mae_mean": 0.36364156007766724,
+      "mae_std": 1.391933074046392e-05,
+      "mse_mean": 0.3067120909690857,
+      "mse_std": 1.6383461115765385e-05,
+      "improvement_vs_0.363642": 0.0,
+      "percent_improvement_vs_0.363642": 0.0
+    },
+    {
+      "method": "residual_covariance_selected",
+      "seeds": 5,
+      "mae_mean": 0.3636492192745209,
+      "mae_std": 1.2199245247757062e-05,
+      "mse_mean": 0.3064582347869873,
+      "mse_std": 1.6464686268591322e-05,
+      "improvement_vs_0.363642": -7.659196853637695e-06,
+      "percent_improvement_vs_0.363642": -0.002106249036001779
+    }
+  ],
+  "aggregate_bootstrap_ci": {
+    "baseline_fixed3_hv": {
+      "mean_diff_candidate_minus_baseline": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "ci_excludes_zero": false
+    },
+    "residual_covariance_selected": {
+      "mean_diff_candidate_minus_baseline": 7.686167919018771e-06,
+      "ci95_low": -0.00010483703954378143,
+      "ci95_high": 0.00012076550774509087,
+      "ci_excludes_zero": false
+    }
+  },
+  "worst_horizon_variable_regression": [
+    {
+      "method": "residual_covariance_selected",
+      "horizon": 11,
+      "variable": 4,
+      "delta_vs_baseline_mean": 0.007173609733581543
+    }
+  ],
+  "best_validation_method": {
+    "method": "baseline_fixed3_hv",
+    "seeds": 5,
+    "mae_mean": 0.36364156007766724,
+    "mae_std": 1.391933074046392e-05,
+    "mse_mean": 0.3067120909690857,
+    "mse_std": 1.6383461115765385e-05,
+    "improvement_vs_0.363642": 0.0,
+    "percent_improvement_vs_0.363642": 0.0
+  },
+  "promotion_decision": "Do not promote residual-covariance weighting.",
+  "promotion_checks": {
+    "beats_0.363642": false,
+    "selected_fold_wins": 3,
+    "ci_excludes_zero": false,
+    "no_major_regression": false
+  },
+  "safety": {
+    "test_cache_loaded": false,
+    "validation_used_for_selection": false,
+    "causality_rule": "old_start + prediction_length <= current_start",
+    "simplex_assertions_passed": true
+  },
+  "runtime_sec": 1318.0975432395935,
+  "device": "cuda",
+  "reproduce_command": "python experiments\\residual_covariance_weighting_costar\\run_residual_covariance_weighting.py --device cuda"
+}

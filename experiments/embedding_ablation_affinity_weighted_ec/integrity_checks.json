@@ -1,0 +1,19 @@
+{
+  "ROUTER_VAL_ACCESSED": "NO",
+  "TEST_CACHE_LOADED": "NO",
+  "TEST_METRICS_COMPUTED": "NO",
+  "TEST_SET_ACCESSED": "NO",
+  "UNTOUCHED_DATA_ACCESSED": "NO",
+  "all_pass": true,
+  "checkpoints_unchanged_all_datasets": {
+    "ETTh1": true,
+    "ETTh2": true,
+    "ETTm1": true,
+    "Electricity": true,
+    "Weather": true
+  },
+  "feature_ablation_result_used_valid": true,
+  "source_hash_after": "65e9da5a3c68e5b1209ae6f9d5769e821b5a5bd0db3d4d5575cdba3d35824a78",
+  "source_hash_before": "65e9da5a3c68e5b1209ae6f9d5769e821b5a5bd0db3d4d5575cdba3d35824a78",
+  "source_unchanged": true
+}

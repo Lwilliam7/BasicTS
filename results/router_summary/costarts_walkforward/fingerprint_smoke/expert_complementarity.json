@@ -1,0 +1,71 @@
+{
+  "per_expert": [
+    {
+      "expert": "DLinear",
+      "pct_windows_beats_iTransformer": 40.389469265937805,
+      "mean_improvement_when_beats_iTransformer": 0.040669746696949005,
+      "unique_oracle_wins_percent": 16.516408324241638
+    },
+    {
+      "expert": "PatchTST",
+      "pct_windows_beats_iTransformer": 47.385501861572266,
+      "mean_improvement_when_beats_iTransformer": 0.039053212851285934,
+      "unique_oracle_wins_percent": 24.48611557483673
+    },
+    {
+      "expert": "iTransformer",
+      "pct_windows_beats_iTransformer": 0.0,
+      "mean_improvement_when_beats_iTransformer": 0.0,
+      "unique_oracle_wins_percent": 28.020194172859192
+    },
+    {
+      "expert": "TimesNet",
+      "pct_windows_beats_iTransformer": 34.18680131435394,
+      "mean_improvement_when_beats_iTransformer": 0.058090779930353165,
+      "unique_oracle_wins_percent": 21.637216210365295
+    },
+    {
+      "expert": "ModernTCN",
+      "pct_windows_beats_iTransformer": 21.45690619945526,
+      "mean_improvement_when_beats_iTransformer": 0.06728648394346237,
+      "unique_oracle_wins_percent": 9.340064972639084
+    }
+  ],
+  "error_correlation": {
+    "DLinear": {
+      "DLinear": 1.0,
+      "PatchTST": 0.9391797184944153,
+      "iTransformer": 0.9234368801116943,
+      "TimesNet": 0.8475502133369446,
+      "ModernTCN": 0.6382026672363281
+    },
+    "PatchTST": {
+      "DLinear": 0.9391797184944153,
+      "PatchTST": 1.0000001192092896,
+      "iTransformer": 0.9510865807533264,
+      "TimesNet": 0.8380229473114014,
+      "ModernTCN": 0.623262882232666
+    },
+    "iTransformer": {
+      "DLinear": 0.9234368801116943,
+      "PatchTST": 0.9510865807533264,
+      "iTransformer": 0.9999998807907104,
+      "TimesNet": 0.8600835800170898,
+      "ModernTCN": 0.6561687588691711
+    },
+    "TimesNet": {
+      "DLinear": 0.8475502133369446,
+      "PatchTST": 0.8380229473114014,
+      "iTransformer": 0.8600835800170898,
+      "TimesNet": 0.9999998807907104,
+      "ModernTCN": 0.7011704444885254
+    },
+    "ModernTCN": {
+      "DLinear": 0.6382026672363281,
+      "PatchTST": 0.623262882232666,
+      "iTransformer": 0.6561687588691711,
+      "TimesNet": 0.7011704444885254,
+      "ModernTCN": 0.9999998807907104
+    }
+  }
+}

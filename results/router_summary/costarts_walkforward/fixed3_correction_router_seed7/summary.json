@@ -1,0 +1,271 @@
+{
+  "method": "One-shot fixed-subset menu router diagnostic",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "validation_range": [
+    8640,
+    11520
+  ],
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "menu": "fixed3_correction",
+  "candidate_actions": [
+    "KEEP fixed3",
+    "DROP PatchTST",
+    "DROP iTransformer",
+    "DROP TimesNet",
+    "ADD DLinear",
+    "ADD ModernTCN"
+  ],
+  "candidate_subsets": [
+    "PatchTST+iTransformer+TimesNet",
+    "iTransformer+TimesNet",
+    "PatchTST+TimesNet",
+    "PatchTST+iTransformer",
+    "DLinear+PatchTST+iTransformer+TimesNet",
+    "PatchTST+iTransformer+TimesNet+ModernTCN"
+  ],
+  "fixed_candidate_metrics": {
+    "candidate_subsets": [
+      {
+        "subset": "PatchTST+iTransformer+TimesNet",
+        "action": "KEEP fixed3",
+        "num_experts": 3,
+        "mae": 0.36726489663124084,
+        "mse": 0.3105303645133972
+      },
+      {
+        "subset": "iTransformer+TimesNet",
+        "action": "DROP PatchTST",
+        "num_experts": 2,
+        "mae": 0.3739887475967407,
+        "mse": 0.3201824724674225
+      },
+      {
+        "subset": "PatchTST+TimesNet",
+        "action": "DROP iTransformer",
+        "num_experts": 2,
+        "mae": 0.37449023127555847,
+        "mse": 0.3210192322731018
+      },
+      {
+        "subset": "PatchTST+iTransformer",
+        "action": "DROP TimesNet",
+        "num_experts": 2,
+        "mae": 0.370154470205307,
+        "mse": 0.31450897455215454
+      },
+      {
+        "subset": "DLinear+PatchTST+iTransformer+TimesNet",
+        "action": "ADD DLinear",
+        "num_experts": 4,
+        "mae": 0.3682158589363098,
+        "mse": 0.31093770265579224
+      },
+      {
+        "subset": "PatchTST+iTransformer+TimesNet+ModernTCN",
+        "action": "ADD ModernTCN",
+        "num_experts": 4,
+        "mae": 0.3723008930683136,
+        "mse": 0.31317344307899475
+      }
+    ],
+    "fixed3": {
+      "subset": "PatchTST+iTransformer+TimesNet",
+      "action": "KEEP fixed3",
+      "num_experts": 3,
+      "mae": 0.36726489663124084,
+      "mse": 0.3105303645133972
+    },
+    "oracle_menu_mae": 0.34427446126937866,
+    "oracle_menu_regret_ceiling_from_fixed3": 0.022990435361862183
+  },
+  "reference": {
+    "fixed3_mae": 0.36726489663124084,
+    "small_menu_oracle_mae": 0.3470388650894165,
+    "current_best_sequential_costar_mae": 0.3692974388599396
+  },
+  "summaries": [
+    {
+      "config": "hard",
+      "objective": "hard",
+      "temperature": null,
+      "validation_mae_mean": 0.36791524291038513,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3092651963233948,
+      "validation_mse_std": 0.0,
+      "subset_selection_accuracy_mean": 26.613775694194015,
+      "oracle_menu_regret_mean": 0.023640756828128065,
+      "average_experts_used_mean": 3.0869094843130185,
+      "parameter_count": 32070,
+      "per_seed": [
+        {
+          "config": "hard",
+          "objective": "hard",
+          "temperature": "",
+          "seed": 7,
+          "best_epoch": 21,
+          "validation_mae": 0.36791524291038513,
+          "validation_mse": 0.3092651963233948,
+          "raw_validation_mae": 1.2339943647384644,
+          "raw_validation_mse": 4.819112777709961,
+          "subset_selection_accuracy": 26.613775694194015,
+          "oracle_menu_regret": 0.023640756828128065,
+          "average_experts_used": 3.0869094843130185,
+          "parameter_count": 32070
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "mae": 0.36791524291038513,
+          "mse": 0.3092651963233948,
+          "raw_mae": 1.2339943647384644,
+          "raw_mse": 4.819112777709961,
+          "subset_selection_accuracy": 26.613775694194015,
+          "oracle_menu_regret": 0.023640756828128065,
+          "oracle_menu_regret_median": 0.014143556356430054,
+          "average_experts_used": 3.0869094843130185,
+          "selected_action_percent": {
+            "KEEP fixed3": 0.0,
+            "DROP PatchTST": 6.959971150378651,
+            "DROP iTransformer": 4.724125495852867,
+            "DROP TimesNet": 33.97042913811756,
+            "ADD DLinear": 0.0,
+            "ADD ModernTCN": 54.34547421565092
+          },
+          "selected_subset_percent": {
+            "PatchTST+iTransformer+TimesNet": 0.0,
+            "iTransformer+TimesNet": 6.959971150378651,
+            "PatchTST+TimesNet": 4.724125495852867,
+            "PatchTST+iTransformer": 33.97042913811756,
+            "DLinear+PatchTST+iTransformer+TimesNet": 0.0,
+            "PatchTST+iTransformer+TimesNet+ModernTCN": 54.34547421565092
+          },
+          "oracle_action_percent": {
+            "KEEP fixed3": 2.5964659213847816,
+            "DROP PatchTST": 19.04075009015507,
+            "DROP iTransformer": 14.4608727010458,
+            "DROP TimesNet": 31.770645510277678,
+            "ADD DLinear": 9.340064911648035,
+            "ADD ModernTCN": 22.79120086548864
+          },
+          "oracle_subset_percent": {
+            "PatchTST+iTransformer+TimesNet": 2.5964659213847816,
+            "iTransformer+TimesNet": 19.04075009015507,
+            "PatchTST+TimesNet": 14.4608727010458,
+            "PatchTST+iTransformer": 31.770645510277678,
+            "DLinear+PatchTST+iTransformer+TimesNet": 9.340064911648035,
+            "PatchTST+iTransformer+TimesNet+ModernTCN": 22.79120086548864
+          }
+        }
+      }
+    },
+    {
+      "config": "soft_tau_0p01",
+      "objective": "soft",
+      "temperature": 0.01,
+      "validation_mae_mean": 0.3681199848651886,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.31205838918685913,
+      "validation_mse_std": 0.0,
+      "subset_selection_accuracy_mean": 31.085467003245583,
+      "oracle_menu_regret_mean": 0.02384552325995614,
+      "average_experts_used_mean": 2.3873061666065634,
+      "parameter_count": 32070,
+      "per_seed": [
+        {
+          "config": "soft_tau_0p01",
+          "objective": "soft",
+          "temperature": 0.01,
+          "seed": 7,
+          "best_epoch": 3,
+          "validation_mae": 0.3681199848651886,
+          "validation_mse": 0.31205838918685913,
+          "raw_validation_mae": 1.252642035484314,
+          "raw_validation_mse": 5.025095462799072,
+          "subset_selection_accuracy": 31.085467003245583,
+          "oracle_menu_regret": 0.02384552325995614,
+          "average_experts_used": 2.3873061666065634,
+          "parameter_count": 32070
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "mae": 0.3681199848651886,
+          "mse": 0.31205838918685913,
+          "raw_mae": 1.252642035484314,
+          "raw_mse": 5.025095462799072,
+          "subset_selection_accuracy": 31.085467003245583,
+          "oracle_menu_regret": 0.02384552325995614,
+          "oracle_menu_regret_median": 0.014380693435668945,
+          "average_experts_used": 2.3873061666065634,
+          "selected_action_percent": {
+            "KEEP fixed3": 0.0,
+            "DROP PatchTST": 0.0,
+            "DROP iTransformer": 0.5409304002884963,
+            "DROP TimesNet": 80.09376126938334,
+            "ADD DLinear": 0.0,
+            "ADD ModernTCN": 19.365308330328165
+          },
+          "selected_subset_percent": {
+            "PatchTST+iTransformer+TimesNet": 0.0,
+            "iTransformer+TimesNet": 0.0,
+            "PatchTST+TimesNet": 0.5409304002884963,
+            "PatchTST+iTransformer": 80.09376126938334,
+            "DLinear+PatchTST+iTransformer+TimesNet": 0.0,
+            "PatchTST+iTransformer+TimesNet+ModernTCN": 19.365308330328165
+          },
+          "oracle_action_percent": {
+            "KEEP fixed3": 2.5964659213847816,
+            "DROP PatchTST": 19.04075009015507,
+            "DROP iTransformer": 14.4608727010458,
+            "DROP TimesNet": 31.770645510277678,
+            "ADD DLinear": 9.340064911648035,
+            "ADD ModernTCN": 22.79120086548864
+          },
+          "oracle_subset_percent": {
+            "PatchTST+iTransformer+TimesNet": 2.5964659213847816,
+            "iTransformer+TimesNet": 19.04075009015507,
+            "PatchTST+TimesNet": 14.4608727010458,
+            "PatchTST+iTransformer": 31.770645510277678,
+            "DLinear+PatchTST+iTransformer+TimesNet": 9.340064911648035,
+            "PatchTST+iTransformer+TimesNet+ModernTCN": 22.79120086548864
+          }
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "config": "hard",
+      "objective": "hard",
+      "temperature": "",
+      "validation_mae_mean": 0.36791524291038513,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.3092651963233948,
+      "validation_mse_std": 0.0,
+      "subset_selection_accuracy_mean": 26.613775694194015,
+      "oracle_menu_regret_mean": 0.023640756828128065,
+      "average_experts_used_mean": 3.0869094843130185,
+      "parameter_count": 32070,
+      "improvement_vs_fixed3_mae": -0.0006503462791442871,
+      "improvement_vs_best_sequential_costar_mae": 0.0013821959495544656
+    },
+    {
+      "config": "soft_tau_0p01",
+      "objective": "soft",
+      "temperature": 0.01,
+      "validation_mae_mean": 0.3681199848651886,
+      "validation_mae_std": 0.0,
+      "validation_mse_mean": 0.31205838918685913,
+      "validation_mse_std": 0.0,
+      "subset_selection_accuracy_mean": 31.085467003245583,
+      "oracle_menu_regret_mean": 0.02384552325995614,
+      "average_experts_used_mean": 2.3873061666065634,
+      "parameter_count": 32070,
+      "improvement_vs_fixed3_mae": -0.0008550882339477539,
+      "improvement_vs_best_sequential_costar_mae": 0.0011774539947509988
+    }
+  ],
+  "safety": "NO TEST DATA USED"
+}

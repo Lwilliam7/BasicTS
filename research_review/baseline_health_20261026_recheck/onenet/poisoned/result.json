@@ -1,0 +1,45 @@
+{
+  "status": "CHECKED",
+  "method": "onenet",
+  "case": "poisoned",
+  "seed": 7,
+  "mae": 17.602445602416992,
+  "mse": 613.7232055664062,
+  "tail32_mae": 34.990509033203125,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true
+  },
+  "software_case_passed": true,
+  "baselines": {},
+  "diagnostics": {
+    "convex_calls": 0,
+    "online_updates": 127,
+    "causality_passed": true,
+    "branch1_weight_mean": 0.4755375385284424,
+    "branch1_weight_tail_mean": 0.005254124291241169,
+    "target_feedback": "Fully observed previous windows only"
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "65eed9d6c878133a4d81d9c381c69e742ad47fd0",
+    "file_hashes": {
+      "exp/exp_onenet_fsnet.py": "26a74503a6e0973b193ef5ec750a7522512ca215d4c4782d896cf352188a7a9f"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\seed7_ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "causality_trace.json": "44feb7ff75d5d0980116f3e1c5ae54047db727f7bf12bcdf2ecf060d42b94659",
+    "one_net_trace.npz": "56730d128d7c285257b14503c45f72f6021561ea4c525cfb67bcf216095f4ca8",
+    "per_window_losses.npz": "303bd4e54b6b784eddf096ede8b1ef9362adf6fda500007deccb26a802df1253",
+    "_work\\seed7_ETTh1.json": "c59352e6d3d937cd091d66a0bde2033b082c8092b76a4fe992de2b5acb5ff3a3",
+    "_work\\seed7_ETTh1.pt": "1b727ab4fc4f9770051c83ddad5beda91d3ecffd8406a1bd27abcbdd2cca0c5b"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

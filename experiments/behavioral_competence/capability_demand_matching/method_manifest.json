@@ -1,0 +1,32 @@
+{
+  "axes": [
+    "trend",
+    "seasonality",
+    "frequency",
+    "volatility",
+    "shift",
+    "crossvar"
+  ],
+  "code_version": "capability_demand_matching_v1",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "horizon": 12,
+  "oof_protocol": "20% warmup plus four chronological router_train folds; fit windows satisfy old_start + horizon <= current_origin",
+  "primary_score": "0.5 * regime_table_prediction + 0.5 * continuous_curve_prediction",
+  "ridge_alpha": 1.0,
+  "shrinkage": 32.0,
+  "temperature_grid": [
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.5,
+    1.0
+  ],
+  "test_loaded": false
+}

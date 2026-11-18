@@ -1,0 +1,742 @@
+{
+  "ETTh1": {
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "counted_in_success": true,
+    "dataset": "ETTh1",
+    "demand_hash_router_train": "9d73dc6b8b8eb40727a1828fc9b3e4ce710d42261ede2aa21e176ce025a67c30",
+    "demand_hash_router_val": "8c6a3ca1b3999da4efc7c9907f2d99cfe0c2b992ecb6ae5ac4481c8dafb1d63e",
+    "deterministic_demand_repeat": true,
+    "etth2_status": "not_applicable",
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "expert_order": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "finite_demand": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "eval_hi": 2218,
+        "eval_lo": 1109,
+        "eval_start_max": 5097,
+        "eval_start_min": 3989,
+        "fit_start_max": 3977,
+        "fit_start_min": 2880,
+        "fit_windows": 1098,
+        "fold": 0,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 3327,
+        "eval_lo": 2218,
+        "eval_start_max": 6313,
+        "eval_start_min": 5098,
+        "fit_start_max": 5086,
+        "fit_start_min": 2880,
+        "fit_windows": 2207,
+        "fold": 1,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 4436,
+        "eval_lo": 3327,
+        "eval_start_max": 7422,
+        "eval_start_min": 6314,
+        "fit_start_max": 6302,
+        "fit_start_min": 2880,
+        "fit_windows": 3316,
+        "fold": 2,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 5546,
+        "eval_lo": 4436,
+        "eval_start_max": 8532,
+        "eval_start_min": 7423,
+        "fit_start_max": 7411,
+        "fit_start_min": 2880,
+        "fit_windows": 4425,
+        "fold": 3,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      }
+    ],
+    "oof_chronological_purge_pass": true,
+    "router_val_profiles_from_train_only": true,
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          5546,
+          96,
+          7
+        ],
+        "num_windows": 5546,
+        "prediction_shape": [
+          5546,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 8532,
+        "start_min": 2880,
+        "starts_chronological": true,
+        "target_shape": [
+          5546,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          2773,
+          96,
+          7
+        ],
+        "num_windows": 2773,
+        "prediction_shape": [
+          2773,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 11412,
+        "start_min": 8640,
+        "starts_chronological": true,
+        "target_shape": [
+          2773,
+          12,
+          7
+        ]
+      }
+    },
+    "target_corruption": {
+      "capability_pred_max_abs": 0.0,
+      "demand_max_abs": 0.0,
+      "passive_max_abs": 0.0,
+      "passive_pred_max_abs": 0.0
+    },
+    "target_corruption_pass": true,
+    "test_loaded": false
+  },
+  "ETTh2": {
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "DLinear",
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "counted_in_success": true,
+    "dataset": "ETTh2",
+    "demand_hash_router_train": "8e9126cf078a7b2e25c0083673884d1b9268ee8cc7e791fed33268cbff15bd07",
+    "demand_hash_router_val": "ce1a73d665fbea6d0c0b6047b277a2f682264e4d092008c09bb0fae6710f957d",
+    "deterministic_demand_repeat": true,
+    "etth2_status": "ETTH2_INTEGRITY_RESOLVED",
+    "expert_indices": [
+      0,
+      1,
+      4
+    ],
+    "expert_order": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "finite_demand": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "eval_hi": 821,
+        "eval_lo": 411,
+        "eval_start_max": 9460,
+        "eval_start_min": 9051,
+        "fit_start_max": 9039,
+        "fit_start_min": 8640,
+        "fit_windows": 400,
+        "fold": 0,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 1232,
+        "eval_lo": 821,
+        "eval_start_max": 9871,
+        "eval_start_min": 9461,
+        "fit_start_max": 9449,
+        "fit_start_min": 8640,
+        "fit_windows": 810,
+        "fold": 1,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 1642,
+        "eval_lo": 1232,
+        "eval_start_max": 10281,
+        "eval_start_min": 9872,
+        "fit_start_max": 9860,
+        "fit_start_min": 8640,
+        "fit_windows": 1221,
+        "fold": 2,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 2053,
+        "eval_lo": 1642,
+        "eval_start_max": 10692,
+        "eval_start_min": 10282,
+        "fit_start_max": 10270,
+        "fit_start_min": 8640,
+        "fit_windows": 1631,
+        "fold": 3,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      }
+    ],
+    "oof_chronological_purge_pass": true,
+    "router_val_profiles_from_train_only": true,
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "expected_role": "router_train",
+        "expert_order_ok": true,
+        "history_shape": [
+          2053,
+          96,
+          7
+        ],
+        "num_windows": 2053,
+        "prediction_shape": [
+          2053,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 10692,
+        "start_min": 8640,
+        "starts_chronological": true,
+        "target_shape": [
+          2053,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "expected_role": "router_val",
+        "expert_order_ok": true,
+        "history_shape": [
+          613,
+          96,
+          7
+        ],
+        "num_windows": 613,
+        "prediction_shape": [
+          613,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 11412,
+        "start_min": 10800,
+        "starts_chronological": true,
+        "target_shape": [
+          613,
+          12,
+          7
+        ]
+      }
+    },
+    "target_corruption": {
+      "capability_pred_max_abs": 0.0,
+      "demand_max_abs": 0.0,
+      "passive_max_abs": 0.0,
+      "passive_pred_max_abs": 0.0
+    },
+    "target_corruption_pass": true,
+    "test_loaded": false
+  },
+  "ETTm1": {
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "DLinear",
+      "PatchTST",
+      "TimesNet"
+    ],
+    "counted_in_success": true,
+    "dataset": "ETTm1",
+    "demand_hash_router_train": "39941fe8e1aaa7f53f9789387f2a7fd992ce44836225e842ca3a5804377bef5b",
+    "demand_hash_router_val": "207b9b027785f00b27d54c023ec97dc83640f837120ee373eb313c9256e17f81",
+    "deterministic_demand_repeat": true,
+    "etth2_status": "not_applicable",
+    "expert_indices": [
+      0,
+      1,
+      3
+    ],
+    "expert_order": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "finite_demand": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "eval_hi": 9130,
+        "eval_lo": 4565,
+        "eval_start_max": 20649,
+        "eval_start_min": 16085,
+        "fit_start_max": 16073,
+        "fit_start_min": 11520,
+        "fit_windows": 4554,
+        "fold": 0,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 13695,
+        "eval_lo": 9130,
+        "eval_start_max": 25321,
+        "eval_start_min": 20650,
+        "fit_start_max": 20638,
+        "fit_start_min": 11520,
+        "fit_windows": 9119,
+        "fold": 1,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 18260,
+        "eval_lo": 13695,
+        "eval_start_max": 29886,
+        "eval_start_min": 25322,
+        "fit_start_max": 25310,
+        "fit_start_min": 11520,
+        "fit_windows": 13684,
+        "fold": 2,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 22826,
+        "eval_lo": 18260,
+        "eval_start_max": 34452,
+        "eval_start_min": 29887,
+        "fit_start_max": 29875,
+        "fit_start_min": 11520,
+        "fit_windows": 18249,
+        "fold": 3,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      }
+    ],
+    "oof_chronological_purge_pass": true,
+    "router_val_profiles_from_train_only": true,
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          22826,
+          96,
+          7
+        ],
+        "num_windows": 22826,
+        "prediction_shape": [
+          22826,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 34452,
+        "start_min": 11520,
+        "starts_chronological": true,
+        "target_shape": [
+          22826,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          11413,
+          96,
+          7
+        ],
+        "num_windows": 11413,
+        "prediction_shape": [
+          11413,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 45972,
+        "start_min": 34560,
+        "starts_chronological": true,
+        "target_shape": [
+          11413,
+          12,
+          7
+        ]
+      }
+    },
+    "target_corruption": {
+      "capability_pred_max_abs": 0.0,
+      "demand_max_abs": 0.0,
+      "passive_max_abs": 0.0,
+      "passive_pred_max_abs": 0.0
+    },
+    "target_corruption_pass": true,
+    "test_loaded": false
+  },
+  "Electricity": {
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "counted_in_success": true,
+    "dataset": "Electricity",
+    "demand_hash_router_train": "41546bd784981116d658a338d4e3d3e4c6604111904405a6d7aea85ff948de33",
+    "demand_hash_router_val": "84bfc79be3635f3f3b56a95b53901f6b49de5904591047eca8b9dff42b87eb86",
+    "deterministic_demand_repeat": true,
+    "etth2_status": "not_applicable",
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "expert_order": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "finite_demand": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "eval_hi": 4123,
+        "eval_lo": 2062,
+        "eval_start_max": 9382,
+        "eval_start_min": 7322,
+        "fit_start_max": 7310,
+        "fit_start_min": 5260,
+        "fit_windows": 2051,
+        "fold": 0,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 6185,
+        "eval_lo": 4123,
+        "eval_start_max": 11551,
+        "eval_start_min": 9383,
+        "fit_start_max": 9371,
+        "fit_start_min": 5260,
+        "fit_windows": 4112,
+        "fold": 1,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 8246,
+        "eval_lo": 6185,
+        "eval_start_max": 13612,
+        "eval_start_min": 11552,
+        "fit_start_max": 11540,
+        "fit_start_min": 5260,
+        "fit_windows": 6174,
+        "fold": 2,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 10308,
+        "eval_lo": 8246,
+        "eval_start_max": 15674,
+        "eval_start_min": 13613,
+        "fit_start_max": 13601,
+        "fit_start_min": 5260,
+        "fit_windows": 8235,
+        "fold": 3,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      }
+    ],
+    "oof_chronological_purge_pass": true,
+    "router_val_profiles_from_train_only": true,
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          10308,
+          96,
+          321
+        ],
+        "num_windows": 10308,
+        "prediction_shape": [
+          10308,
+          12,
+          321,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 15674,
+        "start_min": 5260,
+        "starts_chronological": true,
+        "target_shape": [
+          10308,
+          12,
+          321
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          5154,
+          96,
+          321
+        ],
+        "num_windows": 5154,
+        "prediction_shape": [
+          5154,
+          12,
+          321,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 20935,
+        "start_min": 15782,
+        "starts_chronological": true,
+        "target_shape": [
+          5154,
+          12,
+          321
+        ]
+      }
+    },
+    "target_corruption": {
+      "capability_pred_max_abs": 0.0,
+      "demand_max_abs": 0.0,
+      "passive_max_abs": 0.0,
+      "passive_pred_max_abs": 0.0
+    },
+    "target_corruption_pass": true,
+    "test_loaded": false
+  },
+  "Weather": {
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "counted_in_success": true,
+    "dataset": "Weather",
+    "demand_hash_router_train": "4ced1b1d24d1e8a51a928178aab972a0c675a03fbe2130dc62f81a674f6f0a06",
+    "demand_hash_router_val": "ecb94b317ec1168cf8eb04c3b7e74cbe50eb44d4ad722b56be7ace57d800e4ab",
+    "deterministic_demand_repeat": true,
+    "etth2_status": "not_applicable",
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "expert_order": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "finite_demand": true,
+    "finite_predictions": true,
+    "folds": [
+      {
+        "eval_hi": 8345,
+        "eval_lo": 4173,
+        "eval_start_max": 18883,
+        "eval_start_min": 14712,
+        "fit_start_max": 14700,
+        "fit_start_min": 10539,
+        "fit_windows": 4162,
+        "fold": 0,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 12518,
+        "eval_lo": 8345,
+        "eval_start_max": 23163,
+        "eval_start_min": 18884,
+        "fit_start_max": 18872,
+        "fit_start_min": 10539,
+        "fit_windows": 8334,
+        "fold": 1,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 16691,
+        "eval_lo": 12518,
+        "eval_start_max": 27336,
+        "eval_start_min": 23164,
+        "fit_start_max": 23152,
+        "fit_start_min": 10539,
+        "fit_windows": 12507,
+        "fold": 2,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      },
+      {
+        "eval_hi": 20864,
+        "eval_lo": 16691,
+        "eval_start_max": 31509,
+        "eval_start_min": 27337,
+        "fit_start_max": 27325,
+        "fit_start_min": 10539,
+        "fit_windows": 16680,
+        "fold": 3,
+        "old_target_end_le_current_origin": true,
+        "purge_horizon": 12
+      }
+    ],
+    "oof_chronological_purge_pass": true,
+    "router_val_profiles_from_train_only": true,
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          20864,
+          96,
+          21
+        ],
+        "num_windows": 20864,
+        "prediction_shape": [
+          20864,
+          12,
+          21,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 31509,
+        "start_min": 10539,
+        "starts_chronological": true,
+        "target_shape": [
+          20864,
+          12,
+          21
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          10432,
+          96,
+          21
+        ],
+        "num_windows": 10432,
+        "prediction_shape": [
+          10432,
+          12,
+          21,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 42048,
+        "start_min": 31617,
+        "starts_chronological": true,
+        "target_shape": [
+          10432,
+          12,
+          21
+        ]
+      }
+    },
+    "target_corruption": {
+      "capability_pred_max_abs": 0.0,
+      "demand_max_abs": 0.0,
+      "passive_max_abs": 0.0,
+      "passive_pred_max_abs": 0.0
+    },
+    "target_corruption_pass": true,
+    "test_loaded": false
+  }
+}

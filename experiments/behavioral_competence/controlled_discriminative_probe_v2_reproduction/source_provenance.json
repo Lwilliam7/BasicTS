@@ -1,0 +1,67 @@
+{
+  "created_at_utc": "2026-08-25T06:37:48.432676+00:00",
+  "current_branch_frozen_reports_commit": "42719bc",
+  "current_git_commit": "42719bca6c3ee60bc08ed366f22162d8a3412765",
+  "frozen_v2_method_manifest_git_commit_sha": "2904e283a49cb575a3adda6f59cb08585e1df780",
+  "git_show_42719bc": "42719bc Freeze controlled probe v2 and blocked v3a audit\n .../build_prompt_compliance_audit.py               |  190 ++\n .../checkpoint_hashes.json                         |   34 +\n .../development_status.json                        |    7 +\n .../method_manifest.json                           |   57 +\n .../prompt_compliance_audit.json                   |   35 +\n .../prompt_compliance_audit.md                     |   19 +\n .../controlled_discriminative_probe_v2/report.md   |  181 ++\n .../validation_results.json                        | 3016 ++++++++++++++++++++\n 8 files changed, 3539 insertions(+)",
+  "git_show_7ec1f1e": "7ec1f1e Colab run setup\n .../run_controlled_discriminative_probe_v2.py      | 1450 ++++++++++++++++++++\n .../shared_probe_generator.py                      |  114 ++\n 2 files changed, 1564 insertions(+)",
+  "source_provenance_note": "The committed V2 implementation is the archived reproduction source; the original run's HEAD was 2904e28 while the then-uncommitted V2 source was subsequently committed. Bit-exact original source provenance is not claimed.",
+  "v2_artifacts": {
+    "causality_checks.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\causality_checks.csv",
+      "sha256": "2132d1ab472f15041dbd99230d60ea65590449d079ab11752bcbbd434b93fd7b"
+    },
+    "development_status.json": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\development_status.json",
+      "sha256": "77a40e912d4d2d4d05e7dd601e235b19aad1a9338123b66129665b4ec0655c26"
+    },
+    "integrity_checks.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\integrity_checks.csv",
+      "sha256": "dc97b411e96ff3df5846fa1726085541a011e06755e98f513c472d5ce4ca125d"
+    },
+    "method_manifest.json": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\method_manifest.json",
+      "sha256": "e643b91a69627aec8ba40459a9e3bf743a326df8913ef2ab6d7022609f43ac62"
+    },
+    "oof_fold_manifest.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\oof_fold_manifest.csv",
+      "sha256": "2132d1ab472f15041dbd99230d60ea65590449d079ab11752bcbbd434b93fd7b"
+    },
+    "prompt_compliance_audit.md": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\prompt_compliance_audit.md",
+      "sha256": "05e896d28bffe7f7723ba74ef43d1bca25cf5b21a610a5f81bcf386a4c642288"
+    },
+    "report.md": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\report.md",
+      "sha256": "f310118f50102e972bf7a1525e7358cd6ab694251c5b1cc7735e78889bad89f1"
+    },
+    "router_val_competence_results.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\router_val_competence_results.csv",
+      "sha256": "97428e0eab41048e75c1ca27c14330169a3d17b2890b21193acf987912201684"
+    },
+    "run_controlled_discriminative_probe_v2.py": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\run_controlled_discriminative_probe_v2.py",
+      "sha256": "75db6932ff36884984affb50f2912f89c4a3dda0a63a2e2e37444f96c232c67c"
+    },
+    "shared_probe_generator.py": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\shared_probe_generator.py",
+      "sha256": "09e038ecce083a1d23998fa041aa5265b82dd874d2f6738fd691ee710de5421e"
+    },
+    "validation_results.json": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\validation_results.json",
+      "sha256": "7bf607d3db44145569ab2dc39d037241a1eaf453bf6cea647385d532a843cb69"
+    }
+  },
+  "v2_implementation_committed_in": "7ec1f1e"
+}

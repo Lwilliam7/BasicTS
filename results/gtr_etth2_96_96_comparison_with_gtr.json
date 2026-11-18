@@ -1,0 +1,56 @@
+[
+  {
+    "model": "PatchTST",
+    "MAE": 0.3366961652692165,
+    "MSE": 0.2925135162200082,
+    "RMSE": 0.5408451843774248,
+    "MAPE": 1.3779177939683454,
+    "WAPE": 0.44402266592175244,
+    "metrics_file": "checkpoints\\benchmark_etth2_96_96\\PatchTST\\7bf24f05b5f6f56db4be14a22f09f89a\\test_metrics.json"
+  },
+  {
+    "model": "iTransformer",
+    "MAE": 0.3452379147097186,
+    "MSE": 0.3007380811697757,
+    "RMSE": 0.5483959163686501,
+    "MAPE": 1.4101619645648396,
+    "WAPE": 0.45354985111860946,
+    "metrics_file": "checkpoints\\benchmark_etth2_96_96\\iTransformer\\286301ff64448182975e3f2deca7e89d\\test_metrics.json"
+  },
+  {
+    "model": "GTR",
+    "MAE": 0.3465960751671736,
+    "MSE": 0.30545619571517063,
+    "RMSE": 0.5526809175594725,
+    "MAPE": 1.4480207986262439,
+    "WAPE": 0.45725012391905395,
+    "metrics_file": "checkpoints\\GTRForForecasting\\ETTh2_5_96_96\\405b321e3dce6f4d878e370bcce21e13\\test_metrics.json"
+  },
+  {
+    "model": "NLinear",
+    "MAE": 0.36106090582893346,
+    "MSE": 0.31842578856663084,
+    "RMSE": 0.564292291386318,
+    "MAPE": 1.5499265017164556,
+    "WAPE": 0.483099142163604,
+    "metrics_file": "checkpoints\\benchmark_etth2_96_96\\NLinear\\642a39604c086f0a0777f70e604823c1\\test_metrics.json"
+  },
+  {
+    "model": "MTSMixer",
+    "MAE": 0.3657677797922728,
+    "MSE": 0.3286799605576998,
+    "RMSE": 0.5733061617459368,
+    "MAPE": 1.4208630569564582,
+    "WAPE": 0.49048284938584563,
+    "metrics_file": "checkpoints\\benchmark_etth2_96_96\\MTSMixer\\521f5cdd20ecb692d6481f644e3d7404\\test_metrics.json"
+  },
+  {
+    "model": "DLinear",
+    "MAE": 0.37138474344453565,
+    "MSE": 0.3278908258800659,
+    "RMSE": 0.5726175216816733,
+    "MAPE": 1.4849952376766602,
+    "WAPE": 0.48803039141173876,
+    "metrics_file": "checkpoints\\benchmark_etth2_96_96\\DLinear\\0e9aeb92b71021242e7211272d0abe1c\\test_metrics.json"
+  }
+]

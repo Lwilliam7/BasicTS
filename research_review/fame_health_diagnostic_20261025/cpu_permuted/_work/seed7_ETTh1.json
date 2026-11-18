@@ -1,0 +1,169 @@
+{
+  "dataset": "ETTh1",
+  "seed": 7,
+  "fame_commit": null,
+  "n_oracle_units_used": 192,
+  "n_calib_units": 192,
+  "oracle_windows": 192,
+  "calib_windows": 192,
+  "calibration": [
+    {
+      "tau": 0.1,
+      "top_r": 1,
+      "delta": 0.05,
+      "calib_mse": 0.00039999921637244736
+    },
+    {
+      "tau": 0.1,
+      "top_r": 2,
+      "delta": 0.0,
+      "calib_mse": 0.001111977292197524
+    },
+    {
+      "tau": 0.1,
+      "top_r": 2,
+      "delta": 0.02,
+      "calib_mse": 0.001188994663175939
+    },
+    {
+      "tau": 0.1,
+      "top_r": 2,
+      "delta": 0.05,
+      "calib_mse": 0.0008184186327551135
+    },
+    {
+      "tau": 0.1,
+      "top_r": 2,
+      "delta": 0.1,
+      "calib_mse": 0.00039999921637244736
+    },
+    {
+      "tau": 0.3,
+      "top_r": 1,
+      "delta": 0.05,
+      "calib_mse": 0.00039999921637244736
+    },
+    {
+      "tau": 0.3,
+      "top_r": 2,
+      "delta": 0.0,
+      "calib_mse": 0.0010855985257332249
+    },
+    {
+      "tau": 0.3,
+      "top_r": 2,
+      "delta": 0.02,
+      "calib_mse": 0.0011212828200400802
+    },
+    {
+      "tau": 0.3,
+      "top_r": 2,
+      "delta": 0.05,
+      "calib_mse": 0.0008427190001196491
+    },
+    {
+      "tau": 0.3,
+      "top_r": 2,
+      "delta": 0.1,
+      "calib_mse": 0.00039999921637244736
+    },
+    {
+      "tau": 1.0,
+      "top_r": 1,
+      "delta": 0.05,
+      "calib_mse": 0.00039999921637244736
+    },
+    {
+      "tau": 1.0,
+      "top_r": 2,
+      "delta": 0.0,
+      "calib_mse": 0.003907611182372817
+    },
+    {
+      "tau": 1.0,
+      "top_r": 2,
+      "delta": 0.02,
+      "calib_mse": 0.0029952612337288288
+    },
+    {
+      "tau": 1.0,
+      "top_r": 2,
+      "delta": 0.05,
+      "calib_mse": 0.0029615516806912445
+    },
+    {
+      "tau": 1.0,
+      "top_r": 2,
+      "delta": 0.1,
+      "calib_mse": 0.0014836942050165823
+    }
+  ],
+  "routers": {
+    "0.1": {
+      "epochs": 200,
+      "best_loss": 0.044888898730278015
+    },
+    "0.3": {
+      "epochs": 200,
+      "best_loss": 0.043636977672576904
+    },
+    "1.0": {
+      "epochs": 200,
+      "best_loss": 0.05127234756946564
+    }
+  },
+  "top2": {
+    "selected": {
+      "tau": 0.1,
+      "top_r": 2,
+      "delta": 0.1,
+      "calib_mse": 0.00039999921637244736
+    },
+    "val_mae": 0.023236854001879692,
+    "val_mse": 0.0012020720168948174,
+    "avg_experts_used": 1.015625,
+    "expert_usage": {
+      "DLinear": 0.515625,
+      "PatchTST": 0.5,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0,
+      "ModernTCN": 0.0
+    },
+    "top1_frequency": {
+      "DLinear": 0.5,
+      "PatchTST": 0.5,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0,
+      "ModernTCN": 0.0
+    },
+    "routing_entropy": 0.03642684227077527
+  },
+  "top1": {
+    "selected": {
+      "tau": 0.1,
+      "top_r": 1,
+      "delta": 0.05,
+      "calib_mse": 0.00039999921637244736
+    },
+    "val_mae": 0.019999980926513672,
+    "val_mse": 0.0003999992914032191,
+    "avg_experts_used": 1.0,
+    "expert_usage": {
+      "DLinear": 0.5,
+      "PatchTST": 0.5,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0,
+      "ModernTCN": 0.0
+    },
+    "top1_frequency": {
+      "DLinear": 0.5,
+      "PatchTST": 0.5,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0,
+      "ModernTCN": 0.0
+    },
+    "routing_entropy": 0.03642684227077527
+  },
+  "elapsed_sec": 6.9945456981658936,
+  "TEST_SET_ACCESSED": "NO"
+}

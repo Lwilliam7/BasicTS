@@ -1,0 +1,19 @@
+{
+  "canonical_mechanism_runner": {
+    "path": "experiments/behavioral_competence/expert_conditioned_probe_mechanism/run_experiment.py",
+    "sha256": "0b8f962bc7b913d92fa6f30bc60f13b03ba29f5dd0504b62145075f373e7a3e8"
+  },
+  "cni_runner": {
+    "path": "experiments\\behavioral_competence\\conditional_nuisance_invariance\\run_cni.py",
+    "sha256": "ba95c06abbddc117e03e141a58b829bb01417f85ad24b0aecb09fb5fcf5d98b7"
+  },
+  "git_head": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "learned_probe_static_feature_source": {
+    "path": "experiments/behavioral_competence/run_learned_probe.py",
+    "sha256": "9484f18a85938e90452892c29d51daae0fc57897f4df28c2c9b5a6dde6bba883"
+  },
+  "v2_purge_source": {
+    "path": "experiments/behavioral_competence/controlled_discriminative_probe_v2/run_controlled_discriminative_probe_v2.py",
+    "sha256": "75db6932ff36884984affb50f2912f89c4a3dda0a63a2e2e37444f96c232c67c"
+  }
+}

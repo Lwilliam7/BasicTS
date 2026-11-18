@@ -1,0 +1,87 @@
+{
+  "COUNTERFACTUAL_SCALE": 1.0,
+  "PREFIX_K": 3,
+  "allowed_splits": [
+    "router_train",
+    "router_val"
+  ],
+  "audit_only": false,
+  "bootstrap_rule": "dependence_full block bootstraps at lengths 12/24/48 plus every-12th-window phase bootstrap; primary block length 24",
+  "cfr_feature_formulas": {
+    "counterfactual_gain": "0.5*(plus_response+minus_response)/max(mean(abs(s)/canonical_std), 1e-8)",
+    "curvature_magnitude": "mean(abs(r_plus[:9]+r_minus[:9]-2*r_self[:9]) / canonical_std)",
+    "directionality_minus": "cosine over variables between mean prefix innovation -s/canonical_std and mean tail response (r_minus[:9]-r_self[:9])/canonical_std",
+    "directionality_plus": "cosine over variables between mean prefix innovation +s/canonical_std and mean tail response (r_plus[:9]-r_self[:9])/canonical_std",
+    "minus_response": "mean(abs(r_minus[:9] - r_self[:9]) / canonical_std)",
+    "plus_response": "mean(abs(r_plus[:9] - r_self[:9]) / canonical_std)",
+    "response_asymmetry": "abs(plus_response - minus_response)",
+    "self_revision": "mean(abs(r_self[:9] - y[3:12]) / canonical_std)",
+    "symmetric_response_magnitude": "mean(abs((r_plus[:9]-r_minus[:9])/2) / canonical_std)"
+  },
+  "created_at_utc": "2026-08-27T23:01:18.528456+00:00",
+  "datasets": [
+    "ExchangeRate",
+    "Traffic",
+    "BeijingAirQuality",
+    "ETTm2"
+  ],
+  "development_dataset_notice": "These datasets are development datasets for CFR. Any promising CFR method must subsequently be frozen and evaluated on newly selected untouched datasets.",
+  "experiment": "counterfactual_forecast_revision",
+  "feature_standardization": "StandardScaler fitted on training rows only in each OOF/final fit",
+  "forecast_horizon": 12,
+  "implementation_change_log": [
+    {
+      "change": "Fixed the classification mapping after the first completed run produced an internally inconsistent NO_USEFUL_CFR_SIGNAL label despite competence association and passive-plus gains; no features, hyperparameters, folds, scales, predictions, metrics, or router_val model fits were changed.",
+      "reason": "Interpretation bug only. The corrected mapping assigns CFR_SIGNAL_BUT_REDUNDANT when CFR is signal-bearing but fails the mandatory Passive-residual criterion on at least three datasets.",
+      "when": "post initial full run, before final report acceptance"
+    }
+  ],
+  "input_length": 96,
+  "manifest_sha256": "51c1ba5967308445417816db013f745d649610d3160009f1b111e2bf4450c07d",
+  "no_hyperparameter_tuning": {
+    "COUNTERFACTUAL_SCALE": 1.0,
+    "PREFIX_K": 3,
+    "Ridge_alpha": 1.0,
+    "bootstrap_settings": "fixed before router_val metrics",
+    "feature_formulas": "fixed before router_val metrics",
+    "relative_transform": "fixed before router_val metrics",
+    "shuffle_seed": 20260821
+  },
+  "oof_fold_rule": "v2.compute_legal_and_common with N_PURGE_FOLDS=2, MIN_TRAIN_FRACTION=0.4",
+  "passive_residual_models": [
+    "CFR_to_PassiveResidual",
+    "RelativeCFR_to_PassiveResidual",
+    "ShuffledCFR_to_PassiveResidual"
+  ],
+  "primary_comparisons": [
+    "PassivePlusCFR_vs_Passive",
+    "PassivePlusRelativeCFR_vs_Passive",
+    "PassivePlusCFR_vs_PassivePlusShuffledCFR",
+    "CFR_vs_ShuffledCFR",
+    "RelativeCFR_vs_ShuffledCFR"
+  ],
+  "primary_models": [
+    "Passive",
+    "CFR",
+    "RelativeCFR",
+    "ShuffledCFR",
+    "PassivePlusCFR",
+    "PassivePlusRelativeCFR",
+    "PassivePlusShuffledCFR"
+  ],
+  "purge_rule": "max(train target end) <= min(held-out origin)",
+  "relative_cfr_definition": "cfr[w,e,j] - mean_over_experts(cfr[w,:,j])",
+  "residual_scale_estimator": "For each variable, median absolute residual over legal training windows, horizons, and core experts divided by 0.67448975; clamped to max(estimate, 1e-6*canonical_std_floor). OOF folds use only that fold's legal training windows; router_val uses full legal router_train.",
+  "ridge_alpha": 1.0,
+  "scientific_question": "When a frozen forecasting expert is shown a controlled hypothetical realization of the first few future steps, does its revision of the remaining forecast reveal expert-specific instance-level conditional competence not already available from passive A+B+C features?",
+  "shuffle_definition": "v2.derange_expert_axis preserves window and marginal CFR distribution while deranging the expert axis for K=3",
+  "shuffle_seed": 20260821,
+  "status": "DEVELOPMENT / MECHANISM STUDY",
+  "success_failure_decision_criteria": {
+    "CFR_SIGNAL_BUT_REDUNDANT": "CFR predicts competence/error or shows passive-plus gains, but fails the mandatory direct Passive-residual criterion on enough datasets that the incremental evidence is insufficient.",
+    "COMMON_MODE_DIFFICULTY_ONLY": "Absolute CFR correlates with error but RelativeCFR fails and CFR is not better than ShuffledCFR.",
+    "INCREMENTAL_MODEL_SPECIFIC_CFR": "All five predeclared strong criteria from the prompt.",
+    "NO_USEFUL_CFR_SIGNAL": "No stable OOF/router_val competence association and no incremental information."
+  },
+  "test_split_access": "forbidden"
+}

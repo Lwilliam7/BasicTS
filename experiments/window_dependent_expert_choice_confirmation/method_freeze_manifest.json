@@ -1,0 +1,131 @@
+{
+  "canonical_method": {
+    "CANONICAL_METHOD_FOUND": "YES",
+    "affinity_weighted_ec_excluded_as_canonical": true,
+    "affinity_weighted_ec_note": "experiments/affinity_weighted_expert_choice_hv/ produced only negligible (~1e-5 MAE) deltas and MUST NOT replace the canonical multi-claim rule verified above; not imported or used anywhere in this script.",
+    "all_checks_pass": true,
+    "canonical_source_file": "experiments/window_dependent_expert_choice_hv/run_window_dependent_expert_choice_hv.py",
+    "canonical_source_sha256": "3a7bd2ed3c8f6cb914031ccd2c87edbecc6ae6c7e2b68a7e60b217f506877a80",
+    "checks": {
+      "affinity_is_softmax_after_fit_only_standardization": true,
+      "affinity_temperature_is_1.0": true,
+      "architecture_64_32_1": true,
+      "block_length_24": true,
+      "bootstrap_samples_10000": true,
+      "capacity_factor_1.0": true,
+      "capacity_formula_round_M_over_E": true,
+      "lr_1e-3": true,
+      "max_epochs_100": true,
+      "multi_claim_is_equal_average_not_affinity_weighted": true,
+      "one_shared_scorer_class": true,
+      "optimizer_is_AdamW": true,
+      "patience_10": true,
+      "phase_k_12": true,
+      "seed_is_7": true,
+      "weight_decay_1e-4": true,
+      "zero_claim_fallback_is_equal_ensemble": true
+    },
+    "stored_router_val_dynamic_ec_mae_reference": {
+      "ETTh1": 0.37564,
+      "ETTh2": 0.280951,
+      "ETTm1": 0.253556,
+      "Electricity": 0.206356,
+      "Weather": 0.155621
+    },
+    "undocumented_implementation_details": {
+      "batch_size": {
+        "note": "BATCH_SIZE=32 (windows per minibatch step) was not specified in the original development prompt; it was my own fixed implementation choice, applied identically to every development dataset and never tuned. Documented here per section 3's 'document the discrepancy' requirement.",
+        "value": 32
+      },
+      "internal_val_fraction": {
+        "note": "Chronological tail fraction of the legal fit set reserved for early-stopping (0.20), applied identically across folds/datasets.",
+        "value": 0.2
+      }
+    }
+  },
+  "contaminated_dataset_list": [
+    "BeijingAirQuality",
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "ETTm2",
+    "Electricity",
+    "ExchangeRate",
+    "Traffic",
+    "Weather"
+  ],
+  "created_at_utc": "2026-08-30T23:43:39.094314+00:00",
+  "experiment": "window_dependent_expert_choice_confirmation",
+  "frozen_design": {
+    "affinity_calibration": {
+      "standardization": "fit-only scalar mean/std",
+      "temperature": 1.0
+    },
+    "bootstrap_seed": 20260830,
+    "capacity_factor": 1.0,
+    "capacity_formula": "C = round(H*V/E)",
+    "core_selection_algorithm": "select_core_on_router_train (costar_multidataset_frozen.common): pooled chronological OOF MAE over 4 folds, C(5,3) subsets, router_train only",
+    "core_size": 3,
+    "features": [
+      "global window_features_group_a (6)",
+      "per-variable current-history stats (7)",
+      "target-free cell-local forecast/disagreement stats (6)",
+      "horizon embed (4)",
+      "variable embed (8)",
+      "expert embed (4)",
+      "static_gain scalar (1)"
+    ],
+    "metrics": [
+      "MAE (primary)",
+      "MSE (secondary)"
+    ],
+    "multi_claim_rule": "equal average of claiming experts' forecasts (verified from source, NOT affinity-weighted)",
+    "oof_protocol": {
+      "full_horizon_observability_rule": "starts[i] + H <= current_eval_origin",
+      "num_folds": 4,
+      "warmup_fraction": 0.2
+    },
+    "raw_score": "static_gain + predicted_residual, coefficient exactly 1.0",
+    "residual_target": "gain - static_gain; scorer predicts residual only",
+    "score_definition": "gain[t,h,v,e] = equal_error[t,h,v] - expert_error[t,h,v,e]; higher is better",
+    "scorer": "ONE shared scorer across experts: Linear(input_dim->64)->ReLU->Linear(64->32)->ReLU->Linear(32->1)",
+    "shuffle_seed": 20260830,
+    "static_gain": "mean over legal fit windows only, per fold",
+    "statistical_tests": {
+      "block_bootstrap_block_length_primary": 24,
+      "phase_k": 12,
+      "samples": 10000
+    },
+    "tie_break": "higher affinity, then lower flattened H*V index",
+    "training": {
+      "batch_size": 32,
+      "internal_val_fraction": 0.2,
+      "lr": 0.001,
+      "max_epochs": 100,
+      "minibatch_unit": "forecasting window",
+      "optimizer": "AdamW",
+      "patience": 10,
+      "seed": 7,
+      "weight_decay": 0.0001
+    },
+    "zero_claim_fallback": "equal fixed ensemble"
+  },
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "cb516ced1c6e3304d6451532767c39f93c90ad7c",
+    "dirty_files_count": 6,
+    "dirty_working_tree": true
+  },
+  "selected_untouched_datasets": [],
+  "status": "BLOCKED_INSUFFICIENT_UNTOUCHED_DATASETS",
+  "success_criteria": {
+    "INSUFFICIENT_UNTOUCHED_DATASETS": "Fewer than 4 genuinely untouched, eligible datasets exist. Written BEFORE any confirmation metric was computed, per protocol.",
+    "INVALID_CONFIRMATION": "Any leakage, test access, source-hash change, contamination error, checkpoint mutation, mismatched routing inputs, or causal/provenance failure.",
+    "MECHANISM_CONFIRMED_NOT_BEST_FORECASTER": "All central PAPER_DIRECTION_CONFIRMED criteria pass but Frozen HxV still wins on the majority of datasets.",
+    "MECHANISM_REPLICATES_BUT_SMALL": "Favorable win counts but median relative EC-vs-Token improvement <0.10% or dependence support too weak.",
+    "NO_UNTOUCHED_CONFIRMATION": "EC beats Dynamic Token on fewer than ceil(2N/3) datasets and lacks supporting statistics.",
+    "PAPER_DIRECTION_CONFIRMED": "All: (1) EC beats Dynamic Token on >=ceil(2N/3) datasets, (2) block-24 CI<0 on >=ceil(N/2), (3) median relative MAE improvement >=0.10%, (4) EC beats Static EC on >=ceil(N/2), (5) correct-window beats shuffled on >=ceil(2N/3), (6) genuine claim dynamics (>5% change, <0.95 Jaccard) on >=ceil(2N/3), (7) OOF EC beats Token on >=ceil(N/2), (8) all integrity checks pass.",
+    "PAPER_DIRECTION_STRONGLY_CONFIRMED": "All PAPER_DIRECTION_CONFIRMED criteria plus EC beats Frozen HxV on >=ceil(N/2) datasets and median relative improvement over Frozen HxV is positive.",
+    "PARTIAL_CONFIRMATION": "Meaningful results on some datasets but full criteria fail."
+  }
+}

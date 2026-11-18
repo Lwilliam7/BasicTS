@@ -1,0 +1,42 @@
+{
+  "ETTh1": {
+    "dataset": "ETTh1",
+    "delta_weighted_minus_existing": -4.7266483306884766e-05,
+    "existing_ec_mae": 0.35136860609054565,
+    "existing_ec_mse": 0.2716495394706726,
+    "weighted_ec_mae": 0.35132133960723877,
+    "weighted_ec_mse": 0.27160340547561646
+  },
+  "ETTh2": {
+    "dataset": "ETTh2",
+    "delta_weighted_minus_existing": -7.474422454833984e-05,
+    "existing_ec_mae": 0.28620678186416626,
+    "existing_ec_mse": 0.1866062581539154,
+    "weighted_ec_mae": 0.2861320376396179,
+    "weighted_ec_mse": 0.18651898205280304
+  },
+  "ETTm1": {
+    "dataset": "ETTm1",
+    "delta_weighted_minus_existing": -5.8650970458984375e-05,
+    "existing_ec_mae": 0.2548231780529022,
+    "existing_ec_mse": 0.1611129343509674,
+    "weighted_ec_mae": 0.25476452708244324,
+    "weighted_ec_mse": 0.1610705703496933
+  },
+  "Electricity": {
+    "dataset": "Electricity",
+    "delta_weighted_minus_existing": -2.205371856689453e-05,
+    "existing_ec_mae": 0.22908273339271545,
+    "existing_ec_mse": 0.12933644652366638,
+    "weighted_ec_mae": 0.22906067967414856,
+    "weighted_ec_mse": 0.12933142483234406
+  },
+  "Weather": {
+    "dataset": "Weather",
+    "delta_weighted_minus_existing": -8.720159530639648e-05,
+    "existing_ec_mae": 0.16686825454235077,
+    "existing_ec_mse": 0.2398681640625,
+    "weighted_ec_mae": 0.16678105294704437,
+    "weighted_ec_mse": 0.23984794318675995
+  }
+}

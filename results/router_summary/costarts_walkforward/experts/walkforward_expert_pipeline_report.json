@@ -1,0 +1,766 @@
+{
+  "dataset": "ETTh1",
+  "data_dir": "datasets/ETTh1",
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "created_at_utc": "2026-08-07T17:27:52.855321+00:00",
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "stages": {
+    "block_a": {
+      "training": {
+        "stage": "block_a",
+        "train_range": {
+          "start": 0,
+          "end": 2880
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "checkpoints": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\ModernTCN\\best_expert.pt"
+        },
+        "checkpoint_hashes": {
+          "DLinear": "4405d41c7657053f77ef7448ada1b57b87350d7cd4828dd2268cc19ae0a69402",
+          "PatchTST": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945",
+          "iTransformer": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f",
+          "TimesNet": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910",
+          "ModernTCN": "9e5b3b62b497a82db1f2f44303bcbe710453a59c66b3857c8053c3fca127202e"
+        },
+        "rows": [
+          {
+            "expert": "DLinear",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 2880
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 2496,
+              "num_val_windows": 277,
+              "first_val_window_start": 2496,
+              "last_val_window_start": 2772
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.6121563017368317,
+            "created_at_utc": "2026-08-07T17:27:58.361244+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "4405d41c7657053f77ef7448ada1b57b87350d7cd4828dd2268cc19ae0a69402"
+          },
+          {
+            "expert": "PatchTST",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 2880
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 2496,
+              "num_val_windows": 277,
+              "first_val_window_start": 2496,
+              "last_val_window_start": 2772
+            },
+            "best_epoch": 6,
+            "best_internal_val_mae": 0.5048694610595703,
+            "created_at_utc": "2026-08-07T17:28:06.671909+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945"
+          },
+          {
+            "expert": "iTransformer",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 2880
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 2496,
+              "num_val_windows": 277,
+              "first_val_window_start": 2496,
+              "last_val_window_start": 2772
+            },
+            "best_epoch": 6,
+            "best_internal_val_mae": 0.5622943639755249,
+            "created_at_utc": "2026-08-07T17:28:11.254492+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f"
+          },
+          {
+            "expert": "TimesNet",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 2880
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 2496,
+              "num_val_windows": 277,
+              "first_val_window_start": 2496,
+              "last_val_window_start": 2772
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.6560219824314117,
+            "created_at_utc": "2026-08-07T17:30:09.502029+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910"
+          },
+          {
+            "expert": "ModernTCN",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 2880
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 2496,
+              "num_val_windows": 277,
+              "first_val_window_start": 2496,
+              "last_val_window_start": 2772
+            },
+            "best_epoch": 2,
+            "best_internal_val_mae": 0.7811920940876007,
+            "created_at_utc": "2026-08-07T17:30:16.138041+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "9e5b3b62b497a82db1f2f44303bcbe710453a59c66b3857c8053c3fca127202e"
+          }
+        ],
+        "created_at_utc": "2026-08-07T17:30:16.203909+00:00",
+        "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+      },
+      "prediction": {
+        "stage": "block_a",
+        "predict_role": "block_b_oos",
+        "expert_training_range": {
+          "start": 0,
+          "end": 2880
+        },
+        "prediction_range": {
+          "name": "block_b",
+          "start_fraction": 0.2,
+          "end_fraction": 0.4,
+          "start": 2880,
+          "end": 5760
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "rows": [
+          {
+            "expert": "DLinear",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "4405d41c7657053f77ef7448ada1b57b87350d7cd4828dd2268cc19ae0a69402",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_b_oos\\DLinear.npy",
+            "prediction_sha256": "994714019ce0b62f201083b8cb32d481c6feb436e9683ecef3e17793e67b663b",
+            "num_windows": 2773
+          },
+          {
+            "expert": "PatchTST",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_b_oos\\PatchTST.npy",
+            "prediction_sha256": "6a0c22be3ac01c1efffafa895cf91cda550d19f70293f4b67c6b1326046ca490",
+            "num_windows": 2773
+          },
+          {
+            "expert": "iTransformer",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_b_oos\\iTransformer.npy",
+            "prediction_sha256": "967cc2b9c16d29f635384a4ef011311fed1b4e308da1c3ede2479d1cceb57e3a",
+            "num_windows": 2773
+          },
+          {
+            "expert": "TimesNet",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_b_oos\\TimesNet.npy",
+            "prediction_sha256": "bbfd57e6453898894b6947b35c97fbf9c1bcb865490a5b2e249ad06872969f2e",
+            "num_windows": 2773
+          },
+          {
+            "expert": "ModernTCN",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "9e5b3b62b497a82db1f2f44303bcbe710453a59c66b3857c8053c3fca127202e",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_b_oos\\ModernTCN.npy",
+            "prediction_sha256": "166b06d452842a5389becb098ddc6a6215ab3864a32699cf1835c47189c16b3a",
+            "num_windows": 2773
+          }
+        ],
+        "expert_checkpoint_paths": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_a\\ModernTCN\\best_expert.pt"
+        },
+        "expert_checkpoint_hashes": {
+          "DLinear": "4405d41c7657053f77ef7448ada1b57b87350d7cd4828dd2268cc19ae0a69402",
+          "PatchTST": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945",
+          "iTransformer": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f",
+          "TimesNet": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910",
+          "ModernTCN": "9e5b3b62b497a82db1f2f44303bcbe710453a59c66b3857c8053c3fca127202e"
+        },
+        "created_at_utc": "2026-08-07T17:30:22.585639+00:00",
+        "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+      }
+    },
+    "block_ab": {
+      "training": {
+        "stage": "block_ab",
+        "train_range": {
+          "start": 0,
+          "end": 5760
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "checkpoints": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\ModernTCN\\best_expert.pt"
+        },
+        "checkpoint_hashes": {
+          "DLinear": "e1868a6612fa5b5c7a5e770453e2f7663a48acbaebd43ebcde23058e5de79248",
+          "PatchTST": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0",
+          "iTransformer": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe",
+          "TimesNet": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9",
+          "ModernTCN": "513f1dded367f14186f23492091ba8f09317349c81f36f48115e6acd65bf32d4"
+        },
+        "rows": [
+          {
+            "expert": "DLinear",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5760
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 5088,
+              "num_val_windows": 565,
+              "first_val_window_start": 5088,
+              "last_val_window_start": 5652
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.4264810383319855,
+            "created_at_utc": "2026-08-07T17:30:26.081287+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "e1868a6612fa5b5c7a5e770453e2f7663a48acbaebd43ebcde23058e5de79248"
+          },
+          {
+            "expert": "PatchTST",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5760
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 5088,
+              "num_val_windows": 565,
+              "first_val_window_start": 5088,
+              "last_val_window_start": 5652
+            },
+            "best_epoch": 6,
+            "best_internal_val_mae": 0.4212351441383362,
+            "created_at_utc": "2026-08-07T17:30:39.097315+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0"
+          },
+          {
+            "expert": "iTransformer",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5760
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 5088,
+              "num_val_windows": 565,
+              "first_val_window_start": 5088,
+              "last_val_window_start": 5652
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.4284319579601288,
+            "created_at_utc": "2026-08-07T17:30:45.724304+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe"
+          },
+          {
+            "expert": "TimesNet",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5760
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 5088,
+              "num_val_windows": 565,
+              "first_val_window_start": 5088,
+              "last_val_window_start": 5652
+            },
+            "best_epoch": 4,
+            "best_internal_val_mae": 0.46511800090471905,
+            "created_at_utc": "2026-08-07T17:33:42.656439+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9"
+          },
+          {
+            "expert": "ModernTCN",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 5760
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 5088,
+              "num_val_windows": 565,
+              "first_val_window_start": 5088,
+              "last_val_window_start": 5652
+            },
+            "best_epoch": 4,
+            "best_internal_val_mae": 0.47124313314755756,
+            "created_at_utc": "2026-08-07T17:34:03.331631+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "513f1dded367f14186f23492091ba8f09317349c81f36f48115e6acd65bf32d4"
+          }
+        ],
+        "created_at_utc": "2026-08-07T17:34:03.403196+00:00",
+        "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+      },
+      "prediction": {
+        "stage": "block_ab",
+        "predict_role": "block_c_oos",
+        "expert_training_range": {
+          "start": 0,
+          "end": 5760
+        },
+        "prediction_range": {
+          "name": "block_c",
+          "start_fraction": 0.4,
+          "end_fraction": 0.6000000000000001,
+          "start": 5760,
+          "end": 8640
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "rows": [
+          {
+            "expert": "DLinear",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "e1868a6612fa5b5c7a5e770453e2f7663a48acbaebd43ebcde23058e5de79248",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_c_oos\\DLinear.npy",
+            "prediction_sha256": "1f064bc8c1ddf9593b9f2cc22838a9a18c2a8ce63992e859e55fa2084af889bc",
+            "num_windows": 2773
+          },
+          {
+            "expert": "PatchTST",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_c_oos\\PatchTST.npy",
+            "prediction_sha256": "898eee4e0da356851acba0fd89eb4002cd8891980c000c9746d26cd08fc4e254",
+            "num_windows": 2773
+          },
+          {
+            "expert": "iTransformer",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_c_oos\\iTransformer.npy",
+            "prediction_sha256": "7b67bc6539dcf2f783fd19f4af555aad09328415ad6f0d66fb349c314cbcb3f0",
+            "num_windows": 2773
+          },
+          {
+            "expert": "TimesNet",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_c_oos\\TimesNet.npy",
+            "prediction_sha256": "0f9c3ced1e7647d6d176558938ad3eb085c5ba586f41af71df7ffa259a585e44",
+            "num_windows": 2773
+          },
+          {
+            "expert": "ModernTCN",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "513f1dded367f14186f23492091ba8f09317349c81f36f48115e6acd65bf32d4",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\block_c_oos\\ModernTCN.npy",
+            "prediction_sha256": "5be81617b878521369bd14e339c3b17637934f27de1cd8be41ec06babee8fc0d",
+            "num_windows": 2773
+          }
+        ],
+        "expert_checkpoint_paths": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\block_ab\\ModernTCN\\best_expert.pt"
+        },
+        "expert_checkpoint_hashes": {
+          "DLinear": "e1868a6612fa5b5c7a5e770453e2f7663a48acbaebd43ebcde23058e5de79248",
+          "PatchTST": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0",
+          "iTransformer": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe",
+          "TimesNet": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9",
+          "ModernTCN": "513f1dded367f14186f23492091ba8f09317349c81f36f48115e6acd65bf32d4"
+        },
+        "created_at_utc": "2026-08-07T17:34:10.383545+00:00",
+        "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+      }
+    },
+    "final_60": {
+      "training": {
+        "stage": "final_60",
+        "train_range": {
+          "start": 0,
+          "end": 8640
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "checkpoints": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt"
+        },
+        "checkpoint_hashes": {
+          "DLinear": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+          "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+          "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+          "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+          "ModernTCN": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44"
+        },
+        "rows": [
+          {
+            "expert": "DLinear",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 8640
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 7680,
+              "num_val_windows": 853,
+              "first_val_window_start": 7680,
+              "last_val_window_start": 8532
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.3373510017991066,
+            "created_at_utc": "2026-08-07T17:34:16.745318+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3"
+          },
+          {
+            "expert": "PatchTST",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 8640
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 7680,
+              "num_val_windows": 853,
+              "first_val_window_start": 7680,
+              "last_val_window_start": 8532
+            },
+            "best_epoch": 8,
+            "best_internal_val_mae": 0.3188721239566803,
+            "created_at_utc": "2026-08-07T17:34:39.794726+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8"
+          },
+          {
+            "expert": "iTransformer",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 8640
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 7680,
+              "num_val_windows": 853,
+              "first_val_window_start": 7680,
+              "last_val_window_start": 8532
+            },
+            "best_epoch": 7,
+            "best_internal_val_mae": 0.31626854091882706,
+            "created_at_utc": "2026-08-07T17:34:50.925542+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d"
+          },
+          {
+            "expert": "TimesNet",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 8640
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 7680,
+              "num_val_windows": 853,
+              "first_val_window_start": 7680,
+              "last_val_window_start": 8532
+            },
+            "best_epoch": 4,
+            "best_internal_val_mae": 0.33423326164484024,
+            "created_at_utc": "2026-08-07T17:38:46.741454+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6"
+          },
+          {
+            "expert": "ModernTCN",
+            "model_config": {
+              "input_len": 96,
+              "output_len": 12,
+              "num_features": 7,
+              "hidden_size": 64
+            },
+            "train_range": {
+              "start": 0,
+              "end": 8640
+            },
+            "internal_validation": {
+              "policy": "chronological tail carved from expert training range only",
+              "val_fraction": 0.1,
+              "num_train_windows": 7680,
+              "num_val_windows": 853,
+              "first_val_window_start": 7680,
+              "last_val_window_start": 8532
+            },
+            "best_epoch": 2,
+            "best_internal_val_mae": 0.39170240610837936,
+            "created_at_utc": "2026-08-07T17:39:08.801539+00:00",
+            "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44"
+          }
+        ],
+        "created_at_utc": "2026-08-07T17:39:08.875940+00:00",
+        "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+      },
+      "prediction": {
+        "stage": "final_60",
+        "predict_role": "router_val_60_80",
+        "expert_training_range": {
+          "start": 0,
+          "end": 8640
+        },
+        "prediction_range": {
+          "name": "validation",
+          "start_fraction": 0.6000000000000001,
+          "end_fraction": 0.8,
+          "start": 8640,
+          "end": 11520
+        },
+        "expert_order": [
+          "DLinear",
+          "PatchTST",
+          "iTransformer",
+          "TimesNet",
+          "ModernTCN"
+        ],
+        "rows": [
+          {
+            "expert": "DLinear",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+            "checkpoint_sha256": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\DLinear.npy",
+            "prediction_sha256": "5d419e4415a0cf5635dddf3857b1caaea3f4e6f553d969a8bab72ad912115346",
+            "num_windows": 2773
+          },
+          {
+            "expert": "PatchTST",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+            "checkpoint_sha256": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\PatchTST.npy",
+            "prediction_sha256": "8975251fb52fe634af240e2db9d8a6094776a69e7ddbb3af4d887fbf2f0aa1b3",
+            "num_windows": 2773
+          },
+          {
+            "expert": "iTransformer",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+            "checkpoint_sha256": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\iTransformer.npy",
+            "prediction_sha256": "1ae73861527030bbd9096481a84fcd26be7e497ac38079ba49ab2bb49ac086df",
+            "num_windows": 2773
+          },
+          {
+            "expert": "TimesNet",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+            "checkpoint_sha256": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\TimesNet.npy",
+            "prediction_sha256": "e64ef6efcba8447a1b0e50f817a76bcaad2b69010a3dda21672172f2b8eae88d",
+            "num_windows": 2773
+          },
+          {
+            "expert": "ModernTCN",
+            "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt",
+            "checkpoint_sha256": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44",
+            "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\ModernTCN.npy",
+            "prediction_sha256": "4897b8c1ad7138f7750bfb84b3b7c595dd37aff8dd23873d89e22c45f8ff5d78",
+            "num_windows": 2773
+          }
+        ],
+        "expert_checkpoint_paths": {
+          "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+          "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+          "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+          "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+          "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt"
+        },
+        "expert_checkpoint_hashes": {
+          "DLinear": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+          "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+          "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+          "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+          "ModernTCN": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44"
+        },
+        "created_at_utc": "2026-08-07T17:39:15.215214+00:00",
+        "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c"
+      }
+    }
+  },
+  "safety": "NO TEST DATA USED",
+  "router_train_20_60": {
+    "num_windows": 5546
+  }
+}

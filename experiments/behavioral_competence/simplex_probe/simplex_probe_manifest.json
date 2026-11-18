@@ -1,0 +1,113 @@
+{
+  "alpha_grid": [
+    0.0,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "base_simplex_note": "The only existing fit_simplex_weights precedent in this repo (ETTh1/ETTh2) is full-5-expert-pool and test-touched, so it is not reused directly. The unmodified fit_simplex_weights function IS reused, applied to a core-subset prediction_stack, so Simplex and Simplex+Probe are on the exact same expert set (a controlled comparison), and to keep Probe's per-window scores well-defined (Probe was only ever trained/evaluated on the 3-expert core).",
+  "base_simplex_weights": {
+    "BeijingAirQuality": {
+      "PatchTST": 0.43889644742012024,
+      "TimesNet": 0.36105626821517944,
+      "iTransformer": 0.2000472992658615
+    },
+    "ETTm2": {
+      "PatchTST": 0.4127127528190613,
+      "TimesNet": 0.20393376052379608,
+      "iTransformer": 0.38335350155830383
+    },
+    "ExchangeRate": {
+      "PatchTST": 0.343526691198349,
+      "TimesNet": 0.32119086384773254,
+      "iTransformer": 0.33528244495391846
+    },
+    "Traffic": {
+      "ModernTCN": 0.40138736367225647,
+      "PatchTST": 0.08872576057910919,
+      "iTransformer": 0.5098868608474731
+    }
+  },
+  "core_reuse_note": "Same train-selected 3-expert core used for BOTH Simplex and Simplex+Probe on every dataset, identical to the core already used for C-Rank/FixedD-Rank/LearnedProbe-Rank in experiments/behavioral_competence/generalization/.",
+  "core_selection_protocol": "select_core_on_router_train (train-only, pooled OOF MAE over 4 chronological folds) -- unchanged, reused from experiments/costar_multidataset_frozen/common.py.",
+  "created_at_utc": "2026-08-23T17:27:07.531183+00:00",
+  "datasets": [
+    "ExchangeRate",
+    "Traffic",
+    "BeijingAirQuality",
+    "ETTm2"
+  ],
+  "decision_rule": "Section 16 of the task instructions, applied verbatim without modification after seeing results.",
+  "expert_checkpoint_sha256": {
+    "BeijingAirQuality": {
+      "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "ETTm2": {
+      "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "ExchangeRate": {
+      "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "Traffic": {
+      "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    }
+  },
+  "expert_cores": {
+    "BeijingAirQuality": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ETTm2": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ExchangeRate": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "Traffic": [
+      "PatchTST",
+      "iTransformer",
+      "ModernTCN"
+    ]
+  },
+  "expert_pool": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "fusion_formula": "adjusted_weight_e = softmax_e( log(simplex_weight_e) - alpha * z(probe_loss_e) ), where z(probe_loss_e) = (probe_loss_e - mean_over_experts) / max(std_over_experts_population, 1e-8), computed independently per window; simplex_weight_e == 0 forces adjusted_weight_e = 0 for all alpha via a -inf logit (matches softmax's native handling); alpha=0 reduces exactly to the static Simplex weights up to log/exp floating-point roundoff.",
+  "git_commit_sha": "960c8d61f925caff94f7e3836f199ad532b82eac",
+  "manifest_type": "simplex_probe_manifest",
+  "normalization": "z-score of probe_loss across the K core experts, WITHIN each window (population std, floored at 1e-8).",
+  "probe_checkpoint_note": "ProbeGenerator/CompetenceScorer weights are not persisted to disk anywhere in this project (see experiments/behavioral_competence/run_learned_probe.py); reproducibility is instead by deterministic re-training (fixed seed=7) and verified via the reported probe_output_hash_sha256 of the router_val predicted-excess-loss array. Architecture/loss/training objective are unchanged from the frozen method (see ../FROZEN_METHOD.md).",
+  "probe_output_hash_sha256": {
+    "BeijingAirQuality": "b9d05747029a5fe2b2a65f6dbbecb73d2e7def6669da379fe58e667c1f5f264a",
+    "ETTm2": "9e5a366761ce98437bc158e65805b38d0eed38e3a6d3859ed6ae7a364cd92d5d",
+    "ExchangeRate": "c599feb85d5a341f2d0f185aea3d3fe8d10a3da0f448fce645b7713da3480a76",
+    "Traffic": "6225af6f80c4fb8d2195fe16204b0ea0e5cd4b6afa9855b0d638560da68e1790"
+  },
+  "router_train_cache_note": "cache/costarts_walkforward_{dataset}/router_train_20_60_cache.pt used for Simplex fitting and alpha selection; cache/costarts_walkforward_{dataset}/router_val_60_80_cache.pt used only for the final, once-only evaluation. test_80_100_cache.pt was never built for any of these four datasets in this project.",
+  "selected_alpha": {
+    "BeijingAirQuality": 0.5,
+    "ETTm2": 1.0,
+    "ExchangeRate": 2.0,
+    "Traffic": 0.5
+  },
+  "shuffle_seed": 20260821,
+  "sign_convention": "probe_loss_e = predicted_excess_loss_e = predicted(expert_MAE - equal_ensemble_MAE); LOWER = better (more competent) expert for the current window. Never depends on router_val targets -- verified structurally (evaluate_on_val never reads cache['targets']) and via the target-corruption-invariance integrity check."
+}

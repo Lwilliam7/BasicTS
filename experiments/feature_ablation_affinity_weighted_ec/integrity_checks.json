@@ -1,0 +1,19 @@
+{
+  "ROUTER_VAL_ACCESSED": "NO",
+  "TEST_CACHE_LOADED": "NO",
+  "TEST_METRICS_COMPUTED": "NO",
+  "TEST_SET_ACCESSED": "NO",
+  "UNTOUCHED_DATA_ACCESSED": "NO",
+  "all_pass": true,
+  "checkpoints_unchanged_all_datasets": {
+    "ETTh1": true,
+    "ETTh2": true,
+    "ETTm1": true,
+    "Electricity": true,
+    "Weather": true
+  },
+  "note": "Regenerated post-hoc from already-computed per-dataset checkpoints after fixing a classification-labeling bug (same_comparison compared variant NAMES instead of underlying feature-group SETS, so GLOBAL's independent_add_remove_evidence was misreported as True instead of False). No retraining occurred; OOF MAE/MSE numbers are unchanged from the original run. source_hash_before/after both reflect the POST-FIX source file since no run was in progress when this was generated.",
+  "source_hash_after": "82790e06699f8ce620e8e53eb544eb8afc555b24fbb4ba3415a2c13a13c0d966",
+  "source_hash_before": "82790e06699f8ce620e8e53eb544eb8afc555b24fbb4ba3415a2c13a13c0d966",
+  "source_unchanged": true
+}

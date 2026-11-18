@@ -1,0 +1,182 @@
+{
+  "protocol": {
+    "same_etth2_split": true,
+    "same_validation_window_ids": true,
+    "same_horizon": true,
+    "same_variables": true,
+    "same_cache_files": true,
+    "same_num_samples": true,
+    "same_mae_implementation": "experiments.oracle_weight_tournament.run_tournament.sample_mae",
+    "same_normalization": "canonical_raw_original_scale_std_ones",
+    "same_inverse_transform_behavior": "none_applied_cached_predictions_and_targets_evaluated_directly",
+    "train_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+    "val_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt",
+    "normalizer_checkpoint_for_diagnostic_only": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_fresh\\ETTh2_96_12\\clean_candidates\\best_dlinear.pt",
+    "train_cache_sha256": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+    "val_cache_sha256": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088",
+    "validation_start_min": 10800,
+    "validation_start_max": 11412,
+    "validation_target_end_exclusive": 11424,
+    "target_shape": [
+      613,
+      12,
+      7
+    ],
+    "prediction_stack_shape": [
+      613,
+      12,
+      7,
+      5
+    ],
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "test_cache_loaded": false,
+    "all_required_checks_passed": true
+  },
+  "canonical_metric": {
+    "scale": "raw_original",
+    "std": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "mae_implementation": "experiments.oracle_weight_tournament.run_tournament.sample_mae",
+    "inverse_transform_behavior": "none_applied_cached_predictions_and_targets_evaluated_directly"
+  },
+  "diagnostic_normalized_metric": {
+    "std": [
+      8.90810489654541,
+      4.223984718322754,
+      10.486006736755371,
+      3.1190717220306396,
+      2.05224347114563,
+      6.509424686431885,
+      11.952988624572754
+    ],
+    "not_canonical": true
+  },
+  "best_overall_raw": {
+    "method": "fixed_2_equal",
+    "subset": "DLinear+ModernTCN",
+    "num_experts": 2,
+    "scale": "raw_original",
+    "num_samples": 613,
+    "mae": 0.2752290368080139,
+    "mse": 0.1653451770544052
+  },
+  "best_single_raw": {
+    "method": "single_expert",
+    "subset": "DLinear",
+    "num_experts": 1,
+    "scale": "raw_original",
+    "num_samples": 613,
+    "mae": 0.28095653653144836,
+    "mse": 0.17149297893047333
+  },
+  "best_by_num_experts_raw": {
+    "1": {
+      "method": "single_expert",
+      "subset": "DLinear",
+      "num_experts": 1,
+      "scale": "raw_original",
+      "num_samples": 613,
+      "mae": 0.28095653653144836,
+      "mse": 0.17149297893047333
+    },
+    "2": {
+      "method": "fixed_2_equal",
+      "subset": "DLinear+ModernTCN",
+      "num_experts": 2,
+      "scale": "raw_original",
+      "num_samples": 613,
+      "mae": 0.2752290368080139,
+      "mse": 0.1653451770544052
+    },
+    "3": {
+      "method": "fixed_3_equal",
+      "subset": "DLinear+TimesNet+ModernTCN",
+      "num_experts": 3,
+      "scale": "raw_original",
+      "num_samples": 613,
+      "mae": 0.27664363384246826,
+      "mse": 0.16693221032619476
+    },
+    "4": {
+      "method": "fixed_4_equal",
+      "subset": "DLinear+PatchTST+TimesNet+ModernTCN",
+      "num_experts": 4,
+      "scale": "raw_original",
+      "num_samples": 613,
+      "mae": 0.2776811122894287,
+      "mse": 0.16823096573352814
+    },
+    "5": {
+      "method": "fixed_5_equal",
+      "subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "num_experts": 5,
+      "scale": "raw_original",
+      "num_samples": 613,
+      "mae": 0.30077221989631653,
+      "mse": 0.2008334994316101
+    }
+  },
+  "old_summary_consistency": {
+    "1": {
+      "old_subset": "DLinear",
+      "new_subset": "DLinear",
+      "old_mae": 0.28095653653144836,
+      "new_mae": 0.28095653653144836,
+      "old_mse": 0.17149297893047333,
+      "new_mse": 0.17149297893047333,
+      "matches": true
+    },
+    "2": {
+      "old_subset": "DLinear+ModernTCN",
+      "new_subset": "DLinear+ModernTCN",
+      "old_mae": 0.2752290368080139,
+      "new_mae": 0.2752290368080139,
+      "old_mse": 0.1653451770544052,
+      "new_mse": 0.1653451770544052,
+      "matches": true
+    },
+    "3": {
+      "old_subset": "DLinear+TimesNet+ModernTCN",
+      "new_subset": "DLinear+TimesNet+ModernTCN",
+      "old_mae": 0.27664363384246826,
+      "new_mae": 0.27664363384246826,
+      "old_mse": 0.16693221032619476,
+      "new_mse": 0.16693221032619476,
+      "matches": true
+    },
+    "4": {
+      "old_subset": "DLinear+PatchTST+TimesNet+ModernTCN",
+      "new_subset": "DLinear+PatchTST+TimesNet+ModernTCN",
+      "old_mae": 0.2776811122894287,
+      "new_mae": 0.2776811122894287,
+      "old_mse": 0.16823096573352814,
+      "new_mse": 0.16823096573352814,
+      "matches": true
+    },
+    "5": {
+      "old_subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "new_subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "old_mae": 0.30077221989631653,
+      "new_mae": 0.30077221989631653,
+      "old_mse": 0.2008334994316101,
+      "new_mse": 0.2008334994316101,
+      "matches": true
+    }
+  },
+  "old_summary_all_best_by_size_match": true,
+  "runtime_sec": 15.95804762840271,
+  "reproduce_command": "python experiments\\etth2_canonical_protocol\\run_canonical_etth2_baselines.py"
+}

@@ -1,0 +1,126 @@
+{
+  "all_pass": true,
+  "rows": [
+    {
+      "dataset": "ETTh1",
+      "mae_abs_diff": 0.0,
+      "method": "static_ec_cf1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.3753524422645569,
+      "reproduced_mse": 0.3201405704021454,
+      "stored_mae": 0.3753524422645569,
+      "stored_mse": 0.3201405704021454,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "ETTh1",
+      "mae_abs_diff": 0.0,
+      "method": "static_token_top1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.376679927110672,
+      "reproduced_mse": 0.3226926028728485,
+      "stored_mae": 0.376679927110672,
+      "stored_mse": 0.3226926028728485,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "ETTh2",
+      "mae_abs_diff": 0.0,
+      "method": "static_ec_cf1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.2777636647224426,
+      "reproduced_mse": 0.16816282272338867,
+      "stored_mae": 0.2777636647224426,
+      "stored_mse": 0.16816282272338867,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "ETTh2",
+      "mae_abs_diff": 0.0,
+      "method": "static_token_top1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.27913233637809753,
+      "reproduced_mse": 0.16966889798641205,
+      "stored_mae": 0.27913233637809753,
+      "stored_mse": 0.16966889798641205,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "ETTm1",
+      "mae_abs_diff": 0.0,
+      "method": "static_ec_cf1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.2535704970359802,
+      "reproduced_mse": 0.153139129281044,
+      "stored_mae": 0.2535704970359802,
+      "stored_mse": 0.153139129281044,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "ETTm1",
+      "mae_abs_diff": 0.0,
+      "method": "static_token_top1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.262524276971817,
+      "reproduced_mse": 0.1630878895521164,
+      "stored_mae": 0.262524276971817,
+      "stored_mse": 0.1630878895521164,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "Weather",
+      "mae_abs_diff": 0.0,
+      "method": "static_ec_cf1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.1603303849697113,
+      "reproduced_mse": 0.2834845185279846,
+      "stored_mae": 0.1603303849697113,
+      "stored_mse": 0.2834845185279846,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "Weather",
+      "mae_abs_diff": 0.0,
+      "method": "static_token_top1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.1643994152545929,
+      "reproduced_mse": 0.2871684432029724,
+      "stored_mae": 0.1643994152545929,
+      "stored_mse": 0.2871684432029724,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "Electricity",
+      "mae_abs_diff": 0.0,
+      "method": "static_ec_cf1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.219014510512352,
+      "reproduced_mse": 0.12091808021068573,
+      "stored_mae": 0.219014510512352,
+      "stored_mse": 0.12091808021068573,
+      "tolerance": 1e-06
+    },
+    {
+      "dataset": "Electricity",
+      "mae_abs_diff": 0.0,
+      "method": "static_token_top1",
+      "mse_abs_diff": 0.0,
+      "passed": true,
+      "reproduced_mae": 0.22276072204113007,
+      "reproduced_mse": 0.1312716007232666,
+      "stored_mae": 0.22276072204113007,
+      "stored_mse": 0.1312716007232666,
+      "tolerance": 1e-06
+    }
+  ],
+  "tolerance": 1e-06
+}

@@ -1,0 +1,74 @@
+{
+  "mode": "fingerprint_only",
+  "model": "Fingerprint only",
+  "validation_mae_mean": 0.37636464834213257,
+  "validation_mae_std": 0.0,
+  "validation_mse_mean": 0.32158374786376953,
+  "validation_mse_std": 0.0,
+  "average_queries_mean": 1.1312657594680786,
+  "average_queries_std": 0.0,
+  "parameter_count": 45893,
+  "per_seed": [
+    {
+      "mode": "fingerprint_only",
+      "model": "Fingerprint only",
+      "seed": 7,
+      "best_epoch": 1,
+      "validation_mae": 0.37636464834213257,
+      "validation_mse": 0.32158374786376953,
+      "raw_validation_mae": 1.2864773273468018,
+      "raw_validation_mse": 5.198217868804932,
+      "average_queries": 1.1312657594680786,
+      "top1_expert_accuracy": 24.125495553016663,
+      "top2_oracle_coverage": 25.495852866931124,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint_smoke\\fingerprint_only\\seed_7\\best_fingerprint_router.pt",
+      "parameter_count": 45893
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "raw_mae": 1.2864773273468018,
+      "raw_mse": 5.198217868804932,
+      "mae": 0.37636464834213257,
+      "mse": 0.32158374786376953,
+      "average_queries": 1.1312657594680786,
+      "top1_expert_accuracy": 24.125495553016663,
+      "top2_oracle_coverage": 25.495852866931124,
+      "query_count_percent": {
+        "1": 94.04976559682655,
+        "2": 1.2261089073205915,
+        "3": 2.307969707897584,
+        "4": 2.3800937612693835,
+        "5": 0.03606202668589975
+      },
+      "first_query_percent": {
+        "DLinear": 3.389830508474576,
+        "PatchTST": 0.10818608005769924,
+        "iTransformer": 96.50198341146772,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.0,
+        "PatchTST": 2.5964659213847816,
+        "iTransformer": 2.271907681211684,
+        "TimesNet": 1.0818608005769925,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 0.0,
+        "PatchTST": 43.63636363636363,
+        "iTransformer": 38.18181818181818,
+        "TimesNet": 18.181818181818183,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 3.822574828705373,
+        "PatchTST": 5.445366029570862,
+        "iTransformer": 98.91813919942301,
+        "TimesNet": 4.904435629282366,
+        "ModernTCN": 0.03606202668589975
+      }
+    }
+  }
+}

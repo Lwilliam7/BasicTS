@@ -1,0 +1,185 @@
+{
+  "ridge_residual_corrector": [
+    {
+      "ridge": 1.0,
+      "alpha": 0.1,
+      "clip_multiple": 0.25,
+      "feature_set": "full"
+    },
+    {
+      "ridge": 1.0,
+      "alpha": 0.05,
+      "clip_multiple": 0.25,
+      "feature_set": "full"
+    },
+    {
+      "ridge": 10.0,
+      "alpha": 0.1,
+      "clip_multiple": 0.25,
+      "feature_set": "full"
+    },
+    {
+      "ridge": 1.0,
+      "alpha": 0.1,
+      "clip_multiple": 0.5,
+      "feature_set": "full"
+    },
+    {
+      "ridge": 1.0,
+      "alpha": 0.25,
+      "clip_multiple": 0.25,
+      "feature_set": "full"
+    }
+  ],
+  "mlp_residual_corrector": [
+    {
+      "seed": 7,
+      "hidden": 64,
+      "lr": 0.0003,
+      "weight_decay": 0.01,
+      "alpha": 0.1,
+      "clip_multiple": 0.25,
+      "epochs": 40,
+      "patience": 6
+    },
+    {
+      "seed": 7,
+      "hidden": 64,
+      "lr": 0.0003,
+      "weight_decay": 0.01,
+      "alpha": 0.05,
+      "clip_multiple": 0.25,
+      "epochs": 40,
+      "patience": 6
+    },
+    {
+      "seed": 7,
+      "hidden": 64,
+      "lr": 0.0003,
+      "weight_decay": 0.01,
+      "alpha": 0.1,
+      "clip_multiple": 0.5,
+      "epochs": 40,
+      "patience": 6
+    },
+    {
+      "seed": 7,
+      "hidden": 64,
+      "lr": 0.0003,
+      "weight_decay": 0.03,
+      "alpha": 0.1,
+      "clip_multiple": 0.25,
+      "epochs": 40,
+      "patience": 6
+    },
+    {
+      "seed": 7,
+      "hidden": 32,
+      "lr": 0.0003,
+      "weight_decay": 0.01,
+      "alpha": 0.1,
+      "clip_multiple": 0.25,
+      "epochs": 40,
+      "patience": 6
+    }
+  ],
+  "oracle_prototype_residual": [
+    {
+      "teacher_lambda": 0.01,
+      "num_prototypes": 16,
+      "residual_scale": 0.3,
+      "residual_weight": 0.001,
+      "epochs": 10
+    },
+    {
+      "teacher_lambda": 0.01,
+      "num_prototypes": 8,
+      "residual_scale": 0.3,
+      "residual_weight": 0.001,
+      "epochs": 10
+    },
+    {
+      "teacher_lambda": 0.01,
+      "num_prototypes": 32,
+      "residual_scale": 0.3,
+      "residual_weight": 0.001,
+      "epochs": 10
+    },
+    {
+      "teacher_lambda": 0.01,
+      "num_prototypes": 16,
+      "residual_scale": 0.3,
+      "residual_weight": 0.01,
+      "epochs": 10
+    },
+    {
+      "teacher_lambda": 0.001,
+      "num_prototypes": 16,
+      "residual_scale": 0.3,
+      "residual_weight": 0.001,
+      "epochs": 10
+    }
+  ],
+  "dynamic_fixed_three": [
+    {
+      "seed": 7,
+      "batch_size": 512,
+      "epochs": 2,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "grad_clip_norm": 1.0,
+      "entropy_weight": 0.0,
+      "embedding_dim": 64,
+      "hidden_dim": 64,
+      "ablation": "full"
+    },
+    {
+      "seed": 7,
+      "batch_size": 512,
+      "epochs": 5,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "grad_clip_norm": 1.0,
+      "entropy_weight": 0.0,
+      "embedding_dim": 64,
+      "hidden_dim": 64,
+      "ablation": "full"
+    },
+    {
+      "seed": 7,
+      "batch_size": 512,
+      "epochs": 5,
+      "learning_rate": 0.0005,
+      "weight_decay": 0.0,
+      "grad_clip_norm": 1.0,
+      "entropy_weight": 0.0,
+      "embedding_dim": 64,
+      "hidden_dim": 64,
+      "ablation": "full"
+    },
+    {
+      "seed": 7,
+      "batch_size": 512,
+      "epochs": 5,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "grad_clip_norm": 1.0,
+      "entropy_weight": 0.0,
+      "embedding_dim": 64,
+      "hidden_dim": 64,
+      "ablation": "full"
+    },
+    {
+      "seed": 7,
+      "batch_size": 512,
+      "epochs": 5,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "grad_clip_norm": 1.0,
+      "entropy_weight": 0.001,
+      "embedding_dim": 64,
+      "hidden_dim": 64,
+      "ablation": "full"
+    }
+  ]
+}

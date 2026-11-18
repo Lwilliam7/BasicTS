@@ -1,0 +1,453 @@
+{
+  "candidate_untouched_datasets_considered": [
+    "CA",
+    "GBA",
+    "GLA",
+    "Gaussian",
+    "Illness",
+    "METR-LA",
+    "PEMS-BAY",
+    "PEMS03",
+    "PEMS04",
+    "PEMS07",
+    "PEMS08",
+    "Pulse",
+    "SD"
+  ],
+  "created_at_utc": "2026-08-31T00:22:29.841522+00:00",
+  "eligibility_rule_revision_note": "REVISED from the prior preparation pass: missing expert checkpoints/walk-forward caches, and the need for a generic config-driven mask/scaling/cache adapter, are explicitly NOT rejection reasons per this instruction. Only (a) not being a real forecasting dataset, (b) evidence of prior research influence (contamination), (c) inadequate chronological volume, or (d) incompatibility with the 5 frozen expert architectures count as blockers. has_graph/rescale/null_val/metrics convention differences are reclassified as generic-infrastructure work (disclosed per-dataset below), not eligibility blockers -- this reverses the more conservative conclusion in this directory's prior dataset_eligibility.json.",
+  "fully_eligible_datasets": [
+    "CA",
+    "GBA",
+    "GLA",
+    "METR-LA",
+    "PEMS-BAY",
+    "PEMS03",
+    "PEMS04",
+    "PEMS07",
+    "PEMS08",
+    "SD"
+  ],
+  "insufficient": false,
+  "note": "Eligibility determined ONLY from static schema/format/volume facts. No forecasting model was run and no MAE/MSE/routing performance was inspected for any candidate before this file was written.",
+  "num_eligible": 10,
+  "num_required": 4,
+  "per_dataset": {
+    "CA": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": "8600 variables is roughly 27x Electricity's 321 (the largest development dataset, whose OOF+final-fit scorer training took ~19 minutes). Expect proportionally much larger compute/memory for this dataset's confirmation run. This is a purely structural (variable-count) fact known before any performance was seen -- disclosed for planning, NOT used to exclude the dataset from the deterministic selection rule below.",
+      "dataset": "CA",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 6901,
+      "estimated_router_train_windows": 13802,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 35040,
+      "num_variables": 8600,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        35040,
+        8600
+      ],
+      "volume_adequate": true
+    },
+    "GBA": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": "2352 variables is roughly 7x Electricity's 321 (the largest development dataset, whose OOF+final-fit scorer training took ~19 minutes). Expect proportionally much larger compute/memory for this dataset's confirmation run. This is a purely structural (variable-count) fact known before any performance was seen -- disclosed for planning, NOT used to exclude the dataset from the deterministic selection rule below.",
+      "dataset": "GBA",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 6901,
+      "estimated_router_train_windows": 13802,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 35040,
+      "num_variables": 2352,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        35040,
+        2352
+      ],
+      "volume_adequate": true
+    },
+    "GLA": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": "3834 variables is roughly 12x Electricity's 321 (the largest development dataset, whose OOF+final-fit scorer training took ~19 minutes). Expect proportionally much larger compute/memory for this dataset's confirmation run. This is a purely structural (variable-count) fact known before any performance was seen -- disclosed for planning, NOT used to exclude the dataset from the deterministic selection rule below.",
+      "dataset": "GLA",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 6901,
+      "estimated_router_train_windows": 13802,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 35040,
+      "num_variables": 3834,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        35040,
+        3834
+      ],
+      "volume_adequate": true
+    },
+    "Gaussian": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "Gaussian",
+      "eligible": false,
+      "estimated_confirmation_eval_windows": 1893,
+      "estimated_router_train_windows": 3786,
+      "has_graph": false,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [
+        "Synthetic simulated single-variable series with no real forecasting domain -- fails the 'real forecasting dataset' requirement, not a format issue."
+      ],
+      "metrics": [],
+      "min_confirmation_windows_floor": 400,
+      "null_val": NaN,
+      "num_timestamps": 10000,
+      "num_variables": 1,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning."
+      ],
+      "rescale": true,
+      "shape": [
+        10000,
+        1
+      ],
+      "volume_adequate": true
+    },
+    "Illness": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "Illness",
+      "eligible": false,
+      "estimated_confirmation_eval_windows": 86,
+      "estimated_router_train_windows": 172,
+      "has_graph": false,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [
+        "confirmation_eval would only contain 86 windows (input_len=96, horizon=12), below the static pre-registered floor of 400 (derived from the smallest development dataset's own window count, ETTh2 router_val=613, before any candidate's size was computed). This is a data-volume fact, not solvable by any generic adapter."
+      ],
+      "metrics": [
+        "MAE",
+        "MSE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": NaN,
+      "num_timestamps": 966,
+      "num_variables": 7,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [],
+      "rescale": false,
+      "shape": [
+        966,
+        7
+      ],
+      "volume_adequate": false
+    },
+    "METR-LA": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "METR-LA",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 6747,
+      "estimated_router_train_windows": 13495,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 34272,
+      "num_variables": 207,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        34272,
+        207
+      ],
+      "volume_adequate": true
+    },
+    "PEMS-BAY": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "PEMS-BAY",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 10316,
+      "estimated_router_train_windows": 20632,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 52116,
+      "num_variables": 325,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        52116,
+        325
+      ],
+      "volume_adequate": true
+    },
+    "PEMS03": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "PEMS03",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 5135,
+      "estimated_router_train_windows": 10269,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 26208,
+      "num_variables": 358,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        26208,
+        358
+      ],
+      "volume_adequate": true
+    },
+    "PEMS04": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "PEMS04",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 3291,
+      "estimated_router_train_windows": 6583,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 16992,
+      "num_variables": 307,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        16992,
+        307
+      ],
+      "volume_adequate": true
+    },
+    "PEMS07": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "PEMS07",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 5538,
+      "estimated_router_train_windows": 11076,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 28224,
+      "num_variables": 883,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        28224,
+        883
+      ],
+      "volume_adequate": true
+    },
+    "PEMS08": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "PEMS08",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 3464,
+      "estimated_router_train_windows": 6928,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 17856,
+      "num_variables": 170,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        17856,
+        170
+      ],
+      "volume_adequate": true
+    },
+    "Pulse": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "Pulse",
+      "eligible": false,
+      "estimated_confirmation_eval_windows": 3893,
+      "estimated_router_train_windows": 7786,
+      "has_graph": false,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [
+        "Synthetic simulated single-variable series with no real forecasting domain -- fails the 'real forecasting dataset' requirement, not a format issue."
+      ],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": NaN,
+      "num_timestamps": 20000,
+      "num_variables": 1,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        20000,
+        1
+      ],
+      "volume_adequate": true
+    },
+    "SD": {
+      "already_has_walkforward_cache_or_checkpoints": false,
+      "compute_cost_note_disclosed_not_blocking": null,
+      "dataset": "SD",
+      "eligible": true,
+      "estimated_confirmation_eval_windows": 6901,
+      "estimated_router_train_windows": 13802,
+      "has_graph": true,
+      "has_train_val_test_npy": true,
+      "ineligibility_reasons": [],
+      "metrics": [
+        "MAE",
+        "RMSE",
+        "MAPE"
+      ],
+      "min_confirmation_windows_floor": 400,
+      "null_val": 0.0,
+      "num_timestamps": 35040,
+      "num_variables": 716,
+      "requires_generic_infra_adapter_disclosed_not_blocking": [
+        "has_graph=true: irrelevant to eligibility -- none of the 5 frozen experts (DLinear, PatchTST, iTransformer, TimesNet, ModernTCN) consumes graph/adjacency structure; they operate purely on the channel dimension exactly as they do for every development dataset. No adapter needed at all.",
+        "rescale=true: requires reading this dataset's own regular_settings.rescale flag when choosing the evaluation std (analogous to the ALREADY-EXISTING generic std=ones raw-scale path used for ETTh2) instead of hardcoding rescale=false. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "null_val=0.0 (not NaN): requires the walk-forward cache builder's target mask to also exclude cells equal to this dataset's own declared null_val, read generically from meta.json, in addition to the existing isfinite() check. A one-line, config-driven, dataset-generic change -- not model/router tuning.",
+        "metrics=['MAE', 'RMSE', 'MAPE'] does not literally list MAE/MSE, but this pipeline always computes its own sample_mae/sample_mse directly regardless of a dataset's declared default metrics (exactly as it already does for every development dataset) -- not a blocker, no adapter needed."
+      ],
+      "rescale": true,
+      "shape": [
+        35040,
+        716
+      ],
+      "volume_adequate": true
+    }
+  },
+  "selected_primary_confirmation_datasets": [
+    "CA",
+    "GBA",
+    "GLA",
+    "METR-LA",
+    "PEMS-BAY",
+    "PEMS03"
+  ],
+  "selection_rule": "More than 6 eligible (10); sorted by canonical dataset name (ASCII string sort) and took the first 6 deterministically, before any performance was inspected."
+}

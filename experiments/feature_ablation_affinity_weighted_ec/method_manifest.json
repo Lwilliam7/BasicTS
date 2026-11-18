@@ -1,0 +1,199 @@
+{
+  "best_variant": "F2_local",
+  "bugfix_note": "Post-hoc fix: classify_group's same_comparison check compared variant name strings instead of underlying feature-group frozensets, causing GLOBAL's independent_add_remove_evidence to be misreported as True. Fixed in run_feature_ablation.py; results.json/report.md regenerated from existing per-dataset checkpoints without any retraining. OOF MAE/MSE values and SUPPORTED/MIXED/NOT_SUPPORTED labels are unchanged by this fix.",
+  "classification_rule": {
+    "MIXED": "anything else -- not rescued or tuned",
+    "NOT_SUPPORTED": "neither add nor remove passes and no block-24 support either direction",
+    "SUPPORTED": "add_pass AND remove_pass AND dependence_support",
+    "add_pass": "candidate (with group) beats baseline (without group) OOF MAE on >=3/5 datasets",
+    "dependence_support": ">=2/5 datasets have block-24 CI excluding zero in the expected direction (add or remove test)",
+    "remove_pass": "baseline-without-group OOF MAE is WORSE than full OOF MAE on >=3/5 datasets"
+  },
+  "comparisons": [
+    {
+      "baseline": "F0_anchor",
+      "candidate": "F1_cell",
+      "kind": "add",
+      "label": "cell_add"
+    },
+    {
+      "baseline": "F1_cell",
+      "candidate": "F2_local",
+      "kind": "add",
+      "label": "local_add"
+    },
+    {
+      "baseline": "F2_local",
+      "candidate": "F3_full",
+      "kind": "add",
+      "label": "global_add"
+    },
+    {
+      "baseline": "Full_NoCell",
+      "candidate": "F3_full",
+      "kind": "remove",
+      "label": "cell_remove"
+    },
+    {
+      "baseline": "Full_NoPerVariable",
+      "candidate": "F3_full",
+      "kind": "remove",
+      "label": "local_remove"
+    },
+    {
+      "baseline": "Full_NoGlobal",
+      "candidate": "F3_full",
+      "kind": "remove",
+      "label": "global_remove"
+    }
+  ],
+  "created_at_utc": "2026-08-31T04:03:01.990451+00:00",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "experiment": "feature_ablation_affinity_weighted_ec",
+  "feature_ablation_valid": true,
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "d22dca3b8e0e6211e2df46a7f48566650ab10b37",
+    "dirty_files_count": 6,
+    "dirty_working_tree": true
+  },
+  "group_classifications": {
+    "cell": {
+      "add_block24_support_datasets": 5,
+      "add_deltas_mae": {
+        "ETTh1": -0.007093697786331177,
+        "ETTh2": -0.0027043819427490234,
+        "ETTm1": -0.006386518478393555,
+        "Electricity": -0.010878071188926697,
+        "Weather": -0.011125177145004272
+      },
+      "add_pass_ge_3": true,
+      "add_wins_of_5": 5,
+      "group": "cell",
+      "independent_add_remove_evidence": true,
+      "label": "MIXED",
+      "note": null,
+      "remove_block24_support_datasets": 0,
+      "remove_deltas_mae": {
+        "ETTh1": -0.009098589420318604,
+        "ETTh2": -0.0036119818687438965,
+        "ETTm1": -0.0012286901473999023,
+        "Electricity": -0.014261424541473389,
+        "Weather": -0.013681814074516296
+      },
+      "remove_hurts_of_5": 0,
+      "remove_pass_ge_3": false
+    },
+    "global": {
+      "add_block24_support_datasets": 0,
+      "add_deltas_mae": {
+        "ETTh1": -0.00047975778579711914,
+        "ETTh2": 0.0017781555652618408,
+        "ETTm1": 0.0010821819305419922,
+        "Electricity": 0.001155748963356018,
+        "Weather": 0.00047838687896728516
+      },
+      "add_pass_ge_3": false,
+      "add_wins_of_5": 1,
+      "group": "global",
+      "independent_add_remove_evidence": false,
+      "label": "MIXED",
+      "note": "add and remove tests for this group are the SAME comparison (F3_full vs F2_local); only one independent piece of evidence exists.",
+      "remove_block24_support_datasets": 4,
+      "remove_deltas_mae": {
+        "ETTh1": -0.00047975778579711914,
+        "ETTh2": 0.0017781555652618408,
+        "ETTm1": 0.0010821819305419922,
+        "Electricity": 0.001155748963356018,
+        "Weather": 0.00047838687896728516
+      },
+      "remove_hurts_of_5": 4,
+      "remove_pass_ge_3": true
+    },
+    "local": {
+      "add_block24_support_datasets": 4,
+      "add_deltas_mae": {
+        "ETTh1": -0.0012878477573394775,
+        "ETTh2": -0.0016595721244812012,
+        "ETTm1": -0.0019297897815704346,
+        "Electricity": -0.004659995436668396,
+        "Weather": -0.007880568504333496
+      },
+      "add_pass_ge_3": true,
+      "add_wins_of_5": 5,
+      "group": "local",
+      "independent_add_remove_evidence": true,
+      "label": "MIXED",
+      "note": null,
+      "remove_block24_support_datasets": 0,
+      "remove_deltas_mae": {
+        "ETTh1": -0.002982884645462036,
+        "ETTh2": -8.96155834197998e-05,
+        "ETTm1": 0.0008070468902587891,
+        "Electricity": -0.0032881349325180054,
+        "Weather": -0.005312487483024597
+      },
+      "remove_hurts_of_5": 1,
+      "remove_pass_ge_3": false
+    }
+  },
+  "kept_fixed": [
+    "K=3 train-selected frozen experts (LOADERS, unmodified)",
+    "scorer architecture (Linear(->64)->ReLU->Linear(->32)->ReLU->Linear(->1))",
+    "seed=7",
+    "AdamW lr=1e-3 wd=1e-4",
+    "max_epochs=100 patience=10 batch_size=32",
+    "residual-gain target (gain - static_gain, fit-only per fold)",
+    "causal 4-fold OOF protocol (wdec.oof_bounds, full-horizon observability)",
+    "fit-only affinity calibration, temperature=1.0",
+    "CF=1, capacity=round(H*V/E)",
+    "independent EC claims (wdec.dynamic_ec_claims, unmodified)",
+    "affinity-weighted multi-claim fusion + zero-claim fallback (aw.affinity_weighted_prediction_from_claims, unmodified)"
+  ],
+  "primary_evidence": "router_train causal OOF MAE only. router_val never loaded for prediction/metric in this experiment.",
+  "router_val_accessed": false,
+  "runtime_sec": 1207.2227268218994,
+  "source_sha256": "c4ecd3c0974b4511c33bf223a2f9ef9c2e4f54bd4c8bc833af32f935746bdd48",
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false,
+  "untouched_data_accessed": false,
+  "variant_equivalences": {
+    "Full_NoGlobal": "F2_local (identical feature set: anchor+cell+local; reused, not retrained)"
+  },
+  "variants": {
+    "F0_anchor": [
+      "anchor_only"
+    ],
+    "F1_cell": [
+      "cell"
+    ],
+    "F2_local": [
+      "cell",
+      "local"
+    ],
+    "F3_full": [
+      "cell",
+      "global",
+      "local"
+    ],
+    "Full_NoCell": [
+      "global",
+      "local"
+    ],
+    "Full_NoGlobal": [
+      "cell",
+      "local"
+    ],
+    "Full_NoPerVariable": [
+      "cell",
+      "global"
+    ]
+  }
+}

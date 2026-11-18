@@ -1,0 +1,14 @@
+{
+  "fault_target": "expert MAE minus median of other expert MAEs",
+  "parity_residual": "(forecast_i - forecast_j) / dataset_std",
+  "parity_summaries": [
+    "signed_mean",
+    "signed_early_horizon_mean",
+    "signed_late_horizon_mean",
+    "absolute_magnitude",
+    "max_magnitude",
+    "horizon_wise_signed_profile",
+    "variable_wise_signed_profile_if_variables_le_32_else_quantile_profile"
+  ],
+  "raw_control": "passive plus compressed raw expert forecasts and target-expert deviation from ensemble, with the same summary family"
+}

@@ -1,0 +1,56 @@
+{
+  "method": "FAME-style ETTh adaptation",
+  "official_fame_reference": "https://github.com/hit636/FAME",
+  "adaptation_note": "ETTh history-only fingerprint adaptation; no retail lifecycle/context features used.",
+  "dataset": "ETTh1",
+  "split_roles": {
+    "train": "router_train",
+    "validation": "router_val"
+  },
+  "cache_paths": {
+    "train": "cache/costarts_router_train_cache.pt",
+    "validation": "cache/costarts_router_val_cache.pt"
+  },
+  "cache_hashes": {
+    "train": "631ca1142cbf563b257cc636e1562a1dc66141f7ad6fd51c48e9a9f1aa11e1e0",
+    "validation": "0d802634a7f1cead668382f5a85e31292157a4a15c1316049ef02268a8b56d3b"
+  },
+  "expert_ordering": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "seeds": [
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "tau": 0.1,
+  "top_r_values": [
+    1,
+    2,
+    3
+  ],
+  "delta": null,
+  "hidden_size": 128,
+  "dropout": 0.1,
+  "epochs": 200,
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0,
+  "loss_weights": {
+    "kl": 1.0,
+    "prediction_loss": 0.0,
+    "load_balance": 0.0,
+    "expert_cost": 0.0
+  },
+  "sequential_costar_checkpoint": "checkpoints/costarts_sequential/seed_11/best_sequential_costarts_router.pt",
+  "sequential_costar_checkpoint_sha256": "894dcc0c4267166d134f1398d544503e6a6fa0fe6b57fcea2149ef8380a3c079",
+  "sequential_costar_results": "results/router_summary/costarts_sequential/per_seed_results.csv",
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "safety": "NO TEST DATA USED"
+}

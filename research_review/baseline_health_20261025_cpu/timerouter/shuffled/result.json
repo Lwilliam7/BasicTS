@@ -1,0 +1,49 @@
+{
+  "status": "CHECKED",
+  "method": "timerouter",
+  "case": "shuffled",
+  "seed": 7,
+  "mae": 1.0399543046951294,
+  "mse": 2.0543646812438965,
+  "tail32_mae": 1.1287028789520264,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true,
+    "unpredictable_guard": true,
+    "chance_winner_accuracy": true
+  },
+  "software_case_passed": true,
+  "baselines": {
+    "equal_mae": 2.4043753147125244,
+    "single_mae": 1.0153121948242188,
+    "oracle_mae": 0.019999979063868523,
+    "selected_single": "DLinear"
+  },
+  "diagnostics": {
+    "convex_calls": 512,
+    "winner_accuracy": 0.4921875,
+    "fallback_frequency": 0.0390625
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "a8b17342ac44aeadbe053de7e373ceda06732341",
+    "file_hashes": {
+      "gift_eval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gift_eval/_features.py": "5d9d1c41176ace368404abb42bdec1016073c923e5d7ff7ce6857d894f136d18",
+      "gift_eval/_router.py": "13a5578fb475c5068a9c93d61bdc0c163438a2d1e7a7a3318fc33301f6bcacca"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "per_window_losses.npz": "8c9383506ffce1bdcfced814ca2eaf07fc93c7d3f383b6ac6a4f3e82d2fab13d",
+    "_work\\ETTh1.json": "2b9fb818e58071fd1df002fc7ac5f8f93d77b952c1df09e9d031e3c1f8e5872e",
+    "_work\\ETTh1.pt": "06aa78d16505815c5d803d34a02a3428c0345eeab09b57fee8ff80201e53a55e"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

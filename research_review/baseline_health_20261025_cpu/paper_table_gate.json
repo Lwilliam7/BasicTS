@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-25",
+  "software_health": "PASS_EXPLICIT_CPU",
+  "cases_passed": 14,
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "methods": {
+    "fame": {
+      "software_health": "PASS",
+      "paper_fidelity": "NOT_ESTABLISHED",
+      "table_eligible": false,
+      "limitation": "Rolling-window frozen-pool adaptation; no published dataset/result reproduced.",
+      "extra_open_issue": "CUDA exact reproducibility remains unresolved"
+    },
+    "timerouter": {
+      "software_health": "PASS",
+      "paper_fidelity": "NOT_ESTABLISHED",
+      "table_eligible": false,
+      "limitation": "Port uses a retrained OVA head; the authors' head training code is not released.",
+      "extra_open_issue": null
+    },
+    "onenet": {
+      "software_health": "PASS",
+      "paper_fidelity": "NOT_ESTABLISHED",
+      "table_eligible": false,
+      "limitation": "Two-branch OCP block with frozen experts and delayed feedback; full branch co-adaptation is absent. Online protocol differs from offline routers.",
+      "extra_open_issue": null
+    },
+    "superlinear": {
+      "software_health": "PASS",
+      "paper_fidelity": "NOT_ESTABLISHED",
+      "table_eligible": false,
+      "limitation": "Spectral combination gate over frozen experts; full frequency-expert training is absent.",
+      "extra_open_issue": null
+    }
+  }
+}

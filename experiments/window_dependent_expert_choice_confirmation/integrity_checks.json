@@ -1,0 +1,13 @@
+{
+  "TEST_CACHE_LOADED": "NO",
+  "TEST_METRICS_COMPUTED": "NO",
+  "TEST_SET_ACCESSED": "NO",
+  "affinity_weighted_ec_not_used_as_canonical": true,
+  "all_pass": true,
+  "classification": "INSUFFICIENT_UNTOUCHED_DATASETS",
+  "eligibility_computed_before_any_confirmation_metric": true,
+  "no_dataset_selected_by_performance": true,
+  "no_rescue_tuning_applied": true,
+  "no_test_access": true,
+  "source_hashes_unchanged_before_after": true
+}

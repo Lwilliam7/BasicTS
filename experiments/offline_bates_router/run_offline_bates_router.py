@@ -1,0 +1,820 @@
+"""Offline replacement for the learned gate. See PREDECLARATION.md in this directory.
+
+LambdaHead is removed. The routed top-3 forecast r is blended into a fitted Bates all-5 combination b as
+b + lambda * (r - b). lambda is closed form on pooled OOF rows: one constant or one value per horizon-variable
+cell, the form chosen by fitting on the first 70% of OOF windows and scoring on the last 30%. An optional
+risk-controlled switch keeps routing only in variables whose late-OOF gain has a 95% block-bootstrap lower
+bound above zero. Nothing realised in the evaluation period is used at forecast time.
+
+The Bates fallback on OOF rows is refitted inside each OOF fold on windows whose targets end before that
+fold starts, so lambda is fitted against an out-of-sample fallback. The router_val fallback uses all
+router_train windows. Per-cell weights are inverse mean squared errors, as in the archived Bates comparator.
+
+Development evidence on 60-80% blocks; no test cache is opened. Reuses the gate-ablation loaders, the frozen
+scorer protocol and score_arms unchanged, and writes only under experiments/offline_bates_router/.
+
+Each job runs in its own process (as the gate-ablation queue does), so one failure or one horizon's module
+settings cannot affect the next job. A finished job is skipped on resume only if its record is valid.
+
+Amendment 2 adds anchored arms. The constant core/router blend (the `constant` arm) gets one weight per horizon
+toward the last observed value (`anchored_last_*`), or toward the last value and the value one day before each
+target when a day fits in the input window (`anchored_both_*`). Both values are in the input window, so nothing
+realised after the forecast origin is used. The weights are least squares on OOF rows, clipped to [0, 1].
+`*_pooled` fits them on all OOF rows. `*_robust` fits them separately on each expert vintage of router_train
+(forecasts from the 0-20% and the 0-40% experts) and keeps the smaller weight.
+These arms are exploratory: they failed lab confirmation (PREDECLARATION.md, amendment 2) and license no claim.
+
+Amendment 3 adds `pooled_static`: core-3 + lambda[h, v] * (routed - core-3), where each cell's closed-form weight is
+pulled toward the single constant. How far is estimated from the data: the per-cell weights are fitted on the first
+and on the second half of the OOF windows, and only what the two halves agree on is kept. No training, no tuning
+constant, nothing from the evaluation block.
+
+Usage (repo root):
+  bash experiments/offline_bates_router/launch_pilot.sh           # seed-7 pilot in the background, then --analyze
+  bash experiments/offline_bates_router/launch_pilot.sh --status
+  python experiments/offline_bates_router/run_offline_bates_router.py --selftest
+  python -m experiments.offline_bates_router.run_offline_bates_router --run ETTh1:12 --seeds 7
+  python -m experiments.offline_bates_router.run_offline_bates_router --run all --seeds 7 11 13 17 19
+  python -m experiments.offline_bates_router.run_offline_bates_router --analyze
+"""
+import argparse
+import hashlib
+import json
+import math
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import torch
+
+OUT = Path(__file__).resolve().parent
+CHUNK = 256
+LATE_SHARE = 0.3
+MIN_BLOCKS = 8
+ARMS = ("bates_only", "bates_router_constant", "bates_router_static", "bates_router_chosen", "bates_router_switch")
+ANCHOR_ARMS = ("anchored_last_robust", "anchored_last_pooled", "anchored_both_robust", "anchored_both_pooled")
+POOLED_ARM = "pooled_static"
+POOLED_WINS_NEEDED = 5
+REFERENCE_ARMS = ("full", "core_only", "router_only", "constant", "static_hv")
+CONTRASTS = (("bates_router_chosen", "full", "primary"), ("bates_router_chosen", "bates_all5", "primary"),
+             ("bates_router_switch", "bates_all5", "primary"), ("bates_router_switch", "bates_router_chosen", "secondary"),
+             ("bates_router_constant", "constant", "secondary"), ("bates_only", "bates_all5", "descriptive"),
+             ("anchored_last_robust", "full", "exploratory"), ("anchored_last_robust", "bates_all5", "exploratory"),
+             ("anchored_last_robust", "constant", "exploratory"), ("anchored_last_pooled", "anchored_last_robust", "exploratory"),
+             ("anchored_both_robust", "anchored_last_robust", "exploratory"),
+             (POOLED_ARM, "full", "pooled primary"), (POOLED_ARM, "constant", "pooled secondary"),
+             (POOLED_ARM, "static_hv", "pooled secondary"), (POOLED_ARM, "bates_all5", "pooled secondary"))
+STEPS_PER_DAY = {"ETTh1": 24, "Electricity": 24, "Traffic": 24, "OikolabWeather": 24,
+                 "AppliancesEnergy": 144, "SolarAL": 144, "TetouanPower": 144}
+ANCHOR_RIDGE = 1e-6
+
+
+def require(ok, message):
+    if not ok:
+        raise SystemExit(f"[offline] {message}")
+
+
+def topk_equal(aff, k=3):
+    return torch.zeros_like(aff).scatter_(-1, aff.topk(k, -1).indices, 1.0 / k)
+
+
+def inverse_mse_weights(sq_sum, count):
+    mse = sq_sum / count.clamp_min(1)
+    w = 1.0 / mse.clamp_min(1e-12)
+    return (w / w.sum(-1, keepdim=True)).float()
+
+
+def solve(num, den):
+    return torch.where(den > 0, num / den.clamp_min(1e-300), torch.zeros_like(num)).clamp(0, 1)
+
+
+def closed_form(b, r, y, m, inv_var):
+    """static_fits' estimator with fallback b: lambda = clip(-sum(e d) / sum(d^2), 0, 1), e = b - y, d = r - b.
+    Returns (constant, per-cell [H, V]). inv_var [V] weights the constant like static_fits."""
+    e = torch.where(m, b.double() - y.double(), 0.)
+    d = torch.where(m, r.double() - b.double(), 0.)
+    num, den = -(e * d).sum(0), d.square().sum(0)
+    iv = inv_var.double().view(1, -1)
+    return solve((num * iv).sum(), (den * iv).sum()).float(), solve(num, den).float()
+
+
+def moving_block_lower(x, block, samples=4000, seed=20261110):
+    rng = np.random.default_rng(seed)
+    n = len(x)
+    block = max(1, min(block, n))
+    starts = rng.integers(0, n - block + 1, size=(samples, math.ceil(n / block)))
+    idx = (starts[..., None] + np.arange(block)).reshape(samples, -1)[:, :n]
+    return float(np.quantile(x[idx].mean(1), 0.025))
+
+
+def fallback_and_router(fc_tr, y_tr, m_tr, origins_tr, oof_rows, fold_bounds, aff_oof, first_val_origin, horizon):
+    """Causal Bates fallback and routed forecasts on the pooled OOF rows. Prefix sums of squared expert errors
+    give every fit: fold k uses windows with origin + H <= fold origin (a prefix, origins ascending); router_val
+    uses origin + H <= first val origin. Returns OOF fallback b_f and routed r_f [R,H,V], the fold and final
+    weights, and the number of windows each fit used."""
+    n_tr, h, v, e = fc_tr.shape
+    starts = origins_tr.long()
+    cuts = {int(lo): int((starts + horizon <= starts[lo]).sum()) for lo, _ in fold_bounds}
+    cuts["final"] = int((starts + horizon <= first_val_origin).sum())
+    require(all(cuts[int(lo)] <= lo for lo, _ in fold_bounds), "fold Bates would see the fold itself")
+    sq, cnt = torch.zeros(h, v, e, dtype=torch.float64), torch.zeros(h, v, e, dtype=torch.float64)
+    snapshots, done = {}, 0
+    for target in sorted(set(cuts.values())):
+        for lo in range(done, target, CHUNK):
+            hi = min(lo + CHUNK, target)
+            mm = m_tr[lo:hi, ..., None]
+            sq += torch.where(mm, (fc_tr[lo:hi].double() - y_tr[lo:hi, ..., None].double()).square(), 0.).sum(0)
+            cnt += mm.expand(-1, -1, -1, e).double().sum(0)
+        done = target
+        snapshots[target] = inverse_mse_weights(sq.clone(), cnt.clone())
+    fold_w = {int(lo): snapshots[cuts[int(lo)]] for lo, _ in fold_bounds}
+    final_w = snapshots[cuts["final"]]
+    rows = oof_rows.long()
+    b_f, r_f = torch.empty(len(rows), h, v), torch.empty(len(rows), h, v)
+    fold_of = torch.zeros(n_tr, dtype=torch.long)
+    for lo, hi in fold_bounds:
+        fold_of[lo:hi] = lo
+    for i in range(0, len(rows), CHUNK):
+        sl = slice(i, i + CHUNK)
+        f = fc_tr[rows[sl]]
+        w = torch.stack([fold_w[int(fold_of[j])] for j in rows[sl]])
+        b_f[sl] = (f * w).sum(-1)
+        r_f[sl] = (f * topk_equal(aff_oof[sl])).sum(-1)
+    return b_f, r_f, fold_w, final_w, cuts
+
+
+def offline_arms(fc_tr, y_tr, m_tr, origins_tr, oof_rows, fold_bounds, aff_oof, fc_v, y_v, m_v, aff_v,
+                 first_val_origin, horizon, std, block_length, min_blocks=MIN_BLOCKS):
+    """All tensors raw scale. fc_tr [N,H,V,E] router_train forecasts; oof_rows: train indices of the pooled OOF
+    rows, in the order of aff_oof; fold_bounds: (lo, hi) train index ranges of the OOF folds.
+    Returns router_val predictions per arm (raw scale) and the fitted choices."""
+    h, v = fc_tr.shape[1:3]
+    inv_var = 1.0 / std.double().square()
+    rows = oof_rows.long()
+    b_f, r_f, _, final_w, cuts = fallback_and_router(fc_tr, y_tr, m_tr, origins_tr, rows, fold_bounds, aff_oof,
+                                                     first_val_origin, horizon)
+    y_f, m_f = y_tr[rows], m_tr[rows]
+
+    lam_c, lam_hv = closed_form(b_f, r_f, y_f, m_f, inv_var)
+    cut = int(len(rows) * (1 - LATE_SHARE))
+    early_c, early_hv = closed_form(b_f[:cut], r_f[:cut], y_f[:cut], m_f[:cut], inv_var)
+    sd = std.view(1, 1, -1)
+
+    def late_mae(lam):
+        pred = b_f[cut:] + lam * (r_f[cut:] - b_f[cut:])
+        return float(torch.where(m_f[cut:], (pred - y_f[cut:]).abs() / sd, 0.).sum() / m_f[cut:].sum().clamp_min(1))
+
+    form = "constant" if late_mae(early_c) <= late_mae(early_hv) else "static"
+    lam_chosen, lam_early = (lam_c, early_c) if form == "constant" else (lam_hv, early_hv)
+    pred_late = b_f[cut:] + lam_early * (r_f[cut:] - b_f[cut:])
+    gain = torch.where(m_f[cut:], ((b_f[cut:] - y_f[cut:]).abs() - (pred_late - y_f[cut:]).abs()) / sd, 0.)
+    gain_wv = (gain.sum(1) / m_f[cut:].sum(1).clamp_min(1)).numpy()
+    route = torch.tensor([moving_block_lower(gain_wv[:, j], block_length) > 0 for j in range(v)])
+
+    b_v = torch.cat([(fc_v[i:i + CHUNK] * final_w).sum(-1) for i in range(0, len(fc_v), CHUNK)])
+    r_v = torch.cat([(fc_v[i:i + CHUNK] * topk_equal(aff_v[i:i + CHUNK])).sum(-1) for i in range(0, len(fc_v), CHUNK)])
+    blend = lambda lam: b_v + lam * (r_v - b_v)
+    preds = {"bates_only": b_v, "bates_router_constant": blend(lam_c), "bates_router_static": blend(lam_hv),
+             "bates_router_chosen": blend(lam_chosen),
+             "bates_router_switch": blend(lam_chosen * route.float().view(1, -1).expand(h, v))}
+    choices = {"chosen_form": form, "lambda_constant": float(lam_c), "lambda_static_mean": float(lam_hv.mean()),
+               "lambda_static_share_0": float((lam_hv == 0).float().mean()), "lambda_static_share_1": float((lam_hv == 1).float().mean()),
+               "late_oof_mae_constant": late_mae(early_c), "late_oof_mae_static": late_mae(early_hv),
+               "variables_routed": int(route.sum()), "variables": v, "oof_rows": len(rows), "late_rows": len(rows) - cut,
+               "late_independent_blocks": (len(rows) - cut) / block_length,
+               "switch_underpowered": (len(rows) - cut) / block_length < min_blocks,
+               "bates_fit_windows": {str(k): c for k, c in cuts.items()}}
+    return preds, choices
+
+
+def seasonal_index(input_len, horizon, period):
+    """History index of the value one period (or a whole number of periods) before each target step."""
+    steps = torch.arange(1, horizon + 1)
+    return input_len - 1 + steps - period * torch.ceil(steps / period).long()
+
+
+def anchor_features(hist, base, period):
+    """[N, H, V, K]: last observed value minus the forecast, and, when one period fits in the input window, the value
+    one period before each target minus the forecast."""
+    feats = [hist[:, -1, None, :].expand_as(base) - base]
+    if period <= hist.shape[1]:
+        feats.append(hist[:, seasonal_index(hist.shape[1], base.shape[1], period), :] - base)
+    return torch.stack(feats, -1)
+
+
+def vintage_split(starts, rows):
+    """True for OOF rows forecast by the later expert vintage. router_train windows do not cross the block edge
+    where the experts were retrained, so window starts jump once there. Without exactly one jump the rows are split
+    at the midpoint of router_train (equal-length blocks), and the record says so."""
+    d = starts[1:] - starts[:-1]
+    jumps = torch.nonzero(d > d.median()).flatten()
+    if len(jumps) == 1:
+        edge, how = int(jumps[0]) + 1, "start_jump"
+    else:
+        edge, how = len(starts) // 2, f"midpoint ({len(jumps)} jumps)"
+    return rows >= edge, {"vintage_split": how, "vintage_edge_index": edge, "vintage_rows_early": int((rows < edge).sum()),
+                          "vintage_rows_late": int((rows >= edge).sum())}
+
+
+def history_alignment_gap(cache, horizon, samples=512):
+    """Largest |history[j, -1] - target[i, d - 1]| over window pairs whose starts differ by d in 1..H: zero when the
+    cached histories are the raw input windows on the target scale."""
+    s = cache["absolute_window_starts"].long()
+    d = s[1:] - s[:-1]
+    i = torch.nonzero((d >= 1) & (d <= horizon)).flatten()
+    if len(i) == 0:
+        return float("nan")
+    i = i[torch.linspace(0, len(i) - 1, min(len(i), samples)).long()]
+    step = d[i] - 1
+    nxt, tgt = cache["histories"][i + 1, -1, :].double(), cache["targets"][i, step, :].double()
+    m = cache["target_masks"][i, step, :].bool()
+    return float((nxt - tgt).abs()[m].max() / (1.0 + tgt[m].abs().max())) if bool(m.any()) else float("nan")
+
+
+def anchored_arms(blend, oof_fc, oof_aff, oof_y, oof_m, train_hist, oof_rows, oof_late, val_fc, val_aff, val_hist, inv_var,
+                  period, chunk, score):
+    """blend(fc, aff) -> constant core/router blend [n, H, V]. One weight per horizon and anchor: least squares of the
+    blend's OOF residual on the anchor features, shared over variables, 1/sigma^2-weighted, masked, clipped to [0, 1].
+    "last" uses the last observed value only; "both" adds the value one day before each target when a day fits in
+    the input window (otherwise it equals "last"). Each is fitted on all OOF rows (pooled) and on each expert vintage
+    (oof_late False / True); robust keeps, per horizon and anchor, the smaller vintage weight. score(pred) is applied
+    to the plain blend ("_blend") and to each arm's router_val prediction in turn, so one prediction is held at a time.
+    train_hist [N_train, L, V] is indexed by oof_rows (train indices of the OOF rows) one chunk at a time."""
+    k = 2 if period <= train_hist.shape[1] else 1
+    h = oof_y.shape[1]
+    stats = {g: [torch.zeros(h, k, k, dtype=torch.float64), torch.zeros(h, k, dtype=torch.float64), 0.0] for g in ("early", "late")}
+    iv = inv_var.double().view(1, 1, -1)
+    for lo in range(0, len(oof_y), chunk):
+        sl = slice(lo, lo + chunk)
+        b, m = blend(oof_fc[sl], oof_aff[sl]), oof_m[sl].bool()
+        u = torch.nan_to_num(anchor_features(train_hist[oof_rows[sl]], b, period).double())
+        r = torch.where(m, oof_y[sl].double() - b.double(), 0.0)
+        for g, sel in (("early", ~oof_late[sl]), ("late", oof_late[sl])):
+            w = m[sel].double() * iv
+            stats[g][0] += torch.einsum("nhvk,nhvj,nhv->hkj", u[sel], u[sel], w)
+            stats[g][1] += torch.einsum("nhvk,nhv,nhv->hk", u[sel], r[sel], w)
+            stats[g][2] += float(w.sum())
+
+    def solve(gram, rhs, wsum, kk):
+        eye = torch.eye(kk, dtype=torch.float64) * ANCHOR_RIDGE * max(wsum, 1.0)
+        return torch.linalg.solve(gram[:, :kk, :kk] + eye, rhs[:, :kk].unsqueeze(-1)).squeeze(-1).clamp(0, 1).float()
+
+    pooled = [stats["early"][i] + stats["late"][i] for i in range(3)]
+    theta = {}
+    for name, kk in (("last", 1), ("both", k)):
+        early, late = solve(*stats["early"], kk), solve(*stats["late"], kk)
+        theta[name] = {"early": early, "late": late, "pooled": solve(*pooled, kk), "robust": torch.minimum(early, late)}
+    out = {"_blend": score(torch.cat([blend(val_fc[lo:lo + chunk], val_aff[lo:lo + chunk]) for lo in range(0, len(val_fc), chunk)]))}
+    finite = True
+    for name in ("last", "both"):
+        for fit in ("robust", "pooled"):
+            th, kk = theta[name][fit], theta[name][fit].shape[-1]
+            pred = torch.cat([blend(val_fc[lo:lo + chunk], val_aff[lo:lo + chunk]) for lo in range(0, len(val_fc), chunk)])
+            for lo in range(0, len(val_fc), chunk):
+                sl = slice(lo, lo + chunk)
+                pred[sl] += (anchor_features(val_hist[sl], pred[sl], period)[..., :kk] * th.view(1, h, 1, kk)).sum(-1)
+            finite = finite and bool(torch.isfinite(pred).all())
+            out[f"anchored_{name}_{fit}"] = score(pred)
+            del pred
+    choices = {"anchors": ["last_value", "one_day_before"][:k], "period": period,
+               **{f"weight_{name}_{g}": theta[name][g].tolist() for name in theta for g in theta[name]}}
+    return out, choices, finite
+
+
+def run_anchoring(ds, h, wb, hi, sc, core, fit, ref_constant, topk):
+    """Amendment 2 arms for one job. Caches without usable input windows skip this family and say why in the record,
+    so the amendment 1 arms are never blocked by it. Returns per-arm metrics, choices and integrity checks."""
+    tr, va = wb.train_cache, wb.val_cache
+    if not all("histories" in c and c["histories"].dim() == 3 and c["histories"].shape[2] == c["targets"].shape[2] for c in (tr, va)):
+        return {}, {"skipped": "no usable histories in the caches"}, {}
+    align = {"train": history_alignment_gap(tr, h), "val": history_alignment_gap(va, h)}
+    if not all(not math.isnan(g) and g <= 1e-4 for g in align.values()):
+        return {}, {"skipped": "histories do not line up with targets", "history_alignment": align}, {}
+    weights = topk.weights_fn(topk.wide.fallback_vector(topk.CANDIDATES, core), 3)
+    lam_c = torch.as_tensor(fit["lambda_c"])
+    blend = lambda fc, aff: (fc * weights(aff, lam_c.to(aff.dtype).expand(aff.shape[:-1]))).sum(-1)
+    oof_rows = torch.nonzero(sc["oof_mask"]).flatten()
+    late, split = vintage_split(tr["absolute_window_starts"].long(), oof_rows)
+    arms, choices, finite = anchored_arms(
+        blend, hi["oof_fc"], hi["oof_aff"], hi["oof_target"], hi["oof_tmask"], tr["histories"], oof_rows, late, hi["val_fc"],
+        hi["val_aff"], va["histories"], 1.0 / wb.std.double().square(), STEPS_PER_DAY[ds], CHUNK, lambda p: topk.cf.metrics_of(wb, p))
+    blend_pw = arms.pop("_blend")["per_window_mae"]
+    gap = float((blend_pw - ref_constant).abs().max() / (1.0 + ref_constant.abs().max()))
+    choices.update(split, history_alignment=align, constant_blend_max_gap=gap)
+    return arms, choices, {"anchor_predictions_finite": finite, "constant_blend_matches_score_arms": gap <= 1e-5}
+
+
+def pooled_lambda(sums, inv_var):
+    """sums[part] = (sum of d * e, sum of d^2) per cell [H, V] over the OOF windows of "all", "first" and "second", with
+    d = routed - core and e = target - core. Every cell starts at the single constant and moves toward its own
+    least-squares weight by tau2 / (tau2 + s2). tau2 is the spread of the true weights: the covariance, across cells,
+    of the two half fits, whose noise does not covary. s2 is the cell's sampling variance: the rest of the spread around
+    the constant, divided among cells by their information. All moments weight a cell by its information, sum of d^2
+    over sigma^2, so a cell where the routed and core forecasts hardly differ cannot move them. A cell without data
+    in both halves gets the constant. Returns the clipped weights [H, V] and the fitted quantities."""
+    iv = inv_var.double().view(1, -1)
+    (num, den), (num_a, den_a), (num_b, den_b) = (sums[k] for k in ("all", "first", "second"))
+    info = den * iv
+    const = float((num * iv).sum() / info.sum()) if float(info.sum()) > 0 else 0.0
+    ratio = lambda n, d: torch.where(d > 0, n / d.clamp_min(1e-300), torch.zeros_like(n))
+    cell, first, second = ratio(num, den), ratio(num_a, den_a), ratio(num_b, den_b)
+    both = (den_a > 0) & (den_b > 0)
+    total, tau2, noise, keep = float(info[both].sum()), 0.0, 0.0, torch.zeros_like(cell)
+    if total > 0:
+        w = torch.where(both, info, torch.zeros_like(info)) / total
+        mean = lambda x: float((w * x).sum())
+        tau2 = max(0.0, mean((first - mean(first)) * (second - mean(second))))
+        noise = max(0.0, mean((cell - const).square()) - tau2)
+        if tau2 > 0:
+            s2 = noise * (total / int(both.sum())) / info.clamp_min(1e-300)
+            keep = torch.where(both, tau2 / (tau2 + s2), torch.zeros_like(cell))
+    lam = (const + keep * (cell - const)).clamp(0, 1).float()
+    fits = {"static": cell.clamp(0, 1).float(), "lambda_constant_unclipped": const, "spread_tau2": tau2, "noise_mean": noise,
+            "kept_share_mean": float(keep.mean()), "kept_share_information_weighted": float((keep * info).sum() / info.sum().clamp_min(1e-300)),
+            "cells": cell.numel(), "cells_without_both_halves": int((~both).sum()), "lambda_pooled_mean": float(lam.mean()),
+            "lambda_pooled_share_0": float((lam == 0).float().mean()), "lambda_pooled_share_1": float((lam == 1).float().mean())}
+    return lam, fits
+
+
+def pooled_static_arm(core, routed, blend, oof_fc, oof_aff, oof_y, oof_m, val_fc, val_aff, inv_var, block_length, chunk, score):
+    """core(fc, aff) and routed(fc, aff) -> [n, H, V]; blend(fc, aff, lam [H, V]) -> [n, H, V]. The OOF rows arrive in
+    origin order and are cut at the midpoint, with block_length windows dropped around it so the halves share no
+    target. score(pred) is applied to the pooled prediction and to the plain per-cell blend ("_static"), which must
+    reproduce the static_hv arm. Returns the scores, the fitted quantities and whether every prediction was finite."""
+    n, (h, v) = len(oof_y), oof_y.shape[1:]
+    first_end, second_start = n // 2 - block_length // 2, n // 2 + block_length - block_length // 2
+    sums = {k: [torch.zeros(h, v, dtype=torch.float64), torch.zeros(h, v, dtype=torch.float64)] for k in ("all", "first", "second")}
+    for lo in range(0, n, chunk):
+        sl = slice(lo, lo + chunk)
+        c, m = core(oof_fc[sl], oof_aff[sl]).double(), oof_m[sl].bool()
+        d = torch.where(m, routed(oof_fc[sl], oof_aff[sl]).double() - c, 0.0)
+        e = torch.where(m, oof_y[sl].double() - c, 0.0)
+        row = torch.arange(lo, lo + len(d))
+        for part, sel in (("all", row >= 0), ("first", row < first_end), ("second", row >= second_start)):
+            sums[part][0] += (d[sel] * e[sel]).sum(0)
+            sums[part][1] += d[sel].square().sum(0)
+    lam, fits = pooled_lambda(sums, inv_var)
+    fits.update(oof_rows=n, first_half_rows=max(first_end, 0), second_half_rows=max(n - second_start, 0))
+    out, finite = {}, True
+    for name, weight in ((POOLED_ARM, lam), ("_static", fits.pop("static"))):
+        pred = torch.cat([blend(val_fc[lo:lo + chunk], val_aff[lo:lo + chunk], weight) for lo in range(0, len(val_fc), chunk)])
+        finite = finite and bool(torch.isfinite(pred).all())
+        out[name] = score(pred)
+        del pred
+    return out, fits, finite
+
+
+def run_pooling(wb, hi, core, fit, ref_static, block_length, topk):
+    """Amendment 3 arm for one job. The two reproduction flags say whether this code's per-cell and constant fits are
+    the ones score_arms used; they are recorded, not enforced, so the amendment 1 arms are never blocked by them."""
+    weights = topk.weights_fn(topk.wide.fallback_vector(topk.CANDIDATES, core), 3)
+    blend = lambda fc, aff, lam: (fc * weights(aff, lam.to(aff.dtype).expand(aff.shape[:-1]))).sum(-1)
+    arms, choices, finite = pooled_static_arm(
+        lambda fc, aff: blend(fc, aff, torch.zeros(())), lambda fc, aff: blend(fc, aff, torch.ones(())), blend, hi["oof_fc"],
+        hi["oof_aff"], hi["oof_target"], hi["oof_tmask"], hi["val_fc"], hi["val_aff"], 1.0 / wb.std.double().square(), block_length, CHUNK,
+        lambda p: topk.cf.metrics_of(wb, p))
+    static_gap = float((arms.pop("_static")["per_window_mae"] - ref_static).abs().max() / (1.0 + ref_static.abs().max()))
+    constant_gap = abs(min(max(choices["lambda_constant_unclipped"], 0.0), 1.0) - float(fit["lambda_c"]))
+    choices.update(static_hv_max_gap=static_gap, reproduces_static_hv=static_gap <= 1e-5, lambda_constant_gap=constant_gap,
+                   reproduces_constant=constant_gap <= 1e-5)
+    return arms, choices, {"pooled_predictions_finite": finite}
+
+
+def sha(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
+def result_path(ds, h, seed, ext="json"):
+    return OUT / "_work" / f"{ds}_h{h}" / f"seed{seed}.{ext}"
+
+
+def run_job(ds, h, seed):
+    import experiments.gate_ablation.run_gate_ablation as ga
+    torch_, topk, _, lh = ga.deps()
+    global CHUNK
+    path = result_path(ds, h, seed)
+    if path.exists():
+        if json.loads(path.read_text()).get("integrity", {}).get("ok"):
+            print(f"[offline] {ds} H{h} seed {seed}: already done", flush=True)
+            return
+        stamp = time.strftime("%Y%m%dT%H%M%S", time.gmtime())
+        for old in (path, path.with_suffix(".pt")):
+            if old.exists():
+                old.rename(old.with_name(f"{old.name}.invalid-{stamp}"))
+        print(f"[offline] {ds} H{h} seed {seed}: earlier INVALID record set aside; rerunning", flush=True)
+    t0 = time.monotonic()
+    conf, settings = ga.configure(ds, h)
+    bundle, core, causality, chosen, ckroot, caches = ga.load_unit(ds, h, conf)
+    require(not any("test" in Path(p).name.lower() for p in caches), "a test cache was selected")
+    settings = dict(settings)
+    if h == 12:
+        n_val = int(bundle.val_cache["num_windows"])
+        settings.update(evaluation_windows=n_val, independent_blocks=n_val / 24, interval_eligible=n_val / 24 >= lh.MIN_BLOCKS)
+    require(causality["result"] == "PASS", "router_train forecasts are not out of sample")
+    CHUNK = int(topk.wdec.STAT_CHUNK)
+    before = ga.checkpoint_hashes(ds, h, conf, ckroot)
+    inputs = {Path(p).as_posix(): sha(p) for p in caches}
+    topk.wdec.SCORER_SEED = seed
+    wb = topk.wide.widened(bundle, topk.CANDIDATES)
+    sc = topk.wide.train_scorer_bank_protocol(wb, seed)
+    require(sc["tensors_finite"] and sc["oof_mask_covers_folds"], "scorer integrity failed")
+    hi = topk.wide.head_inputs(wb, sc)
+    for key in ("oof_raw", "val_raw"):
+        sc.pop(key, None)
+    ref_arms, fit, gate_diag = ga.score_arms(wb, hi, core, topk.wdec.STAT_CHUNK)
+    anchor_arms, anchor_choices, anchor_checks = run_anchoring(ds, h, wb, hi, sc, core, fit, ref_arms["constant"]["per_window_mae"], topk)
+    pool_arms, pool_choices, pool_checks = run_pooling(wb, hi, core, fit, ref_arms["static_hv"]["per_window_mae"],
+                                                       int(settings["block_length"]), topk)
+    for key in ("oof_fc", "oof_g", "oof_l", "oof_target", "oof_tmask", "val_g", "val_l"):
+        hi.pop(key, None)
+    fc_tr = wb.forecasts_fn(wb.train_cache, wb.expert_idx).float()
+    preds, choices = offline_arms(
+        fc_tr, wb.train_cache["targets"].float(), wb.train_cache["target_masks"].bool(),
+        wb.train_cache["absolute_window_starts"].long(), torch.nonzero(sc["oof_mask"]).flatten(), sc["fold_bounds"],
+        hi["oof_aff"].float(), hi["val_fc"].float(), wb.val_cache["targets"].float(), wb.val_cache["target_masks"].bool(),
+        hi["val_aff"].float(), int(wb.val_cache["absolute_window_starts"][0]), h, wb.std.float(), int(settings["block_length"]),
+        min_blocks=int(lh.MIN_BLOCKS))
+    arms = {a: topk.cf.metrics_of(wb, p) for a, p in preds.items()}
+    arms.update(anchor_arms)
+    arms.update(pool_arms)
+    arms.update({a: ref_arms[a] for a in REFERENCE_ARMS})
+    choices["anchoring"], choices["pooling"] = anchor_choices, pool_choices
+    gate_path = ga.result_path(ds, h, seed, "pt")
+    anchor = None
+    if gate_path.exists():
+        prior = torch.load(gate_path, map_location="cpu", weights_only=False)["arms"]["full"]["per_window_mae"]
+        anchor = {"gate_ablation_full_exact": bool(torch.equal(prior, ref_arms["full"]["per_window_mae"])),
+                  "max_abs_diff": float((prior - ref_arms["full"]["per_window_mae"]).abs().max())}
+    checks = {"test_set_not_accessed": True, "checkpoints_unchanged": before == ga.checkpoint_hashes(ds, h, conf, ckroot),
+              "inputs_unchanged": all(sha(p) == d for p, d in inputs.items()),
+              "predictions_finite": all(bool(torch.isfinite(p).all()) for p in preds.values()), **anchor_checks, **pool_checks}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save({"arms": {a: {f"per_window_{m}": arms[a][f"per_window_{m}"] for m in ("mae", "mse")} for a in arms},
+                "absolute_window_starts": wb.val_cache["absolute_window_starts"]}, path.with_suffix(".pt"))
+    rec = {"dataset": ds, "horizon": h, "seed": seed, "core": core, "settings": settings, "choices": choices,
+           "arms": {a: {k: float(arms[a][k]) for k in ("mae", "mse")} for a in arms}, "anchor": anchor,
+           "lambda_diagnostics_learned_gate": {k: x for k, x in gate_diag.items() if not torch.is_tensor(x)},
+           "integrity": checks | {"ok": all(checks.values())}, "input_hashes": inputs,
+           "tensor_sha256": sha(path.with_suffix(".pt")), "elapsed_sec": time.monotonic() - t0, "test_set_accessed": False}
+    path.write_text(json.dumps(topk.wdec.jsonable(rec), indent=1))
+    require(all(checks.values()), "unit INVALID; record preserved")
+    print(f"[offline] {ds} H{h} seed {seed}: done in {rec['elapsed_sec']:.0f}s [values withheld until analysis]", flush=True)
+
+
+def analyze():
+    import experiments.gate_ablation.run_gate_ablation as ga
+    torch_, topk, _, lh = ga.deps()
+    units = {}
+    for h in ga.HORIZONS:
+        for ds in ga.DATASETS:
+            found = {s: json.loads(result_path(ds, h, s).read_text()) for s in ga.SEEDS if result_path(ds, h, s).exists()}
+            invalid = sorted(s for s, r in found.items() if not r.get("integrity", {}).get("ok"))
+            recs = {s: r for s, r in found.items() if s not in invalid}
+            seeds = sorted(recs)
+            if not seeds:
+                if invalid:
+                    units[f"{ds}_h{h}"] = {"seeds": [], "invalid_seeds": invalid, "confirmatory": False, "arms": {}, "contrasts": {}}
+                continue
+            runs = {s: torch.load(result_path(ds, h, s, "pt"), map_location="cpu", weights_only=False) for s in seeds}
+            settings = recs[seeds[0]]["settings"]
+            topk.cf.BLOCK_LENGTH, topk.cf.PHASE_K = settings["block_length"], settings["phase_k"]
+            names = list(runs[seeds[0]]["arms"])
+            avg = {a: {m: torch.stack([runs[s]["arms"][a][f"per_window_{m}"] for s in seeds]).mean(0) for m in ("mae", "mse")} for a in names}
+            comp_path = ga.reference_paths(ds, h, 7)[2]
+            if comp_path.exists():
+                saved = torch.load(comp_path, map_location="cpu", weights_only=False)
+                if h == 12 and ds in ga.DATASETS[:3]:
+                    avg["bates_all5"] = {"mae": saved["bates_all5_per_window_mae"]}
+                else:
+                    avg["bates_all5"] = {m: saved["bates_all5"][f"per_window_{m}"] for m in ("mae", "mse")}
+            confirmatory = sorted(seeds) == sorted(ga.SEEDS)
+            unit = {"seeds": seeds, "invalid_seeds": invalid, "confirmatory": confirmatory,
+                    "interval_eligible": bool(settings.get("interval_eligible", True)), "arms": {a: {m: float(x.mean()) for m, x in mm.items()} for a, mm in avg.items()},
+                    "choices_by_seed": {s: recs[s]["choices"] for s in seeds}, "anchor_by_seed": {s: recs[s]["anchor"] for s in seeds},
+                    "contrasts": {}}
+            for a, b, role in CONTRASTS:
+                if a not in avg or b not in avg:
+                    continue
+                for m in ("mae", "mse"):
+                    if m not in avg[b]:
+                        continue
+                    require(avg[a][m].shape == avg[b][m].shape, f"{ds} H{h}: {a} and {b} cover different windows")
+                    paired = topk.cf.paired(avg[a][m], avg[b][m])
+                    cell = {"role": role, "mean_delta": float(avg[a][m].mean() - avg[b][m].mean()),
+                            "relative_pct": float(100 * (avg[a][m].mean() / avg[b][m].mean() - 1)), "paired": paired}
+                    if confirmatory:
+                        deltas = [float(runs[s]["arms"][a][f"per_window_{m}"].mean() - (runs[s]["arms"][b][f"per_window_{m}"].mean()
+                                  if b in runs[s]["arms"] else avg[b][m].mean())) for s in seeds]
+                        cell.update(lh.contrast(paired["block"], float(avg[b][m].mean()), settings["interval_eligible"], deltas))
+                        cell["per_seed_deltas"] = deltas
+                    unit["contrasts"][f"{a}-{b}:{m}"] = cell
+            units[f"{ds}_h{h}"] = unit
+    readings = {}
+    for h in ga.HORIZONS:
+        readings[h] = {}
+        for a, b, role in CONTRASTS:
+            for m in ("mae", "mse"):
+                key = f"{a}-{b}:{m}"
+                cells = {ds: units[f"{ds}_h{h}"]["contrasts"][key] for ds in ga.DATASETS
+                         if f"{ds}_h{h}" in units and units[f"{ds}_h{h}"]["confirmatory"] and key in units[f"{ds}_h{h}"]["contrasts"]}
+                if not cells:
+                    continue
+                absent = [ds for ds in ga.DATASETS if ds not in cells]
+                readings[h][key] = {"role": role, "interval": lh.interval_reading(cells, absent, []),
+                                    "across": lh.across_reading(cells, absent, [])}
+    (OUT / "results.json").write_text(json.dumps(topk.wdec.jsonable({"units": units, "readings": readings,
+                                                                     "test_set_accessed": False}), indent=1))
+    lines = ["# Offline Bates-router experiment", "", "Development evidence on 60-80% blocks. No test access.",
+             "Negative deltas favour the first arm. Confirmatory readings need all five scorer seeds.", "",
+             "| Unit | Valid seeds | Invalid seeds | learned gate | constant (core) | Bates archived | Bates + router, chosen | Bates + router, switch | chosen form | variables routed | switch underpowered |",
+             "| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | --- | --- |"]
+    for name, u in units.items():
+        a = u["arms"]
+        if not u["seeds"]:
+            lines.append(f"| {name} | 0 | {u['invalid_seeds']} | | | | | | | | |")
+            continue
+        c0 = u["choices_by_seed"][u["seeds"][0]]
+        lines.append(f"| {name} | {len(u['seeds'])} | {u['invalid_seeds'] or ''} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | "
+                     f"{a.get('bates_all5', {}).get('mae', float('nan')):.4f} | {a['bates_router_chosen']['mae']:.4f} | "
+                     f"{a['bates_router_switch']['mae']:.4f} | {c0['chosen_form']} | {c0['variables_routed']}/{c0['variables']} | "
+                     f"{c0.get('switch_underpowered')} |")
+    lines += ["", "## Anchoring arms (amendment 2), MAE", "",
+              "| Unit | learned gate | constant (core) | Bates archived | last value, robust | last value, pooled | both anchors, robust | anchors | vintage split |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |"]
+    for name, u in units.items():
+        a = u["arms"]
+        if not u["seeds"] or "anchored_last_robust" not in a:
+            continue
+        an = u["choices_by_seed"][u["seeds"][0]].get("anchoring", {})
+        lines.append(f"| {name} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | {a.get('bates_all5', {}).get('mae', float('nan')):.4f} | "
+                     f"{a['anchored_last_robust']['mae']:.4f} | {a['anchored_last_pooled']['mae']:.4f} | {a['anchored_both_robust']['mae']:.4f} | "
+                     f"{'+'.join(an.get('anchors', []))} | {an.get('vintage_split')} |")
+    lines += ["", "## Pooled static gate (amendment 3), MAE", "",
+              "| Unit | learned gate | constant | per cell (static_hv) | pooled | pooled vs learned gate | kept share | reproduces static_hv / constant |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |"]
+    for name, u in units.items():
+        a = u["arms"]
+        if not u["seeds"] or POOLED_ARM not in a:
+            continue
+        po = u["choices_by_seed"][u["seeds"][0]].get("pooling", {})
+        lines.append(f"| {name} | {a['full']['mae']:.4f} | {a['constant']['mae']:.4f} | {a['static_hv']['mae']:.4f} | {a[POOLED_ARM]['mae']:.4f} | "
+                     f"{100 * (a[POOLED_ARM]['mae'] / a['full']['mae'] - 1):+.2f}% | {po.get('kept_share_mean', float('nan')):.2f} | "
+                     f"{po.get('reproduces_static_hv')} / {po.get('reproduces_constant')} |")
+    rule = {n: u for n, u in units.items() if n.endswith("_h192") and f"{POOLED_ARM}-full:mae" in u["contrasts"]}
+    if rule:
+        cells = {n: u["contrasts"][f"{POOLED_ARM}-full:mae"] for n, u in rule.items()}
+        wins = sorted(n for n, c in cells.items() if c["mean_delta"] < 0)
+        losses = sorted(n for n, c in cells.items() if rule[n]["interval_eligible"]
+                        and float(c["paired"].get("block", {}).get("ci95_low", -1.0)) > 0)
+        complete = len(rule) == len(ga.DATASETS) and all(u["confirmatory"] for u in rule.values())
+        verdict = ("PASS" if len(wins) >= POOLED_WINS_NEEDED and not losses else "FAIL") if complete else "NOT READ: needs every dataset and all five seeds"
+        lines += ["", f"Pass rule at 192 steps (lower MAE than the learned gate on at least {POOLED_WINS_NEEDED} datasets, a significant loss on none): "
+                      f"lower on {len(wins)} of {len(rule)}; significant losses: {', '.join(losses) or 'none'}. **{verdict}**"]
+    for h, rr in readings.items():
+        if rr:
+            lines += ["", f"## Horizon {h}: confirmatory readings (all five seeds)", "",
+                      "| Contrast | Role | Interval reading | Across reading | Exact Wilcoxon p |", "| --- | --- | --- | --- | --- |"]
+            for key, r in rr.items():
+                lines.append(f"| {key} | {r['role']} | {r['interval'].get('label')} | {r['across'].get('label')} | {r['across'].get('wilcoxon_p')} |")
+    lines += ["", "## Contrasts (MAE)", "", "| Unit | Contrast | Role | Delta | Relative | 95% block interval |", "| --- | --- | --- | ---: | ---: | --- |"]
+    for name, u in units.items():
+        for key, cell in u["contrasts"].items():
+            if key.endswith(":mae"):
+                blk = cell["paired"].get("block", {})
+                ci = (f"[{float(blk['ci95_low']):+.5f}, {float(blk['ci95_high']):+.5f}]"
+                      if "ci95_low" in blk and "ci95_high" in blk else "see results.json")
+                lines.append(f"| {name} | {key[:-4]} | {cell['role']} | {cell['mean_delta']:+.5f} | {cell['relative_pct']:+.2f}% | {ci} |")
+    (OUT / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("\n".join(lines))
+
+
+def synthetic(n=900, h=6, v=4, e=5, seed=0, harm_variable=3):
+    """Experts 1 and 2 take turns being good in 30-window regimes and the affinities know which one; the
+    other experts share a common error, so static Bates cannot cancel it and routing should help. In
+    `harm_variable` the affinities point at three experts that share the common error, so routing hurts."""
+    g = torch.Generator().manual_seed(seed)
+    y = torch.randn(n, h, v, generator=g)
+    regime = (torch.arange(n) // 30) % 2
+    common = torch.randn(n, h, v, generator=g)
+    fc = y[..., None] + common[..., None] + 0.3 * torch.randn(n, h, v, e, generator=g)
+    good = 1 + regime
+    idx = torch.arange(n)
+    fc[idx, :, :, good] = y[idx] + 0.3 * torch.randn(n, h, v, generator=g)
+    aff = torch.full((n, h, v, e), 0.1)
+    aff[idx, :, :, good] = 3.0
+    aff[..., 0], aff[..., 3] = 1.0, 0.9
+    aff[:, :, harm_variable] = torch.tensor([3.0, 0.0, 0.0, 2.5, 2.0])
+    return fc, y, torch.ones(n, h, v, dtype=torch.bool), torch.arange(n) + 100, aff
+
+
+def selftest():
+    n, h, n_tr, warm = 900, 6, 600, 120
+    fc, y, m, origins, aff = synthetic(n=n, h=h)
+    tr, va = slice(0, n_tr), slice(n_tr, n)
+    bounds = [(warm + (n_tr - warm) * i // 4, warm + (n_tr - warm) * (i + 1) // 4) for i in range(4)]
+    rows = torch.arange(warm, n_tr)
+    std = torch.ones(fc.shape[2])
+    run = lambda yy: offline_arms(fc[tr], yy[tr], m[tr], origins[tr], rows, bounds, aff[tr][rows], fc[va], yy[va], m[va],
+                                  aff[va], int(origins[n_tr]), h, std, 24)
+    preds, ch = run(y)
+    mae = {k: float((p - y[va]).abs().mean()) for k, p in preds.items()}
+    assert mae["bates_router_static"] < mae["bates_only"], ("routing to the regime's good expert must help", mae)
+    assert ch["variables_routed"] < ch["variables"], ("the switch must turn off the planted harmful variable", ch)
+
+    y_val_poison = y.clone()
+    y_val_poison[va] += 100.0
+    poisoned, _ = run(y_val_poison)
+    assert all(torch.equal(preds[k], poisoned[k]) for k in preds), "router_val targets must not change any prediction"
+
+    lo2 = bounds[1][0]
+    legal = lo2 - h + 1
+    _, _, fold_w, _, cuts = fallback_and_router(fc[tr], y[tr], m[tr], origins[tr], rows, bounds, aff[tr][rows], int(origins[n_tr]), h)
+    mse = (fc[tr][:legal] - y[tr][:legal, ..., None]).square().mean(0)
+    expected = (1 / mse) / (1 / mse).sum(-1, keepdim=True)
+    assert cuts[lo2] == legal and torch.allclose(fold_w[lo2], expected, atol=1e-5), "fold Bates = inverse MSE on its legal prefix"
+    y_later = y.clone()
+    y_later[legal:n_tr] += 7.0
+    _, _, fold_w_later, _, _ = fallback_and_router(fc[tr], y_later[tr], m[tr], origins[tr], rows, bounds, aff[tr][rows], int(origins[n_tr]), h)
+    assert torch.equal(fold_w_later[lo2], fold_w[lo2]), "a fold's Bates fit must not see windows whose targets end inside or after it"
+    assert not torch.equal(fold_w_later[bounds[3][0]], fold_w[bounds[3][0]]), "later folds must see those windows"
+    _, ch_again = run(y)
+    assert ch_again == ch, "deterministic"
+    anchors, pooled = anchor_selftest(), pooled_selftest()
+    print("[offline] selftest PASS", json.dumps({"mae": {k: round(x, 4) for k, x in mae.items()},
+                                                 "choices": {k: ch[k] for k in ("chosen_form", "variables_routed", "variables")},
+                                                 "anchors": anchors, "pooled": pooled}))
+
+
+def pooled_selftest(h=8, v=40, n_val=400, seed=3):
+    """Planted cells with a known weight each. With one shared weight and heavy noise the pooled gate must fall back
+    to the constant; with weights that really differ it must keep them and beat the constant; cells where the routed
+    and core forecasts hardly differ, or that lack data in one half, must get the constant and must not disturb the
+    rest. The per-cell and constant fits it starts from must be closed_form's."""
+    core, routed = lambda fc, aff: fc[..., 0], lambda fc, aff: fc[..., 1]
+    blend = lambda fc, aff, lam: fc[..., 0] + lam * (fc[..., 1] - fc[..., 0])
+
+    def case(n, spread, noise, quiet=0.0, masked=False):
+        g = torch.Generator().manual_seed(seed)
+        lam_true = (0.5 + spread * (torch.rand(h, v, generator=g) - 0.5)).clamp(0, 1)
+        scale = torch.where(torch.rand(h, v, generator=g) < quiet, 0.01, 1.0)
+        fc = torch.randn(n + n_val, h, v, 2, generator=g)
+        fc[..., 1] = fc[..., 0] + scale * torch.randn(n + n_val, h, v, generator=g)
+        y = fc[..., 0] + lam_true * (fc[..., 1] - fc[..., 0]) + noise * torch.randn(n + n_val, h, v, generator=g)
+        m = torch.ones(n, h, v, dtype=torch.bool)
+        if masked:
+            m[n // 2:, 0, 0] = False
+        out, fits, finite = pooled_static_arm(core, routed, blend, fc[:n], fc[:n], y[:n], m, fc[n:], fc[n:], torch.ones(v), 16, 64, lambda p: p)
+        const, static = closed_form(fc[:n, ..., 0], fc[:n, ..., 1], y[:n], m, torch.ones(v))
+        assert finite and abs(min(max(fits["lambda_constant_unclipped"], 0.0), 1.0) - float(const)) < 1e-5, "the constant must be closed_form's"
+        assert torch.allclose(out["_static"], blend(fc[n:], None, static), atol=1e-5), "the per-cell fit must be closed_form's"
+        d = fc[n:, ..., 1] - fc[n:, ..., 0]
+        lam = (out[POOLED_ARM] - fc[n:, ..., 0]).mul(d).sum(0) / d.square().sum(0)
+        err = lambda pred: float((pred - y[n:]).abs().mean())
+        return fits, lam, float(const), scale, {"pooled": err(out[POOLED_ARM]), "static": err(out["_static"]),
+                                               "constant": err(blend(fc[n:], None, const))}
+
+    fits, lam, const, _, mae = case(n=300, spread=0.0, noise=6.0)
+    assert fits["kept_share_mean"] < 0.25 and mae["pooled"] < mae["static"], ("noise must be pooled away", fits, mae)
+    noisy = {"kept_share": round(fits["kept_share_mean"], 3), **{k: round(x, 4) for k, x in mae.items()}}
+    fits, lam, const, _, mae = case(n=1500, spread=1.0, noise=1.0)
+    assert fits["kept_share_mean"] > 0.75 and mae["pooled"] < mae["constant"], ("real differences must be kept", fits, mae)
+    real = {"kept_share": round(fits["kept_share_mean"], 3), **{k: round(x, 4) for k, x in mae.items()}}
+    fits, lam, const, scale, mae = case(n=300, spread=0.0, noise=6.0, quiet=0.3)
+    assert float((lam - const).abs()[scale < 1].max()) < 0.05 and fits["kept_share_mean"] < 0.25, ("near-empty cells must get the constant", fits)
+    fits, lam, const, _, _ = case(n=1500, spread=1.0, noise=1.0, masked=True)
+    assert fits["cells_without_both_halves"] == 1 and abs(float(lam[0, 0]) - min(max(const, 0.0), 1.0)) < 1e-4, "a cell without both halves gets the constant"
+    return {"noise": noisy, "real_differences": real}
+
+
+def anchor_selftest(n=800, h=6, v=3, e=5, n_fit=600, seed=1):
+    """Targets keep a decaying share of the last observed value; the experts ignore it. In the later vintage the
+    experts are broken, which inflates a pooled fit. The early vintage must recover the planted weights, the robust
+    weights must never exceed the pooled ones, and router_val targets must not change any prediction. A second case
+    plants a one-period-before component and checks that the "both" fit finds it."""
+    g = torch.Generator().manual_seed(seed)
+    hist = torch.randn(n, 24, v, generator=g)
+    decay = 0.6 ** torch.arange(1, h + 1).float()
+    y = decay.view(1, h, 1) * hist[:, -1:, :] + 0.5 * torch.randn(n, h, v, generator=g)
+    fc = 0.3 * torch.randn(n, h, v, e, generator=g)
+    late = torch.arange(n) >= n // 2
+    fc[late] += 3.0 * torch.randn(int(late.sum()), h, v, e, generator=g)
+    blend = lambda f, a: f.mean(-1)
+
+    def run(yy, hh, period):
+        return anchored_arms(blend, fc[:n_fit], fc[:n_fit], yy[:n_fit], torch.ones_like(yy[:n_fit], dtype=torch.bool),
+                             hh[:n_fit], torch.arange(n_fit), late[:n_fit], fc[n_fit:], fc[n_fit:], hh[n_fit:], torch.ones(v),
+                             period, 64, lambda p: p)
+
+    preds, ch, finite = run(y, hist, 48)
+    preds.pop("_blend")
+    early, pooled, robust = (torch.tensor(ch[f"weight_last_{k}"])[:, 0] for k in ("early", "pooled", "robust"))
+    assert finite and ch["anchors"] == ["last_value"], "a period longer than the input window must drop the day-before anchor"
+    assert torch.allclose(early, decay, atol=0.08), ("the early vintage must recover the planted weights", early)
+    assert bool((robust <= pooled + 1e-6).all()) and float(pooled[-1]) > 0.3, ("the broken vintage inflates the pooled fit", pooled)
+    assert torch.equal(preds["anchored_last_robust"], preds["anchored_both_robust"]), "without a day-before anchor both = last"
+    poisoned = y.clone()
+    poisoned[n_fit:] += 50.0
+    again, _, _ = run(poisoned, hist, 48)
+    again.pop("_blend")
+    assert all(torch.equal(preds[a], again[a]) for a in preds), "router_val targets must not change any prediction"
+    y2 = 0.5 * hist[:, seasonal_index(24, h, 12), :] + 0.5 * torch.randn(n, h, v, generator=g)
+    _, ch2, _ = run(y2, hist, 12)
+    day = torch.tensor(ch2["weight_both_early"])[:, 1]
+    assert ch2["anchors"] == ["last_value", "one_day_before"] and bool((day > 0.35).all()), ("day-before weight", day)
+    starts = torch.cat([torch.arange(100), torch.arange(150, 250)])
+    late_rows, info = vintage_split(starts, torch.arange(20, 200))
+    assert info["vintage_split"] == "start_jump" and int(late_rows.sum()) == 100, ("vintage edge at the start jump", info)
+    series = torch.randn(400, 2)
+    idx = torch.arange(300)
+    cache = {"absolute_window_starts": idx, "histories": torch.stack([series[i:i + 24] for i in idx]),
+             "targets": torch.stack([series[i + 24:i + 30] for i in idx]), "target_masks": torch.ones(300, 6, 2, dtype=torch.bool)}
+    assert history_alignment_gap(cache, 6) == 0.0, "aligned histories must give a zero gap"
+    cache["histories"] = cache["histories"] * 2.0
+    assert history_alignment_gap(cache, 6) > 1e-3, "rescaled histories must be caught"
+    return {"last_early": [round(float(x), 3) for x in early], "last_pooled": [round(float(x), 3) for x in pooled],
+            "last_robust": [round(float(x), 3) for x in robust], "day_before_early": [round(float(x), 3) for x in day]}
+
+
+def lab(cache, run_dir, seeds, block=24):
+    """Same arms on the throwaway ETTh1 lab (sigma = 1), checked against the lab pipeline's learned gate.
+    `block` is the moving-block length in windows for the switch and the intervals; use about H at long horizons."""
+    sys.path.insert(0, str(Path(run_dir).resolve().parent))
+    import pipeline as P
+    _, horizon, train_raw, val_raw = P.load(cache)
+    train, val = P.Part(train_raw), P.Part(val_raw)
+    pw_gate = dict(np.load(Path(run_dir) / "per_window.npz"))
+    per_window, choices = {}, []
+    for seed in seeds:
+        sv = torch.load(Path(run_dir) / f"scorer_seed{seed}.pt")
+        lo = sv["bounds"][0][0]
+        rows = torch.arange(lo, len(train))
+        preds, ch = offline_arms(train.fc, train.y, torch.ones_like(train.y, dtype=torch.bool), train.origins, rows, sv["bounds"],
+                                 sv["oof_aff"][rows], val.fc, val.y, torch.ones_like(val.y, dtype=torch.bool), sv["val_aff"],
+                                 int(val.origins[0]), horizon, torch.ones(train.y.shape[-1]), block)
+        choices.append({k: ch[k] for k in ("chosen_form", "lambda_constant", "variables_routed", "variables")})
+        for a, p in preds.items():
+            per_window.setdefault(a, []).append((p - val.y).abs().mean((1, 2)).numpy())
+    avg = {a: np.mean(x, 0) for a, x in per_window.items()}
+    avg["learned gate (lab pipeline)"] = pw_gate["full"]
+    avg["core constant (lab pipeline)"] = pw_gate["constant"]
+    out = {"horizon": horizon, "seeds": seeds, "block": block, "choices": choices, "mae": {a: float(x.mean()) for a, x in avg.items()},
+           "vs_learned_gate": {a: P.block_bootstrap(x - avg["learned gate (lab pipeline)"], block=block) for a, x in avg.items()},
+           "vs_bates_only": {a: P.block_bootstrap(x - avg["bates_only"], block=block) for a, x in avg.items()}}
+    print(json.dumps(out, indent=1))
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--run", nargs="*", default=[], help="units like ETTh1:12, or 'all' for the 14 gate-ablation units")
+    ap.add_argument("--seeds", nargs="*", type=int, default=[7])
+    ap.add_argument("--analyze", action="store_true")
+    ap.add_argument("--job", nargs=3, metavar=("DATASET", "HORIZON", "SEED"), help=argparse.SUPPRESS)
+    ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--lab", nargs=2, metavar=("CACHE", "RUN_DIR"))
+    ap.add_argument("--block", type=int, default=24, help="lab mode only: moving-block length in windows")
+    args = ap.parse_args()
+    if args.selftest:
+        return selftest()
+    if args.lab:
+        return lab(args.lab[0], args.lab[1], args.seeds, args.block)
+    if args.analyze:
+        return analyze()
+    if args.job:
+        torch.set_num_threads(int(os.environ.get("OMP_NUM_THREADS", "8")))
+        return run_job(args.job[0], int(args.job[1]), int(args.job[2]))
+    units = args.run
+    if units == ["all"]:
+        import experiments.gate_ablation.run_gate_ablation as ga
+        units = [f"{ds}:{h}" for h in ga.HORIZONS for ds in ga.DATASETS]
+    failed = []
+    for unit in units:
+        ds, h = unit.split(":")
+        for seed in args.seeds:
+            lock = result_path(ds, h, seed, "lock")
+            lock.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            except FileExistsError:
+                print(f"[offline] {ds} H{h} seed {seed}: locked by another runner ({lock}); skipped", flush=True)
+                continue
+            try:
+                os.write(fd, str(os.getpid()).encode())
+                os.close(fd)
+                code = subprocess.run([sys.executable, "-m", "experiments.offline_bates_router.run_offline_bates_router",
+                                       "--job", ds, str(h), str(seed)], cwd=OUT.parents[1]).returncode
+            finally:
+                lock.unlink(missing_ok=True)
+            if code != 0:
+                failed.append(f"{ds}:{h} seed {seed} (exit {code})")
+    print(f"[offline] finished; {len(failed)} failed" + (": " + "; ".join(failed) if failed else ""), flush=True)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,137 @@
+{
+  "mode": "qk",
+  "model": "Q/K expert scoring",
+  "validation_mae_mean": 0.3717903792858124,
+  "validation_mae_std": 0.0,
+  "validation_mse_mean": 0.3174768388271332,
+  "validation_mse_std": 0.0,
+  "average_queries_mean": 1.8438514471054077,
+  "average_queries_std": 0.0,
+  "parameter_count": 72896,
+  "per_seed": [
+    {
+      "mode": "qk",
+      "model": "Q/K expert scoring",
+      "seed": 7,
+      "best_epoch": 1,
+      "validation_mae": 0.3717903792858124,
+      "validation_mse": 0.3174768388271332,
+      "raw_validation_mae": 1.2671704292297363,
+      "raw_validation_mse": 5.116839408874512,
+      "average_queries": 1.8438514471054077,
+      "top1_expert_accuracy": 20.158672332763672,
+      "top2_oracle_coverage": 41.32708258204111,
+      "oracle_next_expert_accuracy": 21.53334637199296,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention_smoke\\qk\\seed_7\\best_attention_router.pt",
+      "parameter_count": 72896
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "raw_mae": 1.2671704292297363,
+      "raw_mse": 5.116839408874512,
+      "mae": 0.3717903792858124,
+      "mse": 0.3174768388271332,
+      "average_queries": 1.8438514471054077,
+      "top1_expert_accuracy": 20.158672332763672,
+      "top2_oracle_coverage": 41.32708258204111,
+      "oracle_next_expert_accuracy": 21.53334637199296,
+      "query_count_percent": {
+        "1": 17.634331049404977,
+        "2": 80.34619545618463,
+        "3": 2.019473494410386,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 3.9307609087630726,
+        "PatchTST": 67.72448611611972,
+        "iTransformer": 28.344752975117203,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.0,
+        "PatchTST": 15.109989181391994,
+        "iTransformer": 67.25567976920303,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 0.0,
+        "PatchTST": 18.345008756567424,
+        "iTransformer": 81.65499124343258,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 3.9307609087630726,
+        "PatchTST": 84.45726649837721,
+        "iTransformer": 95.60043274432023,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.3966822935448972
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 17.634331049404977,
+        "3": 97.54816112084063,
+        "4": 100.0,
+        "5": 0.0
+      },
+      "qk_diagnostics": {
+        "qk_score_mean_by_expert": {
+          "DLinear": -0.42017547925355736,
+          "PatchTST": -0.7030098015728721,
+          "iTransformer": -0.5851577093974958,
+          "TimesNet": -0.5353227447306499,
+          "ModernTCN": -0.8217644672051301
+        },
+        "qk_attention_probability_mean_by_expert": {
+          "DLinear": 0.27953213505189084,
+          "PatchTST": 0.2584149182526528,
+          "iTransformer": 0.2730267990560782,
+          "TimesNet": 0.2506060108030479,
+          "ModernTCN": 0.21198035320255104
+        },
+        "attention_entropy_by_step": {
+          "1": 1.5501436986864752,
+          "2": 1.3753070712218507,
+          "3": 1.0979811272040767,
+          "4": 0.6928183351244245,
+          "5": NaN
+        },
+        "qk_argmax_vs_counterfactual_best_accuracy": 23.142277453715447,
+        "score_utility_pearson": -0.7991021153280254,
+        "chosen_expert_improves_percent": 83.35615098767846,
+        "chosen_expert_actual_utility_mean": 2.3359005288464108,
+        "oracle_best_available_utility_mean": 2.495057551677321,
+        "by_routing_step": {
+          "first": {
+            "count": 2773,
+            "oracle_next_accuracy": 20.15867291741796,
+            "chosen_improves_percent": 99.9639379733141,
+            "chosen_actual_utility_mean": 4.2751037560771445,
+            "oracle_best_utility_mean": 4.470595501881836,
+            "attention_entropy_mean": 1.5501436986864752
+          },
+          "second": {
+            "count": 2284,
+            "oracle_next_accuracy": 23.204903677758317,
+            "chosen_improves_percent": 64.01050788091068,
+            "chosen_actual_utility_mean": 0.038832430324913535,
+            "oracle_best_utility_mean": 0.1550150956899815,
+            "attention_entropy_mean": 1.3743228621115409
+          },
+          "third_plus": {
+            "count": 56,
+            "oracle_next_accuracy": 21.428571428571427,
+            "chosen_improves_percent": 50.0,
+            "chosen_actual_utility_mean": -0.0017246870057923453,
+            "oracle_best_utility_mean": 0.11095457949808665,
+            "attention_entropy_mean": 1.0962134429386683
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "config": {
+      "hidden": 32,
+      "lr": 0.001,
+      "epochs": 20,
+      "weight_decay": 0.001
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "hidden": 64,
+      "lr": 0.001,
+      "epochs": 30,
+      "weight_decay": 0.001
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "hidden": 32,
+      "lr": 0.003,
+      "epochs": 30,
+      "weight_decay": 0.01
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "hidden": 64,
+      "lr": 0.0003,
+      "epochs": 40,
+      "weight_decay": 0.01
+    },
+    "oof_mae": 0.2710334141738713
+  },
+  {
+    "config": {
+      "hidden": 128,
+      "lr": 0.001,
+      "epochs": 20,
+      "weight_decay": 0.01
+    },
+    "oof_mae": 0.2710334141738713
+  }
+]

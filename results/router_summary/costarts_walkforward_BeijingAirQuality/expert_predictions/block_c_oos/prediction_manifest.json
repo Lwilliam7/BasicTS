@@ -1,0 +1,80 @@
+{
+  "stage": "block_ab",
+  "predict_role": "block_c_oos",
+  "expert_training_range": {
+    "start": 0,
+    "end": 14400
+  },
+  "prediction_range": {
+    "name": "block_c",
+    "start_fraction": 0.4,
+    "end_fraction": 0.6000000000000001,
+    "start": 14400,
+    "end": 21600
+  },
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "rows": [
+    {
+      "expert": "DLinear",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\DLinear\\best_expert.pt",
+      "checkpoint_sha256": "d3f571a60d1436a5fc36bb09c8900808595784daae4f79217ae9ee868fb96a4b",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_BeijingAirQuality\\expert_predictions\\block_c_oos\\DLinear.npy",
+      "prediction_sha256": "a443d12b83a827d40119715149dd86b450d8fc23333c088c9669efaf633aca3d",
+      "num_windows": 7093
+    },
+    {
+      "expert": "PatchTST",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "59702a282b66fdee5c72efd222bc8cbb550b4e98221b9ba83ada237c134ffacd",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_BeijingAirQuality\\expert_predictions\\block_c_oos\\PatchTST.npy",
+      "prediction_sha256": "818ba3df11cce0946bac1dac88263eaaeac185e56a7c9889be05b289a3b8160b",
+      "num_windows": 7093
+    },
+    {
+      "expert": "iTransformer",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "a86faf7172e4e7290d2c651585a79051da02328ae4435a986b420630a01b999a",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_BeijingAirQuality\\expert_predictions\\block_c_oos\\iTransformer.npy",
+      "prediction_sha256": "32637c5c4b5d54796d86a798ebdd1ce3ae10bc36d7ba49a2224597a516dd9e7c",
+      "num_windows": 7093
+    },
+    {
+      "expert": "TimesNet",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "d31546ba38a1ea327ba19ba7f696cd7db4c4fc4dfaa0faa68dbc08796fa5cfc1",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_BeijingAirQuality\\expert_predictions\\block_c_oos\\TimesNet.npy",
+      "prediction_sha256": "242ad808203a3fea5bda0647ec5776afb89368d61874de994bba6e8358793f1a",
+      "num_windows": 7093
+    },
+    {
+      "expert": "ModernTCN",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\ModernTCN\\best_expert.pt",
+      "checkpoint_sha256": "0c9f053c0d6d0c0e4ee362ba7ade9f57f5c259441a3f9ef8e8a6b3a14af6cdd3",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_BeijingAirQuality\\expert_predictions\\block_c_oos\\ModernTCN.npy",
+      "prediction_sha256": "8a57c184103b13c2a2bcf79616afdf9c1f4e59a8a629c489faa3b88e0215b2d3",
+      "num_windows": 7093
+    }
+  ],
+  "expert_checkpoint_paths": {
+    "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\DLinear\\best_expert.pt",
+    "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\PatchTST\\best_expert.pt",
+    "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\iTransformer\\best_expert.pt",
+    "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\TimesNet\\best_expert.pt",
+    "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_BeijingAirQuality\\block_ab\\ModernTCN\\best_expert.pt"
+  },
+  "expert_checkpoint_hashes": {
+    "DLinear": "d3f571a60d1436a5fc36bb09c8900808595784daae4f79217ae9ee868fb96a4b",
+    "PatchTST": "59702a282b66fdee5c72efd222bc8cbb550b4e98221b9ba83ada237c134ffacd",
+    "iTransformer": "a86faf7172e4e7290d2c651585a79051da02328ae4435a986b420630a01b999a",
+    "TimesNet": "d31546ba38a1ea327ba19ba7f696cd7db4c4fc4dfaa0faa68dbc08796fa5cfc1",
+    "ModernTCN": "0c9f053c0d6d0c0e4ee362ba7ade9f57f5c259441a3f9ef8e8a6b3a14af6cdd3"
+  },
+  "created_at_utc": "2026-08-20T23:37:01.240294+00:00",
+  "git_commit": "4bba4b6389f5a362a01dcda6e8284456e5d543d2"
+}

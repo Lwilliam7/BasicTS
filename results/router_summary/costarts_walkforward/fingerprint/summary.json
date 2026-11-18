@@ -1,0 +1,1249 @@
+{
+  "method": "Walk-forward Sequential COSTAR-TS fingerprint comparison",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "modes": [
+    {
+      "mode": "embedding_only",
+      "model": "Embedding only",
+      "validation_mae_mean": 0.374123215675354,
+      "validation_mae_std": 0.0005258850451407402,
+      "validation_mse_mean": 0.3177596926689148,
+      "validation_mse_std": 0.0009920023436748222,
+      "average_queries_mean": 1.3085467100143433,
+      "average_queries_std": 0.3120844485953445,
+      "parameter_count": 65029,
+      "per_seed": [
+        {
+          "mode": "embedding_only",
+          "model": "Embedding only",
+          "seed": 7,
+          "best_epoch": 2,
+          "validation_mae": 0.37411895394325256,
+          "validation_mse": 0.31838473677635193,
+          "raw_validation_mae": 1.2748943567276,
+          "raw_validation_mse": 5.101809024810791,
+          "average_queries": 1.0421925783157349,
+          "top1_expert_accuracy": 26.397404074668884,
+          "top2_oracle_coverage": 26.938333934367108,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_only\\seed_7\\best_fingerprint_router.pt",
+          "parameter_count": 65029
+        },
+        {
+          "mode": "embedding_only",
+          "model": "Embedding only",
+          "seed": 11,
+          "best_epoch": 1,
+          "validation_mae": 0.37422317266464233,
+          "validation_mse": 0.3179476261138916,
+          "raw_validation_mae": 1.2830703258514404,
+          "raw_validation_mse": 5.195688247680664,
+          "average_queries": 1.8957808017730713,
+          "top1_expert_accuracy": 24.377930164337158,
+          "top2_oracle_coverage": 39.56004327443202,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_only\\seed_11\\best_fingerprint_router.pt",
+          "parameter_count": 65029
+        },
+        {
+          "mode": "embedding_only",
+          "model": "Embedding only",
+          "seed": 13,
+          "best_epoch": 11,
+          "validation_mae": 0.3748342990875244,
+          "validation_mse": 0.3189614415168762,
+          "raw_validation_mae": 1.2767422199249268,
+          "raw_validation_mse": 5.15703010559082,
+          "average_queries": 1.3133790493011475,
+          "top1_expert_accuracy": 25.604039430618286,
+          "top2_oracle_coverage": 31.121529029931484,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_only\\seed_13\\best_fingerprint_router.pt",
+          "parameter_count": 65029
+        },
+        {
+          "mode": "embedding_only",
+          "model": "Embedding only",
+          "seed": 17,
+          "best_epoch": 4,
+          "validation_mae": 0.3731994032859802,
+          "validation_mse": 0.31603798270225525,
+          "raw_validation_mae": 1.2732393741607666,
+          "raw_validation_mse": 5.07719612121582,
+          "average_queries": 1.0504868030548096,
+          "top1_expert_accuracy": 25.063109397888184,
+          "top2_oracle_coverage": 25.928597187161916,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_only\\seed_17\\best_fingerprint_router.pt",
+          "parameter_count": 65029
+        },
+        {
+          "mode": "embedding_only",
+          "model": "Embedding only",
+          "seed": 19,
+          "best_epoch": 14,
+          "validation_mae": 0.3742402493953705,
+          "validation_mse": 0.317466676235199,
+          "raw_validation_mae": 1.274924397468567,
+          "raw_validation_mse": 5.11469841003418,
+          "average_queries": 1.2408943176269531,
+          "top1_expert_accuracy": 24.089433252811432,
+          "top2_oracle_coverage": 28.416877028489,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_only\\seed_19\\best_fingerprint_router.pt",
+          "parameter_count": 65029
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "raw_mae": 1.2748943567276,
+          "raw_mse": 5.101809024810791,
+          "mae": 0.37411895394325256,
+          "mse": 0.31838473677635193,
+          "average_queries": 1.0421925783157349,
+          "top1_expert_accuracy": 26.397404074668884,
+          "top2_oracle_coverage": 26.938333934367108,
+          "query_count_percent": {
+            "1": 96.61016949152543,
+            "2": 2.560403894698882,
+            "3": 0.8294266137756942,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 1.7670393076090876,
+            "PatchTST": 22.394518571943742,
+            "iTransformer": 75.83844212044717,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.8654886404615939,
+            "PatchTST": 0.0,
+            "iTransformer": 2.5243418680129825,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 25.53191489361702,
+            "PatchTST": 0.0,
+            "iTransformer": 74.46808510638297,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 2.6325279480706816,
+            "PatchTST": 22.394518571943742,
+            "iTransformer": 78.36278398846015,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.8294266137756942
+          }
+        },
+        "11": {
+          "raw_mae": 1.2830703258514404,
+          "raw_mse": 5.195688247680664,
+          "mae": 0.37422317266464233,
+          "mse": 0.3179476261138916,
+          "average_queries": 1.8957808017730713,
+          "top1_expert_accuracy": 24.377930164337158,
+          "top2_oracle_coverage": 39.56004327443202,
+          "query_count_percent": {
+            "1": 19.87017670393076,
+            "2": 70.6815723043635,
+            "3": 9.448250991705734,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 12.188965019834114,
+            "iTransformer": 87.81103498016589,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 73.89109267940859,
+            "PatchTST": 0.0,
+            "iTransformer": 6.238730616660656,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 92.21422142214222,
+            "PatchTST": 0.0,
+            "iTransformer": 7.785778577857786,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 79.08402452217814,
+            "PatchTST": 12.802019473494411,
+            "iTransformer": 97.51172015867292,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.18031013342949873
+          }
+        },
+        "13": {
+          "raw_mae": 1.2767422199249268,
+          "raw_mse": 5.15703010559082,
+          "mae": 0.3748342990875244,
+          "mse": 0.3189614415168762,
+          "average_queries": 1.3133790493011475,
+          "top1_expert_accuracy": 25.604039430618286,
+          "top2_oracle_coverage": 31.121529029931484,
+          "query_count_percent": {
+            "1": 72.1961774251713,
+            "2": 24.66642625315543,
+            "3": 2.7407140281283806,
+            "4": 0.3966822935448972,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 5.62567616300036,
+            "PatchTST": 4.904435629282366,
+            "iTransformer": 89.46988820771728,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 23.836999639379734,
+            "PatchTST": 0.3966822935448972,
+            "iTransformer": 2.993148214929679,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.576992426974396
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 85.73281452658884,
+            "PatchTST": 1.4267185473411155,
+            "iTransformer": 10.765239948119326,
+            "TimesNet": 0.0,
+            "ModernTCN": 2.0752269779507135
+          },
+          "expert_usage_percent": {
+            "DLinear": 30.07573025604039,
+            "PatchTST": 5.481428056256761,
+            "iTransformer": 93.18427695636495,
+            "TimesNet": 0.0,
+            "ModernTCN": 2.5964659213847816
+          }
+        },
+        "17": {
+          "raw_mae": 1.2732393741607666,
+          "raw_mse": 5.07719612121582,
+          "mae": 0.3731994032859802,
+          "mse": 0.31603798270225525,
+          "average_queries": 1.0504868030548096,
+          "top1_expert_accuracy": 25.063109397888184,
+          "top2_oracle_coverage": 25.928597187161916,
+          "query_count_percent": {
+            "1": 94.98737829065993,
+            "2": 4.976559682654165,
+            "3": 0.03606202668589975,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 39.05517490082943,
+            "iTransformer": 60.83663901911287,
+            "TimesNet": 0.10818608005769924,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.0,
+            "PatchTST": 0.0,
+            "iTransformer": 5.012621709340065,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 0.0,
+            "PatchTST": 0.0,
+            "iTransformer": 100.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 39.05517490082943,
+            "iTransformer": 65.84926072845293,
+            "TimesNet": 0.144248106743599,
+            "ModernTCN": 0.0
+          }
+        },
+        "19": {
+          "raw_mae": 1.274924397468567,
+          "raw_mse": 5.11469841003418,
+          "mae": 0.3742402493953705,
+          "mse": 0.317466676235199,
+          "average_queries": 1.2408943176269531,
+          "top1_expert_accuracy": 24.089433252811432,
+          "top2_oracle_coverage": 28.416877028489,
+          "query_count_percent": {
+            "1": 83.55571583122972,
+            "2": 9.448250991705734,
+            "3": 6.346916696718355,
+            "4": 0.6491164803461954,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 1.9473494410385863,
+            "PatchTST": 26.721961774251714,
+            "iTransformer": 66.85899747565813,
+            "TimesNet": 2.163721601153985,
+            "ModernTCN": 2.307969707897584
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 9.95311936530833,
+            "PatchTST": 2.7407140281283806,
+            "iTransformer": 2.3440317345834836,
+            "TimesNet": 0.6851785070320952,
+            "ModernTCN": 0.7212405337179949
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 60.526315789473685,
+            "PatchTST": 16.666666666666668,
+            "iTransformer": 14.25438596491228,
+            "TimesNet": 4.166666666666667,
+            "ModernTCN": 4.385964912280702
+          },
+          "expert_usage_percent": {
+            "DLinear": 13.342949873782906,
+            "PatchTST": 34.51135953840606,
+            "iTransformer": 69.34727731698521,
+            "TimesNet": 3.4980165885322756,
+            "ModernTCN": 3.389830508474576
+          }
+        }
+      }
+    },
+    {
+      "mode": "fingerprint_only",
+      "model": "Fingerprint only",
+      "validation_mae_mean": 0.37744174599647523,
+      "validation_mae_std": 0.0014889025809033596,
+      "validation_mse_mean": 0.32368741631507875,
+      "validation_mse_std": 0.0020033212418292794,
+      "average_queries_mean": 1.3197259187698365,
+      "average_queries_std": 0.28463942494867306,
+      "parameter_count": 45893,
+      "per_seed": [
+        {
+          "mode": "fingerprint_only",
+          "model": "Fingerprint only",
+          "seed": 7,
+          "best_epoch": 4,
+          "validation_mae": 0.37723925709724426,
+          "validation_mse": 0.32448136806488037,
+          "raw_validation_mae": 1.291905164718628,
+          "raw_validation_mse": 5.308241844177246,
+          "average_queries": 1.768481731414795,
+          "top1_expert_accuracy": 23.1157585978508,
+          "top2_oracle_coverage": 32.60007212405337,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\fingerprint_only\\seed_7\\best_fingerprint_router.pt",
+          "parameter_count": 45893
+        },
+        {
+          "mode": "fingerprint_only",
+          "model": "Fingerprint only",
+          "seed": 11,
+          "best_epoch": 1,
+          "validation_mae": 0.37828660011291504,
+          "validation_mse": 0.3237941861152649,
+          "raw_validation_mae": 1.2938750982284546,
+          "raw_validation_mse": 5.273052215576172,
+          "average_queries": 1.1330689191818237,
+          "top1_expert_accuracy": 21.601153910160065,
+          "top2_oracle_coverage": 24.630364226469528,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\fingerprint_only\\seed_11\\best_fingerprint_router.pt",
+          "parameter_count": 45893
+        },
+        {
+          "mode": "fingerprint_only",
+          "model": "Fingerprint only",
+          "seed": 13,
+          "best_epoch": 2,
+          "validation_mae": 0.37905722856521606,
+          "validation_mse": 0.32663702964782715,
+          "raw_validation_mae": 1.292042851448059,
+          "raw_validation_mse": 5.2913923263549805,
+          "average_queries": 1.5438153743743896,
+          "top1_expert_accuracy": 20.663541555404663,
+          "top2_oracle_coverage": 32.92463036422647,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\fingerprint_only\\seed_13\\best_fingerprint_router.pt",
+          "parameter_count": 45893
+        },
+        {
+          "mode": "fingerprint_only",
+          "model": "Fingerprint only",
+          "seed": 17,
+          "best_epoch": 1,
+          "validation_mae": 0.3779207170009613,
+          "validation_mse": 0.3230490982532501,
+          "raw_validation_mae": 1.2877826690673828,
+          "raw_validation_mse": 5.226500511169434,
+          "average_queries": 1.0919581651687622,
+          "top1_expert_accuracy": 25.27948021888733,
+          "top2_oracle_coverage": 26.83014785430941,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\fingerprint_only\\seed_17\\best_fingerprint_router.pt",
+          "parameter_count": 45893
+        },
+        {
+          "mode": "fingerprint_only",
+          "model": "Fingerprint only",
+          "seed": 19,
+          "best_epoch": 3,
+          "validation_mae": 0.37470492720603943,
+          "validation_mse": 0.32047539949417114,
+          "raw_validation_mae": 1.2776998281478882,
+          "raw_validation_mse": 5.183667182922363,
+          "average_queries": 1.0613054037094116,
+          "top1_expert_accuracy": 26.000720262527466,
+          "top2_oracle_coverage": 27.226830147854308,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\fingerprint_only\\seed_19\\best_fingerprint_router.pt",
+          "parameter_count": 45893
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "raw_mae": 1.291905164718628,
+          "raw_mse": 5.308241844177246,
+          "mae": 0.37723925709724426,
+          "mse": 0.32448136806488037,
+          "average_queries": 1.768481731414795,
+          "top1_expert_accuracy": 23.1157585978508,
+          "top2_oracle_coverage": 32.60007212405337,
+          "query_count_percent": {
+            "1": 53.768481788676525,
+            "2": 17.850703209520375,
+            "3": 26.144969347277318,
+            "4": 2.2358456545257845,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 7.248467363865849,
+            "PatchTST": 4.21925712225027,
+            "iTransformer": 88.31590335376848,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.21637216011539848
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 32.56401009736747,
+            "PatchTST": 10.09736747205193,
+            "iTransformer": 1.0457987738910928,
+            "TimesNet": 0.0,
+            "ModernTCN": 2.5243418680129825
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 70.4368174726989,
+            "PatchTST": 21.8408736349454,
+            "iTransformer": 2.2620904836193447,
+            "TimesNet": 0.0,
+            "ModernTCN": 5.46021840873635
+          },
+          "expert_usage_percent": {
+            "DLinear": 45.18571943743238,
+            "PatchTST": 35.557158312297155,
+            "iTransformer": 89.86657050126217,
+            "TimesNet": 0.0,
+            "ModernTCN": 6.238730616660656
+          }
+        },
+        "11": {
+          "raw_mae": 1.2938750982284546,
+          "raw_mse": 5.273052215576172,
+          "mae": 0.37828660011291504,
+          "mse": 0.3237941861152649,
+          "average_queries": 1.1330689191818237,
+          "top1_expert_accuracy": 21.601153910160065,
+          "top2_oracle_coverage": 24.630364226469528,
+          "query_count_percent": {
+            "1": 89.61413631446088,
+            "2": 8.907320591417237,
+            "3": 0.43274432023079695,
+            "4": 0.6491164803461954,
+            "5": 0.3966822935448972
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 90.91236927515327,
+            "iTransformer": 9.087630724846736,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 6.959971150378651,
+            "PatchTST": 0.0,
+            "iTransformer": 3.2095203750450776,
+            "TimesNet": 0.21637216011539848,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 67.01388888888889,
+            "PatchTST": 0.0,
+            "iTransformer": 30.90277777777778,
+            "TimesNet": 2.0833333333333335,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 7.609087630724847,
+            "PatchTST": 90.91236927515327,
+            "iTransformer": 12.802019473494411,
+            "TimesNet": 1.4785430941218896,
+            "ModernTCN": 0.5048683736025965
+          }
+        },
+        "13": {
+          "raw_mae": 1.292042851448059,
+          "raw_mse": 5.2913923263549805,
+          "mae": 0.37905722856521606,
+          "mse": 0.32663702964782715,
+          "average_queries": 1.5438153743743896,
+          "top1_expert_accuracy": 20.663541555404663,
+          "top2_oracle_coverage": 32.92463036422647,
+          "query_count_percent": {
+            "1": 46.77244861161197,
+            "2": 52.07356653443924,
+            "3": 1.153984853948792,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 16.15578795528309,
+            "PatchTST": 79.69707897583844,
+            "iTransformer": 0.25243418680129825,
+            "TimesNet": 0.0,
+            "ModernTCN": 3.8946988820771726
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.0,
+            "PatchTST": 8.51063829787234,
+            "iTransformer": 44.71691309051569,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 0.0,
+            "PatchTST": 15.989159891598916,
+            "iTransformer": 84.01084010840108,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 16.15578795528309,
+            "PatchTST": 88.20771727371078,
+            "iTransformer": 46.12333213126578,
+            "TimesNet": 0.0,
+            "ModernTCN": 3.8946988820771726
+          }
+        },
+        "17": {
+          "raw_mae": 1.2877826690673828,
+          "raw_mse": 5.226500511169434,
+          "mae": 0.3779207170009613,
+          "mse": 0.3230490982532501,
+          "average_queries": 1.0919581651687622,
+          "top1_expert_accuracy": 25.27948021888733,
+          "top2_oracle_coverage": 26.83014785430941,
+          "query_count_percent": {
+            "1": 93.43671114316625,
+            "2": 3.9307609087630726,
+            "3": 2.6325279480706816,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 20.843851424450055,
+            "PatchTST": 10.674359899026324,
+            "iTransformer": 68.48178867652362,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 3.2095203750450776,
+            "PatchTST": 0.288496213487198,
+            "iTransformer": 3.0652722683014786,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 48.9010989010989,
+            "PatchTST": 4.395604395604396,
+            "iTransformer": 46.7032967032967,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 26.649837720879912,
+            "PatchTST": 10.998918139199423,
+            "iTransformer": 71.5470609448251,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          }
+        },
+        "19": {
+          "raw_mae": 1.2776998281478882,
+          "raw_mse": 5.183667182922363,
+          "mae": 0.37470492720603943,
+          "mse": 0.32047539949417114,
+          "average_queries": 1.0613054037094116,
+          "top1_expert_accuracy": 26.000720262527466,
+          "top2_oracle_coverage": 27.226830147854308,
+          "query_count_percent": {
+            "1": 95.20375045077533,
+            "2": 3.4619545618463756,
+            "3": 1.3342949873782906,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 14.857554994590696,
+            "iTransformer": 84.890010818608,
+            "TimesNet": 0.25243418680129825,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 1.5146051208077893,
+            "PatchTST": 2.668589974756581,
+            "iTransformer": 0.6130544536602958,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 31.57894736842105,
+            "PatchTST": 55.6390977443609,
+            "iTransformer": 12.781954887218046,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 2.84890010818608,
+            "PatchTST": 17.52614496934728,
+            "iTransformer": 85.5030652722683,
+            "TimesNet": 0.25243418680129825,
+            "ModernTCN": 0.0
+          }
+        }
+      }
+    },
+    {
+      "mode": "embedding_fingerprint",
+      "model": "Embedding + Fingerprint",
+      "validation_mae_mean": 0.3770561754703522,
+      "validation_mae_std": 0.002351479354020431,
+      "validation_mse_mean": 0.3240023136138916,
+      "validation_mse_std": 0.0033571789039159505,
+      "average_queries_mean": 1.1168409824371337,
+      "average_queries_std": 0.14906173930744546,
+      "parameter_count": 81669,
+      "per_seed": [
+        {
+          "mode": "embedding_fingerprint",
+          "model": "Embedding + Fingerprint",
+          "seed": 7,
+          "best_epoch": 4,
+          "validation_mae": 0.37521666288375854,
+          "validation_mse": 0.32251763343811035,
+          "raw_validation_mae": 1.2780144214630127,
+          "raw_validation_mse": 5.203719615936279,
+          "average_queries": 1.005769968032837,
+          "top1_expert_accuracy": 24.45005476474762,
+          "top2_oracle_coverage": 24.52217814641183,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_7\\best_fingerprint_router.pt",
+          "parameter_count": 81669
+        },
+        {
+          "mode": "embedding_fingerprint",
+          "model": "Embedding + Fingerprint",
+          "seed": 11,
+          "best_epoch": 1,
+          "validation_mae": 0.37584006786346436,
+          "validation_mse": 0.3209950923919678,
+          "raw_validation_mae": 1.282692551612854,
+          "raw_validation_mse": 5.178388595581055,
+          "average_queries": 1.0176703929901123,
+          "top1_expert_accuracy": 24.91886019706726,
+          "top2_oracle_coverage": 25.640100973674723,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_11\\best_fingerprint_router.pt",
+          "parameter_count": 81669
+        },
+        {
+          "mode": "embedding_fingerprint",
+          "model": "Embedding + Fingerprint",
+          "seed": 13,
+          "best_epoch": 5,
+          "validation_mae": 0.3754856288433075,
+          "validation_mse": 0.3225458264350891,
+          "raw_validation_mae": 1.2841119766235352,
+          "raw_validation_mse": 5.240218639373779,
+          "average_queries": 1.3862242698669434,
+          "top1_expert_accuracy": 24.738550186157227,
+          "top2_oracle_coverage": 31.51821132347638,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_13\\best_fingerprint_router.pt",
+          "parameter_count": 81669
+        },
+        {
+          "mode": "embedding_fingerprint",
+          "model": "Embedding + Fingerprint",
+          "seed": 17,
+          "best_epoch": 2,
+          "validation_mae": 0.38156211376190186,
+          "validation_mse": 0.33053267002105713,
+          "raw_validation_mae": 1.3114235401153564,
+          "raw_validation_mse": 5.456186771392822,
+          "average_queries": 1.0018031597137451,
+          "top1_expert_accuracy": 21.060223877429962,
+          "top2_oracle_coverage": 21.060223584565453,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_17\\best_fingerprint_router.pt",
+          "parameter_count": 81669
+        },
+        {
+          "mode": "embedding_fingerprint",
+          "model": "Embedding + Fingerprint",
+          "seed": 19,
+          "best_epoch": 1,
+          "validation_mae": 0.3771764039993286,
+          "validation_mse": 0.32342034578323364,
+          "raw_validation_mae": 1.2893686294555664,
+          "raw_validation_mse": 5.227509021759033,
+          "average_queries": 1.1727371215820312,
+          "top1_expert_accuracy": 23.764875531196594,
+          "top2_oracle_coverage": 26.685899747565813,
+          "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\fingerprint\\embedding_fingerprint\\seed_19\\best_fingerprint_router.pt",
+          "parameter_count": 81669
+        }
+      ],
+      "best_metrics_by_seed": {
+        "7": {
+          "raw_mae": 1.2780144214630127,
+          "raw_mse": 5.203719615936279,
+          "mae": 0.37521666288375854,
+          "mse": 0.32251763343811035,
+          "average_queries": 1.005769968032837,
+          "top1_expert_accuracy": 24.45005476474762,
+          "top2_oracle_coverage": 24.52217814641183,
+          "query_count_percent": {
+            "1": 99.4590695997115,
+            "2": 0.5048683736025965,
+            "3": 0.03606202668589975,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 58.276235124413994,
+            "iTransformer": 40.38946988820772,
+            "TimesNet": 0.0,
+            "ModernTCN": 1.3342949873782906
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.0,
+            "PatchTST": 0.10818608005769924,
+            "iTransformer": 0.43274432023079695,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 0.0,
+            "PatchTST": 20.0,
+            "iTransformer": 80.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 0.03606202668589975,
+            "PatchTST": 58.38442120447169,
+            "iTransformer": 40.82221420843852,
+            "TimesNet": 0.0,
+            "ModernTCN": 1.3342949873782906
+          }
+        },
+        "11": {
+          "raw_mae": 1.282692551612854,
+          "raw_mse": 5.178388595581055,
+          "mae": 0.37584006786346436,
+          "mse": 0.3209950923919678,
+          "average_queries": 1.0176703929901123,
+          "top1_expert_accuracy": 24.91886019706726,
+          "top2_oracle_coverage": 25.640100973674723,
+          "query_count_percent": {
+            "1": 98.23296069239092,
+            "2": 1.7670393076090876,
+            "3": 0.0,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 2.560403894698882,
+            "PatchTST": 0.0,
+            "iTransformer": 97.43959610530112,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 1.694915254237288,
+            "PatchTST": 0.0,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0721240533717995,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 95.91836734693878,
+            "PatchTST": 0.0,
+            "iTransformer": 0.0,
+            "TimesNet": 4.081632653061225,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 4.25531914893617,
+            "PatchTST": 0.0,
+            "iTransformer": 97.43959610530112,
+            "TimesNet": 0.0721240533717995,
+            "ModernTCN": 0.0
+          }
+        },
+        "13": {
+          "raw_mae": 1.2841119766235352,
+          "raw_mse": 5.240218639373779,
+          "mae": 0.3754856288433075,
+          "mse": 0.3225458264350891,
+          "average_queries": 1.3862242698669434,
+          "top1_expert_accuracy": 24.738550186157227,
+          "top2_oracle_coverage": 31.51821132347638,
+          "query_count_percent": {
+            "1": 67.29174179588892,
+            "2": 27.371078254597908,
+            "3": 4.760187522538767,
+            "4": 0.576992426974396,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 18.067075369635774,
+            "PatchTST": 17.490082942661378,
+            "iTransformer": 62.85611251352326,
+            "TimesNet": 0.0,
+            "ModernTCN": 1.5867291741795888
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 1.9473494410385863,
+            "PatchTST": 27.01045798773891,
+            "iTransformer": 3.7504507753335736,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 5.953693495038589,
+            "PatchTST": 82.57993384785006,
+            "iTransformer": 11.466372657111355,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 20.735665344392356,
+            "PatchTST": 45.58240173097728,
+            "iTransformer": 69.09484313018392,
+            "TimesNet": 0.03606202668589975,
+            "ModernTCN": 3.1734583483591776
+          }
+        },
+        "17": {
+          "raw_mae": 1.3114235401153564,
+          "raw_mse": 5.456186771392822,
+          "mae": 0.38156211376190186,
+          "mse": 0.33053267002105713,
+          "average_queries": 1.0018031597137451,
+          "top1_expert_accuracy": 21.060223877429962,
+          "top2_oracle_coverage": 21.060223584565453,
+          "query_count_percent": {
+            "1": 99.8557518932564,
+            "2": 0.10818608005769924,
+            "3": 0.03606202668589975,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 11.684096646231518,
+            "PatchTST": 74.32383699963938,
+            "iTransformer": 13.992066354129102,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 0.10818608005769924,
+            "PatchTST": 0.03606202668589975,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 75.0,
+            "PatchTST": 25.0,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 11.792282726289217,
+            "PatchTST": 74.35989902632528,
+            "iTransformer": 14.028128380815001,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          }
+        },
+        "19": {
+          "raw_mae": 1.2893686294555664,
+          "raw_mse": 5.227509021759033,
+          "mae": 0.3771764039993286,
+          "mse": 0.32342034578323364,
+          "average_queries": 1.1727371215820312,
+          "top1_expert_accuracy": 23.764875531196594,
+          "top2_oracle_coverage": 26.685899747565813,
+          "query_count_percent": {
+            "1": 83.37540569780022,
+            "2": 15.975477821853588,
+            "3": 0.6491164803461954,
+            "4": 0.0,
+            "5": 0.0
+          },
+          "first_query_percent": {
+            "DLinear": 0.0,
+            "PatchTST": 2.993148214929679,
+            "iTransformer": 97.00685178507032,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_all_samples": {
+            "DLinear": 16.624594302199785,
+            "PatchTST": 0.0,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "second_query_percent_among_second_queries": {
+            "DLinear": 100.0,
+            "PatchTST": 0.0,
+            "iTransformer": 0.0,
+            "TimesNet": 0.0,
+            "ModernTCN": 0.0
+          },
+          "expert_usage_percent": {
+            "DLinear": 16.624594302199785,
+            "PatchTST": 2.993148214929679,
+            "iTransformer": 97.00685178507032,
+            "TimesNet": 0.6491164803461954,
+            "ModernTCN": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "model": "Embedding only",
+      "mode": "embedding_only",
+      "validation_mae_mean": 0.374123215675354,
+      "validation_mae_std": 0.0005258850451407402,
+      "validation_mse_mean": 0.3177596926689148,
+      "validation_mse_std": 0.0009920023436748222,
+      "average_queries_mean": 1.3085467100143433,
+      "average_queries_std": 0.3120844485953445,
+      "parameter_count": 65029,
+      "improvement_vs_costar_baseline_mae": 0.0005567843246460091,
+      "improvement_vs_best_single_iTransformer_mae": 0.002426784324645992
+    },
+    {
+      "model": "Fingerprint only",
+      "mode": "fingerprint_only",
+      "validation_mae_mean": 0.37744174599647523,
+      "validation_mae_std": 0.0014889025809033596,
+      "validation_mse_mean": 0.32368741631507875,
+      "validation_mse_std": 0.0020033212418292794,
+      "average_queries_mean": 1.3197259187698365,
+      "average_queries_std": 0.28463942494867306,
+      "parameter_count": 45893,
+      "improvement_vs_costar_baseline_mae": -0.002761745996475218,
+      "improvement_vs_best_single_iTransformer_mae": -0.000891745996475235
+    },
+    {
+      "model": "Embedding + Fingerprint",
+      "mode": "embedding_fingerprint",
+      "validation_mae_mean": 0.3770561754703522,
+      "validation_mae_std": 0.002351479354020431,
+      "validation_mse_mean": 0.3240023136138916,
+      "validation_mse_std": 0.0033571789039159505,
+      "average_queries_mean": 1.1168409824371337,
+      "average_queries_std": 0.14906173930744546,
+      "parameter_count": 81669,
+      "improvement_vs_costar_baseline_mae": -0.002376175470352182,
+      "improvement_vs_best_single_iTransformer_mae": -0.0005061754703521992
+    }
+  ],
+  "individual_expert_validation": [
+    {
+      "expert": "DLinear",
+      "raw_mae": 1.3566420078277588,
+      "raw_mse": 5.805386066436768,
+      "mae": 0.39209187030792236,
+      "mse": 0.3435719311237335
+    },
+    {
+      "expert": "PatchTST",
+      "raw_mae": 1.3002585172653198,
+      "raw_mse": 5.307104110717773,
+      "mae": 0.37955790758132935,
+      "mse": 0.3265279531478882
+    },
+    {
+      "expert": "iTransformer",
+      "raw_mae": 1.286491870880127,
+      "raw_mse": 5.200030326843262,
+      "mae": 0.37654954195022583,
+      "mse": 0.32209450006484985
+    },
+    {
+      "expert": "TimesNet",
+      "raw_mae": 1.34023118019104,
+      "raw_mse": 5.603475093841553,
+      "mae": 0.4090864062309265,
+      "mse": 0.3794470429420471
+    },
+    {
+      "expert": "ModernTCN",
+      "raw_mae": 1.5430413484573364,
+      "raw_mse": 6.519838333129883,
+      "mae": 0.4703761339187622,
+      "mse": 0.4657808840274811
+    }
+  ],
+  "expert_complementarity": {
+    "per_expert": [
+      {
+        "expert": "DLinear",
+        "pct_windows_beats_iTransformer": 40.389469265937805,
+        "mean_improvement_when_beats_iTransformer": 0.040669746696949005,
+        "unique_oracle_wins_percent": 16.516408324241638
+      },
+      {
+        "expert": "PatchTST",
+        "pct_windows_beats_iTransformer": 47.385501861572266,
+        "mean_improvement_when_beats_iTransformer": 0.039053212851285934,
+        "unique_oracle_wins_percent": 24.48611557483673
+      },
+      {
+        "expert": "iTransformer",
+        "pct_windows_beats_iTransformer": 0.0,
+        "mean_improvement_when_beats_iTransformer": 0.0,
+        "unique_oracle_wins_percent": 28.020194172859192
+      },
+      {
+        "expert": "TimesNet",
+        "pct_windows_beats_iTransformer": 34.18680131435394,
+        "mean_improvement_when_beats_iTransformer": 0.058090779930353165,
+        "unique_oracle_wins_percent": 21.637216210365295
+      },
+      {
+        "expert": "ModernTCN",
+        "pct_windows_beats_iTransformer": 21.45690619945526,
+        "mean_improvement_when_beats_iTransformer": 0.06728648394346237,
+        "unique_oracle_wins_percent": 9.340064972639084
+      }
+    ],
+    "error_correlation": {
+      "DLinear": {
+        "DLinear": 1.0,
+        "PatchTST": 0.9391797184944153,
+        "iTransformer": 0.9234368801116943,
+        "TimesNet": 0.8475502133369446,
+        "ModernTCN": 0.6382026672363281
+      },
+      "PatchTST": {
+        "DLinear": 0.9391797184944153,
+        "PatchTST": 1.0000001192092896,
+        "iTransformer": 0.9510865807533264,
+        "TimesNet": 0.8380229473114014,
+        "ModernTCN": 0.623262882232666
+      },
+      "iTransformer": {
+        "DLinear": 0.9234368801116943,
+        "PatchTST": 0.9510865807533264,
+        "iTransformer": 0.9999998807907104,
+        "TimesNet": 0.8600835800170898,
+        "ModernTCN": 0.6561687588691711
+      },
+      "TimesNet": {
+        "DLinear": 0.8475502133369446,
+        "PatchTST": 0.8380229473114014,
+        "iTransformer": 0.8600835800170898,
+        "TimesNet": 0.9999998807907104,
+        "ModernTCN": 0.7011704444885254
+      },
+      "ModernTCN": {
+        "DLinear": 0.6382026672363281,
+        "PatchTST": 0.623262882232666,
+        "iTransformer": 0.6561687588691711,
+        "TimesNet": 0.7011704444885254,
+        "ModernTCN": 0.9999998807907104
+      }
+    }
+  },
+  "regime_analysis": {
+    "rows": [
+      {
+        "regime": "high_trend",
+        "windows": 1387,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 17.087238644556596,
+          "PatchTST": 23.50396539293439,
+          "iTransformer": 28.767123287671232,
+          "TimesNet": 19.754866618601298,
+          "ModernTCN": 10.886806056236482
+        },
+        "embedding_only_mae": 0.37924253940582275,
+        "fingerprint_only_mae": 0.3815600275993347,
+        "embedding_fingerprint_mae": 0.3825622797012329
+      },
+      {
+        "regime": "low_trend",
+        "windows": 1386,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 15.945165945165945,
+          "PatchTST": 25.46897546897547,
+          "iTransformer": 27.272727272727273,
+          "TimesNet": 23.52092352092352,
+          "ModernTCN": 7.792207792207792
+        },
+        "embedding_only_mae": 0.3671518862247467,
+        "fingerprint_only_mae": 0.36784490942955017,
+        "embedding_fingerprint_mae": 0.36786577105522156
+      },
+      {
+        "regime": "high_volatility",
+        "windows": 1387,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 16.222062004325885,
+          "PatchTST": 20.115356885364097,
+          "iTransformer": 31.218457101658256,
+          "TimesNet": 22.422494592646,
+          "ModernTCN": 10.021629416005768
+        },
+        "embedding_only_mae": 0.4067818522453308,
+        "fingerprint_only_mae": 0.40734076499938965,
+        "embedding_fingerprint_mae": 0.4103884696960449
+      },
+      {
+        "regime": "low_volatility",
+        "windows": 1386,
+        "best_expert": "PatchTST",
+        "best_expert_distribution": {
+          "DLinear": 16.81096681096681,
+          "PatchTST": 28.86002886002886,
+          "iTransformer": 24.81962481962482,
+          "TimesNet": 20.851370851370852,
+          "ModernTCN": 8.658008658008658
+        },
+        "embedding_only_mae": 0.33959272503852844,
+        "fingerprint_only_mae": 0.34204551577568054,
+        "embedding_fingerprint_mae": 0.340019553899765
+      },
+      {
+        "regime": "strong_autocorrelation",
+        "windows": 1387,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 17.159336697909158,
+          "PatchTST": 24.369142033165105,
+          "iTransformer": 27.325162220620044,
+          "TimesNet": 19.971160778658977,
+          "ModernTCN": 11.17519826964672
+        },
+        "embedding_only_mae": 0.3980097770690918,
+        "fingerprint_only_mae": 0.3997501730918884,
+        "embedding_fingerprint_mae": 0.400464802980423
+      },
+      {
+        "regime": "weak_autocorrelation",
+        "windows": 1386,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 15.873015873015873,
+          "PatchTST": 24.603174603174605,
+          "iTransformer": 28.715728715728716,
+          "TimesNet": 23.304473304473305,
+          "ModernTCN": 7.503607503607504
+        },
+        "embedding_only_mae": 0.34837108850479126,
+        "fingerprint_only_mae": 0.3496415615081787,
+        "embedding_fingerprint_mae": 0.3499503433704376
+      },
+      {
+        "regime": "strong_periodicity",
+        "windows": 1387,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 17.80821917808219,
+          "PatchTST": 23.936553713049747,
+          "iTransformer": 28.262436914203317,
+          "TimesNet": 19.46647440519106,
+          "ModernTCN": 10.526315789473685
+        },
+        "embedding_only_mae": 0.38451245427131653,
+        "fingerprint_only_mae": 0.3846396505832672,
+        "embedding_fingerprint_mae": 0.3854009807109833
+      },
+      {
+        "regime": "weak_periodicity",
+        "windows": 1386,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 15.223665223665224,
+          "PatchTST": 25.036075036075037,
+          "iTransformer": 27.77777777777778,
+          "TimesNet": 23.80952380952381,
+          "ModernTCN": 8.152958152958153
+        },
+        "embedding_only_mae": 0.3618781566619873,
+        "fingerprint_only_mae": 0.3647630512714386,
+        "embedding_fingerprint_mae": 0.3650251030921936
+      },
+      {
+        "regime": "distribution_shifted",
+        "windows": 1387,
+        "best_expert": "iTransformer",
+        "best_expert_distribution": {
+          "DLinear": 18.529199711607788,
+          "PatchTST": 23.143475126171595,
+          "iTransformer": 27.108868060562365,
+          "TimesNet": 20.620043258832013,
+          "ModernTCN": 10.598413842826243
+        },
+        "embedding_only_mae": 0.3898124098777771,
+        "fingerprint_only_mae": 0.3934037387371063,
+        "embedding_fingerprint_mae": 0.3947543501853943
+      }
+    ]
+  },
+  "fingerprint_features": [
+    "mean",
+    "std",
+    "min",
+    "max",
+    "slope",
+    "recent_slope",
+    "diff_mean",
+    "diff_std",
+    "acf_lag_1",
+    "acf_lag_2",
+    "acf_lag_4",
+    "acf_lag_8",
+    "recent_mean_minus_mean",
+    "recent_std_minus_std",
+    "trend_strength",
+    "dominant_frequency",
+    "low_frequency_energy_ratio",
+    "high_frequency_energy_ratio"
+  ],
+  "leakage_checks": "fingerprints use only input histories from cached windows; final test cache refused",
+  "safety": "NO TEST DATA USED"
+}

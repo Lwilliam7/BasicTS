@@ -1,0 +1,225 @@
+{
+  "all_causal": true,
+  "folds": [
+    {
+      "causal": true,
+      "current_eval_origin": 3990,
+      "dataset": "ETTh1",
+      "eval_hi": 2219,
+      "eval_lo": 1110,
+      "fold": 1,
+      "latest_fit_origin": 3978,
+      "latest_fit_target_end": 3990,
+      "num_legal_fit_windows": 1099
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 5099,
+      "dataset": "ETTh1",
+      "eval_hi": 3328,
+      "eval_lo": 2219,
+      "fold": 2,
+      "latest_fit_origin": 5087,
+      "latest_fit_target_end": 5099,
+      "num_legal_fit_windows": 2208
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 6315,
+      "dataset": "ETTh1",
+      "eval_hi": 4437,
+      "eval_lo": 3328,
+      "fold": 3,
+      "latest_fit_origin": 6303,
+      "latest_fit_target_end": 6315,
+      "num_legal_fit_windows": 3317
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 7424,
+      "dataset": "ETTh1",
+      "eval_hi": 5546,
+      "eval_lo": 4437,
+      "fold": 4,
+      "latest_fit_origin": 7412,
+      "latest_fit_target_end": 7424,
+      "num_legal_fit_windows": 4426
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 9051,
+      "dataset": "ETTh2",
+      "eval_hi": 821,
+      "eval_lo": 411,
+      "fold": 1,
+      "latest_fit_origin": 9039,
+      "latest_fit_target_end": 9051,
+      "num_legal_fit_windows": 400
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 9461,
+      "dataset": "ETTh2",
+      "eval_hi": 1232,
+      "eval_lo": 821,
+      "fold": 2,
+      "latest_fit_origin": 9449,
+      "latest_fit_target_end": 9461,
+      "num_legal_fit_windows": 810
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 9872,
+      "dataset": "ETTh2",
+      "eval_hi": 1642,
+      "eval_lo": 1232,
+      "fold": 3,
+      "latest_fit_origin": 9860,
+      "latest_fit_target_end": 9872,
+      "num_legal_fit_windows": 1221
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 10282,
+      "dataset": "ETTh2",
+      "eval_hi": 2053,
+      "eval_lo": 1642,
+      "fold": 4,
+      "latest_fit_origin": 10270,
+      "latest_fit_target_end": 10282,
+      "num_legal_fit_windows": 1631
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 16086,
+      "dataset": "ETTm1",
+      "eval_hi": 9131,
+      "eval_lo": 4566,
+      "fold": 1,
+      "latest_fit_origin": 16074,
+      "latest_fit_target_end": 16086,
+      "num_legal_fit_windows": 4555
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 20651,
+      "dataset": "ETTm1",
+      "eval_hi": 13696,
+      "eval_lo": 9131,
+      "fold": 2,
+      "latest_fit_origin": 20639,
+      "latest_fit_target_end": 20651,
+      "num_legal_fit_windows": 9120
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 25323,
+      "dataset": "ETTm1",
+      "eval_hi": 18261,
+      "eval_lo": 13696,
+      "fold": 3,
+      "latest_fit_origin": 25311,
+      "latest_fit_target_end": 25323,
+      "num_legal_fit_windows": 13685
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 29888,
+      "dataset": "ETTm1",
+      "eval_hi": 22826,
+      "eval_lo": 18261,
+      "fold": 4,
+      "latest_fit_origin": 29876,
+      "latest_fit_target_end": 29888,
+      "num_legal_fit_windows": 18250
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 14712,
+      "dataset": "Weather",
+      "eval_hi": 8345,
+      "eval_lo": 4173,
+      "fold": 1,
+      "latest_fit_origin": 14700,
+      "latest_fit_target_end": 14712,
+      "num_legal_fit_windows": 4162
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 18884,
+      "dataset": "Weather",
+      "eval_hi": 12518,
+      "eval_lo": 8345,
+      "fold": 2,
+      "latest_fit_origin": 18872,
+      "latest_fit_target_end": 18884,
+      "num_legal_fit_windows": 8334
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 23164,
+      "dataset": "Weather",
+      "eval_hi": 16691,
+      "eval_lo": 12518,
+      "fold": 3,
+      "latest_fit_origin": 23152,
+      "latest_fit_target_end": 23164,
+      "num_legal_fit_windows": 12507
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 27337,
+      "dataset": "Weather",
+      "eval_hi": 20864,
+      "eval_lo": 16691,
+      "fold": 4,
+      "latest_fit_origin": 27325,
+      "latest_fit_target_end": 27337,
+      "num_legal_fit_windows": 16680
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 7322,
+      "dataset": "Electricity",
+      "eval_hi": 4123,
+      "eval_lo": 2062,
+      "fold": 1,
+      "latest_fit_origin": 7310,
+      "latest_fit_target_end": 7322,
+      "num_legal_fit_windows": 2051
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 9383,
+      "dataset": "Electricity",
+      "eval_hi": 6185,
+      "eval_lo": 4123,
+      "fold": 2,
+      "latest_fit_origin": 9371,
+      "latest_fit_target_end": 9383,
+      "num_legal_fit_windows": 4112
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 11552,
+      "dataset": "Electricity",
+      "eval_hi": 8246,
+      "eval_lo": 6185,
+      "fold": 3,
+      "latest_fit_origin": 11540,
+      "latest_fit_target_end": 11552,
+      "num_legal_fit_windows": 6174
+    },
+    {
+      "causal": true,
+      "current_eval_origin": 13613,
+      "dataset": "Electricity",
+      "eval_hi": 10308,
+      "eval_lo": 8246,
+      "fold": 4,
+      "latest_fit_origin": 13601,
+      "latest_fit_target_end": 13613,
+      "num_legal_fit_windows": 8235
+    }
+  ]
+}

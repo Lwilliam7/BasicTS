@@ -1,0 +1,53 @@
+{
+  "label": "strict_causal_router_train_validation",
+  "configuration_frozen_before_validation": true,
+  "test_cache_loaded": false,
+  "selected_three_experts": [
+    "PatchTST",
+    "iTransformer",
+    "TimesNet"
+  ],
+  "selected_specialist_config": {
+    "name": "both_variable_decay0.97_cap0.1_marginbp200_warm96",
+    "scenario": "both",
+    "structure": "variable",
+    "decay": 0.97,
+    "extra_weight_cap": 0.1,
+    "activation_margin": 0.02,
+    "warmup": 96
+  },
+  "validation": {
+    "mae": 0.36327672004699707,
+    "mse": 0.30631181597709656
+  },
+  "fixed_core_validation": {
+    "mae": 0.36726489663124084,
+    "mse": 0.3105303645133972
+  },
+  "delta_mae_vs_fixed_core": -0.003988176584243774,
+  "router_train_causality_probe": {
+    "passed": true,
+    "probe_windows": 256,
+    "perturbed_from_row": 128,
+    "first_prediction_allowed_to_change": 140,
+    "max_unaffected_prefix_abs_diff": 0.0
+  },
+  "prediction_extra": {
+    "chrono_num_updates": 2761,
+    "hv_num_updates": 2761,
+    "static_weight_source": "equal_static_all_triples",
+    "mean_weight_PatchTST": 0.3627220094203949,
+    "mean_weight_iTransformer": 0.4305308163166046,
+    "mean_weight_TimesNet": 0.20674720406532288,
+    "num_updates": 2761,
+    "avg_weight_DLinear": 0.005613341927528381,
+    "max_window_weight_DLinear": 0.033323466777801514,
+    "avg_weight_ModernTCN": 0.0037689057644456625,
+    "max_window_weight_ModernTCN": 0.0357142873108387,
+    "activation_rate_DLinear": 0.6967183351516724,
+    "activation_rate_ModernTCN": 0.393076092004776,
+    "mean_adv_DLinear_when_active": 0.06077100162242017,
+    "mean_adv_ModernTCN_when_active": 0.09424562245744084
+  },
+  "interpretation": "New strict-causal router-train candidate; do not rewrite historical preregistered or after-test audit rows."
+}

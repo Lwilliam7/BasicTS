@@ -1,0 +1,179 @@
+{
+  "fforma_mae": {
+    "selected": {
+      "max_depth": 14,
+      "eta": 0.01,
+      "subsample": 0.6,
+      "colsample_bytree": 0.9,
+      "nrounds": 250
+    },
+    "candidates": [
+      {
+        "config": {
+          "max_depth": 14,
+          "eta": 0.575188,
+          "subsample": 0.9161483,
+          "colsample_bytree": 0.7670739,
+          "nrounds": 94
+        },
+        "oof_mae": 0.3587885484673802
+      },
+      {
+        "config": {
+          "max_depth": 6,
+          "eta": 0.1,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "nrounds": 100
+        },
+        "oof_mae": 0.3534716097260107
+      },
+      {
+        "config": {
+          "max_depth": 10,
+          "eta": 0.05,
+          "subsample": 0.7,
+          "colsample_bytree": 0.7,
+          "nrounds": 150
+        },
+        "oof_mae": 0.35101564125744905
+      },
+      {
+        "config": {
+          "max_depth": 8,
+          "eta": 0.3,
+          "subsample": 0.9,
+          "colsample_bytree": 0.6,
+          "nrounds": 50
+        },
+        "oof_mae": 0.35763693849637607
+      },
+      {
+        "config": {
+          "max_depth": 14,
+          "eta": 0.01,
+          "subsample": 0.6,
+          "colsample_bytree": 0.9,
+          "nrounds": 250
+        },
+        "oof_mae": 0.34862105141253596
+      }
+    ]
+  },
+  "conditional_error_softmax": {
+    "selected": {
+      "max_depth": 10,
+      "eta": 0.05,
+      "subsample": 0.7,
+      "colsample_bytree": 0.7,
+      "nrounds": 150
+    },
+    "candidates": [
+      {
+        "config": {
+          "max_depth": 14,
+          "eta": 0.575188,
+          "subsample": 0.9161483,
+          "colsample_bytree": 0.7670739,
+          "nrounds": 94
+        },
+        "oof_mae": 0.3555929451824793
+      },
+      {
+        "config": {
+          "max_depth": 6,
+          "eta": 0.1,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "nrounds": 100
+        },
+        "oof_mae": 0.350948222602967
+      },
+      {
+        "config": {
+          "max_depth": 10,
+          "eta": 0.05,
+          "subsample": 0.7,
+          "colsample_bytree": 0.7,
+          "nrounds": 150
+        },
+        "oof_mae": 0.34736261830217563
+      },
+      {
+        "config": {
+          "max_depth": 8,
+          "eta": 0.3,
+          "subsample": 0.9,
+          "colsample_bytree": 0.6,
+          "nrounds": 50
+        },
+        "oof_mae": 0.35567795791612
+      },
+      {
+        "config": {
+          "max_depth": 14,
+          "eta": 0.01,
+          "subsample": 0.6,
+          "colsample_bytree": 0.9,
+          "nrounds": 250
+        },
+        "oof_mae": 0.34823875015851774
+      }
+    ]
+  },
+  "conditional_mlp": {
+    "selected": {
+      "hidden": 128,
+      "lr": 0.001,
+      "epochs": 20,
+      "weight_decay": 0.01
+    },
+    "candidates": [
+      {
+        "config": {
+          "hidden": 32,
+          "lr": 0.001,
+          "epochs": 20,
+          "weight_decay": 0.001
+        },
+        "oof_mae": 0.36608567312393403
+      },
+      {
+        "config": {
+          "hidden": 64,
+          "lr": 0.001,
+          "epochs": 30,
+          "weight_decay": 0.001
+        },
+        "oof_mae": 0.3715453721159637
+      },
+      {
+        "config": {
+          "hidden": 32,
+          "lr": 0.003,
+          "epochs": 30,
+          "weight_decay": 0.01
+        },
+        "oof_mae": 0.3622024398938668
+      },
+      {
+        "config": {
+          "hidden": 64,
+          "lr": 0.0003,
+          "epochs": 40,
+          "weight_decay": 0.01
+        },
+        "oof_mae": 0.3627861390567181
+      },
+      {
+        "config": {
+          "hidden": 128,
+          "lr": 0.001,
+          "epochs": 20,
+          "weight_decay": 0.01
+        },
+        "oof_mae": 0.3505787543240327
+      }
+    ]
+  }
+}

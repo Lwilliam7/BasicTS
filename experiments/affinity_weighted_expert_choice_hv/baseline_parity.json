@@ -1,0 +1,238 @@
+{
+  "all_pass": true,
+  "claim_masks_match_stored_tensors": {
+    "ETTh1": false,
+    "ETTh2": false,
+    "ETTm1": false,
+    "Electricity": false,
+    "Weather": false
+  },
+  "rows": [
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh1",
+      "method": "dynamic_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.3756404221057892,
+      "stored_mae": 0.3756404221057892,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh1",
+      "method": "dynamic_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.3772087097167969,
+      "stored_mae": 0.3772087097167969,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh1",
+      "method": "static_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.3753524422645569,
+      "stored_mae": 0.3753524422645569,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh1",
+      "method": "static_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.376679927110672,
+      "stored_mae": 0.376679927110672,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh1",
+      "method": "frozen_hv",
+      "passed": true,
+      "reproduced_mae": 0.3660224676132202,
+      "stored_mae": 0.3660224676132202,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh2",
+      "method": "dynamic_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.28095123171806335,
+      "stored_mae": 0.28095123171806335,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh2",
+      "method": "dynamic_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.28045201301574707,
+      "stored_mae": 0.28045201301574707,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh2",
+      "method": "static_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.2777636647224426,
+      "stored_mae": 0.2777636647224426,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh2",
+      "method": "static_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.27913233637809753,
+      "stored_mae": 0.27913233637809753,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTh2",
+      "method": "frozen_hv",
+      "passed": true,
+      "reproduced_mae": 0.27689793705940247,
+      "stored_mae": 0.27689793705940247,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTm1",
+      "method": "dynamic_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.25355589389801025,
+      "stored_mae": 0.25355589389801025,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTm1",
+      "method": "dynamic_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.2546587586402893,
+      "stored_mae": 0.2546587586402893,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTm1",
+      "method": "static_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.2535704970359802,
+      "stored_mae": 0.2535704970359802,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTm1",
+      "method": "static_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.262524276971817,
+      "stored_mae": 0.262524276971817,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "ETTm1",
+      "method": "frozen_hv",
+      "passed": true,
+      "reproduced_mae": 0.25068971514701843,
+      "stored_mae": 0.25068971514701843,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Weather",
+      "method": "dynamic_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.15562117099761963,
+      "stored_mae": 0.15562117099761963,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Weather",
+      "method": "dynamic_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.1558804214000702,
+      "stored_mae": 0.1558804214000702,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Weather",
+      "method": "static_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.1603303849697113,
+      "stored_mae": 0.1603303849697113,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Weather",
+      "method": "static_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.1643994152545929,
+      "stored_mae": 0.1643994152545929,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Weather",
+      "method": "frozen_hv",
+      "passed": true,
+      "reproduced_mae": 0.15981753170490265,
+      "stored_mae": 0.15981753170490265,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Electricity",
+      "method": "dynamic_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.2063562422990799,
+      "stored_mae": 0.2063562422990799,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Electricity",
+      "method": "dynamic_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.20703358948230743,
+      "stored_mae": 0.20703358948230743,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Electricity",
+      "method": "static_ec_cf1",
+      "passed": true,
+      "reproduced_mae": 0.219014510512352,
+      "stored_mae": 0.219014510512352,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Electricity",
+      "method": "static_token_top1",
+      "passed": true,
+      "reproduced_mae": 0.22276072204113007,
+      "stored_mae": 0.22276072204113007,
+      "tolerance": 0.0005
+    },
+    {
+      "abs_diff": 0.0,
+      "dataset": "Electricity",
+      "method": "frozen_hv",
+      "passed": true,
+      "reproduced_mae": 0.21535496413707733,
+      "stored_mae": 0.21535496413707733,
+      "tolerance": 0.0005
+    }
+  ],
+  "tolerance": 0.0005
+}

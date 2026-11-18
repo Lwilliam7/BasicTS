@@ -1,0 +1,28 @@
+{
+  "method": "confidence_aware_fixed3_router",
+  "seeds": [
+    7
+  ],
+  "mae_mean": 0.3661580979824066,
+  "mae_std": 0.0,
+  "mse_mean": 0.30896884202957153,
+  "mse_std": 0.0,
+  "per_seed_best_gate": [
+    {
+      "seed": 7,
+      "k": 0.5,
+      "threshold": 0.005,
+      "mae": 0.3661580979824066,
+      "mse": 0.30896884202957153,
+      "adapted_percent": 38.91092538833618,
+      "fallback_percent": 61.08907461166382,
+      "mean_mu": 0.09621936082839966,
+      "mean_sigma": 0.19878804683685303,
+      "mean_utility": -9.92608183878474e-05,
+      "actual_avg_improvement_adapted": 0.00010025664960267022,
+      "actual_avg_degradation_wrong_adapt": 0.0014817927731201053,
+      "wrong_adapt_percent": 18.247385323047638
+    }
+  ],
+  "safety": "NO TEST DATA USED"
+}

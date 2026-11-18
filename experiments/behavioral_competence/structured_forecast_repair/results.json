@@ -1,0 +1,272 @@
+{
+  "ETTh1": {
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "methods": {
+      "Passive": {
+        "mae": 0.0505574569106102,
+        "mse": 0.0049065034836530685,
+        "pairwise_accuracy": 0.6641543507575989,
+        "r2": 0.22270023822784424
+      },
+      "Passive+Disagreement": {
+        "mae": 0.050557464361190796,
+        "mse": 0.004906606860458851,
+        "pairwise_accuracy": 0.6641543507575989,
+        "r2": 0.222683846950531
+      },
+      "Passive+Disagreement+REP+RepairGeometry": {
+        "mae": 0.049485888332128525,
+        "mse": 0.004685277119278908,
+        "pairwise_accuracy": 0.6639740467071533,
+        "r2": 0.25774747133255005
+      },
+      "Passive+REP": {
+        "mae": 0.05650189146399498,
+        "mse": 0.006151475943624973,
+        "pairwise_accuracy": 0.6624594330787659,
+        "r2": 0.025468826293945312
+      },
+      "Passive+RawViolation": {
+        "mae": 0.049000464379787445,
+        "mse": 0.004399023950099945,
+        "pairwise_accuracy": 0.6678687334060669,
+        "r2": 0.30309635400772095
+      },
+      "Passive+RepairCost": {
+        "mae": 0.048677124083042145,
+        "mse": 0.004341114312410355,
+        "pairwise_accuracy": 0.669599711894989,
+        "r2": 0.31227052211761475
+      },
+      "Passive+RepairGeometry": {
+        "mae": 0.04781165346503258,
+        "mse": 0.004423131700605154,
+        "pairwise_accuracy": 0.6646952629089355,
+        "r2": 0.299277126789093
+      }
+    },
+    "validation_windows": 2773
+  },
+  "ETTh2": {
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "methods": {
+      "Passive": {
+        "mae": 0.011118914932012558,
+        "mse": 0.00020901949028484523,
+        "pairwise_accuracy": 0.8076671957969666,
+        "r2": 0.8804369568824768
+      },
+      "Passive+Disagreement": {
+        "mae": 0.011118677444756031,
+        "mse": 0.00020900729577988386,
+        "pairwise_accuracy": 0.8076671957969666,
+        "r2": 0.8804439306259155
+      },
+      "Passive+Disagreement+REP+RepairGeometry": {
+        "mae": 0.0104214521124959,
+        "mse": 0.00019463588250800967,
+        "pairwise_accuracy": 0.8107666969299316,
+        "r2": 0.8886646032333374
+      },
+      "Passive+REP": {
+        "mae": 0.011191455647349358,
+        "mse": 0.00020980268891435117,
+        "pairwise_accuracy": 0.8083197474479675,
+        "r2": 0.8799889087677002
+      },
+      "Passive+RawViolation": {
+        "mae": 0.010807015933096409,
+        "mse": 0.0002073430659947917,
+        "pairwise_accuracy": 0.807993471622467,
+        "r2": 0.8813958764076233
+      },
+      "Passive+RepairCost": {
+        "mae": 0.01117138471454382,
+        "mse": 0.00020805478561669588,
+        "pairwise_accuracy": 0.804893970489502,
+        "r2": 0.8809887766838074
+      },
+      "Passive+RepairGeometry": {
+        "mae": 0.010468919761478901,
+        "mse": 0.00019649513706099242,
+        "pairwise_accuracy": 0.8106036186218262,
+        "r2": 0.8876010775566101
+      }
+    },
+    "validation_windows": 613
+  },
+  "ETTm1": {
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "methods": {
+      "Passive": {
+        "mae": 0.03864279016852379,
+        "mse": 0.0028057782910764217,
+        "pairwise_accuracy": 0.6161920428276062,
+        "r2": 0.31002163887023926
+      },
+      "Passive+Disagreement": {
+        "mae": 0.03864267095923424,
+        "mse": 0.002805775962769985,
+        "pairwise_accuracy": 0.6161920428276062,
+        "r2": 0.31002217531204224
+      },
+      "Passive+Disagreement+REP+RepairGeometry": {
+        "mae": 0.03995427489280701,
+        "mse": 0.0029454396571964025,
+        "pairwise_accuracy": 0.6176377534866333,
+        "r2": 0.27567702531814575
+      },
+      "Passive+REP": {
+        "mae": 0.03870183974504471,
+        "mse": 0.0028129061684012413,
+        "pairwise_accuracy": 0.6163760423660278,
+        "r2": 0.30826878547668457
+      },
+      "Passive+RawViolation": {
+        "mae": 0.04032815247774124,
+        "mse": 0.002961516845971346,
+        "pairwise_accuracy": 0.6169630885124207,
+        "r2": 0.2717233896255493
+      },
+      "Passive+RepairCost": {
+        "mae": 0.038617249578237534,
+        "mse": 0.0028055240400135517,
+        "pairwise_accuracy": 0.6160781383514404,
+        "r2": 0.31008416414260864
+      },
+      "Passive+RepairGeometry": {
+        "mae": 0.03994668647646904,
+        "mse": 0.0029448738787323236,
+        "pairwise_accuracy": 0.6176202297210693,
+        "r2": 0.2758161425590515
+      }
+    },
+    "validation_windows": 11413
+  },
+  "Electricity": {
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "methods": {
+      "Passive": {
+        "mae": 0.0351916179060936,
+        "mse": 0.002235908294096589,
+        "pairwise_accuracy": 0.8484477996826172,
+        "r2": 0.6193608045578003
+      },
+      "Passive+Disagreement": {
+        "mae": 0.03518636152148247,
+        "mse": 0.0022355031687766314,
+        "pairwise_accuracy": 0.8483508229255676,
+        "r2": 0.6194297671318054
+      },
+      "Passive+Disagreement+REP+RepairGeometry": {
+        "mae": 0.03144996985793114,
+        "mse": 0.001812544884160161,
+        "pairwise_accuracy": 0.8471284508705139,
+        "r2": 0.691433846950531
+      },
+      "Passive+REP": {
+        "mae": 0.027382824569940567,
+        "mse": 0.0016177477082237601,
+        "pairwise_accuracy": 0.8298797011375427,
+        "r2": 0.7245959639549255
+      },
+      "Passive+RawViolation": {
+        "mae": 0.035271547734737396,
+        "mse": 0.0022137362975627184,
+        "pairwise_accuracy": 0.8506014943122864,
+        "r2": 0.6231353282928467
+      },
+      "Passive+RepairCost": {
+        "mae": 0.035213228315114975,
+        "mse": 0.002235179068520665,
+        "pairwise_accuracy": 0.8487776517868042,
+        "r2": 0.6194849014282227
+      },
+      "Passive+RepairGeometry": {
+        "mae": 0.035632602870464325,
+        "mse": 0.002172017004340887,
+        "pairwise_accuracy": 0.8506014943122864,
+        "r2": 0.6302375793457031
+      }
+    },
+    "validation_windows": 5154
+  },
+  "Weather": {
+    "expert_names": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "methods": {
+      "Passive": {
+        "mae": 0.025351252406835556,
+        "mse": 0.0017348333494737744,
+        "pairwise_accuracy": 0.6763899326324463,
+        "r2": 0.2740324139595032
+      },
+      "Passive+Disagreement": {
+        "mae": 0.02535122074186802,
+        "mse": 0.0017348378896713257,
+        "pairwise_accuracy": 0.6763899326324463,
+        "r2": 0.27403050661087036
+      },
+      "Passive+Disagreement+REP+RepairGeometry": {
+        "mae": 0.026092030107975006,
+        "mse": 0.0017235268605872989,
+        "pairwise_accuracy": 0.6765241622924805,
+        "r2": 0.2787637710571289
+      },
+      "Passive+REP": {
+        "mae": 0.025468695908784866,
+        "mse": 0.0016600622329860926,
+        "pairwise_accuracy": 0.6767063140869141,
+        "r2": 0.3053215742111206
+      },
+      "Passive+RawViolation": {
+        "mae": 0.02523653395473957,
+        "mse": 0.0017553586512804031,
+        "pairwise_accuracy": 0.6762174367904663,
+        "r2": 0.26544326543807983
+      },
+      "Passive+RepairCost": {
+        "mae": 0.025323646143078804,
+        "mse": 0.0017609692877158523,
+        "pairwise_accuracy": 0.676639199256897,
+        "r2": 0.2630954384803772
+      },
+      "Passive+RepairGeometry": {
+        "mae": 0.02544902078807354,
+        "mse": 0.0017903868574649096,
+        "pairwise_accuracy": 0.6756805777549744,
+        "r2": 0.2507851719856262
+      }
+    },
+    "validation_windows": 10432
+  }
+}

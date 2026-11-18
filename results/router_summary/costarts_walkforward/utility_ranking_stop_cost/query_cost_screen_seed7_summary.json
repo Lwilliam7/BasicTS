@@ -1,0 +1,62 @@
+{
+  "scope": "seed 7 STOP-aware listwise tau=0.01 query-cost screen, validation only",
+  "rows": [
+    {
+      "lambda_query": 0.0,
+      "mae": 0.3745965361595154,
+      "mse": 0.3194587230682373,
+      "mean_regret": 0.17415260249769648,
+      "average_queries": 1.0,
+      "source": "utility_ranking/utility_listwise_stop_tau_0p01"
+    },
+    {
+      "lambda_query": 0.001,
+      "mae": 0.3745464086532593,
+      "mse": 0.3193512260913849,
+      "mean_regret": 0.17411870673551397,
+      "average_queries": 1.0,
+      "source": "results\\router_summary\\costarts_walkforward\\utility_ranking_stop_cost\\lambda_0p001\\utility_listwise_stop_tau_0p01"
+    },
+    {
+      "lambda_query": 0.002,
+      "mae": 0.3745187520980835,
+      "mse": 0.3193329870700836,
+      "mean_regret": 0.17402835404705236,
+      "average_queries": 1.0,
+      "source": "results\\router_summary\\costarts_walkforward\\utility_ranking_stop_cost\\lambda_0p002\\utility_listwise_stop_tau_0p01"
+    },
+    {
+      "lambda_query": 0.005,
+      "mae": 0.37455132603645325,
+      "mse": 0.3193516433238983,
+      "mean_regret": 0.174120647357854,
+      "average_queries": 1.0,
+      "source": "results\\router_summary\\costarts_walkforward\\utility_ranking_stop_cost\\lambda_0p005\\utility_listwise_stop_tau_0p01"
+    },
+    {
+      "lambda_query": 0.01,
+      "mae": 0.3745528757572174,
+      "mse": 0.3193499445915222,
+      "mean_regret": 0.1741382898168361,
+      "average_queries": 1.0,
+      "source": "results\\router_summary\\costarts_walkforward\\utility_ranking_stop_cost\\lambda_0p01\\utility_listwise_stop_tau_0p01"
+    },
+    {
+      "lambda_query": 0.02,
+      "mae": 0.3746667206287384,
+      "mse": 0.3196004033088684,
+      "mean_regret": 0.17427430886290282,
+      "average_queries": 1.0,
+      "source": "results\\router_summary\\costarts_walkforward\\utility_ranking_stop_cost\\lambda_0p02\\utility_listwise_stop_tau_0p01"
+    }
+  ],
+  "best_by_mae": {
+    "lambda_query": 0.002,
+    "mae": 0.3745187520980835,
+    "mse": 0.3193329870700836,
+    "mean_regret": 0.17402835404705236,
+    "average_queries": 1.0,
+    "source": "results\\router_summary\\costarts_walkforward\\utility_ranking_stop_cost\\lambda_0p002\\utility_listwise_stop_tau_0p01"
+  },
+  "safety": "NO TEST DATA USED"
+}

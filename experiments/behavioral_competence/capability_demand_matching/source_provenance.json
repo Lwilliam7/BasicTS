@@ -1,0 +1,58 @@
+{
+  "cache_hashes": {
+    "ETTh1": {
+      "normalizer": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+      "router_train": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+      "router_val": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6"
+    },
+    "ETTh2": {
+      "router_train": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+      "router_val": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088"
+    },
+    "ETTm1": {
+      "normalizer": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "router_train": "f7a6167e81c2cfc366c2cd1baf119f2d2b29ac156969d06d8fb3e58623482b86",
+      "router_val": "a47ee159ef1c15c0f5e0f53a2f4c483b35079ec9497c3afffd07b8e975c4b6fe"
+    },
+    "Electricity": {
+      "normalizer": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92",
+      "router_train": "49b299e896fc1989143b0cbb64866827c5e06b3b0e3029677324cb36cfc86e76",
+      "router_val": "83552b3c6859e527cca859d307d1c4a36bf4019667084f6827a368e9676c96bd"
+    },
+    "Weather": {
+      "normalizer": "c34520a0ba154e0518ca38fc26182b03bed785b35a7682573de820fb944c3c06",
+      "router_train": "030702a667add4190c82e7bf51ce8aca15748813a3eb63362d6f7f3243e0e1cf",
+      "router_val": "029f7ebc8f83ded9826beed73f56280a470afb4c6468945a2ef177446f4a8a6c"
+    }
+  },
+  "cache_paths": {
+    "ETTh1": {
+      "normalizer": "checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward\\router_val_60_80_cache.pt"
+    },
+    "ETTh2": {
+      "router_train": "cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+      "router_val": "cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt"
+    },
+    "ETTm1": {
+      "normalizer": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward_ETTm1\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward_ETTm1\\router_val_60_80_cache.pt"
+    },
+    "Electricity": {
+      "normalizer": "checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward_Electricity\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward_Electricity\\router_val_60_80_cache.pt"
+    },
+    "Weather": {
+      "normalizer": "checkpoints\\costarts_walkforward_Weather\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward_Weather\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward_Weather\\router_val_60_80_cache.pt"
+    }
+  },
+  "fame_baseline_source": "experiments/published_baseline_comparisons/run_published_baselines.py and scripts/fame_etth_router.py, adapted here as capacity-matched one-sided Ridge on six demand axes",
+  "git_commit": "0be3b7f062ca75c162e9ee4619e34497b934986b",
+  "passive_source": "experiments.behavioral_competence.common::{window_features_group_a,forecast_features_group_b,disagreement_features_group_c}",
+  "test_loaded": false
+}

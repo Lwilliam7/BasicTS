@@ -1,0 +1,140 @@
+{
+  "baseline_reference": {
+    "name": "hybrid_chrono_hvema_lowrank1_decay0.95_temp0.1_alpha0.75",
+    "mae": 0.36364156007766724,
+    "mse": 0.3067120909690857
+  },
+  "selection": {
+    "best": {
+      "name": "zscore_slow0.99_fast0.95_thr2.5_delta0_reset0_cool24_boost24",
+      "detector": "zscore",
+      "slow_decay": 0.99,
+      "fast_decay": 0.95,
+      "threshold": 2.5,
+      "delta": 0.0,
+      "reset_strength": 0.0,
+      "cooldown": 24,
+      "boost_duration": 24,
+      "fold_mae_mean": 0.3419906795024872,
+      "fold_baseline_mae_mean": 0.3423331081867218,
+      "fold_delta_mean": -0.00034242868423461914,
+      "fold_delta_std": 0.00044749953667633235,
+      "fold_mae_se": 0.00025836395798251033,
+      "fold_wins": 3,
+      "mean_triggers": 8.0,
+      "fast_update_rate": 0.17499290165428816
+    },
+    "selected": {
+      "name": "zscore_slow0.99_fast0.95_thr2.5_delta0_reset0_cool24_boost24",
+      "detector": "zscore",
+      "slow_decay": 0.99,
+      "fast_decay": 0.95,
+      "threshold": 2.5,
+      "delta": 0.0,
+      "reset_strength": 0.0,
+      "cooldown": 24,
+      "boost_duration": 24,
+      "fold_mae_mean": 0.3419906795024872,
+      "fold_baseline_mae_mean": 0.3423331081867218,
+      "fold_delta_mean": -0.00034242868423461914,
+      "fold_delta_std": 0.00044749953667633235,
+      "fold_mae_se": 0.00025836395798251033,
+      "fold_wins": 3,
+      "mean_triggers": 8.0,
+      "fast_update_rate": 0.17499290165428816
+    },
+    "one_se_threshold": 0.3422490434604697
+  },
+  "validation_seed_summary": [
+    {
+      "method": "baseline_fixed_decay",
+      "seeds": 5,
+      "mae_mean": 0.36364156007766724,
+      "mae_std": 1.391933074046392e-05,
+      "mse_mean": 0.3067120909690857,
+      "mse_std": 1.6383461115765385e-05,
+      "improvement_vs_0.363642": 0.0,
+      "percent_improvement_vs_0.363642": 0.0
+    },
+    {
+      "method": "oracle_change_diagnostic_ineligible",
+      "seeds": 5,
+      "mae_mean": 0.3640150725841522,
+      "mae_std": 1.2157725905126426e-05,
+      "mse_mean": 0.30690672993659973,
+      "mse_std": 1.7244372429559007e-05,
+      "improvement_vs_0.363642": -0.00037351250648498535,
+      "percent_improvement_vs_0.363642": -0.10271447147163539
+    },
+    {
+      "method": "regime_selected",
+      "seeds": 5,
+      "mae_mean": 0.3643457591533661,
+      "mae_std": 1.5147726116992999e-05,
+      "mse_mean": 0.30736738443374634,
+      "mse_std": 1.8065586118609644e-05,
+      "improvement_vs_0.363642": -0.0007041990756988525,
+      "percent_improvement_vs_0.363642": -0.1936519784890507
+    }
+  ],
+  "aggregate_bootstrap_ci": {
+    "baseline_fixed_decay": {
+      "mean_diff_candidate_minus_baseline": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "ci_excludes_zero": false
+    },
+    "regime_selected": {
+      "mean_diff_candidate_minus_baseline": 0.0007041808567009866,
+      "ci95_low": 0.0006182997603900731,
+      "ci95_high": 0.0007904802914708853,
+      "ci_excludes_zero": true
+    },
+    "oracle_change_diagnostic_ineligible": {
+      "mean_diff_candidate_minus_baseline": 0.0003735204227268696,
+      "ci95_low": 0.00025847312645055354,
+      "ci95_high": 0.0004939984646625817,
+      "ci_excludes_zero": true
+    }
+  },
+  "oracle_change_points": [
+    9102,
+    9564,
+    10026,
+    10950
+  ],
+  "worst_horizon_variable_regression": [
+    {
+      "method": "regime_selected",
+      "horizon": 10,
+      "variable": 5,
+      "delta_vs_baseline_mean": 0.003152763843536377
+    }
+  ],
+  "best_validation_method": {
+    "method": "baseline_fixed_decay",
+    "seeds": 5,
+    "mae_mean": 0.36364156007766724,
+    "mae_std": 1.391933074046392e-05,
+    "mse_mean": 0.3067120909690857,
+    "mse_std": 1.6383461115765385e-05,
+    "improvement_vs_0.363642": 0.0,
+    "percent_improvement_vs_0.363642": 0.0
+  },
+  "promotion_decision": "Do not promote regime-adaptive forgetting.",
+  "promotion_checks": {
+    "beats_0.363642": false,
+    "selected_fold_wins": 3,
+    "ci_excludes_zero": true,
+    "no_major_regression": false
+  },
+  "safety": {
+    "test_cache_loaded": false,
+    "validation_used_for_selection": false,
+    "oracle_diagnostic_ineligible": true,
+    "causality_rule": "old_start + prediction_length <= current_start"
+  },
+  "runtime_sec": 168.64863276481628,
+  "device": "cuda",
+  "reproduce_command": "python experiments\\regime_adaptive_forgetting_costar\\run_regime_adaptive_forgetting.py --device cuda"
+}

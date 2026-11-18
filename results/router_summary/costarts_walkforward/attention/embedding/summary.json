@@ -1,0 +1,360 @@
+{
+  "mode": "embedding",
+  "model": "Embedding only",
+  "validation_mae_mean": 0.374123215675354,
+  "validation_mae_std": 0.0005258850451407402,
+  "validation_mse_mean": 0.3177596926689148,
+  "validation_mse_std": 0.0009920023436748222,
+  "average_queries_mean": 1.3085467100143433,
+  "average_queries_std": 0.3120844485953445,
+  "parameter_count": 65029,
+  "per_seed": [
+    {
+      "mode": "embedding",
+      "model": "Embedding only",
+      "seed": 7,
+      "best_epoch": 2,
+      "validation_mae": 0.37411895394325256,
+      "validation_mse": 0.31838473677635193,
+      "raw_validation_mae": 1.2748943567276,
+      "raw_validation_mse": 5.101809024810791,
+      "average_queries": 1.0421925783157349,
+      "top1_expert_accuracy": 26.397404074668884,
+      "top2_oracle_coverage": 26.938333934367108,
+      "oracle_next_expert_accuracy": 25.847750865051903,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention\\embedding\\seed_7\\best_attention_router.pt",
+      "parameter_count": 65029
+    },
+    {
+      "mode": "embedding",
+      "model": "Embedding only",
+      "seed": 11,
+      "best_epoch": 1,
+      "validation_mae": 0.37422317266464233,
+      "validation_mse": 0.3179476261138916,
+      "raw_validation_mae": 1.2830703258514404,
+      "raw_validation_mse": 5.195688247680664,
+      "average_queries": 1.8957808017730713,
+      "top1_expert_accuracy": 24.377930164337158,
+      "top2_oracle_coverage": 39.56004327443202,
+      "oracle_next_expert_accuracy": 21.91363895758037,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention\\embedding\\seed_11\\best_attention_router.pt",
+      "parameter_count": 65029
+    },
+    {
+      "mode": "embedding",
+      "model": "Embedding only",
+      "seed": 13,
+      "best_epoch": 11,
+      "validation_mae": 0.3748342990875244,
+      "validation_mse": 0.3189614415168762,
+      "raw_validation_mae": 1.2767422199249268,
+      "raw_validation_mse": 5.15703010559082,
+      "average_queries": 1.3133790493011475,
+      "top1_expert_accuracy": 25.604039430618286,
+      "top2_oracle_coverage": 31.121529029931484,
+      "oracle_next_expert_accuracy": 24.766611751784733,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention\\embedding\\seed_13\\best_attention_router.pt",
+      "parameter_count": 65029
+    },
+    {
+      "mode": "embedding",
+      "model": "Embedding only",
+      "seed": 17,
+      "best_epoch": 4,
+      "validation_mae": 0.3731994032859802,
+      "validation_mse": 0.31603798270225525,
+      "raw_validation_mae": 1.2732393741607666,
+      "raw_validation_mse": 5.07719612121582,
+      "average_queries": 1.0504868030548096,
+      "top1_expert_accuracy": 25.063109397888184,
+      "top2_oracle_coverage": 25.928597187161916,
+      "oracle_next_expert_accuracy": 24.236182629591486,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention\\embedding\\seed_17\\best_attention_router.pt",
+      "parameter_count": 65029
+    },
+    {
+      "mode": "embedding",
+      "model": "Embedding only",
+      "seed": 19,
+      "best_epoch": 14,
+      "validation_mae": 0.3742402493953705,
+      "validation_mse": 0.317466676235199,
+      "raw_validation_mae": 1.274924397468567,
+      "raw_validation_mse": 5.11469841003418,
+      "average_queries": 1.2408943176269531,
+      "top1_expert_accuracy": 24.089433252811432,
+      "top2_oracle_coverage": 28.416877028489,
+      "oracle_next_expert_accuracy": 24.382446963092125,
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\attention\\embedding\\seed_19\\best_attention_router.pt",
+      "parameter_count": 65029
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "raw_mae": 1.2748943567276,
+      "raw_mse": 5.101809024810791,
+      "mae": 0.37411895394325256,
+      "mse": 0.31838473677635193,
+      "average_queries": 1.0421925783157349,
+      "top1_expert_accuracy": 26.397404074668884,
+      "top2_oracle_coverage": 26.938333934367108,
+      "oracle_next_expert_accuracy": 25.847750865051903,
+      "query_count_percent": {
+        "1": 96.61016949152543,
+        "2": 2.560403894698882,
+        "3": 0.8294266137756942,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 1.7670393076090876,
+        "PatchTST": 22.394518571943742,
+        "iTransformer": 75.83844212044717,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.8654886404615939,
+        "PatchTST": 0.0,
+        "iTransformer": 2.5243418680129825,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 25.53191489361702,
+        "PatchTST": 0.0,
+        "iTransformer": 74.46808510638297,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 2.6325279480706816,
+        "PatchTST": 22.394518571943742,
+        "iTransformer": 78.36278398846015,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.8294266137756942
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 96.61016949152543,
+        "3": 75.53191489361703,
+        "4": 100.0,
+        "5": 0.0
+      },
+      "qk_diagnostics": {}
+    },
+    "11": {
+      "raw_mae": 1.2830703258514404,
+      "raw_mse": 5.195688247680664,
+      "mae": 0.37422317266464233,
+      "mse": 0.3179476261138916,
+      "average_queries": 1.8957808017730713,
+      "top1_expert_accuracy": 24.377930164337158,
+      "top2_oracle_coverage": 39.56004327443202,
+      "oracle_next_expert_accuracy": 21.91363895758037,
+      "query_count_percent": {
+        "1": 19.87017670393076,
+        "2": 70.6815723043635,
+        "3": 9.448250991705734,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 12.188965019834114,
+        "iTransformer": 87.81103498016589,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 73.89109267940859,
+        "PatchTST": 0.0,
+        "iTransformer": 6.238730616660656,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 92.21422142214222,
+        "PatchTST": 0.0,
+        "iTransformer": 7.785778577857786,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 79.08402452217814,
+        "PatchTST": 12.802019473494411,
+        "iTransformer": 97.51172015867292,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.18031013342949873
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 19.87017670393076,
+        "3": 88.2088208820882,
+        "4": 100.0,
+        "5": 0.0
+      },
+      "qk_diagnostics": {}
+    },
+    "13": {
+      "raw_mae": 1.2767422199249268,
+      "raw_mse": 5.15703010559082,
+      "mae": 0.3748342990875244,
+      "mse": 0.3189614415168762,
+      "average_queries": 1.3133790493011475,
+      "top1_expert_accuracy": 25.604039430618286,
+      "top2_oracle_coverage": 31.121529029931484,
+      "oracle_next_expert_accuracy": 24.766611751784733,
+      "query_count_percent": {
+        "1": 72.1961774251713,
+        "2": 24.66642625315543,
+        "3": 2.7407140281283806,
+        "4": 0.3966822935448972,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 5.62567616300036,
+        "PatchTST": 4.904435629282366,
+        "iTransformer": 89.46988820771728,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 23.836999639379734,
+        "PatchTST": 0.3966822935448972,
+        "iTransformer": 2.993148214929679,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.576992426974396
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 85.73281452658884,
+        "PatchTST": 1.4267185473411155,
+        "iTransformer": 10.765239948119326,
+        "TimesNet": 0.0,
+        "ModernTCN": 2.0752269779507135
+      },
+      "expert_usage_percent": {
+        "DLinear": 30.07573025604039,
+        "PatchTST": 5.481428056256761,
+        "iTransformer": 93.18427695636495,
+        "TimesNet": 0.0,
+        "ModernTCN": 2.5964659213847816
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 72.1961774251713,
+        "3": 88.715953307393,
+        "4": 87.35632183908046,
+        "5": 100.0
+      },
+      "qk_diagnostics": {}
+    },
+    "17": {
+      "raw_mae": 1.2732393741607666,
+      "raw_mse": 5.07719612121582,
+      "mae": 0.3731994032859802,
+      "mse": 0.31603798270225525,
+      "average_queries": 1.0504868030548096,
+      "top1_expert_accuracy": 25.063109397888184,
+      "top2_oracle_coverage": 25.928597187161916,
+      "oracle_next_expert_accuracy": 24.236182629591486,
+      "query_count_percent": {
+        "1": 94.98737829065993,
+        "2": 4.976559682654165,
+        "3": 0.03606202668589975,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 39.05517490082943,
+        "iTransformer": 60.83663901911287,
+        "TimesNet": 0.10818608005769924,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 0.0,
+        "PatchTST": 0.0,
+        "iTransformer": 5.012621709340065,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 0.0,
+        "PatchTST": 0.0,
+        "iTransformer": 100.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "expert_usage_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 39.05517490082943,
+        "iTransformer": 65.84926072845293,
+        "TimesNet": 0.144248106743599,
+        "ModernTCN": 0.0
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 94.98737829065993,
+        "3": 99.28057553956835,
+        "4": 100.0,
+        "5": 0.0
+      },
+      "qk_diagnostics": {}
+    },
+    "19": {
+      "raw_mae": 1.274924397468567,
+      "raw_mse": 5.11469841003418,
+      "mae": 0.3742402493953705,
+      "mse": 0.317466676235199,
+      "average_queries": 1.2408943176269531,
+      "top1_expert_accuracy": 24.089433252811432,
+      "top2_oracle_coverage": 28.416877028489,
+      "oracle_next_expert_accuracy": 24.382446963092125,
+      "query_count_percent": {
+        "1": 83.55571583122972,
+        "2": 9.448250991705734,
+        "3": 6.346916696718355,
+        "4": 0.6491164803461954,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 1.9473494410385863,
+        "PatchTST": 26.721961774251714,
+        "iTransformer": 66.85899747565813,
+        "TimesNet": 2.163721601153985,
+        "ModernTCN": 2.307969707897584
+      },
+      "second_query_percent_all_samples": {
+        "DLinear": 9.95311936530833,
+        "PatchTST": 2.7407140281283806,
+        "iTransformer": 2.3440317345834836,
+        "TimesNet": 0.6851785070320952,
+        "ModernTCN": 0.7212405337179949
+      },
+      "second_query_percent_among_second_queries": {
+        "DLinear": 60.526315789473685,
+        "PatchTST": 16.666666666666668,
+        "iTransformer": 14.25438596491228,
+        "TimesNet": 4.166666666666667,
+        "ModernTCN": 4.385964912280702
+      },
+      "expert_usage_percent": {
+        "DLinear": 13.342949873782906,
+        "PatchTST": 34.51135953840606,
+        "iTransformer": 69.34727731698521,
+        "TimesNet": 3.4980165885322756,
+        "ModernTCN": 3.389830508474576
+      },
+      "hard_stop_percent_by_step": {
+        "1": 0.0,
+        "2": 83.55571583122972,
+        "3": 57.45614035087719,
+        "4": 90.72164948453609,
+        "5": 100.0
+      },
+      "qk_diagnostics": {}
+    }
+  }
+}

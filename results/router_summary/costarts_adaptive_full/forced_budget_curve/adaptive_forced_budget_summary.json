@@ -1,0 +1,122 @@
+[
+  {
+    "variant": "mask_only",
+    "budget": 1,
+    "mae_mean": 0.3700985014438629,
+    "mae_std": 0.0,
+    "mse_mean": 0.3458804190158844,
+    "avg_experts_mean": 1.0
+  },
+  {
+    "variant": "mask_only",
+    "budget": 2,
+    "mae_mean": 0.3562335669994354,
+    "mae_std": 0.0026490504387766123,
+    "mse_mean": 0.31979817152023315,
+    "avg_experts_mean": 2.0
+  },
+  {
+    "variant": "mask_only",
+    "budget": 3,
+    "mae_mean": 0.34978562593460083,
+    "mae_std": 0.00036675570299848914,
+    "mse_mean": 0.3146093785762787,
+    "avg_experts_mean": 3.0
+  },
+  {
+    "variant": "mask_only",
+    "budget": 4,
+    "mae_mean": 0.34944453835487366,
+    "mae_std": 0.00016239054093603045,
+    "mse_mean": 0.31174665689468384,
+    "avg_experts_mean": 4.0
+  },
+  {
+    "variant": "mask_only",
+    "budget": 5,
+    "mae_mean": 0.35006535053253174,
+    "mae_std": 0.0,
+    "mse_mean": 0.30973753333091736,
+    "avg_experts_mean": 5.0
+  },
+  {
+    "variant": "forecast",
+    "budget": 1,
+    "mae_mean": 0.3700985014438629,
+    "mae_std": 0.0,
+    "mse_mean": 0.3458804190158844,
+    "avg_experts_mean": 1.0
+  },
+  {
+    "variant": "forecast",
+    "budget": 2,
+    "mae_mean": 0.3575090765953064,
+    "mae_std": 0.001989600481465459,
+    "mse_mean": 0.32104700803756714,
+    "avg_experts_mean": 2.0
+  },
+  {
+    "variant": "forecast",
+    "budget": 3,
+    "mae_mean": 0.35185250639915466,
+    "mae_std": 0.001966634066775441,
+    "mse_mean": 0.3110472559928894,
+    "avg_experts_mean": 3.0
+  },
+  {
+    "variant": "forecast",
+    "budget": 4,
+    "mae_mean": 0.35035037994384766,
+    "mae_std": 0.0007198726525530219,
+    "mse_mean": 0.30808764696121216,
+    "avg_experts_mean": 4.0
+  },
+  {
+    "variant": "forecast",
+    "budget": 5,
+    "mae_mean": 0.35006535053253174,
+    "mae_std": 0.0,
+    "mse_mean": 0.30973753333091736,
+    "avg_experts_mean": 5.0
+  },
+  {
+    "variant": "forecast_disagreement",
+    "budget": 1,
+    "mae_mean": 0.3700985014438629,
+    "mae_std": 0.0,
+    "mse_mean": 0.3458804190158844,
+    "avg_experts_mean": 1.0
+  },
+  {
+    "variant": "forecast_disagreement",
+    "budget": 2,
+    "mae_mean": 0.3574150800704956,
+    "mae_std": 0.0031425775960087776,
+    "mse_mean": 0.3219488561153412,
+    "avg_experts_mean": 2.0
+  },
+  {
+    "variant": "forecast_disagreement",
+    "budget": 3,
+    "mae_mean": 0.3513704836368561,
+    "mae_std": 0.0008509056060574949,
+    "mse_mean": 0.31116920709609985,
+    "avg_experts_mean": 3.0
+  },
+  {
+    "variant": "forecast_disagreement",
+    "budget": 4,
+    "mae_mean": 0.35021185874938965,
+    "mae_std": 0.0008226536447182298,
+    "mse_mean": 0.3089388310909271,
+    "avg_experts_mean": 4.0
+  },
+  {
+    "variant": "forecast_disagreement",
+    "budget": 5,
+    "mae_mean": 0.35006535053253174,
+    "mae_std": 0.0,
+    "mse_mean": 0.30973753333091736,
+    "avg_experts_mean": 5.0
+  }
+]

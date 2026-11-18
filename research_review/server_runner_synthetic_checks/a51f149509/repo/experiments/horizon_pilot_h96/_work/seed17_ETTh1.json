@@ -1,0 +1,119 @@
+{
+  "dataset": "ETTh1",
+  "seed": 17,
+  "horizon": 96,
+  "candidates": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "core": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer"
+  ],
+  "test_set_accessed": false,
+  "scorer_folds": [
+    [
+      {
+        "eval_lo": 16,
+        "eval_hi": 32,
+        "eval_origin": 1536,
+        "num_legal_fit_windows": 16,
+        "latest_fit_target_end": 1536
+      },
+      {
+        "eval_lo": 32,
+        "eval_hi": 48,
+        "eval_origin": 3072,
+        "num_legal_fit_windows": 32,
+        "latest_fit_target_end": 3072
+      },
+      {
+        "eval_lo": 48,
+        "eval_hi": 64,
+        "eval_origin": 4608,
+        "num_legal_fit_windows": 48,
+        "latest_fit_target_end": 4608
+      },
+      {
+        "eval_lo": 64,
+        "eval_hi": 80,
+        "eval_origin": 6144,
+        "num_legal_fit_windows": 64,
+        "latest_fit_target_end": 6144
+      }
+    ],
+    [
+      {
+        "eval_lo": 16,
+        "eval_hi": 32,
+        "eval_origin": 1536,
+        "num_legal_fit_windows": 16,
+        "latest_fit_target_end": 1536
+      },
+      {
+        "eval_lo": 32,
+        "eval_hi": 48,
+        "eval_origin": 3072,
+        "num_legal_fit_windows": 32,
+        "latest_fit_target_end": 3072
+      },
+      {
+        "eval_lo": 48,
+        "eval_hi": 64,
+        "eval_origin": 4608,
+        "num_legal_fit_windows": 48,
+        "latest_fit_target_end": 4608
+      },
+      {
+        "eval_lo": 64,
+        "eval_hi": 80,
+        "eval_origin": 6144,
+        "num_legal_fit_windows": 64,
+        "latest_fit_target_end": 6144
+      }
+    ]
+  ],
+  "core_selection": {
+    "fold_rows": [
+      {
+        "eval_lo": 16,
+        "eval_hi": 32,
+        "mae": 0.34639139845967293,
+        "mse": 0.20882844273000956
+      },
+      {
+        "eval_lo": 32,
+        "eval_hi": 48,
+        "mae": 0.3391435295343399,
+        "mse": 0.20301211904734373
+      },
+      {
+        "eval_lo": 48,
+        "eval_hi": 64,
+        "mae": 0.3410571441054344,
+        "mse": 0.20601024106144905
+      },
+      {
+        "eval_lo": 64,
+        "eval_hi": 80,
+        "mae": 0.34860519133508205,
+        "mse": 0.21748826559633017
+      }
+    ]
+  },
+  "arms": {
+    "wide_top3": {
+      "mae": 0.3474630204339822,
+      "mse": 0.21157623082399368
+    }
+  },
+  "freeze_matches": true,
+  "all_folds_causal": true,
+  "checkpoints_unchanged": true,
+  "tensors_finite": true,
+  "oof_mask_covers_folds": true
+}

@@ -1,0 +1,23 @@
+{
+  "repo_root": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\research_review\\server_runner_synthetic_checks\\a51f149509\\repo",
+  "datasets": [
+    "ETTh1"
+  ],
+  "horizons": [
+    96
+  ],
+  "jobs": 1,
+  "threads": 2,
+  "workers": 1,
+  "bootstrap_samples": 10,
+  "source_sha256": "1b1eb21dfdda544b406e61eb5ed7678c60bfff70022d079b2fc5704e7df433aa",
+  "frequencies": {
+    "ETTh1": 24,
+    "Electricity": 24,
+    "Traffic": 24,
+    "AppliancesEnergy": 144,
+    "OikolabWeather": 24,
+    "SolarAL": 144,
+    "TetouanPower": 144
+  }
+}

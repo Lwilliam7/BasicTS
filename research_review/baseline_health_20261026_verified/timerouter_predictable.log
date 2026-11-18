@@ -1,0 +1,10 @@
+[timerouter] ETTh1: CV alignment ok {'router_train': {'rows_checked': 512, 'max_abs_diff_std_units': 0.0, 'pass': True}, 'router_val': {'rows_checked': 512, 'max_abs_diff_std_units': 0.0, 'pass': True}}
+[timerouter] ETTh1: 384 / 384 training rows after the paper's filters
+[timerouter] ETTh1: OOF fold 0 done (76 rows)
+[timerouter] ETTh1: OOF fold 1 done (77 rows)
+[timerouter] ETTh1: OOF fold 2 done (77 rows)
+[timerouter] ETTh1: OOF fold 3 done (77 rows)
+[timerouter] ETTh1: selected tau_m=0.0 tau_d=0.0 (OOF MASE 0.44444, 307 OOF rows)
+[timerouter] ETTh1: router_val windows 0..127 / 128
+[timerouter] ETTh1: val MAE 0.020000 (fallback 0.000), no-gate 0.020000, fallback-only 0.163393, 9s
+{"method": "timerouter", "case": "predictable", "mae": 0.019999980926513672, "software_case_passed": true, "checks": {"finite": true, "source_gate_passed": true, "synthetic_load_guard": true, "learns_predictable_winner": true, "winner_accuracy": true}}

@@ -1,0 +1,396 @@
+{
+  "label": "etth2_validation_tuned",
+  "created_at_utc": "2026-08-13T07:51:13.279394+00:00",
+  "test_loaded_during_sweep": false,
+  "test_loaded_before_tuned_freeze": false,
+  "test_metrics_used_for_decision": false,
+  "dataset": "ETTh2",
+  "core": [
+    "DLinear",
+    "PatchTST",
+    "ModernTCN"
+  ],
+  "declared_search_space": {
+    "ridge_residual_corrector": [
+      {
+        "ridge": 1.0,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "feature_set": "full"
+      },
+      {
+        "ridge": 1.0,
+        "alpha": 0.05,
+        "clip_multiple": 0.25,
+        "feature_set": "full"
+      },
+      {
+        "ridge": 10.0,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "feature_set": "full"
+      },
+      {
+        "ridge": 1.0,
+        "alpha": 0.1,
+        "clip_multiple": 0.5,
+        "feature_set": "full"
+      },
+      {
+        "ridge": 1.0,
+        "alpha": 0.25,
+        "clip_multiple": 0.25,
+        "feature_set": "full"
+      }
+    ],
+    "mlp_residual_corrector": [
+      {
+        "seed": 7,
+        "hidden": 64,
+        "lr": 0.0003,
+        "weight_decay": 0.01,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "epochs": 40,
+        "patience": 6
+      },
+      {
+        "seed": 7,
+        "hidden": 64,
+        "lr": 0.0003,
+        "weight_decay": 0.01,
+        "alpha": 0.05,
+        "clip_multiple": 0.25,
+        "epochs": 40,
+        "patience": 6
+      },
+      {
+        "seed": 7,
+        "hidden": 64,
+        "lr": 0.0003,
+        "weight_decay": 0.01,
+        "alpha": 0.1,
+        "clip_multiple": 0.5,
+        "epochs": 40,
+        "patience": 6
+      },
+      {
+        "seed": 7,
+        "hidden": 64,
+        "lr": 0.0003,
+        "weight_decay": 0.03,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "epochs": 40,
+        "patience": 6
+      },
+      {
+        "seed": 7,
+        "hidden": 32,
+        "lr": 0.0003,
+        "weight_decay": 0.01,
+        "alpha": 0.1,
+        "clip_multiple": 0.25,
+        "epochs": 40,
+        "patience": 6
+      }
+    ],
+    "oracle_prototype_residual": [
+      {
+        "teacher_lambda": 0.01,
+        "num_prototypes": 16,
+        "residual_scale": 0.3,
+        "residual_weight": 0.001,
+        "epochs": 10
+      },
+      {
+        "teacher_lambda": 0.01,
+        "num_prototypes": 8,
+        "residual_scale": 0.3,
+        "residual_weight": 0.001,
+        "epochs": 10
+      },
+      {
+        "teacher_lambda": 0.01,
+        "num_prototypes": 32,
+        "residual_scale": 0.3,
+        "residual_weight": 0.001,
+        "epochs": 10
+      },
+      {
+        "teacher_lambda": 0.01,
+        "num_prototypes": 16,
+        "residual_scale": 0.3,
+        "residual_weight": 0.01,
+        "epochs": 10
+      },
+      {
+        "teacher_lambda": 0.001,
+        "num_prototypes": 16,
+        "residual_scale": 0.3,
+        "residual_weight": 0.001,
+        "epochs": 10
+      }
+    ],
+    "dynamic_fixed_three": [
+      {
+        "seed": 7,
+        "batch_size": 512,
+        "epochs": 2,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0,
+        "grad_clip_norm": 1.0,
+        "entropy_weight": 0.0,
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "ablation": "full"
+      },
+      {
+        "seed": 7,
+        "batch_size": 512,
+        "epochs": 5,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0,
+        "grad_clip_norm": 1.0,
+        "entropy_weight": 0.0,
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "ablation": "full"
+      },
+      {
+        "seed": 7,
+        "batch_size": 512,
+        "epochs": 5,
+        "learning_rate": 0.0005,
+        "weight_decay": 0.0,
+        "grad_clip_norm": 1.0,
+        "entropy_weight": 0.0,
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "ablation": "full"
+      },
+      {
+        "seed": 7,
+        "batch_size": 512,
+        "epochs": 5,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "grad_clip_norm": 1.0,
+        "entropy_weight": 0.0,
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "ablation": "full"
+      },
+      {
+        "seed": 7,
+        "batch_size": 512,
+        "epochs": 5,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0,
+        "grad_clip_norm": 1.0,
+        "entropy_weight": 0.001,
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "ablation": "full"
+      }
+    ]
+  },
+  "selection_metric": "validation MAE primary, validation MSE secondary",
+  "splits": {
+    "router_train": [
+      8640,
+      10800
+    ],
+    "router_val": [
+      10800,
+      11520
+    ],
+    "test": [
+      11520,
+      14400
+    ]
+  },
+  "cache_paths": {
+    "router_train": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+    "router_val": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt",
+    "test_planned_after_freeze": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\caches\\ETTh2\\locked_test_cache_v2.pt"
+  },
+  "cache_hashes": {
+    "router_train": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+    "router_val": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088"
+  },
+  "validation_sweep_results_file": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\validation_sweep_results.csv",
+  "selected_winners": {
+    "Ridge residual corrector": {
+      "selected_by": "router_val_mae_then_mse",
+      "row": {
+        "method": "Ridge residual corrector",
+        "split": "router_val",
+        "seed": "mean",
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "mae": 0.2750360667705536,
+        "mse": 0.1656191200017929,
+        "prediction_sha256": "18ef4eadac4f27c9d84ef93dd2acfba79611234efeeff47964a5a33dce2d61e3",
+        "version": "etth2_validation_tuned",
+        "config_name": "ridge_alpha0p25_clip_multiple0p25_feature_setfull_ridge1",
+        "config": {
+          "ridge": 1.0,
+          "alpha": 0.25,
+          "clip_multiple": 0.25,
+          "feature_set": "full"
+        },
+        "mean_abs_delta_norm": 0.06007213145494461,
+        "mean_abs_applied_delta_norm": 0.012259774841368198,
+        "clip_frequency": 0.24739766120910645,
+        "num_residual_stat_updates": 601,
+        "artifact_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\ridge\\ridge_alpha0p25_clip_multiple0p25_feature_setfull_ridge1\\ridge_artifact.pt"
+      },
+      "frozen_artifact_paths": [
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\ridge_residual_corrector\\ridge_artifact.pt"
+      ],
+      "frozen_artifact_sha256": {
+        "ridge_artifact.pt": "4513a52b71b589d9303462a07ca4619c45a9f6c53cf2b8ae5c1ea4559c15df4e"
+      }
+    },
+    "MLP residual corrector": {
+      "selected_by": "router_val_mae_then_mse",
+      "row": {
+        "method": "MLP residual corrector",
+        "split": "router_val",
+        "seed": "mean",
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "mae": 0.2756431996822357,
+        "mse": 0.16614720225334167,
+        "prediction_sha256": "2a054a7a29d731b5f86ab4f4a85155bf8c14e5291b14af0bd84fba1589103cac",
+        "version": "etth2_validation_tuned",
+        "config_name": "mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01",
+        "config": {
+          "seed": 7,
+          "hidden": 64,
+          "lr": 0.0003,
+          "weight_decay": 0.01,
+          "alpha": 0.1,
+          "clip_multiple": 0.5,
+          "epochs": 40,
+          "patience": 6
+        },
+        "artifact_paths": [
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\mlp\\mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_7\\mlp_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\mlp\\mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_11\\mlp_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\mlp\\mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_13\\mlp_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\mlp\\mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_17\\mlp_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\mlp\\mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_19\\mlp_tuned_artifact.pt"
+        ]
+      },
+      "frozen_artifact_paths": [
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\mlp_residual_corrector\\seed_7_mlp_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\mlp_residual_corrector\\seed_11_mlp_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\mlp_residual_corrector\\seed_13_mlp_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\mlp_residual_corrector\\seed_17_mlp_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\mlp_residual_corrector\\seed_19_mlp_tuned_artifact.pt"
+      ],
+      "frozen_artifact_sha256": {
+        "seed_7_mlp_tuned_artifact.pt": "3d2eac40f932f81dbff263ad017434b1aa2577635fa41688c6ad9f55ee2c568e",
+        "seed_11_mlp_tuned_artifact.pt": "585211b34738b0f0a875eee7c92cf0bcb3a4cb4b7fdfd09d34543c1f5d02e258",
+        "seed_13_mlp_tuned_artifact.pt": "b75237910ef256de39bd71ea05fa1ff801e3d9a1a9d7c855717954abe7c0aa04",
+        "seed_17_mlp_tuned_artifact.pt": "72ea0c9cb904e7511c9ba9c18df9b4c2d3364d2f2d5726089576e1066b8ed873",
+        "seed_19_mlp_tuned_artifact.pt": "94e64a93748896c9d098c3509a8f8889378bd37684aaa68d62f48dd93ba91686"
+      }
+    },
+    "Oracle prototype residual": {
+      "selected_by": "router_val_mae_then_mse",
+      "row": {
+        "method": "Oracle prototype residual",
+        "split": "router_val",
+        "seed": "mean",
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "mae": 0.2748285233974457,
+        "mse": 0.16553811728954315,
+        "prediction_sha256": "4a991c3a258bbfa33619860702cbc6629d8d98924b79bc5dd5907e4dff1fa1e1",
+        "version": "etth2_validation_tuned",
+        "config_name": "oracle_epochs10_num_prototypes16_residual_scale0p3_residual_weight0p001_teacher_lambda0p01",
+        "config": {
+          "teacher_lambda": 0.01,
+          "num_prototypes": 16,
+          "residual_scale": 0.3,
+          "residual_weight": 0.001,
+          "epochs": 10
+        },
+        "artifact_paths": [
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\oracle\\oracle_epochs10_num_prototypes16_residual_scale0p3_residual_weight0p001_teacher_lambda0p01\\seed_7\\oracle_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\oracle\\oracle_epochs10_num_prototypes16_residual_scale0p3_residual_weight0p001_teacher_lambda0p01\\seed_11\\oracle_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\oracle\\oracle_epochs10_num_prototypes16_residual_scale0p3_residual_weight0p001_teacher_lambda0p01\\seed_13\\oracle_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\oracle\\oracle_epochs10_num_prototypes16_residual_scale0p3_residual_weight0p001_teacher_lambda0p01\\seed_17\\oracle_tuned_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\oracle\\oracle_epochs10_num_prototypes16_residual_scale0p3_residual_weight0p001_teacher_lambda0p01\\seed_19\\oracle_tuned_artifact.pt"
+        ]
+      },
+      "frozen_artifact_paths": [
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\oracle_prototype_residual\\seed_7_oracle_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\oracle_prototype_residual\\seed_11_oracle_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\oracle_prototype_residual\\seed_13_oracle_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\oracle_prototype_residual\\seed_17_oracle_tuned_artifact.pt",
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\oracle_prototype_residual\\seed_19_oracle_tuned_artifact.pt"
+      ],
+      "frozen_artifact_sha256": {
+        "seed_7_oracle_tuned_artifact.pt": "1d837cd43761317887f933716e95cb336e103ab62199913a3e36230b873fd28e",
+        "seed_11_oracle_tuned_artifact.pt": "16c16b1bb0ddba4d5a59f54a698f4174eb27b2c7d676eeea84ba0ac7cf91f1d5",
+        "seed_13_oracle_tuned_artifact.pt": "bc5e2f58c3b65f304444a0b12d3ad5e5f7ceb3231f17e487482ec1d1a6f54bb8",
+        "seed_17_oracle_tuned_artifact.pt": "ac02ee94857a33fb378451c37c3550ac0fc6794794e29533c64a6677117967f2",
+        "seed_19_oracle_tuned_artifact.pt": "17461b0680408654b27467c8fb4758ebc0c36649f4ba1298f37c7f26ee391d0b"
+      }
+    },
+    "Dynamic fixed-three": {
+      "selected_by": "router_val_mae_then_mse",
+      "row": {
+        "method": "Dynamic fixed-three",
+        "split": "router_val",
+        "seed": 7,
+        "expert_set": "DLinear+PatchTST+ModernTCN",
+        "mae": 0.27474603056907654,
+        "mse": 0.16534987092018127,
+        "prediction_sha256": "e4eed5c3a9989eec2661c92a6c340dc5a29684043dae97312e4a15a877bb784a",
+        "version": "etth2_validation_tuned",
+        "config_name": "dynamic_77df34e6b069",
+        "config": {
+          "seed": 7,
+          "batch_size": 512,
+          "epochs": 5,
+          "learning_rate": 0.0005,
+          "weight_decay": 0.0,
+          "grad_clip_norm": 1.0,
+          "entropy_weight": 0.0,
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "ablation": "full"
+        },
+        "mean_weights": {
+          "DLinear": 0.4996521472930908,
+          "PatchTST": 0.08327341079711914,
+          "ModernTCN": 0.41707441210746765
+        },
+        "weight_std": {
+          "DLinear": 0.02422388084232807,
+          "PatchTST": 0.004407355561852455,
+          "ModernTCN": 0.021715475246310234
+        },
+        "artifact_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\artifacts\\dynamic\\dynamic_77df34e6b069\\dynamic_tuned_artifact.pt",
+        "best_epoch": 5
+      },
+      "frozen_artifact_paths": [
+        "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\etth2_validation_tuned_missing_methods\\frozen_winners\\dynamic_fixed-three\\dynamic_tuned_artifact.pt"
+      ],
+      "frozen_artifact_sha256": {
+        "dynamic_tuned_artifact.pt": "5511faba4844faa59327a4596dc78c37536988e9ac717b62ec6b6e1532005cda"
+      }
+    }
+  },
+  "leakage_checks": {
+    "router_train_used_for_training": true,
+    "router_val_used_for_hyperparameter_and_checkpoint_selection": true,
+    "test_not_loaded_before_winner_freeze": true,
+    "test_not_used_for_any_decision": true,
+    "causal_feature_rule": "old_start + horizon <= current_start",
+    "raw_scale_std_ones_no_inverse_transform": true
+  },
+  "runtime_sec_train_validate": 227.90510509999876
+}

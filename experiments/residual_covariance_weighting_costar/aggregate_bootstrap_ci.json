@@ -1,0 +1,14 @@
+{
+  "baseline_fixed3_hv": {
+    "mean_diff_candidate_minus_baseline": 0.0,
+    "ci95_low": 0.0,
+    "ci95_high": 0.0,
+    "ci_excludes_zero": false
+  },
+  "residual_covariance_selected": {
+    "mean_diff_candidate_minus_baseline": 7.686167919018771e-06,
+    "ci95_low": -0.00010483703954378143,
+    "ci95_high": 0.00012076550774509087,
+    "ci_excludes_zero": false
+  }
+}

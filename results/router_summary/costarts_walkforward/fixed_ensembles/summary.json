@@ -1,0 +1,342 @@
+{
+  "method": "Fixed equal-average ensemble baseline for COSTAR-TS walk-forward validation",
+  "cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\router_val_60_80_cache.pt",
+  "normalizer_checkpoint": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+  "validation_role": "router_val_60_80",
+  "validation_window_start_min": 8640,
+  "validation_forecast_end_max": 11424,
+  "num_validation_windows": 2773,
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "all_fixed_subsets": [
+    {
+      "subset": "DLinear",
+      "num_experts": 1,
+      "validation_mae": 0.39209187030792236,
+      "validation_mse": 0.3435719311237335
+    },
+    {
+      "subset": "PatchTST",
+      "num_experts": 1,
+      "validation_mae": 0.37955790758132935,
+      "validation_mse": 0.3265279531478882
+    },
+    {
+      "subset": "iTransformer",
+      "num_experts": 1,
+      "validation_mae": 0.37654954195022583,
+      "validation_mse": 0.32209450006484985
+    },
+    {
+      "subset": "TimesNet",
+      "num_experts": 1,
+      "validation_mae": 0.4090864062309265,
+      "validation_mse": 0.3794470429420471
+    },
+    {
+      "subset": "ModernTCN",
+      "num_experts": 1,
+      "validation_mae": 0.4703761339187622,
+      "validation_mse": 0.4657808840274811
+    },
+    {
+      "subset": "DLinear+PatchTST",
+      "num_experts": 2,
+      "validation_mae": 0.37795838713645935,
+      "validation_mse": 0.3234542906284332
+    },
+    {
+      "subset": "DLinear+iTransformer",
+      "num_experts": 2,
+      "validation_mae": 0.3760456442832947,
+      "validation_mse": 0.32098931074142456
+    },
+    {
+      "subset": "DLinear+TimesNet",
+      "num_experts": 2,
+      "validation_mae": 0.3809974193572998,
+      "validation_mse": 0.3294171988964081
+    },
+    {
+      "subset": "DLinear+ModernTCN",
+      "num_experts": 2,
+      "validation_mae": 0.4026998281478882,
+      "validation_mse": 0.3519756495952606
+    },
+    {
+      "subset": "PatchTST+iTransformer",
+      "num_experts": 2,
+      "validation_mae": 0.370154470205307,
+      "validation_mse": 0.31450897455215454
+    },
+    {
+      "subset": "PatchTST+TimesNet",
+      "num_experts": 2,
+      "validation_mae": 0.3744902014732361,
+      "validation_mse": 0.3210192024707794
+    },
+    {
+      "subset": "PatchTST+ModernTCN",
+      "num_experts": 2,
+      "validation_mae": 0.3941826820373535,
+      "validation_mse": 0.3407467007637024
+    },
+    {
+      "subset": "iTransformer+TimesNet",
+      "num_experts": 2,
+      "validation_mae": 0.3739887475967407,
+      "validation_mse": 0.3201824724674225
+    },
+    {
+      "subset": "iTransformer+ModernTCN",
+      "num_experts": 2,
+      "validation_mae": 0.39306503534317017,
+      "validation_mse": 0.33708420395851135
+    },
+    {
+      "subset": "TimesNet+ModernTCN",
+      "num_experts": 2,
+      "validation_mae": 0.4082372486591339,
+      "validation_mse": 0.3660773038864136
+    },
+    {
+      "subset": "DLinear+PatchTST+iTransformer",
+      "num_experts": 3,
+      "validation_mae": 0.37190893292427063,
+      "validation_mse": 0.31595730781555176
+    },
+    {
+      "subset": "DLinear+PatchTST+TimesNet",
+      "num_experts": 3,
+      "validation_mae": 0.372236043214798,
+      "validation_mse": 0.31622394919395447
+    },
+    {
+      "subset": "DLinear+PatchTST+ModernTCN",
+      "num_experts": 3,
+      "validation_mae": 0.38297203183174133,
+      "validation_mse": 0.3254251182079315
+    },
+    {
+      "subset": "DLinear+iTransformer+TimesNet",
+      "num_experts": 3,
+      "validation_mae": 0.37152254581451416,
+      "validation_mse": 0.31524914503097534
+    },
+    {
+      "subset": "DLinear+iTransformer+ModernTCN",
+      "num_experts": 3,
+      "validation_mae": 0.38192275166511536,
+      "validation_mse": 0.3231944143772125
+    },
+    {
+      "subset": "DLinear+TimesNet+ModernTCN",
+      "num_experts": 3,
+      "validation_mae": 0.38723045587539673,
+      "validation_mse": 0.3334534466266632
+    },
+    {
+      "subset": "PatchTST+iTransformer+TimesNet",
+      "num_experts": 3,
+      "validation_mae": 0.36726489663124084,
+      "validation_mse": 0.3105303645133972
+    },
+    {
+      "subset": "PatchTST+iTransformer+ModernTCN",
+      "num_experts": 3,
+      "validation_mae": 0.37679094076156616,
+      "validation_mse": 0.3172173798084259
+    },
+    {
+      "subset": "PatchTST+TimesNet+ModernTCN",
+      "num_experts": 3,
+      "validation_mae": 0.38189518451690674,
+      "validation_mse": 0.3266240954399109
+    },
+    {
+      "subset": "iTransformer+TimesNet+ModernTCN",
+      "num_experts": 3,
+      "validation_mae": 0.3816697597503662,
+      "validation_mse": 0.3251170516014099
+    },
+    {
+      "subset": "DLinear+PatchTST+iTransformer+TimesNet",
+      "num_experts": 4,
+      "validation_mae": 0.3682158589363098,
+      "validation_mse": 0.31093770265579224
+    },
+    {
+      "subset": "DLinear+PatchTST+iTransformer+ModernTCN",
+      "num_experts": 4,
+      "validation_mae": 0.37451669573783875,
+      "validation_mse": 0.314942866563797
+    },
+    {
+      "subset": "DLinear+PatchTST+TimesNet+ModernTCN",
+      "num_experts": 4,
+      "validation_mae": 0.37654948234558105,
+      "validation_mse": 0.3187566101551056
+    },
+    {
+      "subset": "DLinear+iTransformer+TimesNet+ModernTCN",
+      "num_experts": 4,
+      "validation_mae": 0.37612804770469666,
+      "validation_mse": 0.317569762468338
+    },
+    {
+      "subset": "PatchTST+iTransformer+TimesNet+ModernTCN",
+      "num_experts": 4,
+      "validation_mae": 0.3723008930683136,
+      "validation_mse": 0.31317344307899475
+    },
+    {
+      "subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "num_experts": 5,
+      "validation_mae": 0.37109920382499695,
+      "validation_mse": 0.31158220767974854
+    }
+  ],
+  "best_by_size": {
+    "1": {
+      "subset": "iTransformer",
+      "num_experts": 1,
+      "validation_mae": 0.37654954195022583,
+      "validation_mse": 0.32209450006484985
+    },
+    "2": {
+      "subset": "PatchTST+iTransformer",
+      "num_experts": 2,
+      "validation_mae": 0.370154470205307,
+      "validation_mse": 0.31450897455215454
+    },
+    "3": {
+      "subset": "PatchTST+iTransformer+TimesNet",
+      "num_experts": 3,
+      "validation_mae": 0.36726489663124084,
+      "validation_mse": 0.3105303645133972
+    },
+    "4": {
+      "subset": "DLinear+PatchTST+iTransformer+TimesNet",
+      "num_experts": 4,
+      "validation_mae": 0.3682158589363098,
+      "validation_mse": 0.31093770265579224
+    },
+    "5": {
+      "subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "num_experts": 5,
+      "validation_mae": 0.37109920382499695,
+      "validation_mse": 0.31158220767974854
+    }
+  },
+  "fixed_all_5": {
+    "subset": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+    "num_experts": 5,
+    "validation_mae": 0.37109920382499695,
+    "validation_mse": 0.31158220767974854
+  },
+  "costar_reference": [
+    {
+      "method": "COSTAR utility-listwise max_queries=1",
+      "avg_queries": 1.0,
+      "mae": 0.37875022292137145,
+      "mse": 0.3251551389694214
+    },
+    {
+      "method": "COSTAR utility-listwise max_queries=2",
+      "avg_queries": 1.9723764896392821,
+      "mae": 0.3724221527576447,
+      "mse": 0.31781461238861086
+    },
+    {
+      "method": "COSTAR utility-listwise max_queries=3",
+      "avg_queries": 2.8796249866485595,
+      "mae": 0.37110133171081544,
+      "mse": 0.31523412466049194
+    },
+    {
+      "method": "COSTAR utility-listwise max_queries=4",
+      "avg_queries": 3.6096645832061767,
+      "mae": 0.3692974388599396,
+      "mse": 0.31255937814712526
+    },
+    {
+      "method": "COSTAR utility-listwise unrestricted",
+      "avg_queries": 3.6846014976501467,
+      "mae": 0.36957316398620604,
+      "mse": 0.3126027822494507
+    }
+  ],
+  "comparison_vs_costar": [
+    {
+      "method": "COSTAR utility-listwise max_queries=1",
+      "experts_or_avg_queries": 1.0,
+      "mae": 0.37875022292137145,
+      "mse": 0.3251551389694214,
+      "comparable_fixed_subset": "iTransformer",
+      "comparable_fixed_experts": 1,
+      "comparable_fixed_mae": 0.37654954195022583,
+      "comparable_fixed_mse": 0.32209450006484985,
+      "mae_difference_vs_comparable_costar": -0.0022006809711456188,
+      "mse_difference_vs_comparable_costar": -0.003060638904571533,
+      "interpretation": "positive means fixed is worse than COSTAR; negative means fixed is better"
+    },
+    {
+      "method": "COSTAR utility-listwise max_queries=2",
+      "experts_or_avg_queries": 1.9723764896392821,
+      "mae": 0.3724221527576447,
+      "mse": 0.31781461238861086,
+      "comparable_fixed_subset": "PatchTST+iTransformer",
+      "comparable_fixed_experts": 2,
+      "comparable_fixed_mae": 0.370154470205307,
+      "comparable_fixed_mse": 0.31450897455215454,
+      "mae_difference_vs_comparable_costar": -0.0022676825523376687,
+      "mse_difference_vs_comparable_costar": -0.003305637836456321,
+      "interpretation": "positive means fixed is worse than COSTAR; negative means fixed is better"
+    },
+    {
+      "method": "COSTAR utility-listwise max_queries=3",
+      "experts_or_avg_queries": 2.8796249866485595,
+      "mae": 0.37110133171081544,
+      "mse": 0.31523412466049194,
+      "comparable_fixed_subset": "PatchTST+iTransformer+TimesNet",
+      "comparable_fixed_experts": 3,
+      "comparable_fixed_mae": 0.36726489663124084,
+      "comparable_fixed_mse": 0.3105303645133972,
+      "mae_difference_vs_comparable_costar": -0.003836435079574596,
+      "mse_difference_vs_comparable_costar": -0.0047037601470947266,
+      "interpretation": "positive means fixed is worse than COSTAR; negative means fixed is better"
+    },
+    {
+      "method": "COSTAR utility-listwise max_queries=4",
+      "experts_or_avg_queries": 3.6096645832061767,
+      "mae": 0.3692974388599396,
+      "mse": 0.31255937814712526,
+      "comparable_fixed_subset": "DLinear+PatchTST+iTransformer+TimesNet",
+      "comparable_fixed_experts": 4,
+      "comparable_fixed_mae": 0.3682158589363098,
+      "comparable_fixed_mse": 0.31093770265579224,
+      "mae_difference_vs_comparable_costar": -0.001081579923629783,
+      "mse_difference_vs_comparable_costar": -0.001621675491333019,
+      "interpretation": "positive means fixed is worse than COSTAR; negative means fixed is better"
+    },
+    {
+      "method": "COSTAR utility-listwise unrestricted",
+      "experts_or_avg_queries": 3.6846014976501467,
+      "mae": 0.36957316398620604,
+      "mse": 0.3126027822494507,
+      "comparable_fixed_subset": "DLinear+PatchTST+iTransformer+TimesNet",
+      "comparable_fixed_experts": 4,
+      "comparable_fixed_mae": 0.3682158589363098,
+      "comparable_fixed_mse": 0.31093770265579224,
+      "mae_difference_vs_comparable_costar": -0.0013573050498962291,
+      "mse_difference_vs_comparable_costar": -0.0016650795936584695,
+      "interpretation": "positive means fixed is worse than COSTAR; negative means fixed is better"
+    }
+  ],
+  "safety": "NO TEST DATA USED"
+}

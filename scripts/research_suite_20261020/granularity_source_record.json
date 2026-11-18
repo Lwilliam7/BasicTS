@@ -1,0 +1,12 @@
+{
+  "source": "C:\\Data\\Documents\\Code\\BasicTS\\experiments\\gate_ablation\\run_gate_ablation.py",
+  "original_sha256": "8c0a1094f118bf61ed6e8507269fa9fb93ac0e4f712d84ec234263cb27e77d6d",
+  "derived_sha256": "f830b5d90281a99c3c84797cb39f7d9af89be2bad0be7cfc0e3be0384eefb795",
+  "changes": [
+    "isolated output directory",
+    "exploratory evidence/report text",
+    "source identity paths",
+    "external serial scheduling"
+  ],
+  "method_and_integrity_functions_changed": false
+}

@@ -1,0 +1,1959 @@
+{
+  "created_at_utc": "2026-08-24T06:57:25.830541+00:00",
+  "datasets": {
+    "BeijingAirQuality": {
+      "checkpoint_hashes": {
+        "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+        "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+        "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "BeijingAirQuality",
+      "dependence_rows": [
+        {
+          "ci95_high": -4.374152013042476e-06,
+          "ci95_low": -0.00015091054956428707,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": -7.71537161199376e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 4.90785860165488e-05,
+          "ci95_low": -0.00024145972565747797,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -7.71537161199376e-05,
+          "prob_delta_negative": 0.8791000247001648,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 4.502354931901209e-05,
+          "ci95_low": -0.00024199456674978137,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": -7.71537161199376e-05,
+          "prob_delta_negative": 0.8964999914169312,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 4.41337215306703e-05,
+          "ci95_low": -0.00024269767163787037,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -7.71537161199376e-05,
+          "prob_delta_negative": 0.8952000141143799,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -2.5049925170606002e-05,
+          "ci95_low": -0.00012345357390586287,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -7.71403792896308e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9973999857902527,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        },
+        {
+          "ci95_high": 0.00016494153533130884,
+          "ci95_low": -4.709786662715487e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": 5.909973697271198e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00027348913135938346,
+          "ci95_low": -0.0001538806827738881,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": 5.909973697271198e-05,
+          "prob_delta_negative": 0.31709998846054077,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0002739818883128464,
+          "ci95_low": -0.00014732053386978805,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": 5.909973697271198e-05,
+          "prob_delta_negative": 0.2992999851703644,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0002825356204994023,
+          "ci95_low": -0.00013832468539476395,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": 5.909973697271198e-05,
+          "prob_delta_negative": 0.27720001339912415,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00011923013516934589,
+          "ci95_low": 2.4328633116965648e-06,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 5.909459650865756e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.019899999722838402,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        },
+        {
+          "ci95_high": 0.00020738577586598694,
+          "ci95_low": -9.432916704099625e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": 5.809950380353257e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0003660357615444809,
+          "ci95_low": -0.00028289909823797643,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": 5.809950380353257e-05,
+          "prob_delta_negative": 0.38100001215934753,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0003409372002352029,
+          "ci95_low": -0.00022719017579220235,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": 5.809950380353257e-05,
+          "prob_delta_negative": 0.367900013923645,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0002863210975192487,
+          "ci95_low": -0.00017848677816800773,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": 5.809950380353257e-05,
+          "prob_delta_negative": 0.364300012588501,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00015540709136985242,
+          "ci95_low": -4.1499970393488184e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 5.80878731852863e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.1234000027179718,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        },
+        {
+          "ci95_high": -1.5153598724282347e-05,
+          "ci95_low": -0.00014688013470731676,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "BeijingAirQuality",
+          "mean_diff_candidate_minus_baseline": -7.975209155119956e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 1.7397744159097783e-05,
+          "ci95_low": -0.0001941189548233524,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -7.975209155119956e-05,
+          "prob_delta_negative": 0.9491000175476074,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 1.8003576769842766e-05,
+          "ci95_low": -0.00020108006719965488,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": true,
+          "mean_delta": -7.975209155119956e-05,
+          "prob_delta_negative": 0.9487000107765198,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 1.526728374301456e-05,
+          "ci95_low": -0.00020107794262003154,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "mean_delta": -7.975209155119956e-05,
+          "prob_delta_negative": 0.9538000226020813,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -6.05322202318348e-06,
+          "ci95_low": -0.00015405003796331584,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "BeijingAirQuality",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -7.973986794240773e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9829999804496765,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 592,
+          "windows_per_phase_min": 591
+        }
+      ],
+      "fold_diag_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "BeijingAirQuality",
+          "eval_origin_max": 17236,
+          "eval_origin_min": 12874,
+          "fold": 0,
+          "num_eval_windows": 4256,
+          "num_purged_windows": 11,
+          "num_train_windows": 5663,
+          "train_origin_max": 12862,
+          "train_origin_min": 7200,
+          "train_target_end_max": 12874
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "BeijingAirQuality",
+          "eval_origin_max": 21492,
+          "eval_origin_min": 17237,
+          "fold": 1,
+          "num_eval_windows": 4256,
+          "num_purged_windows": 11,
+          "num_train_windows": 9919,
+          "train_origin_max": 17225,
+          "train_origin_min": 7200,
+          "train_target_end_max": 17237
+        }
+      ],
+      "freq": 24,
+      "hp_rows": [
+        {
+          "colsample_bytree": 0.7670739,
+          "dataset": "BeijingAirQuality",
+          "eta": 0.575188,
+          "max_depth": 14,
+          "nrounds": 94,
+          "purged_oof_mae": 0.3336540758609772,
+          "selected": false,
+          "subsample": 0.9161483
+        },
+        {
+          "colsample_bytree": 0.8,
+          "dataset": "BeijingAirQuality",
+          "eta": 0.1,
+          "max_depth": 6,
+          "nrounds": 100,
+          "purged_oof_mae": 0.33154910802841187,
+          "selected": false,
+          "subsample": 0.8
+        },
+        {
+          "colsample_bytree": 0.7,
+          "dataset": "BeijingAirQuality",
+          "eta": 0.05,
+          "max_depth": 10,
+          "nrounds": 150,
+          "purged_oof_mae": 0.33105969429016113,
+          "selected": false,
+          "subsample": 0.7
+        },
+        {
+          "colsample_bytree": 0.6,
+          "dataset": "BeijingAirQuality",
+          "eta": 0.3,
+          "max_depth": 8,
+          "nrounds": 50,
+          "purged_oof_mae": 0.3318355083465576,
+          "selected": false,
+          "subsample": 0.9
+        },
+        {
+          "colsample_bytree": 0.9,
+          "dataset": "BeijingAirQuality",
+          "eta": 0.01,
+          "max_depth": 14,
+          "nrounds": 250,
+          "purged_oof_mae": 0.3309650421142578,
+          "selected": true,
+          "subsample": 0.6
+        }
+      ],
+      "integrity": {
+        "all_purge_fold_assertions_pass": true,
+        "clamp_zero_disabled": true,
+        "dataset": "BeijingAirQuality",
+        "expert_checkpoints_unchanged": true,
+        "max_router_train_target_end": 21504,
+        "min_router_val_origin": 21600,
+        "no_test_cache_loaded": true,
+        "num_common_windows": 8512,
+        "num_full_legal_windows": 14186,
+        "num_purge_folds": 2,
+        "official_fforma_source_recorded": true,
+        "probe_parameters_frozen": true,
+        "result": "PASS",
+        "router_train_to_router_val_observability_holds": true
+      },
+      "primary_probe_vs_common": {
+        "block_size": 24,
+        "ci95_high": 4.502354931901209e-05,
+        "ci95_low": -0.00024199456674978137,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Common",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": -7.71537161199376e-05,
+        "prob_delta_negative": 0.8964999914169312,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_full": {
+        "block_size": 24,
+        "ci95_high": 0.0002739818883128464,
+        "ci95_low": -0.00014732053386978805,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Full",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": 5.909973697271198e-05,
+        "prob_delta_negative": 0.2992999851703644,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_passive": {
+        "block_size": 24,
+        "ci95_high": 0.0003409372002352029,
+        "ci95_low": -0.00022719017579220235,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_MatchedPassive",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": 5.809950380353257e-05,
+        "prob_delta_negative": 0.367900013923645,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": 1.8003576769842766e-05,
+        "ci95_low": -0.00020108006719965488,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Shuffled",
+        "dataset": "BeijingAirQuality",
+        "is_primary": true,
+        "mean_delta": -7.975209155119956e-05,
+        "prob_delta_negative": 0.9487000107765198,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "BeijingAirQuality",
+          "mae": 0.26057514548301697,
+          "method": "FFORMA_M4Fixed",
+          "mse": 0.19361618161201477
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "mae": 0.2573329508304596,
+          "method": "FFORMA_MAE_Full",
+          "mse": 0.18978922069072723
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "mae": 0.25746917724609375,
+          "method": "FFORMA_MAE_Common",
+          "mse": 0.1904824674129486
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "delta_vs_common": -0.00013527274131774902,
+          "delta_vs_full": 9.5367431640625e-07,
+          "mae": 0.257333904504776,
+          "method": "FFORMA_MAE_MatchedPassive21",
+          "mse": 0.1903785616159439
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "delta_vs_common": -7.715821266174316e-05,
+          "delta_vs_full": 5.906820297241211e-05,
+          "delta_vs_matchedpassive": 5.811452865600586e-05,
+          "mae": 0.257392019033432,
+          "method": "FFORMA_MAE_LearnedProbe",
+          "mse": 0.19015200436115265
+        },
+        {
+          "dataset": "BeijingAirQuality",
+          "delta_probe_vs_shuffled": -7.975101470947266e-05,
+          "delta_vs_common": 2.592802047729492e-06,
+          "mae": 0.2574717700481415,
+          "method": "FFORMA_MAE_ShuffledProbe",
+          "mse": 0.19046948850154877
+        }
+      ],
+      "selected_fforma_params": {
+        "colsample_bytree": 0.9,
+        "eta": 0.01,
+        "max_depth": 14,
+        "nrounds": 250,
+        "subsample": 0.6
+      },
+      "ts_feature_diag_train": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 56769,
+        "num_seasonal_padding_zeros": 0,
+        "num_windows": 14186
+      },
+      "ts_feature_diag_val": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 28383,
+        "num_seasonal_padding_zeros": 0,
+        "num_windows": 7093
+      }
+    },
+    "ETTm2": {
+      "checkpoint_hashes": {
+        "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+        "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+        "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTm2",
+      "dependence_rows": [
+        {
+          "ci95_high": -0.0001934416068252176,
+          "ci95_low": -0.000278167863143608,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": -0.0002357031189603731,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.00016149910516105592,
+          "ci95_low": -0.0003123392234556377,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -0.0002357031189603731,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.00015586605877615511,
+          "ci95_low": -0.0003196878533344716,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": -0.0002357031189603731,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.00015407746832352132,
+          "ci95_low": -0.0003216580080334097,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -0.0002357031189603731,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00019770328071899712,
+          "ci95_low": -0.00027025918825529516,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00023569857876282185,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 0.00018754994380287826,
+          "ci95_low": 4.7454042942263186e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": 0.00011610133515205234,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0002518876863177866,
+          "ci95_low": -1.5782681657583453e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": 0.00011610133515205234,
+          "prob_delta_negative": 0.04149999842047691,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0002637710131239146,
+          "ci95_low": -3.1822150049265474e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": 0.00011610133515205234,
+          "prob_delta_negative": 0.06319999694824219,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00026586942840367556,
+          "ci95_low": -3.71572095900774e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": 0.00011610133515205234,
+          "prob_delta_negative": 0.06530000269412994,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00017053472402039915,
+          "ci95_low": 6.2476763559971e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.0001160942847491242,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": 9.054992551682517e-05,
+          "ci95_low": 1.5279043509508483e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": 5.326860264176503e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00012455404794309288,
+          "ci95_low": -1.4430327610170934e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": 5.326860264176503e-05,
+          "prob_delta_negative": 0.060499999672174454,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00012714360491372645,
+          "ci95_low": -2.0605431927833706e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": 5.326860264176503e-05,
+          "prob_delta_negative": 0.07490000128746033,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00012964506458956748,
+          "ci95_low": -2.001884058699943e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": 5.326860264176503e-05,
+          "prob_delta_negative": 0.07660000026226044,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 7.657197420485318e-05,
+          "ci95_low": 3.0212526326067746e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 5.326858445187099e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "ci95_high": -0.00010130998271051794,
+          "ci95_low": -0.0001548963482491672,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ETTm2",
+          "mean_diff_candidate_minus_baseline": -0.00012827993487007916,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -8.180080476449803e-05,
+          "ci95_low": -0.0001748223148752004,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -0.00012827993487007916,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -7.828879461158067e-05,
+          "ci95_low": -0.00017862161621451378,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ETTm2",
+          "is_primary": true,
+          "mean_delta": -0.00012827993487007916,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -7.89506666478701e-05,
+          "ci95_low": -0.00017906441644299775,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "mean_delta": -0.00012827993487007916,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00011306535452604294,
+          "ci95_low": -0.0001440220803488046,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ETTm2",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0001282775920117274,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "fold_diag_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTm2",
+          "eval_origin_max": 27604,
+          "eval_origin_min": 20650,
+          "fold": 0,
+          "num_eval_windows": 6848,
+          "num_purged_windows": 11,
+          "num_train_windows": 9119,
+          "train_origin_max": 20638,
+          "train_origin_min": 11520,
+          "train_target_end_max": 20650
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ETTm2",
+          "eval_origin_max": 34452,
+          "eval_origin_min": 27605,
+          "fold": 1,
+          "num_eval_windows": 6848,
+          "num_purged_windows": 11,
+          "num_train_windows": 15967,
+          "train_origin_max": 27593,
+          "train_origin_min": 11520,
+          "train_target_end_max": 27605
+        }
+      ],
+      "freq": 96,
+      "hp_rows": [
+        {
+          "colsample_bytree": 0.7670739,
+          "dataset": "ETTm2",
+          "eta": 0.575188,
+          "max_depth": 14,
+          "nrounds": 94,
+          "purged_oof_mae": 0.1799694299697876,
+          "selected": false,
+          "subsample": 0.9161483
+        },
+        {
+          "colsample_bytree": 0.8,
+          "dataset": "ETTm2",
+          "eta": 0.1,
+          "max_depth": 6,
+          "nrounds": 100,
+          "purged_oof_mae": 0.1777268350124359,
+          "selected": true,
+          "subsample": 0.8
+        },
+        {
+          "colsample_bytree": 0.7,
+          "dataset": "ETTm2",
+          "eta": 0.05,
+          "max_depth": 10,
+          "nrounds": 150,
+          "purged_oof_mae": 0.1779266744852066,
+          "selected": false,
+          "subsample": 0.7
+        },
+        {
+          "colsample_bytree": 0.6,
+          "dataset": "ETTm2",
+          "eta": 0.3,
+          "max_depth": 8,
+          "nrounds": 50,
+          "purged_oof_mae": 0.17808756232261658,
+          "selected": false,
+          "subsample": 0.9
+        },
+        {
+          "colsample_bytree": 0.9,
+          "dataset": "ETTm2",
+          "eta": 0.01,
+          "max_depth": 14,
+          "nrounds": 250,
+          "purged_oof_mae": 0.17825525999069214,
+          "selected": false,
+          "subsample": 0.6
+        }
+      ],
+      "integrity": {
+        "all_purge_fold_assertions_pass": true,
+        "clamp_zero_disabled": true,
+        "dataset": "ETTm2",
+        "expert_checkpoints_unchanged": true,
+        "max_router_train_target_end": 34464,
+        "min_router_val_origin": 34560,
+        "no_test_cache_loaded": true,
+        "num_common_windows": 13696,
+        "num_full_legal_windows": 22826,
+        "num_purge_folds": 2,
+        "official_fforma_source_recorded": true,
+        "probe_parameters_frozen": true,
+        "result": "PASS",
+        "router_train_to_router_val_observability_holds": true
+      },
+      "primary_probe_vs_common": {
+        "block_size": 24,
+        "ci95_high": -0.00015586605877615511,
+        "ci95_low": -0.0003196878533344716,
+        "ci_excludes_zero": true,
+        "comparison": "Probe_vs_Common",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -0.0002357031189603731,
+        "prob_delta_negative": 1.0,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_full": {
+        "block_size": 24,
+        "ci95_high": 0.0002637710131239146,
+        "ci95_low": -3.1822150049265474e-05,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Full",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": 0.00011610133515205234,
+        "prob_delta_negative": 0.06319999694824219,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_passive": {
+        "block_size": 24,
+        "ci95_high": 0.00012714360491372645,
+        "ci95_low": -2.0605431927833706e-05,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_MatchedPassive",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": 5.326860264176503e-05,
+        "prob_delta_negative": 0.07490000128746033,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": -7.828879461158067e-05,
+        "ci95_low": -0.00017862161621451378,
+        "ci_excludes_zero": true,
+        "comparison": "Probe_vs_Shuffled",
+        "dataset": "ETTm2",
+        "is_primary": true,
+        "mean_delta": -0.00012827993487007916,
+        "prob_delta_negative": 1.0,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "ETTm2",
+          "mae": 0.1613367348909378,
+          "method": "FFORMA_M4Fixed",
+          "mse": 0.06114223226904869
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.16079187393188477,
+          "method": "FFORMA_MAE_Full",
+          "mse": 0.0609859973192215
+        },
+        {
+          "dataset": "ETTm2",
+          "mae": 0.1611436903476715,
+          "method": "FFORMA_MAE_Common",
+          "mse": 0.061226021498441696
+        },
+        {
+          "dataset": "ETTm2",
+          "delta_vs_common": -0.0002889782190322876,
+          "delta_vs_full": 6.283819675445557e-05,
+          "mae": 0.16085471212863922,
+          "method": "FFORMA_MAE_MatchedPassive21",
+          "mse": 0.06101473793387413
+        },
+        {
+          "dataset": "ETTm2",
+          "delta_vs_common": -0.00023570656776428223,
+          "delta_vs_full": 0.00011610984802246094,
+          "delta_vs_matchedpassive": 5.327165126800537e-05,
+          "mae": 0.16090798377990723,
+          "method": "FFORMA_MAE_LearnedProbe",
+          "mse": 0.06103626266121864
+        },
+        {
+          "dataset": "ETTm2",
+          "delta_probe_vs_shuffled": -0.00012828409671783447,
+          "delta_vs_common": -0.00010742247104644775,
+          "mae": 0.16103626787662506,
+          "method": "FFORMA_MAE_ShuffledProbe",
+          "mse": 0.06112486124038696
+        }
+      ],
+      "selected_fforma_params": {
+        "colsample_bytree": 0.8,
+        "eta": 0.1,
+        "max_depth": 6,
+        "nrounds": 100,
+        "subsample": 0.8
+      },
+      "ts_feature_diag_train": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 229169,
+        "num_seasonal_padding_zeros": 0,
+        "num_windows": 22826
+      },
+      "ts_feature_diag_val": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 114367,
+        "num_seasonal_padding_zeros": 0,
+        "num_windows": 11413
+      }
+    },
+    "ExchangeRate": {
+      "checkpoint_hashes": {
+        "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+        "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+        "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ExchangeRate",
+      "dependence_rows": [
+        {
+          "ci95_high": -9.765788854565471e-05,
+          "ci95_low": -0.0003449500654824078,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": -0.00022050687402952462,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 3.909891165676527e-05,
+          "ci95_low": -0.0005323868244886398,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.00022050687402952462,
+          "prob_delta_negative": 0.9495000243186951,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 3.9654627471463755e-05,
+          "ci95_low": -0.0005997119005769491,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": -0.00022050687402952462,
+          "prob_delta_negative": 0.9419999718666077,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 1.8021306459559128e-05,
+          "ci95_low": -0.0005754644516855478,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.00022050687402952462,
+          "prob_delta_negative": 0.9574000239372253,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00012863570009358227,
+          "ci95_low": -0.0003180196799803525,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00022016518050804734,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        },
+        {
+          "ci95_high": -7.19905729056336e-05,
+          "ci95_low": -0.0004111493763048202,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": -0.0002338875492569059,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00013671260967385024,
+          "ci95_low": -0.0006439575226977468,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.0002338875492569059,
+          "prob_delta_negative": 0.8830999732017517,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00015781821275595576,
+          "ci95_low": -0.0007296889089047909,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": -0.0002338875492569059,
+          "prob_delta_negative": 0.8539000153541565,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00017370941350236535,
+          "ci95_low": -0.0007245445740409195,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -0.0002338875492569059,
+          "prob_delta_negative": 0.8652999997138977,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0001376884029014036,
+          "ci95_low": -0.0003370405756868422,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.0002341270592296496,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        },
+        {
+          "ci95_high": 0.0005900863907299936,
+          "ci95_low": 0.0002923551364801824,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": 0.0004357128345873207,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0007217617239803076,
+          "ci95_low": 0.000212669197935611,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": 0.0004357128345873207,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0007540467195212841,
+          "ci95_low": 0.0001906173856696114,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": 0.0004357128345873207,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0008080434054136276,
+          "ci95_low": 0.00017049358575604856,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": 0.0004357128345873207,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0005388706340454519,
+          "ci95_low": 0.00032872604788281024,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.00043541876948438585,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        },
+        {
+          "ci95_high": 5.710697587346658e-05,
+          "ci95_low": -0.00019726247410289943,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ExchangeRate",
+          "mean_diff_candidate_minus_baseline": -6.90462693455629e-05,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.00013298697012942284,
+          "ci95_low": -0.00028250471223145723,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -6.90462693455629e-05,
+          "prob_delta_negative": 0.7475000023841858,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00012392198550514877,
+          "ci95_low": -0.0002894890494644642,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": true,
+          "mean_delta": -6.90462693455629e-05,
+          "prob_delta_negative": 0.7409999966621399,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.00012420611164998263,
+          "ci95_low": -0.0003036018752027303,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "mean_delta": -6.90462693455629e-05,
+          "prob_delta_negative": 0.7294999957084656,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 8.886275463737547e-05,
+          "ci95_low": -0.00024586557992734015,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "ExchangeRate",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -6.818351539550349e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.7854999899864197,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 118,
+          "windows_per_phase_min": 117
+        }
+      ],
+      "fold_diag_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ExchangeRate",
+          "eval_origin_max": 3597,
+          "eval_origin_min": 2645,
+          "fold": 0,
+          "num_eval_windows": 846,
+          "num_purged_windows": 11,
+          "num_train_windows": 1117,
+          "train_origin_max": 2633,
+          "train_origin_min": 1517,
+          "train_target_end_max": 2645
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "ExchangeRate",
+          "eval_origin_max": 4444,
+          "eval_origin_min": 3598,
+          "fold": 1,
+          "num_eval_windows": 847,
+          "num_purged_windows": 11,
+          "num_train_windows": 1963,
+          "train_origin_max": 3586,
+          "train_origin_min": 1517,
+          "train_target_end_max": 3598
+        }
+      ],
+      "freq": 1,
+      "hp_rows": [
+        {
+          "colsample_bytree": 0.7670739,
+          "dataset": "ExchangeRate",
+          "eta": 0.575188,
+          "max_depth": 14,
+          "nrounds": 94,
+          "purged_oof_mae": 0.08872780948877335,
+          "selected": true,
+          "subsample": 0.9161483
+        },
+        {
+          "colsample_bytree": 0.8,
+          "dataset": "ExchangeRate",
+          "eta": 0.1,
+          "max_depth": 6,
+          "nrounds": 100,
+          "purged_oof_mae": 0.08879603445529938,
+          "selected": false,
+          "subsample": 0.8
+        },
+        {
+          "colsample_bytree": 0.7,
+          "dataset": "ExchangeRate",
+          "eta": 0.05,
+          "max_depth": 10,
+          "nrounds": 150,
+          "purged_oof_mae": 0.08896703273057938,
+          "selected": false,
+          "subsample": 0.7
+        },
+        {
+          "colsample_bytree": 0.6,
+          "dataset": "ExchangeRate",
+          "eta": 0.3,
+          "max_depth": 8,
+          "nrounds": 50,
+          "purged_oof_mae": 0.08873875439167023,
+          "selected": false,
+          "subsample": 0.9
+        },
+        {
+          "colsample_bytree": 0.9,
+          "dataset": "ExchangeRate",
+          "eta": 0.01,
+          "max_depth": 14,
+          "nrounds": 250,
+          "purged_oof_mae": 0.09136389940977097,
+          "selected": false,
+          "subsample": 0.6
+        }
+      ],
+      "integrity": {
+        "all_purge_fold_assertions_pass": true,
+        "clamp_zero_disabled": true,
+        "dataset": "ExchangeRate",
+        "expert_checkpoints_unchanged": true,
+        "max_router_train_target_end": 4456,
+        "min_router_val_origin": 4552,
+        "no_test_cache_loaded": true,
+        "num_common_windows": 1693,
+        "num_full_legal_windows": 2821,
+        "num_purge_folds": 2,
+        "official_fforma_source_recorded": true,
+        "probe_parameters_frozen": true,
+        "result": "PASS",
+        "router_train_to_router_val_observability_holds": true
+      },
+      "primary_probe_vs_common": {
+        "block_size": 24,
+        "ci95_high": 3.9654627471463755e-05,
+        "ci95_low": -0.0005997119005769491,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Common",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": -0.00022050687402952462,
+        "prob_delta_negative": 0.9419999718666077,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_full": {
+        "block_size": 24,
+        "ci95_high": 0.00015781821275595576,
+        "ci95_low": -0.0007296889089047909,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Full",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": -0.0002338875492569059,
+        "prob_delta_negative": 0.8539000153541565,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_passive": {
+        "block_size": 24,
+        "ci95_high": 0.0007540467195212841,
+        "ci95_low": 0.0001906173856696114,
+        "ci_excludes_zero": true,
+        "comparison": "Probe_vs_MatchedPassive",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": 0.0004357128345873207,
+        "prob_delta_negative": 0.0,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": 0.00012392198550514877,
+        "ci95_low": -0.0002894890494644642,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Shuffled",
+        "dataset": "ExchangeRate",
+        "is_primary": true,
+        "mean_delta": -6.90462693455629e-05,
+        "prob_delta_negative": 0.7409999966621399,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "ExchangeRate",
+          "mae": 0.1206146702170372,
+          "method": "FFORMA_M4Fixed",
+          "mse": 0.034105751663446426
+        },
+        {
+          "dataset": "ExchangeRate",
+          "mae": 0.1206146702170372,
+          "method": "FFORMA_MAE_Full",
+          "mse": 0.034105751663446426
+        },
+        {
+          "dataset": "ExchangeRate",
+          "mae": 0.12060128152370453,
+          "method": "FFORMA_MAE_Common",
+          "mse": 0.03404129669070244
+        },
+        {
+          "dataset": "ExchangeRate",
+          "delta_vs_common": -0.0006562024354934692,
+          "delta_vs_full": -0.0006695911288261414,
+          "mae": 0.11994507908821106,
+          "method": "FFORMA_MAE_MatchedPassive21",
+          "mse": 0.03359740227460861
+        },
+        {
+          "dataset": "ExchangeRate",
+          "delta_vs_common": -0.0002204999327659607,
+          "delta_vs_full": -0.0002338886260986328,
+          "delta_vs_matchedpassive": 0.00043570250272750854,
+          "mae": 0.12038078159093857,
+          "method": "FFORMA_MAE_LearnedProbe",
+          "mse": 0.03390800580382347
+        },
+        {
+          "dataset": "ExchangeRate",
+          "delta_probe_vs_shuffled": -6.905198097229004e-05,
+          "delta_vs_common": -0.00015144795179367065,
+          "mae": 0.12044983357191086,
+          "method": "FFORMA_MAE_ShuffledProbe",
+          "mse": 0.0339156873524189
+        }
+      ],
+      "selected_fforma_params": {
+        "colsample_bytree": 0.7670739,
+        "eta": 0.575188,
+        "max_depth": 14,
+        "nrounds": 94,
+        "subsample": 0.9161483
+      },
+      "ts_feature_diag_train": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 36682,
+        "num_seasonal_padding_zeros": 14105,
+        "num_windows": 2821
+      },
+      "ts_feature_diag_val": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 18394,
+        "num_seasonal_padding_zeros": 7055,
+        "num_windows": 1411
+      }
+    },
+    "Traffic": {
+      "checkpoint_hashes": {
+        "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+        "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+        "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+      },
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "ModernTCN"
+      ],
+      "dataset": "Traffic",
+      "dependence_rows": [
+        {
+          "ci95_high": -5.524220978259109e-05,
+          "ci95_low": -0.00022611231543123722,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.00014330116391647607,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 2.2387672288459726e-05,
+          "ci95_low": -0.0003169434785377234,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.00014330116391647607,
+          "prob_delta_negative": 0.953499972820282,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 4.08698724640999e-05,
+          "ci95_low": -0.00032140855910256505,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.00014330116391647607,
+          "prob_delta_negative": 0.9366999864578247,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 3.9474198274547234e-05,
+          "ci95_low": -0.0003163469664286822,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Common",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.00014330116391647607,
+          "prob_delta_negative": 0.9350000023841858,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -2.0824181774514727e-06,
+          "ci95_low": -0.0002686471852939576,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Common",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00014316967281047255,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9758999943733215,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        },
+        {
+          "ci95_high": -0.00022628171427641064,
+          "ci95_low": -0.0005761503125540912,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.0003975772706326097,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 1.0598372682579793e-05,
+          "ci95_low": -0.0008228957885876298,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0003975772706326097,
+          "prob_delta_negative": 0.972100019454956,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 4.856943996855989e-05,
+          "ci95_low": -0.000861922453623265,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.0003975772706326097,
+          "prob_delta_negative": 0.9592000246047974,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 2.4393571948166937e-05,
+          "ci95_low": -0.0008441354148089886,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Full",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.0003975772706326097,
+          "prob_delta_negative": 0.9664000272750854,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.00014093914069235325,
+          "ci95_low": -0.0006600606138817966,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Full",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00039799491059966385,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9987000226974487,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        },
+        {
+          "ci95_high": 0.00020819847122766078,
+          "ci95_low": 2.2948452169657685e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": 0.00011549274495337158,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.000312167830998078,
+          "ci95_low": -8.105199958663434e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": 0.00011549274495337158,
+          "prob_delta_negative": 0.12929999828338623,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0003179000341333449,
+          "ci95_low": -9.095295536099002e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": 0.00011549274495337158,
+          "prob_delta_negative": 0.15189999341964722,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0003038619179278612,
+          "ci95_low": -8.407729910686612e-05,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": 0.00011549274495337158,
+          "prob_delta_negative": 0.12280000001192093,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.00021211903367657214,
+          "ci95_low": 1.9673287170007825e-05,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_MatchedPassive",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": 0.00011547451867954805,
+          "num_phases": 12,
+          "prob_delta_negative": 0.007199999876320362,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        },
+        {
+          "ci95_high": -1.7166432371595874e-05,
+          "ci95_low": -0.0001906065153889358,
+          "ci_excludes_zero": true,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "Traffic",
+          "mean_diff_candidate_minus_baseline": -0.00010648134048096836,
+          "test": "iid_paired_bootstrap"
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 6.43232197035104e-05,
+          "ci95_low": -0.00028349104104563594,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.00010648134048096836,
+          "prob_delta_negative": 0.8862000107765198,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 8.442690159427002e-05,
+          "ci95_low": -0.0002908280584961176,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "Traffic",
+          "is_primary": true,
+          "mean_delta": -0.00010648134048096836,
+          "prob_delta_negative": 0.8543000221252441,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 8.456923387711868e-05,
+          "ci95_low": -0.00028302238206379116,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "mean_delta": -0.00010648134048096836,
+          "prob_delta_negative": 0.8478000164031982,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 4.0108126995619386e-05,
+          "ci95_low": -0.0002355657343287021,
+          "ci_excludes_zero": false,
+          "comparison": "Probe_vs_Shuffled",
+          "dataset": "Traffic",
+          "is_primary": false,
+          "k": 12,
+          "mean_delta": -0.00010633594501996413,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9266999959945679,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 284,
+          "windows_per_phase_min": 283
+        }
+      ],
+      "fold_diag_rows": [
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "Traffic",
+          "eval_origin_max": 8377,
+          "eval_origin_min": 6230,
+          "fold": 0,
+          "num_eval_windows": 2041,
+          "num_purged_windows": 11,
+          "num_train_windows": 2711,
+          "train_origin_max": 6218,
+          "train_origin_min": 3508,
+          "train_target_end_max": 6230
+        },
+        {
+          "assertion_max_train_target_end_leq_min_eval_origin": true,
+          "dataset": "Traffic",
+          "eval_origin_max": 10418,
+          "eval_origin_min": 8378,
+          "fold": 1,
+          "num_eval_windows": 2041,
+          "num_purged_windows": 11,
+          "num_train_windows": 4752,
+          "train_origin_max": 8366,
+          "train_origin_min": 3508,
+          "train_target_end_max": 8378
+        }
+      ],
+      "freq": 24,
+      "hp_rows": [
+        {
+          "colsample_bytree": 0.7670739,
+          "dataset": "Traffic",
+          "eta": 0.575188,
+          "max_depth": 14,
+          "nrounds": 94,
+          "purged_oof_mae": 0.2896497845649719,
+          "selected": false,
+          "subsample": 0.9161483
+        },
+        {
+          "colsample_bytree": 0.8,
+          "dataset": "Traffic",
+          "eta": 0.1,
+          "max_depth": 6,
+          "nrounds": 100,
+          "purged_oof_mae": 0.2823120653629303,
+          "selected": false,
+          "subsample": 0.8
+        },
+        {
+          "colsample_bytree": 0.7,
+          "dataset": "Traffic",
+          "eta": 0.05,
+          "max_depth": 10,
+          "nrounds": 150,
+          "purged_oof_mae": 0.28032851219177246,
+          "selected": false,
+          "subsample": 0.7
+        },
+        {
+          "colsample_bytree": 0.6,
+          "dataset": "Traffic",
+          "eta": 0.3,
+          "max_depth": 8,
+          "nrounds": 50,
+          "purged_oof_mae": 0.28470319509506226,
+          "selected": false,
+          "subsample": 0.9
+        },
+        {
+          "colsample_bytree": 0.9,
+          "dataset": "Traffic",
+          "eta": 0.01,
+          "max_depth": 14,
+          "nrounds": 250,
+          "purged_oof_mae": 0.27712705731391907,
+          "selected": true,
+          "subsample": 0.6
+        }
+      ],
+      "integrity": {
+        "all_purge_fold_assertions_pass": true,
+        "clamp_zero_disabled": true,
+        "dataset": "Traffic",
+        "expert_checkpoints_unchanged": true,
+        "max_router_train_target_end": 10430,
+        "min_router_val_origin": 10526,
+        "no_test_cache_loaded": true,
+        "num_common_windows": 4082,
+        "num_full_legal_windows": 6804,
+        "num_purge_folds": 2,
+        "official_fforma_source_recorded": true,
+        "probe_parameters_frozen": true,
+        "result": "PASS",
+        "router_train_to_router_val_observability_holds": true
+      },
+      "primary_probe_vs_common": {
+        "block_size": 24,
+        "ci95_high": 4.08698724640999e-05,
+        "ci95_low": -0.00032140855910256505,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Common",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.00014330116391647607,
+        "prob_delta_negative": 0.9366999864578247,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_full": {
+        "block_size": 24,
+        "ci95_high": 4.856943996855989e-05,
+        "ci95_low": -0.000861922453623265,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Full",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.0003975772706326097,
+        "prob_delta_negative": 0.9592000246047974,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_passive": {
+        "block_size": 24,
+        "ci95_high": 0.0003179000341333449,
+        "ci95_low": -9.095295536099002e-05,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_MatchedPassive",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": 0.00011549274495337158,
+        "prob_delta_negative": 0.15189999341964722,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "primary_probe_vs_shuffled": {
+        "block_size": 24,
+        "ci95_high": 8.442690159427002e-05,
+        "ci95_low": -0.0002908280584961176,
+        "ci_excludes_zero": false,
+        "comparison": "Probe_vs_Shuffled",
+        "dataset": "Traffic",
+        "is_primary": true,
+        "mean_delta": -0.00010648134048096836,
+        "prob_delta_negative": 0.8543000221252441,
+        "samples": 10000,
+        "test": "block_bootstrap_len24"
+      },
+      "result_rows": [
+        {
+          "dataset": "Traffic",
+          "mae": 0.2813657820224762,
+          "method": "FFORMA_M4Fixed",
+          "mse": 0.3537863790988922
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.26584577560424805,
+          "method": "FFORMA_MAE_Full",
+          "mse": 0.33485889434814453
+        },
+        {
+          "dataset": "Traffic",
+          "mae": 0.26559147238731384,
+          "method": "FFORMA_MAE_Common",
+          "mse": 0.3341217041015625
+        },
+        {
+          "dataset": "Traffic",
+          "delta_vs_common": -0.0002587735652923584,
+          "delta_vs_full": -0.0005130767822265625,
+          "mae": 0.2653326988220215,
+          "method": "FFORMA_MAE_MatchedPassive21",
+          "mse": 0.333936870098114
+        },
+        {
+          "dataset": "Traffic",
+          "delta_vs_common": -0.00014322996139526367,
+          "delta_vs_full": -0.0003975331783294678,
+          "delta_vs_matchedpassive": 0.00011554360389709473,
+          "mae": 0.2654482424259186,
+          "method": "FFORMA_MAE_LearnedProbe",
+          "mse": 0.33398959040641785
+        },
+        {
+          "dataset": "Traffic",
+          "delta_probe_vs_shuffled": -0.00010645389556884766,
+          "delta_vs_common": -3.6776065826416016e-05,
+          "mae": 0.2655546963214874,
+          "method": "FFORMA_MAE_ShuffledProbe",
+          "mse": 0.3341115415096283
+        }
+      ],
+      "selected_fforma_params": {
+        "colsample_bytree": 0.9,
+        "eta": 0.01,
+        "max_depth": 14,
+        "nrounds": 250,
+        "subsample": 0.6
+      },
+      "ts_feature_diag_train": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 27216,
+        "num_seasonal_padding_zeros": 0,
+        "num_windows": 6804
+      },
+      "ts_feature_diag_val": {
+        "num_features": 42,
+        "num_group_failures": 0,
+        "num_nan_values_zeroed": 13608,
+        "num_seasonal_padding_zeros": 0,
+        "num_windows": 3402
+      }
+    }
+  },
+  "decision": {
+    "conclusion": "Partial, inconsistent evidence: LearnedProbe helps under some comparisons but not others, without broad regressions. Treat as suggestive, not confirmatory.",
+    "criteria": {
+      "A_better_than_common": true,
+      "B_competitive_with_full": true,
+      "C_better_than_matchedpassive": false,
+      "D_better_than_shuffled": true,
+      "E_gains_multiple_datasets": false,
+      "F_no_broad_regressions": true
+    },
+    "n_beats_common_point": 4,
+    "n_beats_common_sig": 1,
+    "n_beats_passive_point": 0,
+    "n_beats_passive_sig": 0,
+    "n_beats_shuffled_point": 4,
+    "n_beats_shuffled_sig": 1,
+    "n_broad_regressions": 0,
+    "n_criteria_met": 4,
+    "n_datasets": 4,
+    "n_ties_or_beats_full": 4,
+    "tier": "MIXED"
+  },
+  "experiment": "fforma_probe",
+  "git_commit_sha": "2c694136a4baa8b05a87878d6774bacac510b771",
+  "runtime_sec": 4097.335426568985,
+  "test_set_accessed": false
+}

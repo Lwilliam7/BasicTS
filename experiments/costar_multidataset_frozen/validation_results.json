@@ -1,0 +1,2159 @@
+{
+  "created_at_utc": "2026-08-20T04:48:36.574653+00:00",
+  "datasets": {
+    "ETTm1": {
+      "best_single_expert": {
+        "column_index": 1,
+        "name": "PatchTST",
+        "router_train_mae": 0.24895915389060974
+      },
+      "cache_hashes": {
+        "final_60_DLinear_checkpoint_sha256": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+        "final_60_PatchTST_checkpoint_sha256": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+        "final_60_TimesNet_checkpoint_sha256": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8",
+        "normalizer_checkpoint_sha256": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+        "router_train_20_60_sha256": "f7a6167e81c2cfc366c2cd1baf119f2d2b29ac156969d06d8fb3e58623482b86",
+        "router_val_60_80_sha256": "a47ee159ef1c15c0f5e0f53a2f4c483b35079ec9497c3afffd07b8e975c4b6fe"
+      },
+      "cache_paths": {
+        "normalizer": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\DLinear\\best_expert.pt",
+        "router_train": "cache\\costarts_walkforward_ETTm1\\router_train_20_60_cache.pt",
+        "router_val": "cache\\costarts_walkforward_ETTm1\\router_val_60_80_cache.pt"
+      },
+      "causality_rows": [
+        {
+          "dataset": "ETTm1",
+          "earlier_windows_unchanged": true,
+          "method": "best_single_expert",
+          "num_windows": 11413,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 8560,
+          "tail_predictions_reacted": false
+        },
+        {
+          "dataset": "ETTm1",
+          "earlier_windows_unchanged": true,
+          "method": "equal_fixed",
+          "num_windows": 11413,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 8560,
+          "tail_predictions_reacted": false
+        },
+        {
+          "dataset": "ETTm1",
+          "earlier_windows_unchanged": true,
+          "method": "global_causal",
+          "num_windows": 11413,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 8560,
+          "tail_predictions_reacted": true
+        },
+        {
+          "dataset": "ETTm1",
+          "earlier_windows_unchanged": true,
+          "method": "variable_only",
+          "num_windows": 11413,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 8560,
+          "tail_predictions_reacted": true
+        },
+        {
+          "dataset": "ETTm1",
+          "earlier_windows_unchanged": true,
+          "method": "hxv_causal",
+          "num_windows": 11413,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 8560,
+          "tail_predictions_reacted": true
+        }
+      ],
+      "core_selection_leaderboard_top5": [
+        {
+          "expert_indices": [
+            0,
+            1,
+            3
+          ],
+          "experts": [
+            "DLinear",
+            "PatchTST",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 9130,
+              "eval_lo": 4565,
+              "fold": 0,
+              "mae": 0.2225840836763382,
+              "mse": 0.11097659915685654
+            },
+            {
+              "eval_hi": 13695,
+              "eval_lo": 9130,
+              "fold": 1,
+              "mae": 0.2609820067882538,
+              "mse": 0.15956954658031464
+            },
+            {
+              "eval_hi": 18260,
+              "eval_lo": 13695,
+              "fold": 2,
+              "mae": 0.26877132058143616,
+              "mse": 0.1739591360092163
+            },
+            {
+              "eval_hi": 22826,
+              "eval_lo": 18260,
+              "fold": 3,
+              "mae": 0.2517288625240326,
+              "mse": 0.16128596663475037
+            }
+          ],
+          "pooled_oof_mae": 0.2510165870189667,
+          "pooled_oof_mse": 0.15144836902618408,
+          "subset": "DLinear+PatchTST+TimesNet",
+          "worst_fold_mae": 0.26877132058143616
+        },
+        {
+          "expert_indices": [
+            1,
+            2,
+            3
+          ],
+          "experts": [
+            "PatchTST",
+            "iTransformer",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 9130,
+              "eval_lo": 4565,
+              "fold": 0,
+              "mae": 0.22596348822116852,
+              "mse": 0.11750607192516327
+            },
+            {
+              "eval_hi": 13695,
+              "eval_lo": 9130,
+              "fold": 1,
+              "mae": 0.2643013000488281,
+              "mse": 0.16634416580200195
+            },
+            {
+              "eval_hi": 18260,
+              "eval_lo": 13695,
+              "fold": 2,
+              "mae": 0.2681185007095337,
+              "mse": 0.1737383008003235
+            },
+            {
+              "eval_hi": 22826,
+              "eval_lo": 18260,
+              "fold": 3,
+              "mae": 0.25052782893180847,
+              "mse": 0.15981525182724
+            }
+          ],
+          "pooled_oof_mae": 0.25222769379615784,
+          "pooled_oof_mse": 0.15435123443603516,
+          "subset": "PatchTST+iTransformer+TimesNet",
+          "worst_fold_mae": 0.2681185007095337
+        },
+        {
+          "expert_indices": [
+            0,
+            1,
+            2
+          ],
+          "experts": [
+            "DLinear",
+            "PatchTST",
+            "iTransformer"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 9130,
+              "eval_lo": 4565,
+              "fold": 0,
+              "mae": 0.22086678445339203,
+              "mse": 0.11107905954122543
+            },
+            {
+              "eval_hi": 13695,
+              "eval_lo": 9130,
+              "fold": 1,
+              "mae": 0.2622903883457184,
+              "mse": 0.16491620242595673
+            },
+            {
+              "eval_hi": 18260,
+              "eval_lo": 13695,
+              "fold": 2,
+              "mae": 0.2739820182323456,
+              "mse": 0.18339034914970398
+            },
+            {
+              "eval_hi": 22826,
+              "eval_lo": 18260,
+              "fold": 3,
+              "mae": 0.25258177518844604,
+              "mse": 0.16485755145549774
+            }
+          ],
+          "pooled_oof_mae": 0.252430260181427,
+          "pooled_oof_mse": 0.15606126189231873,
+          "subset": "DLinear+PatchTST+iTransformer",
+          "worst_fold_mae": 0.2739820182323456
+        },
+        {
+          "expert_indices": [
+            0,
+            2,
+            3
+          ],
+          "experts": [
+            "DLinear",
+            "iTransformer",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 9130,
+              "eval_lo": 4565,
+              "fold": 0,
+              "mae": 0.22642138600349426,
+              "mse": 0.11547791212797165
+            },
+            {
+              "eval_hi": 13695,
+              "eval_lo": 9130,
+              "fold": 1,
+              "mae": 0.2645759582519531,
+              "mse": 0.1646578460931778
+            },
+            {
+              "eval_hi": 18260,
+              "eval_lo": 13695,
+              "fold": 2,
+              "mae": 0.2704870402812958,
+              "mse": 0.17667001485824585
+            },
+            {
+              "eval_hi": 22826,
+              "eval_lo": 18260,
+              "fold": 3,
+              "mae": 0.2541075646877289,
+              "mse": 0.1641751527786255
+            }
+          ],
+          "pooled_oof_mae": 0.2538979947566986,
+          "pooled_oof_mse": 0.15524572134017944,
+          "subset": "DLinear+iTransformer+TimesNet",
+          "worst_fold_mae": 0.2704870402812958
+        },
+        {
+          "expert_indices": [
+            1,
+            2,
+            4
+          ],
+          "experts": [
+            "PatchTST",
+            "iTransformer",
+            "ModernTCN"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 9130,
+              "eval_lo": 4565,
+              "fold": 0,
+              "mae": 0.2919704020023346,
+              "mse": 0.15034082531929016
+            },
+            {
+              "eval_hi": 13695,
+              "eval_lo": 9130,
+              "fold": 1,
+              "mae": 0.30243435502052307,
+              "mse": 0.1881931871175766
+            },
+            {
+              "eval_hi": 18260,
+              "eval_lo": 13695,
+              "fold": 2,
+              "mae": 0.2844022214412689,
+              "mse": 0.1963339000940323
+            },
+            {
+              "eval_hi": 22826,
+              "eval_lo": 18260,
+              "fold": 3,
+              "mae": 0.2678648829460144,
+              "mse": 0.1828881949186325
+            }
+          ],
+          "pooled_oof_mae": 0.2866669297218323,
+          "pooled_oof_mse": 0.1794392168521881,
+          "subset": "PatchTST+iTransformer+ModernTCN",
+          "worst_fold_mae": 0.30243435502052307
+        }
+      ],
+      "dataset": "ETTm1",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "global_causal",
+          "comparison": "global_vs_equal",
+          "dataset": "ETTm1",
+          "delta_mae": 0.001048550009727478,
+          "iid_ci95_high": 0.0012709696311503649,
+          "iid_ci95_low": 0.0008291672565974295,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.0010485316161066294
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "variable_only",
+          "comparison": "variable_vs_global",
+          "dataset": "ETTm1",
+          "delta_mae": -0.0006572306156158447,
+          "iid_ci95_high": -0.0004855865554418415,
+          "iid_ci95_low": -0.0008351199212484062,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.0006572568090632558
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "hxv_causal",
+          "comparison": "hxv_vs_global",
+          "dataset": "ETTm1",
+          "delta_mae": -0.000617101788520813,
+          "iid_ci95_high": -0.0004239876288920641,
+          "iid_ci95_low": -0.000816282641608268,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.000617074896581471
+        },
+        {
+          "baseline": "variable_only",
+          "candidate": "hxv_causal",
+          "comparison": "hxv_vs_variable",
+          "dataset": "ETTm1",
+          "delta_mae": 4.012882709503174e-05,
+          "iid_ci95_high": 0.0001127366631408222,
+          "iid_ci95_low": -3.2889878639252856e-05,
+          "iid_ci_excludes_zero": false,
+          "iid_mean_diff_candidate_minus_baseline": 4.018193430965766e-05
+        }
+      ],
+      "dependence_rows": [
+        {
+          "baseline": "equal_fixed",
+          "block_size": 12,
+          "candidate": "global_causal",
+          "ci95_high": 0.0015821659471839666,
+          "ci95_low": 0.0004698052944149822,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0010485316161066294,
+          "prob_delta_negative": 9.999999747378752e-05,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "equal_fixed",
+          "block_size": 24,
+          "candidate": "global_causal",
+          "ci95_high": 0.001619674265384674,
+          "ci95_low": 0.00040748881292529404,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0010485316161066294,
+          "prob_delta_negative": 0.0008999999845400453,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "equal_fixed",
+          "block_size": 48,
+          "candidate": "global_causal",
+          "ci95_high": 0.001660224748775363,
+          "ci95_low": 0.0003594042209442705,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0010485316161066294,
+          "prob_delta_negative": 0.0010999999940395355,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "global_causal",
+          "ci95_high": 0.0011703602503985167,
+          "ci95_low": 0.0009249192662537098,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.0010485347593203187,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 12,
+          "candidate": "variable_only",
+          "ci95_high": -0.00024343554105143994,
+          "ci95_low": -0.001084709889255464,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0006572568090632558,
+          "prob_delta_negative": 0.9987999796867371,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 24,
+          "candidate": "variable_only",
+          "ci95_high": -0.00020029452571179718,
+          "ci95_low": -0.0011326313251629472,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0006572568090632558,
+          "prob_delta_negative": 0.9973000288009644,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 48,
+          "candidate": "variable_only",
+          "ci95_high": -0.00021460605785250664,
+          "ci95_low": -0.0011455337516963482,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "ETTm1",
+          "mean_delta": -0.0006572568090632558,
+          "prob_delta_negative": 0.9979000091552734,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "variable_only",
+          "ci95_high": -0.00047760512097738683,
+          "ci95_low": -0.0008157301926985383,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": -0.0006572482525371015,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 12,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0001500074431532994,
+          "ci95_low": -0.0010994788026437163,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "ETTm1",
+          "mean_delta": -0.000617074896581471,
+          "prob_delta_negative": 0.9954000115394592,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 24,
+          "candidate": "hxv_causal",
+          "ci95_high": -9.70304463407956e-05,
+          "ci95_low": -0.0011504434514790773,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "ETTm1",
+          "mean_delta": -0.000617074896581471,
+          "prob_delta_negative": 0.9901999831199646,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 48,
+          "candidate": "hxv_causal",
+          "ci95_high": -9.40342724788934e-05,
+          "ci95_low": -0.0011629144428297877,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "ETTm1",
+          "mean_delta": -0.000617074896581471,
+          "prob_delta_negative": 0.9894000291824341,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0004307385825086385,
+          "ci95_low": -0.0007859889301471412,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": -0.0006170549313537776,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 12,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00019702932331711054,
+          "ci95_low": -0.00011320685007376596,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "ETTm1",
+          "mean_delta": 4.018193430965766e-05,
+          "prob_delta_negative": 0.31200000643730164,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 24,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00020352752471808344,
+          "ci95_low": -0.00011873922630911693,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "ETTm1",
+          "mean_delta": 4.018193430965766e-05,
+          "prob_delta_negative": 0.30880001187324524,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 48,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00021155214926693588,
+          "ci95_low": -0.00012603227514773607,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "ETTm1",
+          "mean_delta": 4.018193430965766e-05,
+          "prob_delta_negative": 0.30480000376701355,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "variable_only",
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00011537229875102639,
+          "ci95_low": -2.5164385078824125e-05,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 4.019325933768414e-05,
+          "num_phases": 12,
+          "prob_delta_negative": 0.13300000131130219,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "num_features": 7,
+      "num_windows_train": 22826,
+      "num_windows_val": 11413,
+      "oos_check": {
+        "cache_role": "router_train_20_60",
+        "has_block_b_oos_source": true,
+        "has_block_c_oos_source": true,
+        "protocol_note": "combined honest OOS predictions from Block B and Block C",
+        "result": "PASS"
+      },
+      "result_rows": [
+        {
+          "best_single_expert_name": "PatchTST",
+          "dataset": "ETTm1",
+          "decay": null,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.26177072525024414,
+          "method": "best_single_expert",
+          "mse": 0.16183817386627197,
+          "num_causal_updates": 0,
+          "split": "validation",
+          "temperature": null
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "ETTm1",
+          "decay": null,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.2481614202260971,
+          "method": "equal_fixed",
+          "mse": 0.14669446647167206,
+          "num_causal_updates": 0,
+          "split": "validation",
+          "temperature": null
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "ETTm1",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Global causal EMA",
+          "mae": 0.24920997023582458,
+          "method": "global_causal",
+          "mode": "global",
+          "mse": 0.14815665781497955,
+          "num_causal_updates": 11401,
+          "split": "validation",
+          "temperature": 0.1
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "ETTm1",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Variable-only causal EMA",
+          "mae": 0.24855273962020874,
+          "method": "variable_only",
+          "mode": "variable",
+          "mse": 0.14800666272640228,
+          "num_causal_updates": 11401,
+          "split": "validation",
+          "temperature": 0.1
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "ETTm1",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Full HxV causal EMA (FROZEN CANDIDATE)",
+          "mae": 0.24859286844730377,
+          "method": "hxv_causal",
+          "mode": "hv",
+          "mse": 0.14833426475524902,
+          "num_causal_updates": 11401,
+          "split": "validation",
+          "temperature": 0.1
+        }
+      ],
+      "selected_core": {
+        "expert_indices": [
+          0,
+          1,
+          3
+        ],
+        "experts": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "fold_rows": [
+          {
+            "eval_hi": 9130,
+            "eval_lo": 4565,
+            "fold": 0,
+            "mae": 0.2225840836763382,
+            "mse": 0.11097659915685654
+          },
+          {
+            "eval_hi": 13695,
+            "eval_lo": 9130,
+            "fold": 1,
+            "mae": 0.2609820067882538,
+            "mse": 0.15956954658031464
+          },
+          {
+            "eval_hi": 18260,
+            "eval_lo": 13695,
+            "fold": 2,
+            "mae": 0.26877132058143616,
+            "mse": 0.1739591360092163
+          },
+          {
+            "eval_hi": 22826,
+            "eval_lo": 18260,
+            "fold": 3,
+            "mae": 0.2517288625240326,
+            "mse": 0.16128596663475037
+          }
+        ],
+        "pooled_oof_mae": 0.2510165870189667,
+        "pooled_oof_mse": 0.15144836902618408,
+        "subset": "DLinear+PatchTST+TimesNet",
+        "worst_fold_mae": 0.26877132058143616
+      }
+    },
+    "Electricity": {
+      "best_single_expert": {
+        "column_index": 2,
+        "name": "iTransformer",
+        "router_train_mae": 0.24101541936397552
+      },
+      "cache_hashes": {
+        "final_60_PatchTST_checkpoint_sha256": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+        "final_60_TimesNet_checkpoint_sha256": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+        "final_60_iTransformer_checkpoint_sha256": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656",
+        "normalizer_checkpoint_sha256": "b5898f45262d4767bd6e28ba5de68aeea1045f7949647b545c6324c270458f92",
+        "router_train_20_60_sha256": "49b299e896fc1989143b0cbb64866827c5e06b3b0e3029677324cb36cfc86e76",
+        "router_val_60_80_sha256": "83552b3c6859e527cca859d307d1c4a36bf4019667084f6827a368e9676c96bd"
+      },
+      "cache_paths": {
+        "normalizer": "checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+        "router_train": "cache\\costarts_walkforward_Electricity\\router_train_20_60_cache.pt",
+        "router_val": "cache\\costarts_walkforward_Electricity\\router_val_60_80_cache.pt"
+      },
+      "causality_rows": [
+        {
+          "dataset": "Electricity",
+          "earlier_windows_unchanged": true,
+          "method": "best_single_expert",
+          "num_windows": 5154,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 3866,
+          "tail_predictions_reacted": false
+        },
+        {
+          "dataset": "Electricity",
+          "earlier_windows_unchanged": true,
+          "method": "equal_fixed",
+          "num_windows": 5154,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 3866,
+          "tail_predictions_reacted": false
+        },
+        {
+          "dataset": "Electricity",
+          "earlier_windows_unchanged": true,
+          "method": "global_causal",
+          "num_windows": 5154,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 3866,
+          "tail_predictions_reacted": true
+        },
+        {
+          "dataset": "Electricity",
+          "earlier_windows_unchanged": true,
+          "method": "variable_only",
+          "num_windows": 5154,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 3866,
+          "tail_predictions_reacted": true
+        },
+        {
+          "dataset": "Electricity",
+          "earlier_windows_unchanged": true,
+          "method": "hxv_causal",
+          "num_windows": 5154,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 3866,
+          "tail_predictions_reacted": true
+        }
+      ],
+      "core_selection_leaderboard_top5": [
+        {
+          "expert_indices": [
+            1,
+            2,
+            3
+          ],
+          "experts": [
+            "PatchTST",
+            "iTransformer",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 0,
+              "mae": 0.268350213766098,
+              "mse": 0.17602626979351044
+            },
+            {
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 1,
+              "mae": 0.22488927841186523,
+              "mse": 0.1254216581583023
+            },
+            {
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 2,
+              "mae": 0.2281455546617508,
+              "mse": 0.11978732794523239
+            },
+            {
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 3,
+              "mae": 0.2279183268547058,
+              "mse": 0.11823976784944534
+            }
+          ],
+          "pooled_oof_mae": 0.23732317984104156,
+          "pooled_oof_mse": 0.13486559689044952,
+          "subset": "PatchTST+iTransformer+TimesNet",
+          "worst_fold_mae": 0.268350213766098
+        },
+        {
+          "expert_indices": [
+            0,
+            1,
+            2
+          ],
+          "experts": [
+            "DLinear",
+            "PatchTST",
+            "iTransformer"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 0,
+              "mae": 0.2682420015335083,
+              "mse": 0.1783696562051773
+            },
+            {
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 1,
+              "mae": 0.23092474043369293,
+              "mse": 0.13577492535114288
+            },
+            {
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 2,
+              "mae": 0.2364148050546646,
+              "mse": 0.13342347741127014
+            },
+            {
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 3,
+              "mae": 0.23500113189220428,
+              "mse": 0.1315450817346573
+            }
+          ],
+          "pooled_oof_mae": 0.2426433116197586,
+          "pooled_oof_mse": 0.1447755992412567,
+          "subset": "DLinear+PatchTST+iTransformer",
+          "worst_fold_mae": 0.2682420015335083
+        },
+        {
+          "expert_indices": [
+            0,
+            2,
+            3
+          ],
+          "experts": [
+            "DLinear",
+            "iTransformer",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 0,
+              "mae": 0.2794707715511322,
+              "mse": 0.18550680577754974
+            },
+            {
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 1,
+              "mae": 0.23361387848854065,
+              "mse": 0.1314191371202469
+            },
+            {
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 2,
+              "mae": 0.2341337502002716,
+              "mse": 0.12368936091661453
+            },
+            {
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 3,
+              "mae": 0.23389281332492828,
+              "mse": 0.12226013839244843
+            }
+          ],
+          "pooled_oof_mae": 0.24527500569820404,
+          "pooled_oof_mse": 0.14071549475193024,
+          "subset": "DLinear+iTransformer+TimesNet",
+          "worst_fold_mae": 0.2794707715511322
+        },
+        {
+          "expert_indices": [
+            0,
+            1,
+            3
+          ],
+          "experts": [
+            "DLinear",
+            "PatchTST",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 0,
+              "mae": 0.2793569564819336,
+              "mse": 0.18605531752109528
+            },
+            {
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 1,
+              "mae": 0.23321396112442017,
+              "mse": 0.1315871775150299
+            },
+            {
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 2,
+              "mae": 0.23553454875946045,
+              "mse": 0.12524361908435822
+            },
+            {
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 3,
+              "mae": 0.234951451420784,
+              "mse": 0.12359879165887833
+            }
+          ],
+          "pooled_oof_mae": 0.24576139450073242,
+          "pooled_oof_mse": 0.14161783456802368,
+          "subset": "DLinear+PatchTST+TimesNet",
+          "worst_fold_mae": 0.2793569564819336
+        },
+        {
+          "expert_indices": [
+            1,
+            2,
+            4
+          ],
+          "experts": [
+            "PatchTST",
+            "iTransformer",
+            "ModernTCN"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 4123,
+              "eval_lo": 2062,
+              "fold": 0,
+              "mae": 0.3781575858592987,
+              "mse": 0.28083112835884094
+            },
+            {
+              "eval_hi": 6185,
+              "eval_lo": 4123,
+              "fold": 1,
+              "mae": 0.31702497601509094,
+              "mse": 0.20973792672157288
+            },
+            {
+              "eval_hi": 8246,
+              "eval_lo": 6185,
+              "fold": 2,
+              "mae": 0.25291576981544495,
+              "mse": 0.134161576628685
+            },
+            {
+              "eval_hi": 10308,
+              "eval_lo": 8246,
+              "fold": 3,
+              "mae": 0.2574935853481293,
+              "mse": 0.13692457973957062
+            }
+          ],
+          "pooled_oof_mae": 0.301394522190094,
+          "pooled_oof_mse": 0.19040966033935547,
+          "subset": "PatchTST+iTransformer+ModernTCN",
+          "worst_fold_mae": 0.3781575858592987
+        }
+      ],
+      "dataset": "Electricity",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "global_causal",
+          "comparison": "global_vs_equal",
+          "dataset": "Electricity",
+          "delta_mae": 0.0012249201536178589,
+          "iid_ci95_high": 0.001423378475010395,
+          "iid_ci95_low": 0.001029401901178062,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.0012249245774000883
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "variable_only",
+          "comparison": "variable_vs_global",
+          "dataset": "Electricity",
+          "delta_mae": -0.0032569319009780884,
+          "iid_ci95_high": -0.003133859485387802,
+          "iid_ci95_low": -0.0033830238971859217,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.003256959607824683
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "hxv_causal",
+          "comparison": "hxv_vs_global",
+          "dataset": "Electricity",
+          "delta_mae": -0.0039068907499313354,
+          "iid_ci95_high": -0.003758405800908804,
+          "iid_ci95_low": -0.004059479106217623,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.003906897734850645
+        },
+        {
+          "baseline": "variable_only",
+          "candidate": "hxv_causal",
+          "comparison": "hxv_vs_variable",
+          "dataset": "Electricity",
+          "delta_mae": -0.0006499588489532471,
+          "iid_ci95_high": -0.0005916482768952847,
+          "iid_ci95_low": -0.000712757115252316,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.0006499384180642664
+        }
+      ],
+      "dependence_rows": [
+        {
+          "baseline": "equal_fixed",
+          "block_size": 12,
+          "candidate": "global_causal",
+          "ci95_high": 0.0017870828742161393,
+          "ci95_low": 0.0006844940944574773,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.0012249245774000883,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "equal_fixed",
+          "block_size": 24,
+          "candidate": "global_causal",
+          "ci95_high": 0.0018940313020721078,
+          "ci95_low": 0.0006023591849952936,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.0012249245774000883,
+          "prob_delta_negative": 9.999999747378752e-05,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "equal_fixed",
+          "block_size": 48,
+          "candidate": "global_causal",
+          "ci95_high": 0.001913161831907928,
+          "ci95_low": 0.0005596032715402544,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.0012249245774000883,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "global_causal",
+          "ci95_high": 0.0016123089008033276,
+          "ci95_low": 0.0008526036981493235,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.0012245100224390626,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 12,
+          "candidate": "variable_only",
+          "ci95_high": -0.0028958574403077364,
+          "ci95_low": -0.0036160044837743044,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "Electricity",
+          "mean_delta": -0.003256959607824683,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 24,
+          "candidate": "variable_only",
+          "ci95_high": -0.002829813165590167,
+          "ci95_low": -0.0036956698168069124,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "Electricity",
+          "mean_delta": -0.003256959607824683,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 48,
+          "candidate": "variable_only",
+          "ci95_high": -0.002752572763711214,
+          "ci95_low": -0.0037841054145246744,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "Electricity",
+          "mean_delta": -0.003256959607824683,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "variable_only",
+          "ci95_high": -0.0029004178941249847,
+          "ci95_low": -0.0035956178326159716,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.003256417578086257,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 12,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0034750818740576506,
+          "ci95_low": -0.004346447065472603,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "Electricity",
+          "mean_delta": -0.003906897734850645,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 24,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0034175480250269175,
+          "ci95_low": -0.0044120969250798225,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "Electricity",
+          "mean_delta": -0.003906897734850645,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 48,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.003338881768286228,
+          "ci95_low": -0.004498628433793783,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "Electricity",
+          "mean_delta": -0.003906897734850645,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "hxv_causal",
+          "ci95_high": -0.003481639549136162,
+          "ci95_low": -0.004301170818507671,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.0039062409196048975,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 12,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0005044464487582445,
+          "ci95_low": -0.0008108218316920102,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Electricity",
+          "mean_delta": -0.0006499384180642664,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 24,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0004932379815727472,
+          "ci95_low": -0.0008332703728228807,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Electricity",
+          "mean_delta": -0.0006499384180642664,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 48,
+          "candidate": "hxv_causal",
+          "ci95_high": -0.0004897555336356163,
+          "ci95_low": -0.0008612988167442381,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Electricity",
+          "mean_delta": -0.0006499384180642664,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "variable_only",
+          "candidate": "hxv_causal",
+          "ci95_high": -0.00042157474672421813,
+          "ci95_low": -0.0008583521121181548,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.0006498236325569451,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "num_features": 321,
+      "num_windows_train": 10308,
+      "num_windows_val": 5154,
+      "oos_check": {
+        "cache_role": "router_train_20_60",
+        "has_block_b_oos_source": true,
+        "has_block_c_oos_source": true,
+        "protocol_note": "combined honest OOS predictions from Block B and Block C",
+        "result": "PASS"
+      },
+      "result_rows": [
+        {
+          "best_single_expert_name": "iTransformer",
+          "dataset": "Electricity",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.22538480162620544,
+          "method": "best_single_expert",
+          "mse": 0.13576708734035492,
+          "num_causal_updates": 0,
+          "split": "validation",
+          "temperature": null
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Electricity",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.21445728838443756,
+          "method": "equal_fixed",
+          "mse": 0.11784618347883224,
+          "num_causal_updates": 0,
+          "split": "validation",
+          "temperature": null
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Electricity",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Global causal EMA",
+          "mae": 0.21568220853805542,
+          "method": "global_causal",
+          "mode": "global",
+          "mse": 0.1229415014386177,
+          "num_causal_updates": 5142,
+          "split": "validation",
+          "temperature": 0.1
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Electricity",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Variable-only causal EMA",
+          "mae": 0.21242527663707733,
+          "method": "variable_only",
+          "mode": "variable",
+          "mse": 0.11999131739139557,
+          "num_causal_updates": 5142,
+          "split": "validation",
+          "temperature": 0.1
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Electricity",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Full HxV causal EMA (FROZEN CANDIDATE)",
+          "mae": 0.21177531778812408,
+          "method": "hxv_causal",
+          "mode": "hv",
+          "mse": 0.11901403218507767,
+          "num_causal_updates": 5142,
+          "split": "validation",
+          "temperature": 0.1
+        }
+      ],
+      "selected_core": {
+        "expert_indices": [
+          1,
+          2,
+          3
+        ],
+        "experts": [
+          "PatchTST",
+          "iTransformer",
+          "TimesNet"
+        ],
+        "fold_rows": [
+          {
+            "eval_hi": 4123,
+            "eval_lo": 2062,
+            "fold": 0,
+            "mae": 0.268350213766098,
+            "mse": 0.17602626979351044
+          },
+          {
+            "eval_hi": 6185,
+            "eval_lo": 4123,
+            "fold": 1,
+            "mae": 0.22488927841186523,
+            "mse": 0.1254216581583023
+          },
+          {
+            "eval_hi": 8246,
+            "eval_lo": 6185,
+            "fold": 2,
+            "mae": 0.2281455546617508,
+            "mse": 0.11978732794523239
+          },
+          {
+            "eval_hi": 10308,
+            "eval_lo": 8246,
+            "fold": 3,
+            "mae": 0.2279183268547058,
+            "mse": 0.11823976784944534
+          }
+        ],
+        "pooled_oof_mae": 0.23732317984104156,
+        "pooled_oof_mse": 0.13486559689044952,
+        "subset": "PatchTST+iTransformer+TimesNet",
+        "worst_fold_mae": 0.268350213766098
+      }
+    },
+    "Weather": {
+      "best_single_expert": {
+        "column_index": 1,
+        "name": "PatchTST",
+        "router_train_mae": 0.17278380692005157
+      },
+      "cache_hashes": {
+        "final_60_PatchTST_checkpoint_sha256": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+        "final_60_TimesNet_checkpoint_sha256": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+        "final_60_iTransformer_checkpoint_sha256": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1",
+        "normalizer_checkpoint_sha256": "c34520a0ba154e0518ca38fc26182b03bed785b35a7682573de820fb944c3c06",
+        "router_train_20_60_sha256": "030702a667add4190c82e7bf51ce8aca15748813a3eb63362d6f7f3243e0e1cf",
+        "router_val_60_80_sha256": "029f7ebc8f83ded9826beed73f56280a470afb4c6468945a2ef177446f4a8a6c"
+      },
+      "cache_paths": {
+        "normalizer": "checkpoints\\costarts_walkforward_Weather\\final_60\\DLinear\\best_expert.pt",
+        "router_train": "cache\\costarts_walkforward_Weather\\router_train_20_60_cache.pt",
+        "router_val": "cache\\costarts_walkforward_Weather\\router_val_60_80_cache.pt"
+      },
+      "causality_rows": [
+        {
+          "dataset": "Weather",
+          "earlier_windows_unchanged": true,
+          "method": "best_single_expert",
+          "num_windows": 10432,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 7824,
+          "tail_predictions_reacted": false
+        },
+        {
+          "dataset": "Weather",
+          "earlier_windows_unchanged": true,
+          "method": "equal_fixed",
+          "num_windows": 10432,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 7824,
+          "tail_predictions_reacted": false
+        },
+        {
+          "dataset": "Weather",
+          "earlier_windows_unchanged": true,
+          "method": "global_causal",
+          "num_windows": 10432,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 7824,
+          "tail_predictions_reacted": true
+        },
+        {
+          "dataset": "Weather",
+          "earlier_windows_unchanged": true,
+          "method": "variable_only",
+          "num_windows": 10432,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 7824,
+          "tail_predictions_reacted": true
+        },
+        {
+          "dataset": "Weather",
+          "earlier_windows_unchanged": true,
+          "method": "hxv_causal",
+          "num_windows": 10432,
+          "result": "PASS",
+          "split": "validation",
+          "starts_chronological": true,
+          "suffix_start_window": 7824,
+          "tail_predictions_reacted": true
+        }
+      ],
+      "core_selection_leaderboard_top5": [
+        {
+          "expert_indices": [
+            1,
+            2,
+            3
+          ],
+          "experts": [
+            "PatchTST",
+            "iTransformer",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 0,
+              "mae": 0.16662609577178955,
+              "mse": 0.14537733793258667
+            },
+            {
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 1,
+              "mae": 0.1765344738960266,
+              "mse": 0.22317592799663544
+            },
+            {
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 2,
+              "mae": 0.1915583312511444,
+              "mse": 0.3995453119277954
+            },
+            {
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 3,
+              "mae": 0.1723623126745224,
+              "mse": 0.19669032096862793
+            }
+          ],
+          "pooled_oof_mae": 0.1767709106206894,
+          "pooled_oof_mse": 0.24120298027992249,
+          "subset": "PatchTST+iTransformer+TimesNet",
+          "worst_fold_mae": 0.1915583312511444
+        },
+        {
+          "expert_indices": [
+            0,
+            1,
+            3
+          ],
+          "experts": [
+            "DLinear",
+            "PatchTST",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 0,
+              "mae": 0.173310786485672,
+              "mse": 0.14824596047401428
+            },
+            {
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 1,
+              "mae": 0.18308508396148682,
+              "mse": 0.22785094380378723
+            },
+            {
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 2,
+              "mae": 0.20092323422431946,
+              "mse": 0.409842848777771
+            },
+            {
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 3,
+              "mae": 0.1829509139060974,
+              "mse": 0.20254603028297424
+            }
+          ],
+          "pooled_oof_mae": 0.18506819009780884,
+          "pooled_oof_mse": 0.24712735414505005,
+          "subset": "DLinear+PatchTST+TimesNet",
+          "worst_fold_mae": 0.20092323422431946
+        },
+        {
+          "expert_indices": [
+            0,
+            1,
+            2
+          ],
+          "experts": [
+            "DLinear",
+            "PatchTST",
+            "iTransformer"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 0,
+              "mae": 0.1720348745584488,
+              "mse": 0.15421751141548157
+            },
+            {
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 1,
+              "mae": 0.18250401318073273,
+              "mse": 0.23516952991485596
+            },
+            {
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 2,
+              "mae": 0.2019784152507782,
+              "mse": 0.4206511378288269
+            },
+            {
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 3,
+              "mae": 0.18667680025100708,
+              "mse": 0.21247997879981995
+            }
+          ],
+          "pooled_oof_mae": 0.18579936027526855,
+          "pooled_oof_mse": 0.2556355893611908,
+          "subset": "DLinear+PatchTST+iTransformer",
+          "worst_fold_mae": 0.2019784152507782
+        },
+        {
+          "expert_indices": [
+            0,
+            2,
+            3
+          ],
+          "experts": [
+            "DLinear",
+            "iTransformer",
+            "TimesNet"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 0,
+              "mae": 0.17743723094463348,
+              "mse": 0.1494714468717575
+            },
+            {
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 1,
+              "mae": 0.18528130650520325,
+              "mse": 0.22919394075870514
+            },
+            {
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 2,
+              "mae": 0.20079393684864044,
+              "mse": 0.41116610169410706
+            },
+            {
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 3,
+              "mae": 0.18017442524433136,
+              "mse": 0.20097088813781738
+            }
+          ],
+          "pooled_oof_mae": 0.18592222034931183,
+          "pooled_oof_mse": 0.24770647287368774,
+          "subset": "DLinear+iTransformer+TimesNet",
+          "worst_fold_mae": 0.20079393684864044
+        },
+        {
+          "expert_indices": [
+            1,
+            2,
+            4
+          ],
+          "experts": [
+            "PatchTST",
+            "iTransformer",
+            "ModernTCN"
+          ],
+          "fold_rows": [
+            {
+              "eval_hi": 8345,
+              "eval_lo": 4173,
+              "fold": 0,
+              "mae": 0.2125784307718277,
+              "mse": 0.16617611050605774
+            },
+            {
+              "eval_hi": 12518,
+              "eval_lo": 8345,
+              "fold": 1,
+              "mae": 0.20392921566963196,
+              "mse": 0.23119382560253143
+            },
+            {
+              "eval_hi": 16691,
+              "eval_lo": 12518,
+              "fold": 2,
+              "mae": 0.213350310921669,
+              "mse": 0.39932629466056824
+            },
+            {
+              "eval_hi": 20864,
+              "eval_lo": 16691,
+              "fold": 3,
+              "mae": 0.18802952766418457,
+              "mse": 0.20021982491016388
+            }
+          ],
+          "pooled_oof_mae": 0.2044713944196701,
+          "pooled_oof_mse": 0.24923400580883026,
+          "subset": "PatchTST+iTransformer+ModernTCN",
+          "worst_fold_mae": 0.213350310921669
+        }
+      ],
+      "dataset": "Weather",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "global_causal",
+          "comparison": "global_vs_equal",
+          "dataset": "Weather",
+          "delta_mae": -0.0006938725709915161,
+          "iid_ci95_high": -0.0003714847262017429,
+          "iid_ci95_low": -0.0010435287840664387,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.000693867972586304
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "variable_only",
+          "comparison": "variable_vs_global",
+          "dataset": "Weather",
+          "delta_mae": -0.0001761019229888916,
+          "iid_ci95_high": 7.004778581176652e-06,
+          "iid_ci95_low": -0.00035445395042188466,
+          "iid_ci_excludes_zero": false,
+          "iid_mean_diff_candidate_minus_baseline": -0.00017609589849598706
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "hxv_causal",
+          "comparison": "hxv_vs_global",
+          "dataset": "Weather",
+          "delta_mae": -0.0003670305013656616,
+          "iid_ci95_high": -0.00019776230328716338,
+          "iid_ci95_low": -0.0005317470640875399,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.000367024855222553
+        },
+        {
+          "baseline": "variable_only",
+          "candidate": "hxv_causal",
+          "comparison": "hxv_vs_variable",
+          "dataset": "Weather",
+          "delta_mae": -0.00019092857837677002,
+          "iid_ci95_high": -8.108264592010528e-05,
+          "iid_ci95_low": -0.0002955110976472497,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.0001909289276227355
+        }
+      ],
+      "dependence_rows": [
+        {
+          "baseline": "equal_fixed",
+          "block_size": 12,
+          "candidate": "global_causal",
+          "ci95_high": 0.00026559727848507464,
+          "ci95_low": -0.0018842999124899507,
+          "ci_excludes_zero": false,
+          "comparison": "global_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.000693867972586304,
+          "prob_delta_negative": 0.9083999991416931,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "equal_fixed",
+          "block_size": 24,
+          "candidate": "global_causal",
+          "ci95_high": 0.0004608159651979804,
+          "ci95_low": -0.002302135806530714,
+          "ci_excludes_zero": false,
+          "comparison": "global_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.000693867972586304,
+          "prob_delta_negative": 0.8353999853134155,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "equal_fixed",
+          "block_size": 48,
+          "candidate": "global_causal",
+          "ci95_high": 0.0005697404849343002,
+          "ci95_low": -0.0027491666842252016,
+          "ci_excludes_zero": false,
+          "comparison": "global_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.000693867972586304,
+          "prob_delta_negative": 0.7802000045776367,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "global_causal",
+          "ci95_high": -0.0006092528929002583,
+          "ci95_low": -0.0007866589003242552,
+          "ci_excludes_zero": true,
+          "comparison": "global_vs_equal",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.0006938365404494107,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 12,
+          "candidate": "variable_only",
+          "ci95_high": 0.00034685301943682134,
+          "ci95_low": -0.0006414519739337265,
+          "ci_excludes_zero": false,
+          "comparison": "variable_vs_global",
+          "dataset": "Weather",
+          "mean_delta": -0.00017609589849598706,
+          "prob_delta_negative": 0.7664999961853027,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 24,
+          "candidate": "variable_only",
+          "ci95_high": 0.000452580105047673,
+          "ci95_low": -0.0006937669240869582,
+          "ci_excludes_zero": false,
+          "comparison": "variable_vs_global",
+          "dataset": "Weather",
+          "mean_delta": -0.00017609589849598706,
+          "prob_delta_negative": 0.7361999750137329,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 48,
+          "candidate": "variable_only",
+          "ci95_high": 0.0005309170810505748,
+          "ci95_low": -0.0007420715992338955,
+          "ci_excludes_zero": false,
+          "comparison": "variable_vs_global",
+          "dataset": "Weather",
+          "mean_delta": -0.00017609589849598706,
+          "prob_delta_negative": 0.7200999855995178,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "variable_only",
+          "ci95_high": -2.6417978006065823e-05,
+          "ci95_low": -0.0003363719442859292,
+          "ci_excludes_zero": true,
+          "comparison": "variable_vs_global",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.00017617408593650907,
+          "num_phases": 12,
+          "prob_delta_negative": 0.9908999800682068,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 12,
+          "candidate": "hxv_causal",
+          "ci95_high": 8.572267688577995e-05,
+          "ci95_low": -0.0007852471899241209,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_global",
+          "dataset": "Weather",
+          "mean_delta": -0.000367024855222553,
+          "prob_delta_negative": 0.9448999762535095,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 24,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00016923803195822984,
+          "ci95_low": -0.0008422600221820176,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_global",
+          "dataset": "Weather",
+          "mean_delta": -0.000367024855222553,
+          "prob_delta_negative": 0.9158999919891357,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "global_causal",
+          "block_size": 48,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00029590324265882373,
+          "ci95_low": -0.0009101100731641054,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_global",
+          "dataset": "Weather",
+          "mean_delta": -0.000367024855222553,
+          "prob_delta_negative": 0.873199999332428,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "global_causal",
+          "candidate": "hxv_causal",
+          "ci95_high": -0.00022932107094675303,
+          "ci95_low": -0.0005156994448043406,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_global",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.0003670872829388827,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 12,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00012849501217715442,
+          "ci95_low": -0.0004496363690122962,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Weather",
+          "mean_delta": -0.0001909289276227355,
+          "prob_delta_negative": 0.8960000276565552,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 24,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.0001494657335570082,
+          "ci95_low": -0.0004770717932842672,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Weather",
+          "mean_delta": -0.0001909289276227355,
+          "prob_delta_negative": 0.8805000185966492,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "baseline": "variable_only",
+          "block_size": 48,
+          "candidate": "hxv_causal",
+          "ci95_high": 0.00010581527021713555,
+          "ci95_low": -0.0004333769320510328,
+          "ci_excludes_zero": false,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Weather",
+          "mean_delta": -0.0001909289276227355,
+          "prob_delta_negative": 0.9071000218391418,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "baseline": "variable_only",
+          "candidate": "hxv_causal",
+          "ci95_high": -0.00014366583491209894,
+          "ci95_low": -0.00023895894992165267,
+          "ci_excludes_zero": true,
+          "comparison": "hxv_vs_variable",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.00019091319700237364,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "num_features": 21,
+      "num_windows_train": 20864,
+      "num_windows_val": 10432,
+      "oos_check": {
+        "cache_role": "router_train_20_60",
+        "has_block_b_oos_source": true,
+        "has_block_c_oos_source": true,
+        "protocol_note": "combined honest OOS predictions from Block B and Block C",
+        "result": "PASS"
+      },
+      "result_rows": [
+        {
+          "best_single_expert_name": "PatchTST",
+          "dataset": "Weather",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.1646728217601776,
+          "method": "best_single_expert",
+          "mse": 0.28746822476387024,
+          "num_causal_updates": 0,
+          "split": "validation",
+          "temperature": null
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Weather",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.16034138202667236,
+          "method": "equal_fixed",
+          "mse": 0.27881529927253723,
+          "num_causal_updates": 0,
+          "split": "validation",
+          "temperature": null
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Weather",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Global causal EMA",
+          "mae": 0.15964750945568085,
+          "method": "global_causal",
+          "mode": "global",
+          "mse": 0.27679508924484253,
+          "num_causal_updates": 10420,
+          "split": "validation",
+          "temperature": 0.1
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Weather",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Variable-only causal EMA",
+          "mae": 0.15947140753269196,
+          "method": "variable_only",
+          "mode": "variable",
+          "mse": 0.28223171830177307,
+          "num_causal_updates": 10420,
+          "split": "validation",
+          "temperature": 0.1
+        },
+        {
+          "best_single_expert_name": "",
+          "dataset": "Weather",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Full HxV causal EMA (FROZEN CANDIDATE)",
+          "mae": 0.15928047895431519,
+          "method": "hxv_causal",
+          "mode": "hv",
+          "mse": 0.2835647165775299,
+          "num_causal_updates": 10420,
+          "split": "validation",
+          "temperature": 0.1
+        }
+      ],
+      "selected_core": {
+        "expert_indices": [
+          1,
+          2,
+          3
+        ],
+        "experts": [
+          "PatchTST",
+          "iTransformer",
+          "TimesNet"
+        ],
+        "fold_rows": [
+          {
+            "eval_hi": 8345,
+            "eval_lo": 4173,
+            "fold": 0,
+            "mae": 0.16662609577178955,
+            "mse": 0.14537733793258667
+          },
+          {
+            "eval_hi": 12518,
+            "eval_lo": 8345,
+            "fold": 1,
+            "mae": 0.1765344738960266,
+            "mse": 0.22317592799663544
+          },
+          {
+            "eval_hi": 16691,
+            "eval_lo": 12518,
+            "fold": 2,
+            "mae": 0.1915583312511444,
+            "mse": 0.3995453119277954
+          },
+          {
+            "eval_hi": 20864,
+            "eval_lo": 16691,
+            "fold": 3,
+            "mae": 0.1723623126745224,
+            "mse": 0.19669032096862793
+          }
+        ],
+        "pooled_oof_mae": 0.1767709106206894,
+        "pooled_oof_mse": 0.24120298027992249,
+        "subset": "PatchTST+iTransformer+TimesNet",
+        "worst_fold_mae": 0.1915583312511444
+      }
+    }
+  },
+  "experiment": "costar_multidataset_frozen_validation",
+  "git_commit_sha": "afa9731f518997b1772580c4e41fa5f40b6e2dbb",
+  "runtime_sec": 122.7828221321106,
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false
+}

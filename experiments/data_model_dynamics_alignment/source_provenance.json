@@ -1,0 +1,18 @@
+{
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "files": {
+    "experiments/behavioral_competence/common.py": "098cc7ce669034efffc0c3f4d41f64a5d41cca358e4cdd01773ee4587e4d4646",
+    "experiments/behavioral_competence/model_runtime.py": "2f5d7190a386a5be0739267cb57b7482e1141608950ad61b5b06a7813d08f019",
+    "experiments/behavioral_competence/run_behavioral_competence.py": "76d273fd30ef97dd25c93850ad15a5776b3795ee61200526587bcbde2b05dc48",
+    "experiments/behavioral_competence/run_learned_probe.py": "9484f18a85938e90452892c29d51daae0fc57897f4df28c2c9b5a6dde6bba883",
+    "experiments/costar_multidataset_frozen/frozen_manifest.json": "26f7f25dfccf92f94662ab4ce000602eb1a407983029787c2caa164c1059be79",
+    "experiments/data_model_dynamics_alignment/run_dynamics_alignment.py": "0bb273b71d580ca413f682d0e2a526416dd10099a946ca31f5fe7e9221f7ee4e",
+    "experiments/frozen_hv_costar/run_frozen_hv_costar.py": "34d8c25004bf52c9bab9c73332199f45cf318959da374ba9308175c21f03fdde"
+  }
+}

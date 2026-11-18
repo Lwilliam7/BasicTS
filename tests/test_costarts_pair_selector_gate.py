@@ -1,12 +1,12 @@
 import torch
 
-from scripts.evaluate_costarts_pair_selector_gate import (
+from scripts.old.evaluate_costarts_pair_selector_gate import (
     confidence_targets_from_pair_losses,
     gated_prediction_for_threshold,
     select_confidence_threshold,
     select_fixed_pair_class,
 )
-from scripts.train_costarts_pair_selector import build_pair_index
+from scripts.old.train_costarts_pair_selector import build_pair_index
 
 
 def _gate_cache() -> dict:

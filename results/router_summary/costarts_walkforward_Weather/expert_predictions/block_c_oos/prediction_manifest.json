@@ -1,0 +1,80 @@
+{
+  "stage": "block_ab",
+  "predict_role": "block_c_oos",
+  "expert_training_range": {
+    "start": 0,
+    "end": 21078
+  },
+  "prediction_range": {
+    "name": "block_c",
+    "start_fraction": 0.4,
+    "end_fraction": 0.6000000000000001,
+    "start": 21078,
+    "end": 31617
+  },
+  "expert_order": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "rows": [
+    {
+      "expert": "DLinear",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\DLinear\\best_expert.pt",
+      "checkpoint_sha256": "2dd0fdde353609cb0a32b1a6092984c4ffcb445a734231a5029b3f26a2c3baa0",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Weather\\expert_predictions\\block_c_oos\\DLinear.npy",
+      "prediction_sha256": "167fee7d50c367ed0f18438a14665d13d01b854f8f9257b93580b9d27b077fe4",
+      "num_windows": 10432
+    },
+    {
+      "expert": "PatchTST",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\PatchTST\\best_expert.pt",
+      "checkpoint_sha256": "17f1b05741ccc36849d769cd9393f38dca875278c7184af35298dbfa9f15323f",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Weather\\expert_predictions\\block_c_oos\\PatchTST.npy",
+      "prediction_sha256": "c69adf6215b90280b52cfc0fd18333ff31f729377da9bcbb09256794e5b0a8f1",
+      "num_windows": 10432
+    },
+    {
+      "expert": "iTransformer",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\iTransformer\\best_expert.pt",
+      "checkpoint_sha256": "708670bcab3aa3bd8076ec2d2c518aa546deae764f0fffb439821de082e2ac7d",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Weather\\expert_predictions\\block_c_oos\\iTransformer.npy",
+      "prediction_sha256": "10bfba1fb33710cb92983a744c5fc1d0ece51e7f7e4e41407f721a2a879cd22a",
+      "num_windows": 10432
+    },
+    {
+      "expert": "TimesNet",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\TimesNet\\best_expert.pt",
+      "checkpoint_sha256": "f7e3f601c305096aae6985e818e97cb7d07e832b33eaff53a07ee8d1f70171cc",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Weather\\expert_predictions\\block_c_oos\\TimesNet.npy",
+      "prediction_sha256": "a6a6388da8b415c73e59a85384a1b6514263779e231d25b83adb180f30a07d80",
+      "num_windows": 10432
+    },
+    {
+      "expert": "ModernTCN",
+      "checkpoint_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\ModernTCN\\best_expert.pt",
+      "checkpoint_sha256": "a7033963eacbc5249988ef885cabc3077876805ba92e7c8f91c2852f0a5bab31",
+      "prediction_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward_Weather\\expert_predictions\\block_c_oos\\ModernTCN.npy",
+      "prediction_sha256": "08701ec4fd16c85c3fe6e946d55764f85f1de63f6d63675a3500f6da5ef8e2d0",
+      "num_windows": 10432
+    }
+  ],
+  "expert_checkpoint_paths": {
+    "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\DLinear\\best_expert.pt",
+    "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\PatchTST\\best_expert.pt",
+    "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\iTransformer\\best_expert.pt",
+    "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\TimesNet\\best_expert.pt",
+    "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward_Weather\\block_ab\\ModernTCN\\best_expert.pt"
+  },
+  "expert_checkpoint_hashes": {
+    "DLinear": "2dd0fdde353609cb0a32b1a6092984c4ffcb445a734231a5029b3f26a2c3baa0",
+    "PatchTST": "17f1b05741ccc36849d769cd9393f38dca875278c7184af35298dbfa9f15323f",
+    "iTransformer": "708670bcab3aa3bd8076ec2d2c518aa546deae764f0fffb439821de082e2ac7d",
+    "TimesNet": "f7e3f601c305096aae6985e818e97cb7d07e832b33eaff53a07ee8d1f70171cc",
+    "ModernTCN": "a7033963eacbc5249988ef885cabc3077876805ba92e7c8f91c2852f0a5bab31"
+  },
+  "created_at_utc": "2026-08-20T04:36:35.692482+00:00",
+  "git_commit": "afa9731f518997b1772580c4e41fa5f40b6e2dbb"
+}

@@ -1,0 +1,697 @@
+{
+  "ETTh1": {
+    "checkpoint_hashes_unchanged": true,
+    "checkpoint_parameter_requires_grad_false_during_extraction": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "ETTh1",
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "feature_shapes": {
+      "hidden_train": [
+        5546,
+        3,
+        384
+      ],
+      "hidden_true_dims_by_expert": {
+        "PatchTST": 384,
+        "TimesNet": 384,
+        "iTransformer": 384
+      },
+      "hidden_val": [
+        2773,
+        3,
+        384
+      ],
+      "passive_train": [
+        5546,
+        3,
+        15
+      ],
+      "passive_val": [
+        2773,
+        3,
+        15
+      ],
+      "raw_train": [
+        5546,
+        3,
+        120
+      ],
+      "raw_val": [
+        2773,
+        3,
+        120
+      ]
+    },
+    "finite_features": true,
+    "hidden_feature_hashes": {
+      "router_train": "04ae11d3e6ff2847256f0347f25f010552f419ebfcac07d571bfe5d7840c87e8",
+      "router_val": "75dc0d90bab0af017517dab3fa3a4887f020cb362c2316d83fe0a1ab5600a37e"
+    },
+    "oof_chronological_purge_pass": true,
+    "pca_selected_using_router_train_oof_only": true,
+    "prediction_invariance_max_abs": 0.0,
+    "prediction_with_hook_vs_cached_max_abs": 0.006244659423828125,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "hidden": 0.0,
+      "passive": 0.0,
+      "raw_forecast": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "ETTh1",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          5546,
+          96,
+          7
+        ],
+        "num_windows": 5546,
+        "prediction_shape": [
+          5546,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 8532,
+        "start_min": 2880,
+        "starts_chronological": true,
+        "target_shape": [
+          5546,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "ETTh1",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          2773,
+          96,
+          7
+        ],
+        "num_windows": 2773,
+        "prediction_shape": [
+          2773,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 11412,
+        "start_min": 8640,
+        "starts_chronological": true,
+        "target_shape": [
+          2773,
+          12,
+          7
+        ]
+      }
+    },
+    "split_boundary": 2773,
+    "target_corruption_feature_pass": true,
+    "target_corruption_prediction_max_abs": {
+      "Hidden Only": 0.0,
+      "Passive": 0.0,
+      "Passive + Hidden": 0.0
+    },
+    "target_corruption_prediction_pass": true,
+    "test_loaded": false,
+    "valid_oof_windows": 4437
+  },
+  "ETTh2": {
+    "checkpoint_hashes_unchanged": true,
+    "checkpoint_parameter_requires_grad_false_during_extraction": true,
+    "core_names": [
+      "DLinear",
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "dataset": "ETTh2",
+    "expert_indices": [
+      0,
+      1,
+      4
+    ],
+    "feature_shapes": {
+      "hidden_train": [
+        2053,
+        3,
+        384
+      ],
+      "hidden_true_dims_by_expert": {
+        "DLinear": 72,
+        "ModernTCN": 384,
+        "PatchTST": 384
+      },
+      "hidden_val": [
+        613,
+        3,
+        384
+      ],
+      "passive_train": [
+        2053,
+        3,
+        15
+      ],
+      "passive_val": [
+        613,
+        3,
+        15
+      ],
+      "raw_train": [
+        2053,
+        3,
+        120
+      ],
+      "raw_val": [
+        613,
+        3,
+        120
+      ]
+    },
+    "finite_features": true,
+    "hidden_feature_hashes": {
+      "router_train": "582880641791003b653b1fa21d86da89e1b6d6ebf2e81de4d60b6ea32b8568c5",
+      "router_val": "cc82aa6d3be750aea269f5c7bd28f5228aea08ed7eda3d821fd71501655d56be"
+    },
+    "oof_chronological_purge_pass": true,
+    "pca_selected_using_router_train_oof_only": true,
+    "prediction_invariance_max_abs": 0.0,
+    "prediction_with_hook_vs_cached_max_abs": 0.0004973411560058594,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "hidden": 0.0,
+      "passive": 0.0,
+      "raw_forecast": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "ETTh2",
+        "expected_role": "router_train",
+        "expert_order_ok": true,
+        "history_shape": [
+          2053,
+          96,
+          7
+        ],
+        "num_windows": 2053,
+        "prediction_shape": [
+          2053,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 10692,
+        "start_min": 8640,
+        "starts_chronological": true,
+        "target_shape": [
+          2053,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "ETTh2",
+        "expected_role": "router_val",
+        "expert_order_ok": true,
+        "history_shape": [
+          613,
+          96,
+          7
+        ],
+        "num_windows": 613,
+        "prediction_shape": [
+          613,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 11412,
+        "start_min": 10800,
+        "starts_chronological": true,
+        "target_shape": [
+          613,
+          12,
+          7
+        ]
+      }
+    },
+    "split_boundary": null,
+    "target_corruption_feature_pass": true,
+    "target_corruption_prediction_max_abs": {
+      "Hidden Only": 0.0,
+      "Passive": 0.0,
+      "Passive + Hidden": 0.0
+    },
+    "target_corruption_prediction_pass": true,
+    "test_loaded": false,
+    "valid_oof_windows": 1642
+  },
+  "ETTm1": {
+    "checkpoint_hashes_unchanged": true,
+    "checkpoint_parameter_requires_grad_false_during_extraction": true,
+    "core_names": [
+      "DLinear",
+      "PatchTST",
+      "TimesNet"
+    ],
+    "dataset": "ETTm1",
+    "expert_indices": [
+      0,
+      1,
+      3
+    ],
+    "feature_shapes": {
+      "hidden_train": [
+        22826,
+        3,
+        384
+      ],
+      "hidden_true_dims_by_expert": {
+        "DLinear": 72,
+        "PatchTST": 384,
+        "TimesNet": 384
+      },
+      "hidden_val": [
+        11413,
+        3,
+        384
+      ],
+      "passive_train": [
+        22826,
+        3,
+        15
+      ],
+      "passive_val": [
+        11413,
+        3,
+        15
+      ],
+      "raw_train": [
+        22826,
+        3,
+        120
+      ],
+      "raw_val": [
+        11413,
+        3,
+        120
+      ]
+    },
+    "finite_features": true,
+    "hidden_feature_hashes": {
+      "router_train": "b28467832f2dd5c29fcbb0a362746ccd8a978aa03eb8c8d36a38f9ac9809a0a5",
+      "router_val": "9bcd1fa6b7ab5d5788e8b784753bc9f8f4f1612d7b9719687a19574db099ecb7"
+    },
+    "oof_chronological_purge_pass": true,
+    "pca_selected_using_router_train_oof_only": true,
+    "prediction_invariance_max_abs": 0.0,
+    "prediction_with_hook_vs_cached_max_abs": 0.004444122314453125,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "hidden": 0.0,
+      "passive": 0.0,
+      "raw_forecast": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "ETTm1",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          22826,
+          96,
+          7
+        ],
+        "num_windows": 22826,
+        "prediction_shape": [
+          22826,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 34452,
+        "start_min": 11520,
+        "starts_chronological": true,
+        "target_shape": [
+          22826,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "ETTm1",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          11413,
+          96,
+          7
+        ],
+        "num_windows": 11413,
+        "prediction_shape": [
+          11413,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 45972,
+        "start_min": 34560,
+        "starts_chronological": true,
+        "target_shape": [
+          11413,
+          12,
+          7
+        ]
+      }
+    },
+    "split_boundary": 11413,
+    "target_corruption_feature_pass": true,
+    "target_corruption_prediction_max_abs": {
+      "Hidden Only": 0.0,
+      "Passive": 0.0,
+      "Passive + Hidden": 0.0
+    },
+    "target_corruption_prediction_pass": true,
+    "test_loaded": false,
+    "valid_oof_windows": 18261
+  },
+  "Electricity": {
+    "checkpoint_hashes_unchanged": true,
+    "checkpoint_parameter_requires_grad_false_during_extraction": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "Electricity",
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "feature_shapes": {
+      "hidden_train": [
+        10308,
+        3,
+        384
+      ],
+      "hidden_true_dims_by_expert": {
+        "PatchTST": 384,
+        "TimesNet": 384,
+        "iTransformer": 384
+      },
+      "hidden_val": [
+        5154,
+        3,
+        384
+      ],
+      "passive_train": [
+        10308,
+        3,
+        15
+      ],
+      "passive_val": [
+        5154,
+        3,
+        15
+      ],
+      "raw_train": [
+        10308,
+        3,
+        125
+      ],
+      "raw_val": [
+        5154,
+        3,
+        125
+      ]
+    },
+    "finite_features": true,
+    "hidden_feature_hashes": {
+      "router_train": "2fa29b6fcd6d99005b775975782a9026aae9f4f9bf6832daf0953318b241e10b",
+      "router_val": "98bbe153992ab3d9910986f939a5032b71752732ddf0710ab88a976e41ead813"
+    },
+    "oof_chronological_purge_pass": true,
+    "pca_selected_using_router_train_oof_only": true,
+    "prediction_invariance_max_abs": 0.0,
+    "prediction_with_hook_vs_cached_max_abs": 15.1875,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "hidden": 0.0,
+      "passive": 0.0,
+      "raw_forecast": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "Electricity",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          10308,
+          96,
+          321
+        ],
+        "num_windows": 10308,
+        "prediction_shape": [
+          10308,
+          12,
+          321,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 15674,
+        "start_min": 5260,
+        "starts_chronological": true,
+        "target_shape": [
+          10308,
+          12,
+          321
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "Electricity",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          5154,
+          96,
+          321
+        ],
+        "num_windows": 5154,
+        "prediction_shape": [
+          5154,
+          12,
+          321,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 20935,
+        "start_min": 15782,
+        "starts_chronological": true,
+        "target_shape": [
+          5154,
+          12,
+          321
+        ]
+      }
+    },
+    "split_boundary": 5154,
+    "target_corruption_feature_pass": true,
+    "target_corruption_prediction_max_abs": {
+      "Hidden Only": 0.0,
+      "Passive": 0.0,
+      "Passive + Hidden": 0.0
+    },
+    "target_corruption_prediction_pass": true,
+    "test_loaded": false,
+    "valid_oof_windows": 8246
+  },
+  "Weather": {
+    "checkpoint_hashes_unchanged": true,
+    "checkpoint_parameter_requires_grad_false_during_extraction": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "Weather",
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "feature_shapes": {
+      "hidden_train": [
+        20864,
+        3,
+        384
+      ],
+      "hidden_true_dims_by_expert": {
+        "PatchTST": 384,
+        "TimesNet": 384,
+        "iTransformer": 384
+      },
+      "hidden_val": [
+        10432,
+        3,
+        384
+      ],
+      "passive_train": [
+        20864,
+        3,
+        15
+      ],
+      "passive_val": [
+        10432,
+        3,
+        15
+      ],
+      "raw_train": [
+        20864,
+        3,
+        190
+      ],
+      "raw_val": [
+        10432,
+        3,
+        190
+      ]
+    },
+    "finite_features": true,
+    "hidden_feature_hashes": {
+      "router_train": "a6529ce13521a297c18ea8f816e3164634f23d91a5f84b02060bd0168086397b",
+      "router_val": "2acbab59ccca571cc9da788593eb4bd4a77b743d1e085ca3b4dc596344a8ba5f"
+    },
+    "oof_chronological_purge_pass": true,
+    "pca_selected_using_router_train_oof_only": true,
+    "prediction_invariance_max_abs": 0.0,
+    "prediction_with_hook_vs_cached_max_abs": 0.40869140625,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "hidden": 0.0,
+      "passive": 0.0,
+      "raw_forecast": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "Weather",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          20864,
+          96,
+          21
+        ],
+        "num_windows": 20864,
+        "prediction_shape": [
+          20864,
+          12,
+          21,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 31509,
+        "start_min": 10539,
+        "starts_chronological": true,
+        "target_shape": [
+          20864,
+          12,
+          21
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "Weather",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          10432,
+          96,
+          21
+        ],
+        "num_windows": 10432,
+        "prediction_shape": [
+          10432,
+          12,
+          21,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 42048,
+        "start_min": 31617,
+        "starts_chronological": true,
+        "target_shape": [
+          10432,
+          12,
+          21
+        ]
+      }
+    },
+    "split_boundary": 10432,
+    "target_corruption_feature_pass": true,
+    "target_corruption_prediction_max_abs": {
+      "Hidden Only": 0.0,
+      "Passive": 0.0,
+      "Passive + Hidden": 0.0
+    },
+    "target_corruption_prediction_pass": true,
+    "test_loaded": false,
+    "valid_oof_windows": 16691
+  }
+}

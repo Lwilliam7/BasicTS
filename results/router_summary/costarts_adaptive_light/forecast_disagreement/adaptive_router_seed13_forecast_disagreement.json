@@ -1,0 +1,69 @@
+{
+  "config": {
+    "train_cache": "cache/costarts_subset_states_train.pt",
+    "val_cache": "cache/costarts_subset_states_val.pt",
+    "output_dir": "checkpoints\\costarts_adaptive_light\\forecast_disagreement",
+    "results_dir": "results\\router_summary\\costarts_adaptive_light\\forecast_disagreement",
+    "seed": 13,
+    "batch_size": 128,
+    "max_epochs": 1,
+    "patience": 1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip_norm": 1.0,
+    "device": "cpu",
+    "cost": 0.0,
+    "max_queries": 5,
+    "variant": "forecast_disagreement",
+    "train_state_mode": "all",
+    "utility_loss_weight": 1.0,
+    "action_loss_weight": 0.5,
+    "stop_loss_weight": 0.5,
+    "max_train_states": 512
+  },
+  "expert_names": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "best": {
+    "epoch": 1,
+    "train_metrics": {
+      "loss": 0.9112782329320908,
+      "utility_loss": 0.017581032123416662,
+      "action_loss": 1.1444736421108246,
+      "stop_loss": 0.6429207473993301,
+      "action_accuracy": 0.42578125,
+      "stop_frequency": 0.1875
+    },
+    "val_metrics": {
+      "mae": 0.35006535053253174,
+      "mse": 0.30973753333091736,
+      "average_experts_queried": 5.0,
+      "stop_step_distribution": {
+        "5": 613
+      },
+      "query_order_distribution": {
+        "DLinear->TimesNet->ModernTCN->iTransformer->PatchTST": 455,
+        "DLinear->TimesNet->iTransformer->ModernTCN->PatchTST": 50,
+        "DLinear->TimesNet->ModernTCN->PatchTST->iTransformer": 34,
+        "DLinear->ModernTCN->TimesNet->iTransformer->PatchTST": 29,
+        "DLinear->TimesNet->PatchTST->ModernTCN->iTransformer": 28,
+        "DLinear->TimesNet->iTransformer->PatchTST->ModernTCN": 10,
+        "DLinear->TimesNet->PatchTST->iTransformer->ModernTCN": 6,
+        "DLinear->ModernTCN->TimesNet->PatchTST->iTransformer": 1
+      },
+      "regret_to_oracle": 0.031922101974487305,
+      "oracle_mae": 0.31814324855804443,
+      "all_queries_unique": true
+    }
+  },
+  "baselines": {
+    "best_fixed_expert": "ModernTCN",
+    "best_fixed_expert_mae": 0.35864511132240295,
+    "oracle_best_expert_mae": 0.31814324855804443
+  },
+  "test_set_used": false
+}

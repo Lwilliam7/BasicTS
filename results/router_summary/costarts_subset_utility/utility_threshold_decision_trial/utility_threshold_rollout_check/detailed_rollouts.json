@@ -1,0 +1,374 @@
+[
+  {
+    "metadata": {
+      "mode": "greedy",
+      "finalizer": "sparse_mixture",
+      "decision_policy": "utility_threshold",
+      "utility_threshold": -0.9927442073822021,
+      "force_k": null,
+      "temperature": 1.0,
+      "max_queries": 5,
+      "num_windows": 613,
+      "num_experts": 5,
+      "expert_names": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "test_data_used": false,
+      "frozen_expert_calls_simulated_from_cache": 2709,
+      "router_state_changes": 2709,
+      "duplicate_query_count": 0,
+      "checkpoint": "checkpoints\\costarts_subset_utility\\utility_threshold_decision_trial\\best_subset_utility_costarts_router.pt",
+      "checkpoint_epoch": 1
+    },
+    "metrics": {
+      "mae": 0.35316839814186096,
+      "mse": 0.3141454756259918,
+      "oracle_mae": 0.31814324855804443,
+      "selected_expert_mae_mean": 0.37006184458732605,
+      "regret_to_oracle": 0.03502514958381653,
+      "oracle_match_rate": 0.23164764046669006,
+      "average_experts_queried": 4.419249592169657,
+      "latency_seconds": 0.41394989999753307,
+      "latency_ms_per_sample": 0.6752853181036429,
+      "stop_step_distribution": {
+        "2": 4,
+        "3": 43,
+        "4": 258,
+        "5": 308
+      },
+      "selection_counts": {
+        "DLinear": 502,
+        "PatchTST": 0,
+        "iTransformer": 15,
+        "TimesNet": 96,
+        "ModernTCN": 0
+      },
+      "query_utilization_counts": {
+        "DLinear": 503,
+        "PatchTST": 587,
+        "iTransformer": 565,
+        "TimesNet": 568,
+        "ModernTCN": 486
+      },
+      "all_queries_unique": true,
+      "state_changed_for_every_query": true,
+      "stop_step_one_fraction": 0.0
+    },
+    "rollouts": [
+      {
+        "sample_index": 0,
+        "query_sequence_indices": [
+          0,
+          1,
+          3
+        ],
+        "query_sequence_names": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:0",
+          "QUERY:1",
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 3,
+        "final_selected_expert": "DLinear",
+        "mix_weights": {
+          "DLinear": 0.6639289855957031,
+          "PatchTST": 0.1162930503487587,
+          "TimesNet": 0.21977798640727997
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 0.4485236704349518,
+        "oracle_error": 0.41421839594841003,
+        "predicted_utilities": [
+          -1.2913299798965454,
+          -0.9767043590545654,
+          -0.9795923233032227
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21248625218868256,
+            "1": 0.20232704281806946,
+            "2": 0.1992994248867035,
+            "3": 0.18628224730491638,
+            "4": 0.19960510730743408,
+            "5": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 0.20870213210582733,
+            "2": 0.19475245475769043,
+            "3": 0.20234669744968414,
+            "4": 0.18881748616695404,
+            "5": 0.20538128912448883
+          },
+          {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.24171152710914612,
+            "3": 0.26123619079589844,
+            "4": 0.23922935128211975,
+            "5": 0.2578229308128357
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 1,
+        "query_sequence_indices": [
+          0,
+          1,
+          3
+        ],
+        "query_sequence_names": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:0",
+          "QUERY:1",
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 3,
+        "final_selected_expert": "DLinear",
+        "mix_weights": {
+          "DLinear": 0.6579946875572205,
+          "PatchTST": 0.11667752265930176,
+          "TimesNet": 0.22532781958580017
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 0.5923384428024292,
+        "oracle_error": 0.5599779486656189,
+        "predicted_utilities": [
+          -1.2940086126327515,
+          -0.9682896137237549,
+          -0.9722232818603516
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21214579045772552,
+            "1": 0.20235522091388702,
+            "2": 0.19955560564994812,
+            "3": 0.18633370101451874,
+            "4": 0.1996096670627594,
+            "5": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 0.20758318901062012,
+            "2": 0.195683091878891,
+            "3": 0.20227499306201935,
+            "4": 0.19189032912254333,
+            "5": 0.2025683969259262
+          },
+          {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.24131110310554504,
+            "3": 0.26080337166786194,
+            "4": 0.24237953126430511,
+            "5": 0.2555059790611267
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 2,
+        "query_sequence_indices": [
+          0,
+          1,
+          3
+        ],
+        "query_sequence_names": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:0",
+          "QUERY:1",
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 3,
+        "final_selected_expert": "DLinear",
+        "mix_weights": {
+          "DLinear": 0.6571102738380432,
+          "PatchTST": 0.11781370639801025,
+          "TimesNet": 0.22507601976394653
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 0.7447234392166138,
+        "oracle_error": 0.7285911440849304,
+        "predicted_utilities": [
+          -1.2968027591705322,
+          -0.9639266729354858,
+          -0.9726629257202148
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.2117834836244583,
+            "1": 0.2024850696325302,
+            "2": 0.19954709708690643,
+            "3": 0.1864943653345108,
+            "4": 0.19968998432159424,
+            "5": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 0.20756004750728607,
+            "2": 0.19661018252372742,
+            "3": 0.20132878422737122,
+            "4": 0.1928369551897049,
+            "5": 0.2016640454530716
+          },
+          {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.2429644763469696,
+            "3": 0.2595457136631012,
+            "4": 0.24310414493083954,
+            "5": 0.25438567996025085
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 3,
+        "query_sequence_indices": [
+          0,
+          1,
+          3
+        ],
+        "query_sequence_names": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:0",
+          "QUERY:1",
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 3,
+        "final_selected_expert": "DLinear",
+        "mix_weights": {
+          "DLinear": 0.6547915935516357,
+          "PatchTST": 0.11903344839811325,
+          "TimesNet": 0.22617492079734802
+        },
+        "oracle_best_expert": "iTransformer",
+        "selected_expert_error": 0.9557799100875854,
+        "oracle_error": 0.9030627012252808,
+        "predicted_utilities": [
+          -1.2993534803390503,
+          -0.9623998403549194,
+          -0.9694539308547974
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21145325899124146,
+            "1": 0.20259922742843628,
+            "2": 0.19952863454818726,
+            "3": 0.18664009869098663,
+            "4": 0.1997787058353424,
+            "5": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 0.20712698996067047,
+            "2": 0.19776484370231628,
+            "3": 0.2015363723039627,
+            "4": 0.19263552129268646,
+            "5": 0.20093625783920288
+          },
+          {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.24383530020713806,
+            "3": 0.2593519985675812,
+            "4": 0.24343128502368927,
+            "5": 0.2533814013004303
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      },
+      {
+        "sample_index": 4,
+        "query_sequence_indices": [
+          0,
+          1,
+          3
+        ],
+        "query_sequence_names": [
+          "DLinear",
+          "PatchTST",
+          "TimesNet"
+        ],
+        "action_sequence": [
+          "QUERY:0",
+          "QUERY:1",
+          "QUERY:3",
+          "STOP"
+        ],
+        "stop_step": 3,
+        "final_selected_expert": "DLinear",
+        "mix_weights": {
+          "DLinear": 0.6534482836723328,
+          "PatchTST": 0.12007793039083481,
+          "TimesNet": 0.2264738529920578
+        },
+        "oracle_best_expert": "PatchTST",
+        "selected_expert_error": 1.045335292816162,
+        "oracle_error": 0.98487788438797,
+        "predicted_utilities": [
+          -1.3015389442443848,
+          -0.9697990417480469,
+          -0.9734739065170288
+        ],
+        "action_probabilities": [
+          {
+            "0": 0.21111401915550232,
+            "1": 0.20279763638973236,
+            "2": 0.19943693280220032,
+            "3": 0.186738058924675,
+            "4": 0.1999133825302124,
+            "5": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 0.20570659637451172,
+            "2": 0.19881297647953033,
+            "3": 0.20096150040626526,
+            "4": 0.19347858428955078,
+            "5": 0.2010403573513031
+          },
+          {
+            "0": 0.0,
+            "1": 0.0,
+            "2": 0.24490146338939667,
+            "3": 0.2584085166454315,
+            "4": 0.2432134747505188,
+            "5": 0.2534765899181366
+          }
+        ],
+        "state_changed_each_query": true,
+        "queries_unique": true
+      }
+    ]
+  }
+]

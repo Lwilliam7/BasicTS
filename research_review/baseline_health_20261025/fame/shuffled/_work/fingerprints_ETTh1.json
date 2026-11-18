@@ -1,0 +1,47 @@
+{
+  "dataset": "ETTh1",
+  "period": 24,
+  "feature_names": [
+    "duration",
+    "active_days",
+    "days_since_first_sale",
+    "days_since_last_sale",
+    "zero_ratio",
+    "adi",
+    "nonzero_mean",
+    "cv2",
+    "cv",
+    "rolling_var",
+    "outlier_ratio",
+    "burstiness",
+    "trend_slope",
+    "trend_strength",
+    "drift",
+    "moving_average_change",
+    "seasonal_strength",
+    "acf_peak_7",
+    "acf_peak_14",
+    "spectral_entropy",
+    "dominant_frequency",
+    "band_energy_low",
+    "band_energy_mid",
+    "band_energy_high"
+  ],
+  "parity": {
+    "router_train": {
+      "max_abs": 1.2656542480726785e-14,
+      "feature": "rolling_var",
+      "violations": 0,
+      "units": 384,
+      "pass": true
+    },
+    "router_val": {
+      "max_abs": 1.1934897514720433e-14,
+      "feature": "rolling_var",
+      "violations": 0,
+      "units": 128,
+      "pass": true
+    }
+  },
+  "elapsed_sec": 1.2100238800048828
+}

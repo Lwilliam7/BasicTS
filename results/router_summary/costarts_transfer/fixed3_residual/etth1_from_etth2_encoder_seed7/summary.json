@@ -1,0 +1,30 @@
+{
+  "run_name": "etth1_from_etth2_encoder_seed7",
+  "seed": 7,
+  "pretraining_data": "ETTh2",
+  "transfer_mode": "encoder",
+  "init_checkpoint": "checkpoints/costarts_transfer/fixed3_residual/etth2_pretrain_seed7/best_residual_fixed3_router.pt",
+  "best_epoch": 1,
+  "global_weights": {
+    "PatchTST": 0.49000000953674316,
+    "iTransformer": 0.3100000023841858,
+    "TimesNet": 0.20000000298023224
+  },
+  "mae": 0.3665257394313812,
+  "mse": 0.3094601333141327,
+  "mean_delta_norm": 0.2542637586593628,
+  "mean_weights": {
+    "PatchTST": 0.4703964293003082,
+    "iTransformer": 0.29918360710144043,
+    "TimesNet": 0.23041997849941254
+  },
+  "weight_std": {
+    "PatchTST": 0.045697979629039764,
+    "iTransformer": 0.036772795021533966,
+    "TimesNet": 0.02805141918361187
+  },
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "created_at_utc": "2026-08-10T05:32:05.742881+00:00",
+  "safety": "NO TEST DATA USED"
+}

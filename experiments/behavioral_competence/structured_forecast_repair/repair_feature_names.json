@@ -1,0 +1,23 @@
+{
+  "names": [
+    "repair_temporal",
+    "repair_seasonal",
+    "repair_cross_variable",
+    "repair_multi_horizon",
+    "repair_h1",
+    "repair_h2",
+    "repair_h3",
+    "repair_h4",
+    "repair_h5",
+    "repair_h6",
+    "repair_h7",
+    "repair_h8",
+    "repair_h9",
+    "repair_h10",
+    "repair_h11",
+    "repair_h12",
+    "repair_variable_mean",
+    "repair_variable_max",
+    "repair_variable_dispersion"
+  ]
+}

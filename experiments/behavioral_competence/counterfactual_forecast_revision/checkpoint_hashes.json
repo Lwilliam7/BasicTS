@@ -1,0 +1,102 @@
+{
+  "BeijingAirQuality": {
+    "after": {
+      "router_train_0_7093::PatchTST": "2464bca537ff4372090de81f87921a4a534c1a50a12a982e5fb2b6f8ea07819b",
+      "router_train_0_7093::TimesNet": "c44b7758b589925007aae6aa8056c9f962838df11406cd701686a1bfb55fb688",
+      "router_train_0_7093::iTransformer": "ec4d5fdd7264d581af3711e2efb44875492fa3045a2017e3fc533a04c2826d30",
+      "router_train_7093_14186::PatchTST": "59702a282b66fdee5c72efd222bc8cbb550b4e98221b9ba83ada237c134ffacd",
+      "router_train_7093_14186::TimesNet": "d31546ba38a1ea327ba19ba7f696cd7db4c4fc4dfaa0faa68dbc08796fa5cfc1",
+      "router_train_7093_14186::iTransformer": "a86faf7172e4e7290d2c651585a79051da02328ae4435a986b420630a01b999a",
+      "router_val_final::PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "router_val_final::TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "router_val_final::iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "before": {
+      "router_train_0_7093::PatchTST": "2464bca537ff4372090de81f87921a4a534c1a50a12a982e5fb2b6f8ea07819b",
+      "router_train_0_7093::TimesNet": "c44b7758b589925007aae6aa8056c9f962838df11406cd701686a1bfb55fb688",
+      "router_train_0_7093::iTransformer": "ec4d5fdd7264d581af3711e2efb44875492fa3045a2017e3fc533a04c2826d30",
+      "router_train_7093_14186::PatchTST": "59702a282b66fdee5c72efd222bc8cbb550b4e98221b9ba83ada237c134ffacd",
+      "router_train_7093_14186::TimesNet": "d31546ba38a1ea327ba19ba7f696cd7db4c4fc4dfaa0faa68dbc08796fa5cfc1",
+      "router_train_7093_14186::iTransformer": "a86faf7172e4e7290d2c651585a79051da02328ae4435a986b420630a01b999a",
+      "router_val_final::PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "router_val_final::TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "router_val_final::iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "unchanged": true
+  },
+  "ETTm2": {
+    "after": {
+      "router_train_0_11413::PatchTST": "3f9f6cad3522656fce8f6f119a3d279ee7ab66c9056c588c130bfa4ed0d4c11e",
+      "router_train_0_11413::TimesNet": "c13df9553df8fb810d032bf0885462a76f9743c3a1493aa521c4fb0aa44bf921",
+      "router_train_0_11413::iTransformer": "0c9578b65a43ab185b7f6ea5e25af75660d1ba2e983118b465577c12a2b2abc0",
+      "router_train_11413_22826::PatchTST": "db37898dbdddea6060f7a7099ded5af286bd7564d62e94356aba30f95c77e7e7",
+      "router_train_11413_22826::TimesNet": "8c4d6a2fc8113f00e917f3325a96ef2b9cb544ec00a1527f16e7c50026cea4be",
+      "router_train_11413_22826::iTransformer": "b693e8fce82956c4a27df921a6df4a96413b32b65f390b0ecdced0aa9f5131f5",
+      "router_val_final::PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "router_val_final::TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "router_val_final::iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "before": {
+      "router_train_0_11413::PatchTST": "3f9f6cad3522656fce8f6f119a3d279ee7ab66c9056c588c130bfa4ed0d4c11e",
+      "router_train_0_11413::TimesNet": "c13df9553df8fb810d032bf0885462a76f9743c3a1493aa521c4fb0aa44bf921",
+      "router_train_0_11413::iTransformer": "0c9578b65a43ab185b7f6ea5e25af75660d1ba2e983118b465577c12a2b2abc0",
+      "router_train_11413_22826::PatchTST": "db37898dbdddea6060f7a7099ded5af286bd7564d62e94356aba30f95c77e7e7",
+      "router_train_11413_22826::TimesNet": "8c4d6a2fc8113f00e917f3325a96ef2b9cb544ec00a1527f16e7c50026cea4be",
+      "router_train_11413_22826::iTransformer": "b693e8fce82956c4a27df921a6df4a96413b32b65f390b0ecdced0aa9f5131f5",
+      "router_val_final::PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "router_val_final::TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "router_val_final::iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "unchanged": true
+  },
+  "ExchangeRate": {
+    "after": {
+      "router_train_0_1411::PatchTST": "ac752c11aa35e5b593f280895e9c633cee663b18a87e174fdd35798e6b53ac0b",
+      "router_train_0_1411::TimesNet": "2ca74bf2fa2c0c3c96f6e3f9a51f054ff8ed638628035bff00a2419ebc692367",
+      "router_train_0_1411::iTransformer": "4d8a1b2566fd2f67ff11810c3123e038a6ca26ade33d78d301dd4096bc7e1ec1",
+      "router_train_1411_2821::PatchTST": "9b1a41ef5fceb851593e5e41c9612ec7dec1e0c07ac48d1e3a8d4b80fa61ecab",
+      "router_train_1411_2821::TimesNet": "71a080642fa2894d2976f7e64fe39e37d3bc003b70c7de48b647835fe3fa2938",
+      "router_train_1411_2821::iTransformer": "98047be9f8614eb77a6657023bf21029a3592dd19e88ceba90d9af405d9809a7",
+      "router_val_final::PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "router_val_final::TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "router_val_final::iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "before": {
+      "router_train_0_1411::PatchTST": "ac752c11aa35e5b593f280895e9c633cee663b18a87e174fdd35798e6b53ac0b",
+      "router_train_0_1411::TimesNet": "2ca74bf2fa2c0c3c96f6e3f9a51f054ff8ed638628035bff00a2419ebc692367",
+      "router_train_0_1411::iTransformer": "4d8a1b2566fd2f67ff11810c3123e038a6ca26ade33d78d301dd4096bc7e1ec1",
+      "router_train_1411_2821::PatchTST": "9b1a41ef5fceb851593e5e41c9612ec7dec1e0c07ac48d1e3a8d4b80fa61ecab",
+      "router_train_1411_2821::TimesNet": "71a080642fa2894d2976f7e64fe39e37d3bc003b70c7de48b647835fe3fa2938",
+      "router_train_1411_2821::iTransformer": "98047be9f8614eb77a6657023bf21029a3592dd19e88ceba90d9af405d9809a7",
+      "router_val_final::PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "router_val_final::TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "router_val_final::iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "unchanged": true
+  },
+  "Traffic": {
+    "after": {
+      "router_train_0_3402::ModernTCN": "dceec13fdf318f8407557ff1c387bf11ef4e7b917f780e5642a8e0b9c33d5ec4",
+      "router_train_0_3402::PatchTST": "7b231d5c75f93aa98443239b68d50b13b1a3a3cbe0199e2f6c00a15d31d23513",
+      "router_train_0_3402::iTransformer": "964c8f84bfb0c1caee12c4c0e81d2665461de83fbd77bfdcd25366d804a98927",
+      "router_train_3402_6804::ModernTCN": "fb94061fb5ed554cf2ad86417201bc54817c6dbd3d1a9c1fe37b0acae12cf715",
+      "router_train_3402_6804::PatchTST": "90b6703e638ad7743727df797d876451ad77d5266331b568751266d4ff994937",
+      "router_train_3402_6804::iTransformer": "1502f0c2c0b9ff331aeba528140804b1e83660288237ad5476a0ad53a87888ce",
+      "router_val_final::ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "router_val_final::PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "router_val_final::iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    },
+    "before": {
+      "router_train_0_3402::ModernTCN": "dceec13fdf318f8407557ff1c387bf11ef4e7b917f780e5642a8e0b9c33d5ec4",
+      "router_train_0_3402::PatchTST": "7b231d5c75f93aa98443239b68d50b13b1a3a3cbe0199e2f6c00a15d31d23513",
+      "router_train_0_3402::iTransformer": "964c8f84bfb0c1caee12c4c0e81d2665461de83fbd77bfdcd25366d804a98927",
+      "router_train_3402_6804::ModernTCN": "fb94061fb5ed554cf2ad86417201bc54817c6dbd3d1a9c1fe37b0acae12cf715",
+      "router_train_3402_6804::PatchTST": "90b6703e638ad7743727df797d876451ad77d5266331b568751266d4ff994937",
+      "router_train_3402_6804::iTransformer": "1502f0c2c0b9ff331aeba528140804b1e83660288237ad5476a0ad53a87888ce",
+      "router_val_final::ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "router_val_final::PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "router_val_final::iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    },
+    "unchanged": true
+  }
+}

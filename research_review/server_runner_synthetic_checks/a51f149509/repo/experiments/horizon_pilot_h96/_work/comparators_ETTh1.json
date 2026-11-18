@@ -1,0 +1,24 @@
+{
+  "dataset": "ETTh1",
+  "core": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer"
+  ],
+  "arms": {
+    "equal5": {
+      "mae": 0.2704436058799426,
+      "mse": 0.12850353432198366
+    },
+    "equal3": {
+      "mae": 0.3474630204339822,
+      "mse": 0.21157623082399368
+    },
+    "bates_all5": {
+      "mae": 0.2704436058799426,
+      "mse": 0.12850353432198366
+    }
+  },
+  "test_set_accessed": false,
+  "router_train_causality": "PASS"
+}

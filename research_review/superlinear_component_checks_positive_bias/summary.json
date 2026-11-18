@@ -1,0 +1,14 @@
+{
+  "predictable": {
+    "mae": 0.10501211881637573,
+    "equal_mae": 2.8040001820772886,
+    "winner_accuracy": 0.984375,
+    "official_source_verification": "NOT_RUN_LOCAL_CLONE_UNAVAILABLE"
+  },
+  "shuffled": {
+    "mae": 1.0124729871749878,
+    "equal_mae": 2.8040001560002565,
+    "winner_accuracy": 0.484375,
+    "official_source_verification": "NOT_RUN_LOCAL_CLONE_UNAVAILABLE"
+  }
+}

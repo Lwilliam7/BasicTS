@@ -1,0 +1,11 @@
+{
+  "status": "INCOMPLETE",
+  "completed": 0,
+  "requested": 1,
+  "units": {
+    "ETTh1_h96": "FAILED"
+  },
+  "rows": [],
+  "contrasts": {},
+  "test_set_accessed": false
+}

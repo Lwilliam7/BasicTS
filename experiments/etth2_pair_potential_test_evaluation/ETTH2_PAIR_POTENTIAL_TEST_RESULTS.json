@@ -1,0 +1,91 @@
+{
+  "created_at_utc": "2026-08-14T06:14:17.558949+00:00",
+  "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+  "status": "after_final_test_audit",
+  "label": "pair_potential_linear_ensembles_after_final_test_audit",
+  "test_loaded_before_manifest": false,
+  "test_metrics_seen_before_this_method_run": true,
+  "selection_complete_before_test_load": true,
+  "no_tuning": true,
+  "train_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_train_cache.pt",
+  "train_cache_sha256": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b",
+  "validation_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_fresh\\ETTh2_96_12\\router_val_cache.pt",
+  "validation_cache_sha256": "ba814cfe6f6d8bc23ec8693757f0c40426b4365f828fcb0f5f15858d09795088",
+  "test_cache": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\final_test_evaluation\\generated\\caches\\ETTh2\\locked_test_cache_v2.pt",
+  "test_cache_sha256_preload": "c9aa614e40058d45b6bfde62fd9a2a4ff27064ae0dec7189ecaf3e2cae6a7ade",
+  "source_validation_summary": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_fresh\\ETTh2_96_12\\pair_potential\\pair_potential_summary.json",
+  "methods": {
+    "nonnegative_simplex_linear_average": {
+      "weights": {
+        "DLinear": 0.47060954570770264,
+        "PatchTST": 0.13924337923526764,
+        "iTransformer": 0.0,
+        "TimesNet": 0.1643986850976944,
+        "ModernTCN": 0.22574837505817413
+      },
+      "fit_source": "ETTh2 router_train only",
+      "validation_reference": {
+        "mae": 0.274755,
+        "mse": 0.165479
+      }
+    },
+    "ridge_linear_stacker": {
+      "weights": {
+        "DLinear": 0.5178712606430054,
+        "PatchTST": 0.2733554542064667,
+        "iTransformer": -0.05290773883461952,
+        "TimesNet": 0.1123543381690979,
+        "ModernTCN": 0.1667473316192627
+      },
+      "fit_source": "ETTh2 router_train only",
+      "validation_reference": {
+        "mae": 0.276702,
+        "mse": 0.165339
+      }
+    }
+  },
+  "device": "cpu",
+  "gpu_note": "CPU used because these are 5-coefficient cached linear ensemble evaluations; GPU transfer would dominate.",
+  "test_evaluation_complete": true,
+  "elapsed_seconds": 2.077755700011039,
+  "results": [
+    {
+      "method": "nonnegative_simplex_linear_average",
+      "dataset": "ETTh2",
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "test_mae": 0.29712003469467163,
+      "test_mse": 0.2185872495174408,
+      "validation_mae": 0.27475523948669434,
+      "validation_mse": 0.16547942161560059,
+      "diff_vs_validation": 0.022364795207977295,
+      "diff_vs_single_DLinear_test": -0.004587501287460327,
+      "diff_vs_ETTh2_full_adaptive_test": -0.0006881058216094971,
+      "diff_vs_validation_selected_DLinear_ModernTCN_test": -0.002142965793609619,
+      "selection_protocol": "router-train fitted pair-potential linear ensemble; validation reported before this after-final-test audit; no test-data feedback",
+      "status": "after_final_test_audit",
+      "weights_json": "{\"DLinear\": 0.47060954570770264, \"PatchTST\": 0.13924337923526764, \"iTransformer\": 0.0, \"TimesNet\": 0.1643986850976944, \"ModernTCN\": 0.22574837505817413}",
+      "paired_ci95_diff_vs_DLinear_low": -0.005596828181296587,
+      "paired_ci95_diff_vs_DLinear_high": -0.0035954697523266077,
+      "paired_ci_excludes_zero": true
+    },
+    {
+      "method": "ridge_linear_stacker",
+      "dataset": "ETTh2",
+      "expert_set": "DLinear+PatchTST+iTransformer+TimesNet+ModernTCN",
+      "test_mae": 0.29838231205940247,
+      "test_mse": 0.2182009071111679,
+      "validation_mae": 0.2767016887664795,
+      "validation_mse": 0.1653389185667038,
+      "diff_vs_validation": 0.021680623292922974,
+      "diff_vs_single_DLinear_test": -0.003325223922729492,
+      "diff_vs_ETTh2_full_adaptive_test": 0.0005741715431213379,
+      "diff_vs_validation_selected_DLinear_ModernTCN_test": -0.0008806884288787842,
+      "selection_protocol": "router-train fitted pair-potential linear ensemble; validation reported before this after-final-test audit; no test-data feedback",
+      "status": "after_final_test_audit",
+      "weights_json": "{\"DLinear\": 0.5178712606430054, \"PatchTST\": 0.2733554542064667, \"iTransformer\": -0.05290773883461952, \"TimesNet\": 0.1123543381690979, \"ModernTCN\": 0.1667473316192627}",
+      "paired_ci95_diff_vs_DLinear_low": -0.004243204370141029,
+      "paired_ci95_diff_vs_DLinear_high": -0.0024024469312280416,
+      "paired_ci_excludes_zero": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "status": "CHECKED",
+  "method": "fame",
+  "case": "permuted",
+  "seed": 7,
+  "mae": 0.023236854001879692,
+  "mse": 0.0012020720168948174,
+  "tail32_mae": 0.019999980926513672,
+  "checks": {
+    "finite": true,
+    "source_gate_passed": true,
+    "synthetic_load_guard": true
+  },
+  "software_case_passed": true,
+  "baselines": {
+    "equal_mae": 2.4200005531311035,
+    "single_mae": 0.9999997615814209,
+    "oracle_mae": 0.019999980926513672,
+    "selected_single": "DLinear"
+  },
+  "diagnostics": {
+    "convex_calls": 17,
+    "winner_accuracy": 1.0,
+    "routing": {
+      "selected": {
+        "tau": 0.1,
+        "top_r": 2,
+        "delta": 0.1,
+        "calib_mse": 0.00039999921637244736
+      },
+      "val_mae": 0.023236854001879692,
+      "val_mse": 0.0012020720168948174,
+      "avg_experts_used": 1.015625,
+      "expert_usage": {
+        "DLinear": 0.515625,
+        "PatchTST": 0.5,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "top1_frequency": {
+        "DLinear": 0.5,
+        "PatchTST": 0.5,
+        "iTransformer": 0.0,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "routing_entropy": 0.03642684227077527
+    }
+  },
+  "upstream_source_check": {
+    "status": "PASS",
+    "commit_pinned": "aaad8f2812ebb23a495087bcd707dc6feb1e951c",
+    "file_hashes": {
+      "fame/__init__.py": "51911a2b3a983eb6868c3ed90338f600b6d9f579bad0a400efe8aa5d48196b73",
+      "fame/config.py": "72501402d4f3aeaa01a7f9251869423bbcae667ed1b9826549d6cea47457304e",
+      "fame/utils.py": "6abb031ed3ab8ba52abcce8ae837d4c85c76d58e267ad98a056d0818b7ace221",
+      "fame/features.py": "8846951363d881f9659a0206b258c605ef25e14e87fd54233cb90f5983cca672",
+      "fame/oracle.py": "f5fda614359f261a01dfcb50c9df2e9002e572034d2d3b4cc7919b8805bc7d65",
+      "fame/router.py": "ff576b1c14a66d5e34f5973aa715b3e83b62d17c3b4d5adeef5c5cc9747e2750",
+      "fame/pipeline.py": "6adde916a8d78af91ac87346cd94e509b90fa88f6ecdb3451371328332f0200f",
+      "fame/experts.py": "e33302584d7d64c7e3261557c935bd17236582c0b4a88b19e076c898d3dfdb9f"
+    }
+  },
+  "synthetic_files_loaded": [
+    "_work\\fingerprints_ETTh1.pt",
+    "_work\\seed7_ETTh1.pt"
+  ],
+  "artifact_hashes": {
+    "per_window_losses.npz": "4a9e252d4055d0c919769b9150ea29a53b285fcdd5bf42d1391751c6da01a91c",
+    "_work\\fingerprints_ETTh1.json": "7ae81e9ca5b372d87681a53bc748e771063b1b364fe5699f1425e28ca5caa254",
+    "_work\\fingerprints_ETTh1.pt": "f9eabab35085a33538c001720b8e9998011a064bd2c4619bb8884681f2695c14",
+    "_work\\seed7_ETTh1.json": "7a57a6c46b433855824b24b21a00e8bea7d2f73778438466369507b2ce3c7821",
+    "_work\\seed7_ETTh1.pt": "decdb0d9fcbf474b4a1c230aca71396358368d8f954a64696769a992b8756ede"
+  },
+  "paper_fidelity": "NOT_ESTABLISHED",
+  "table_eligible": false,
+  "test_set_accessed": false,
+  "real_research_data_accessed": false
+}

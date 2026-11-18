@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "cases": {
+    "offline_predictable": {
+      "history_target_continuity": true,
+      "train_eval_targets_disjoint": true,
+      "planted_winners_match_best_experts": true,
+      "best_expert_mae": 0.019999980926513672,
+      "equal_mix_mae": 2.4200000762939453
+    },
+    "offline_shuffled": {
+      "history_target_continuity": true,
+      "train_eval_targets_disjoint": true,
+      "planted_winners_match_best_experts": true,
+      "best_expert_mae": 0.019999977201223373,
+      "equal_mix_mae": 2.4043750762939453
+    },
+    "onenet_branch1": {
+      "history_target_continuity": true,
+      "train_eval_targets_disjoint": true,
+      "planted_winners_match_best_experts": true,
+      "best_expert_mae": 0.01999998278915882,
+      "equal_mix_mae": 1.0200001001358032
+    },
+    "onenet_branch2": {
+      "history_target_continuity": true,
+      "train_eval_targets_disjoint": true,
+      "planted_winners_match_best_experts": true,
+      "best_expert_mae": 0.019999980926513672,
+      "equal_mix_mae": 0.979999840259552
+    },
+    "onenet_shuffled": {
+      "history_target_continuity": true,
+      "train_eval_targets_disjoint": true,
+      "planted_winners_match_best_experts": true,
+      "best_expert_mae": 0.01999998465180397,
+      "equal_mix_mae": 1.0006250143051147
+    }
+  },
+  "offline_candidate_forecasts_identical_under_shuffling": true
+}

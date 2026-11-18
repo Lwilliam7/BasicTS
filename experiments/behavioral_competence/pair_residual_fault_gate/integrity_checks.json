@@ -1,0 +1,582 @@
+{
+  "ETTh1": {
+    "baseline_uses_router_train_only": true,
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "ETTh1",
+    "detector_selection_uses_router_train_oof_only": true,
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "feature_shapes": {
+      "parity": [
+        5546,
+        3,
+        120
+      ],
+      "passive": [
+        5546,
+        3,
+        15
+      ],
+      "raw": [
+        5546,
+        3,
+        120
+      ]
+    },
+    "finite_features": true,
+    "oof_chronological_purge_pass": true,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "parity": 0.0,
+      "passive": 0.0,
+      "raw": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "ETTh1",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          5546,
+          96,
+          7
+        ],
+        "num_windows": 5546,
+        "prediction_shape": [
+          5546,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 8532,
+        "start_min": 2880,
+        "starts_chronological": true,
+        "target_shape": [
+          5546,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "ETTh1",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          2773,
+          96,
+          7
+        ],
+        "num_windows": 2773,
+        "prediction_shape": [
+          2773,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 11412,
+        "start_min": 8640,
+        "starts_chronological": true,
+        "target_shape": [
+          2773,
+          12,
+          7
+        ]
+      }
+    },
+    "target_corruption_feature_pass": true,
+    "test_loaded": false,
+    "train_feature_hashes": {
+      "parity": "c5cbed716c3ea6a45a27ad9b262eb5b9f5f266bad7cdd0bfb7c7b5109dfea423",
+      "passive": "a12e6477a2ee98522bcaa3ce281a03490baee212bcf141267cfbc54948bdcf92",
+      "raw": "69cd4d383632e980604da17287820d52e5a255898da0b8ff64978e0bb723397d"
+    },
+    "val_feature_hashes": {
+      "parity": "100d0043054bbffd088d4b28be2643d82d3b409d642d905129a2613c5b43f005",
+      "passive": "38f4fc3e6f3e173151a862d31c00ad5d5b6d355b16e81c8683f53cade2da4ff8",
+      "raw": "f6004e00071544e4d4ea812f4d3dbcb3c4c91f4564193568ef709917302d0e41"
+    },
+    "valid_oof_windows": 4437
+  },
+  "ETTh2": {
+    "baseline_uses_router_train_only": true,
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "DLinear",
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "dataset": "ETTh2",
+    "detector_selection_uses_router_train_oof_only": true,
+    "expert_indices": [
+      0,
+      1,
+      4
+    ],
+    "feature_shapes": {
+      "parity": [
+        2053,
+        3,
+        120
+      ],
+      "passive": [
+        2053,
+        3,
+        15
+      ],
+      "raw": [
+        2053,
+        3,
+        120
+      ]
+    },
+    "finite_features": true,
+    "oof_chronological_purge_pass": true,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "parity": 0.0,
+      "passive": 0.0,
+      "raw": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "ETTh2",
+        "expected_role": "router_train",
+        "expert_order_ok": true,
+        "history_shape": [
+          2053,
+          96,
+          7
+        ],
+        "num_windows": 2053,
+        "prediction_shape": [
+          2053,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 10692,
+        "start_min": 8640,
+        "starts_chronological": true,
+        "target_shape": [
+          2053,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "ETTh2",
+        "expected_role": "router_val",
+        "expert_order_ok": true,
+        "history_shape": [
+          613,
+          96,
+          7
+        ],
+        "num_windows": 613,
+        "prediction_shape": [
+          613,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 11412,
+        "start_min": 10800,
+        "starts_chronological": true,
+        "target_shape": [
+          613,
+          12,
+          7
+        ]
+      }
+    },
+    "target_corruption_feature_pass": true,
+    "test_loaded": false,
+    "train_feature_hashes": {
+      "parity": "fb4b094622fea1ae97f9203333a945f6abc23677d9b55da1e0c44360722c9a38",
+      "passive": "096b833af407ccec16c5bc44c67707d8f3de5184fa7ab1c09d24b78f29a7e120",
+      "raw": "9ff035558e2559f7d9eea4e15b589aeec51618b921711dfcbadb3d189b2916fd"
+    },
+    "val_feature_hashes": {
+      "parity": "f5e0b3d1fdd1fdbeeb8ec3ee1a3c5b7947cc49bf9e163420f8e7f9a3afc759fd",
+      "passive": "68392be8a1f011dd8bcb33c0bced7917f60b564305f0f16fecfadfc8ede88dbe",
+      "raw": "637c28582091b570f7d7fdcbd18b3fd858fbeb6ec0ae1f3120c76812a61418f5"
+    },
+    "valid_oof_windows": 1642
+  },
+  "ETTm1": {
+    "baseline_uses_router_train_only": true,
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "DLinear",
+      "PatchTST",
+      "TimesNet"
+    ],
+    "dataset": "ETTm1",
+    "detector_selection_uses_router_train_oof_only": true,
+    "expert_indices": [
+      0,
+      1,
+      3
+    ],
+    "feature_shapes": {
+      "parity": [
+        22826,
+        3,
+        120
+      ],
+      "passive": [
+        22826,
+        3,
+        15
+      ],
+      "raw": [
+        22826,
+        3,
+        120
+      ]
+    },
+    "finite_features": true,
+    "oof_chronological_purge_pass": true,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "parity": 0.0,
+      "passive": 0.0,
+      "raw": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "ETTm1",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          22826,
+          96,
+          7
+        ],
+        "num_windows": 22826,
+        "prediction_shape": [
+          22826,
+          12,
+          7,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 34452,
+        "start_min": 11520,
+        "starts_chronological": true,
+        "target_shape": [
+          22826,
+          12,
+          7
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "ETTm1",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          11413,
+          96,
+          7
+        ],
+        "num_windows": 11413,
+        "prediction_shape": [
+          11413,
+          12,
+          7,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 45972,
+        "start_min": 34560,
+        "starts_chronological": true,
+        "target_shape": [
+          11413,
+          12,
+          7
+        ]
+      }
+    },
+    "target_corruption_feature_pass": true,
+    "test_loaded": false,
+    "train_feature_hashes": {
+      "parity": "a32093683efc6c6a560df8775a73e4a7881deb174972b1eb08e83777470ebec3",
+      "passive": "85f91166e38c15e9dbcbc4dba457357fb8cd6d890f6b763f5c719c5a8bb92e67",
+      "raw": "358c1b2442726d47d435a9c76d33249d8f11ca553d12fa5a97c5f8eeca67a438"
+    },
+    "val_feature_hashes": {
+      "parity": "aeeb8f250779584dfca1e708ead62122b02b8efd061007a224e77c61617d755e",
+      "passive": "e823e5526f5dc9d5d9df983f4c310866edcdc8c44d0ae0daf88b2dabaf075600",
+      "raw": "f2b0b7f74c7e07093f6f49980dbcd66aca4755f2819e193e9c77fff8a0bc176f"
+    },
+    "valid_oof_windows": 18261
+  },
+  "Electricity": {
+    "baseline_uses_router_train_only": true,
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "Electricity",
+    "detector_selection_uses_router_train_oof_only": true,
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "feature_shapes": {
+      "parity": [
+        10308,
+        3,
+        125
+      ],
+      "passive": [
+        10308,
+        3,
+        15
+      ],
+      "raw": [
+        10308,
+        3,
+        125
+      ]
+    },
+    "finite_features": true,
+    "oof_chronological_purge_pass": true,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "parity": 0.0,
+      "passive": 0.0,
+      "raw": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "Electricity",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          10308,
+          96,
+          321
+        ],
+        "num_windows": 10308,
+        "prediction_shape": [
+          10308,
+          12,
+          321,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 15674,
+        "start_min": 5260,
+        "starts_chronological": true,
+        "target_shape": [
+          10308,
+          12,
+          321
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "Electricity",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          5154,
+          96,
+          321
+        ],
+        "num_windows": 5154,
+        "prediction_shape": [
+          5154,
+          12,
+          321,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 20935,
+        "start_min": 15782,
+        "starts_chronological": true,
+        "target_shape": [
+          5154,
+          12,
+          321
+        ]
+      }
+    },
+    "target_corruption_feature_pass": true,
+    "test_loaded": false,
+    "train_feature_hashes": {
+      "parity": "7c08390e9ee549e256c0b7bb1a15890e500dc788e0f68427627eb4b0696f5a86",
+      "passive": "763ca4a81b53d4745239cdcb237206d37792d1c7cc12d0b1aabe2eb10cc29a79",
+      "raw": "404c390b14818adf7e085a4f2af931502aa521c4c2538997ad8de70789718a47"
+    },
+    "val_feature_hashes": {
+      "parity": "2a0eddf0ae12b1b88d122886855d161687be10deb7cc05f460a42d1a956fcfcd",
+      "passive": "f4bebfc6c5eb16dfa59f1eead8be851f21070d0a472a0fe3e9afbeec7a70e675",
+      "raw": "6aec3e3f72c01c8373b08a777448d7fd7ca82620745e353610c9d9552cca2b0b"
+    },
+    "valid_oof_windows": 8246
+  },
+  "Weather": {
+    "baseline_uses_router_train_only": true,
+    "checkpoint_hashes_unchanged": true,
+    "core_names": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "dataset": "Weather",
+    "detector_selection_uses_router_train_oof_only": true,
+    "expert_indices": [
+      1,
+      2,
+      3
+    ],
+    "feature_shapes": {
+      "parity": [
+        20864,
+        3,
+        190
+      ],
+      "passive": [
+        20864,
+        3,
+        15
+      ],
+      "raw": [
+        20864,
+        3,
+        190
+      ]
+    },
+    "finite_features": true,
+    "oof_chronological_purge_pass": true,
+    "router_val_evaluated_once_after_selection": true,
+    "router_val_target_corruption_feature_max_abs": {
+      "parity": 0.0,
+      "passive": 0.0,
+      "raw": 0.0
+    },
+    "schemas": {
+      "router_train": {
+        "core_in_cache": true,
+        "dataset": "Weather",
+        "expected_role": "router_train_20_60",
+        "expert_order_ok": true,
+        "history_shape": [
+          20864,
+          96,
+          21
+        ],
+        "num_windows": 20864,
+        "prediction_shape": [
+          20864,
+          12,
+          21,
+          5
+        ],
+        "role": "router_train_20_60",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_train",
+        "start_max": 31509,
+        "start_min": 10539,
+        "starts_chronological": true,
+        "target_shape": [
+          20864,
+          12,
+          21
+        ]
+      },
+      "router_val": {
+        "core_in_cache": true,
+        "dataset": "Weather",
+        "expected_role": "router_val_60_80",
+        "expert_order_ok": true,
+        "history_shape": [
+          10432,
+          96,
+          21
+        ],
+        "num_windows": 10432,
+        "prediction_shape": [
+          10432,
+          12,
+          21,
+          5
+        ],
+        "role": "router_val_60_80",
+        "role_ok": true,
+        "shape_ok": true,
+        "split": "router_val",
+        "start_max": 42048,
+        "start_min": 31617,
+        "starts_chronological": true,
+        "target_shape": [
+          10432,
+          12,
+          21
+        ]
+      }
+    },
+    "target_corruption_feature_pass": true,
+    "test_loaded": false,
+    "train_feature_hashes": {
+      "parity": "2cc5935ee768522f05871d39cec2398e882729aa58098a1c63df1405162c5388",
+      "passive": "a1a48ec09c8a4a1a23b4de79d5201fac8a686a418cde935c4dfdcef849da8153",
+      "raw": "eabe70f99550dbe37d24a0cd9014e3c6a85ae0fd2029308a4f803f5ed20daee8"
+    },
+    "val_feature_hashes": {
+      "parity": "137311bcf9d52d96b6a8e83db7ea6203f3b397f0747cbe78284a8d04a1901bda",
+      "passive": "a2932c6b3f35bd660609bc2bfd178e7fa8229967bf97ee6eb988aa4a075c5553",
+      "raw": "f2877a24d263f6080f6ea2d7b8136b50a9818f4d86460940eecd987f3afcf8b5"
+    },
+    "valid_oof_windows": 16691
+  }
+}

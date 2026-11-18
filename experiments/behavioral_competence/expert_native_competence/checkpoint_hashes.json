@@ -1,0 +1,110 @@
+{
+  "ETTh1": {
+    "after": {
+      "PatchTST__block_a": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945",
+      "PatchTST__block_ab": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0",
+      "PatchTST__final_60": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "TimesNet__block_a": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910",
+      "TimesNet__block_ab": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9",
+      "TimesNet__final_60": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+      "iTransformer__block_a": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f",
+      "iTransformer__block_ab": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe",
+      "iTransformer__final_60": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d"
+    },
+    "before": {
+      "PatchTST__block_a": "7c9fa67e229df259efd2f290bd7a47217d3bd7a48c26a0328d5142ddebddb945",
+      "PatchTST__block_ab": "3cc7126270e02361f3ad0812dfd11b6507b91b5c9c7e6523828b1b0b52f88cc0",
+      "PatchTST__final_60": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+      "TimesNet__block_a": "5e2861ae781191144fb2d5978ff862bc7f32a87fdab10a377a017815b14a3910",
+      "TimesNet__block_ab": "86b9d121a67829d3bb6f36ab29adeeb1f277cef87167de671baacc79fabfb5d9",
+      "TimesNet__final_60": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+      "iTransformer__block_a": "efd8a4dcd5a53351d3bba8afd1b198e96f8d737d9f7c8fc16c0254222cd61a0f",
+      "iTransformer__block_ab": "f6b5ca47c1cac3531b9db0650a6b6d4c2a1178247dead62f27ae193dee459bbe",
+      "iTransformer__final_60": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d"
+    }
+  },
+  "ETTh2": {
+    "after": {
+      "DLinear__clean_candidates": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "ModernTCN__clean_candidates": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "PatchTST__clean_candidates": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b"
+    },
+    "before": {
+      "DLinear__clean_candidates": "d888cc85006bcc65cd6f4325aef2fae8fbbd3360b89f48976fedf04b3363dfa4",
+      "ModernTCN__clean_candidates": "b642495b030dd79096dd6e050beea7a3b00a9ccb6df210c9a1c343cf30402e7c",
+      "PatchTST__clean_candidates": "bf671ee4c31c583d2ceba0a0bbf724da0edf27d646086d80e221a25f25af861b"
+    }
+  },
+  "ETTm1": {
+    "after": {
+      "DLinear__block_a": "22e631eb840c142f5acfac58b7b5583595c6e3772bb32a7120bdf70f375c538b",
+      "DLinear__block_ab": "a8699631a840edd127de4a4a17f1bb5b6cf2d7a5f24deea99464ca93aa917ad5",
+      "DLinear__final_60": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "PatchTST__block_a": "b2647a0c637f96dc1c4fa9e67fe83b5f6b6b30091e467abd997063bee06e58e5",
+      "PatchTST__block_ab": "4d0dafc2576c8577aeb195a67d9b41a83d1f9f13828b266bbc695c76e9e7adc8",
+      "PatchTST__final_60": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+      "TimesNet__block_a": "507b6e269c5dcbcda99d41e9ce6e2dd5e39b9b3ce523b8d526ec8a69c5c7ce96",
+      "TimesNet__block_ab": "d83ac3f5a93c1cd544502403009dfda4a609034ea3aebcd09ebedefac8a028ac",
+      "TimesNet__final_60": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8"
+    },
+    "before": {
+      "DLinear__block_a": "22e631eb840c142f5acfac58b7b5583595c6e3772bb32a7120bdf70f375c538b",
+      "DLinear__block_ab": "a8699631a840edd127de4a4a17f1bb5b6cf2d7a5f24deea99464ca93aa917ad5",
+      "DLinear__final_60": "7b1c768e2623e740a887785d2bb6d684c18a08866c665be109cce2149d5f9f54",
+      "PatchTST__block_a": "b2647a0c637f96dc1c4fa9e67fe83b5f6b6b30091e467abd997063bee06e58e5",
+      "PatchTST__block_ab": "4d0dafc2576c8577aeb195a67d9b41a83d1f9f13828b266bbc695c76e9e7adc8",
+      "PatchTST__final_60": "ccbc190eaf5d6fca5f8500195fa224457be236ac184a91d3b7d3de65f41ed6b4",
+      "TimesNet__block_a": "507b6e269c5dcbcda99d41e9ce6e2dd5e39b9b3ce523b8d526ec8a69c5c7ce96",
+      "TimesNet__block_ab": "d83ac3f5a93c1cd544502403009dfda4a609034ea3aebcd09ebedefac8a028ac",
+      "TimesNet__final_60": "3ae77f082b79dfcf89c43e9f3f1c0460374fc011824f0d1dd7464e5dfe3531b8"
+    }
+  },
+  "Electricity": {
+    "after": {
+      "PatchTST__block_a": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575",
+      "PatchTST__block_ab": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0",
+      "PatchTST__final_60": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "TimesNet__block_a": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f",
+      "TimesNet__block_ab": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a",
+      "TimesNet__final_60": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "iTransformer__block_a": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3",
+      "iTransformer__block_ab": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8",
+      "iTransformer__final_60": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    },
+    "before": {
+      "PatchTST__block_a": "f60a87d8e31dc3cb0f770c4cecb2b0e5a25e413d3349eb0997146253305c1575",
+      "PatchTST__block_ab": "d56f26f2a05dc471333e02874f06eb18d6dfbadbb67e01a75df2e8a056bac2d0",
+      "PatchTST__final_60": "8b900d9c954849588c36835835a1b786e1855878509ed0d0de41f5cd24911ca0",
+      "TimesNet__block_a": "523e70188cbfc851b2d36775660548a7de8c8b6f63c1553cf98a3423bebcf59f",
+      "TimesNet__block_ab": "47e7684ef4f80a38cfebaf16ae9a8b61c6682896890ecc6b19e0b37163a1728a",
+      "TimesNet__final_60": "10dfde130f0661dca0601311f121b3e2b713aa422f468da7cc4e1e743bedcebc",
+      "iTransformer__block_a": "b51c27a94ee886ee6b32082ed12cc01211c7ad590255dd20ed08c5ec632babc3",
+      "iTransformer__block_ab": "6cc6996355efb11e766724cd4e276cac899c2366f8a1ad704bc6ba7f0ee0dae8",
+      "iTransformer__final_60": "b61806c81a7f7cb0f8f8fb41dbec3aeeb5eba789e55c58d97b27d5aea9ffc656"
+    }
+  },
+  "Weather": {
+    "after": {
+      "PatchTST__block_a": "fcd15c7a9e4a1ade7873beb930a4a9de05caf59b5caf971dcb4823b5089e700a",
+      "PatchTST__block_ab": "17f1b05741ccc36849d769cd9393f38dca875278c7184af35298dbfa9f15323f",
+      "PatchTST__final_60": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+      "TimesNet__block_a": "82b07718f2b72d3888ec9b4a6d200ed5f6a4cad41e58f84d53a26d18a27415b2",
+      "TimesNet__block_ab": "f7e3f601c305096aae6985e818e97cb7d07e832b33eaff53a07ee8d1f70171cc",
+      "TimesNet__final_60": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+      "iTransformer__block_a": "fab4277535708c271c5473b2d39109adac10236d0ac0be22de0d8c1ab81d18f9",
+      "iTransformer__block_ab": "708670bcab3aa3bd8076ec2d2c518aa546deae764f0fffb439821de082e2ac7d",
+      "iTransformer__final_60": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1"
+    },
+    "before": {
+      "PatchTST__block_a": "fcd15c7a9e4a1ade7873beb930a4a9de05caf59b5caf971dcb4823b5089e700a",
+      "PatchTST__block_ab": "17f1b05741ccc36849d769cd9393f38dca875278c7184af35298dbfa9f15323f",
+      "PatchTST__final_60": "9a7bd7fa229f152630c2bed59fcd6a61265059c569e81509efe69e5c86273078",
+      "TimesNet__block_a": "82b07718f2b72d3888ec9b4a6d200ed5f6a4cad41e58f84d53a26d18a27415b2",
+      "TimesNet__block_ab": "f7e3f601c305096aae6985e818e97cb7d07e832b33eaff53a07ee8d1f70171cc",
+      "TimesNet__final_60": "f2012e83ed82548f09a7441bfa4f61a53154d0f527a02a26d2525472043a82c6",
+      "iTransformer__block_a": "fab4277535708c271c5473b2d39109adac10236d0ac0be22de0d8c1ab81d18f9",
+      "iTransformer__block_ab": "708670bcab3aa3bd8076ec2d2c518aa546deae764f0fffb439821de082e2ac7d",
+      "iTransformer__final_60": "2f11732f158d9c05ed28fbd87f1b3a0d0dffe3aa10e0a883ae40d76d5597f1e1"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-10-17T18:35:42.575499+00:00",
+  "pid": 8088,
+  "status": "INCOMPLETE",
+  "units": {
+    "ETTh1_h96": {
+      "state": "FAILED",
+      "missing": [],
+      "returncode": 1
+    }
+  },
+  "finished_utc": "2026-10-17T18:35:42.594756+00:00"
+}

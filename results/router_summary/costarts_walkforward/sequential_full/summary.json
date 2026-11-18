@@ -1,0 +1,148 @@
+{
+  "method": "Sequential COSTAR-TS Full Walk-Forward",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "train_cache_sha256": "e0011114bcf1ac504a5ad6fb8830c2e83957388e89e664a33c816e250c6bb8dd",
+  "val_cache_sha256": "7d8e9d98603a8392ca43eac86c99970f6fe1734f3ee29b50ffd2ce8b540cc2a6",
+  "num_block_b_plus_c_train_examples": 5546,
+  "num_validation_examples": 2773,
+  "seeds": [
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "validation_mae_mean": 1.2754950523376465,
+  "validation_mae_std": 0.0038426830006826405,
+  "validation_mse_mean": 5.110284614562988,
+  "validation_mse_std": 0.05898897024335988,
+  "average_queries_mean": 1.0541651725769043,
+  "average_queries_std": 0.03390707360059084,
+  "individual_expert_validation": [
+    {
+      "expert": "DLinear",
+      "mae": 1.3566420078277588,
+      "mse": 5.805386066436768
+    },
+    {
+      "expert": "PatchTST",
+      "mae": 1.3002585172653198,
+      "mse": 5.307104110717773
+    },
+    {
+      "expert": "iTransformer",
+      "mae": 1.286491870880127,
+      "mse": 5.200030326843262
+    },
+    {
+      "expert": "TimesNet",
+      "mae": 1.34023118019104,
+      "mse": 5.603475093841553
+    },
+    {
+      "expert": "ModernTCN",
+      "mae": 1.5430413484573364,
+      "mse": 6.519838333129883
+    }
+  ],
+  "cache_provenance": {
+    "router_train": {
+      "dataset": "ETTh1",
+      "num_timestamps": 14400,
+      "created_at_utc": "2026-08-07T17:34:10.637500+00:00",
+      "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+      "cache_role": "router_train_20_60",
+      "expert_order": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "expert_training_range": {
+        "note": "Mixed OOS sources: Block B experts trained on 0-20%; Block C experts trained on 0-40%.",
+        "block_b_expert_training_range": {
+          "name": "block_a",
+          "start_fraction": 0.0,
+          "end_fraction": 0.2,
+          "start": 0,
+          "end": 2880
+        },
+        "block_c_expert_training_range": {
+          "name": "block_a_plus_b",
+          "start_fraction": 0.0,
+          "end_fraction": 0.4,
+          "start": 0,
+          "end": 5760
+        }
+      },
+      "prediction_range": {
+        "name": "block_b_plus_c",
+        "start_fraction": 0.2,
+        "end_fraction": 0.6,
+        "start": 2880,
+        "end": 8640
+      },
+      "source_caches": {
+        "block_b_oos": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\block_b_oos_cache.pt",
+        "block_c_oos": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\cache\\costarts_walkforward\\block_c_oos_cache.pt",
+        "block_b_sha256": "82bf7e261b82a570647df59fdfe86a1988dc143356a11a300055120233261a56",
+        "block_c_sha256": "92c74daae3e3174256b91e7b048ce6464e752e12dbc7515ecc68091aa7341ad9"
+      },
+      "protocol": "combined honest OOS predictions from Block B and Block C"
+    },
+    "router_val": {
+      "dataset": "ETTh1",
+      "num_timestamps": 14400,
+      "created_at_utc": "2026-08-07T17:39:15.318949+00:00",
+      "git_commit": "c336955f9421f8c04983e856fb317c1db5bc2b5c",
+      "cache_role": "router_val_60_80",
+      "expert_order": [
+        "DLinear",
+        "PatchTST",
+        "iTransformer",
+        "TimesNet",
+        "ModernTCN"
+      ],
+      "expert_training_range": {
+        "name": "block_a_plus_b_plus_c",
+        "start_fraction": 0.0,
+        "end_fraction": 0.6,
+        "start": 0,
+        "end": 8640
+      },
+      "prediction_range": {
+        "name": "validation",
+        "start_fraction": 0.6000000000000001,
+        "end_fraction": 0.8,
+        "start": 8640,
+        "end": 11520
+      },
+      "prediction_files": {
+        "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\DLinear.npy",
+        "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\PatchTST.npy",
+        "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\iTransformer.npy",
+        "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\TimesNet.npy",
+        "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\results\\router_summary\\costarts_walkforward\\expert_predictions\\router_val_60_80\\ModernTCN.npy"
+      },
+      "expert_checkpoint_paths": {
+        "DLinear": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\DLinear\\best_expert.pt",
+        "PatchTST": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\PatchTST\\best_expert.pt",
+        "iTransformer": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\iTransformer\\best_expert.pt",
+        "TimesNet": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\TimesNet\\best_expert.pt",
+        "ModernTCN": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\checkpoints\\costarts_walkforward\\final_60\\ModernTCN\\best_expert.pt"
+      },
+      "expert_checkpoint_hashes": {
+        "DLinear": "ea1b43c61347e0a3050dee95149c3509b9ac2a4f33a02ea032fa636b2b1f0ac3",
+        "PatchTST": "7e694fe485453fb9c73f813f10e4220f31fdec24abde9bbd096602c7fcb8d5d8",
+        "iTransformer": "272561abf323cdc82d4d1abadfa278e0c0606d7376b37d5fbad9e4a9b8ee829d",
+        "TimesNet": "e4ce4093ae7e372cc9e6588fc75ef354f0632a835c35dc8c2a291aaa30d9a1c6",
+        "ModernTCN": "071a866bbfbd05132a8fafc74483001ff0b9ec44a414f3f561df77c317faec44"
+      },
+      "protocol": "walk-forward OOS: predict block before adding it to expert training"
+    }
+  },
+  "leakage_checks": "passed",
+  "safety": "NO TEST DATA USED"
+}

@@ -1,0 +1,66 @@
+{
+  "classification_rule": "SUPPORTED if removal hurts OOF MAE on >=3/5 datasets AND aggregate (summed) delta is net-positive (hurts); UNSUPPORTED if hurts on <=1/5 and no block-24 support; else MIXED.",
+  "classifications": {
+    "Expert": "SUPPORTED",
+    "H": "SUPPORTED",
+    "V": "SUPPORTED"
+  },
+  "created_at_utc": "2026-08-31T04:25:55.793525+00:00",
+  "embedding_ablation_valid": true,
+  "embedding_dims": {
+    "expert": 4,
+    "horizon": 4,
+    "variable": 8
+  },
+  "experiment": "embedding_ablation_affinity_weighted_ec",
+  "fairness_note": "Zeroed embeddings are replaced by fixed zero vectors of the SAME dimension, not removed -- input dimension and MLP capacity are identical across all 5 variants.",
+  "git": {
+    "branch": "costarts-pair-selector-regressor",
+    "commit": "d22dca3b8e0e6211e2df46a7f48566650ab10b37",
+    "dirty_files_count": 6,
+    "dirty_working_tree": true
+  },
+  "kept_fixed": [
+    "K=3 train-selected frozen experts",
+    "scorer hidden layers (64->32->1)",
+    "residual-gain target",
+    "seed=7, AdamW lr=1e-3 wd=1e-4",
+    "causal 4-fold OOF protocol",
+    "fit-only affinity calibration temp=1.0",
+    "CF=1",
+    "independent EC claims",
+    "affinity-weighted multi-claim fusion",
+    "zero-claim fallback"
+  ],
+  "router_val_accessed": false,
+  "runtime_sec": 5324.234596014023,
+  "selected_feature_groups": [
+    "cell",
+    "local"
+  ],
+  "selected_feature_variant_from_feature_ablation": "F2_local",
+  "source_sha256": "65e9da5a3c68e5b1209ae6f9d5769e821b5a5bd0db3d4d5575cdba3d35824a78",
+  "test_cache_loaded": false,
+  "test_metrics_computed": false,
+  "test_set_accessed": false,
+  "untouched_data_accessed": false,
+  "variants": {
+    "E_full": [
+      "none"
+    ],
+    "E_noExpert": [
+      "expert"
+    ],
+    "E_noH": [
+      "horizon"
+    ],
+    "E_noV": [
+      "variable"
+    ],
+    "E_none": [
+      "expert",
+      "horizon",
+      "variable"
+    ]
+  }
+}

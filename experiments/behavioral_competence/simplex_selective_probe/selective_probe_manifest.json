@@ -1,0 +1,132 @@
+{
+  "base_simplex_weights": {
+    "BeijingAirQuality": {
+      "PatchTST": 0.43889644742012024,
+      "TimesNet": 0.36105626821517944,
+      "iTransformer": 0.2000472992658615
+    },
+    "ETTm2": {
+      "PatchTST": 0.4127127528190613,
+      "TimesNet": 0.20393376052379608,
+      "iTransformer": 0.38335350155830383
+    },
+    "ExchangeRate": {
+      "PatchTST": 0.343526691198349,
+      "TimesNet": 0.32119086384773254,
+      "iTransformer": 0.33528244495391846
+    },
+    "Traffic": {
+      "ModernTCN": 0.40138736367225647,
+      "PatchTST": 0.08872576057910919,
+      "iTransformer": 0.5098868608474731
+    }
+  },
+  "cache_paths": {
+    "BeijingAirQuality": "cache/costarts_walkforward_BeijingAirQuality/router_train_20_60_cache.pt , router_val_60_80_cache.pt (test_80_100_cache.pt never built)",
+    "ETTm2": "cache/costarts_walkforward_ETTm2/router_train_20_60_cache.pt , router_val_60_80_cache.pt (test_80_100_cache.pt never built)",
+    "ExchangeRate": "cache/costarts_walkforward_ExchangeRate/router_train_20_60_cache.pt , router_val_60_80_cache.pt (test_80_100_cache.pt never built)",
+    "Traffic": "cache/costarts_walkforward_Traffic/router_train_20_60_cache.pt , router_val_60_80_cache.pt (test_80_100_cache.pt never built)"
+  },
+  "created_at_utc": "2026-08-23T20:10:59.423960+00:00",
+  "datasets": [
+    "ExchangeRate",
+    "Traffic",
+    "BeijingAirQuality",
+    "ETTm2"
+  ],
+  "decision_rule": "Sections 14-16 of the task instructions, applied verbatim without modification after seeing results.",
+  "expert_checkpoint_sha256": {
+    "BeijingAirQuality": {
+      "PatchTST": "523f6435a6551d15b846ace5b5e73f1e19520fb97804d82e7d2edc275c43251f",
+      "TimesNet": "f210f6730f6a9d7e6c38c1b69da9bc5d23f0858f613cf27689ae78653c6173b6",
+      "iTransformer": "1fdaf103c269210b1a5b4019880947cdee35eec96da53cbc2bba396150b6fa58"
+    },
+    "ETTm2": {
+      "PatchTST": "d0d417049fff84a222a79e66ef39dc77073c965ddf8709f6bf0469f794d2eb53",
+      "TimesNet": "6fd972f3dd10d8d4079aff7346c4a858cfa52a083b4ef24ef1782c5f9bb28408",
+      "iTransformer": "05c84867f344302d4dbf35c319a81809fbe9a3c4cd0a82e5bac654062c74d56e"
+    },
+    "ExchangeRate": {
+      "PatchTST": "e36b4e1be1a0f2479cf33f140c721c82d13a6bdc47fc4ba671e14b7340259534",
+      "TimesNet": "9e90f767e4be113d81d0eaa0aed7dfeb679b96879d24321fda36bec73a7eb611",
+      "iTransformer": "d9827cb3e62bb5ef0b2d0ffefd27901cfa4038505eeeb615ce015a60df69ebf1"
+    },
+    "Traffic": {
+      "ModernTCN": "c1fee017f520b130d9e662c6957f90a373c4587d55504ef097d61b464d7b2a9b",
+      "PatchTST": "636acbd320b393772f6ef8e628b1bfd7eeb9ae06fd5ff387eaeee0045c4d01d9",
+      "iTransformer": "5f020c1ae2977751cdbedb1492c9c6cf495be2d25b437d39fc52b159a8699c3d"
+    }
+  },
+  "expert_cores": {
+    "BeijingAirQuality": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ETTm2": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "ExchangeRate": [
+      "PatchTST",
+      "iTransformer",
+      "TimesNet"
+    ],
+    "Traffic": [
+      "PatchTST",
+      "iTransformer",
+      "ModernTCN"
+    ]
+  },
+  "expert_pool": [
+    "DLinear",
+    "PatchTST",
+    "iTransformer",
+    "TimesNet",
+    "ModernTCN"
+  ],
+  "frozen_alpha_source": "experiments/behavioral_competence/simplex_probe/simplex_probe_manifest.json (loaded, verified against the user-stated values, NOT reselected)",
+  "frozen_alpha_values": {
+    "BeijingAirQuality": 0.5,
+    "ETTm2": 1.0,
+    "ExchangeRate": 2.0,
+    "Traffic": 0.5
+  },
+  "fusion_formula": "effective_alpha_t = gate_t * frozen_alpha; adjusted_weight_e = softmax_e(log(simplex_weight_e) - effective_alpha_t * z(probe_loss_e)); gate_t = sigmoid(w . standardize(features_t) + b); gate_t=0 reduces exactly to base Simplex (verified, Section 11).",
+  "gate_feature_names": [
+    "probe_best_loss",
+    "probe_gap_best_second",
+    "probe_std",
+    "probe_agrees_simplex_top",
+    "l1_weight_change",
+    "max_abs_weight_change",
+    "changes_top_expert",
+    "entropy_diff",
+    "mean_pairwise_disagreement"
+  ],
+  "gate_label": "router_train-only: 1 if always-on Simplex+Probe (at the frozen alpha) had lower per-window MAE than base Simplex on that window, else 0. Never used at router_val inference.",
+  "gate_model": "L2-regularized logistic regression, hand-rolled deterministic full-batch gradient descent (zero init, lr=0.5, 3000 iterations), standardized features (router_train mean/std, frozen)",
+  "gate_regularization_grid": [
+    0.001,
+    0.01,
+    0.1,
+    1.0
+  ],
+  "gate_selected_l2_real": {
+    "BeijingAirQuality": 0.001,
+    "ETTm2": 0.01,
+    "ExchangeRate": 0.01,
+    "Traffic": 0.01
+  },
+  "gate_selected_l2_shuffled": {
+    "BeijingAirQuality": 0.1,
+    "ETTm2": 0.1,
+    "ExchangeRate": 0.01,
+    "Traffic": 0.001
+  },
+  "gate_training_folds": "4 chronological leave-one-block-out folds, same block boundaries as train_folds() (costar_multidataset_frozen/common.py); the initial 20% chronological prefix is always in every fold's fit set, the remaining 80% is partitioned into 4 blocks each held out once. Documented as block cross-validation, not strict forward-only chronology.",
+  "git_commit_sha": "960c8d61f925caff94f7e3836f199ad532b82eac",
+  "manifest_type": "simplex_selective_probe_manifest",
+  "shuffle_seed": 20260821
+}

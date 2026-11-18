@@ -1,0 +1,230 @@
+{
+  "created_at_utc": "2026-08-25T05:58:15.077476+00:00",
+  "current_git_commit": "7ec1f1ea37be0d43764c0e4f09094337bb9f2d11",
+  "dataset_artifacts": [
+    {
+      "dataset": "ExchangeRate",
+      "has_actual_conditional_common": true,
+      "has_common_idx": true,
+      "has_oof_full_raw_response": false,
+      "has_oof_learned_delta": false,
+      "has_oof_learned_six_response": true,
+      "has_oof_predictions": true,
+      "has_router_val_full_raw_response": false,
+      "has_router_val_learned_delta": true,
+      "has_router_val_learned_six_response": true,
+      "has_v2_generator_checkpoint": false,
+      "per_window_scores_sha256": "c875b3ddf1441d655ea708d54b83623a3e44a6ceb70118a44ea02c1adbc3d267",
+      "raw_npz_shapes": {
+        "conditional_delta_val": "(1411, 96, 8)",
+        "conditional_response_val": "(1411, 3, 6)",
+        "note": "()",
+        "oof_conditional_response_common": "(1693, 3, 6)",
+        "random_delta_val": "(1411, 96, 8)",
+        "random_response_val": "(1411, 3, 6)"
+      },
+      "raw_response_cache_sha256": "fa62623e12ba3dd907501ff847f709f0eac04d0f8f600adee4c1e5f6ae9fec28",
+      "score_npz_shapes": {
+        "actual_conditional_common": "(1693, 3)",
+        "actual_conditional_val": "(1411, 3)",
+        "actual_error_val": "(1411, 3)",
+        "common_idx": "(1693,)",
+        "conditional_val_pred": "(1411, 3)",
+        "core": "(3,)",
+        "mu_e_final": "(3,)",
+        "oof_conditional_common": "(1693, 3)",
+        "oof_passive_common": "(1693, 3)",
+        "oof_random_common": "(1693, 3)",
+        "oof_shuffled_common": "(1693, 3)",
+        "oof_total_common": "(1693, 3)",
+        "oof_zero_common": "(1693, 3)",
+        "passive_val_pred": "(1411, 3)",
+        "random_val_pred": "(1411, 3)",
+        "shuffled_val_pred": "(1411, 3)",
+        "total_val_pred": "(1411, 3)",
+        "zero_val_pred": "(1411, 3)"
+      },
+      "v2_per_window_scores": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\per_window_scores\\ExchangeRate.npz",
+      "v2_raw_response_cache": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\raw_response_cache\\ExchangeRate.npz"
+    },
+    {
+      "dataset": "Traffic",
+      "has_actual_conditional_common": true,
+      "has_common_idx": true,
+      "has_oof_full_raw_response": false,
+      "has_oof_learned_delta": false,
+      "has_oof_learned_six_response": true,
+      "has_oof_predictions": true,
+      "has_router_val_full_raw_response": false,
+      "has_router_val_learned_delta": true,
+      "has_router_val_learned_six_response": true,
+      "has_v2_generator_checkpoint": false,
+      "per_window_scores_sha256": "fe05f606b32690e6efe69835a4da550adb6cdeb0010d3de1382be075d119f5c3",
+      "raw_npz_shapes": {
+        "conditional_delta_val": "(3402, 96, 862)",
+        "conditional_response_val": "(3402, 3, 6)",
+        "note": "()",
+        "oof_conditional_response_common": "(4082, 3, 6)",
+        "random_delta_val": "(3402, 96, 862)",
+        "random_response_val": "(3402, 3, 6)"
+      },
+      "raw_response_cache_sha256": "85d4d71371430956f11d3172f84a2a8bece6dba2cc436d601c27b83d4168a64a",
+      "score_npz_shapes": {
+        "actual_conditional_common": "(4082, 3)",
+        "actual_conditional_val": "(3402, 3)",
+        "actual_error_val": "(3402, 3)",
+        "common_idx": "(4082,)",
+        "conditional_val_pred": "(3402, 3)",
+        "core": "(3,)",
+        "mu_e_final": "(3,)",
+        "oof_conditional_common": "(4082, 3)",
+        "oof_passive_common": "(4082, 3)",
+        "oof_random_common": "(4082, 3)",
+        "oof_shuffled_common": "(4082, 3)",
+        "oof_total_common": "(4082, 3)",
+        "oof_zero_common": "(4082, 3)",
+        "passive_val_pred": "(3402, 3)",
+        "random_val_pred": "(3402, 3)",
+        "shuffled_val_pred": "(3402, 3)",
+        "total_val_pred": "(3402, 3)",
+        "zero_val_pred": "(3402, 3)"
+      },
+      "v2_per_window_scores": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\per_window_scores\\Traffic.npz",
+      "v2_raw_response_cache": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\raw_response_cache\\Traffic.npz"
+    },
+    {
+      "dataset": "BeijingAirQuality",
+      "has_actual_conditional_common": true,
+      "has_common_idx": true,
+      "has_oof_full_raw_response": false,
+      "has_oof_learned_delta": false,
+      "has_oof_learned_six_response": true,
+      "has_oof_predictions": true,
+      "has_router_val_full_raw_response": false,
+      "has_router_val_learned_delta": true,
+      "has_router_val_learned_six_response": true,
+      "has_v2_generator_checkpoint": false,
+      "per_window_scores_sha256": "843051146bb6a08878de0253b4e276c3558af8c4f1493913842c852562a209bd",
+      "raw_npz_shapes": {
+        "conditional_delta_val": "(7093, 96, 7)",
+        "conditional_response_val": "(7093, 3, 6)",
+        "note": "()",
+        "oof_conditional_response_common": "(8512, 3, 6)",
+        "random_delta_val": "(7093, 96, 7)",
+        "random_response_val": "(7093, 3, 6)"
+      },
+      "raw_response_cache_sha256": "c7f0f7b610bdd1ee0710e212367eacf121dae592c52f6272faa4ec0c5debfcf9",
+      "score_npz_shapes": {
+        "actual_conditional_common": "(8512, 3)",
+        "actual_conditional_val": "(7093, 3)",
+        "actual_error_val": "(7093, 3)",
+        "common_idx": "(8512,)",
+        "conditional_val_pred": "(7093, 3)",
+        "core": "(3,)",
+        "mu_e_final": "(3,)",
+        "oof_conditional_common": "(8512, 3)",
+        "oof_passive_common": "(8512, 3)",
+        "oof_random_common": "(8512, 3)",
+        "oof_shuffled_common": "(8512, 3)",
+        "oof_total_common": "(8512, 3)",
+        "oof_zero_common": "(8512, 3)",
+        "passive_val_pred": "(7093, 3)",
+        "random_val_pred": "(7093, 3)",
+        "shuffled_val_pred": "(7093, 3)",
+        "total_val_pred": "(7093, 3)",
+        "zero_val_pred": "(7093, 3)"
+      },
+      "v2_per_window_scores": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\per_window_scores\\BeijingAirQuality.npz",
+      "v2_raw_response_cache": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\raw_response_cache\\BeijingAirQuality.npz"
+    },
+    {
+      "dataset": "ETTm2",
+      "has_actual_conditional_common": true,
+      "has_common_idx": true,
+      "has_oof_full_raw_response": false,
+      "has_oof_learned_delta": false,
+      "has_oof_learned_six_response": true,
+      "has_oof_predictions": true,
+      "has_router_val_full_raw_response": false,
+      "has_router_val_learned_delta": true,
+      "has_router_val_learned_six_response": true,
+      "has_v2_generator_checkpoint": false,
+      "per_window_scores_sha256": "856ed41a229ddbc98408110ccb0e75315613deb488899b75b0df397c63f3cde0",
+      "raw_npz_shapes": {
+        "conditional_delta_val": "(11413, 96, 7)",
+        "conditional_response_val": "(11413, 3, 6)",
+        "note": "()",
+        "oof_conditional_response_common": "(13696, 3, 6)",
+        "random_delta_val": "(11413, 96, 7)",
+        "random_response_val": "(11413, 3, 6)"
+      },
+      "raw_response_cache_sha256": "4ff51b6a9f1039179731742bffa2877ee6ec9b0f4d6ca94e7996c73bb681f049",
+      "score_npz_shapes": {
+        "actual_conditional_common": "(13696, 3)",
+        "actual_conditional_val": "(11413, 3)",
+        "actual_error_val": "(11413, 3)",
+        "common_idx": "(13696,)",
+        "conditional_val_pred": "(11413, 3)",
+        "core": "(3,)",
+        "mu_e_final": "(3,)",
+        "oof_conditional_common": "(13696, 3)",
+        "oof_passive_common": "(13696, 3)",
+        "oof_random_common": "(13696, 3)",
+        "oof_shuffled_common": "(13696, 3)",
+        "oof_total_common": "(13696, 3)",
+        "oof_zero_common": "(13696, 3)",
+        "passive_val_pred": "(11413, 3)",
+        "random_val_pred": "(11413, 3)",
+        "shuffled_val_pred": "(11413, 3)",
+        "total_val_pred": "(11413, 3)",
+        "zero_val_pred": "(11413, 3)"
+      },
+      "v2_per_window_scores": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\per_window_scores\\ETTm2.npz",
+      "v2_raw_response_cache": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\raw_response_cache\\ETTm2.npz"
+    }
+  ],
+  "source_v2_artifacts": {
+    "integrity_checks.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\integrity_checks.csv",
+      "sha256": "dc97b411e96ff3df5846fa1726085541a011e06755e98f513c472d5ce4ca125d"
+    },
+    "oof_competence_results.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\oof_competence_results.csv",
+      "sha256": "c6ba6fa807dd43f341bf0b1fc2efcdbf8ca70c5291a8969dc28ecc679be9565b"
+    },
+    "oof_fold_manifest.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\oof_fold_manifest.csv",
+      "sha256": "2132d1ab472f15041dbd99230d60ea65590449d079ab11752bcbbd434b93fd7b"
+    },
+    "prompt_compliance_audit.json": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\prompt_compliance_audit.json",
+      "sha256": "bc6410d71dbd3b9a47598a124d07f344475584815ed910be2c118d06b5ba18ee"
+    },
+    "prompt_compliance_audit.md": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\prompt_compliance_audit.md",
+      "sha256": "05e896d28bffe7f7723ba74ef43d1bca25cf5b21a610a5f81bcf386a4c642288"
+    },
+    "report.md": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\report.md",
+      "sha256": "f310118f50102e972bf7a1525e7358cd6ab694251c5b1cc7735e78889bad89f1"
+    },
+    "router_val_competence_results.csv": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\router_val_competence_results.csv",
+      "sha256": "97428e0eab41048e75c1ca27c14330169a3d17b2890b21193acf987912201684"
+    },
+    "validation_results.json": {
+      "exists": true,
+      "path": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2\\validation_results.json",
+      "sha256": "7bf607d3db44145569ab2dc39d037241a1eaf453bf6cea647385d532a843cb69"
+    }
+  },
+  "source_v2_dir": "experiments\\behavioral_competence\\controlled_discriminative_probe_v2",
+  "v3a_did_not_retrain_or_modify_v2_perturbation_generator": true
+}

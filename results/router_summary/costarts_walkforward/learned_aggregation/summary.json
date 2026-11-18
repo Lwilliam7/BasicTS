@@ -1,0 +1,238 @@
+{
+  "method": "Frozen embedding Sequential COSTAR-TS without equal averaging",
+  "train_cache": "cache/costarts_walkforward/router_train_20_60_cache.pt",
+  "val_cache": "cache/costarts_walkforward/router_val_60_80_cache.pt",
+  "router_checkpoint_root": "checkpoints/costarts_walkforward/attention/embedding",
+  "validation_range": [
+    8640,
+    11520
+  ],
+  "test_usage": "NO TEST DATA LOADED OR EVALUATED",
+  "per_seed": [
+    {
+      "seed": 7,
+      "best_epoch": 10,
+      "equal_average_mae": 0.37411895394325256,
+      "equal_average_mse": 0.31838473677635193,
+      "learned_aggregation_mae": 0.37406954169273376,
+      "learned_aggregation_mse": 0.31836381554603577,
+      "oracle_best_queried_mae": 0.3737971205284481,
+      "average_queries": 1.0421925783157349,
+      "combiner_parameter_count": 18433
+    },
+    {
+      "seed": 11,
+      "best_epoch": 7,
+      "equal_average_mae": 0.37422317266464233,
+      "equal_average_mse": 0.3179476261138916,
+      "learned_aggregation_mae": 0.37272801995277405,
+      "learned_aggregation_mse": 0.31686949729919434,
+      "oracle_best_queried_mae": 0.36247035535908845,
+      "average_queries": 1.8957808017730713,
+      "combiner_parameter_count": 18433
+    },
+    {
+      "seed": 13,
+      "best_epoch": 2,
+      "equal_average_mae": 0.3748342990875244,
+      "equal_average_mse": 0.3189614415168762,
+      "learned_aggregation_mae": 0.3746269643306732,
+      "learned_aggregation_mse": 0.3191145956516266,
+      "oracle_best_queried_mae": 0.3709236356301124,
+      "average_queries": 1.3133790493011475,
+      "combiner_parameter_count": 18433
+    },
+    {
+      "seed": 17,
+      "best_epoch": 1,
+      "equal_average_mae": 0.3731994032859802,
+      "equal_average_mse": 0.31603798270225525,
+      "learned_aggregation_mae": 0.3731673061847687,
+      "learned_aggregation_mse": 0.31595379114151,
+      "oracle_best_queried_mae": 0.3727925971118156,
+      "average_queries": 1.0504868030548096,
+      "combiner_parameter_count": 18433
+    },
+    {
+      "seed": 19,
+      "best_epoch": 2,
+      "equal_average_mae": 0.3742402493953705,
+      "equal_average_mse": 0.317466676235199,
+      "learned_aggregation_mae": 0.374435156583786,
+      "learned_aggregation_mse": 0.31779736280441284,
+      "oracle_best_queried_mae": 0.37182372398446106,
+      "average_queries": 1.2408943176269531,
+      "combiner_parameter_count": 18433
+    }
+  ],
+  "comparison": [
+    {
+      "model": "Embedding router + equal average",
+      "validation_mae_mean": 0.374123215675354,
+      "validation_mae_std": 0.0005258850451407402,
+      "validation_mse_mean": 0.3177596926689148,
+      "validation_mse_std": 0.0009920023436748222
+    },
+    {
+      "model": "Embedding router + learned aggregation",
+      "validation_mae_mean": 0.37380539774894717,
+      "validation_mae_std": 0.0007361037455778013,
+      "validation_mse_mean": 0.3176198124885559,
+      "validation_mse_std": 0.0011097784806887525,
+      "improvement_vs_equal_average_mae": 0.00031781792640683815
+    },
+    {
+      "model": "Oracle best among queried experts",
+      "validation_mae_mean": 0.3703614865227851,
+      "validation_mae_std": 0.004060492107437871
+    }
+  ],
+  "best_metrics_by_seed": {
+    "7": {
+      "equal_average_mae": 0.37411895394325256,
+      "equal_average_mse": 0.31838473677635193,
+      "learned_aggregation_mae": 0.37406954169273376,
+      "learned_aggregation_mse": 0.31836381554603577,
+      "oracle_best_queried_mae": 0.3737971205284481,
+      "average_queries": 1.0421925783157349,
+      "query_count_percent": {
+        "1": 96.61017060279846,
+        "2": 2.5604039430618286,
+        "3": 0.829426571726799,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 1.7670393076090876,
+        "PatchTST": 22.394518571943742,
+        "iTransformer": 75.83844212044717,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "mean_weight_by_expert_when_queried": {
+        "DLinear": 0.7572050894776435,
+        "PatchTST": 0.9645017824599132,
+        "iTransformer": 0.9715600266565774,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.3290645318186801
+      }
+    },
+    "11": {
+      "equal_average_mae": 0.37422317266464233,
+      "equal_average_mse": 0.3179476261138916,
+      "learned_aggregation_mae": 0.37272801995277405,
+      "learned_aggregation_mse": 0.31686949729919434,
+      "oracle_best_queried_mae": 0.36247035535908845,
+      "average_queries": 1.8957808017730713,
+      "query_count_percent": {
+        "1": 19.870176911354065,
+        "2": 70.68157196044922,
+        "3": 9.448251128196716,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 12.188965019834114,
+        "iTransformer": 87.81103498016589,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "mean_weight_by_expert_when_queried": {
+        "DLinear": 0.35197367785839095,
+        "PatchTST": 0.6547984522832951,
+        "iTransformer": 0.6530329404404309,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.5734408736228943
+      }
+    },
+    "13": {
+      "equal_average_mae": 0.3748342990875244,
+      "equal_average_mse": 0.3189614415168762,
+      "learned_aggregation_mae": 0.3746269643306732,
+      "learned_aggregation_mse": 0.3191145956516266,
+      "oracle_best_queried_mae": 0.3709236356301124,
+      "average_queries": 1.3133790493011475,
+      "query_count_percent": {
+        "1": 72.19617962837219,
+        "2": 24.666425585746765,
+        "3": 2.740713953971863,
+        "4": 0.39668227545917034,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 5.62567616300036,
+        "PatchTST": 4.904435629282366,
+        "iTransformer": 89.46988820771728,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.0
+      },
+      "mean_weight_by_expert_when_queried": {
+        "DLinear": 0.424605922027529,
+        "PatchTST": 0.8629589427850748,
+        "iTransformer": 0.8809810045143538,
+        "TimesNet": 0.0,
+        "ModernTCN": 0.15630537188715404
+      }
+    },
+    "17": {
+      "equal_average_mae": 0.3731994032859802,
+      "equal_average_mse": 0.31603798270225525,
+      "learned_aggregation_mae": 0.3731673061847687,
+      "learned_aggregation_mse": 0.31595379114151,
+      "oracle_best_queried_mae": 0.3727925971118156,
+      "average_queries": 1.0504868030548096,
+      "query_count_percent": {
+        "1": 94.98738050460815,
+        "2": 4.976559802889824,
+        "3": 0.03606202662922442,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 0.0,
+        "PatchTST": 39.05517490082943,
+        "iTransformer": 60.83663901911287,
+        "TimesNet": 0.10818608005769924,
+        "ModernTCN": 0.0
+      },
+      "mean_weight_by_expert_when_queried": {
+        "DLinear": 0.0,
+        "PatchTST": 0.9350402841167327,
+        "iTransformer": 0.9622024860792066,
+        "TimesNet": 0.842408075928688,
+        "ModernTCN": 0.0
+      }
+    },
+    "19": {
+      "equal_average_mae": 0.3742402493953705,
+      "equal_average_mse": 0.317466676235199,
+      "learned_aggregation_mae": 0.374435156583786,
+      "learned_aggregation_mse": 0.31779736280441284,
+      "oracle_best_queried_mae": 0.37182372398446106,
+      "average_queries": 1.2408943176269531,
+      "query_count_percent": {
+        "1": 83.55571627616882,
+        "2": 9.448251128196716,
+        "3": 6.3469164073467255,
+        "4": 0.6491164676845074,
+        "5": 0.0
+      },
+      "first_query_percent": {
+        "DLinear": 1.9473494410385863,
+        "PatchTST": 26.721961774251714,
+        "iTransformer": 66.85899747565813,
+        "TimesNet": 2.163721601153985,
+        "ModernTCN": 2.307969707897584
+      },
+      "mean_weight_by_expert_when_queried": {
+        "DLinear": 0.4037417849173417,
+        "PatchTST": 0.810147561623385,
+        "iTransformer": 0.9013034849196626,
+        "TimesNet": 0.6144414169272197,
+        "ModernTCN": 0.5903925981293333
+      }
+    }
+  },
+  "safety": "NO TEST DATA USED"
+}

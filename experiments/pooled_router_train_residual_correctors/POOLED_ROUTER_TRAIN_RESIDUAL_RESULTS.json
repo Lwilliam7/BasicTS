@@ -1,0 +1,263 @@
+{
+  "label": "after_final_test_audit",
+  "created_at_utc": "2026-08-15T02:22:38.281283+00:00",
+  "runtime_sec": 2479.882813692093,
+  "device": "cuda",
+  "peak_gpu_memory_mb": 189.23193359375,
+  "test_loaded_after_manifest": true,
+  "pooled_definition": "configuration selected by pooled router_train MAE/MSE, no folds",
+  "selected": {
+    "ETTh1": {
+      "ridge": {
+        "config": {
+          "ridge": 1.0,
+          "alpha": 0.5,
+          "clip_multiple": 0.5,
+          "feature_set": "full"
+        },
+        "config_name": "ridge1_alpha0.5_clip0.5_full",
+        "router_train_mae": 0.33731913566589355,
+        "router_train_mse": 0.24794940650463104,
+        "artifact_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh1\\ridge_selected\\ridge_artifact.pt",
+        "artifact_sha256": "d08a55ca99ad7bed6d7a16a26b89963ba84767125d1148a455612b9111753a6e"
+      },
+      "mlp": {
+        "config": {
+          "seed": 7,
+          "hidden": 64,
+          "lr": 0.0003,
+          "weight_decay": 0.01,
+          "alpha": 0.1,
+          "clip_multiple": 0.5,
+          "epochs": 40,
+          "patience": 6
+        },
+        "config_name": "mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01",
+        "router_train_mae": 0.3342170715332031,
+        "router_train_mse": 0.24435514211654663,
+        "artifact_paths": [
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh1\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_7\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh1\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_11\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh1\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_13\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh1\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_17\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh1\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_19\\mlp_artifact.pt"
+        ],
+        "artifact_sha256": {
+          "7": "e6db122fe617ee3170f246481c8d0585bf19f86ac09df6a03e144d9484da14e8",
+          "11": "8bfbb808e810c5a0386b4efd82957c0dc91e2328eac45a2b1a18bc810d22fad9",
+          "13": "6cacdfba77480d408a2d5111414456bd51e7a3e0ebcf765d1613739da1dc7d85",
+          "17": "62f1cbb549aad5fee52a7a0f942527e7ea9c05bce8e1a3aa71025e5e05592799",
+          "19": "4abecb4e6a5db0ab7fdcd83512d1a4f54f78b6b536ee4970bea5ed6644432300"
+        }
+      }
+    },
+    "ETTh2": {
+      "ridge": {
+        "config": {
+          "ridge": 1.0,
+          "alpha": 0.25,
+          "clip_multiple": 0.25,
+          "feature_set": "full"
+        },
+        "config_name": "ridge1_alpha0.25_clip0.25_full",
+        "router_train_mae": 0.2776680588722229,
+        "router_train_mse": 0.1704941987991333,
+        "artifact_path": "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh2\\ridge_selected\\ridge_artifact.pt",
+        "artifact_sha256": "48733348ad822bd3baba7efbc8b8827359a718aaff0a88a6488ff27c3fa4b88c"
+      },
+      "mlp": {
+        "config": {
+          "seed": 7,
+          "hidden": 64,
+          "lr": 0.0003,
+          "weight_decay": 0.01,
+          "alpha": 0.1,
+          "clip_multiple": 0.5,
+          "epochs": 40,
+          "patience": 6
+        },
+        "config_name": "mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01",
+        "router_train_mae": 0.2750512361526489,
+        "router_train_mse": 0.167433962225914,
+        "artifact_paths": [
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh2\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_7\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh2\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_11\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh2\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_13\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh2\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_17\\mlp_artifact.pt",
+          "C:\\Users\\luwil\\OneDrive\\Documents\\Code\\BasicTS\\experiments\\pooled_router_train_residual_correctors\\artifacts\\ETTh2\\mlp_selected\\mlp_selected_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01\\seed_19\\mlp_artifact.pt"
+        ],
+        "artifact_sha256": {
+          "7": "007bdbb154fe52165b352b250b16ceb07e6e71dfd09c6fc8ffb2ff0387db64fe",
+          "11": "92cd100278c008883840007bf8f82c4f36b369bf5a252c4bb064ad552fe0dfef",
+          "13": "14281b384d6db9cf650cf8963ed7f91b003b33da734e2ceac1b32c9dda1a5fde",
+          "17": "17749b021231abfbc47a56d3d6048eec76d819dd58334db34e5960442e422e1b",
+          "19": "9ec4df6646cab5166c6b2d20155d73f9c17c08505bbdadcbb65eab339279a988"
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "dataset": "ETTh1",
+      "method": "Ridge residual corrector",
+      "variant": "pooled_router_train_selection",
+      "expert_set": "PatchTST+iTransformer+TimesNet",
+      "selected_config": "ridge1_alpha0.5_clip0.5_full",
+      "router_train_selection_rule": "pooled router_train MAE, pooled MSE tie-breaker; no folds",
+      "router_train_mae": 0.33731913566589355,
+      "router_train_mse": 0.24794940650463104,
+      "validation_mae": 0.3630884289741516,
+      "validation_mse": 0.30548450350761414,
+      "test_mae": 0.32802218198776245,
+      "test_mse": 0.26792997121810913,
+      "diff_vs_existing_corrector_mae": 0.001574099063873291,
+      "diff_vs_fixed_core_mae": 0.0008940696716308594,
+      "diff_vs_full_adaptive_mae": 0.0016294419765472412,
+      "label": "after_final_test_audit",
+      "mean_abs_delta_norm": 0.05477147549390793,
+      "mean_abs_applied_delta_norm": 0.026665734127163887,
+      "clip_frequency": 0.02755739912390709,
+      "num_residual_stat_updates": 2761
+    },
+    {
+      "dataset": "ETTh1",
+      "method": "MLP residual corrector",
+      "variant": "pooled_router_train_selection",
+      "expert_set": "PatchTST+iTransformer+TimesNet",
+      "selected_config": "mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01",
+      "router_train_selection_rule": "pooled router_train MAE, pooled MSE tie-breaker; no folds",
+      "router_train_mae": 0.3342170715332031,
+      "router_train_mse": 0.24435514211654663,
+      "validation_mae": 0.3641106188297272,
+      "validation_mse": 0.30735886096954346,
+      "test_mae": 0.32596418261528015,
+      "test_mse": 0.2665867209434509,
+      "diff_vs_existing_corrector_mae": -8.26418399810791e-05,
+      "diff_vs_fixed_core_mae": -0.0011639297008514404,
+      "diff_vs_full_adaptive_mae": -0.0004285573959350586,
+      "label": "after_final_test_audit",
+      "seed_mae_mean": 0.32604914903640747,
+      "seed_mae_std": 0.00023550427998454197
+    },
+    {
+      "dataset": "ETTh2",
+      "method": "Ridge residual corrector",
+      "variant": "pooled_router_train_selection",
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "selected_config": "ridge1_alpha0.25_clip0.25_full",
+      "router_train_selection_rule": "pooled router_train MAE, pooled MSE tie-breaker; no folds",
+      "router_train_mae": 0.2776680588722229,
+      "router_train_mse": 0.1704941987991333,
+      "validation_mae": 0.2750360667705536,
+      "validation_mse": 0.1656191200017929,
+      "test_mae": 0.29678699374198914,
+      "test_mse": 0.21771253645420074,
+      "diff_vs_existing_corrector_mae": 0.0,
+      "diff_vs_fixed_core_mae": -0.007855057716369629,
+      "diff_vs_full_adaptive_mae": -0.0010211467742919922,
+      "label": "after_final_test_audit",
+      "mean_abs_delta_norm": 0.08090036362409592,
+      "mean_abs_applied_delta_norm": 0.013615367002785206,
+      "clip_frequency": 0.3503339886665344,
+      "num_residual_stat_updates": 2761
+    },
+    {
+      "dataset": "ETTh2",
+      "method": "MLP residual corrector",
+      "variant": "pooled_router_train_selection",
+      "expert_set": "DLinear+PatchTST+ModernTCN",
+      "selected_config": "mlp_alpha0p1_clip_multiple0p5_epochs40_hidden64_lr0p0003_patience6_weight_decay0p01",
+      "router_train_selection_rule": "pooled router_train MAE, pooled MSE tie-breaker; no folds",
+      "router_train_mae": 0.2750512361526489,
+      "router_train_mse": 0.167433962225914,
+      "validation_mae": 0.2759745419025421,
+      "validation_mse": 0.16664865612983704,
+      "test_mae": 0.29742705821990967,
+      "test_mse": 0.2184053361415863,
+      "diff_vs_existing_corrector_mae": 0.0003857612609863281,
+      "diff_vs_fixed_core_mae": -0.007214993238449097,
+      "diff_vs_full_adaptive_mae": -0.00038108229637145996,
+      "label": "after_final_test_audit",
+      "seed_mae_mean": 0.2975160777568817,
+      "seed_mae_std": 9.01584888931197e-05
+    }
+  ],
+  "paired_ci": [
+    {
+      "dataset": "ETTh1",
+      "method": "Ridge residual corrector",
+      "anchor": "fixed_core",
+      "mean_diff": 0.000894086413270852,
+      "ci95_low": 0.0002537504216710497,
+      "ci95_high": 0.0015224420304654999,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh1",
+      "method": "Ridge residual corrector",
+      "anchor": "residual_base_full_adaptive_for_ETTh2_or_HV_for_ETTh1",
+      "mean_diff": 0.001528914726322152,
+      "ci95_low": 0.0010375312642687028,
+      "ci95_high": 0.0020187847034147917,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh1",
+      "method": "MLP residual corrector",
+      "anchor": "fixed_core",
+      "mean_diff": -0.0011639155896183734,
+      "ci95_low": -0.001605104932576966,
+      "ci95_high": -0.0007102237276805471,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh1",
+      "method": "MLP residual corrector",
+      "anchor": "residual_base_full_adaptive_for_ETTh2_or_HV_for_ETTh1",
+      "mean_diff": -0.0005290872765670732,
+      "ci95_low": -0.0006665333418334773,
+      "ci95_high": -0.0003930935890068228,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh2",
+      "method": "Ridge residual corrector",
+      "anchor": "fixed_core",
+      "mean_diff": -0.007855050435059345,
+      "ci95_low": -0.008525513464049594,
+      "ci95_high": -0.007190937958415927,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh2",
+      "method": "Ridge residual corrector",
+      "anchor": "residual_base_full_adaptive_for_ETTh2_or_HV_for_ETTh1",
+      "mean_diff": -0.001021184250201897,
+      "ci95_low": -0.0011801250278949738,
+      "ci95_high": -0.0008624983812405922,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh2",
+      "method": "MLP residual corrector",
+      "anchor": "fixed_core",
+      "mean_diff": -0.007214957234922231,
+      "ci95_low": -0.007855091685294203,
+      "ci95_high": -0.006566557421100793,
+      "ci95_excludes_zero": true
+    },
+    {
+      "dataset": "ETTh2",
+      "method": "MLP residual corrector",
+      "anchor": "residual_base_full_adaptive_for_ETTh2_or_HV_for_ETTh1",
+      "mean_diff": -0.000381091050064783,
+      "ci95_low": -0.0005062475922093295,
+      "ci95_high": -0.00024719858354678274,
+      "ci95_excludes_zero": true
+    }
+  ],
+  "cache_hashes_after_test": {
+    "ETTh1_test": "b7e41bea3a321183f09015d39c82107f7d31f279f929a77b2499ee0895b6b714",
+    "ETTh2_test": "c9aa614e40058d45b6bfde62fd9a2a4ff27064ae0dec7189ecaf3e2cae6a7ade"
+  }
+}

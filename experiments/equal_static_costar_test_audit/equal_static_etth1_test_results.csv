@@ -1,0 +1,2 @@
+dataset,diff_vs_fixed_core_test_mae,diff_vs_old_full_adaptive_test_mae,diff_vs_validation_mae,expert_set,label,method,seed_mae_mean,seed_mae_std,seed_mse_mean,seed_mse_std,seeds,test_mae,test_mse,validation_mae,validation_mse
+ETTh1,-0.0007201731204986572,1.2648105621348993e-05,-0.03669238090515137,PatchTST+iTransformer+TimesNet+DLinear+ModernTCN,after_final_test_audit,equal_static_full_adaptive_costar,0.32640793919563293,0.0,0.26737847924232483,0.0,"7,11,13,17,19",0.32640793919563293,0.26737847924232483,0.3631003201007843,0.30602556467056274

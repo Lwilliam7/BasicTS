@@ -1,0 +1,174 @@
+{
+  "phase_a_frozen_config": {
+    "phase": "A_frozen_before_validation",
+    "dataset": "ETTh2",
+    "router_val_loaded": false,
+    "selected_three_experts": [
+      "DLinear",
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "selected_expert_indices": [
+      0,
+      1,
+      4
+    ],
+    "router_train_oof_mae": 0.2846583127975464,
+    "router_train_oof_mse": 0.18171773850917816,
+    "router_train_worst_fold_mae": 0.3063142001628876,
+    "selection_metric": "pooled chronological OOF MAE on ETTh2 router_train only",
+    "tie_breakers": [
+      "OOF MSE",
+      "worst-fold MAE",
+      "deterministic expert-name ordering"
+    ],
+    "canonical_metric": {
+      "scale": "raw_original",
+      "std": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "inverse_transform": "none",
+      "mae_mse_implementation": "sample_mae/sample_mse"
+    },
+    "model_hyperparameters": {
+      "chrono_ema_decay": 0.97,
+      "chrono_temperature": 0.1,
+      "chrono_static_prior": "equal_weights_no_etth2_static_neural_artifact",
+      "chrono_online_blend": 0.5,
+      "hv_mode": "hv_lowrank",
+      "hv_rank": 1,
+      "hv_decay": 0.95,
+      "hv_temperature": 0.1,
+      "hybrid_chrono_weight": 0.25,
+      "hybrid_hv_weight": 0.75,
+      "specialist_config": {
+        "name": "both_variable_decay0.95_cap0.1_marginbp200_warm96",
+        "scenario": "both",
+        "structure": "variable",
+        "decay": 0.95,
+        "extra_weight_cap": 0.1,
+        "activation_margin": 0.02,
+        "warmup": 96
+      },
+      "duplicate_specialists_disabled_if_in_core": true
+    },
+    "cache_paths": {
+      "router_train": "cache/costarts_fresh/ETTh2_96_12/router_train_cache.pt"
+    },
+    "cache_hashes": {
+      "router_train_sha256": "34e1b02882bbdbabb25636acf6dbd656699bf60e1ffdd91ecb032e7a3827d17b"
+    },
+    "expert_names_in_cache": [
+      "DLinear",
+      "PatchTST",
+      "iTransformer",
+      "TimesNet",
+      "ModernTCN"
+    ],
+    "train_windows": 2053,
+    "train_start_min": 8640,
+    "train_start_max": 10692,
+    "forecast_horizon": 12,
+    "num_variables": 7,
+    "selected_matches_canonical_best_fixed3": false,
+    "test_cache_loaded": false
+  },
+  "phase_b_loaded_validation_after_freeze": true,
+  "required_final_table": [
+    {
+      "Method": "Best single",
+      "Val MAE": 0.28095653653144836,
+      "Val MSE": 0.17149297893047333,
+      "Detail": "DLinear"
+    },
+    {
+      "Method": "Best fixed-2 [reference]",
+      "Val MAE": 0.2752290368080139,
+      "Val MSE": 0.1653451770544052,
+      "Detail": "DLinear+ModernTCN"
+    },
+    {
+      "Method": "Train-selected fixed-3",
+      "Val MAE": 0.2808783948421478,
+      "Val MSE": 0.17193281650543213,
+      "Detail": "DLinear+PatchTST+ModernTCN"
+    },
+    {
+      "Method": "Canonical best fixed-3 [reference]",
+      "Val MAE": 0.27664363384246826,
+      "Val MSE": 0.16693221032619476,
+      "Detail": "DLinear+TimesNet+ModernTCN"
+    },
+    {
+      "Method": "Train-selected full current-best model",
+      "Val MAE": 0.27683213353157043,
+      "Val MSE": 0.16727977991104126,
+      "Detail": "both_variable_decay0.95_cap0.1_marginbp200_warm96"
+    }
+  ],
+  "main_answers": {
+    "three_experts_selected_from_router_train": [
+      "DLinear",
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "router_train_oof_mae": 0.2846583127975464,
+    "router_train_oof_mse": 0.18171773850917816,
+    "train_selected_fixed3_router_val_mae": 0.2808783948421478,
+    "full_model_router_val_mae": 0.27683213353157043,
+    "full_model_diff_vs_own_train_selected_fixed3": -0.004046261310577393,
+    "full_model_beat_own_train_selected_fixed3": true,
+    "full_model_diff_vs_canonical_best_fixed2_0.275229": 0.0016030967235565186,
+    "full_model_beat_canonical_best_fixed2": false,
+    "did_router_train_select_dlinear_timesnet_moderntcn": false,
+    "compare_with_etth1_clean_result": "ETTh1 train-only core selection chose the prior core and preserved 0.363112; ETTh2 selected a different core and the frozen architecture did not beat fixed baselines.",
+    "same_frozen_architecture_transfer_without_etth2_val_tuning": false
+  },
+  "specialist_duplicate_handling": {
+    "selected_core": [
+      "DLinear",
+      "PatchTST",
+      "ModernTCN"
+    ],
+    "DLinear_disabled_if_core": true,
+    "ModernTCN_disabled_if_core": true,
+    "chrono_num_updates": 601,
+    "hv_num_updates": 601,
+    "static_prior": "equal_weights_no_etth2_static_neural_artifact",
+    "mean_core_weight_DLinear": 0.41557231545448303,
+    "mean_core_weight_PatchTST": 0.34058499336242676,
+    "mean_core_weight_ModernTCN": 0.24384267628192902,
+    "num_specialist_updates": 601,
+    "avg_weight_DLinear": 0.0,
+    "avg_weight_ModernTCN": 0.0,
+    "DLinear_specialist_disabled_duplicate_core": true,
+    "ModernTCN_specialist_disabled_duplicate_core": true
+  },
+  "leakage_audit": {
+    "etth2_fixed_three_selected_only_from_router_train": true,
+    "router_val_not_loaded_during_phase_a": true,
+    "test_cache_loaded": false,
+    "no_hyperparameters_changed_after_router_val": true,
+    "same_canonical_etth2_windows_for_every_final_comparison": true,
+    "chronological_updates_causal": true,
+    "causal_rule": "old_start + horizon <= current_start",
+    "validation_windows": 613,
+    "validation_start_min": 10800,
+    "validation_start_max": 11412,
+    "horizon": 12,
+    "variables": 7,
+    "metric": "raw/original scale sample_mae/sample_mse, std=ones, no inverse transform"
+  },
+  "reproduce_commands": {
+    "phase_a": "python experiments\\etth2_train_selected_core\\run_etth2_train_selected_core_eval.py --phase select",
+    "phase_b": "python experiments\\etth2_train_selected_core\\run_etth2_train_selected_core_eval.py --phase evaluate",
+    "all": "python experiments\\etth2_train_selected_core\\run_etth2_train_selected_core_eval.py --phase all"
+  },
+  "runtime_sec": 1.779297113418579
+}

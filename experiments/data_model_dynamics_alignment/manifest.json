@@ -1,0 +1,47 @@
+{
+  "code_version": "data_model_dynamics_alignment_v1",
+  "created_at_utc": "2026-08-27T05:54:25.966068+00:00",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "Weather",
+    "Electricity"
+  ],
+  "device": "cuda",
+  "experiment": "data_model_dynamics_alignment",
+  "frozen_choices": {
+    "classification": "STRONG_GO iff >=3/5 datasets pass A-E and fewer than two block-24 significant routing regressions",
+    "competence_scorer": "experiments.behavioral_competence.common.CompetenceScorer",
+    "decision_rule": "existing fixed rank rule",
+    "feature_sets": [
+      "PassiveABC",
+      "PassivePlusDAlign",
+      "PassivePlusJMag",
+      "PassivePlusVARCloseness",
+      "PassivePlusDShuffled"
+    ],
+    "horizons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "internal_val_fraction": 0.2,
+    "mismatch": "mean_h ||M_kh - E_h||_F / (||M_kh||_F + ||E_h||_F + eps)",
+    "pca_d": "min(4,F)",
+    "scorer_seed": 7,
+    "var_ridge": 0.01
+  },
+  "smoke_max_windows": null,
+  "test_accessed": false,
+  "validation_only": true
+}

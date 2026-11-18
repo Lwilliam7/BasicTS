@@ -1,0 +1,65 @@
+{
+  "split": "ETTh1 router_val_60_80 only; no test data",
+  "num_windows": 2773,
+  "fixed3_equal": {
+    "mae": 0.36726489663124084,
+    "mse": 0.3105303645133972
+  },
+  "learned_dynamic_fixed3_5seed": {
+    "mae_mean": 0.3663418054580688,
+    "mae_std": 0.00022338063934692278,
+    "mse_mean": 0.30921420454978943,
+    "mse_std": 0.00023711123779037057
+  },
+  "oracle_fixed3_continuous_weights_grid_0p01_per_window": {
+    "mae": 0.336763858795166,
+    "mse": 0.2684233784675598,
+    "improvement_vs_equal_fixed3": 0.03050103783607483,
+    "improvement_vs_learned_dynamic_mean": 0.029577940702438354,
+    "mean_weights": {
+      "PatchTST": 0.3522791266441345,
+      "iTransformer": 0.34786152839660645,
+      "TimesNet": 0.2998593747615814
+    },
+    "weight_p10": {
+      "PatchTST": 0.0,
+      "iTransformer": 0.0,
+      "TimesNet": 0.0
+    },
+    "weight_p50": {
+      "PatchTST": 0.20999999344348907,
+      "iTransformer": 0.23000000417232513,
+      "TimesNet": 0.1599999964237213
+    },
+    "weight_p90": {
+      "PatchTST": 1.0,
+      "iTransformer": 0.9980005025863647,
+      "TimesNet": 0.9480004906654358
+    },
+    "argmax_weight_counts": {
+      "PatchTST": 1017,
+      "iTransformer": 990,
+      "TimesNet": 766
+    },
+    "pct_weight_ge_0p5": {
+      "PatchTST": 35.12441635131836,
+      "iTransformer": 34.36711120605469,
+      "TimesNet": 26.830148696899414
+    }
+  },
+  "oracle_fixed3_best_global_validation_weight_grid_0p01": {
+    "weights": {
+      "PatchTST": 0.36000001430511475,
+      "iTransformer": 0.41999998688697815,
+      "TimesNet": 0.2199999988079071
+    },
+    "mae": 0.3661971092224121,
+    "mse": 0.30894672870635986,
+    "improvement_vs_equal_fixed3": 0.0010677874088287354
+  },
+  "oracle_any_equal_average_subset_per_window": {
+    "mae": 0.32524821162223816,
+    "mse": 0.24864551424980164,
+    "improvement_vs_equal_fixed3": 0.042016685009002686
+  }
+}

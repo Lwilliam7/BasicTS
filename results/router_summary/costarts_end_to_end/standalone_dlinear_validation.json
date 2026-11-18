@@ -1,0 +1,17 @@
+{
+  "model": "Standalone DLinear",
+  "train_split": {
+    "start": 0,
+    "end": 8640
+  },
+  "validation_split": {
+    "start": 8640,
+    "end": 11520
+  },
+  "checkpoint": "checkpoints/costarts_walkforward/final_60/DLinear/best_expert.pt",
+  "normalized_mae": 0.39209187030792236,
+  "normalized_mse": 0.3435719311237335,
+  "raw_mae": 1.3566420078277588,
+  "raw_mse": 5.805386066436768,
+  "safety": "NO TEST DATA USED"
+}

@@ -1,0 +1,1463 @@
+{
+  "created_at_utc": "2026-08-20T05:18:31.549012+00:00",
+  "datasets": {
+    "ETTh1": {
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "ETTh1",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh1",
+          "delta_mae": -0.0012424290180206299,
+          "iid_ci95_high": -0.0005654986598528922,
+          "iid_ci95_low": -0.0018882447620853782,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.001242415513843298
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "online_hv",
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh1",
+          "delta_mae": -0.0033160150051116943,
+          "iid_ci95_high": -0.0025534131564199924,
+          "iid_ci95_low": -0.0040848953649401665,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.0033160094171762466
+        },
+        {
+          "baseline": "online_hv",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh1",
+          "delta_mae": 0.0020735859870910645,
+          "iid_ci95_high": 0.0026219061110168695,
+          "iid_ci95_low": 0.0015424436423927546,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.0020735941361635923
+        }
+      ],
+      "dependence_rows": [
+        {
+          "block_size": 12,
+          "ci95_high": 0.0005929863546043634,
+          "ci95_low": -0.003108177101239562,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.001242415513843298,
+          "prob_delta_negative": 0.9099000096321106,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0008687398512847722,
+          "ci95_low": -0.0034931455738842487,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.001242415513843298,
+          "prob_delta_negative": 0.8794000148773193,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0011431437451392412,
+          "ci95_low": -0.003897713962942362,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.001242415513843298,
+          "prob_delta_negative": 0.8348000049591064,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.000805587915237993,
+          "ci95_low": -0.0016778227873146534,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -0.001242243335582316,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0013396055437624454,
+          "ci95_low": -0.005446236114948988,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0033160094171762466,
+          "prob_delta_negative": 0.9991999864578247,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0010238088434562087,
+          "ci95_low": -0.005815147887915373,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0033160094171762466,
+          "prob_delta_negative": 0.9970999956130981,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0007846172084100544,
+          "ci95_low": -0.006174216512590647,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh1",
+          "mean_delta": -0.0033160094171762466,
+          "prob_delta_negative": 0.9940999746322632,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0028699191752821207,
+          "ci95_low": -0.003733951598405838,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": -0.003315781243145466,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.003471492324024439,
+          "ci95_low": 0.000732384214643389,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0020735941361635923,
+          "prob_delta_negative": 0.0007999999797903001,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003572236280888319,
+          "ci95_low": 0.0006261745002120733,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0020735941361635923,
+          "prob_delta_negative": 0.003599999938160181,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0035940154921263456,
+          "ci95_low": 0.0007032865541987121,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh1",
+          "mean_delta": 0.0020735941361635923,
+          "prob_delta_negative": 0.002899999963119626,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.002362659201025963,
+          "ci95_low": 0.0017716807778924704,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh1",
+          "k": 12,
+          "mean_delta": 0.0020735382568091154,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 232,
+          "windows_per_phase_min": 231
+        }
+      ],
+      "num_windows_val": 2773,
+      "result_rows": [
+        {
+          "dataset": "ETTh1",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.37955790758132935,
+          "method": "best_single_expert",
+          "mse": 0.3265279531478882,
+          "num_causal_updates": 0,
+          "router_train_mae": 0.3489782512187958,
+          "selected_expert": "PatchTST",
+          "temperature": null
+        },
+        {
+          "dataset": "ETTh1",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.36726489663124084,
+          "method": "equal_fixed",
+          "mse": 0.3105303645133972,
+          "num_causal_updates": 0,
+          "temperature": null
+        },
+        {
+          "dataset": "ETTh1",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "frozen_weight_source": "router_train_only",
+          "label": "Frozen HxV COSTAR (NEW)",
+          "mae": 0.3660224676132202,
+          "method": "frozen_hv",
+          "mse": 0.30867233872413635,
+          "num_causal_updates": 0,
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTh1",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Online HxV COSTAR (existing, unmodified)",
+          "mae": 0.36394888162612915,
+          "method": "online_hv",
+          "mse": 0.3074778914451599,
+          "num_causal_updates": 2761,
+          "temperature": 0.1
+        }
+      ],
+      "verification_rows": [
+        {
+          "all_pass": true,
+          "dataset": "ETTh1",
+          "method": "best_single_expert",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTh1",
+          "method": "equal_fixed",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTh1",
+          "method": "frozen_hv",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": null,
+          "dataset": "ETTh1",
+          "method": "online_hv",
+          "test_A_early_target_change_identical": false,
+          "test_B_all_targets_changed_identical": false,
+          "test_C_no_targets_loaded_matches": false,
+          "test_C_no_targets_loaded_succeeded": false,
+          "test_D_order_invariant": null,
+          "test_E_state_unchanged_before_after": false
+        }
+      ]
+    },
+    "ETTh2": {
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "ModernTCN"
+      ],
+      "dataset": "ETTh2",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh2",
+          "delta_mae": -0.003980457782745361,
+          "iid_ci95_high": -0.0031835997942835093,
+          "iid_ci95_low": -0.004796769004315138,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.003980455920100212
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "online_hv",
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh2",
+          "delta_mae": -0.004524737596511841,
+          "iid_ci95_high": -0.0032836345490068197,
+          "iid_ci95_low": -0.005815793760120869,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.004524725954979658
+        },
+        {
+          "baseline": "online_hv",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh2",
+          "delta_mae": 0.0005442798137664795,
+          "iid_ci95_high": 0.0011902926489710808,
+          "iid_ci95_low": -7.582149555673823e-05,
+          "iid_ci_excludes_zero": false,
+          "iid_mean_diff_candidate_minus_baseline": 0.0005442699184641242
+        }
+      ],
+      "dependence_rows": [
+        {
+          "block_size": 12,
+          "ci95_high": -0.002011466072872281,
+          "ci95_low": -0.005964476149529219,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.003980455920100212,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0018322659889236093,
+          "ci95_low": -0.006357081234455109,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.003980455920100212,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0016584602417424321,
+          "ci95_low": -0.006834080908447504,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.003980455920100212,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0036412642803043127,
+          "ci95_low": -0.004263971000909805,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.003980010747909546,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0015318397199735045,
+          "ci95_low": -0.007467534858733416,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.004524725954979658,
+          "prob_delta_negative": 0.9988999962806702,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.0012929902877658606,
+          "ci95_low": -0.007880681194365025,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.004524725954979658,
+          "prob_delta_negative": 0.9975000023841858,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0014715582365170121,
+          "ci95_low": -0.007868487387895584,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh2",
+          "mean_delta": -0.004524725954979658,
+          "prob_delta_negative": 0.9991000294685364,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.003943060524761677,
+          "ci95_low": -0.005029749590903521,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": -0.004524989519268274,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0019750376231968403,
+          "ci95_low": -0.0009539852617308497,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0005442699184641242,
+          "prob_delta_negative": 0.23819999396800995,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0020922180265188217,
+          "ci95_low": -0.0011460260720923543,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0005442699184641242,
+          "prob_delta_negative": 0.2623000144958496,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0018798233941197395,
+          "ci95_low": -0.001032965024933219,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh2",
+          "mean_delta": 0.0005442699184641242,
+          "prob_delta_negative": 0.2856000065803528,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0008490762556903064,
+          "ci95_low": 0.00022303091827780008,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTh2",
+          "k": 12,
+          "mean_delta": 0.0005449788295663893,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0005000000237487257,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 52,
+          "windows_per_phase_min": 51
+        }
+      ],
+      "num_windows_val": 613,
+      "result_rows": [
+        {
+          "dataset": "ETTh2",
+          "decay": null,
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "label": "Best single expert",
+          "mae": 0.28095653653144836,
+          "method": "best_single_expert",
+          "mse": 0.17149297893047333,
+          "num_causal_updates": 0,
+          "router_train_mae": 0.2802519202232361,
+          "selected_expert": "DLinear",
+          "temperature": null
+        },
+        {
+          "dataset": "ETTh2",
+          "decay": null,
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "label": "Equal fixed ensemble",
+          "mae": 0.2808783948421478,
+          "method": "equal_fixed",
+          "mse": 0.17193281650543213,
+          "num_causal_updates": 0,
+          "temperature": null
+        },
+        {
+          "dataset": "ETTh2",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "frozen_weight_source": "router_train_only",
+          "label": "Frozen HxV COSTAR (NEW)",
+          "mae": 0.27689793705940247,
+          "method": "frozen_hv",
+          "mse": 0.16700465977191925,
+          "num_causal_updates": 0,
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTh2",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+ModernTCN",
+          "label": "Online HxV COSTAR (existing, unmodified)",
+          "mae": 0.276353657245636,
+          "method": "online_hv",
+          "mse": 0.16738149523735046,
+          "num_causal_updates": 601,
+          "temperature": 0.1
+        }
+      ],
+      "verification_rows": [
+        {
+          "all_pass": true,
+          "dataset": "ETTh2",
+          "method": "best_single_expert",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTh2",
+          "method": "equal_fixed",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTh2",
+          "method": "frozen_hv",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": null,
+          "dataset": "ETTh2",
+          "method": "online_hv",
+          "test_A_early_target_change_identical": false,
+          "test_B_all_targets_changed_identical": false,
+          "test_C_no_targets_loaded_matches": false,
+          "test_C_no_targets_loaded_succeeded": false,
+          "test_D_order_invariant": null,
+          "test_E_state_unchanged_before_after": false
+        }
+      ]
+    },
+    "ETTm1": {
+      "core": [
+        "DLinear",
+        "PatchTST",
+        "TimesNet"
+      ],
+      "dataset": "ETTm1",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTm1",
+          "delta_mae": 0.0025282949209213257,
+          "iid_ci95_high": 0.0028191846795380116,
+          "iid_ci95_low": 0.0022451886907219887,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.0025282653514295816
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "online_hv",
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTm1",
+          "delta_mae": 0.00043144822120666504,
+          "iid_ci95_high": 0.0007474386948160827,
+          "iid_ci95_low": 0.00011165493924636394,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.00043145674862898886
+        },
+        {
+          "baseline": "online_hv",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTm1",
+          "delta_mae": 0.0020968466997146606,
+          "iid_ci95_high": 0.002370462054386735,
+          "iid_ci95_low": 0.0018163409549742937,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.002096808748319745
+        }
+      ],
+      "dependence_rows": [
+        {
+          "block_size": 12,
+          "ci95_high": 0.003215327626094222,
+          "ci95_low": 0.0017999769188463688,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0025282653514295816,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.003309400752186775,
+          "ci95_low": 0.0017042845720425248,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0025282653514295816,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.003369402838870883,
+          "ci95_low": 0.0016206769505515695,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.0025282653514295816,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.002658441197127104,
+          "ci95_low": 0.002392873167991638,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.002528247656300664,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0011750522535294294,
+          "ci95_low": -0.0003962890768889338,
+          "ci_excludes_zero": false,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.00043145674862898886,
+          "prob_delta_negative": 0.148499995470047,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0012781571131199598,
+          "ci95_low": -0.00047334827831946313,
+          "ci_excludes_zero": false,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.00043145674862898886,
+          "prob_delta_negative": 0.18389999866485596,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0013285051099956036,
+          "ci95_low": -0.0005484278663061559,
+          "ci_excludes_zero": false,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTm1",
+          "mean_delta": 0.00043145674862898886,
+          "prob_delta_negative": 0.19480000436306,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0006618589977733791,
+          "ci95_low": 0.00018613522115629166,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.0004314799152780324,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0027557811699807644,
+          "ci95_low": 0.0014511096524074674,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTm1",
+          "mean_delta": 0.002096808748319745,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.002807595068588853,
+          "ci95_low": 0.0014055308420211077,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTm1",
+          "mean_delta": 0.002096808748319745,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.002849491545930505,
+          "ci95_low": 0.0013619851088151336,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTm1",
+          "mean_delta": 0.002096808748319745,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.002275793580338359,
+          "ci95_low": 0.001900870120152831,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "ETTm1",
+          "k": 12,
+          "mean_delta": 0.002096767770126462,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 952,
+          "windows_per_phase_min": 951
+        }
+      ],
+      "num_windows_val": 11413,
+      "result_rows": [
+        {
+          "dataset": "ETTm1",
+          "decay": null,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.26177072525024414,
+          "method": "best_single_expert",
+          "mse": 0.16183817386627197,
+          "num_causal_updates": 0,
+          "router_train_mae": 0.24895915389060974,
+          "selected_expert": "PatchTST",
+          "temperature": null
+        },
+        {
+          "dataset": "ETTm1",
+          "decay": null,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.2481614202260971,
+          "method": "equal_fixed",
+          "mse": 0.14669446647167206,
+          "num_causal_updates": 0,
+          "temperature": null
+        },
+        {
+          "dataset": "ETTm1",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "frozen_weight_source": "router_train_only",
+          "label": "Frozen HxV COSTAR (NEW)",
+          "mae": 0.25068971514701843,
+          "method": "frozen_hv",
+          "mse": 0.14995557069778442,
+          "num_causal_updates": 0,
+          "temperature": 0.1
+        },
+        {
+          "dataset": "ETTm1",
+          "decay": 0.95,
+          "expert_set": "DLinear+PatchTST+TimesNet",
+          "label": "Online HxV COSTAR (existing, unmodified)",
+          "mae": 0.24859286844730377,
+          "method": "online_hv",
+          "mse": 0.14833426475524902,
+          "num_causal_updates": 11401,
+          "temperature": 0.1
+        }
+      ],
+      "verification_rows": [
+        {
+          "all_pass": true,
+          "dataset": "ETTm1",
+          "method": "best_single_expert",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTm1",
+          "method": "equal_fixed",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "ETTm1",
+          "method": "frozen_hv",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": null,
+          "dataset": "ETTm1",
+          "method": "online_hv",
+          "test_A_early_target_change_identical": false,
+          "test_B_all_targets_changed_identical": false,
+          "test_C_no_targets_loaded_matches": false,
+          "test_C_no_targets_loaded_succeeded": false,
+          "test_D_order_invariant": null,
+          "test_E_state_unchanged_before_after": false
+        }
+      ]
+    },
+    "Electricity": {
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Electricity",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Electricity",
+          "delta_mae": 0.0008976757526397705,
+          "iid_ci95_high": 0.00110378407407552,
+          "iid_ci95_low": 0.0006868256605230272,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.0008976823883131146
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "online_hv",
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Electricity",
+          "delta_mae": -0.0026819705963134766,
+          "iid_ci95_high": -0.002470158040523529,
+          "iid_ci95_low": -0.0028874340932816267,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.0026819733902812004
+        },
+        {
+          "baseline": "online_hv",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Electricity",
+          "delta_mae": 0.003579646348953247,
+          "iid_ci95_high": 0.0037793470546603203,
+          "iid_ci95_low": 0.0033877103123813868,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.003579655895009637
+        }
+      ],
+      "dependence_rows": [
+        {
+          "block_size": 12,
+          "ci95_high": 0.0014800861245021224,
+          "ci95_low": 0.00032569817267358303,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.0008976823883131146,
+          "prob_delta_negative": 0.0007999999797903001,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0015983934281393886,
+          "ci95_low": 0.00023640767903998494,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.0008976823883131146,
+          "prob_delta_negative": 0.004399999976158142,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0017133597284555435,
+          "ci95_low": 0.00013106217375025153,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": 0.0008976823883131146,
+          "prob_delta_negative": 0.009800000116229057,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.001462488085962832,
+          "ci95_low": 0.0003572109271772206,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.0008971437346190214,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "block_size": 12,
+          "ci95_high": -0.0020967512391507626,
+          "ci95_low": -0.003249478293582797,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": -0.0026819733902812004,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": -0.002035335870459676,
+          "ci95_low": -0.0032894702162593603,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": -0.0026819733902812004,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": -0.0020485410932451487,
+          "ci95_low": -0.003260246943682432,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Electricity",
+          "mean_delta": -0.0026819733902812004,
+          "prob_delta_negative": 1.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.002216341206803918,
+          "ci95_low": -0.0031116760801523924,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": -0.0026817310135811567,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.004144799895584583,
+          "ci95_low": 0.0030459787230938673,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Electricity",
+          "mean_delta": 0.003579655895009637,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.004241952672600746,
+          "ci95_low": 0.0029397811740636826,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Electricity",
+          "mean_delta": 0.003579655895009637,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.004354708828032017,
+          "ci95_low": 0.002849241252988577,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Electricity",
+          "mean_delta": 0.003579655895009637,
+          "prob_delta_negative": 0.0,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.004025994800031185,
+          "ci95_low": 0.0031120367348194122,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Electricity",
+          "k": 12,
+          "mean_delta": 0.0035788745153695345,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 430,
+          "windows_per_phase_min": 429
+        }
+      ],
+      "num_windows_val": 5154,
+      "result_rows": [
+        {
+          "dataset": "Electricity",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.22538480162620544,
+          "method": "best_single_expert",
+          "mse": 0.13576708734035492,
+          "num_causal_updates": 0,
+          "router_train_mae": 0.24101541936397552,
+          "selected_expert": "iTransformer",
+          "temperature": null
+        },
+        {
+          "dataset": "Electricity",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.21445728838443756,
+          "method": "equal_fixed",
+          "mse": 0.11784618347883224,
+          "num_causal_updates": 0,
+          "temperature": null
+        },
+        {
+          "dataset": "Electricity",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "frozen_weight_source": "router_train_only",
+          "label": "Frozen HxV COSTAR (NEW)",
+          "mae": 0.21535496413707733,
+          "method": "frozen_hv",
+          "mse": 0.12273695319890976,
+          "num_causal_updates": 0,
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Electricity",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Online HxV COSTAR (existing, unmodified)",
+          "mae": 0.21177531778812408,
+          "method": "online_hv",
+          "mse": 0.11901403218507767,
+          "num_causal_updates": 5142,
+          "temperature": 0.1
+        }
+      ],
+      "verification_rows": [
+        {
+          "all_pass": true,
+          "dataset": "Electricity",
+          "method": "best_single_expert",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "Electricity",
+          "method": "equal_fixed",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "Electricity",
+          "method": "frozen_hv",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": null,
+          "dataset": "Electricity",
+          "method": "online_hv",
+          "test_A_early_target_change_identical": false,
+          "test_B_all_targets_changed_identical": false,
+          "test_C_no_targets_loaded_matches": false,
+          "test_C_no_targets_loaded_succeeded": false,
+          "test_D_order_invariant": null,
+          "test_E_state_unchanged_before_after": false
+        }
+      ]
+    },
+    "Weather": {
+      "core": [
+        "PatchTST",
+        "iTransformer",
+        "TimesNet"
+      ],
+      "dataset": "Weather",
+      "delta_rows": [
+        {
+          "baseline": "equal_fixed",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Weather",
+          "delta_mae": -0.0005238503217697144,
+          "iid_ci95_high": -0.0002638973237480968,
+          "iid_ci95_low": -0.0007886166567914188,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.0005238578887656331
+        },
+        {
+          "baseline": "equal_fixed",
+          "candidate": "online_hv",
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Weather",
+          "delta_mae": -0.0010609030723571777,
+          "iid_ci95_high": -0.0006733745103701949,
+          "iid_ci95_low": -0.0014661604072898626,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": -0.001060892827808857
+        },
+        {
+          "baseline": "online_hv",
+          "candidate": "frozen_hv",
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Weather",
+          "delta_mae": 0.0005370527505874634,
+          "iid_ci95_high": 0.0007723275921307504,
+          "iid_ci95_low": 0.00030168070225045085,
+          "iid_ci_excludes_zero": true,
+          "iid_mean_diff_candidate_minus_baseline": 0.0005370349972508848
+        }
+      ],
+      "dependence_rows": [
+        {
+          "block_size": 12,
+          "ci95_high": 0.0002071339840767905,
+          "ci95_low": -0.0013766044285148382,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.0005238578887656331,
+          "prob_delta_negative": 0.9107999801635742,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.00036189876846037805,
+          "ci95_low": -0.001627852558158338,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.0005238578887656331,
+          "prob_delta_negative": 0.8547000288963318,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.000475137319881469,
+          "ci95_low": -0.0019385656341910362,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.0005238578887656331,
+          "prob_delta_negative": 0.8048999905586243,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0003846764739137143,
+          "ci95_low": -0.0006625082460232079,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_equal",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.0005237921723164618,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 5.084772055852227e-05,
+          "ci95_low": -0.0023943015839904547,
+          "ci_excludes_zero": false,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.001060892827808857,
+          "prob_delta_negative": 0.9677000045776367,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0002648573718033731,
+          "ci95_low": -0.00280581833794713,
+          "ci_excludes_zero": false,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.001060892827808857,
+          "prob_delta_negative": 0.9283999800682068,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.000440107163740322,
+          "ci95_low": -0.0032166708260774612,
+          "ci_excludes_zero": false,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Weather",
+          "mean_delta": -0.001060892827808857,
+          "prob_delta_negative": 0.8934999704360962,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": -0.0009449704084545374,
+          "ci95_low": -0.0011763041839003563,
+          "ci_excludes_zero": true,
+          "comparison": "online_hv_vs_equal",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": -0.001060923677869141,
+          "num_phases": 12,
+          "prob_delta_negative": 1.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        },
+        {
+          "block_size": 12,
+          "ci95_high": 0.0012563593918457627,
+          "ci95_low": -0.0001243395236087963,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Weather",
+          "mean_delta": 0.0005370349972508848,
+          "prob_delta_negative": 0.056699998676776886,
+          "samples": 10000,
+          "test": "block_bootstrap_len12"
+        },
+        {
+          "block_size": 24,
+          "ci95_high": 0.0014208625070750713,
+          "ci95_low": -0.0002719405456446111,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Weather",
+          "mean_delta": 0.0005370349972508848,
+          "prob_delta_negative": 0.10100000351667404,
+          "samples": 10000,
+          "test": "block_bootstrap_len24"
+        },
+        {
+          "block_size": 48,
+          "ci95_high": 0.0015742655377835035,
+          "ci95_low": -0.00039956398541107774,
+          "ci_excludes_zero": false,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Weather",
+          "mean_delta": 0.0005370349972508848,
+          "prob_delta_negative": 0.1315000057220459,
+          "samples": 10000,
+          "test": "block_bootstrap_len48"
+        },
+        {
+          "ci95_high": 0.0007147037540562451,
+          "ci95_low": 0.00036966250627301633,
+          "ci_excludes_zero": true,
+          "comparison": "frozen_hv_vs_online_hv",
+          "dataset": "Weather",
+          "k": 12,
+          "mean_delta": 0.0005371316219680011,
+          "num_phases": 12,
+          "prob_delta_negative": 0.0,
+          "test": "every_12th_window_phase_bootstrap",
+          "windows_per_phase_max": 870,
+          "windows_per_phase_min": 869
+        }
+      ],
+      "num_windows_val": 10432,
+      "result_rows": [
+        {
+          "dataset": "Weather",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Best single expert",
+          "mae": 0.1646728217601776,
+          "method": "best_single_expert",
+          "mse": 0.28746822476387024,
+          "num_causal_updates": 0,
+          "router_train_mae": 0.17278380692005157,
+          "selected_expert": "PatchTST",
+          "temperature": null
+        },
+        {
+          "dataset": "Weather",
+          "decay": null,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Equal fixed ensemble",
+          "mae": 0.16034138202667236,
+          "method": "equal_fixed",
+          "mse": 0.27881529927253723,
+          "num_causal_updates": 0,
+          "temperature": null
+        },
+        {
+          "dataset": "Weather",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "frozen_weight_source": "router_train_only",
+          "label": "Frozen HxV COSTAR (NEW)",
+          "mae": 0.15981753170490265,
+          "method": "frozen_hv",
+          "mse": 0.2790922522544861,
+          "num_causal_updates": 0,
+          "temperature": 0.1
+        },
+        {
+          "dataset": "Weather",
+          "decay": 0.95,
+          "expert_set": "PatchTST+iTransformer+TimesNet",
+          "label": "Online HxV COSTAR (existing, unmodified)",
+          "mae": 0.15928047895431519,
+          "method": "online_hv",
+          "mse": 0.2835647165775299,
+          "num_causal_updates": 10420,
+          "temperature": 0.1
+        }
+      ],
+      "verification_rows": [
+        {
+          "all_pass": true,
+          "dataset": "Weather",
+          "method": "best_single_expert",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "Weather",
+          "method": "equal_fixed",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": true,
+          "dataset": "Weather",
+          "method": "frozen_hv",
+          "test_A_early_target_change_identical": true,
+          "test_B_all_targets_changed_identical": true,
+          "test_C_no_targets_loaded_matches": true,
+          "test_C_no_targets_loaded_succeeded": true,
+          "test_D_order_invariant": true,
+          "test_E_state_unchanged_before_after": true
+        },
+        {
+          "all_pass": null,
+          "dataset": "Weather",
+          "method": "online_hv",
+          "test_A_early_target_change_identical": false,
+          "test_B_all_targets_changed_identical": false,
+          "test_C_no_targets_loaded_matches": false,
+          "test_C_no_targets_loaded_succeeded": false,
+          "test_D_order_invariant": null,
+          "test_E_state_unchanged_before_after": false
+        }
+      ]
+    }
+  },
+  "experiment": "frozen_hv_costar",
+  "runtime_sec": 71.04141521453857,
+  "test_set_accessed": false
+}

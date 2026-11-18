@@ -1,0 +1,32 @@
+{
+  "ETTm1": {
+    "cache_paths": {
+      "normalizer": "checkpoints\\costarts_walkforward_ETTm1\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward_ETTm1\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward_ETTm1\\router_val_60_80_cache.pt"
+    },
+    "num_features": 7,
+    "num_windows_train": 22826,
+    "num_windows_val": 11413
+  },
+  "Electricity": {
+    "cache_paths": {
+      "normalizer": "checkpoints\\costarts_walkforward_Electricity\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward_Electricity\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward_Electricity\\router_val_60_80_cache.pt"
+    },
+    "num_features": 321,
+    "num_windows_train": 10308,
+    "num_windows_val": 5154
+  },
+  "Weather": {
+    "cache_paths": {
+      "normalizer": "checkpoints\\costarts_walkforward_Weather\\final_60\\DLinear\\best_expert.pt",
+      "router_train": "cache\\costarts_walkforward_Weather\\router_train_20_60_cache.pt",
+      "router_val": "cache\\costarts_walkforward_Weather\\router_val_60_80_cache.pt"
+    },
+    "num_features": 21,
+    "num_windows_train": 20864,
+    "num_windows_val": 10432
+  }
+}

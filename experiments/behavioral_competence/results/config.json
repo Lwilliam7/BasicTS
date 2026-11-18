@@ -1,0 +1,12 @@
+{
+  "block_lengths": [
+    12,
+    24,
+    48
+  ],
+  "bootstrap_samples": 10000,
+  "input_len": null,
+  "internal_val_fraction": 0.2,
+  "phase_k": 12,
+  "scorer_architecture": "Linear(64)-ReLU-Linear(32)-ReLU-Linear(1)"
+}
